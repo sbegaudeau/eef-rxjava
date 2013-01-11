@@ -10,10 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.context;
 
+import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -21,6 +24,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
  */
 public interface PropertiesEditingContext {
 
+	/**
+	 * Intialize the ChangeRecorder of the editing session.
+	 */
+	public void initializeRecorder();
+	
 	/**
 	 * @return the changeRecorder of the editing session
 	 */
@@ -30,7 +38,7 @@ public interface PropertiesEditingContext {
 	 * @return the currently edited {@link EObject}.
 	 */
 	public EObject getEObject();
-
+	
 	/**
 	 * @return the resourceSet where to work.
 	 */
@@ -55,4 +63,5 @@ public interface PropertiesEditingContext {
 	 * @param eObject
 	 */
 	public abstract void seteObject(EObject eObject);
+	
 }

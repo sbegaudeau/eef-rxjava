@@ -50,10 +50,6 @@ return create[editor.name.toJavaClassifier()/]EMFComboViewer(widgetFactory, pare
 		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = new EMFComboViewer(parent);
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/].setEnabled(false);
-		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/].getCombo().setLayoutData([editor.elementEditorName()/]Data);
 		[editor.elementEditorName()/].setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -74,6 +70,9 @@ return create[editor.name.toJavaClassifier()/]EMFComboViewer(widgetFactory, pare
 		EditingUtils.setID([editor.elementEditorName()/].getCombo(), [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.elementEditorName()/].getCombo(), "eef::[editor.representation.name/]");
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('EMFComboViewer'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

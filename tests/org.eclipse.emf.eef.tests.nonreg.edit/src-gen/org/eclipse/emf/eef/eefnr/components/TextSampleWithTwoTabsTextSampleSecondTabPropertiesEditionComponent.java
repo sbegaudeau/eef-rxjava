@@ -12,22 +12,34 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TextSampleWithTwoTabs;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 
@@ -66,13 +78,14 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final TextSampleWithTwoTabs textSampleWithTwoTabs = (TextSampleWithTwoTabs)elt;
 			final TextSampleSecondTabPropertiesEditionPart textSampleSecondTabPart = (TextSampleSecondTabPropertiesEditionPart)editingPart;
 			// init values
-			if (textSampleWithTwoTabs.getTextOptionalPropertyInSecondTab() != null && isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab))
+			if (isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab))
 				textSampleSecondTabPart.setTextOptionalPropertyInSecondTab(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSampleWithTwoTabs.getTextOptionalPropertyInSecondTab()));
 			
-			if (textSampleWithTwoTabs.getTextRequiredPropertyInSecondTab() != null && isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab))
+			if (isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab))
 				textSampleSecondTabPart.setTextRequiredPropertyInSecondTab(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, textSampleWithTwoTabs.getTextRequiredPropertyInSecondTab()));
 			
 			// init filters
@@ -124,16 +137,17 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TextSampleSecondTabPropertiesEditionPart textSampleSecondTabPart = (TextSampleSecondTabPropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().equals(msg.getFeature()) && textSampleSecondTabPart != null && isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab)) {
+			if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && textSampleSecondTabPart != null && isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab)) {
 				if (msg.getNewValue() != null) {
 					textSampleSecondTabPart.setTextOptionalPropertyInSecondTab(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					textSampleSecondTabPart.setTextOptionalPropertyInSecondTab("");
 				}
 			}
-			if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab().equals(msg.getFeature()) && textSampleSecondTabPart != null && isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab)) {
+			if (EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && textSampleSecondTabPart != null && isAccessible(EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab)) {
 				if (msg.getNewValue() != null) {
 					textSampleSecondTabPart.setTextRequiredPropertyInSecondTab(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -142,6 +156,19 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextOptionalPropertyInSecondTab(),
+			EefnrPackage.eINSTANCE.getTextSampleWithTwoTabs_TextRequiredPropertyInSecondTab()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -187,5 +214,8 @@ public class TextSampleWithTwoTabsTextSampleSecondTabPropertiesEditionComponent 
 		}
 		return ret;
 	}
+
+
+	
 
 }

@@ -12,9 +12,10 @@ package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.jface.viewers.ViewerFilter;
 
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
+import org.eclipse.jface.viewers.ViewerFilter;
 
 
 // End of user code
@@ -107,6 +108,48 @@ public interface ReferencesTableSamplePropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element);
+
+
+
+
+	/**
+	 * Init the referencestableROProperty
+	 * @param settings settings for the referencestableROProperty ReferencesTable 
+	 */
+	public void initReferencestableROProperty(ReferencesTableSettings settings);
+
+	/**
+	 * Update the referencestableROProperty
+	 * @param newValue the referencestableROProperty to update
+	 * 
+	 */
+	public void updateReferencestableROProperty();
+
+	/**
+	 * Adds the given filter to the referencestableROProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToReferencestableROProperty(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the referencestableROProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToReferencestableROProperty(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the referencestableROProperty table
+	 * 
+	 */
+	public boolean isContainedInReferencestableROPropertyTable(EObject element);
 
 
 

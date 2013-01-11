@@ -76,6 +76,9 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, par
 		EditingUtils.setID([editor.elementEditorName()/].getTable(), [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.elementEditorName()/].getTable(), "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
 		create[editor.name.toJavaClassifier()/]ControlPanel(parent, widgetFactory);
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('ReferencesTable'))]
+
+		// [/protected]
 		return parent;
 	}
 
@@ -85,10 +88,6 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, par
 	protected TableViewer create[editor.name.toJavaClassifier()/]Viewer(Composite container, FormToolkit widgetFactory, AdapterFactory adapter) {
 		org.eclipse.swt.widgets.Table table = widgetFactory.createTable(container, SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
-		[if (editor.readOnly)]
-		table.setEnabled(false);
-		table.setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 		GridData gd = new GridData();
 		gd.grabExcessHorizontalSpace = true;
 		gd.horizontalAlignment = GridData.FILL;
@@ -146,10 +145,6 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, par
 		layout.numColumns = 1;
 		result.setLayout(layout);
 		add[editor.name.toJavaClassifier()/] = widgetFactory.createButton(result, [editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_AddListViewerLabel, SWT.NONE);
-		[if (editor.readOnly)]
-		add[editor.name.toJavaClassifier()/].setEnabled(false);
-		add[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
 		add[editor.name.toJavaClassifier()/].setLayoutData(addData);
 		add[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -168,10 +163,6 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, par
 		EditingUtils.setID(add[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(add[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::addbutton"); //$NON-NLS-1$
 		remove[editor.name.toJavaClassifier()/] = widgetFactory.createButton(result, [editor.owningViewsRepository().messagesProvider()/].PropertiesEditionPart_RemoveListViewerLabel, SWT.NONE);
-		[if (editor.readOnly)]
-		remove[editor.name.toJavaClassifier()/].setEnabled(false);
-		remove[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
 		remove[editor.name.toJavaClassifier()/].setLayoutData(removeData);
 		remove[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -191,6 +182,9 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, par
 		});
 		EditingUtils.setID(remove[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(remove[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::removebutton"); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('ControlPanel'))]
+
+		// [/protected]
 	}
 
 	/**
@@ -207,6 +201,9 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, par
 			}
 
 		};
+		// [protected ('for add'.concat(editor.name.toJavaClassifier()))]
+
+		// [/protected]
 		dialog.open();
 		[editor.elementEditorName()/].refresh();
 	}
@@ -297,16 +294,15 @@ return create[editor.name.toJavaClassifier()/]ReferencesTable(widgetFactory, par
 			}
 			
 		});
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/].setEnabled(false);
-		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 3;
 		this.[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		this.[editor.elementEditorName()/].disableMove();
 		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		[editor.elementEditorName()/].setEEFType("eef::[editor.representation.name/]"); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('ReferencesTable'))]
+
+		// [/protected]
 		return parent;
 	}
 
@@ -376,4 +372,3 @@ if (provider != null) {
 propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 [editor.elementEditorName()/].refresh();
 [/template]
-

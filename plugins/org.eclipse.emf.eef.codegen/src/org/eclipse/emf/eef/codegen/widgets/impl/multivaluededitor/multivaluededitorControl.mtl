@@ -26,8 +26,16 @@
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor'))]
 [if (editionElement.model.oclAsType(EAttribute).many)]
-if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewIdentifier(pec)/] != null && isAccessible([editionElement.views->first().editorID()/])) {
-	[view.viewIdentifier(pec)/].set[editionElement.views->first().name.toJavaClassifier()/]((EList<?>)msg.getNewValue());
+if ([editionElement.liveUpdaterNavigationCondition(pec)/] && [view.viewIdentifier(pec)/] != null && isAccessible([editionElement.views->first().editorID()/])) {
+	if (msg.getNewValue() instanceof EList<?>) {
+		[view.viewIdentifier(pec)/].set[editionElement.views->first().name.toJavaClassifier()/]((EList<?>)msg.getNewValue());
+	} else if (msg.getNewValue() == null) {
+		[view.viewIdentifier(pec)/].set[editionElement.views->first().name.toJavaClassifier()/](new [include('org.eclipse.emf.common.util.BasicEList')/]<Object>());
+	} else {
+		BasicEList<Object> newValueAsList = new BasicEList<Object>();
+		newValueAsList.add(msg.getNewValue());
+		[view.viewIdentifier(pec)/].set[editionElement.views->first().name.toJavaClassifier()/](newValueAsList);
+	}
 }
 [else]
 //FIXME invalid case in liveUpdater(), Case : model = Attribute(*) : [editionElement.model.name/] - view = MultiValuedEditor
@@ -36,10 +44,10 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 
 [template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeMany() and editionElement.representationName('MultiValuedEditor') and not editionElement.canGeneratemodelNavigation())]
 [if (editionElement.model.many)]
-if ([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/]))
+if (isAccessible([editionElement.views->first().editorID()/]))
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toMany().toUpperFirst()/]());
 [else]
-if ([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]() != null && isAccessible([editionElement.views->first().editorID()/]))
+if (isAccessible([editionElement.views->first().editorID()/]))
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.pecModelClass().toJavaIdentifier()/].get[editionElement.model.name.toUpperFirst()/]());
 [/if]
 [/template]

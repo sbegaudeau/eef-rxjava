@@ -11,13 +11,11 @@
 package org.eclipse.emf.eef.runtime.policies.impl;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.change.ChangeDescription;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.impl.services.WizardOpeningPolicyProviderService;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
+import org.eclipse.emf.eef.runtime.ui.wizards.IWizardOpeningPolicy;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
-import org.eclipse.jface.window.Window;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -43,12 +41,9 @@ public class StandardEditingPolicy implements PropertiesEditingPolicy {
 		EObject eObject = editionContext.getEObject();
 		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext,
 				editionContext.getAdapterFactory(), eObject);
-		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
-		int result = wDialog.open();
-		ChangeDescription change = editionContext.getChangeRecorder().endRecording();
+		IWizardOpeningPolicy wizardOpeningPolicy = WizardOpeningPolicyProviderService.provide(eObject);
+		wizardOpeningPolicy.openWizard(context, wizard);
 		editionContext.dispose();
-		if (result == Window.CANCEL) {
-			change.applyAndReverse();
-		}
 	}
+
 }

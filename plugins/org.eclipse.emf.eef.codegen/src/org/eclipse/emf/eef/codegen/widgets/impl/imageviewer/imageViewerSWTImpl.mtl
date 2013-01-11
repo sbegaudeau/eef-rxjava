@@ -46,10 +46,6 @@ return create[editor.name.toJavaClassifier()/]ImageViewer(parent);
 		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = new EEFImageViewer(parent, SWT.BORDER);
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/].setEnabled(false);
-		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 		GridData [editor.elementEditorName()/]Data = new GridData();
 		// [protected (' for '.concat(editor.name).concat(' layout data customization'))]
 		[defaultLayoutData()/]
@@ -63,6 +59,9 @@ return create[editor.name.toJavaClassifier()/]ImageViewer(parent);
 		});
 		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('ImageViewer'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

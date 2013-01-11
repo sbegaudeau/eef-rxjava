@@ -13,32 +13,45 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 // Start of user code for imports
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextareaSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -50,6 +63,7 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 
 	protected Text textareaRequiredProperty;
 	protected Text textareaOptionalProperty;
+	protected Text textareaROProperty;
 
 
 
@@ -97,6 +111,7 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		CompositionStep propertiesStep = textareaSampleStep.addStep(EefnrViewsRepository.TextareaSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.TextareaSample.Properties.textareaROProperty);
 		
 		
 		composer = new PartComposer(textareaSampleStep) {
@@ -111,6 +126,9 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 				}
 				if (key == EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty) {
 					return createTextareaOptionalPropertyTextarea(widgetFactory, parent);
+				}
+				if (key == EefnrViewsRepository.TextareaSample.Properties.textareaROProperty) {
+					return createTextareaROPropertyTextarea(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -187,6 +205,9 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(textareaRequiredProperty, EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty);
 		EditingUtils.setEEFtype(textareaRequiredProperty, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextareaRequiredPropertyTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -243,6 +264,68 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(textareaOptionalProperty, EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty);
 		EditingUtils.setEEFtype(textareaOptionalProperty, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextareaOptionalPropertyTextArea
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createTextareaROPropertyTextarea(FormToolkit widgetFactory, Composite parent) {
+		Label textareaROPropertyLabel = createDescription(parent, EefnrViewsRepository.TextareaSample.Properties.textareaROProperty, EefnrMessages.TextareaSamplePropertiesEditionPart_TextareaROPropertyLabel);
+		GridData textareaROPropertyLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		textareaROPropertyLabelData.horizontalSpan = 3;
+		textareaROPropertyLabel.setLayoutData(textareaROPropertyLabelData);
+		textareaROProperty = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+		GridData textareaROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		textareaROPropertyData.horizontalSpan = 2;
+		textareaROPropertyData.heightHint = 80;
+		textareaROPropertyData.widthHint = 200;
+		textareaROProperty.setLayoutData(textareaROPropertyData);
+		textareaROProperty.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							TextareaSamplePropertiesEditionPartForm.this,
+							EefnrViewsRepository.TextareaSample.Properties.textareaROProperty,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textareaROProperty.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									TextareaSamplePropertiesEditionPartForm.this,
+									EefnrViewsRepository.TextareaSample.Properties.textareaROProperty,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, textareaROProperty.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									TextareaSamplePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		EditingUtils.setID(textareaROProperty, EefnrViewsRepository.TextareaSample.Properties.textareaROProperty);
+		EditingUtils.setEEFtype(textareaROProperty, "eef::Textarea"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextareaSample.Properties.textareaROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextareaROPropertyTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -281,6 +364,15 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			textareaRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty);
+		if (eefElementEditorReadOnlyState && textareaRequiredProperty.isEnabled()) {
+			textareaRequiredProperty.setEnabled(false);
+			textareaRequiredProperty.setBackground(textareaRequiredProperty.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			textareaRequiredProperty.setToolTipText(EefnrMessages.TextareaSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !textareaRequiredProperty.isEnabled()) {
+			textareaRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -305,6 +397,43 @@ public class TextareaSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			textareaOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty);
+		if (eefElementEditorReadOnlyState && textareaOptionalProperty.isEnabled()) {
+			textareaOptionalProperty.setEnabled(false);
+			textareaOptionalProperty.setBackground(textareaOptionalProperty.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			textareaOptionalProperty.setToolTipText(EefnrMessages.TextareaSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !textareaOptionalProperty.isEnabled()) {
+			textareaOptionalProperty.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TextareaSamplePropertiesEditionPart#getTextareaROProperty()
+	 * 
+	 */
+	public String getTextareaROProperty() {
+		return textareaROProperty.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TextareaSamplePropertiesEditionPart#setTextareaROProperty(String newValue)
+	 * 
+	 */
+	public void setTextareaROProperty(String newValue) {
+		if (newValue != null) {
+			textareaROProperty.setText(newValue);
+		} else {
+			textareaROProperty.setText(""); //$NON-NLS-1$
+		}
+		textareaROProperty.setEnabled(false);
+		textareaROProperty.setBackground(textareaROProperty.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+		textareaROProperty.setToolTipText(EefnrMessages.TextareaSample_ReadOnly);
+		
 	}
 
 

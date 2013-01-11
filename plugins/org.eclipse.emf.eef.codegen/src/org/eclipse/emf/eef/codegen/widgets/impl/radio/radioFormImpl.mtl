@@ -43,10 +43,6 @@ return create[editor.name.toJavaClassifier()/]RadioViewer(parent);
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]RadioViewer(Composite parent) {
 		[editor.elementEditorName()/]RadioViewer = new RadioViewer(parent, SWT.CHECK);
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/]RadioViewer.setEnabled(false);
-		[editor.elementEditorName()/]RadioViewer.setToolTipText([include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 2;
 		[editor.elementEditorName()/]RadioViewer.setLayoutData([editor.elementEditorName()/]Data);
@@ -59,6 +55,9 @@ return create[editor.name.toJavaClassifier()/]RadioViewer(parent);
 			}
 		});
 		[editor.elementEditorName()/]RadioViewer.setID([editor.editorID()/]);
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('RadioViewer'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

@@ -234,6 +234,13 @@ public class EMFComboViewer extends AbstractListViewer {
 	public void setEnabled(boolean enabled) {
 		combo.setEnabled(enabled);
 	}
+	
+	/**
+	 * @return if the combo is enabled
+	 */
+	public boolean isEnabled() {
+		return combo.isEnabled();
+	}
 
 	/**
 	 * Sets the tooltip text for the viewer

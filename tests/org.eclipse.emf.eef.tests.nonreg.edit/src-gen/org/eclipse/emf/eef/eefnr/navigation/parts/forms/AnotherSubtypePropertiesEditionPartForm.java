@@ -12,42 +12,59 @@ package org.eclipse.emf.eef.eefnr.navigation.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.eef.eefnr.navigation.parts.AnotherSubtypePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
 import org.eclipse.emf.eef.eefnr.navigation.parts.SubtypePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
-
 
 // End of user code
 
@@ -175,6 +192,9 @@ public class AnotherSubtypePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(anotherSpecialisationElement, NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement);
 		EditingUtils.setEEFtype(anotherSpecialisationElement, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAnotherSpecialisationElementCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -213,6 +233,14 @@ public class AnotherSubtypePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			anotherSpecialisationElement.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.AnotherSubtype.AnotherSpecialisation.anotherSpecialisationElement);
+		if (eefElementEditorReadOnlyState && anotherSpecialisationElement.isEnabled()) {
+			anotherSpecialisationElement.setEnabled(false);
+			anotherSpecialisationElement.setToolTipText(NavigationMessages.AnotherSubtype_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !anotherSpecialisationElement.isEnabled()) {
+			anotherSpecialisationElement.setEnabled(true);
+		}	
+		
 	}
 
 

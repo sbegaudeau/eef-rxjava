@@ -30,7 +30,9 @@ import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionElementPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.MappingPackage;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -94,10 +96,11 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final PropertiesEditionElement propertiesEditionElement = (PropertiesEditionElement)elt;
 			final PropertiesEditionElementPropertiesEditionPart basePart = (PropertiesEditionElementPropertiesEditionPart)editingPart;
 			// init values
-			if (propertiesEditionElement.getName() != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.name))
+			if (isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertiesEditionElement.getName()));
 			
 			if (isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Binding.views)) {
@@ -111,7 +114,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 				// set the button mode
 				basePart.setModelButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			if (propertiesEditionElement.getHelpID() != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID))
+			if (isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID))
 				basePart.setHelpID(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, propertiesEditionElement.getHelpID()));
 			
 			// init filters
@@ -250,9 +253,10 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			PropertiesEditionElementPropertiesEditionPart basePart = (PropertiesEditionElementPropertiesEditionPart)editingPart;
-			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.name)) {
+			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -263,7 +267,7 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 				basePart.updateViews();
 			if (MappingPackage.eINSTANCE.getEMFPropertyBinding_Model().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Binding.model))
 				basePart.setModel((EObject)msg.getNewValue());
-			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID)) {
+			if (ComponentsPackage.eINSTANCE.getEEFElement_HelpID().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionElement.Properties.helpID)) {
 				if (msg.getNewValue() != null) {
 					basePart.setHelpID(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -272,6 +276,21 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(),
+			MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(),
+			MappingPackage.eINSTANCE.getEMFPropertyBinding_Model(),
+			ComponentsPackage.eINSTANCE.getEEFElement_HelpID()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -335,5 +354,8 @@ public class PropertiesEditionElementBasePropertiesEditionComponent extends Sing
 		}
 		return ret;
 	}
+
+
+	
 
 }

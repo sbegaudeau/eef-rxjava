@@ -15,12 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 
-import org.eclipse.emf.eef.filters.providers.JavaDeclarationFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.JavaExpressionFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.OCLFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.OnlyReferenceTypeFilterPropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.StrictTypingFilterFilterPropertiesEditionProvider;
-
 import org.eclipse.emf.eef.mapping.filters.util.FiltersAdapterFactory;
 
 import org.eclipse.emf.eef.mapping.providers.DocumentedElementPropertiesEditionProvider;
@@ -104,6 +98,22 @@ public class FiltersEEFAdapterFactory extends FiltersAdapterFactory {
 		providers.add((PropertiesEditingProvider)createDocumentedElementAdapter());
 		providers.add((PropertiesEditingProvider)createBindingFilterAdapter());
 		return new StrictTypingFilterFilterPropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.mapping.filters.util.FiltersAdapterFactory#createJavaBodyStepFilterAdapter()
+	 * 
+	 */
+	public Adapter createJavaBodyStepFilterAdapter() {
+		return new JavaBodyStepFilterPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.mapping.filters.util.FiltersAdapterFactory#createJavaDeclarationStepFilterAdapter()
+	 * 
+	 */
+	public Adapter createJavaDeclarationStepFilterAdapter() {
+		return new JavaDeclarationStepFilterPropertiesEditionProvider();
 	}
 
 }

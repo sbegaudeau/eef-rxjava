@@ -12,41 +12,58 @@ package org.eclipse.emf.samples.conference.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart;
+
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
 
 // End of user code
 
@@ -202,6 +219,9 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		EditingUtils.setID(firstname, ConferenceViewsRepository.Person.Identity.firstname);
 		EditingUtils.setEEFtype(firstname, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.Identity.firstname, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFirstnameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -248,6 +268,9 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		EditingUtils.setID(lastname, ConferenceViewsRepository.Person.Identity.lastname);
 		EditingUtils.setEEFtype(lastname, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.Identity.lastname, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createLastnameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -294,6 +317,9 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		EditingUtils.setID(age, ConferenceViewsRepository.Person.Identity.age);
 		EditingUtils.setEEFtype(age, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.Identity.age, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAgeText
+
+		// End of user code
 		return parent;
 	}
 
@@ -321,6 +347,9 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		});
 		gender.setID(ConferenceViewsRepository.Person.Identity.gender);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.Identity.gender, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createGenderEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -363,6 +392,9 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		EditingUtils.setID(eclipseCommiter, ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter);
 		EditingUtils.setEEFtype(eclipseCommiter, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEclipseCommiterCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -390,6 +422,9 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		EditingUtils.setID(isRegistered, ConferenceViewsRepository.Person.EclipseStatus.isRegistered);
 		EditingUtils.setEEFtype(isRegistered, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Person.EclipseStatus.isRegistered, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createIsRegisteredCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -428,6 +463,14 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		} else {
 			firstname.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.Identity.firstname);
+		if (eefElementEditorReadOnlyState && firstname.isEnabled()) {
+			firstname.setEnabled(false);
+			firstname.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !firstname.isEnabled()) {
+			firstname.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -452,6 +495,14 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		} else {
 			lastname.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.Identity.lastname);
+		if (eefElementEditorReadOnlyState && lastname.isEnabled()) {
+			lastname.setEnabled(false);
+			lastname.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !lastname.isEnabled()) {
+			lastname.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -476,6 +527,14 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		} else {
 			age.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.Identity.age);
+		if (eefElementEditorReadOnlyState && age.isEnabled()) {
+			age.setEnabled(false);
+			age.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !age.isEnabled()) {
+			age.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -497,6 +556,14 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	public void initGender(Object input, Enumerator current) {
 		gender.setInput(input);
 		gender.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.Identity.gender);
+		if (eefElementEditorReadOnlyState && gender.isEnabled()) {
+			gender.setEnabled(false);
+			gender.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !gender.isEnabled()) {
+			gender.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -507,6 +574,14 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 */
 	public void setGender(Enumerator newValue) {
 		gender.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.Identity.gender);
+		if (eefElementEditorReadOnlyState && gender.isEnabled()) {
+			gender.setEnabled(false);
+			gender.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !gender.isEnabled()) {
+			gender.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -531,6 +606,14 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		} else {
 			eclipseCommiter.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter);
+		if (eefElementEditorReadOnlyState && eclipseCommiter.isEnabled()) {
+			eclipseCommiter.setEnabled(false);
+			eclipseCommiter.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !eclipseCommiter.isEnabled()) {
+			eclipseCommiter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -555,6 +638,14 @@ public class PersonPropertiesEditionPartImpl extends CompositePropertiesEditionP
 		} else {
 			isRegistered.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Person.EclipseStatus.isRegistered);
+		if (eefElementEditorReadOnlyState && isRegistered.isEnabled()) {
+			isRegistered.setEnabled(false);
+			isRegistered.setToolTipText(ConferenceMessages.Person_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !isRegistered.isEnabled()) {
+			isRegistered.setEnabled(true);
+		}	
+		
 	}
 
 

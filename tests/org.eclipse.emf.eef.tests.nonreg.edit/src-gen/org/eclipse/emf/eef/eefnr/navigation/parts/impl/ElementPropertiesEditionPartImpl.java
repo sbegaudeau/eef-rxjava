@@ -14,29 +14,44 @@ package org.eclipse.emf.eef.eefnr.navigation.parts.impl;
 import org.eclipse.emf.eef.eefnr.navigation.parts.ElementPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NamedElementPropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
+
 import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-
 
 // End of user code
 
@@ -149,6 +164,9 @@ public class ElementPropertiesEditionPartImpl extends CompositePropertiesEdition
 		EditingUtils.setID(isVisible, NavigationViewsRepository.Element.Properties.isVisible);
 		EditingUtils.setEEFtype(isVisible, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.Element.Properties.isVisible, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createIsVisibleCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -195,6 +213,14 @@ public class ElementPropertiesEditionPartImpl extends CompositePropertiesEdition
 		} else {
 			isVisible.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.Element.Properties.isVisible);
+		if (eefElementEditorReadOnlyState && isVisible.isEnabled()) {
+			isVisible.setEnabled(false);
+			isVisible.setToolTipText(NavigationMessages.Element_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !isVisible.isEnabled()) {
+			isVisible.setEnabled(true);
+		}	
+		
 	}
 
 

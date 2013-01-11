@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.eefnr;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TextareaSample#getTextareaRequiredProperty <em>Textarea Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TextareaSample#getTextareaOptionalProperty <em>Textarea Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.TextareaSample#getTextareaROProperty <em>Textarea RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +77,31 @@ public interface TextareaSample extends AbstractSample {
 	 * @generated
 	 */
 	void setTextareaOptionalProperty(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Textarea RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Textarea RO Property</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Textarea RO Property</em>' attribute.
+	 * @see #setTextareaROProperty(String)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getTextareaSample_TextareaROProperty()
+	 * @model
+	 * @generated
+	 */
+	String getTextareaROProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.TextareaSample#getTextareaROProperty <em>Textarea RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Textarea RO Property</em>' attribute.
+	 * @see #getTextareaROProperty()
+	 * @generated
+	 */
+	void setTextareaROProperty(String value);
 
 } // TextareaSample

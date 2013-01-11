@@ -15,11 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 
-import org.eclipse.emf.eef.components.providers.PropertiesEditionComponentPropertiesEditionProvider;
-import org.eclipse.emf.eef.components.providers.PropertiesEditionContextPropertiesEditionProvider;
-import org.eclipse.emf.eef.components.providers.PropertiesEditionElementPropertiesEditionProvider;
-import org.eclipse.emf.eef.components.providers.PropertiesMultiEditionElementPropertiesEditionProvider;
-
 import org.eclipse.emf.eef.components.util.ComponentsAdapterFactory;
 
 import org.eclipse.emf.eef.mapping.providers.DocumentedElementPropertiesEditionProvider;

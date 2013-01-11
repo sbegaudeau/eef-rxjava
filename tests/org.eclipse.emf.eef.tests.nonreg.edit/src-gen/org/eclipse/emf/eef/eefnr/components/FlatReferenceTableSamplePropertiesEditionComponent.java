@@ -14,22 +14,40 @@ package org.eclipse.emf.eef.eefnr.components;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -54,6 +72,10 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	 * Settings for flatreferencetableOptionalProperty ReferencesTable
 	 */
 	private ReferencesTableSettings flatreferencetableOptionalPropertySettings;
+	/**
+	 * Settings for flatreferencetableROProperty ReferencesTable
+	 */
+	private ReferencesTableSettings flatreferencetableROPropertySettings;
 	
 	/**
 	 * Default constructor
@@ -77,6 +99,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final FlatReferencesTableSample flatReferencesTableSample = (FlatReferencesTableSample)elt;
 			final FlatReferenceTableSamplePropertiesEditionPart basePart = (FlatReferenceTableSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -87,6 +110,10 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 			if (isAccessible(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty)) {
 				flatreferencetableOptionalPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty());
 				basePart.initFlatreferencetableOptionalProperty(flatreferencetableOptionalPropertySettings);
+			}
+			if (isAccessible(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty)) {
+				flatreferencetableROPropertySettings = new ReferencesTableSettings(flatReferencesTableSample, EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableROProperty());
+				basePart.initFlatreferencetableROProperty(flatreferencetableROPropertySettings);
 			}
 			// init filters
 			if (isAccessible(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty)) {
@@ -106,7 +133,6 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 				});
 				basePart.addFilterToFlatreferencetableRequiredProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 				// Start of user code for additional businessfilters for flatreferencetableRequiredProperty
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty)) {
@@ -126,7 +152,25 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 				});
 				basePart.addFilterToFlatreferencetableOptionalProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
 				// Start of user code for additional businessfilters for flatreferencetableOptionalProperty
+				// End of user code
+			}
+			if (isAccessible(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty)) {
+				basePart.addFilterToFlatreferencetableROProperty(new ViewerFilter() {
 				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInFlatreferencetableROPropertyTable((EObject)element));
+						return element instanceof String && element.equals("");
+					}
+				
+				});
+				basePart.addFilterToFlatreferencetableROProperty(new EObjectStrictFilter(EefnrPackage.Literals.TOTAL_SAMPLE));
+				// Start of user code for additional businessfilters for flatreferencetableROProperty
 				// End of user code
 			}
 			// init values for referenced views
@@ -136,6 +180,7 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -151,6 +196,9 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 		}
 		if (editorKey == EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty) {
+			return EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -177,14 +225,31 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			FlatReferenceTableSamplePropertiesEditionPart basePart = (FlatReferenceTableSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty))
 				basePart.updateFlatreferencetableRequiredProperty();
 			if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty))
 				basePart.updateFlatreferencetableOptionalProperty();
+			if (EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableROProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty))
+				basePart.updateFlatreferencetableROProperty();
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableRequiredProperty(),
+			EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty(),
+			EefnrPackage.eINSTANCE.getFlatReferencesTableSample_FlatreferencestableROProperty()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -216,5 +281,8 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 		}
 		return ret;
 	}
+
+
+	
 
 }

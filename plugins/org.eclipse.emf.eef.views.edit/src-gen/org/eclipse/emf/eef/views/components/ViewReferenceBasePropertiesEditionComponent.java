@@ -21,7 +21,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -81,10 +83,11 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ViewReference viewReference = (ViewReference)elt;
 			final ViewReferencePropertiesEditionPart basePart = (ViewReferencePropertiesEditionPart)editingPart;
 			// init values
-			if (viewReference.getName() != null && isAccessible(ViewsViewsRepository.ViewReference.Properties.name))
+			if (isAccessible(ViewsViewsRepository.ViewReference.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, viewReference.getName()));
 			
 			if (isAccessible(ViewsViewsRepository.ViewReference.Properties.referencedView)) {
@@ -170,9 +173,10 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ViewReferencePropertiesEditionPart basePart = (ViewReferencePropertiesEditionPart)editingPart;
-			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.ViewReference.Properties.name)) {
+			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ViewsViewsRepository.ViewReference.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -183,6 +187,19 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 				basePart.setReferencedView((EObject)msg.getNewValue());
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ViewsPackage.eINSTANCE.getViewElement_Name(),
+			ViewsPackage.eINSTANCE.getViewReference_View()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -235,5 +252,8 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 		}
 		return ret;
 	}
+
+
+	
 
 }

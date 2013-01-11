@@ -13,33 +13,46 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 // Start of user code for imports
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -51,6 +64,7 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 
 	protected Text textRequiredProperty;
 	protected Text textOptionalProperty;
+	protected Text textROProperty;
 
 
 
@@ -98,6 +112,7 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		CompositionStep propertiesStep = textSampleStep.addStep(EefnrViewsRepository.TextSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.TextSample.Properties.textRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.TextSample.Properties.textOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.TextSample.Properties.textROProperty);
 		
 		
 		composer = new PartComposer(textSampleStep) {
@@ -112,6 +127,9 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 				}
 				if (key == EefnrViewsRepository.TextSample.Properties.textOptionalProperty) {
 					return createTextOptionalPropertyText(widgetFactory, parent);
+				}
+				if (key == EefnrViewsRepository.TextSample.Properties.textROProperty) {
+					return createTextROPropertyText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -197,6 +215,9 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(textRequiredProperty, EefnrViewsRepository.TextSample.Properties.textRequiredProperty);
 		EditingUtils.setEEFtype(textRequiredProperty, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSample.Properties.textRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextRequiredPropertyText
+
+		// End of user code
 		return parent;
 	}
 
@@ -262,6 +283,77 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(textOptionalProperty, EefnrViewsRepository.TextSample.Properties.textOptionalProperty);
 		EditingUtils.setEEFtype(textOptionalProperty, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSample.Properties.textOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextOptionalPropertyText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createTextROPropertyText(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, EefnrViewsRepository.TextSample.Properties.textROProperty, EefnrMessages.TextSamplePropertiesEditionPart_TextROPropertyLabel);
+		textROProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		textROProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData textROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		textROProperty.setLayoutData(textROPropertyData);
+		textROProperty.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							TextSamplePropertiesEditionPartForm.this,
+							EefnrViewsRepository.TextSample.Properties.textROProperty,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textROProperty.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									TextSamplePropertiesEditionPartForm.this,
+									EefnrViewsRepository.TextSample.Properties.textROProperty,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, textROProperty.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									TextSamplePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		textROProperty.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TextSamplePropertiesEditionPartForm.this, EefnrViewsRepository.TextSample.Properties.textROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textROProperty.getText()));
+				}
+			}
+		});
+		EditingUtils.setID(textROProperty, EefnrViewsRepository.TextSample.Properties.textROProperty);
+		EditingUtils.setEEFtype(textROProperty, "eef::Text"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSample.Properties.textROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextROPropertyText
+
+		// End of user code
 		return parent;
 	}
 
@@ -300,6 +392,14 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			textRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TextSample.Properties.textRequiredProperty);
+		if (eefElementEditorReadOnlyState && textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(false);
+			textRequiredProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !textRequiredProperty.isEnabled()) {
+			textRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -324,6 +424,41 @@ public class TextSamplePropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			textOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TextSample.Properties.textOptionalProperty);
+		if (eefElementEditorReadOnlyState && textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(false);
+			textOptionalProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !textOptionalProperty.isEnabled()) {
+			textOptionalProperty.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart#getTextROProperty()
+	 * 
+	 */
+	public String getTextROProperty() {
+		return textROProperty.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.TextSamplePropertiesEditionPart#setTextROProperty(String newValue)
+	 * 
+	 */
+	public void setTextROProperty(String newValue) {
+		if (newValue != null) {
+			textROProperty.setText(newValue);
+		} else {
+			textROProperty.setText(""); //$NON-NLS-1$
+		}
+		textROProperty.setEnabled(false);
+		textROProperty.setToolTipText(EefnrMessages.TextSample_ReadOnly);
+		
 	}
 
 

@@ -12,29 +12,44 @@ package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
+
+import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-
 
 // End of user code
 
@@ -46,6 +61,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 
 	protected RadioViewer radioRequiredPropertyRadioViewer;
 	protected RadioViewer radioOptionalPropertyRadioViewer;
+	protected RadioViewer radioROPropertyRadioViewer;
 
 
 
@@ -86,6 +102,7 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		CompositionStep propertiesStep = radioSampleStep.addStep(EefnrViewsRepository.RadioSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.RadioSample.Properties.radioROProperty);
 		
 		
 		composer = new PartComposer(radioSampleStep) {
@@ -100,6 +117,9 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 				}
 				if (key == EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty) {
 					return createRadioOptionalPropertyRadioViewer(parent);
+				}
+				if (key == EefnrViewsRepository.RadioSample.Properties.radioROProperty) {
+					return createRadioROPropertyRadioViewer(parent);
 				}
 				return parent;
 			}
@@ -140,6 +160,9 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		radioRequiredPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty, EefnrViewsRepository.SWT_KIND), null);
+		// Start of user code for createRadioRequiredPropertyRadioViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -161,6 +184,33 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		});
 		radioOptionalPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty, EefnrViewsRepository.SWT_KIND), null);
+		// Start of user code for createRadioOptionalPropertyRadioViewer
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected Composite createRadioROPropertyRadioViewer(Composite parent) {
+		radioROPropertyRadioViewer = new RadioViewer(parent, SWT.CHECK);
+		GridData radioROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		radioROPropertyData.horizontalSpan = 2;
+		radioROPropertyRadioViewer.setLayoutData(radioROPropertyData);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioROProperty, EefnrViewsRepository.FORM_KIND), null);
+		radioROPropertyRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(RadioSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.RadioSample.Properties.radioROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).getFirstElement()));
+			}
+		});
+		radioROPropertyRadioViewer.setID(EefnrViewsRepository.RadioSample.Properties.radioROProperty);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.RadioSample.Properties.radioROProperty, EefnrViewsRepository.SWT_KIND), null);
+		// Start of user code for createRadioROPropertyRadioViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -209,6 +259,14 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	public void setRadioRequiredProperty(Object newValue) {
 		radioRequiredPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty);
+		if (eefElementEditorReadOnlyState && radioRequiredPropertyRadioViewer.isEnabled()) {
+			radioRequiredPropertyRadioViewer.setEnabled(false);
+			radioRequiredPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !radioRequiredPropertyRadioViewer.isEnabled()) {
+			radioRequiredPropertyRadioViewer.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -243,6 +301,51 @@ public class RadioSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 	 */
 	public void setRadioOptionalProperty(Object newValue) {
 		radioOptionalPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty);
+		if (eefElementEditorReadOnlyState && radioOptionalPropertyRadioViewer.isEnabled()) {
+			radioOptionalPropertyRadioViewer.setEnabled(false);
+			radioOptionalPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !radioOptionalPropertyRadioViewer.isEnabled()) {
+			radioOptionalPropertyRadioViewer.setEnabled(true);
+		}
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart#getRadioROProperty()
+	 * 
+	 */
+	public Object getRadioROProperty() {
+		if (radioROPropertyRadioViewer.getSelection() instanceof StructuredSelection) {
+			StructuredSelection sSelection = (StructuredSelection) radioROPropertyRadioViewer.getSelection();
+			return sSelection.getFirstElement();
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart#initRadioROProperty(Object input, Enumerator current)
+	 */
+	public void initRadioROProperty(Object input, Enumerator current) {
+		radioROPropertyRadioViewer.setInput(input);
+		radioROPropertyRadioViewer.setSelection(new StructuredSelection(current));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart#setRadioROProperty(Object newValue)
+	 * 
+	 */
+	public void setRadioROProperty(Object newValue) {
+		radioROPropertyRadioViewer.setSelection(new StructuredSelection(newValue));
+		radioROPropertyRadioViewer.setEnabled(false);
+		radioROPropertyRadioViewer.setToolTipText(EefnrMessages.RadioSample_ReadOnly);
+		
 	}
 
 

@@ -82,10 +82,6 @@ return create[editor.name.toJavaClassifier()/]RichText(widgetFactory, parent);
 		RichTextToolBar toolBar = new RichTextToolBar(toolbarContainer, SWT.NONE, [editor.elementEditorName()/]);
 		[editor.elementEditorName()/] = new RichText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		[editor.elementEditorName()/].setEditable(true);
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/].setEnabled(false);
-		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 3;
 		[editor.elementEditorName()/]Data.heightHint = 200;

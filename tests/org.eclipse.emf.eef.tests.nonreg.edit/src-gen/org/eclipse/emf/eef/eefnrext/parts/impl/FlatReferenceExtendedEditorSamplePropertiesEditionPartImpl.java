@@ -12,36 +12,52 @@ package org.eclipse.emf.eef.eefnrext.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.eefnrext.parts.CheckBoxExtendedEditorSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.FlatReferenceExtendedEditorSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnrext.providers.EefnrextMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-
-
 
 // End of user code
 
@@ -138,7 +154,6 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 		createDescription(parent, EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextMessages.FlatReferenceExtendedEditorSamplePropertiesEditionPart_FlatReferenceEditorSampleLabel);
 		flatReferenceEditorSample = new FlatReferencesTable(parent);
 		flatReferenceEditorSample.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
 		flatReferenceEditorSample.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -151,6 +166,9 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 		flatReferenceEditorSample.setLayoutData(flatReferenceEditorSampleData);
 		flatReferenceEditorSample.setID(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatReferenceEditorSampleFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -187,6 +205,14 @@ public class FlatReferenceExtendedEditorSamplePropertiesEditionPartImpl extends 
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatReferenceEditorSample.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrextViewsRepository.FlatReferenceExtendedEditorSample.Properties.flatReferenceEditorSample);
+		if (eefElementEditorReadOnlyState && flatReferenceEditorSample.isEnabled()) {
+			flatReferenceEditorSample.setEnabled(false);
+			flatReferenceEditorSample.setToolTipText(EefnrextMessages.FlatReferenceExtendedEditorSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !flatReferenceEditorSample.isEnabled()) {
+			flatReferenceEditorSample.setEnabled(true);
+		}	
+		
 	}
 
 	/**

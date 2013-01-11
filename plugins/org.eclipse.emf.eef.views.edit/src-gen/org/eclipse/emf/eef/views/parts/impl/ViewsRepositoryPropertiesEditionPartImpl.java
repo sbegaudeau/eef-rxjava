@@ -166,6 +166,9 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		EditingUtils.setID(name, ViewsViewsRepository.ViewsRepository.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewsRepository.Properties.name, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -212,6 +215,9 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		EditingUtils.setID(repositoryKind, ViewsViewsRepository.ViewsRepository.Properties.repositoryKind);
 		EditingUtils.setEEFtype(repositoryKind, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewsRepository.Properties.repositoryKind, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createRepositoryKindText
+
+		// End of user code
 		return parent;
 	}
 
@@ -250,6 +256,14 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.ViewsRepository.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ViewsMessages.ViewsRepository_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -274,6 +288,14 @@ public class ViewsRepositoryPropertiesEditionPartImpl extends CompositePropertie
 		} else {
 			repositoryKind.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.ViewsRepository.Properties.repositoryKind);
+		if (eefElementEditorReadOnlyState && repositoryKind.isEnabled()) {
+			repositoryKind.setEnabled(false);
+			repositoryKind.setToolTipText(ViewsMessages.ViewsRepository_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !repositoryKind.isEnabled()) {
+			repositoryKind.setEnabled(true);
+		}	
+		
 	}
 
 

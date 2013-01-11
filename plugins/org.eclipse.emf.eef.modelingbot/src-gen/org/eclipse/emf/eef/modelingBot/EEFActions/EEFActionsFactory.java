@@ -57,6 +57,15 @@ public interface EEFActionsFactory extends EFactory {
 	SetAttribute createSetAttribute();
 
 	/**
+	 * Returns a new object of class '<em>Unset Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Unset Attribute</em>'.
+	 * @generated
+	 */
+	UnsetAttribute createUnsetAttribute();
+
+	/**
 	 * Returns a new object of class '<em>Unset</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -100,6 +109,33 @@ public interface EEFActionsFactory extends EFactory {
 	 * @generated
 	 */
 	SetReference createSetReference();
+
+	/**
+	 * Returns a new object of class '<em>Unset Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Unset Reference</em>'.
+	 * @generated
+	 */
+	UnsetReference createUnsetReference();
+
+	/**
+	 * Returns a new object of class '<em>Move Up</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Move Up</em>'.
+	 * @generated
+	 */
+	MoveUp createMoveUp();
+
+	/**
+	 * Returns a new object of class '<em>Move Down</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Move Down</em>'.
+	 * @generated
+	 */
+	MoveDown createMoveDown();
 
 	/**
 	 * Returns the package supported by this factory.

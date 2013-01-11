@@ -13,10 +13,9 @@ package org.eclipse.emf.eef.runtime.impl.command;
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.ecore.change.ChangeDescription;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
+import org.eclipse.emf.eef.runtime.impl.services.WizardOpeningPolicyProviderService;
+import org.eclipse.emf.eef.runtime.ui.wizards.IWizardOpeningPolicy;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
-import org.eclipse.jface.window.Window;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -43,15 +42,10 @@ public class WizardEditingCommand extends AbstractCommand {
 	protected boolean prepare() {
 		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editionContext,
 				editionContext.getAdapterFactory(), editionContext.getEObject());
-		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
-		int open = wDialog.open();
-		description = editionContext.getChangeRecorder().endRecording();
-		if (open == Window.OK) {
-			return true;
-		} else {
-			description.applyAndReverse();
-			return false;
-		}
+		IWizardOpeningPolicy wizardOpeningPolicy = WizardOpeningPolicyProviderService.provide(editionContext.getEObject());
+		boolean openWizard = wizardOpeningPolicy.openWizard(editionContext, wizard);
+		this.description = wizardOpeningPolicy.getDescription();
+		return openWizard;
 	}
 
 	/**
@@ -69,7 +63,9 @@ public class WizardEditingCommand extends AbstractCommand {
 	 */
 	@Override
 	public void undo() {
-		description.applyAndReverse();
+		if (description != null) {
+			description.applyAndReverse();
+		}
 	}
 
 	/**
@@ -78,7 +74,9 @@ public class WizardEditingCommand extends AbstractCommand {
 	 * @see org.eclipse.emf.common.command.Command#redo()
 	 */
 	public void redo() {
-		description.applyAndReverse();
+		if (description != null) {
+			description.applyAndReverse();
+		}
 	}
 
 }

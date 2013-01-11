@@ -12,21 +12,33 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.ImageViewerSample;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.ImageViewerSamplePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 
@@ -65,18 +77,24 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ImageViewerSample imageViewerSample = (ImageViewerSample)elt;
 			final ImageViewerSamplePropertiesEditionPart basePart = (ImageViewerSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (imageViewerSample.getImageviewerRequiredProperty() != null && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty)) {
+			if (isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty)) {
 				basePart.initImageviewerRequiredProperty(EcoreUtil.getIdentification(imageViewerSample), imageViewerSample.getImageviewerRequiredProperty());
 			}
 			
-			if (imageViewerSample.getImageviewerOptionalProperty() != null && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty)) {
+			if (isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty)) {
 				basePart.initImageviewerOptionalProperty(EcoreUtil.getIdentification(imageViewerSample), imageViewerSample.getImageviewerOptionalProperty());
 			}
 			
+			if (isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty)) {
+				basePart.initImageviewerROProperty(EcoreUtil.getIdentification(imageViewerSample), imageViewerSample.getImageviewerROProperty());
+			}
+			
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -86,6 +104,7 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -101,6 +120,9 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 		}
 		if (editorKey == EefnrViewsRepository.ImageViewerSample.Properties.imageviewerOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty) {
+			return EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -125,6 +147,7 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ImageViewerSamplePropertiesEditionPart basePart = (ImageViewerSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerRequiredProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerRequiredProperty)){
@@ -143,8 +166,30 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 					basePart.setImageviewerOptionalProperty("");
 				}
 			}
+			if (EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerROProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty)){
+				if (msg.getNewValue() != null) {
+					basePart.setImageviewerROProperty((String)msg.getNewValue());
+				}
+				else {
+					basePart.setImageviewerROProperty("");
+				}
+			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerRequiredProperty(),
+			EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty(),
+			EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerROProperty()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -182,6 +227,13 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty().getEAttributeType(), newValue);
 				}
+				if (EefnrViewsRepository.ImageViewerSample.Properties.imageviewerROProperty == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerROProperty().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getImageViewerSample_ImageviewerROProperty().getEAttributeType(), newValue);
+				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -190,5 +242,8 @@ public class ImageViewerSamplePropertiesEditionComponent extends SinglePartPrope
 		}
 		return ret;
 	}
+
+
+	
 
 }

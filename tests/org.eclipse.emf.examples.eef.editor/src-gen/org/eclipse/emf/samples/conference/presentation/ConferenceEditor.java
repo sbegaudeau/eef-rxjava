@@ -1,9 +1,3 @@
-/**
- * <copyright>
- * </copyright>
- *
- * $Id: ConferenceEditor.java,v 1.7 2011/11/14 14:10:10 sbouchet Exp $
- */
 package org.eclipse.emf.samples.conference.presentation;
 
 
@@ -123,7 +117,6 @@ import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-
 /**
  * This is an example of a Conference model editor.
  * <!-- begin-user-doc -->
@@ -133,7 +126,6 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 public class ConferenceEditor
 	extends MultiPageEditorPart
 	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker, ITabbedPropertySheetPageContributor {
-	
 	
 	private static final String CONTRIBUTOR_ID = "org.eclipse.emf.samples.conference.properties";
 
@@ -366,6 +358,11 @@ public class ConferenceEditor
 	protected boolean updateProblemIndication = true;
 
 	/**
+	 * @generated NOT
+	 */
+	protected boolean isSaving = false;
+
+	/**
 	 * Adapter used to update the problem indication when resources are demanded loaded.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -536,7 +533,7 @@ public class ConferenceEditor
 	 * @generated
 	 */
 	protected void handleChangedResources() {
-		if (!changedResources.isEmpty() && (!isDirty() || handleDirtyConflict())) {
+		if (!changedResources.isEmpty() && (!isDirty() || (!isSaving && handleDirtyConflict()))) {
 			if (isDirty()) {
 				changedResources.addAll(editingDomain.getResourceSet().getResources());
 			}
@@ -731,14 +728,6 @@ public class ConferenceEditor
 			getSite().getShell().getDisplay().asyncExec(runnable);
 		}
 	}
-	
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor#getContributorId()
-	 */
-	public String getContributorId() {
-		return CONTRIBUTOR_ID;
-	}
 
 	/**
 	 * This returns the editing domain as required by the {@link IEditingDomainProvider} interface.
@@ -751,6 +740,16 @@ public class ConferenceEditor
 	public EditingDomain getEditingDomain() {
 		return editingDomain;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor#getContributorId()
+	 * @generated NOT
+	 */
+	public String getContributorId() {
+		return CONTRIBUTOR_ID;
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -967,7 +966,7 @@ public class ConferenceEditor
 	 * This is the method used by the framework to install your own controls.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public void createPages() {
@@ -1003,6 +1002,7 @@ public class ConferenceEditor
 				selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 				selectionViewer.setInput(editingDomain.getResourceSet());
 				selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
+				selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain, adapterFactory));
 				viewerPane.setTitle(editingDomain.getResourceSet());
 
 				new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
@@ -1010,7 +1010,6 @@ public class ConferenceEditor
 				createContextMenuFor(selectionViewer);
 				int pageIndex = addPage(viewerPane.getControl());
 				setPageText(pageIndex, getString("_UI_SelectionPage_label"));
-				selectionViewer.addDoubleClickListener(new OpenWizardOnDoubleClick(editingDomain, adapterFactory));
 			}
 
 			// Create a page for the parent tree view.
@@ -1269,7 +1268,7 @@ public class ConferenceEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
@@ -1357,9 +1356,8 @@ public class ConferenceEditor
 	 * @generated NOT
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
-		if (propertySheetPage == null || propertySheetPage.getControl().isDisposed()) {
-			propertySheetPage =
-				new TabbedPropertySheetPage(ConferenceEditor.this);
+		if (propertySheetPage == null) {
+			propertySheetPage = new TabbedPropertySheetPage(this);
 		}
 
 		return propertySheetPage;
@@ -1461,7 +1459,9 @@ public class ConferenceEditor
 		try {
 			// This runs the options, and shows progress.
 			//
+			isSaving = true;
 			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
+			isSaving = false;
 
 			// Refresh the necessary state.
 			//

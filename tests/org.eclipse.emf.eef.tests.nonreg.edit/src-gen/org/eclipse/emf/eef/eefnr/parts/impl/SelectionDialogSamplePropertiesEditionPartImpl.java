@@ -12,35 +12,50 @@ package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.core.resources.IFile;
+
 import org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.SelectionDialogSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.SelectionDialog;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
 
+import org.eclipse.ui.PlatformUI;
 
 // End of user code
 
@@ -52,6 +67,7 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 
 	protected SelectionDialog selectionDialogRequiredProperty;
 	protected SelectionDialog selectionDialogOptionalProperty;
+	protected SelectionDialog selectionDialogROProperty;
 
 
 
@@ -92,6 +108,7 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 		CompositionStep propertiesStep = selectionDialogSampleStep.addStep(EefnrViewsRepository.SelectionDialogSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty);
 		
 		
 		composer = new PartComposer(selectionDialogSampleStep) {
@@ -106,6 +123,9 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 				}
 				if (key == EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty) {
 					return createSelectionDialogOptionalPropertySelectionDialog(parent);
+				}
+				if (key == EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty) {
+					return createSelectionDialogROPropertySelectionDialog(parent);
 				}
 				return parent;
 			}
@@ -132,7 +152,6 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSelectionDialogRequiredPropertySelectionDialog(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogRequiredPropertyLabel);
 		selectionDialogRequiredProperty = new SelectionDialog(parent, SWT.NONE);
-
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
 		selectionDialogRequiredProperty.setLayoutData(generatorData);
 
@@ -170,6 +189,9 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 			}
 		});
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSelectionDialogRequiredPropertySelectionDialog
+
+		// End of user code
 		return parent;
 	}
 	
@@ -179,8 +201,8 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 			Shell theShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 			IFile[] file = WorkspaceResourceDialog.openFileSelection(theShell, "File Selection", "", false, null, null);
 			if(file.length == 1) {
-				selectionDialogOptionalProperty.setText(file[0].getProject().getName() + "/" + file[0].getProjectRelativePath().toString());
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SelectionDialogSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, selectionDialogOptionalProperty.getText()));
+				selectionDialogROProperty.setText(file[0].getProject().getName() + "/" + file[0].getProjectRelativePath().toString());
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SelectionDialogSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, selectionDialogROProperty.getText()));
 			}
 		}
 	//End of user code
@@ -190,7 +212,6 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 	protected Composite createSelectionDialogOptionalPropertySelectionDialog(Composite parent) {
 		createDescription(parent, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogOptionalPropertyLabel);
 		selectionDialogOptionalProperty = new SelectionDialog(parent, SWT.NONE);
-
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
 		selectionDialogOptionalProperty.setLayoutData(generatorData);
 
@@ -228,6 +249,9 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 			}
 		});
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSelectionDialogOptionalPropertySelectionDialog
+
+		// End of user code
 		return parent;
 	}
 	
@@ -239,6 +263,66 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 			if(file.length == 1) {
 				selectionDialogOptionalProperty.setText(file[0].getProject().getName() + "/" + file[0].getProjectRelativePath().toString());
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SelectionDialogSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, selectionDialogOptionalProperty.getText()));
+			}
+		}
+	//End of user code
+	}
+
+	
+	protected Composite createSelectionDialogROPropertySelectionDialog(Composite parent) {
+		createDescription(parent, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty, EefnrMessages.SelectionDialogSamplePropertiesEditionPart_SelectionDialogROPropertyLabel);
+		selectionDialogROProperty = new SelectionDialog(parent, SWT.NONE);
+		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
+		selectionDialogROProperty.setLayoutData(generatorData);
+
+		selectionDialogROProperty.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+					selectionDialogROPropertySelectionDialog();
+			}
+		});
+
+		selectionDialogROProperty.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SelectionDialogSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, selectionDialogROProperty.getText()));
+			}
+		});
+		selectionDialogROProperty.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SelectionDialogSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, selectionDialogROProperty.getText()));
+				}
+			}
+		});
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSelectionDialogROPropertySelectionDialog
+
+		// End of user code
+		return parent;
+	}
+	
+	protected void selectionDialogROPropertySelectionDialog() {
+	//Start of user code browse button selection dialog
+		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null) {
+			Shell theShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+			IFile[] file = WorkspaceResourceDialog.openFileSelection(theShell, "File Selection", "", false, null, null);
+			if(file.length == 1) {
+				selectionDialogROProperty.setText(file[0].getProject().getName() + "/" + file[0].getProjectRelativePath().toString());
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SelectionDialogSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, selectionDialogROProperty.getText()));
 			}
 		}
 	//End of user code
@@ -279,6 +363,14 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			selectionDialogRequiredProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogRequiredProperty);
+		if (eefElementEditorReadOnlyState && selectionDialogRequiredProperty.isEnabled()) {
+			selectionDialogRequiredProperty.setEnabled(false);
+			selectionDialogRequiredProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !selectionDialogRequiredProperty.isEnabled()) {
+			selectionDialogRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -303,6 +395,41 @@ public class SelectionDialogSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			selectionDialogOptionalProperty.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SelectionDialogSample.Properties.selectionDialogOptionalProperty);
+		if (eefElementEditorReadOnlyState && selectionDialogOptionalProperty.isEnabled()) {
+			selectionDialogOptionalProperty.setEnabled(false);
+			selectionDialogOptionalProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !selectionDialogOptionalProperty.isEnabled()) {
+			selectionDialogOptionalProperty.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.SelectionDialogSamplePropertiesEditionPart#getSelectionDialogROProperty()
+	 * 
+	 */
+	public String getSelectionDialogROProperty() {
+		return selectionDialogROProperty.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.SelectionDialogSamplePropertiesEditionPart#setSelectionDialogROProperty(String newValue)
+	 * 
+	 */
+	public void setSelectionDialogROProperty(String newValue) {
+		if (newValue != null) {
+			selectionDialogROProperty.setText(newValue);
+		} else {
+			selectionDialogROProperty.setText(""); //$NON-NLS-1$
+		}
+		selectionDialogROProperty.setEnabled(false);
+		selectionDialogROProperty.setToolTipText(EefnrMessages.SelectionDialogSample_ReadOnly);
+		
 	}
 
 

@@ -13,13 +13,16 @@ package org.eclipse.emf.eef.eefnr.parts;
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
-
-
 
 
 // End of user code
@@ -118,7 +121,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @return the radioRequiredProperty
 	 * 
 	 */
-	public Enumerator getRadioRequiredProperty();
+	public Object getRadioRequiredProperty();
 
 	/**
 	 * Init the radioRequiredProperty
@@ -132,14 +135,14 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the new radioRequiredProperty to set
 	 * 
 	 */
-	public void setRadioRequiredProperty(Enumerator newValue);
+	public void setRadioRequiredProperty(Object newValue);
 
 
 	/**
 	 * @return the radioOptionalProperty
 	 * 
 	 */
-	public Enumerator getRadioOptionalProperty();
+	public Object getRadioOptionalProperty();
 
 	/**
 	 * Init the radioOptionalProperty
@@ -153,7 +156,7 @@ public interface TotalSamplePropertiesEditionPart {
 	 * @param newValue the new radioOptionalProperty to set
 	 * 
 	 */
-	public void setRadioOptionalProperty(Enumerator newValue);
+	public void setRadioOptionalProperty(Object newValue);
 
 
 	/**

@@ -7,11 +7,8 @@
 package org.eclipse.emf.eef.eefnr.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TextareaSample;
 
@@ -24,6 +21,7 @@ import org.eclipse.emf.eef.eefnr.TextareaSample;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TextareaSampleImpl#getTextareaRequiredProperty <em>Textarea Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TextareaSampleImpl#getTextareaOptionalProperty <em>Textarea Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TextareaSampleImpl#getTextareaROProperty <em>Textarea RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,6 +67,26 @@ public class TextareaSampleImpl extends AbstractSampleImpl implements TextareaSa
 	 * @ordered
 	 */
 	protected String textareaOptionalProperty = TEXTAREA_OPTIONAL_PROPERTY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTextareaROProperty() <em>Textarea RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTextareaROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TEXTAREA_RO_PROPERTY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTextareaROProperty() <em>Textarea RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTextareaROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected String textareaROProperty = TEXTAREA_RO_PROPERTY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,6 +154,27 @@ public class TextareaSampleImpl extends AbstractSampleImpl implements TextareaSa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTextareaROProperty() {
+		return textareaROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTextareaROProperty(String newTextareaROProperty) {
+		String oldTextareaROProperty = textareaROProperty;
+		textareaROProperty = newTextareaROProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_RO_PROPERTY, oldTextareaROProperty, textareaROProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -143,6 +182,8 @@ public class TextareaSampleImpl extends AbstractSampleImpl implements TextareaSa
 				return getTextareaRequiredProperty();
 			case EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_OPTIONAL_PROPERTY:
 				return getTextareaOptionalProperty();
+			case EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_RO_PROPERTY:
+				return getTextareaROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -160,6 +201,9 @@ public class TextareaSampleImpl extends AbstractSampleImpl implements TextareaSa
 				return;
 			case EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_OPTIONAL_PROPERTY:
 				setTextareaOptionalProperty((String)newValue);
+				return;
+			case EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_RO_PROPERTY:
+				setTextareaROProperty((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -179,6 +223,9 @@ public class TextareaSampleImpl extends AbstractSampleImpl implements TextareaSa
 			case EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_OPTIONAL_PROPERTY:
 				setTextareaOptionalProperty(TEXTAREA_OPTIONAL_PROPERTY_EDEFAULT);
 				return;
+			case EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_RO_PROPERTY:
+				setTextareaROProperty(TEXTAREA_RO_PROPERTY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -195,6 +242,8 @@ public class TextareaSampleImpl extends AbstractSampleImpl implements TextareaSa
 				return TEXTAREA_REQUIRED_PROPERTY_EDEFAULT == null ? textareaRequiredProperty != null : !TEXTAREA_REQUIRED_PROPERTY_EDEFAULT.equals(textareaRequiredProperty);
 			case EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_OPTIONAL_PROPERTY:
 				return TEXTAREA_OPTIONAL_PROPERTY_EDEFAULT == null ? textareaOptionalProperty != null : !TEXTAREA_OPTIONAL_PROPERTY_EDEFAULT.equals(textareaOptionalProperty);
+			case EefnrPackage.TEXTAREA_SAMPLE__TEXTAREA_RO_PROPERTY:
+				return TEXTAREA_RO_PROPERTY_EDEFAULT == null ? textareaROProperty != null : !TEXTAREA_RO_PROPERTY_EDEFAULT.equals(textareaROProperty);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -213,6 +262,8 @@ public class TextareaSampleImpl extends AbstractSampleImpl implements TextareaSa
 		result.append(textareaRequiredProperty);
 		result.append(", textareaOptionalProperty: ");
 		result.append(textareaOptionalProperty);
+		result.append(", textareaROProperty: ");
+		result.append(textareaROProperty);
 		result.append(')');
 		return result.toString();
 	}

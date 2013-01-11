@@ -12,31 +12,50 @@ package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Room;
 import org.eclipse.emf.samples.conference.Site;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.SitePropertiesEditionPart;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -81,13 +100,14 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Site site = (Site)elt;
 			final SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
 			// init values
-			if (site.getName() != null && isAccessible(ConferenceViewsRepository.Site.Properties.name))
+			if (isAccessible(ConferenceViewsRepository.Site.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, site.getName()));
 			
-			if (site.getDocumentation() != null && isAccessible(ConferenceViewsRepository.Site.Properties.documentation))
+			if (isAccessible(ConferenceViewsRepository.Site.Properties.documentation))
 				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, site.getDocumentation()));
 			if (isAccessible(ConferenceViewsRepository.Site.Properties.rooms)) {
 				roomsSettings = new ReferencesTableSettings(site, ConferencePackage.eINSTANCE.getSite_Rooms());
@@ -109,7 +129,6 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 				});
 				// Start of user code for additional businessfilters for rooms
-				
 				// End of user code
 			}
 			// init values for referenced views
@@ -187,16 +206,17 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SitePropertiesEditionPart basePart = (SitePropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.name)) {
+			if (ConferencePackage.eINSTANCE.getSite_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.documentation)){
+			if (ConferencePackage.eINSTANCE.getSite_Documentation().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Site.Properties.documentation)){
 				if (msg.getNewValue() != null) {
 					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -207,6 +227,20 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 				basePart.updateRooms();
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ConferencePackage.eINSTANCE.getSite_Name(),
+			ConferencePackage.eINSTANCE.getSite_Documentation(),
+			ConferencePackage.eINSTANCE.getSite_Rooms()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -266,5 +300,8 @@ public class SitePropertiesEditionComponent extends SinglePartPropertiesEditingC
 		}
 		return ret;
 	}
+
+
+	
 
 }

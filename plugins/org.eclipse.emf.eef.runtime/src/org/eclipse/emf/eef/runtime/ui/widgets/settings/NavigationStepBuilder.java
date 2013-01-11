@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.widgets.settings;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EReference;
 
@@ -22,11 +25,16 @@ public class NavigationStepBuilder {
 	private EReference reference;
 	private int index;
 	private EClassifier discriminator;
+	private EEFInitializer init;
+	private List<EEFFilter> filters;
 
 	/**
 	 * Prevent external instanciation.
 	 */
-	private NavigationStepBuilder() { };
+	private NavigationStepBuilder() { 
+		filters = new ArrayList<EEFFilter>();
+		
+	};
 
 	/**
 	 * @param eReference 
@@ -47,12 +55,25 @@ public class NavigationStepBuilder {
 		this.discriminator = discriminator;
 		return this;
 	}
+	
+	public NavigationStepBuilder init(EEFInitializer init) {
+		this.init = init;
+		return this;
+	}
+	
+	public NavigationStepBuilder filter(EEFFilter filter) {
+		this.filters.add(filter);
+		return this;
+	}
+
 
 	public NavigationStep build() {
 		NavigationStepImpl build = new NavigationStepImpl();
 		build.reference = this.reference;
 		build.index = this.index;
 		build.discriminator = this.discriminator;
+		build.init = this.init;
+		build.filters = this.filters;
 		return build;
 	}
 
@@ -61,6 +82,8 @@ public class NavigationStepBuilder {
 		private EReference reference;
 		private int index;
 		private EClassifier discriminator;
+		private EEFInitializer init;
+		private List<EEFFilter> filters;
 		
 		private NavigationStepImpl() {
 			index = NavigationStep.NOT_INITIALIZED;
@@ -92,6 +115,28 @@ public class NavigationStepBuilder {
 		public EClassifier getDiscriminator() {
 			return discriminator;
 		}
+		
+		
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.NavigationStep#getInit()
+		 */
+		public EEFInitializer getInit() {
+			return init;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.NavigationStep#getFilter()
+		 */
+		public List<EEFFilter> getFilters() {
+			return filters;
+		}
 	}
+	
+	
+	
 
 }

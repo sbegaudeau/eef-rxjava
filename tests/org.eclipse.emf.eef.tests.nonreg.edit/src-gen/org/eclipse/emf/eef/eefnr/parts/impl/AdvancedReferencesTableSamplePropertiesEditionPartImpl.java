@@ -16,36 +16,56 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-
 
 // End of user code
 
@@ -61,6 +81,9 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 	protected ReferencesTable advancedreferencestableOptionalProperty;
 	protected List<ViewerFilter> advancedreferencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> advancedreferencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable advancedreferencestableROProperty;
+	protected List<ViewerFilter> advancedreferencestableROPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> advancedreferencestableROPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -101,6 +124,7 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		CompositionStep propertiesStep = advancedReferencesTableSampleStep.addStep(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty);
 		
 		
 		composer = new PartComposer(advancedReferencesTableSampleStep) {
@@ -115,6 +139,9 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 				}
 				if (key == EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty) {
 					return createAdvancedreferencestableOptionalPropertyAdvancedReferencesTable(parent);
+				}
+				if (key == EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty) {
+					return createAdvancedreferencestableROPropertyAdvancedReferencesTable(parent);
 				}
 				return parent;
 			}
@@ -301,6 +328,88 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		}
 	}
 
+	/**
+	 * 
+	 */
+	protected Composite createAdvancedreferencestableROPropertyAdvancedReferencesTable(Composite parent) {
+		String label = getDescription(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty, EefnrMessages.AdvancedReferencesTableSamplePropertiesEditionPart_AdvancedreferencestableROPropertyLabel);		 
+		this.advancedreferencestableROProperty = new ReferencesTable(label, new ReferencesTableListener() {
+			public void handleAdd() { addAdvancedreferencestableROProperty(); }
+			public void handleEdit(EObject element) { editAdvancedreferencestableROProperty(element); }
+			public void handleMove(EObject element, int oldIndex, int newIndex) { moveAdvancedreferencestableROProperty(element, oldIndex, newIndex); }
+			public void handleRemove(EObject element) { removeFromAdvancedreferencestableROProperty(element); }
+			public void navigateTo(EObject element) { }
+		});
+		this.advancedreferencestableROProperty.setHelpText(propertiesEditionComponent.getHelpContent(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty, EefnrViewsRepository.SWT_KIND));
+		this.advancedreferencestableROProperty.createControls(parent);
+		this.advancedreferencestableROProperty.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData advancedreferencestableROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		advancedreferencestableROPropertyData.horizontalSpan = 3;
+		this.advancedreferencestableROProperty.setLayoutData(advancedreferencestableROPropertyData);
+		this.advancedreferencestableROProperty.disableMove();
+		advancedreferencestableROProperty.setID(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty);
+		advancedreferencestableROProperty.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected void addAdvancedreferencestableROProperty() {
+		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(advancedreferencestableROProperty.getInput(), advancedreferencestableROPropertyFilters, advancedreferencestableROPropertyBusinessFilters,
+		"advancedreferencestableROProperty", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+			@Override
+			public void process(IStructuredSelection selection) {
+				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty,
+						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
+				advancedreferencestableROProperty.refresh();
+			}
+		};
+		dialog.open();
+	}
+
+	/**
+	 * 
+	 */
+	protected void moveAdvancedreferencestableROProperty(EObject element, int oldIndex, int newIndex) {
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		advancedreferencestableROProperty.refresh();
+	}
+
+	/**
+	 * 
+	 */
+	protected void removeFromAdvancedreferencestableROProperty(EObject element) {
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AdvancedReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		advancedreferencestableROProperty.refresh();
+	}
+
+	/**
+	 * 
+	 */
+	protected void editAdvancedreferencestableROProperty(EObject element) {
+		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+		if (provider != null) {
+			PropertiesEditingPolicy policy = provider.getPolicy(context);
+			if (policy != null) {
+				policy.execute();
+				advancedreferencestableROProperty.refresh();
+			}
+		}
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -327,6 +436,14 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableRequiredProperty.setContentProvider(contentProvider);
 		advancedreferencestableRequiredProperty.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty);
+		if (eefElementEditorReadOnlyState && advancedreferencestableRequiredProperty.getTable().isEnabled()) {
+			advancedreferencestableRequiredProperty.setEnabled(false);
+			advancedreferencestableRequiredProperty.setToolTipText(EefnrMessages.AdvancedReferencesTableSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !advancedreferencestableRequiredProperty.getTable().isEnabled()) {
+			advancedreferencestableRequiredProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -382,6 +499,14 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableOptionalProperty.setContentProvider(contentProvider);
 		advancedreferencestableOptionalProperty.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty);
+		if (eefElementEditorReadOnlyState && advancedreferencestableOptionalProperty.getTable().isEnabled()) {
+			advancedreferencestableOptionalProperty.setEnabled(false);
+			advancedreferencestableOptionalProperty.setToolTipText(EefnrMessages.AdvancedReferencesTableSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !advancedreferencestableOptionalProperty.getTable().isEnabled()) {
+			advancedreferencestableOptionalProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -422,6 +547,64 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 	 */
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)advancedreferencestableOptionalProperty.getInput()).contains(element);
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#initAdvancedreferencestableROProperty(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+	 */
+	public void initAdvancedreferencestableROProperty(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		advancedreferencestableROProperty.setContentProvider(contentProvider);
+		advancedreferencestableROProperty.setInput(settings);
+		advancedreferencestableROProperty.setEnabled(false);
+		advancedreferencestableROProperty.setToolTipText(EefnrMessages.AdvancedReferencesTableSample_ReadOnly);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#updateAdvancedreferencestableROProperty()
+	 * 
+	 */
+	public void updateAdvancedreferencestableROProperty() {
+	advancedreferencestableROProperty.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#addFilterAdvancedreferencestableROProperty(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToAdvancedreferencestableROProperty(ViewerFilter filter) {
+		advancedreferencestableROPropertyFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#addBusinessFilterAdvancedreferencestableROProperty(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToAdvancedreferencestableROProperty(ViewerFilter filter) {
+		advancedreferencestableROPropertyBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.AdvancedReferencesTableSamplePropertiesEditionPart#isContainedInAdvancedreferencestableROPropertyTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInAdvancedreferencestableROPropertyTable(EObject element) {
+		return ((ReferencesTableSettings)advancedreferencestableROProperty.getInput()).contains(element);
 	}
 
 

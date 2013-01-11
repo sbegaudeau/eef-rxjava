@@ -12,35 +12,51 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
+
+import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -52,6 +68,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 
 	protected EMFComboViewer emfcomboviewerRequiredProperty;
 	protected EMFComboViewer emfcomboviewerOptionalProperty;
+	protected EMFComboViewer emfcomboviewerROProperty;
 
 
 
@@ -99,6 +116,7 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 		CompositionStep propertiesStep = eMFComboViewerSampleStep.addStep(EefnrViewsRepository.EMFComboViewerSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty);
 		
 		
 		composer = new PartComposer(eMFComboViewerSampleStep) {
@@ -113,6 +131,9 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 				}
 				if (key == EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty) {
 					return createEmfcomboviewerOptionalPropertyEMFComboViewer(widgetFactory, parent);
+				}
+				if (key == EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty) {
+					return createEmfcomboviewerROPropertyEMFComboViewer(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -160,6 +181,9 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 		});
 		emfcomboviewerRequiredProperty.setID(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEmfcomboviewerRequiredPropertyEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -187,6 +211,39 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 		});
 		emfcomboviewerOptionalProperty.setID(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEmfcomboviewerOptionalPropertyEMFComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createEmfcomboviewerROPropertyEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty, EefnrMessages.EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerROPropertyLabel);
+		emfcomboviewerROProperty = new EMFComboViewer(parent);
+		emfcomboviewerROProperty.setContentProvider(new ArrayContentProvider());
+		emfcomboviewerROProperty.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData emfcomboviewerROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		emfcomboviewerROProperty.getCombo().setLayoutData(emfcomboviewerROPropertyData);
+		emfcomboviewerROProperty.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EMFComboViewerSamplePropertiesEditionPartForm.this, EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEmfcomboviewerROProperty()));
+			}
+
+		});
+		emfcomboviewerROProperty.setID(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty);
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEmfcomboviewerROPropertyEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -222,6 +279,14 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 	public void initEmfcomboviewerRequiredProperty(Object input, Enumerator current) {
 		emfcomboviewerRequiredProperty.setInput(input);
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
+		if (eefElementEditorReadOnlyState && emfcomboviewerRequiredProperty.isEnabled()) {
+			emfcomboviewerRequiredProperty.setEnabled(false);
+			emfcomboviewerRequiredProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !emfcomboviewerRequiredProperty.isEnabled()) {
+			emfcomboviewerRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -232,6 +297,14 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 	 */
 	public void setEmfcomboviewerRequiredProperty(Enumerator newValue) {
 		emfcomboviewerRequiredProperty.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty);
+		if (eefElementEditorReadOnlyState && emfcomboviewerRequiredProperty.isEnabled()) {
+			emfcomboviewerRequiredProperty.setEnabled(false);
+			emfcomboviewerRequiredProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !emfcomboviewerRequiredProperty.isEnabled()) {
+			emfcomboviewerRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -253,6 +326,14 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 	public void initEmfcomboviewerOptionalProperty(Object input, Enumerator current) {
 		emfcomboviewerOptionalProperty.setInput(input);
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
+		if (eefElementEditorReadOnlyState && emfcomboviewerOptionalProperty.isEnabled()) {
+			emfcomboviewerOptionalProperty.setEnabled(false);
+			emfcomboviewerOptionalProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !emfcomboviewerOptionalProperty.isEnabled()) {
+			emfcomboviewerOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -263,6 +344,51 @@ public class EMFComboViewerSamplePropertiesEditionPartForm extends SectionProper
 	 */
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue) {
 		emfcomboviewerOptionalProperty.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty);
+		if (eefElementEditorReadOnlyState && emfcomboviewerOptionalProperty.isEnabled()) {
+			emfcomboviewerOptionalProperty.setEnabled(false);
+			emfcomboviewerOptionalProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !emfcomboviewerOptionalProperty.isEnabled()) {
+			emfcomboviewerOptionalProperty.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart#getEmfcomboviewerROProperty()
+	 * 
+	 */
+	public Enumerator getEmfcomboviewerROProperty() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) emfcomboviewerROProperty.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart#initEmfcomboviewerROProperty(Object input, Enumerator current)
+	 */
+	public void initEmfcomboviewerROProperty(Object input, Enumerator current) {
+		emfcomboviewerROProperty.setInput(input);
+		emfcomboviewerROProperty.modelUpdating(new StructuredSelection(current));
+		emfcomboviewerROProperty.setEnabled(false);
+		emfcomboviewerROProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart#setEmfcomboviewerROProperty(Enumerator newValue)
+	 * 
+	 */
+	public void setEmfcomboviewerROProperty(Enumerator newValue) {
+		emfcomboviewerROProperty.modelUpdating(new StructuredSelection(newValue));
+		emfcomboviewerROProperty.setEnabled(false);
+		emfcomboviewerROProperty.setToolTipText(EefnrMessages.EMFComboViewerSample_ReadOnly);
+		
 	}
 
 

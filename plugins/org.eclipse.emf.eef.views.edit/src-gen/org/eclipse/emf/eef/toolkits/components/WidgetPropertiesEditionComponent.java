@@ -21,7 +21,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -66,10 +68,11 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Widget widget = (Widget)elt;
 			final WidgetPropertiesEditionPart basePart = (WidgetPropertiesEditionPart)editingPart;
 			// init values
-			if (widget.getName() != null && isAccessible(ToolkitsViewsRepository.Widget.Properties.name))
+			if (isAccessible(ToolkitsViewsRepository.Widget.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, widget.getName()));
 			
 			// init filters
@@ -113,9 +116,10 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			WidgetPropertiesEditionPart basePart = (WidgetPropertiesEditionPart)editingPart;
-			if (ToolkitsPackage.eINSTANCE.getWidget_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ToolkitsViewsRepository.Widget.Properties.name)) {
+			if (ToolkitsPackage.eINSTANCE.getWidget_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ToolkitsViewsRepository.Widget.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -124,6 +128,18 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ToolkitsPackage.eINSTANCE.getWidget_Name()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -174,5 +190,8 @@ public class WidgetPropertiesEditionComponent extends SinglePartPropertiesEditin
 		}
 		return ret;
 	}
+
+
+	
 
 }

@@ -25,7 +25,9 @@ import org.eclipse.emf.eef.components.ComponentsPackage;
 import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesEditionContextPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -77,6 +79,7 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final PropertiesEditionContext propertiesEditionContext = (PropertiesEditionContext)elt;
 			final PropertiesEditionContextPropertiesEditionPart basePart = (PropertiesEditionContextPropertiesEditionPart)editingPart;
 			// init values
@@ -157,12 +160,25 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			PropertiesEditionContextPropertiesEditionPart basePart = (PropertiesEditionContextPropertiesEditionPart)editingPart;
 			if (ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model().equals(msg.getFeature()) && basePart != null && isAccessible(ComponentsViewsRepository.PropertiesEditionContext.Binding.model))
 				basePart.setModel((EObject)msg.getNewValue());
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ComponentsPackage.eINSTANCE.getPropertiesEditionContext_Model()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -206,5 +222,8 @@ public class PropertiesEditionContextBasePropertiesEditionComponent extends Sing
 		}
 		return ret;
 	}
+
+
+	
 
 }

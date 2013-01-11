@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.modelingBot;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EClass;
@@ -82,6 +83,15 @@ public interface IModelingBot {
 	void openEEFEditor(String path);
 
 	/**
+	 * Open an editor.
+	 * 
+	 * @param path
+	 *            editor path from its project.
+	 * @return: {@link EObject}
+	 */
+	EObject openEditor(String path);
+
+	/**
 	 * Close an editor.
 	 * 
 	 * @param path
@@ -103,7 +113,8 @@ public interface IModelingBot {
 	 * @return
 	 */
 	EObject add(org.eclipse.emf.eef.components.PropertiesEditionElement propertiesEditionElement,
-			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, EClass type);
+			ReferenceableObject referenceableObjectContainer, ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, EClass type);
 
 	/**
 	 * Remove an element.
@@ -115,28 +126,47 @@ public interface IModelingBot {
 	void remove(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject);
 
 	/**
-	 * Set an element.
+	 * moves up an element.
+	 * 
+	 * @param propertiesEditionElement
+	 * @param referenceableObject
+	 */
+	void moveUp(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject);
+
+
+	/**
+	 * moves down an element.
+	 * 
+	 * @param propertiesEditionElement
+	 * @param referenceableObject
+	 */
+	void moveDown(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject);
+
+	/**
+	 * Set an attribute.
 	 * 
 	 * @param propertiesEditionElement
 	 * @param referenceableObject
 	 * @param eContainingFeature
-	 * @return
+	 * @param values
 	 */
-	void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, String value);
+	void setAttribute(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<String> values);
 
 	/**
-	 * Set an element.
+	 * Set a reference.
 	 * 
 	 * @param propertiesEditionElement
 	 * @param referenceableObject
 	 * @param eContainingFeature
 	 */
-	void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, ReferenceableObject value);
+	void setReference(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<ReferenceableObject> values);
 
 	/**
-	 * Unset an element.
+	 * Unset all the values of an attribute or a reference.
 	 * 
 	 * @param propertiesEditionElement
 	 * @param referenceableObject
@@ -144,6 +174,28 @@ public interface IModelingBot {
 	 */
 	void unset(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
 			EStructuralFeature eContainingFeature);
+
+	/**
+	 * Unset a reference.
+	 * 
+	 * @param propertiesEditionElement
+	 * @param referenceableObject
+	 * @param eContainingFeature
+	 */
+	void unsetAttribute(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<String> values);
+
+	/**
+	 * Unset a reference.
+	 * 
+	 * @param propertiesEditionElement
+	 * @param referenceableObject
+	 * @param eContainingFeature
+	 */
+	void unsetReference(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<ReferenceableObject> values);
 
 	/**
 	 * Create a new resource.
@@ -156,7 +208,7 @@ public interface IModelingBot {
 	/**
 	 * Cancel.
 	 */
-	void cancel();
+	void cancel(Processing processing);
 
 	/**
 	 * Set the sequence type : wizard, details page, properties view...
@@ -176,6 +228,16 @@ public interface IModelingBot {
 	void check();
 
 	/**
+	 * Undo.
+	 */
+	void undo(Action action);
+
+	/**
+	 * Redo.
+	 */
+	void redo(Action action);
+
+	/**
 	 * @return the test model resource.
 	 */
 	Resource getActiveResource();
@@ -184,5 +246,9 @@ public interface IModelingBot {
 	 * @return the modeling bot interpreter
 	 */
 	IModelingBotInterpreter getModelingBotInterpreter();
+
+	void initWizard(Wizard wizard);
+
+	void closeWizard(Wizard wizard);
 
 }

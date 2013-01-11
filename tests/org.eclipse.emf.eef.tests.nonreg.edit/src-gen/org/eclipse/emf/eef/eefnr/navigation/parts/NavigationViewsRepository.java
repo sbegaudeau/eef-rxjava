@@ -210,4 +210,85 @@ public class NavigationViewsRepository {
 	
 	}
 
+	/**
+	 * SmartNavigationSample view descriptor
+	 * 
+	 */
+	public static class SmartNavigationSample {
+		public static class Properties {
+	
+			
+			public static String name = "navigation::SmartNavigationSample::properties::name";
+			
+			
+			public static String firstModelNavigationSingleValue = "navigation::SmartNavigationSample::properties::firstModelNavigationSingleValue";
+			
+			
+			public static String secondModelNavigationSingleValue = "navigation::SmartNavigationSample::properties::secondModelNavigationSingleValue";
+			
+			
+			public static String firstModelNavigationMultiValue = "navigation::SmartNavigationSample::properties::firstModelNavigationMultiValue";
+			
+			
+			public static String secondModelNavigationMultiValue = "navigation::SmartNavigationSample::properties::secondModelNavigationMultiValue";
+			
+			
+			public static String secondModelNavigationSingleValue2 = "navigation::SmartNavigationSample::properties::secondModelNavigationSingleValue2";
+			
+			
+			public static String secondModelNavigationMultiValue2 = "navigation::SmartNavigationSample::properties::secondModelNavigationMultiValue2";
+			
+			
+			public static String secondModelNavigationMultiValueFilter = "navigation::SmartNavigationSample::properties::secondModelNavigationMultiValueFilter";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * FirstNavigationSample view descriptor
+	 * 
+	 */
+	public static class FirstNavigationSample {
+		public static class Properties {
+	
+			
+			public static String name = "navigation::FirstNavigationSample::properties::name";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * SecondNavigationSample view descriptor
+	 * 
+	 */
+	public static class SecondNavigationSample {
+		public static class Properties {
+	
+			
+			public static String name = "navigation::SecondNavigationSample::properties::name";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * SmartNavigationSampleOnglet2 view descriptor
+	 * 
+	 */
+	public static class SmartNavigationSampleOnglet2 {
+		public static class Properties {
+	
+			
+			public static String secondModelNavigationSingleValueOnglet2 = "navigation::SmartNavigationSampleOnglet2::properties::secondModelNavigationSingleValueOnglet2";
+			
+	
+		}
+	
+	}
+
 }

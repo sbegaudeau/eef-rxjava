@@ -13,31 +13,44 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 // Start of user code for imports
 import org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -49,6 +62,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 
 	protected Button checkboxRequiredProperty;
 	protected Button checkboxOptionalProperty;
+	protected Button checkboxROProperty;
 
 
 
@@ -96,6 +110,7 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		CompositionStep propertiesStep = checkboxSampleStep.addStep(EefnrViewsRepository.CheckboxSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty);
 		
 		
 		composer = new PartComposer(checkboxSampleStep) {
@@ -110,6 +125,9 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 				}
 				if (key == EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty) {
 					return createCheckboxOptionalPropertyCheckbox(widgetFactory, parent);
+				}
+				if (key == EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty) {
+					return createCheckboxROPropertyCheckbox(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -156,6 +174,9 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(checkboxRequiredProperty, EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty);
 		EditingUtils.setEEFtype(checkboxRequiredProperty, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCheckboxRequiredPropertyCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -182,6 +203,38 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(checkboxOptionalProperty, EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty);
 		EditingUtils.setEEFtype(checkboxOptionalProperty, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCheckboxOptionalPropertyCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createCheckboxROPropertyCheckbox(FormToolkit widgetFactory, Composite parent) {
+		checkboxROProperty = widgetFactory.createButton(parent, getDescription(EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty, EefnrMessages.CheckboxSamplePropertiesEditionPart_CheckboxROPropertyLabel), SWT.CHECK);
+		checkboxROProperty.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CheckboxSamplePropertiesEditionPartForm.this, EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(checkboxROProperty.getSelection())));
+			}
+
+		});
+		GridData checkboxROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		checkboxROPropertyData.horizontalSpan = 2;
+		checkboxROProperty.setLayoutData(checkboxROPropertyData);
+		EditingUtils.setID(checkboxROProperty, EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty);
+		EditingUtils.setEEFtype(checkboxROProperty, "eef::Checkbox"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCheckboxROPropertyCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -220,6 +273,14 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			checkboxRequiredProperty.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty);
+		if (eefElementEditorReadOnlyState && checkboxRequiredProperty.isEnabled()) {
+			checkboxRequiredProperty.setEnabled(false);
+			checkboxRequiredProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !checkboxRequiredProperty.isEnabled()) {
+			checkboxRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -244,6 +305,41 @@ public class CheckboxSamplePropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			checkboxOptionalProperty.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty);
+		if (eefElementEditorReadOnlyState && checkboxOptionalProperty.isEnabled()) {
+			checkboxOptionalProperty.setEnabled(false);
+			checkboxOptionalProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !checkboxOptionalProperty.isEnabled()) {
+			checkboxOptionalProperty.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart#getCheckboxROProperty()
+	 * 
+	 */
+	public Boolean getCheckboxROProperty() {
+		return Boolean.valueOf(checkboxROProperty.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart#setCheckboxROProperty(Boolean newValue)
+	 * 
+	 */
+	public void setCheckboxROProperty(Boolean newValue) {
+		if (newValue != null) {
+			checkboxROProperty.setSelection(newValue.booleanValue());
+		} else {
+			checkboxROProperty.setSelection(false);
+		}
+		checkboxROProperty.setEnabled(false);
+		checkboxROProperty.setToolTipText(EefnrMessages.CheckboxSample_ReadOnly);
+		
 	}
 
 

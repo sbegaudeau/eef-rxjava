@@ -402,5 +402,11 @@ public class FlatReferencesTable extends Composite implements ISelectionProvider
 	public void resetFilters() {
 		filters.clear();
 	}
+	
+	@Override
+	public void setEnabled(boolean enabled) {
+		super.setEnabled(enabled);
+		editer.setEnabled(enabled);
+	}
 
 }

@@ -7,11 +7,8 @@
 package org.eclipse.emf.eef.eefnr.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TextSample;
 
@@ -24,6 +21,7 @@ import org.eclipse.emf.eef.eefnr.TextSample;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TextSampleImpl#getTextRequiredProperty <em>Text Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TextSampleImpl#getTextOptionalProperty <em>Text Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.TextSampleImpl#getTextROProperty <em>Text RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,6 +67,26 @@ public class TextSampleImpl extends AbstractSampleImpl implements TextSample {
 	 * @ordered
 	 */
 	protected String textOptionalProperty = TEXT_OPTIONAL_PROPERTY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTextROProperty() <em>Text RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTextROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TEXT_RO_PROPERTY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTextROProperty() <em>Text RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTextROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected String textROProperty = TEXT_RO_PROPERTY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,6 +154,27 @@ public class TextSampleImpl extends AbstractSampleImpl implements TextSample {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTextROProperty() {
+		return textROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTextROProperty(String newTextROProperty) {
+		String oldTextROProperty = textROProperty;
+		textROProperty = newTextROProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefnrPackage.TEXT_SAMPLE__TEXT_RO_PROPERTY, oldTextROProperty, textROProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -143,6 +182,8 @@ public class TextSampleImpl extends AbstractSampleImpl implements TextSample {
 				return getTextRequiredProperty();
 			case EefnrPackage.TEXT_SAMPLE__TEXT_OPTIONAL_PROPERTY:
 				return getTextOptionalProperty();
+			case EefnrPackage.TEXT_SAMPLE__TEXT_RO_PROPERTY:
+				return getTextROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -160,6 +201,9 @@ public class TextSampleImpl extends AbstractSampleImpl implements TextSample {
 				return;
 			case EefnrPackage.TEXT_SAMPLE__TEXT_OPTIONAL_PROPERTY:
 				setTextOptionalProperty((String)newValue);
+				return;
+			case EefnrPackage.TEXT_SAMPLE__TEXT_RO_PROPERTY:
+				setTextROProperty((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -179,6 +223,9 @@ public class TextSampleImpl extends AbstractSampleImpl implements TextSample {
 			case EefnrPackage.TEXT_SAMPLE__TEXT_OPTIONAL_PROPERTY:
 				setTextOptionalProperty(TEXT_OPTIONAL_PROPERTY_EDEFAULT);
 				return;
+			case EefnrPackage.TEXT_SAMPLE__TEXT_RO_PROPERTY:
+				setTextROProperty(TEXT_RO_PROPERTY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -195,6 +242,8 @@ public class TextSampleImpl extends AbstractSampleImpl implements TextSample {
 				return TEXT_REQUIRED_PROPERTY_EDEFAULT == null ? textRequiredProperty != null : !TEXT_REQUIRED_PROPERTY_EDEFAULT.equals(textRequiredProperty);
 			case EefnrPackage.TEXT_SAMPLE__TEXT_OPTIONAL_PROPERTY:
 				return TEXT_OPTIONAL_PROPERTY_EDEFAULT == null ? textOptionalProperty != null : !TEXT_OPTIONAL_PROPERTY_EDEFAULT.equals(textOptionalProperty);
+			case EefnrPackage.TEXT_SAMPLE__TEXT_RO_PROPERTY:
+				return TEXT_RO_PROPERTY_EDEFAULT == null ? textROProperty != null : !TEXT_RO_PROPERTY_EDEFAULT.equals(textROProperty);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -213,6 +262,8 @@ public class TextSampleImpl extends AbstractSampleImpl implements TextSample {
 		result.append(textRequiredProperty);
 		result.append(", textOptionalProperty: ");
 		result.append(textOptionalProperty);
+		result.append(", textROProperty: ");
+		result.append(textROProperty);
 		result.append(')');
 		return result.toString();
 	}

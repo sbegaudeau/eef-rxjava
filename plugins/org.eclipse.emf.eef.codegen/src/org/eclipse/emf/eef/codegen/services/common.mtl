@@ -323,7 +323,7 @@ String
 [include('org.eclipse.emf.common.util.Enumerator')/]
 [elseif (view.representationName('MultiValuedEditor'))]
 [include('org.eclipse.emf.common.util.EList')/]
-[elseif (view.representationName('EObjectFlatComboViewer') or view.representationName('AdvancedEObjectFlatComboViewer') or view.representationName('SingleCompositionViewer'))]
+[elseif (view.representationName('EObjectFlatComboViewer') or view.representationName('AdvancedEObjectFlatComboViewer') or view.representationName('SingleCompositionViewer') or view.representationName('SingleCompositionEditor'))]
 [include('org.eclipse.emf.ecore.EObject')/]
 [elseif (view.representationName('ReferencesTable') or view.representationName('AdvancedReferencesTable') or view.representationName('FlatReferencesTable') or view.representationName('TableComposition') or view.representationName('AdvancedTableComposition'))]
 [include('java.util.List')/]
@@ -499,6 +499,10 @@ NOTE: Imports are managed here because addImport must be called from a model ele
 [/template]
 
 [template public metamodelGetter(s : SimpleModelNavigation)]
+[s.feature.metamodelGetter()/][s.addImport(s.feature.eContainingClass.ePackage.qualifiedMetamodelPackage())/]
+[/template]
+
+[template public metamodelGetter(s : DeclarativeNavigationStep)]
 [s.feature.metamodelGetter()/][s.addImport(s.feature.eContainingClass.ePackage.qualifiedMetamodelPackage())/]
 [/template]
 

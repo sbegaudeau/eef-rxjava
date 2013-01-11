@@ -92,6 +92,9 @@ return create[editor.name.toJavaClassifier()/]SingleCompositionViewer(parent);
 				}
 			});
 		[/if]
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('SingleCompositionViewer'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

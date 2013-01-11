@@ -70,12 +70,16 @@
 [/file]
 [/template]
 
-[template public propertySections(editionContext : PropertiesEditionContext, basePackage : String) ]
+[template public propertySections(editionContext : PropertiesEditionContext, basePackage : String)]
+[let pecs : Sequence(PropertiesEditionComponent) = 
+	editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent) -> 
+		select(mustBeGenerated() and explicit and model.oclIsTypeOf(EClass) and not model.oclAsType(EClass).abstract)]
+[if (not (pecs -> isEmpty()))]
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
             contributorId="[editionContext.contributorID(basePackage).trim()/]">
-[for (pec : PropertiesEditionComponent | editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent)) ? (pec.explicit and pec.model.oclIsTypeOf(EClass) and not pec.model.oclAsType(EClass).abstract)]
+[for (pec : PropertiesEditionComponent | pecs)]
 [for (view : View | pec.involvedViews())]
          <propertySection
                class="[view.pepFormQualifiedClass()/]"
@@ -86,7 +90,8 @@
 [/for]
 [/for]
       </propertySections>
-   </extension>
+   </extension>[/if]
+[/let]
 [/template]
 
 [template public propertyTab(editionContext : PropertiesEditionContext, basePackage : String, view : View, pec : PropertiesEditionComponent)]

@@ -13,29 +13,42 @@ package org.eclipse.emf.eef.eefnr.parts.impl;
 // Start of user code for imports
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleFirstTabPropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
 
 // End of user code
 
@@ -166,6 +179,9 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 		EditingUtils.setID(textRequiredPropertyInFirstTab, EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab);
 		EditingUtils.setEEFtype(textRequiredPropertyInFirstTab, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextRequiredPropertyInFirstTabText
+
+		// End of user code
 		return parent;
 	}
 
@@ -212,6 +228,9 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 		EditingUtils.setID(textOptionalPropertyInFirstTab, EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab);
 		EditingUtils.setEEFtype(textOptionalPropertyInFirstTab, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextOptionalPropertyInFirstTabText
+
+		// End of user code
 		return parent;
 	}
 
@@ -250,6 +269,14 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 		} else {
 			textRequiredPropertyInFirstTab.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TextSampleFirstTab.Properties.textRequiredPropertyInFirstTab);
+		if (eefElementEditorReadOnlyState && textRequiredPropertyInFirstTab.isEnabled()) {
+			textRequiredPropertyInFirstTab.setEnabled(false);
+			textRequiredPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !textRequiredPropertyInFirstTab.isEnabled()) {
+			textRequiredPropertyInFirstTab.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -274,6 +301,14 @@ public class TextSampleFirstTabPropertiesEditionPartImpl extends CompositeProper
 		} else {
 			textOptionalPropertyInFirstTab.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TextSampleFirstTab.Properties.textOptionalPropertyInFirstTab);
+		if (eefElementEditorReadOnlyState && textOptionalPropertyInFirstTab.isEnabled()) {
+			textOptionalPropertyInFirstTab.setEnabled(false);
+			textOptionalPropertyInFirstTab.setToolTipText(EefnrMessages.TextSampleFirstTab_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !textOptionalPropertyInFirstTab.isEnabled()) {
+			textOptionalPropertyInFirstTab.setEnabled(true);
+		}	
+		
 	}
 
 

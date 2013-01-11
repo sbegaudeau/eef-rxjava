@@ -12,22 +12,34 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TextareaSample;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextareaSamplePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 
@@ -66,14 +78,18 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final TextareaSample textareaSample = (TextareaSample)elt;
 			final TextareaSamplePropertiesEditionPart basePart = (TextareaSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (textareaSample.getTextareaRequiredProperty() != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty))
+			if (isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty))
 				basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, textareaSample.getTextareaRequiredProperty()));
-			if (textareaSample.getTextareaOptionalProperty() != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty))
+			if (isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty))
 				basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, textareaSample.getTextareaOptionalProperty()));
+			if (isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaROProperty))
+				basePart.setTextareaROProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, textareaSample.getTextareaROProperty()));
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -83,6 +99,7 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -98,6 +115,9 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 		}
 		if (editorKey == EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.TextareaSample.Properties.textareaROProperty) {
+			return EefnrPackage.eINSTANCE.getTextareaSample_TextareaROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -122,24 +142,46 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TextareaSamplePropertiesEditionPart basePart = (TextareaSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty)){
+			if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaRequiredProperty)){
 				if (msg.getNewValue() != null) {
 					basePart.setTextareaRequiredProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTextareaRequiredProperty("");
 				}
 			}
-			if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty)){
+			if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaOptionalProperty)){
 				if (msg.getNewValue() != null) {
 					basePart.setTextareaOptionalProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTextareaOptionalProperty("");
 				}
 			}
+			if (EefnrPackage.eINSTANCE.getTextareaSample_TextareaROProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.TextareaSample.Properties.textareaROProperty)){
+				if (msg.getNewValue() != null) {
+					basePart.setTextareaROProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setTextareaROProperty("");
+				}
+			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getTextareaSample_TextareaRequiredProperty(),
+			EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty(),
+			EefnrPackage.eINSTANCE.getTextareaSample_TextareaROProperty()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -177,6 +219,13 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextareaSample_TextareaOptionalProperty().getEAttributeType(), newValue);
 				}
+				if (EefnrViewsRepository.TextareaSample.Properties.textareaROProperty == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getTextareaSample_TextareaROProperty().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getTextareaSample_TextareaROProperty().getEAttributeType(), newValue);
+				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -185,5 +234,8 @@ public class TextareaSamplePropertiesEditionComponent extends SinglePartProperti
 		}
 		return ret;
 	}
+
+
+	
 
 }

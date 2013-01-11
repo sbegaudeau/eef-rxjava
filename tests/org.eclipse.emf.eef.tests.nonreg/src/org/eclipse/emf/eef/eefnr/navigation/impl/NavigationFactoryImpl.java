@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.eef.eefnr.navigation.*;
 import org.eclipse.emf.eef.eefnr.navigation.AnotherSubType;
 import org.eclipse.emf.eef.eefnr.navigation.AttributeDelegate;
 import org.eclipse.emf.eef.eefnr.navigation.AttributeNavigationSample;
@@ -80,6 +81,9 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 			case NavigationPackage.ELEMENT: return createElement();
 			case NavigationPackage.ATTRIBUTE_NAVIGATION_SAMPLE: return createAttributeNavigationSample();
 			case NavigationPackage.ATTRIBUTE_DELEGATE: return createAttributeDelegate();
+			case NavigationPackage.SMART_MODEL_NAVIGATION_SAMPLE: return createSmartModelNavigationSample();
+			case NavigationPackage.FIRST_MODEL_NAVIGATION: return createFirstModelNavigation();
+			case NavigationPackage.SECOND_MODEL_NAVIGATION: return createSecondModelNavigation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -193,6 +197,36 @@ public class NavigationFactoryImpl extends EFactoryImpl implements NavigationFac
 	public AttributeDelegate createAttributeDelegate() {
 		AttributeDelegateImpl attributeDelegate = new AttributeDelegateImpl();
 		return attributeDelegate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SmartModelNavigationSample createSmartModelNavigationSample() {
+		SmartModelNavigationSampleImpl smartModelNavigationSample = new SmartModelNavigationSampleImpl();
+		return smartModelNavigationSample;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FirstModelNavigation createFirstModelNavigation() {
+		FirstModelNavigationImpl firstModelNavigation = new FirstModelNavigationImpl();
+		return firstModelNavigation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SecondModelNavigation createSecondModelNavigation() {
+		SecondModelNavigationImpl secondModelNavigation = new SecondModelNavigationImpl();
+		return secondModelNavigation;
 	}
 
 	/**

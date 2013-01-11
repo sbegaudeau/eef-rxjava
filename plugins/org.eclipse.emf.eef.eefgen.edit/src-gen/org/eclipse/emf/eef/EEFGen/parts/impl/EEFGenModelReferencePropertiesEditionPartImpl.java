@@ -141,6 +141,9 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 		referencedEEFGenModel.setLayoutData(referencedEEFGenModelData);
 		referencedEEFGenModel.setID(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createReferencedEEFGenModelFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -182,6 +185,14 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 		if (current != null) {
 			referencedEEFGenModel.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel);
+		if (eefElementEditorReadOnlyState && referencedEEFGenModel.isEnabled()) {
+			referencedEEFGenModel.setEnabled(false);
+			referencedEEFGenModel.setToolTipText(EEFGenMessages.EEFGenModelReference_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !referencedEEFGenModel.isEnabled()) {
+			referencedEEFGenModel.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -196,6 +207,14 @@ public class EEFGenModelReferencePropertiesEditionPartImpl extends CompositeProp
 		} else {
 			referencedEEFGenModel.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.EEFGenModelReference.Reference.referencedEEFGenModel);
+		if (eefElementEditorReadOnlyState && referencedEEFGenModel.isEnabled()) {
+			referencedEEFGenModel.setEnabled(false);
+			referencedEEFGenModel.setToolTipText(EEFGenMessages.EEFGenModelReference_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !referencedEEFGenModel.isEnabled()) {
+			referencedEEFGenModel.setEnabled(true);
+		}	
+		
 	}
 
 	/**

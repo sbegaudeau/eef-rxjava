@@ -329,6 +329,75 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SmartModelNavigationSampleItemProvider smartModelNavigationSampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSmartModelNavigationSampleAdapter() {
+		if (smartModelNavigationSampleItemProvider == null) {
+			smartModelNavigationSampleItemProvider = new SmartModelNavigationSampleItemProvider(this);
+		}
+
+		return smartModelNavigationSampleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FirstModelNavigationItemProvider firstModelNavigationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFirstModelNavigationAdapter() {
+		if (firstModelNavigationItemProvider == null) {
+			firstModelNavigationItemProvider = new FirstModelNavigationItemProvider(this);
+		}
+
+		return firstModelNavigationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SecondModelNavigationItemProvider secondModelNavigationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSecondModelNavigationAdapter() {
+		if (secondModelNavigationItemProvider == null) {
+			secondModelNavigationItemProvider = new SecondModelNavigationItemProvider(this);
+		}
+
+		return secondModelNavigationItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -438,6 +507,9 @@ public class NavigationItemProviderAdapterFactory extends NavigationAdapterFacto
 		if (elementItemProvider != null) elementItemProvider.dispose();
 		if (attributeNavigationSampleItemProvider != null) attributeNavigationSampleItemProvider.dispose();
 		if (attributeDelegateItemProvider != null) attributeDelegateItemProvider.dispose();
+		if (smartModelNavigationSampleItemProvider != null) smartModelNavigationSampleItemProvider.dispose();
+		if (firstModelNavigationItemProvider != null) firstModelNavigationItemProvider.dispose();
+		if (secondModelNavigationItemProvider != null) secondModelNavigationItemProvider.dispose();
 	}
 
 }

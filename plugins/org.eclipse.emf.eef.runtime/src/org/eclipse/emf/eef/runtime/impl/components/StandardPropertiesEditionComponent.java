@@ -22,11 +22,13 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
-import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticLister;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+import org.eclipse.emf.eef.runtime.api.notify.PropertiesEditingSemanticListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
@@ -52,7 +54,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	/**
 	 * the semantic listener dedicated to update view
 	 */
-	protected PropertiesEditingSemanticLister semanticAdapter;
+	protected PropertiesEditingSemanticListener semanticAdapter;
 
 	/**
 	 * the editing domain where to perform live update
@@ -138,14 +140,30 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * 
 	 * @return the semantic model listener
 	 */
-	protected PropertiesEditingSemanticLister initializeSemanticAdapter() {
-		return new PropertiesEditingSemanticLister(this) {
+	protected PropertiesEditingSemanticListener initializeSemanticAdapter() {
+		PropertiesEditingSemanticListener listener = new PropertiesEditingSemanticListener(this,
+				getNotificationFilters()) {
 
-			public void runUpdateRunnable(Notification msg) {
-				updatePart(msg);
+			@Override
+			public void runUpdateRunnable(Notification notification) {
+				if (getPart() != null 
+						&& getPart().getFigure() != null 
+						&& !getPart().getFigure().isDisposed()) {
+					updatePart(notification);
+				} else {
+					dispose();
+				}
 			}
 		};
+		return listener;
 	}
+
+	/**
+	 * Returns the list of notification filters to use.
+	 * 
+	 * @return the list of notification filters to use
+	 */
+	protected abstract NotificationFilter[] getNotificationFilters();
 
 	/**
 	 * Update the part in response to a semantic event
@@ -179,6 +197,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 			if (valueDiagnostic.getSeverity() != Diagnostic.OK && valueDiagnostic instanceof BasicDiagnostic)
 				propagateEvent(new PropertiesValidationEditionEvent(event, valueDiagnostic));
 			else {
+				editingContext.initializeRecorder();
 				if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 					updateSemanticModel(event);
 				} else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
@@ -188,8 +207,11 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 
 								public void execute() {
 									updateSemanticModel(event);
-									description = context.getChangeRecorder().endRecording();
-									context.getChangeRecorder().dispose();
+									ChangeRecorder changeRecorder = editingContext.getChangeRecorder();
+									if (changeRecorder != null) {
+										description = changeRecorder.endRecording();
+										changeRecorder.dispose();
+									}
 								}
 
 							});
@@ -282,7 +304,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * @since 0.9
 	 */
 	protected boolean shouldProcess(IPropertiesEditionEvent event) {
-		return true;
+		return false;
 	}
 
 	/**

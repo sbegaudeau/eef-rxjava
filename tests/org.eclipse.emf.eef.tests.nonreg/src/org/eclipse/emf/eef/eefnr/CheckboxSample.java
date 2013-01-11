@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.eefnr;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.CheckboxSample#isCheckboxRequiredProperty <em>Checkbox Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.CheckboxSample#isCheckboxOptionalProperty <em>Checkbox Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.CheckboxSample#isCheckboxROProperty <em>Checkbox RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +77,31 @@ public interface CheckboxSample extends AbstractSample {
 	 * @generated
 	 */
 	void setCheckboxOptionalProperty(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Checkbox RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Checkbox RO Property</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Checkbox RO Property</em>' attribute.
+	 * @see #setCheckboxROProperty(boolean)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getCheckboxSample_CheckboxROProperty()
+	 * @model
+	 * @generated
+	 */
+	boolean isCheckboxROProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.CheckboxSample#isCheckboxROProperty <em>Checkbox RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Checkbox RO Property</em>' attribute.
+	 * @see #isCheckboxROProperty()
+	 * @generated
+	 */
+	void setCheckboxROProperty(boolean value);
 
 } // CheckboxSample

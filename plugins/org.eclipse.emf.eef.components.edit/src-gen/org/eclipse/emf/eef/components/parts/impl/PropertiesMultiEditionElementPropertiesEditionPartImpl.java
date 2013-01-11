@@ -11,59 +11,82 @@
 package org.eclipse.emf.eef.components.parts.impl;
 
 // Start of user code for imports
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.components.parts.ComponentsViewsRepository;
 import org.eclipse.emf.eef.components.parts.PropertiesMultiEditionElementPropertiesEditionPart;
+
 import org.eclipse.emf.eef.components.providers.ComponentsMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.graphics.Image;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
-
 
 // End of user code
 
@@ -215,6 +238,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		EditingUtils.setID(name, ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -261,6 +287,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		EditingUtils.setID(helpID, ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID);
 		EditingUtils.setEEFtype(helpID, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createHelpIDText
+
+		// End of user code
 		return parent;
 	}
 
@@ -314,31 +343,31 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
 		// Start of user code for table model s columns definition
+				TableColumn name = new TableColumn(table, SWT.NONE);
+				name.setWidth(80);
+				name.setText("Label"); //$NON-NLS-1$
 		
-		TableColumn name = new TableColumn(table, SWT.NONE);
-		name.setWidth(80);
-		name.setText("Label"); //$NON-NLS-1$
 		// End of user code
 
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
 
 			// Start of user code for table model label provider
+						public String getColumnText(Object object, int columnIndex) {
+							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+							if (object instanceof EObject) {
+								switch (columnIndex) {
+								case 0:
+									return labelProvider.getText(object);
+								}
+							}
+							return ""; //$NON-NLS-1$
+						}
 			
-			public String getColumnText(Object object, int columnIndex) {
-				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-				if (object instanceof EObject) {
-					switch (columnIndex) {
-					case 0:
-						return labelProvider.getText(object);
-					}
-				}
-				return ""; //$NON-NLS-1$
-			}
-
-			public Image getColumnImage(Object element, int columnIndex) {
-				return null;
-			}
+						public Image getColumnImage(Object element, int columnIndex) {
+							return null;
+						}
+			
 			// End of user code
 
 			public void addListener(ILabelProviderListener listener) {
@@ -422,6 +451,9 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 
 		};
 		dialog.open();
+		// Start of user code for addModel
+
+		// End of user code
 		model.refresh();
 	}
 
@@ -528,7 +560,7 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-
+		
 		// End of user code
 	}
 
@@ -554,6 +586,14 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -578,6 +618,14 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		} else {
 			helpID.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesMultiEditionElement.Properties.helpID);
+		if (eefElementEditorReadOnlyState && helpID.isEnabled()) {
+			helpID.setEnabled(false);
+			helpID.setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !helpID.isEnabled()) {
+			helpID.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -593,6 +641,20 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		model.setContentProvider(contentProvider);
 		model.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.model);
+		if (eefElementEditorReadOnlyState && model.getTable().isEnabled()) {
+			model.getTable().setEnabled(false);
+			model.getTable().setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+			addModel.setEnabled(false);
+			addModel.setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+			removeModel.setEnabled(false);
+			removeModel.setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !model.getTable().isEnabled()) {
+			model.getTable().setEnabled(true);
+			addModel.setEnabled(true);
+			removeModel.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -648,6 +710,14 @@ public class PropertiesMultiEditionElementPropertiesEditionPartImpl extends Comp
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		views.setContentProvider(contentProvider);
 		views.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesMultiEditionElement.Binding.views);
+		if (eefElementEditorReadOnlyState && views.getTable().isEnabled()) {
+			views.setEnabled(false);
+			views.setToolTipText(ComponentsMessages.PropertiesMultiEditionElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !views.getTable().isEnabled()) {
+			views.setEnabled(true);
+		}
+		
 	}
 
 	/**

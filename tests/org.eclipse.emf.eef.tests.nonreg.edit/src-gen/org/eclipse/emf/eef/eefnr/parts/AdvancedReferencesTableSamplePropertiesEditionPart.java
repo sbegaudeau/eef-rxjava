@@ -12,9 +12,10 @@ package org.eclipse.emf.eef.eefnr.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.jface.viewers.ViewerFilter;
 
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
+import org.eclipse.jface.viewers.ViewerFilter;
 
 
 // End of user code
@@ -107,6 +108,48 @@ public interface AdvancedReferencesTableSamplePropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInAdvancedreferencestableOptionalPropertyTable(EObject element);
+
+
+
+
+	/**
+	 * Init the advancedreferencestableROProperty
+	 * @param settings settings for the advancedreferencestableROProperty ReferencesTable 
+	 */
+	public void initAdvancedreferencestableROProperty(ReferencesTableSettings settings);
+
+	/**
+	 * Update the advancedreferencestableROProperty
+	 * @param newValue the advancedreferencestableROProperty to update
+	 * 
+	 */
+	public void updateAdvancedreferencestableROProperty();
+
+	/**
+	 * Adds the given filter to the advancedreferencestableROProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToAdvancedreferencestableROProperty(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the advancedreferencestableROProperty edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToAdvancedreferencestableROProperty(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the advancedreferencestableROProperty table
+	 * 
+	 */
+	public boolean isContainedInAdvancedreferencestableROPropertyTable(EObject element);
 
 
 

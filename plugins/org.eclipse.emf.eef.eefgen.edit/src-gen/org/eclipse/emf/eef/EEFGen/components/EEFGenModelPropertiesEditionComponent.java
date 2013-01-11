@@ -25,7 +25,9 @@ import org.eclipse.emf.eef.EEFGen.EEFGenModel;
 import org.eclipse.emf.eef.EEFGen.EEFGenPackage;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenModelPropertiesEditionPart;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -66,18 +68,19 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final EEFGenModel eEFGenModel = (EEFGenModel)elt;
 			final EEFGenModelPropertiesEditionPart basePart = (EEFGenModelPropertiesEditionPart)editingPart;
 			// init values
-			if (eEFGenModel.getGenDirectory() != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory))
+			if (isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory))
 				basePart.setGenerationDirectory(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFGenModel.getGenDirectory()));
 			
-			if (eEFGenModel.getAuthor() != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.author))
+			if (isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.author))
 				basePart.setAuthor(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFGenModel.getAuthor()));
 			
-			if (eEFGenModel.getLicense() != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.license))
+			if (isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.license))
 				basePart.setLicense(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, eEFGenModel.getLicense()));
-			if (eEFGenModel.getTestsGenDirectory() != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory))
+			if (isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory))
 				basePart.setTestsGenerationDirectory(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFGenModel.getTestsGenDirectory()));
 			
 			if (isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode)) {
@@ -156,41 +159,58 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EEFGenModelPropertiesEditionPart basePart = (EEFGenModelPropertiesEditionPart)editingPart;
-			if (EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory)) {
+			if (EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.generationDirectory)) {
 				if (msg.getNewValue() != null) {
 					basePart.setGenerationDirectory(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setGenerationDirectory("");
 				}
 			}
-			if (EEFGenPackage.eINSTANCE.getEEFGenModel_Author().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.author)) {
+			if (EEFGenPackage.eINSTANCE.getEEFGenModel_Author().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.author)) {
 				if (msg.getNewValue() != null) {
 					basePart.setAuthor(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setAuthor("");
 				}
 			}
-			if (EEFGenPackage.eINSTANCE.getEEFGenModel_License().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.license)){
+			if (EEFGenPackage.eINSTANCE.getEEFGenModel_License().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Legal.license)){
 				if (msg.getNewValue() != null) {
 					basePart.setLicense(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setLicense("");
 				}
 			}
-			if (EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory)) {
+			if (EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.testsGenerationDirectory)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTestsGenerationDirectory(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTestsGenerationDirectory("");
 				}
 			}
-			if (EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode))
+			if (EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EEFGenViewsRepository.EEFGenModel.Parameters.useJMergeToManageUserCode))
 				basePart.setUseJMergeToManageUserCode((Boolean)msg.getNewValue());
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EEFGenPackage.eINSTANCE.getEEFGenModel_GenDirectory(),
+			EEFGenPackage.eINSTANCE.getEEFGenModel_Author(),
+			EEFGenPackage.eINSTANCE.getEEFGenModel_License(),
+			EEFGenPackage.eINSTANCE.getEEFGenModel_TestsGenDirectory(),
+			EEFGenPackage.eINSTANCE.getEEFGenModel_UseJMergeForUserCode()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -257,5 +277,8 @@ public class EEFGenModelPropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		return ret;
 	}
+
+
+	
 
 }

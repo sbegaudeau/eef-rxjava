@@ -117,6 +117,7 @@
 		[include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider')/] contentProvider = new [include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider')/]();
 		[elementEditor.elementEditorName()/].setContentProvider(contentProvider);
 		[elementEditor.elementEditorName()/].setInput(settings);
+		[elementEditor.readOnly()/]
 	}
 [/template]
 
@@ -141,3 +142,30 @@
 	}
 [/template]
 
+[template public readOnly (editor : ElementEditor) overrides readOnly ? (editor.representation.name = 'TableComposition')]
+[if (editor.readOnly)]
+[setReadOnly()/]
+[else]
+boolean eefElementEditorReadOnlyState = isReadOnly([editor.editorID()/][navigationReadOnly()/]);
+if (eefElementEditorReadOnlyState && [editor.name.toJavaIdentifier()/].getTable().isEnabled()) {
+	[editor.setReadOnly()/]
+} else if (!eefElementEditorReadOnlyState && ![editor.name.toJavaIdentifier()/].getTable().isEnabled()) {
+	[editor.unsetReadOnly()/]
+}
+[/if]
+[/template]
+
+[template public setReadOnly (editor : ElementEditor) overrides setReadOnly ? (editor.representation.name = 'TableComposition')]
+[editor.name.toJavaIdentifier()/].getTable().setEnabled(false);
+[editor.name.toJavaIdentifier()/].getTable().setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[editor.setAddButtonReadOnly()/]
+[editor.setRemoveButtonReadOnly()/]
+[editor.setEditButtonReadOnly()/]
+[/template]
+
+[template public unsetReadOnly (editor : ElementEditor) overrides unsetReadOnly ? (editor.representation.name = 'TableComposition')]
+[editor.name.toJavaIdentifier()/].getTable().setEnabled(true);
+[editor.unsetAddButtonReadOnly()/]
+[editor.unsetRemoveButtonReadOnly()/]
+[editor.unsetEditButtonReadOnly()/]
+[/template]

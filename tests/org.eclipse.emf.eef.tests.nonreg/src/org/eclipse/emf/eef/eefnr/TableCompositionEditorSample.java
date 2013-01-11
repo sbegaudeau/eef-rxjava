@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TableCompositionEditorSample#getTablecompositionRequiredProperty <em>Tablecomposition Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.TableCompositionEditorSample#getTablecompositionOptionalProperty <em>Tablecomposition Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.TableCompositionEditorSample#getTablecompositionROProperty <em>Tablecomposition RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,5 +58,21 @@ public interface TableCompositionEditorSample extends AbstractSample {
 	 * @generated
 	 */
 	EList<Sample> getTablecompositionOptionalProperty();
+
+	/**
+	 * Returns the value of the '<em><b>Tablecomposition RO Property</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.Sample}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Tablecomposition RO Property</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Tablecomposition RO Property</em>' containment reference list.
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getTableCompositionEditorSample_TablecompositionROProperty()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Sample> getTablecompositionROProperty();
 
 } // TableCompositionEditorSample

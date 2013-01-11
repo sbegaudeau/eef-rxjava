@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -228,7 +229,10 @@ public class EEFUtils {
 		List<EPackage> result = new ArrayList<EPackage>();
 		for (Resource resource : resourceSet_p.getResources()) {
 			for (EPackage pkg : allPackageOfResource(resource)) {
-				result.add(getStaticPackage(pkg));
+				EPackage staticPackage = getStaticPackage(pkg);
+				if (staticPackage != null) {
+					result.add(staticPackage);
+				}
 			}
 		}
 		return result;
@@ -388,31 +392,50 @@ public class EEFUtils {
 		IAdaptable adaptable = null;
 		if (object instanceof IAdaptable) {
 			adaptable = (IAdaptable)object;
-		}
-		if (adaptable != null) {
 			Object getAdapter = adaptable.getAdapter(SemanticAdapter.class);
-			SemanticAdapter semanticAdapter = null;
 			if (getAdapter != null) {
-				semanticAdapter = (SemanticAdapter)getAdapter;
-			} else {
-				Object loadAdapter = Platform.getAdapterManager().loadAdapter(adaptable, SemanticAdapter.class.getName());
-				if (loadAdapter != null) {
-					semanticAdapter = (SemanticAdapter) loadAdapter;
-				}
-			}
-			if (semanticAdapter != null) {
-				return semanticAdapter.getEObject();
-			}
+				// 1 - Object is an IAdaptable and we can adapt this object in a SemanticAdapter
+				return ((SemanticAdapter) getAdapter).getEObject();
+			} 
+		}
+		Object loadAdapter = Platform.getAdapterManager().loadAdapter(object, SemanticAdapter.class.getName());
+		if (loadAdapter != null) {
+			// 2 - Platform can adapt Object in a SemanticAdapter
+			return ((SemanticAdapter) loadAdapter).getEObject();
 		}
 		if (object instanceof EObject) {
 			return (EObject)object;
 		}
 		if (adaptable != null) {
 			if (adaptable.getAdapter(EObject.class) != null) {
+				// 3 - we can adapt Object in EObject
 				return (EObject)adaptable.getAdapter(EObject.class);
 			}
 		}
 		return null;
+	}
+
+	
+	/**
+	 * FIXME
+	 * @param src
+	 * @return
+	 */
+	public static Notifier highestNotifier(final EObject src) {
+		if (src.eResource() != null) {
+			Resource resource = src.eResource();
+			if (resource.getResourceSet() != null) {
+				return resource.getResourceSet();
+			} else {
+				return resource;
+			}
+		} else {
+			EObject tmp = src;
+			while (tmp.eContainer() != null) {
+				tmp = tmp.eContainer();
+			}
+			return tmp;
+		}
 	}
 
 }

@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.eefnr;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.ImageViewerSample#getImageviewerRequiredProperty <em>Imageviewer Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.ImageViewerSample#getImageviewerOptionalProperty <em>Imageviewer Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.ImageViewerSample#getImageviewerROProperty <em>Imageviewer RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +77,31 @@ public interface ImageViewerSample extends AbstractSample {
 	 * @generated
 	 */
 	void setImageviewerOptionalProperty(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Imageviewer RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Imageviewer RO Property</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Imageviewer RO Property</em>' attribute.
+	 * @see #setImageviewerROProperty(String)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getImageViewerSample_ImageviewerROProperty()
+	 * @model
+	 * @generated
+	 */
+	String getImageviewerROProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.ImageViewerSample#getImageviewerROProperty <em>Imageviewer RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Imageviewer RO Property</em>' attribute.
+	 * @see #getImageviewerROProperty()
+	 * @generated
+	 */
+	void setImageviewerROProperty(String value);
 
 } // ImageViewerSample

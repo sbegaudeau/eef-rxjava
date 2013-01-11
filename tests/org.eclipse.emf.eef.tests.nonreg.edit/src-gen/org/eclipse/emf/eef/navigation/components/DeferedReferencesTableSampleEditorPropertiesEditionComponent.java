@@ -12,27 +12,45 @@ package org.eclipse.emf.eef.navigation.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
+
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
+
 import org.eclipse.emf.eef.eefnr.navigation.parts.DeferedReferencesTableSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -77,10 +95,13 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			if (editingPart instanceof CompositePropertiesEditionPart) {
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(flatReferencesTableSampleEditorSettings);
+			}
 			final DeferedReferenceTableEditorSample deferedReferenceTableEditorSample = (DeferedReferenceTableEditorSample)elt;
 			final DeferedReferencesTableSamplePropertiesEditionPart deferedReferencesTableSamplePart = (DeferedReferencesTableSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (deferedReferenceTableEditorSample.getName() != null && isAccessible(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name))
+			if (isAccessible(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name))
 				deferedReferencesTableSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, deferedReferenceTableEditorSample.getName()));
 			
 			if (isAccessible(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor)) {
@@ -103,7 +124,6 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 				
 				});
 				// Start of user code for additional businessfilters for flatReferencesTableSampleEditor
-				
 				// End of user code
 			}
 			// init values for referenced views
@@ -168,9 +188,10 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			DeferedReferencesTableSamplePropertiesEditionPart deferedReferencesTableSamplePart = (DeferedReferencesTableSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && deferedReferencesTableSamplePart != null && isAccessible(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name)) {
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && deferedReferencesTableSamplePart != null && isAccessible(NavigationViewsRepository.DeferedReferencesTableSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					deferedReferencesTableSamplePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -182,6 +203,19 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			NavigationPackage.eINSTANCE.getDeferedReference_FlatreferenceEditor()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -220,5 +254,8 @@ public class DeferedReferencesTableSampleEditorPropertiesEditionComponent extend
 		}
 		return ret;
 	}
+
+
+	
 
 }

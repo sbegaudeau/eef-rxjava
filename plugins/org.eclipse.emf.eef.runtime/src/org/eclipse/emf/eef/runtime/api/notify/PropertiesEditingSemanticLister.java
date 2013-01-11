@@ -20,6 +20,7 @@ import org.eclipse.ui.PlatformUI;
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
  */
+@Deprecated
 public abstract class PropertiesEditingSemanticLister extends EContentAdapter {
 
 	private IPropertiesEditionComponent component;
@@ -64,7 +65,7 @@ public abstract class PropertiesEditingSemanticLister extends EContentAdapter {
 				}
 			};
 			if (null == Display.getCurrent()) {
-				PlatformUI.getWorkbench().getDisplay().syncExec(updateRunnable);
+				PlatformUI.getWorkbench().getDisplay().asyncExec(updateRunnable);
 			} else {
 				updateRunnable.run();
 			}

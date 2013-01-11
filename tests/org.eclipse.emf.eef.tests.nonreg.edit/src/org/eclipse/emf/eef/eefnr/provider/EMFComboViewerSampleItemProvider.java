@@ -63,6 +63,7 @@ public class EMFComboViewerSampleItemProvider
 
 			addEmfcomboviewerRequiredPropertyPropertyDescriptor(object);
 			addEmfcomboviewerOptionalPropertyPropertyDescriptor(object);
+			addEmfcomboviewerROPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,6 +113,28 @@ public class EMFComboViewerSampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Emfcomboviewer RO Property feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEmfcomboviewerROPropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EMFComboViewerSample_emfcomboviewerROProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EMFComboViewerSample_emfcomboviewerROProperty_feature", "_UI_EMFComboViewerSample_type"),
+				 EefnrPackage.Literals.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_RO_PROPERTY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns EMFComboViewerSample.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,6 +173,7 @@ public class EMFComboViewerSampleItemProvider
 		switch (notification.getFeatureID(EMFComboViewerSample.class)) {
 			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_REQUIRED_PROPERTY:
 			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_OPTIONAL_PROPERTY:
+			case EefnrPackage.EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_RO_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

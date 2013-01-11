@@ -67,11 +67,15 @@ public class EEFActionsFactoryImpl extends EFactoryImpl implements EEFActionsFac
 			case EEFActionsPackage.ADD: return createAdd();
 			case EEFActionsPackage.REMOVE: return createRemove();
 			case EEFActionsPackage.SET_ATTRIBUTE: return createSetAttribute();
+			case EEFActionsPackage.UNSET_ATTRIBUTE: return createUnsetAttribute();
 			case EEFActionsPackage.UNSET: return createUnset();
 			case EEFActionsPackage.CANCEL: return createCancel();
 			case EEFActionsPackage.CHECK: return createCheck();
 			case EEFActionsPackage.OPEN_EEF_EDITOR: return createOpenEEFEditor();
 			case EEFActionsPackage.SET_REFERENCE: return createSetReference();
+			case EEFActionsPackage.UNSET_REFERENCE: return createUnsetReference();
+			case EEFActionsPackage.MOVE_UP: return createMoveUp();
+			case EEFActionsPackage.MOVE_DOWN: return createMoveDown();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -105,6 +109,16 @@ public class EEFActionsFactoryImpl extends EFactoryImpl implements EEFActionsFac
 	public SetAttribute createSetAttribute() {
 		SetAttributeImpl setAttribute = new SetAttributeImpl();
 		return setAttribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UnsetAttribute createUnsetAttribute() {
+		UnsetAttributeImpl unsetAttribute = new UnsetAttributeImpl();
+		return unsetAttribute;
 	}
 
 	/**
@@ -155,6 +169,36 @@ public class EEFActionsFactoryImpl extends EFactoryImpl implements EEFActionsFac
 	public SetReference createSetReference() {
 		SetReferenceImpl setReference = new SetReferenceImpl();
 		return setReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UnsetReference createUnsetReference() {
+		UnsetReferenceImpl unsetReference = new UnsetReferenceImpl();
+		return unsetReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MoveUp createMoveUp() {
+		MoveUpImpl moveUp = new MoveUpImpl();
+		return moveUp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MoveDown createMoveDown() {
+		MoveDownImpl moveDown = new MoveDownImpl();
+		return moveDown;
 	}
 
 	/**

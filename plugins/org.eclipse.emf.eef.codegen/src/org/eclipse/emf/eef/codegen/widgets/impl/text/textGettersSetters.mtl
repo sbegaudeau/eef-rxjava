@@ -29,6 +29,7 @@
 		} else {
 			[elementEditor.elementEditorName()/].setText(""); //$NON-NLS-1$
 		}
+		[elementEditor.readOnly()/]
 	}
 [/template]
 

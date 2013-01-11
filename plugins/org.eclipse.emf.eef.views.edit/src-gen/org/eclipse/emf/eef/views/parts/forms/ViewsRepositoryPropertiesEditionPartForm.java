@@ -197,6 +197,9 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 		EditingUtils.setID(name, ViewsViewsRepository.ViewsRepository.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewsRepository.Properties.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -262,6 +265,9 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 		EditingUtils.setID(repositoryKind, ViewsViewsRepository.ViewsRepository.Properties.repositoryKind);
 		EditingUtils.setEEFtype(repositoryKind, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.ViewsRepository.Properties.repositoryKind, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createRepositoryKindText
+
+		// End of user code
 		return parent;
 	}
 
@@ -301,6 +307,14 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.ViewsRepository.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ViewsMessages.ViewsRepository_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -325,6 +339,14 @@ public class ViewsRepositoryPropertiesEditionPartForm extends SectionPropertiesE
 		} else {
 			repositoryKind.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.ViewsRepository.Properties.repositoryKind);
+		if (eefElementEditorReadOnlyState && repositoryKind.isEnabled()) {
+			repositoryKind.setEnabled(false);
+			repositoryKind.setToolTipText(ViewsMessages.ViewsRepository_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !repositoryKind.isEnabled()) {
+			repositoryKind.setEnabled(true);
+		}	
+		
 	}
 
 

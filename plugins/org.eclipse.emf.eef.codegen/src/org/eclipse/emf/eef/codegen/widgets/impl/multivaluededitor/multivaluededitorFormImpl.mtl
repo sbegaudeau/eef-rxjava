@@ -49,16 +49,15 @@ return create[editor.name.toJavaClassifier()/]MultiValuedEditor(widgetFactory, p
 	 */
 	protected Composite create[editor.name.toJavaClassifier()/]MultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		[editor.elementEditorName()/] = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/].setEnabled(false);
-		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 2;
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		EditingUtils.setID([editor.elementEditorName()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.elementEditorName()/], "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
 		edit[editor.name.toJavaClassifier()/] = widgetFactory.createButton(parent, getDescription([editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]), SWT.NONE);
+		[if (editor.readOnly)]
+		edit[editor.name.toJavaClassifier()/].setEnabled(false);
+		[/if]
 		GridData edit[editor.name.toJavaClassifier()/]Data = new GridData();
 		edit[editor.name.toJavaClassifier()/].setLayoutData(edit[editor.name.toJavaClassifier()/]Data);
 		edit[editor.name.toJavaClassifier()/].addSelectionListener(new SelectionAdapter() {
@@ -88,6 +87,9 @@ return create[editor.name.toJavaClassifier()/]MultiValuedEditor(widgetFactory, p
 		});
 		EditingUtils.setID(edit[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(edit[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::browsebutton"); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('MultiValuedEditor'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

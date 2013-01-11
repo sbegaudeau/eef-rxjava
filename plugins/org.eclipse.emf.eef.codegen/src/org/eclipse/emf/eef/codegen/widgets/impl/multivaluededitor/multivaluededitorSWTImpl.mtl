@@ -46,16 +46,15 @@ return create[editor.name.toJavaClassifier()/]MultiValuedEditor(parent);
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'MultiValuedEditor')]
 	protected Composite create[editor.name.toJavaClassifier()/]MultiValuedEditor(Composite parent) {
 		[editor.elementEditorName()/] = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/].setEnabled(false);
-		[editor.elementEditorName()/].setToolTipText([include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 		GridData [editor.elementEditorName()/]Data = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/]Data.horizontalSpan = 2;
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		EditingUtils.setID([editor.elementEditorName()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.elementEditorName()/], "eef::[editor.representation.name/]::field"); //$NON-NLS-1$
 		edit[editor.name.toJavaClassifier()/] = new Button(parent, SWT.NONE);
+		[if (editor.readOnly)]
+		edit[editor.name.toJavaClassifier()/].setEnabled(false);
+		[/if]
 		edit[editor.name.toJavaClassifier()/].setText(getDescription([editor.editorID()/], [editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/]));
 		GridData edit[editor.name.toJavaClassifier()/]Data = new GridData();
 		edit[editor.name.toJavaClassifier()/].setLayoutData(edit[editor.name.toJavaClassifier()/]Data);
@@ -85,6 +84,9 @@ return create[editor.name.toJavaClassifier()/]MultiValuedEditor(parent);
 		});
 		EditingUtils.setID(edit[editor.name.toJavaClassifier()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype(edit[editor.name.toJavaClassifier()/], "eef::[editor.representation.name/]::browsebutton"); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('MultiValuedEditor'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

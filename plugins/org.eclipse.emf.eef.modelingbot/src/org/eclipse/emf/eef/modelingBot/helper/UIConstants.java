@@ -45,7 +45,8 @@ public class UIConstants {
 	public static final String PROJECT_CREATION_MENU = "Project";
 	public static final String NEW_PROJECT_MENU = "New Project";
 	public static final String PROJECT_MENU = "Project...";
-
+	public static final String EDIT_MENU = "Edit";
+	
 	/*****************************************************************************
 	 * * UI Views * *
 	 *****************************************************************************/
@@ -56,6 +57,8 @@ public class UIConstants {
 	public static final String WELCOME_LABEL = "Welcome";
 	public static final String NEW = "New";
 
+	public static final String DELETE_RESOURCES_DIALOG = "Delete Resources";
+	
 	/*****************************************************************************
 	 * * UI Buttons * *
 	 *****************************************************************************/
@@ -64,5 +67,8 @@ public class UIConstants {
 	public static final String ADD_BUTTON = "Add";
 	public static final String CANCEL_BUTTON = "Cancel";
 	public static final String NEXT_BUTTON = "Next >";
+	public static final String UP_BUTTON = "Up";
+	public static final String DOWN_BUTTON = "Down";
+	
 
 }

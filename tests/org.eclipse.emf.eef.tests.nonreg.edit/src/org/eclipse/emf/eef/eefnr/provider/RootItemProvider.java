@@ -259,6 +259,11 @@ public class RootItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrFactory.eINSTANCE.createSingleCompositionEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 ReferencesFactory.eINSTANCE.createReferenceEnabledSample()));
 
 		newChildDescriptors.add
@@ -300,6 +305,21 @@ public class RootItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 NavigationFactory.eINSTANCE.createAttributeNavigationSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 NavigationFactory.eINSTANCE.createSmartModelNavigationSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 NavigationFactory.eINSTANCE.createFirstModelNavigation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 NavigationFactory.eINSTANCE.createSecondModelNavigation()));
 
 		newChildDescriptors.add
 			(createChildParameter

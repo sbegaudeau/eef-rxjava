@@ -152,6 +152,18 @@ public class EEFActionsSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EEFActionsPackage.UNSET_ATTRIBUTE: {
+				UnsetAttribute unsetAttribute = (UnsetAttribute)theEObject;
+				T result = caseUnsetAttribute(unsetAttribute);
+				if (result == null) result = caseEditAction(unsetAttribute);
+				if (result == null) result = caseEEFAction(unsetAttribute);
+				if (result == null) result = caseReferenceableObject(unsetAttribute);
+				if (result == null) result = caseAction(unsetAttribute);
+				if (result == null) result = caseDocumentedElement(unsetAttribute);
+				if (result == null) result = caseProcessing(unsetAttribute);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EEFActionsPackage.UNSET: {
 				Unset unset = (Unset)theEObject;
 				T result = caseUnset(unset);
@@ -203,6 +215,42 @@ public class EEFActionsSwitch<T> {
 				if (result == null) result = caseAction(setReference);
 				if (result == null) result = caseDocumentedElement(setReference);
 				if (result == null) result = caseProcessing(setReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EEFActionsPackage.UNSET_REFERENCE: {
+				UnsetReference unsetReference = (UnsetReference)theEObject;
+				T result = caseUnsetReference(unsetReference);
+				if (result == null) result = caseEditAction(unsetReference);
+				if (result == null) result = caseEEFAction(unsetReference);
+				if (result == null) result = caseReferenceableObject(unsetReference);
+				if (result == null) result = caseAction(unsetReference);
+				if (result == null) result = caseDocumentedElement(unsetReference);
+				if (result == null) result = caseProcessing(unsetReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EEFActionsPackage.MOVE_UP: {
+				MoveUp moveUp = (MoveUp)theEObject;
+				T result = caseMoveUp(moveUp);
+				if (result == null) result = caseEditAction(moveUp);
+				if (result == null) result = caseEEFAction(moveUp);
+				if (result == null) result = caseReferenceableObject(moveUp);
+				if (result == null) result = caseAction(moveUp);
+				if (result == null) result = caseDocumentedElement(moveUp);
+				if (result == null) result = caseProcessing(moveUp);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EEFActionsPackage.MOVE_DOWN: {
+				MoveDown moveDown = (MoveDown)theEObject;
+				T result = caseMoveDown(moveDown);
+				if (result == null) result = caseEditAction(moveDown);
+				if (result == null) result = caseEEFAction(moveDown);
+				if (result == null) result = caseReferenceableObject(moveDown);
+				if (result == null) result = caseAction(moveDown);
+				if (result == null) result = caseDocumentedElement(moveDown);
+				if (result == null) result = caseProcessing(moveDown);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -286,6 +334,21 @@ public class EEFActionsSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unset Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unset Attribute</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnsetAttribute(UnsetAttribute object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Unset</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -357,6 +420,51 @@ public class EEFActionsSwitch<T> {
 	 * @generated
 	 */
 	public T caseSetReference(SetReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unset Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unset Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnsetReference(UnsetReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Move Up</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Move Up</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMoveUp(MoveUp object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Move Down</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Move Down</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMoveDown(MoveDown object) {
 		return null;
 	}
 

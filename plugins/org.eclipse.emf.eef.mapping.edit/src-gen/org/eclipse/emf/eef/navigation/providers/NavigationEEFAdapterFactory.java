@@ -14,8 +14,6 @@ import org.eclipse.emf.common.notify.Adapter;
 
 import org.eclipse.emf.eef.mapping.navigation.util.NavigationAdapterFactory;
 
-import org.eclipse.emf.eef.navigation.providers.SimpleModelNavigationPropertiesEditionProvider;
-
 /**
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  * 
@@ -29,6 +27,30 @@ public class NavigationEEFAdapterFactory extends NavigationAdapterFactory {
 	 */
 	public Adapter createSimpleModelNavigationAdapter() {
 		return new SimpleModelNavigationPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.mapping.navigation.util.NavigationAdapterFactory#createDeclarativeNavigationStepAdapter()
+	 * 
+	 */
+	public Adapter createDeclarativeNavigationStepAdapter() {
+		return new DeclarativeNavigationStepPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.mapping.navigation.util.NavigationAdapterFactory#createJavaDeclarationStepInitializerAdapter()
+	 * 
+	 */
+	public Adapter createJavaDeclarationStepInitializerAdapter() {
+		return new JavaDeclarationStepInitializerPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.mapping.navigation.util.NavigationAdapterFactory#createJavaBodyStepInitializerAdapter()
+	 * 
+	 */
+	public Adapter createJavaBodyStepInitializerAdapter() {
+		return new JavaBodyStepInitializerPropertiesEditionProvider();
 	}
 
 }

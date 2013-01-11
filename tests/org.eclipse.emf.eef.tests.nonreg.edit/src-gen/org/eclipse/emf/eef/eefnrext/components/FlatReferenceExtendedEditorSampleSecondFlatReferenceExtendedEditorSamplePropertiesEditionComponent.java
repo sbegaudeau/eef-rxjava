@@ -12,22 +12,34 @@ package org.eclipse.emf.eef.eefnrext.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnrext.EefnrextPackage;
 import org.eclipse.emf.eef.eefnrext.FlatReferenceExtendedEditorSample;
+
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 
@@ -66,10 +78,11 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final FlatReferenceExtendedEditorSample flatReferenceExtendedEditorSample = (FlatReferenceExtendedEditorSample)elt;
 			final SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (flatReferenceExtendedEditorSample.getDemo() != null && isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo))
+			if (isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo))
 				secondFlatReferenceExtendedEditorSamplePart.setDemo(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, flatReferenceExtendedEditorSample.getDemo()));
 			
 			if (isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size)) {
@@ -125,16 +138,17 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart secondFlatReferenceExtendedEditorSamplePart = (SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart)editingPart;
-			if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null && isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo)) {
+			if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && secondFlatReferenceExtendedEditorSamplePart != null && isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo)) {
 				if (msg.getNewValue() != null) {
 					secondFlatReferenceExtendedEditorSamplePart.setDemo(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					secondFlatReferenceExtendedEditorSamplePart.setDemo("");
 				}
 			}
-			if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().equals(msg.getFeature()) && secondFlatReferenceExtendedEditorSamplePart != null && isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size)) {
+			if (EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && secondFlatReferenceExtendedEditorSamplePart != null && isAccessible(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size)) {
 				if (msg.getNewValue() != null) {
 					secondFlatReferenceExtendedEditorSamplePart.setSize(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
@@ -143,6 +157,19 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Demo(),
+			EefnrextPackage.eINSTANCE.getFlatReferenceExtendedEditorSample_Size()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -188,5 +215,8 @@ public class FlatReferenceExtendedEditorSampleSecondFlatReferenceExtendedEditorS
 		}
 		return ret;
 	}
+
+
+	
 
 }

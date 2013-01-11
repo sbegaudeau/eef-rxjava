@@ -12,19 +12,33 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.SingleCompositionViewerSamplePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 
 // End of user code
@@ -62,6 +76,7 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final SingleCompositionViewerSample singleCompositionViewerSample = (SingleCompositionViewerSample)elt;
 			final SingleCompositionViewerSamplePropertiesEditionPart basePart = (SingleCompositionViewerSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -69,7 +84,9 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
+			//FIXME: Sorry this widget is deprecated for this version.
 			// init filters
+			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
@@ -81,6 +98,7 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -104,6 +122,9 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 		}
 		if (editorKey == EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleROProperty) {
+			return EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -134,14 +155,32 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SingleCompositionViewerSamplePropertiesEditionPart basePart = (SingleCompositionViewerSamplePropertiesEditionPart)editingPart;
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
 			//FIXME: Sorry this widget is deprecated for this version.
+			//FIXME: Sorry this widget is deprecated for this version.
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleRequiredProperty(),
+			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleOptionalProperty(),
+			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiRequiredProperty(),
+			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty(),
+			EefnrPackage.eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleROProperty()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -173,5 +212,8 @@ public class SingleCompositionViewerSamplePropertiesEditionComponent extends Sin
 		}
 		return ret;
 	}
+
+
+	
 
 }

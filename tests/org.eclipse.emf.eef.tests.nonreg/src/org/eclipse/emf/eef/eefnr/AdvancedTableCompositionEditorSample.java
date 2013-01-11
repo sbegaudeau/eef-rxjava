@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample#getAdvancedtablecompositionRequiredProperty <em>Advancedtablecomposition Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample#getAdvancedtablecompositionOptionalProperty <em>Advancedtablecomposition Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample#getAdvancedtablecompositionROProperty <em>Advancedtablecomposition RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,5 +58,21 @@ public interface AdvancedTableCompositionEditorSample extends AbstractSample {
 	 * @generated
 	 */
 	EList<Sample> getAdvancedtablecompositionOptionalProperty();
+
+	/**
+	 * Returns the value of the '<em><b>Advancedtablecomposition RO Property</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.Sample}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Advancedtablecomposition RO Property</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Advancedtablecomposition RO Property</em>' containment reference list.
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getAdvancedTableCompositionEditorSample_AdvancedtablecompositionROProperty()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Sample> getAdvancedtablecompositionROProperty();
 
 } // AdvancedTableCompositionEditorSample

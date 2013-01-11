@@ -63,6 +63,7 @@ public class MultiValuedEditorSampleItemProvider
 
 			addMultivaluededitorRequiredPropertyPropertyDescriptor(object);
 			addMultivaluededitorOptionalPropertyPropertyDescriptor(object);
+			addMultivaluededitorROPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,6 +113,28 @@ public class MultiValuedEditorSampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Multivaluededitor RO Property feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMultivaluededitorROPropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MultiValuedEditorSample_multivaluededitorROProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MultiValuedEditorSample_multivaluededitorROProperty_feature", "_UI_MultiValuedEditorSample_type"),
+				 EefnrPackage.Literals.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_RO_PROPERTY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns MultiValuedEditorSample.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,6 +173,7 @@ public class MultiValuedEditorSampleItemProvider
 		switch (notification.getFeatureID(MultiValuedEditorSample.class)) {
 			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_REQUIRED_PROPERTY:
 			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY:
+			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_RO_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

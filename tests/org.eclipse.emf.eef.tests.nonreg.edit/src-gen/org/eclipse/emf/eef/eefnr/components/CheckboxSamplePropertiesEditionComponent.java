@@ -12,20 +12,33 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.CheckboxSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+
 import org.eclipse.emf.eef.eefnr.parts.CheckboxSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 
@@ -64,6 +77,7 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final CheckboxSample checkboxSample = (CheckboxSample)elt;
 			final CheckboxSamplePropertiesEditionPart basePart = (CheckboxSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -73,7 +87,11 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 			if (isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty)) {
 				basePart.setCheckboxOptionalProperty(checkboxSample.isCheckboxOptionalProperty());
 			}
+			if (isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty)) {
+				basePart.setCheckboxROProperty(checkboxSample.isCheckboxROProperty());
+			}
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -83,6 +101,7 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -98,6 +117,9 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 		}
 		if (editorKey == EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty) {
+			return EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -122,16 +144,34 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			CheckboxSamplePropertiesEditionPart basePart = (CheckboxSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty))
+			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxRequiredProperty))
 				basePart.setCheckboxRequiredProperty((Boolean)msg.getNewValue());
 			
-			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty))
+			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxOptionalProperty))
 				basePart.setCheckboxOptionalProperty((Boolean)msg.getNewValue());
+			
+			if (EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxROProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty))
+				basePart.setCheckboxROProperty((Boolean)msg.getNewValue());
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxRequiredProperty(),
+			EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty(),
+			EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxROProperty()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -169,6 +209,13 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxOptionalProperty().getEAttributeType(), newValue);
 				}
+				if (EefnrViewsRepository.CheckboxSample.Properties.checkboxROProperty == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxROProperty().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getCheckboxSample_CheckboxROProperty().getEAttributeType(), newValue);
+				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -177,5 +224,8 @@ public class CheckboxSamplePropertiesEditionComponent extends SinglePartProperti
 		}
 		return ret;
 	}
+
+
+	
 
 }

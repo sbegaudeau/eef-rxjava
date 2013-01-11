@@ -12,26 +12,46 @@ package org.eclipse.emf.eef.navigation.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+
 import org.eclipse.emf.eef.eefnr.navigation.AttributeNavigationSample;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
+
 import org.eclipse.emf.eef.eefnr.navigation.parts.AttributeNavigationSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
+import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettingsBuilder;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettingsBuilder.EEFEditorSettingsImpl;
+
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFFilter;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFInitializer;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.NavigationStepBuilder;
 
 
@@ -102,10 +122,16 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			if (editingPart instanceof CompositePropertiesEditionPart) {
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate1ForSingleValuedSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForSingleValuedSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate1ForMultiValuedSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(delegate2ForMultiValuedSettings);
+			}
 			final AttributeNavigationSample attributeNavigationSample = (AttributeNavigationSample)elt;
 			final AttributeNavigationSamplePropertiesEditionPart basePart = (AttributeNavigationSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (attributeNavigationSample.getName() != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name))
+			if (isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, attributeNavigationSample.getName()));
 			
 			if (delegate1ForSingleValuedSettings.getValue() != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued))
@@ -203,37 +229,38 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			AttributeNavigationSamplePropertiesEditionPart basePart = (AttributeNavigationSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name)) {
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate1().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued)) {
+			if (!(msg.getNewValue() instanceof EObject) && delegate1ForSingleValuedSettings.isAffectingEvent(msg) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued)) {
 				if (msg.getNewValue() != null) {
 					basePart.setDelegate1ForSingleValued(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setDelegate1ForSingleValued("");
 				}
 			}
-			if (NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate2().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued)) {
+			if (!(msg.getNewValue() instanceof EObject) && delegate2ForSingleValuedSettings.isAffectingEvent(msg) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued)) {
 				if (msg.getNewValue() != null) {
 					basePart.setDelegate2ForSingleValued(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
 					basePart.setDelegate2ForSingleValued("");
 				}
 			}
-			if (NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate1().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued)) {
+			if (!(msg.getNewValue() instanceof EObject) && delegate1ForMultiValuedSettings.isAffectingEvent(msg) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued)) {
 				if (msg.getNewValue() != null) {
 					basePart.setDelegate1ForMultiValued(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setDelegate1ForMultiValued("");
 				}
 			}
-			if (NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate2().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued)) {
+			if (!(msg.getNewValue() instanceof EObject) && delegate2ForMultiValuedSettings.isAffectingEvent(msg) && basePart != null && isAccessible(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued)) {
 				if (msg.getNewValue() != null) {
 					basePart.setDelegate2ForMultiValued(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
@@ -242,6 +269,26 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate1()
+			,
+			NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate2()
+			,
+			NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate1()
+			,
+			NavigationPackage.eINSTANCE.getAttributeDelegate_Delegate2()
+					);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -307,6 +354,33 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 			}
 		}
 		return ret;
+	}
+
+
+	
+	/**
+	 * @ return settings for delegate1ForSingleValued editor
+	 */
+	public EEFEditorSettingsImpl getDelegate1ForSingleValuedSettings() {
+			return delegate1ForSingleValuedSettings;
+	}
+	/**
+	 * @ return settings for delegate2ForSingleValued editor
+	 */
+	public EEFEditorSettingsImpl getDelegate2ForSingleValuedSettings() {
+			return delegate2ForSingleValuedSettings;
+	}
+	/**
+	 * @ return settings for delegate1ForMultiValued editor
+	 */
+	public EEFEditorSettingsImpl getDelegate1ForMultiValuedSettings() {
+			return delegate1ForMultiValuedSettings;
+	}
+	/**
+	 * @ return settings for delegate2ForMultiValued editor
+	 */
+	public EEFEditorSettingsImpl getDelegate2ForMultiValuedSettings() {
+			return delegate2ForMultiValuedSettings;
 	}
 
 }

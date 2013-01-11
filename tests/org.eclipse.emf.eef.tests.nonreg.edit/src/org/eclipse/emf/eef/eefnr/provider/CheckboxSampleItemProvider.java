@@ -63,6 +63,7 @@ public class CheckboxSampleItemProvider
 
 			addCheckboxRequiredPropertyPropertyDescriptor(object);
 			addCheckboxOptionalPropertyPropertyDescriptor(object);
+			addCheckboxROPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,6 +113,28 @@ public class CheckboxSampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Checkbox RO Property feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCheckboxROPropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CheckboxSample_checkboxROProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CheckboxSample_checkboxROProperty_feature", "_UI_CheckboxSample_type"),
+				 EefnrPackage.Literals.CHECKBOX_SAMPLE__CHECKBOX_RO_PROPERTY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns CheckboxSample.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,6 +173,7 @@ public class CheckboxSampleItemProvider
 		switch (notification.getFeatureID(CheckboxSample.class)) {
 			case EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_REQUIRED_PROPERTY:
 			case EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_OPTIONAL_PROPERTY:
+			case EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_RO_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

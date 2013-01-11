@@ -12,22 +12,34 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Sample;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.SamplePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 
@@ -66,13 +78,14 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Sample sample = (Sample)elt;
 			final SamplePropertiesEditionPart basePart = (SamplePropertiesEditionPart)editingPart;
 			// init values
-			if (sample.getTextRequiredProperty() != null && isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty))
+			if (isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty))
 				basePart.setTextRequiredProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sample.getTextRequiredProperty()));
 			
-			if (sample.getTextOptionalProperty() != null && isAccessible(EefnrViewsRepository.Sample.Properties.textOptionalProperty))
+			if (isAccessible(EefnrViewsRepository.Sample.Properties.textOptionalProperty))
 				basePart.setTextOptionalProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, sample.getTextOptionalProperty()));
 			
 			// init filters
@@ -124,16 +137,17 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SamplePropertiesEditionPart basePart = (SamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty)) {
+			if (EefnrPackage.eINSTANCE.getSample_TextRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.Sample.Properties.textRequiredProperty)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTextRequiredProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTextRequiredProperty("");
 				}
 			}
-			if (EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.Sample.Properties.textOptionalProperty)) {
+			if (EefnrPackage.eINSTANCE.getSample_TextOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EefnrViewsRepository.Sample.Properties.textOptionalProperty)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTextOptionalProperty(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -142,6 +156,19 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getSample_TextRequiredProperty(),
+			EefnrPackage.eINSTANCE.getSample_TextOptionalProperty()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -187,5 +214,8 @@ public class SamplePropertiesEditionComponent extends SinglePartPropertiesEditin
 		}
 		return ret;
 	}
+
+
+	
 
 }

@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.eefnr.AbstractSample;
 import org.eclipse.emf.eef.eefnr.NamedElement;
+import org.eclipse.emf.eef.eefnr.navigation.*;
 import org.eclipse.emf.eef.eefnr.navigation.AnotherSubType;
 import org.eclipse.emf.eef.eefnr.navigation.AttributeDelegate;
 import org.eclipse.emf.eef.eefnr.navigation.AttributeNavigationSample;
@@ -124,6 +125,18 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAttributeDelegate(AttributeDelegate object) {
 				return createAttributeDelegateAdapter();
+			}
+			@Override
+			public Adapter caseSmartModelNavigationSample(SmartModelNavigationSample object) {
+				return createSmartModelNavigationSampleAdapter();
+			}
+			@Override
+			public Adapter caseFirstModelNavigation(FirstModelNavigation object) {
+				return createFirstModelNavigationAdapter();
+			}
+			@Override
+			public Adapter caseSecondModelNavigation(SecondModelNavigation object) {
+				return createSecondModelNavigationAdapter();
 			}
 			@Override
 			public Adapter caseAbstractSample(AbstractSample object) {
@@ -318,6 +331,48 @@ public class NavigationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAttributeDelegateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample <em>Smart Model Navigation Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample
+	 * @generated
+	 */
+	public Adapter createSmartModelNavigationSampleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation <em>First Model Navigation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation
+	 * @generated
+	 */
+	public Adapter createFirstModelNavigationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation <em>Second Model Navigation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation
+	 * @generated
+	 */
+	public Adapter createSecondModelNavigationAdapter() {
 		return null;
 	}
 

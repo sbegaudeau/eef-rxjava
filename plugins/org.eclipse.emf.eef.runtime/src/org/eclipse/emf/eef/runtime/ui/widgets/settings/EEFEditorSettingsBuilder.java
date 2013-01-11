@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -96,7 +97,12 @@ public class EEFEditorSettingsBuilder  {
 		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings#getValue()
 		 */
 		public Object getValue() {
-			return getSignificantObject().eGet(feature);
+			EObject significantObject = getSignificantObject();
+			if (significantObject != null && significantObject.eResource() != null) {
+				return significantObject.eGet(feature);
+			} else {
+				return null;
+			}
 		}
 
 		/**
@@ -107,27 +113,133 @@ public class EEFEditorSettingsBuilder  {
 			if (significantObject == null) {
 				EObject current = source;
 				for (NavigationStep step : EEFEditorSettingsImpl.this.steps) {
+					// reference *
 					if (step.getReference().isMany()) {
 						@SuppressWarnings("unchecked")
-						List<EObject> result = (List<EObject>)source.eGet(step.getReference());
-						List<EObject> result2 = Collections.emptyList();
-						if (step.getDiscriminator() != null) {
-							for (EObject eObject : result) {
-								if (step.getDiscriminator().isInstance(eObject)) {
-									result2.add(eObject);
+						List<EObject> result = (List<EObject>)current.eGet(step.getReference());
+						List<EObject> result2 = new ArrayList<EObject>();
+						
+						if (!result.isEmpty() && (!step.getFilters().isEmpty() || step.getDiscriminator() != null)) {
+							// add filters
+							if (!step.getFilters().isEmpty()) {
+								for (EEFFilter eefFilter : step.getFilters()) {
+									for (EObject eObject : result) {
+										if (eefFilter.select(eObject)) {
+											result2.add(eObject);
+										}
+									}
+									result = result2;
+									result2 = new ArrayList<EObject>();
 								}
 							}
-						} else {
-							result2 = result;
+							// add discriminator
+							if (step.getDiscriminator() != null) {
+								for (EObject eObject : result) {
+									if (step.getDiscriminator().isInstance(eObject)) {
+										result2.add(eObject);
+									}
+								}
+							}
+							
+						} 
+						
+						// Use init if result.isEmpty()
+						if (result.isEmpty()) {
+							return null;
 						}
-						if (step.getIndex() != NavigationStep.NOT_INITIALIZED && step.getIndex() < result2.size()) {
-							current = result2.get(step.getIndex());
+						
+						if (step.getIndex() != NavigationStep.NOT_INITIALIZED && step.getIndex() < result.size()) {
+							current = result.get(step.getIndex());
+							// Use init if current == null
+							if (current == null) {
+								return null;
+							} 
 						} else {
 							throw new IllegalStateException();
 						}
-
+						
 					} else {
-						current = (EObject) current.eGet(step.getReference());
+						// reference 0 or 1
+						EObject current2 = current;
+						current = (EObject) current2.eGet(step.getReference());
+						if (current == null) {
+							return null;
+						}
+					}
+				}
+				significantObject = current;
+			}
+			return significantObject;
+		}
+		
+		/**
+		 * Compute and cache the object to edit following the NavigationStep.
+		 * @return object to edit.
+		 */
+		public EObject getOrCreateSignificantObject() {
+			if (significantObject == null || (significantObject != null && significantObject.eResource() == null)) {
+				EObject current = source;
+				for (NavigationStep step : EEFEditorSettingsImpl.this.steps) {
+					// reference *
+					if (step.getReference().isMany()) {
+						@SuppressWarnings("unchecked")
+						List<EObject> result = (List<EObject>)current.eGet(step.getReference());
+						List<EObject> result2 = new ArrayList<EObject>();
+						
+						if (!result.isEmpty() && (!step.getFilters().isEmpty() || step.getDiscriminator() != null)) {
+							// add filters
+							if (!step.getFilters().isEmpty()) {
+								for (EEFFilter eefFilter : step.getFilters()) {
+									for (EObject eObject : result) {
+										if (eefFilter.select(eObject)) {
+											result2.add(eObject);
+										}
+									}
+									result = result2;
+									result2 = new ArrayList<EObject>();
+								}
+							}
+							// add discriminator
+							if (step.getDiscriminator() != null) {
+								for (EObject eObject : result) {
+									if (step.getDiscriminator().isInstance(eObject)) {
+										result2.add(eObject);
+									}
+								}
+								result = result2;
+								result2 = new ArrayList<EObject>();
+							}
+							
+							// no filter and no discriminator -> get step.reference
+//						} else {
+//								result2 = result;
+						}
+						
+						// Use init if result.isEmpty()
+						if (result.isEmpty() && step.getInit() != null) {
+							result.add(step.getInit().init(current));
+						}
+						
+						if (step.getIndex() != NavigationStep.NOT_INITIALIZED && step.getIndex() < result.size()) {
+							current = result.get(step.getIndex());
+							// Use init if current == null
+							if (current == null && step.getInit() != null) {
+								EObject current2 = current;
+								current = step.getInit().init(current2);
+							} 
+						} else {
+							throw new IllegalStateException();
+						}
+						
+					} else {
+						// reference 0 or 1
+						EObject current2 = current;
+						current = (EObject) current2.eGet(step.getReference());
+						if (current == null) {
+							if (step.getInit() != null) {
+								current = step.getInit().init(current2);
+							}
+						}
 					}
 				}
 				significantObject = current;
@@ -136,7 +248,7 @@ public class EEFEditorSettingsBuilder  {
 		}
 		
 		public void setValue(Object newValue) {
-			getSignificantObject().eSet(feature, newValue);
+			getOrCreateSignificantObject().eSet(feature, newValue);
 		}
 
 		/**
@@ -156,6 +268,18 @@ public class EEFEditorSettingsBuilder  {
 				if (step.getReference().equals(feature)) {
 					return true;
 				}
+			}
+			return false;
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings#isAffectingEvent(org.eclipse.emf.common.notify.Notification)
+		 */
+		public boolean isAffectingEvent(Notification notification) {
+			if (
+					(notification.getFeature() instanceof EStructuralFeature && isAffectingFeature((EStructuralFeature) notification.getFeature()))) {
+				return true;
 			}
 			return false;
 		}

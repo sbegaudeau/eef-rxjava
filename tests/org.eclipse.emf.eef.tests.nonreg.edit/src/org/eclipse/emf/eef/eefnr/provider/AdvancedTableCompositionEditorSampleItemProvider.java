@@ -80,6 +80,7 @@ public class AdvancedTableCompositionEditorSampleItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(EefnrPackage.Literals.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY);
 			childrenFeatures.add(EefnrPackage.Literals.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY);
+			childrenFeatures.add(EefnrPackage.Literals.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_RO_PROPERTY);
 		}
 		return childrenFeatures;
 	}
@@ -136,6 +137,7 @@ public class AdvancedTableCompositionEditorSampleItemProvider
 		switch (notification.getFeatureID(AdvancedTableCompositionEditorSample.class)) {
 			case EefnrPackage.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY:
 			case EefnrPackage.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY:
+			case EefnrPackage.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_RO_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -162,6 +164,11 @@ public class AdvancedTableCompositionEditorSampleItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY,
 				 EefnrFactory.eINSTANCE.createSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_RO_PROPERTY,
+				 EefnrFactory.eINSTANCE.createSample()));
 	}
 
 	/**
@@ -177,7 +184,8 @@ public class AdvancedTableCompositionEditorSampleItemProvider
 
 		boolean qualify =
 			childFeature == EefnrPackage.Literals.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY ||
-			childFeature == EefnrPackage.Literals.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY;
+			childFeature == EefnrPackage.Literals.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY ||
+			childFeature == EefnrPackage.Literals.ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_RO_PROPERTY;
 
 		if (qualify) {
 			return getString

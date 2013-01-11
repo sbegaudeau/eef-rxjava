@@ -14,10 +14,6 @@ import org.eclipse.emf.common.notify.Adapter;
 
 import org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory;
 
-import org.eclipse.emf.eef.filters.providers.ConcreteReferenceOwnerSamplePropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.ConcreteReferenceTargetSample1PropertiesEditionProvider;
-import org.eclipse.emf.eef.filters.providers.ConcreteReferenceTargetSample2PropertiesEditionProvider;
-
 import org.eclipse.emf.eef.references.providers.AbstractSamplePropertiesEditionProvider;
 
 /**
@@ -28,14 +24,6 @@ public class FiltersEEFAdapterFactory extends FiltersAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createAbstractSampleAdapter()
-	 * 
-	 */
-	public Adapter createAbstractSampleAdapter() {
-		return new AbstractSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceOwnerSampleAdapter()
 	 * 
 	 */
@@ -44,19 +32,27 @@ public class FiltersEEFAdapterFactory extends FiltersAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceTargetSample1Adapter()
-	 * 
-	 */
-	public Adapter createConcreteReferenceTargetSample1Adapter() {
-		return new ConcreteReferenceTargetSample1PropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceTargetSample2Adapter()
 	 * 
 	 */
 	public Adapter createConcreteReferenceTargetSample2Adapter() {
 		return new ConcreteReferenceTargetSample2PropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createAbstractSampleAdapter()
+	 * 
+	 */
+	public Adapter createAbstractSampleAdapter() {
+		return new AbstractSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.filters.util.FiltersAdapterFactory#createConcreteReferenceTargetSample1Adapter()
+	 * 
+	 */
+	public Adapter createConcreteReferenceTargetSample1Adapter() {
+		return new ConcreteReferenceTargetSample1PropertiesEditionProvider();
 	}
 
 }

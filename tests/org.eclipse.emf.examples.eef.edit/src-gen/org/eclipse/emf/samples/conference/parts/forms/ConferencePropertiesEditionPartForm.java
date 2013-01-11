@@ -12,35 +12,48 @@ package org.eclipse.emf.samples.conference.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.emf.samples.conference.parts.ConferencePropertiesEditionPart;
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
+
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -198,6 +211,9 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(name, ConferenceViewsRepository.Conference_.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Conference_.Properties.name, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -254,6 +270,9 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 		EditingUtils.setID(overview, ConferenceViewsRepository.Conference_.Properties.overview);
 		EditingUtils.setEEFtype(overview, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Conference_.Properties.overview, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOverviewTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -292,6 +311,14 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Conference_.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ConferenceMessages.Conference_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -316,6 +343,15 @@ public class ConferencePropertiesEditionPartForm extends SectionPropertiesEditin
 		} else {
 			overview.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Conference_.Properties.overview);
+		if (eefElementEditorReadOnlyState && overview.isEnabled()) {
+			overview.setEnabled(false);
+			overview.setBackground(overview.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			overview.setToolTipText(ConferenceMessages.Conference_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !overview.isEnabled()) {
+			overview.setEnabled(true);
+		}	
+		
 	}
 
 

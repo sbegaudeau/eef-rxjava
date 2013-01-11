@@ -8,12 +8,9 @@ package org.eclipse.emf.eef.eefnr.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.eefnr.AbstractSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.Sample;
@@ -30,6 +27,7 @@ import org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample;
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionViewerSampleImpl#getSinglecompositionviewSingleOptionalProperty <em>Singlecompositionview Single Optional Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionViewerSampleImpl#getSinglecompositionviewMultiRequiredProperty <em>Singlecompositionview Multi Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionViewerSampleImpl#getSinglecompositionviewMultiOptionalProperty <em>Singlecompositionview Multi Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionViewerSampleImpl#getSinglecompositionviewSingleROProperty <em>Singlecompositionview Single RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -75,6 +73,16 @@ public class SingleCompositionViewerSampleImpl extends AbstractSampleImpl implem
 	 * @ordered
 	 */
 	protected AbstractSample singlecompositionviewMultiOptionalProperty;
+
+	/**
+	 * The cached value of the '{@link #getSinglecompositionviewSingleROProperty() <em>Singlecompositionview Single RO Property</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSinglecompositionviewSingleROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected Sample singlecompositionviewSingleROProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -272,6 +280,49 @@ public class SingleCompositionViewerSampleImpl extends AbstractSampleImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Sample getSinglecompositionviewSingleROProperty() {
+		return singlecompositionviewSingleROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSinglecompositionviewSingleROProperty(Sample newSinglecompositionviewSingleROProperty, NotificationChain msgs) {
+		Sample oldSinglecompositionviewSingleROProperty = singlecompositionviewSingleROProperty;
+		singlecompositionviewSingleROProperty = newSinglecompositionviewSingleROProperty;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY, oldSinglecompositionviewSingleROProperty, newSinglecompositionviewSingleROProperty);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSinglecompositionviewSingleROProperty(Sample newSinglecompositionviewSingleROProperty) {
+		if (newSinglecompositionviewSingleROProperty != singlecompositionviewSingleROProperty) {
+			NotificationChain msgs = null;
+			if (singlecompositionviewSingleROProperty != null)
+				msgs = ((InternalEObject)singlecompositionviewSingleROProperty).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY, null, msgs);
+			if (newSinglecompositionviewSingleROProperty != null)
+				msgs = ((InternalEObject)newSinglecompositionviewSingleROProperty).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY, null, msgs);
+			msgs = basicSetSinglecompositionviewSingleROProperty(newSinglecompositionviewSingleROProperty, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY, newSinglecompositionviewSingleROProperty, newSinglecompositionviewSingleROProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -283,6 +334,8 @@ public class SingleCompositionViewerSampleImpl extends AbstractSampleImpl implem
 				return basicSetSinglecompositionviewMultiRequiredProperty(null, msgs);
 			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY:
 				return basicSetSinglecompositionviewMultiOptionalProperty(null, msgs);
+			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY:
+				return basicSetSinglecompositionviewSingleROProperty(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -303,6 +356,8 @@ public class SingleCompositionViewerSampleImpl extends AbstractSampleImpl implem
 				return getSinglecompositionviewMultiRequiredProperty();
 			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY:
 				return getSinglecompositionviewMultiOptionalProperty();
+			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY:
+				return getSinglecompositionviewSingleROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -326,6 +381,9 @@ public class SingleCompositionViewerSampleImpl extends AbstractSampleImpl implem
 				return;
 			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY:
 				setSinglecompositionviewMultiOptionalProperty((AbstractSample)newValue);
+				return;
+			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY:
+				setSinglecompositionviewSingleROProperty((Sample)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -351,6 +409,9 @@ public class SingleCompositionViewerSampleImpl extends AbstractSampleImpl implem
 			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY:
 				setSinglecompositionviewMultiOptionalProperty((AbstractSample)null);
 				return;
+			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY:
+				setSinglecompositionviewSingleROProperty((Sample)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -371,6 +432,8 @@ public class SingleCompositionViewerSampleImpl extends AbstractSampleImpl implem
 				return singlecompositionviewMultiRequiredProperty != null;
 			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY:
 				return singlecompositionviewMultiOptionalProperty != null;
+			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY:
+				return singlecompositionviewSingleROProperty != null;
 		}
 		return super.eIsSet(featureID);
 	}

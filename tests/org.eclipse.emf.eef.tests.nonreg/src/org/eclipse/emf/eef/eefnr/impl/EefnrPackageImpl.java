@@ -11,9 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.eef.eefnr.AbstractSample;
 import org.eclipse.emf.eef.eefnr.AbstractTableCompositionTargetExtensionEditorSample;
 import org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample;
@@ -33,6 +31,7 @@ import org.eclipse.emf.eef.eefnr.ReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.Root;
 import org.eclipse.emf.eef.eefnr.Sample;
 import org.eclipse.emf.eef.eefnr.SelectionDialogSample;
+import org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample;
 import org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample;
 import org.eclipse.emf.eef.eefnr.TableCompositionEditorSample;
 import org.eclipse.emf.eef.eefnr.TableCompositionExtensionEditorSample;
@@ -227,6 +226,13 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * @generated
 	 */
 	private EClass singleCompositionViewerSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass singleCompositionEditorSampleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -627,6 +633,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTextSample_TextROProperty() {
+		return (EAttribute)textSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCheckboxSample() {
 		return checkboxSampleEClass;
 	}
@@ -647,6 +662,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 */
 	public EAttribute getCheckboxSample_CheckboxOptionalProperty() {
 		return (EAttribute)checkboxSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCheckboxSample_CheckboxROProperty() {
+		return (EAttribute)checkboxSampleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -681,6 +705,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTextareaSample_TextareaROProperty() {
+		return (EAttribute)textareaSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRadioSample() {
 		return radioSampleEClass;
 	}
@@ -701,6 +734,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 */
 	public EAttribute getRadioSample_RadioOptionalProperty() {
 		return (EAttribute)radioSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRadioSample_RadioROProperty() {
+		return (EAttribute)radioSampleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -735,6 +777,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty() {
+		return (EReference)eObjectFlatComboViewerSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getReferencesTableSample() {
 		return referencesTableSampleEClass;
 	}
@@ -755,6 +806,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 */
 	public EReference getReferencesTableSample_ReferencestableOptionalProperty() {
 		return (EReference)referencesTableSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getReferencesTableSample_ReferencestableROProperty() {
+		return (EReference)referencesTableSampleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -789,6 +849,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getEMFComboViewerSample_EmfcomboviewerROProperty() {
+		return (EAttribute)emfComboViewerSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMultiValuedEditorSample() {
 		return multiValuedEditorSampleEClass;
 	}
@@ -809,6 +878,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 */
 	public EAttribute getMultiValuedEditorSample_MultivaluededitorOptionalProperty() {
 		return (EAttribute)multiValuedEditorSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMultiValuedEditorSample_MultivaluededitorROProperty() {
+		return (EAttribute)multiValuedEditorSampleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -843,6 +921,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTableCompositionEditorSample_TablecompositionROProperty() {
+		return (EReference)tableCompositionEditorSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAdvancedReferencesTableSample() {
 		return advancedReferencesTableSampleEClass;
 	}
@@ -863,6 +950,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 */
 	public EReference getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty() {
 		return (EReference)advancedReferencesTableSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAdvancedReferencesTableSample_AdvancedreferencestableROProperty() {
+		return (EReference)advancedReferencesTableSampleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -897,6 +993,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery() {
+		return (EReference)advancedEObjectFlatComboViewerSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAdvancedTableCompositionEditorSample() {
 		return advancedTableCompositionEditorSampleEClass;
 	}
@@ -924,6 +1029,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getAdvancedTableCompositionEditorSample_AdvancedtablecompositionROProperty() {
+		return (EReference)advancedTableCompositionEditorSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFlatReferencesTableSample() {
 		return flatReferencesTableSampleEClass;
 	}
@@ -944,6 +1058,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 */
 	public EReference getFlatReferencesTableSample_FlatreferencestableOptionalProperty() {
 		return (EReference)flatReferencesTableSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFlatReferencesTableSample_FlatreferencestableROProperty() {
+		return (EReference)flatReferencesTableSampleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1095,6 +1218,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getImageViewerSample_ImageviewerROProperty() {
+		return (EAttribute)imageViewerSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSelectionDialogSample() {
 		return selectionDialogSampleEClass;
 	}
@@ -1115,6 +1247,15 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 */
 	public EAttribute getSelectionDialogSample_SelectionDialogOptionalProperty() {
 		return (EAttribute)selectionDialogSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSelectionDialogSample_SelectionDialogROProperty() {
+		return (EAttribute)selectionDialogSampleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1160,6 +1301,60 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 */
 	public EReference getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty() {
 		return (EReference)singleCompositionViewerSampleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleCompositionViewerSample_SinglecompositionviewSingleROProperty() {
+		return (EReference)singleCompositionViewerSampleEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSingleCompositionEditorSample() {
+		return singleCompositionEditorSampleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleCompositionEditorSample_SinglecompositioneditorRequiredProperty() {
+		return (EReference)singleCompositionEditorSampleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleCompositionEditorSample_SinglecompositioneditorOptionalProperty() {
+		return (EReference)singleCompositionEditorSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleCompositionEditorSample_SinglecompositioneditorROPropery() {
+		return (EReference)singleCompositionEditorSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty() {
+		return (EReference)singleCompositionEditorSampleEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1236,54 +1431,67 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		textSampleEClass = createEClass(TEXT_SAMPLE);
 		createEAttribute(textSampleEClass, TEXT_SAMPLE__TEXT_REQUIRED_PROPERTY);
 		createEAttribute(textSampleEClass, TEXT_SAMPLE__TEXT_OPTIONAL_PROPERTY);
+		createEAttribute(textSampleEClass, TEXT_SAMPLE__TEXT_RO_PROPERTY);
 
 		checkboxSampleEClass = createEClass(CHECKBOX_SAMPLE);
 		createEAttribute(checkboxSampleEClass, CHECKBOX_SAMPLE__CHECKBOX_REQUIRED_PROPERTY);
 		createEAttribute(checkboxSampleEClass, CHECKBOX_SAMPLE__CHECKBOX_OPTIONAL_PROPERTY);
+		createEAttribute(checkboxSampleEClass, CHECKBOX_SAMPLE__CHECKBOX_RO_PROPERTY);
 
 		textareaSampleEClass = createEClass(TEXTAREA_SAMPLE);
 		createEAttribute(textareaSampleEClass, TEXTAREA_SAMPLE__TEXTAREA_REQUIRED_PROPERTY);
 		createEAttribute(textareaSampleEClass, TEXTAREA_SAMPLE__TEXTAREA_OPTIONAL_PROPERTY);
+		createEAttribute(textareaSampleEClass, TEXTAREA_SAMPLE__TEXTAREA_RO_PROPERTY);
 
 		radioSampleEClass = createEClass(RADIO_SAMPLE);
 		createEAttribute(radioSampleEClass, RADIO_SAMPLE__RADIO_REQUIRED_PROPERTY);
 		createEAttribute(radioSampleEClass, RADIO_SAMPLE__RADIO_OPTIONAL_PROPERTY);
+		createEAttribute(radioSampleEClass, RADIO_SAMPLE__RADIO_RO_PROPERTY);
 
 		eObjectFlatComboViewerSampleEClass = createEClass(EOBJECT_FLAT_COMBO_VIEWER_SAMPLE);
 		createEReference(eObjectFlatComboViewerSampleEClass, EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__EOBJECTFLATCOMBOVIEWER_REQUIRED_PROPERY);
 		createEReference(eObjectFlatComboViewerSampleEClass, EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__EOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERY);
+		createEReference(eObjectFlatComboViewerSampleEClass, EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__EOBJECTFLATCOMBOVIEWER_RO_PROPERTY);
 
 		referencesTableSampleEClass = createEClass(REFERENCES_TABLE_SAMPLE);
 		createEReference(referencesTableSampleEClass, REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_REQUIRED_PROPERTY);
 		createEReference(referencesTableSampleEClass, REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_OPTIONAL_PROPERTY);
+		createEReference(referencesTableSampleEClass, REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_RO_PROPERTY);
 
 		emfComboViewerSampleEClass = createEClass(EMF_COMBO_VIEWER_SAMPLE);
 		createEAttribute(emfComboViewerSampleEClass, EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_REQUIRED_PROPERTY);
 		createEAttribute(emfComboViewerSampleEClass, EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_OPTIONAL_PROPERTY);
+		createEAttribute(emfComboViewerSampleEClass, EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_RO_PROPERTY);
 
 		multiValuedEditorSampleEClass = createEClass(MULTI_VALUED_EDITOR_SAMPLE);
 		createEAttribute(multiValuedEditorSampleEClass, MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_REQUIRED_PROPERTY);
 		createEAttribute(multiValuedEditorSampleEClass, MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY);
+		createEAttribute(multiValuedEditorSampleEClass, MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_RO_PROPERTY);
 
 		tableCompositionEditorSampleEClass = createEClass(TABLE_COMPOSITION_EDITOR_SAMPLE);
 		createEReference(tableCompositionEditorSampleEClass, TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_REQUIRED_PROPERTY);
 		createEReference(tableCompositionEditorSampleEClass, TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY);
+		createEReference(tableCompositionEditorSampleEClass, TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY);
 
 		advancedReferencesTableSampleEClass = createEClass(ADVANCED_REFERENCES_TABLE_SAMPLE);
 		createEReference(advancedReferencesTableSampleEClass, ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_REQUIRED_PROPERTY);
 		createEReference(advancedReferencesTableSampleEClass, ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_OPTIONAL_PROPERTY);
+		createEReference(advancedReferencesTableSampleEClass, ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_RO_PROPERTY);
 
 		advancedEObjectFlatComboViewerSampleEClass = createEClass(ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE);
 		createEReference(advancedEObjectFlatComboViewerSampleEClass, ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_REQUIRED_PROPERTY);
 		createEReference(advancedEObjectFlatComboViewerSampleEClass, ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERTY);
+		createEReference(advancedEObjectFlatComboViewerSampleEClass, ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_RO_PROPERY);
 
 		advancedTableCompositionEditorSampleEClass = createEClass(ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE);
 		createEReference(advancedTableCompositionEditorSampleEClass, ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_REQUIRED_PROPERTY);
 		createEReference(advancedTableCompositionEditorSampleEClass, ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY);
+		createEReference(advancedTableCompositionEditorSampleEClass, ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_RO_PROPERTY);
 
 		flatReferencesTableSampleEClass = createEClass(FLAT_REFERENCES_TABLE_SAMPLE);
 		createEReference(flatReferencesTableSampleEClass, FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_REQUIRED_PROPERTY);
 		createEReference(flatReferencesTableSampleEClass, FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY);
+		createEReference(flatReferencesTableSampleEClass, FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_RO_PROPERTY);
 
 		sampleEClass = createEClass(SAMPLE);
 		createEAttribute(sampleEClass, SAMPLE__TEXT_REQUIRED_PROPERTY);
@@ -1306,16 +1514,25 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		imageViewerSampleEClass = createEClass(IMAGE_VIEWER_SAMPLE);
 		createEAttribute(imageViewerSampleEClass, IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_REQUIRED_PROPERTY);
 		createEAttribute(imageViewerSampleEClass, IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_OPTIONAL_PROPERTY);
+		createEAttribute(imageViewerSampleEClass, IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_RO_PROPERTY);
 
 		selectionDialogSampleEClass = createEClass(SELECTION_DIALOG_SAMPLE);
 		createEAttribute(selectionDialogSampleEClass, SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_REQUIRED_PROPERTY);
 		createEAttribute(selectionDialogSampleEClass, SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_OPTIONAL_PROPERTY);
+		createEAttribute(selectionDialogSampleEClass, SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_RO_PROPERTY);
 
 		singleCompositionViewerSampleEClass = createEClass(SINGLE_COMPOSITION_VIEWER_SAMPLE);
 		createEReference(singleCompositionViewerSampleEClass, SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_REQUIRED_PROPERTY);
 		createEReference(singleCompositionViewerSampleEClass, SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_OPTIONAL_PROPERTY);
 		createEReference(singleCompositionViewerSampleEClass, SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_REQUIRED_PROPERTY);
 		createEReference(singleCompositionViewerSampleEClass, SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY);
+		createEReference(singleCompositionViewerSampleEClass, SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY);
+
+		singleCompositionEditorSampleEClass = createEClass(SINGLE_COMPOSITION_EDITOR_SAMPLE);
+		createEReference(singleCompositionEditorSampleEClass, SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_REQUIRED_PROPERTY);
+		createEReference(singleCompositionEditorSampleEClass, SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_OPTIONAL_PROPERTY);
+		createEReference(singleCompositionEditorSampleEClass, SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY);
+		createEReference(singleCompositionEditorSampleEClass, SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY);
 
 		// Create enums
 		enuM_SAMPLEEEnum = createEEnum(ENUM_SAMPLE);
@@ -1385,6 +1602,7 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		imageViewerSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		selectionDialogSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		singleCompositionViewerSampleEClass.getESuperTypes().add(this.getAbstractSample());
+		singleCompositionEditorSampleEClass.getESuperTypes().add(this.getAbstractSample());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1424,54 +1642,67 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		initEClass(textSampleEClass, TextSample.class, "TextSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTextSample_TextRequiredProperty(), ecorePackage.getEString(), "textRequiredProperty", null, 1, 1, TextSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTextSample_TextOptionalProperty(), ecorePackage.getEString(), "textOptionalProperty", null, 0, 1, TextSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTextSample_TextROProperty(), ecorePackage.getEString(), "textROProperty", null, 0, 1, TextSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(checkboxSampleEClass, CheckboxSample.class, "CheckboxSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCheckboxSample_CheckboxRequiredProperty(), ecorePackage.getEBoolean(), "checkboxRequiredProperty", null, 1, 1, CheckboxSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCheckboxSample_CheckboxOptionalProperty(), ecorePackage.getEBoolean(), "checkboxOptionalProperty", null, 0, 1, CheckboxSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCheckboxSample_CheckboxROProperty(), ecorePackage.getEBoolean(), "checkboxROProperty", null, 0, 1, CheckboxSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(textareaSampleEClass, TextareaSample.class, "TextareaSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTextareaSample_TextareaRequiredProperty(), ecorePackage.getEString(), "textareaRequiredProperty", null, 1, 1, TextareaSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTextareaSample_TextareaOptionalProperty(), ecorePackage.getEString(), "textareaOptionalProperty", null, 0, 1, TextareaSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTextareaSample_TextareaROProperty(), ecorePackage.getEString(), "textareaROProperty", null, 0, 1, TextareaSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(radioSampleEClass, RadioSample.class, "RadioSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRadioSample_RadioRequiredProperty(), this.getENUM_SAMPLE(), "radioRequiredProperty", null, 1, 1, RadioSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRadioSample_RadioOptionalProperty(), this.getENUM_SAMPLE(), "radioOptionalProperty", null, 0, 1, RadioSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRadioSample_RadioROProperty(), this.getENUM_SAMPLE(), "radioROProperty", null, 0, 1, RadioSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eObjectFlatComboViewerSampleEClass, EObjectFlatComboViewerSample.class, "EObjectFlatComboViewerSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery(), this.getTotalSample(), null, "eobjectflatcomboviewerRequiredPropery", null, 1, 1, EObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery(), this.getTotalSample(), null, "eobjectflatcomboviewerOptionalPropery", null, 0, 1, EObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty(), this.getTotalSample(), null, "eobjectflatcomboviewerROProperty", null, 0, 1, EObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(referencesTableSampleEClass, ReferencesTableSample.class, "ReferencesTableSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReferencesTableSample_ReferencestableRequiredProperty(), this.getTotalSample(), null, "referencestableRequiredProperty", null, 1, -1, ReferencesTableSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getReferencesTableSample_ReferencestableOptionalProperty(), this.getTotalSample(), null, "referencestableOptionalProperty", null, 0, -1, ReferencesTableSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReferencesTableSample_ReferencestableROProperty(), this.getTotalSample(), null, "referencestableROProperty", null, 0, -1, ReferencesTableSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(emfComboViewerSampleEClass, EMFComboViewerSample.class, "EMFComboViewerSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEMFComboViewerSample_EmfcomboviewerRequiredProperty(), this.getENUM_SAMPLE(), "emfcomboviewerRequiredProperty", null, 1, 1, EMFComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEMFComboViewerSample_EmfcomboviewerOptionalProperty(), this.getENUM_SAMPLE(), "emfcomboviewerOptionalProperty", null, 0, 1, EMFComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEMFComboViewerSample_EmfcomboviewerROProperty(), this.getENUM_SAMPLE(), "emfcomboviewerROProperty", null, 0, 1, EMFComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(multiValuedEditorSampleEClass, MultiValuedEditorSample.class, "MultiValuedEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMultiValuedEditorSample_MultivaluededitorRequiredProperty(), ecorePackage.getEString(), "multivaluededitorRequiredProperty", null, 1, -1, MultiValuedEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMultiValuedEditorSample_MultivaluededitorOptionalProperty(), ecorePackage.getEString(), "multivaluededitorOptionalProperty", null, 0, -1, MultiValuedEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMultiValuedEditorSample_MultivaluededitorROProperty(), ecorePackage.getEString(), "multivaluededitorROProperty", null, 0, -1, MultiValuedEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tableCompositionEditorSampleEClass, TableCompositionEditorSample.class, "TableCompositionEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTableCompositionEditorSample_TablecompositionRequiredProperty(), this.getSample(), null, "tablecompositionRequiredProperty", null, 1, -1, TableCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTableCompositionEditorSample_TablecompositionOptionalProperty(), this.getSample(), null, "tablecompositionOptionalProperty", null, 0, -1, TableCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTableCompositionEditorSample_TablecompositionROProperty(), this.getSample(), null, "tablecompositionROProperty", null, 0, -1, TableCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(advancedReferencesTableSampleEClass, AdvancedReferencesTableSample.class, "AdvancedReferencesTableSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAdvancedReferencesTableSample_AdvancedreferencestableRequiredProperty(), this.getTotalSample(), null, "advancedreferencestableRequiredProperty", null, 1, -1, AdvancedReferencesTableSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty(), this.getTotalSample(), null, "advancedreferencestableOptionalProperty", null, 0, -1, AdvancedReferencesTableSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdvancedReferencesTableSample_AdvancedreferencestableROProperty(), this.getTotalSample(), null, "advancedreferencestableROProperty", null, 0, -1, AdvancedReferencesTableSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(advancedEObjectFlatComboViewerSampleEClass, AdvancedEObjectFlatComboViewerSample.class, "AdvancedEObjectFlatComboViewerSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerRequiredProperty(), this.getTotalSample(), null, "advancedeobjectflatcomboviewerRequiredProperty", null, 1, 1, AdvancedEObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty(), this.getTotalSample(), null, "advancedeobjectflatcomboviewerOptionalProperty", null, 0, 1, AdvancedEObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery(), this.getTotalSample(), null, "advancedeobjectflatcomboviewerROPropery", null, 0, 1, AdvancedEObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(advancedTableCompositionEditorSampleEClass, AdvancedTableCompositionEditorSample.class, "AdvancedTableCompositionEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAdvancedTableCompositionEditorSample_AdvancedtablecompositionRequiredProperty(), this.getSample(), null, "advancedtablecompositionRequiredProperty", null, 1, -1, AdvancedTableCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty(), this.getSample(), null, "advancedtablecompositionOptionalProperty", null, 0, -1, AdvancedTableCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdvancedTableCompositionEditorSample_AdvancedtablecompositionROProperty(), this.getSample(), null, "advancedtablecompositionROProperty", null, 0, -1, AdvancedTableCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(flatReferencesTableSampleEClass, FlatReferencesTableSample.class, "FlatReferencesTableSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFlatReferencesTableSample_FlatreferencestableRequiredProperty(), this.getTotalSample(), null, "flatreferencestableRequiredProperty", null, 1, -1, FlatReferencesTableSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFlatReferencesTableSample_FlatreferencestableOptionalProperty(), this.getTotalSample(), null, "flatreferencestableOptionalProperty", null, 0, -1, FlatReferencesTableSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlatReferencesTableSample_FlatreferencestableROProperty(), this.getTotalSample(), null, "flatreferencestableROProperty", null, 0, -1, FlatReferencesTableSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sampleEClass, Sample.class, "Sample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSample_TextRequiredProperty(), ecorePackage.getEString(), "textRequiredProperty", null, 1, 1, Sample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1494,16 +1725,25 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		initEClass(imageViewerSampleEClass, ImageViewerSample.class, "ImageViewerSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getImageViewerSample_ImageviewerRequiredProperty(), ecorePackage.getEString(), "imageviewerRequiredProperty", null, 1, 1, ImageViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getImageViewerSample_ImageviewerOptionalProperty(), ecorePackage.getEString(), "imageviewerOptionalProperty", null, 0, 1, ImageViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getImageViewerSample_ImageviewerROProperty(), ecorePackage.getEString(), "imageviewerROProperty", null, 0, 1, ImageViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(selectionDialogSampleEClass, SelectionDialogSample.class, "SelectionDialogSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSelectionDialogSample_SelectionDialogRequiredProperty(), ecorePackage.getEString(), "selectionDialogRequiredProperty", null, 1, 1, SelectionDialogSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSelectionDialogSample_SelectionDialogOptionalProperty(), ecorePackage.getEString(), "selectionDialogOptionalProperty", null, 0, 1, SelectionDialogSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSelectionDialogSample_SelectionDialogROProperty(), ecorePackage.getEString(), "selectionDialogROProperty", null, 0, 1, SelectionDialogSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(singleCompositionViewerSampleEClass, SingleCompositionViewerSample.class, "SingleCompositionViewerSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSingleCompositionViewerSample_SinglecompositionviewSingleRequiredProperty(), this.getSample(), null, "singlecompositionviewSingleRequiredProperty", null, 1, 1, SingleCompositionViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSingleCompositionViewerSample_SinglecompositionviewSingleOptionalProperty(), this.getSample(), null, "singlecompositionviewSingleOptionalProperty", null, 0, 1, SingleCompositionViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSingleCompositionViewerSample_SinglecompositionviewMultiRequiredProperty(), this.getAbstractSample(), null, "singlecompositionviewMultiRequiredProperty", null, 1, 1, SingleCompositionViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty(), this.getAbstractSample(), null, "singlecompositionviewMultiOptionalProperty", null, 0, 1, SingleCompositionViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleCompositionViewerSample_SinglecompositionviewSingleROProperty(), this.getSample(), null, "singlecompositionviewSingleROProperty", null, 0, 1, SingleCompositionViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(singleCompositionEditorSampleEClass, SingleCompositionEditorSample.class, "SingleCompositionEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSingleCompositionEditorSample_SinglecompositioneditorRequiredProperty(), this.getTextSample(), null, "singlecompositioneditorRequiredProperty", null, 1, 1, SingleCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleCompositionEditorSample_SinglecompositioneditorOptionalProperty(), this.getTextSample(), null, "singlecompositioneditorOptionalProperty", null, 0, 1, SingleCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleCompositionEditorSample_SinglecompositioneditorROPropery(), this.getTextSample(), null, "singlecompositioneditorROPropery", null, 0, 1, SingleCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty(), this.getAbstractSample(), null, "singlecompositioneditorOnAbstractOptionalProperty", null, 0, 1, SingleCompositionEditorSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(enuM_SAMPLEEEnum, org.eclipse.emf.eef.eefnr.ENUM_SAMPLE.class, "ENUM_SAMPLE");

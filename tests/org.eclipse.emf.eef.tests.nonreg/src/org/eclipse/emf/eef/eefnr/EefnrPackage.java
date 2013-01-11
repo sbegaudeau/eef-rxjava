@@ -416,13 +416,22 @@ public interface EefnrPackage extends EPackage {
 	int TEXT_SAMPLE__TEXT_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Text RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_SAMPLE__TEXT_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Text Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int TEXT_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.CheckboxSampleImpl <em>Checkbox Sample</em>}' class.
@@ -462,13 +471,22 @@ public interface EefnrPackage extends EPackage {
 	int CHECKBOX_SAMPLE__CHECKBOX_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Checkbox RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKBOX_SAMPLE__CHECKBOX_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Checkbox Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHECKBOX_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int CHECKBOX_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.TextareaSampleImpl <em>Textarea Sample</em>}' class.
@@ -508,13 +526,22 @@ public interface EefnrPackage extends EPackage {
 	int TEXTAREA_SAMPLE__TEXTAREA_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Textarea RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXTAREA_SAMPLE__TEXTAREA_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Textarea Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEXTAREA_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int TEXTAREA_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.RadioSampleImpl <em>Radio Sample</em>}' class.
@@ -554,13 +581,22 @@ public interface EefnrPackage extends EPackage {
 	int RADIO_SAMPLE__RADIO_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Radio RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RADIO_SAMPLE__RADIO_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Radio Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RADIO_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int RADIO_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.EObjectFlatComboViewerSampleImpl <em>EObject Flat Combo Viewer Sample</em>}' class.
@@ -600,13 +636,22 @@ public interface EefnrPackage extends EPackage {
 	int EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__EOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Eobjectflatcomboviewer RO Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__EOBJECTFLATCOMBOVIEWER_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>EObject Flat Combo Viewer Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EOBJECT_FLAT_COMBO_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int EOBJECT_FLAT_COMBO_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.ReferencesTableSampleImpl <em>References Table Sample</em>}' class.
@@ -646,13 +691,22 @@ public interface EefnrPackage extends EPackage {
 	int REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Referencestable RO Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>References Table Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCES_TABLE_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int REFERENCES_TABLE_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.EMFComboViewerSampleImpl <em>EMF Combo Viewer Sample</em>}' class.
@@ -692,13 +746,22 @@ public interface EefnrPackage extends EPackage {
 	int EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Emfcomboviewer RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>EMF Combo Viewer Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMF_COMBO_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int EMF_COMBO_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.MultiValuedEditorSampleImpl <em>Multi Valued Editor Sample</em>}' class.
@@ -738,13 +801,22 @@ public interface EefnrPackage extends EPackage {
 	int MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Multivaluededitor RO Property</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Multi Valued Editor Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MULTI_VALUED_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int MULTI_VALUED_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.TableCompositionEditorSampleImpl <em>Table Composition Editor Sample</em>}' class.
@@ -784,13 +856,22 @@ public interface EefnrPackage extends EPackage {
 	int TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Tablecomposition RO Property</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Table Composition Editor Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TABLE_COMPOSITION_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int TABLE_COMPOSITION_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.AdvancedReferencesTableSampleImpl <em>Advanced References Table Sample</em>}' class.
@@ -830,13 +911,22 @@ public interface EefnrPackage extends EPackage {
 	int ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Advancedreferencestable RO Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Advanced References Table Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADVANCED_REFERENCES_TABLE_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int ADVANCED_REFERENCES_TABLE_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.AdvancedEObjectFlatComboViewerSampleImpl <em>Advanced EObject Flat Combo Viewer Sample</em>}' class.
@@ -876,13 +966,22 @@ public interface EefnrPackage extends EPackage {
 	int ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Advancedeobjectflatcomboviewer RO Propery</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_RO_PROPERY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Advanced EObject Flat Combo Viewer Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.AdvancedTableCompositionEditorSampleImpl <em>Advanced Table Composition Editor Sample</em>}' class.
@@ -922,13 +1021,22 @@ public interface EefnrPackage extends EPackage {
 	int ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Advancedtablecomposition RO Property</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Advanced Table Composition Editor Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.FlatReferencesTableSampleImpl <em>Flat References Table Sample</em>}' class.
@@ -968,13 +1076,22 @@ public interface EefnrPackage extends EPackage {
 	int FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Flatreferencestable RO Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Flat References Table Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FLAT_REFERENCES_TABLE_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int FLAT_REFERENCES_TABLE_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.SampleImpl <em>Sample</em>}' class.
@@ -1226,13 +1343,22 @@ public interface EefnrPackage extends EPackage {
 	int IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Imageviewer RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Image Viewer Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IMAGE_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int IMAGE_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.SelectionDialogSampleImpl <em>Selection Dialog Sample</em>}' class.
@@ -1272,13 +1398,22 @@ public interface EefnrPackage extends EPackage {
 	int SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Selection Dialog RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Selection Dialog Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SELECTION_DIALOG_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+	int SELECTION_DIALOG_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionViewerSampleImpl <em>Single Composition Viewer Sample</em>}' class.
@@ -1336,13 +1471,86 @@ public interface EefnrPackage extends EPackage {
 	int SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Singlecompositionview Single RO Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Single Composition Viewer Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLE_COMPOSITION_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 4;
+	int SINGLE_COMPOSITION_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 5;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionEditorSampleImpl <em>Single Composition Editor Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.SingleCompositionEditorSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getSingleCompositionEditorSample()
+	 * @generated
+	 */
+	int SINGLE_COMPOSITION_EDITOR_SAMPLE = 24;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_EDITOR_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Singlecompositioneditor Required Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Singlecompositioneditor Optional Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Singlecompositioneditor RO Propery</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Singlecompositioneditor On Abstract Optional Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Single Composition Editor Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_COMPOSITION_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.
@@ -1352,7 +1560,7 @@ public interface EefnrPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getENUM_SAMPLE()
 	 * @generated
 	 */
-	int ENUM_SAMPLE = 24;
+	int ENUM_SAMPLE = 25;
 
 
 	/**
@@ -1726,6 +1934,17 @@ public interface EefnrPackage extends EPackage {
 	EAttribute getTextSample_TextOptionalProperty();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.TextSample#getTextROProperty <em>Text RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TextSample#getTextROProperty()
+	 * @see #getTextSample()
+	 * @generated
+	 */
+	EAttribute getTextSample_TextROProperty();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.CheckboxSample <em>Checkbox Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1756,6 +1975,17 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCheckboxSample_CheckboxOptionalProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.CheckboxSample#isCheckboxROProperty <em>Checkbox RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Checkbox RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.CheckboxSample#isCheckboxROProperty()
+	 * @see #getCheckboxSample()
+	 * @generated
+	 */
+	EAttribute getCheckboxSample_CheckboxROProperty();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.TextareaSample <em>Textarea Sample</em>}'.
@@ -1790,6 +2020,17 @@ public interface EefnrPackage extends EPackage {
 	EAttribute getTextareaSample_TextareaOptionalProperty();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.TextareaSample#getTextareaROProperty <em>Textarea RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Textarea RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TextareaSample#getTextareaROProperty()
+	 * @see #getTextareaSample()
+	 * @generated
+	 */
+	EAttribute getTextareaSample_TextareaROProperty();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.RadioSample <em>Radio Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1820,6 +2061,17 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getRadioSample_RadioOptionalProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.RadioSample#getRadioROProperty <em>Radio RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Radio RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.RadioSample#getRadioROProperty()
+	 * @see #getRadioSample()
+	 * @generated
+	 */
+	EAttribute getRadioSample_RadioROProperty();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample <em>EObject Flat Combo Viewer Sample</em>}'.
@@ -1854,6 +2106,17 @@ public interface EefnrPackage extends EPackage {
 	EReference getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample#getEobjectflatcomboviewerROProperty <em>Eobjectflatcomboviewer RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Eobjectflatcomboviewer RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample#getEobjectflatcomboviewerROProperty()
+	 * @see #getEObjectFlatComboViewerSample()
+	 * @generated
+	 */
+	EReference getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.ReferencesTableSample <em>References Table Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1884,6 +2147,17 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getReferencesTableSample_ReferencestableOptionalProperty();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.ReferencesTableSample#getReferencestableROProperty <em>Referencestable RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Referencestable RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.ReferencesTableSample#getReferencestableROProperty()
+	 * @see #getReferencesTableSample()
+	 * @generated
+	 */
+	EReference getReferencesTableSample_ReferencestableROProperty();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.EMFComboViewerSample <em>EMF Combo Viewer Sample</em>}'.
@@ -1918,6 +2192,17 @@ public interface EefnrPackage extends EPackage {
 	EAttribute getEMFComboViewerSample_EmfcomboviewerOptionalProperty();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.EMFComboViewerSample#getEmfcomboviewerROProperty <em>Emfcomboviewer RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Emfcomboviewer RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.EMFComboViewerSample#getEmfcomboviewerROProperty()
+	 * @see #getEMFComboViewerSample()
+	 * @generated
+	 */
+	EAttribute getEMFComboViewerSample_EmfcomboviewerROProperty();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.MultiValuedEditorSample <em>Multi Valued Editor Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1948,6 +2233,17 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMultiValuedEditorSample_MultivaluededitorOptionalProperty();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.eef.eefnr.MultiValuedEditorSample#getMultivaluededitorROProperty <em>Multivaluededitor RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Multivaluededitor RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.MultiValuedEditorSample#getMultivaluededitorROProperty()
+	 * @see #getMultiValuedEditorSample()
+	 * @generated
+	 */
+	EAttribute getMultiValuedEditorSample_MultivaluededitorROProperty();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.TableCompositionEditorSample <em>Table Composition Editor Sample</em>}'.
@@ -1982,6 +2278,17 @@ public interface EefnrPackage extends EPackage {
 	EReference getTableCompositionEditorSample_TablecompositionOptionalProperty();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.TableCompositionEditorSample#getTablecompositionROProperty <em>Tablecomposition RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Tablecomposition RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.TableCompositionEditorSample#getTablecompositionROProperty()
+	 * @see #getTableCompositionEditorSample()
+	 * @generated
+	 */
+	EReference getTableCompositionEditorSample_TablecompositionROProperty();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.AdvancedReferencesTableSample <em>Advanced References Table Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2012,6 +2319,17 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.AdvancedReferencesTableSample#getAdvancedreferencestableROProperty <em>Advancedreferencestable RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Advancedreferencestable RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.AdvancedReferencesTableSample#getAdvancedreferencestableROProperty()
+	 * @see #getAdvancedReferencesTableSample()
+	 * @generated
+	 */
+	EReference getAdvancedReferencesTableSample_AdvancedreferencestableROProperty();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample <em>Advanced EObject Flat Combo Viewer Sample</em>}'.
@@ -2046,6 +2364,17 @@ public interface EefnrPackage extends EPackage {
 	EReference getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerROPropery <em>Advancedeobjectflatcomboviewer RO Propery</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Advancedeobjectflatcomboviewer RO Propery</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.AdvancedEObjectFlatComboViewerSample#getAdvancedeobjectflatcomboviewerROPropery()
+	 * @see #getAdvancedEObjectFlatComboViewerSample()
+	 * @generated
+	 */
+	EReference getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample <em>Advanced Table Composition Editor Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2078,6 +2407,17 @@ public interface EefnrPackage extends EPackage {
 	EReference getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample#getAdvancedtablecompositionROProperty <em>Advancedtablecomposition RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Advancedtablecomposition RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.AdvancedTableCompositionEditorSample#getAdvancedtablecompositionROProperty()
+	 * @see #getAdvancedTableCompositionEditorSample()
+	 * @generated
+	 */
+	EReference getAdvancedTableCompositionEditorSample_AdvancedtablecompositionROProperty();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.FlatReferencesTableSample <em>Flat References Table Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2108,6 +2448,17 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFlatReferencesTableSample_FlatreferencestableOptionalProperty();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.FlatReferencesTableSample#getFlatreferencestableROProperty <em>Flatreferencestable RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Flatreferencestable RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.FlatReferencesTableSample#getFlatreferencestableROProperty()
+	 * @see #getFlatReferencesTableSample()
+	 * @generated
+	 */
+	EReference getFlatReferencesTableSample_FlatreferencestableROProperty();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.Sample <em>Sample</em>}'.
@@ -2280,6 +2631,17 @@ public interface EefnrPackage extends EPackage {
 	EAttribute getImageViewerSample_ImageviewerOptionalProperty();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.ImageViewerSample#getImageviewerROProperty <em>Imageviewer RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Imageviewer RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.ImageViewerSample#getImageviewerROProperty()
+	 * @see #getImageViewerSample()
+	 * @generated
+	 */
+	EAttribute getImageViewerSample_ImageviewerROProperty();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.SelectionDialogSample <em>Selection Dialog Sample</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2310,6 +2672,17 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSelectionDialogSample_SelectionDialogOptionalProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.eefnr.SelectionDialogSample#getSelectionDialogROProperty <em>Selection Dialog RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Selection Dialog RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SelectionDialogSample#getSelectionDialogROProperty()
+	 * @see #getSelectionDialogSample()
+	 * @generated
+	 */
+	EAttribute getSelectionDialogSample_SelectionDialogROProperty();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample <em>Single Composition Viewer Sample</em>}'.
@@ -2364,6 +2737,71 @@ public interface EefnrPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewSingleROProperty <em>Singlecompositionview Single RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Singlecompositionview Single RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionViewerSample#getSinglecompositionviewSingleROProperty()
+	 * @see #getSingleCompositionViewerSample()
+	 * @generated
+	 */
+	EReference getSingleCompositionViewerSample_SinglecompositionviewSingleROProperty();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample <em>Single Composition Editor Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Single Composition Editor Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample
+	 * @generated
+	 */
+	EClass getSingleCompositionEditorSample();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorRequiredProperty <em>Singlecompositioneditor Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Singlecompositioneditor Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorRequiredProperty()
+	 * @see #getSingleCompositionEditorSample()
+	 * @generated
+	 */
+	EReference getSingleCompositionEditorSample_SinglecompositioneditorRequiredProperty();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorOptionalProperty <em>Singlecompositioneditor Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Singlecompositioneditor Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorOptionalProperty()
+	 * @see #getSingleCompositionEditorSample()
+	 * @generated
+	 */
+	EReference getSingleCompositionEditorSample_SinglecompositioneditorOptionalProperty();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorROPropery <em>Singlecompositioneditor RO Propery</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Singlecompositioneditor RO Propery</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorROPropery()
+	 * @see #getSingleCompositionEditorSample()
+	 * @generated
+	 */
+	EReference getSingleCompositionEditorSample_SinglecompositioneditorROPropery();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorOnAbstractOptionalProperty <em>Singlecompositioneditor On Abstract Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Singlecompositioneditor On Abstract Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.SingleCompositionEditorSample#getSinglecompositioneditorOnAbstractOptionalProperty()
+	 * @see #getSingleCompositionEditorSample()
+	 * @generated
+	 */
+	EReference getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}'.
@@ -2678,6 +3116,14 @@ public interface EefnrPackage extends EPackage {
 		EAttribute TEXT_SAMPLE__TEXT_OPTIONAL_PROPERTY = eINSTANCE.getTextSample_TextOptionalProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Text RO Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEXT_SAMPLE__TEXT_RO_PROPERTY = eINSTANCE.getTextSample_TextROProperty();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.CheckboxSampleImpl <em>Checkbox Sample</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2702,6 +3148,14 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CHECKBOX_SAMPLE__CHECKBOX_OPTIONAL_PROPERTY = eINSTANCE.getCheckboxSample_CheckboxOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Checkbox RO Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHECKBOX_SAMPLE__CHECKBOX_RO_PROPERTY = eINSTANCE.getCheckboxSample_CheckboxROProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.TextareaSampleImpl <em>Textarea Sample</em>}' class.
@@ -2730,6 +3184,14 @@ public interface EefnrPackage extends EPackage {
 		EAttribute TEXTAREA_SAMPLE__TEXTAREA_OPTIONAL_PROPERTY = eINSTANCE.getTextareaSample_TextareaOptionalProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Textarea RO Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEXTAREA_SAMPLE__TEXTAREA_RO_PROPERTY = eINSTANCE.getTextareaSample_TextareaROProperty();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.RadioSampleImpl <em>Radio Sample</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2754,6 +3216,14 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RADIO_SAMPLE__RADIO_OPTIONAL_PROPERTY = eINSTANCE.getRadioSample_RadioOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Radio RO Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RADIO_SAMPLE__RADIO_RO_PROPERTY = eINSTANCE.getRadioSample_RadioROProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.EObjectFlatComboViewerSampleImpl <em>EObject Flat Combo Viewer Sample</em>}' class.
@@ -2782,6 +3252,14 @@ public interface EefnrPackage extends EPackage {
 		EReference EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__EOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERY = eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery();
 
 		/**
+		 * The meta object literal for the '<em><b>Eobjectflatcomboviewer RO Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__EOBJECTFLATCOMBOVIEWER_RO_PROPERTY = eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.ReferencesTableSampleImpl <em>References Table Sample</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2806,6 +3284,14 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_OPTIONAL_PROPERTY = eINSTANCE.getReferencesTableSample_ReferencestableOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Referencestable RO Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REFERENCES_TABLE_SAMPLE__REFERENCESTABLE_RO_PROPERTY = eINSTANCE.getReferencesTableSample_ReferencestableROProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.EMFComboViewerSampleImpl <em>EMF Combo Viewer Sample</em>}' class.
@@ -2834,6 +3320,14 @@ public interface EefnrPackage extends EPackage {
 		EAttribute EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_OPTIONAL_PROPERTY = eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Emfcomboviewer RO Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EMF_COMBO_VIEWER_SAMPLE__EMFCOMBOVIEWER_RO_PROPERTY = eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.MultiValuedEditorSampleImpl <em>Multi Valued Editor Sample</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2858,6 +3352,14 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY = eINSTANCE.getMultiValuedEditorSample_MultivaluededitorOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Multivaluededitor RO Property</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_RO_PROPERTY = eINSTANCE.getMultiValuedEditorSample_MultivaluededitorROProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.TableCompositionEditorSampleImpl <em>Table Composition Editor Sample</em>}' class.
@@ -2886,6 +3388,14 @@ public interface EefnrPackage extends EPackage {
 		EReference TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_OPTIONAL_PROPERTY = eINSTANCE.getTableCompositionEditorSample_TablecompositionOptionalProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Tablecomposition RO Property</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TABLE_COMPOSITION_EDITOR_SAMPLE__TABLECOMPOSITION_RO_PROPERTY = eINSTANCE.getTableCompositionEditorSample_TablecompositionROProperty();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.AdvancedReferencesTableSampleImpl <em>Advanced References Table Sample</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2910,6 +3420,14 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_OPTIONAL_PROPERTY = eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Advancedreferencestable RO Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_RO_PROPERTY = eINSTANCE.getAdvancedReferencesTableSample_AdvancedreferencestableROProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.AdvancedEObjectFlatComboViewerSampleImpl <em>Advanced EObject Flat Combo Viewer Sample</em>}' class.
@@ -2938,6 +3456,14 @@ public interface EefnrPackage extends EPackage {
 		EReference ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERTY = eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerOptionalProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Advancedeobjectflatcomboviewer RO Propery</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADVANCED_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__ADVANCEDEOBJECTFLATCOMBOVIEWER_RO_PROPERY = eINSTANCE.getAdvancedEObjectFlatComboViewerSample_AdvancedeobjectflatcomboviewerROPropery();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.AdvancedTableCompositionEditorSampleImpl <em>Advanced Table Composition Editor Sample</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2964,6 +3490,14 @@ public interface EefnrPackage extends EPackage {
 		EReference ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_OPTIONAL_PROPERTY = eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionOptionalProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Advancedtablecomposition RO Property</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADVANCED_TABLE_COMPOSITION_EDITOR_SAMPLE__ADVANCEDTABLECOMPOSITION_RO_PROPERTY = eINSTANCE.getAdvancedTableCompositionEditorSample_AdvancedtablecompositionROProperty();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.FlatReferencesTableSampleImpl <em>Flat References Table Sample</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2988,6 +3522,14 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY = eINSTANCE.getFlatReferencesTableSample_FlatreferencestableOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Flatreferencestable RO Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_RO_PROPERTY = eINSTANCE.getFlatReferencesTableSample_FlatreferencestableROProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.SampleImpl <em>Sample</em>}' class.
@@ -3130,6 +3672,14 @@ public interface EefnrPackage extends EPackage {
 		EAttribute IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_OPTIONAL_PROPERTY = eINSTANCE.getImageViewerSample_ImageviewerOptionalProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Imageviewer RO Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMAGE_VIEWER_SAMPLE__IMAGEVIEWER_RO_PROPERTY = eINSTANCE.getImageViewerSample_ImageviewerROProperty();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.SelectionDialogSampleImpl <em>Selection Dialog Sample</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3154,6 +3704,14 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_OPTIONAL_PROPERTY = eINSTANCE.getSelectionDialogSample_SelectionDialogOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Selection Dialog RO Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_RO_PROPERTY = eINSTANCE.getSelectionDialogSample_SelectionDialogROProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionViewerSampleImpl <em>Single Composition Viewer Sample</em>}' class.
@@ -3196,6 +3754,56 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY = eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewMultiOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Singlecompositionview Single RO Property</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_SINGLE_RO_PROPERTY = eINSTANCE.getSingleCompositionViewerSample_SinglecompositionviewSingleROProperty();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.SingleCompositionEditorSampleImpl <em>Single Composition Editor Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.SingleCompositionEditorSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getSingleCompositionEditorSample()
+		 * @generated
+		 */
+		EClass SINGLE_COMPOSITION_EDITOR_SAMPLE = eINSTANCE.getSingleCompositionEditorSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Singlecompositioneditor Required Property</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_REQUIRED_PROPERTY = eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Singlecompositioneditor Optional Property</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_OPTIONAL_PROPERTY = eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Singlecompositioneditor RO Propery</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_RO_PROPERY = eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorROPropery();
+
+		/**
+		 * The meta object literal for the '<em><b>Singlecompositioneditor On Abstract Optional Property</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY = eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.

@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.eefnr;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample#getEobjectflatcomboviewerRequiredPropery <em>Eobjectflatcomboviewer Required Propery</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample#getEobjectflatcomboviewerOptionalPropery <em>Eobjectflatcomboviewer Optional Propery</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample#getEobjectflatcomboviewerROProperty <em>Eobjectflatcomboviewer RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +77,31 @@ public interface EObjectFlatComboViewerSample extends AbstractSample {
 	 * @generated
 	 */
 	void setEobjectflatcomboviewerOptionalPropery(TotalSample value);
+
+	/**
+	 * Returns the value of the '<em><b>Eobjectflatcomboviewer RO Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Eobjectflatcomboviewer RO Property</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Eobjectflatcomboviewer RO Property</em>' reference.
+	 * @see #setEobjectflatcomboviewerROProperty(TotalSample)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty()
+	 * @model
+	 * @generated
+	 */
+	TotalSample getEobjectflatcomboviewerROProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample#getEobjectflatcomboviewerROProperty <em>Eobjectflatcomboviewer RO Property</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Eobjectflatcomboviewer RO Property</em>' reference.
+	 * @see #getEobjectflatcomboviewerROProperty()
+	 * @generated
+	 */
+	void setEobjectflatcomboviewerROProperty(TotalSample value);
 
 } // EObjectFlatComboViewerSample

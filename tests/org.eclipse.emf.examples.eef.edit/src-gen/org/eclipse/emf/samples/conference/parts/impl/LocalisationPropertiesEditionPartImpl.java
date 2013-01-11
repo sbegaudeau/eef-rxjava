@@ -15,37 +15,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.LocalisationPropertiesEditionPart;
+
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
-
 
 // End of user code
 
@@ -158,6 +175,9 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 		EditingUtils.setID(place, ConferenceViewsRepository.Localisation.place);
 		EditingUtils.setEEFtype(place, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Localisation.place, ConferenceViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createPlaceText
+
+		// End of user code
 		return parent;
 	}
 
@@ -206,6 +226,9 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 		this.sites.setUpperBound(-1);
 		sites.setID(ConferenceViewsRepository.Localisation.sites);
 		sites.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createSitesAdvancedTableComposition
+
+		// End of user code
 		return parent;
 	}
 
@@ -244,6 +267,14 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			place.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Localisation.place);
+		if (eefElementEditorReadOnlyState && place.isEnabled()) {
+			place.setEnabled(false);
+			place.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !place.isEnabled()) {
+			place.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -259,6 +290,14 @@ public class LocalisationPropertiesEditionPartImpl extends CompositePropertiesEd
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		sites.setContentProvider(contentProvider);
 		sites.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Localisation.sites);
+		if (eefElementEditorReadOnlyState && sites.isEnabled()) {
+			sites.setEnabled(false);
+			sites.setToolTipText(ConferenceMessages.Localisation_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !sites.isEnabled()) {
+			sites.setEnabled(true);
+		}	
+		
 	}
 
 	/**

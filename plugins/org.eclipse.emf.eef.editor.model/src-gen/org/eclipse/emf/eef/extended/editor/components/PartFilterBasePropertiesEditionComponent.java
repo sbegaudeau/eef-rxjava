@@ -28,7 +28,9 @@ import org.eclipse.emf.eef.extended.editor.PartFilter;
 import org.eclipse.emf.eef.extended.editor.parts.EditorViewsRepository;
 import org.eclipse.emf.eef.extended.editor.parts.PartFilterPropertiesEditionPart;
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -253,6 +255,21 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 				basePart.setContextualComponent((EObject)msg.getNewValue());
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			FiltersPackage.eINSTANCE.getBindingFilter_Name(),
+			FiltersPackage.eINSTANCE.getBindingFilter_Mandatory(),
+			EditorPackage.eINSTANCE.getPartFilter_FilteredPart(),
+			EditorPackage.eINSTANCE.getPartFilter_ContextualComponent());
+		return new NotificationFilter[] {filter,};
 	}
 
 

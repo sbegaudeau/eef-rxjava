@@ -12,13 +12,21 @@ package org.eclipse.emf.eef.eefnr.interface_.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.eefnr.interface_.parts.SimpleSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
+
 
 // End of user code
 /**

@@ -144,6 +144,9 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		model.setLayoutData(modelData);
 		model.setID(ComponentsViewsRepository.PropertiesEditionContext.Binding.model);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionContext.Binding.model, ComponentsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createModelFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -185,6 +188,14 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		if (current != null) {
 			model.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesEditionContext.Binding.model);
+		if (eefElementEditorReadOnlyState && model.isEnabled()) {
+			model.setEnabled(false);
+			model.setToolTipText(ComponentsMessages.PropertiesEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !model.isEnabled()) {
+			model.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -199,6 +210,14 @@ public class PropertiesEditionContextPropertiesEditionPartImpl extends Composite
 		} else {
 			model.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesEditionContext.Binding.model);
+		if (eefElementEditorReadOnlyState && model.isEnabled()) {
+			model.setEnabled(false);
+			model.setToolTipText(ComponentsMessages.PropertiesEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !model.isEnabled()) {
+			model.setEnabled(true);
+		}	
+		
 	}
 
 	/**

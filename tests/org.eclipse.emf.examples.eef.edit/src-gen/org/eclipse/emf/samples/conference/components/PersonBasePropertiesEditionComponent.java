@@ -12,23 +12,35 @@ package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.GENDER;
 import org.eclipse.emf.samples.conference.Person;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.PersonPropertiesEditionPart;
 
@@ -68,13 +80,14 @@ public class PersonBasePropertiesEditionComponent extends SinglePartPropertiesEd
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Person person = (Person)elt;
 			final PersonPropertiesEditionPart basePart = (PersonPropertiesEditionPart)editingPart;
 			// init values
-			if (person.getFirstname() != null && isAccessible(ConferenceViewsRepository.Person.Identity.firstname))
+			if (isAccessible(ConferenceViewsRepository.Person.Identity.firstname))
 				basePart.setFirstname(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, person.getFirstname()));
 			
-			if (person.getLastname() != null && isAccessible(ConferenceViewsRepository.Person.Identity.lastname))
+			if (isAccessible(ConferenceViewsRepository.Person.Identity.lastname))
 				basePart.setLastname(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, person.getLastname()));
 			
 			if (isAccessible(ConferenceViewsRepository.Person.Identity.age)) {
@@ -171,40 +184,58 @@ public class PersonBasePropertiesEditionComponent extends SinglePartPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			PersonPropertiesEditionPart basePart = (PersonPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.firstname)) {
+			if (ConferencePackage.eINSTANCE.getPerson_Firstname().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.firstname)) {
 				if (msg.getNewValue() != null) {
 					basePart.setFirstname(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setFirstname("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.lastname)) {
+			if (ConferencePackage.eINSTANCE.getPerson_Lastname().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.lastname)) {
 				if (msg.getNewValue() != null) {
 					basePart.setLastname(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setLastname("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.age)) {
+			if (ConferencePackage.eINSTANCE.getPerson_Age().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Person.Identity.age)) {
 				if (msg.getNewValue() != null) {
 					basePart.setAge(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
 					basePart.setAge("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter))
+			if (ConferencePackage.eINSTANCE.getPerson_EclipseCommiter().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Person.EclipseStatus.eclipseCommiter))
 				basePart.setEclipseCommiter((Boolean)msg.getNewValue());
 			
-			if (ConferencePackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Person.Identity.gender))
+			if (ConferencePackage.eINSTANCE.getPerson_Gender().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(ConferenceViewsRepository.Person.Identity.gender))
 				basePart.setGender((GENDER)msg.getNewValue());
 			
-			if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Person.EclipseStatus.isRegistered))
+			if (ConferencePackage.eINSTANCE.getPerson_IsRegistered().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Person.EclipseStatus.isRegistered))
 				basePart.setIsRegistered((Boolean)msg.getNewValue());
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ConferencePackage.eINSTANCE.getPerson_Firstname(),
+			ConferencePackage.eINSTANCE.getPerson_Lastname(),
+			ConferencePackage.eINSTANCE.getPerson_Age(),
+			ConferencePackage.eINSTANCE.getPerson_EclipseCommiter(),
+			ConferencePackage.eINSTANCE.getPerson_Gender(),
+			ConferencePackage.eINSTANCE.getPerson_IsRegistered()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -302,5 +333,8 @@ public class PersonBasePropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 		return ret;
 	}
+
+
+	
 
 }

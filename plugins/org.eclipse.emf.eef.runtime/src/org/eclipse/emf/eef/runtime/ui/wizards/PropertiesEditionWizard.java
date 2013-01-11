@@ -27,9 +27,12 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.impl.services.LockPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.eef.runtime.policies.ILockPolicy;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionContentProvider;
 import org.eclipse.emf.eef.runtime.ui.viewers.PropertiesEditionMessageManager;
@@ -164,6 +167,7 @@ public class PropertiesEditionWizard extends Wizard {
 	 */
 	@Override
 	public boolean performCancel() {
+		release();
 		PropertiesContextService.getInstance().pop();
 		return super.performCancel();
 	}
@@ -175,7 +179,20 @@ public class PropertiesEditionWizard extends Wizard {
 	 */
 	@Override
 	public boolean performFinish() {
+//		release();
 		return true;
+	}
+	
+	private void release() {
+		Object input = mainPage.viewer.getInput();
+		if (input instanceof EObjectPropertiesEditionContext) {
+			IPropertiesEditionComponent propertiesEditingComponent = ((EObjectPropertiesEditionContext)input).getPropertiesEditingComponent();
+			if (propertiesEditingComponent != null) {
+				for (ILockPolicy lockPolicies : LockPolicyProviderService.getInstance().getPolicies()) {
+					lockPolicies.release(propertiesEditingComponent);
+				}
+			}
+		}
 	}
 
 	/**
@@ -187,6 +204,19 @@ public class PropertiesEditionWizard extends Wizard {
 	public void createPageControls(Composite pageContainer) {
 		super.createPageControls(pageContainer);
 		mainPage.setInput(eObject);
+		lock();
+	}
+
+	private void lock() {
+		Object input = mainPage.viewer.getInput();
+		if (input instanceof EObjectPropertiesEditionContext) {
+			IPropertiesEditionComponent propertiesEditingComponent = ((EObjectPropertiesEditionContext)input).getPropertiesEditingComponent();
+			if (propertiesEditingComponent != null) {
+				for (ILockPolicy lockPolicies : LockPolicyProviderService.getInstance().getPolicies()) {
+					lockPolicies.lock(propertiesEditingComponent);
+				}
+			}
+		}
 	}
 
 	@Override
@@ -321,8 +351,8 @@ public class PropertiesEditionWizard extends Wizard {
 			this.setTitle(eObject.eClass().getName());
 			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_main_page_description
 					+ eObject.eClass().getName());
-			editingContext.seteObject(eObject);
-			viewer.setInput(editingContext);
+			EObjectPropertiesEditionContext subContext = new EObjectPropertiesEditionContext(editingContext, null, eObject, editingContext.getAdapterFactory());
+			viewer.setInput(subContext);
 			viewer.addPropertiesListener(this);
 		}
 

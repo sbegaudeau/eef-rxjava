@@ -12,27 +12,48 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EObjectFlatComboViewerSample;
 import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
+
 import org.eclipse.emf.eef.eefnr.parts.EObjectFlatComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -59,6 +80,11 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 	 */
 	private EObjectFlatComboSettings eobjectflatcomboviewerOptionalProperySettings;
 	
+	/**
+	 * Settings for eobjectflatcomboviewerROProperty EObjectFlatComboViewer
+	 */
+	private EObjectFlatComboSettings eobjectflatcomboviewerROPropertySettings;
+	
 	
 	/**
 	 * Default constructor
@@ -82,6 +108,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final EObjectFlatComboViewerSample eObjectFlatComboViewerSample = (EObjectFlatComboViewerSample)elt;
 			final EObjectFlatComboViewerSamplePropertiesEditionPart basePart = (EObjectFlatComboViewerSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -99,6 +126,13 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 				// set the button mode
 				basePart.setEobjectflatcomboviewerOptionalProperyButtonMode(ButtonsModeEnum.BROWSE);
 			}
+			if (isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery)) {
+				// init part
+				eobjectflatcomboviewerROPropertySettings = new EObjectFlatComboSettings(eObjectFlatComboViewerSample, EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty());
+				basePart.initEobjectflatcomboviewerROPropery(eobjectflatcomboviewerROPropertySettings);
+				// set the button mode
+				basePart.setEobjectflatcomboviewerROProperyButtonMode(ButtonsModeEnum.BROWSE);
+			}
 			// init filters
 			if (isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery)) {
 				basePart.addFilterToEobjectflatcomboviewerRequiredPropery(new ViewerFilter() {
@@ -114,7 +148,6 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 					
 				});
 				// Start of user code for additional businessfilters for eobjectflatcomboviewerRequiredPropery
-				
 				// End of user code
 			}
 			if (isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery)) {
@@ -131,7 +164,22 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 					
 				});
 				// Start of user code for additional businessfilters for eobjectflatcomboviewerOptionalPropery
+				// End of user code
+			}
+			if (isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery)) {
+				basePart.addFilterToEobjectflatcomboviewerROPropery(new ViewerFilter() {
 				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof TotalSample); //$NON-NLS-1$ 
+					}
+					
+				});
+				// Start of user code for additional businessfilters for eobjectflatcomboviewerROProperty
 				// End of user code
 			}
 			// init values for referenced views
@@ -141,6 +189,7 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -156,6 +205,9 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 		}
 		if (editorKey == EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery) {
 			return EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery();
+		}
+		if (editorKey == EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery) {
+			return EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -206,14 +258,31 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EObjectFlatComboViewerSamplePropertiesEditionPart basePart = (EObjectFlatComboViewerSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerRequiredPropery))
 				basePart.setEobjectflatcomboviewerRequiredPropery((EObject)msg.getNewValue());
 			if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerOptionalPropery))
 				basePart.setEobjectflatcomboviewerOptionalPropery((EObject)msg.getNewValue());
+			if (EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty().equals(msg.getFeature()) && basePart != null && isAccessible(EefnrViewsRepository.EObjectFlatComboViewerSample.Properties.eobjectflatcomboviewerROPropery))
+				basePart.setEobjectflatcomboviewerROPropery((EObject)msg.getNewValue());
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerRequiredPropery(),
+			EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerOptionalPropery(),
+			EefnrPackage.eINSTANCE.getEObjectFlatComboViewerSample_EobjectflatcomboviewerROProperty()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -245,5 +314,8 @@ public class EObjectFlatComboViewerSamplePropertiesEditionComponent extends Sing
 		}
 		return ret;
 	}
+
+
+	
 
 }

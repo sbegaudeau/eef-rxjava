@@ -15,15 +15,13 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.ecore.change.ChangeDescription;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
+import org.eclipse.emf.eef.runtime.impl.services.WizardOpeningPolicyProviderService;
+import org.eclipse.emf.eef.runtime.ui.wizards.IWizardOpeningPolicy;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.AbstractEMFOperation;
-import org.eclipse.jface.window.Window;
 
 /**
  * @author glefur
@@ -50,13 +48,11 @@ public class WizardEditingOperation extends AbstractEMFOperation {
 	protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		PropertiesEditionWizard wizard = new PropertiesEditionWizard(editingContext,
 				editingContext.getAdapterFactory(), editingContext.getEObject());
-		EEFWizardDialog wDialog = new EEFWizardDialog(EditingUtils.getShell(), wizard);
-		int open = wDialog.open();
-		ChangeDescription description = editingContext.getChangeRecorder().endRecording();
-		if (open == Window.OK) {
+		IWizardOpeningPolicy wizardOpeningPolicy = WizardOpeningPolicyProviderService.provide(editingContext.getEObject());
+		boolean open = wizardOpeningPolicy.openWizard(editingContext, wizard);
+		if (open) {
 			return Status.OK_STATUS;
 		} else {
-			description.applyAndReverse();
 			return Status.CANCEL_STATUS;
 		}
 	}

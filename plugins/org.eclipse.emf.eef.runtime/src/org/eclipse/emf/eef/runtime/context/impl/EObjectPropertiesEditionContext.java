@@ -10,16 +10,25 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.context.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.ResourceSetAdapter;
 import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.ViewHelper;
 import org.eclipse.emf.eef.runtime.ui.parts.impl.BindingViewHelper;
+import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
@@ -41,6 +50,11 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 	 * the EObject to edit
 	 */
 	protected EObject eObject;
+	
+	/**
+	 * EEF editor settings to use.
+	 */
+	private List<EEFEditorSettings> allSettings;
 
 	/**
 	 * 
@@ -79,10 +93,7 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 		this.parentPropertiesEditionComponent = propertiesEditionComponent;
 		this.eObject = eObject;
 		this.adapterFactory = adapterFactory;
-		ResourceSet resourceSet = getResourceSet();
-		if (resourceSet != null) {
-			this.changeRecorder = new ChangeRecorder(resourceSet);
-		}
+		this.allSettings = new ArrayList<EEFEditorSettings>();
 	}
 
 	/**
@@ -90,6 +101,26 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 	 */
 	public PropertiesEditingContext getParentContext() {
 		return parentContext;
+	}
+
+	/** 
+	 * (non-Javadoc)
+	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#initializeRecorder()
+	 */
+	public void initializeRecorder() {
+		if (this.changeRecorder == null) {
+			Notifier highestNotifier = EEFUtils.highestNotifier(eObject);
+			if (highestNotifier instanceof ResourceSet) {
+				this.changeRecorder = new ChangeRecorder((ResourceSet) highestNotifier);
+			} else if (highestNotifier instanceof Resource) {
+				this.changeRecorder = new ChangeRecorder((Resource) highestNotifier);
+			} else if (highestNotifier instanceof EObject) {
+				this.changeRecorder = new ChangeRecorder((EObject) highestNotifier);
+			}
+		}
+		if (getParentContext() != null) {
+			getParentContext().initializeRecorder();
+		}
 	}
 
 	/**
@@ -111,6 +142,20 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 	 */
 	public void seteObject(EObject eObject) {
 		this.eObject = eObject;
+	}
+	
+	/**
+	 * @return the settings to use.
+	 */
+	public List<EEFEditorSettings> getAllSettings() {
+		return allSettings;
+	}
+	
+	/**
+	 * set the settings to use.
+	 */
+	public void setAllSettings(List<EEFEditorSettings> settings) {
+		this.allSettings = settings;
 	}
 
 	/**
@@ -227,4 +272,29 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 		this.helper = helper;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext#getResourceSetAdapter()
+	 */
+	public ResourceSetAdapter getResourceSetAdapter() {
+		ResourceSet resourceSet = getResourceSet();
+		for (Adapter adapter : resourceSet.eAdapters()) {
+			if (adapter instanceof ResourceSetAdapter) {
+				return (ResourceSetAdapter)adapter;
+			}
+		}
+		ResourceSetAdapter resourceSetAdapter = new ResourceSetAdapter(resourceSet);
+		resourceSetAdapter.activate();
+		return resourceSetAdapter;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext#canReachResourceSetAdapter()
+	 */
+	public boolean canReachResourceSetAdapter() {
+		return eObject != null && eObject.eResource() != null && eObject.eResource().getResourceSet() != null;
+	}
+
+	
 }

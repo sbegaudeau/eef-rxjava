@@ -163,6 +163,9 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends SectionPr
 		});
 		model.setID(ComponentsViewsRepository.PropertiesEditionContext.Binding.model);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ComponentsViewsRepository.PropertiesEditionContext.Binding.model, ComponentsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createModelFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -204,6 +207,14 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends SectionPr
 		if (current != null) {
 			model.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesEditionContext.Binding.model);
+		if (eefElementEditorReadOnlyState && model.isEnabled()) {
+			model.setEnabled(false);
+			model.setToolTipText(ComponentsMessages.PropertiesEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !model.isEnabled()) {
+			model.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -218,6 +229,14 @@ public class PropertiesEditionContextPropertiesEditionPartForm extends SectionPr
 		} else {
 			model.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ComponentsViewsRepository.PropertiesEditionContext.Binding.model);
+		if (eefElementEditorReadOnlyState && model.isEnabled()) {
+			model.setEnabled(false);
+			model.setToolTipText(ComponentsMessages.PropertiesEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !model.isEnabled()) {
+			model.setEnabled(true);
+		}	
+		
 	}
 
 	/**

@@ -13,33 +13,46 @@ package org.eclipse.emf.eef.eefnr.parts.forms;
 // Start of user code for imports
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.TextSampleSecondTabPropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -197,6 +210,9 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setID(textRequiredPropertyInSecondTab, EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab);
 		EditingUtils.setEEFtype(textRequiredPropertyInSecondTab, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextRequiredPropertyInSecondTabText
+
+		// End of user code
 		return parent;
 	}
 
@@ -262,6 +278,9 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setID(textOptionalPropertyInSecondTab, EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab);
 		EditingUtils.setEEFtype(textOptionalPropertyInSecondTab, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab, EefnrViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTextOptionalPropertyInSecondTabText
+
+		// End of user code
 		return parent;
 	}
 
@@ -300,6 +319,14 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends SectionPropert
 		} else {
 			textRequiredPropertyInSecondTab.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TextSampleSecondTab.Properties.textRequiredPropertyInSecondTab);
+		if (eefElementEditorReadOnlyState && textRequiredPropertyInSecondTab.isEnabled()) {
+			textRequiredPropertyInSecondTab.setEnabled(false);
+			textRequiredPropertyInSecondTab.setToolTipText(EefnrMessages.TextSampleSecondTab_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !textRequiredPropertyInSecondTab.isEnabled()) {
+			textRequiredPropertyInSecondTab.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -324,6 +351,14 @@ public class TextSampleSecondTabPropertiesEditionPartForm extends SectionPropert
 		} else {
 			textOptionalPropertyInSecondTab.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TextSampleSecondTab.Properties.textOptionalPropertyInSecondTab);
+		if (eefElementEditorReadOnlyState && textOptionalPropertyInSecondTab.isEnabled()) {
+			textOptionalPropertyInSecondTab.setEnabled(false);
+			textOptionalPropertyInSecondTab.setToolTipText(EefnrMessages.TextSampleSecondTab_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !textOptionalPropertyInSecondTab.isEnabled()) {
+			textOptionalPropertyInSecondTab.setEnabled(true);
+		}	
+		
 	}
 
 

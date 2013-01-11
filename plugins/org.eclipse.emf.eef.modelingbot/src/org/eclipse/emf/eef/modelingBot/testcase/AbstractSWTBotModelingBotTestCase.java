@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.modelingBot.testcase;
 import org.eclipse.emf.eef.modelingBot.helper.SWTBotHelper;
 import org.eclipse.emf.eef.modelingBot.swtbot.SWTEEFBot;
 import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseTestCase;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -34,6 +35,16 @@ public abstract class AbstractSWTBotModelingBotTestCase extends SWTBotEclipseTes
 	 */
 	public void setUp() throws Exception {
 		super.setUp();
+		bot.waitUntil(new DefaultCondition() {
+			
+			public boolean test() throws Exception {
+				return PlatformUI.getWorkbench().getWorkbenchWindows().length > 0;
+			}
+			
+			public String getFailureMessage() {
+				return "Unable to find a workbench window";
+			}
+		});
 		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
 			public void run() {

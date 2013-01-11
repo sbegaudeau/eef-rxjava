@@ -14,37 +14,58 @@ package org.eclipse.emf.eef.filters.components;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+
 import org.eclipse.emf.eef.eefnr.filters.AbstractReferenceTargetSample;
 import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample;
 import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample2;
 import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
+
 import org.eclipse.emf.eef.eefnr.filters.parts.ConcreteReferenceOwnerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.filters.parts.FiltersViewsRepository;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -94,10 +115,11 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ConcreteReferenceOwnerSample concreteReferenceOwnerSample = (ConcreteReferenceOwnerSample)elt;
 			final ConcreteReferenceOwnerSamplePropertiesEditionPart basePart = (ConcreteReferenceOwnerSamplePropertiesEditionPart)editingPart;
 			// init values
-			if (concreteReferenceOwnerSample.getName() != null && isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name))
+			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, concreteReferenceOwnerSample.getName()));
 			
 			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget)) {
@@ -111,20 +133,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 			// init filters
 			
 			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget)) {
-				basePart.addFilterToAbstractTarget(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInAbstractTargetTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
 				basePart.addFilterToAbstractTarget(new EObjectFilter(FiltersPackage.Literals.ABSTRACT_REFERENCE_TARGET_SAMPLE));
 							basePart.addFilterToAbstractTarget(new ViewerFilter() {
 				
@@ -144,7 +152,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 								}
 							});
 				// Start of user code for additional businessfilters for abstractTarget
-				
 				// End of user code
 			}
 			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping)) {
@@ -161,7 +168,6 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 				});
 				// FIXME default case for filter body generation.
 				// Start of user code for additional businessfilters for strictTyping
-				
 				// End of user code
 			}
 			// init values for referenced views
@@ -247,9 +253,10 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ConcreteReferenceOwnerSamplePropertiesEditionPart basePart = (ConcreteReferenceOwnerSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name)) {
+			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -262,6 +269,20 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 				basePart.updateStrictTyping();
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
+			FiltersPackage.eINSTANCE.getAbstractReferenceOwnerSample_AbstractTarget(),
+			FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -290,5 +311,8 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 		}
 		return ret;
 	}
+
+
+	
 
 }

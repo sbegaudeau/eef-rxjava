@@ -9,11 +9,8 @@ package org.eclipse.emf.eef.eefnr.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.TotalSample;
@@ -27,6 +24,7 @@ import org.eclipse.emf.eef.eefnr.TotalSample;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.FlatReferencesTableSampleImpl#getFlatreferencestableRequiredProperty <em>Flatreferencestable Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.FlatReferencesTableSampleImpl#getFlatreferencestableOptionalProperty <em>Flatreferencestable Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.FlatReferencesTableSampleImpl#getFlatreferencestableROProperty <em>Flatreferencestable RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,6 +50,16 @@ public class FlatReferencesTableSampleImpl extends AbstractSampleImpl implements
 	 * @ordered
 	 */
 	protected EList<TotalSample> flatreferencestableOptionalProperty;
+
+	/**
+	 * The cached value of the '{@link #getFlatreferencestableROProperty() <em>Flatreferencestable RO Property</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFlatreferencestableROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TotalSample> flatreferencestableROProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,6 +109,18 @@ public class FlatReferencesTableSampleImpl extends AbstractSampleImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<TotalSample> getFlatreferencestableROProperty() {
+		if (flatreferencestableROProperty == null) {
+			flatreferencestableROProperty = new EObjectResolvingEList<TotalSample>(TotalSample.class, this, EefnrPackage.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_RO_PROPERTY);
+		}
+		return flatreferencestableROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -108,6 +128,8 @@ public class FlatReferencesTableSampleImpl extends AbstractSampleImpl implements
 				return getFlatreferencestableRequiredProperty();
 			case EefnrPackage.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY:
 				return getFlatreferencestableOptionalProperty();
+			case EefnrPackage.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_RO_PROPERTY:
+				return getFlatreferencestableROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -129,6 +151,10 @@ public class FlatReferencesTableSampleImpl extends AbstractSampleImpl implements
 				getFlatreferencestableOptionalProperty().clear();
 				getFlatreferencestableOptionalProperty().addAll((Collection<? extends TotalSample>)newValue);
 				return;
+			case EefnrPackage.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_RO_PROPERTY:
+				getFlatreferencestableROProperty().clear();
+				getFlatreferencestableROProperty().addAll((Collection<? extends TotalSample>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -147,6 +173,9 @@ public class FlatReferencesTableSampleImpl extends AbstractSampleImpl implements
 			case EefnrPackage.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY:
 				getFlatreferencestableOptionalProperty().clear();
 				return;
+			case EefnrPackage.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_RO_PROPERTY:
+				getFlatreferencestableROProperty().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -163,6 +192,8 @@ public class FlatReferencesTableSampleImpl extends AbstractSampleImpl implements
 				return flatreferencestableRequiredProperty != null && !flatreferencestableRequiredProperty.isEmpty();
 			case EefnrPackage.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_OPTIONAL_PROPERTY:
 				return flatreferencestableOptionalProperty != null && !flatreferencestableOptionalProperty.isEmpty();
+			case EefnrPackage.FLAT_REFERENCES_TABLE_SAMPLE__FLATREFERENCESTABLE_RO_PROPERTY:
+				return flatreferencestableROProperty != null && !flatreferencestableROProperty.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

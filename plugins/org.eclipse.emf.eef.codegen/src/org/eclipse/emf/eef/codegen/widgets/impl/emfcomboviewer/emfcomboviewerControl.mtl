@@ -24,7 +24,7 @@
 
 [template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('EMFComboViewer'))]
 [if (editionElement.model.oclAsType(EAttribute).isEnum())]
-if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && isAccessible([editionElement.views->first().editorID()/]))
+if ([editionElement.liveUpdaterNavigationCondition(pec)/] && isAccessible([editionElement.views->first().editorID()/]))
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/](([include(editionElement.peeModelQualifiedClass())/])msg.getNewValue());
 [else]
 //FIXME invalid case in liveUpdater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = EMFComboViewer

@@ -14,7 +14,6 @@ package org.eclipse.emf.samples.conference.parts;
 import org.eclipse.emf.common.util.EList;
 
 
-
 // End of user code
 
 /**

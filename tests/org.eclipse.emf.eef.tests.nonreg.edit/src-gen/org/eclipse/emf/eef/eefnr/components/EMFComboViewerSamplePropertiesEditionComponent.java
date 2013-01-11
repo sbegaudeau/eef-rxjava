@@ -12,21 +12,34 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.EMFComboViewerSample;
 import org.eclipse.emf.eef.eefnr.ENUM_SAMPLE;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
+
 import org.eclipse.emf.eef.eefnr.parts.EMFComboViewerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
@@ -66,6 +79,7 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final EMFComboViewerSample eMFComboViewerSample = (EMFComboViewerSample)elt;
 			final EMFComboViewerSamplePropertiesEditionPart basePart = (EMFComboViewerSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -75,7 +89,11 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 			if (isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty)) {
 				basePart.initEmfcomboviewerOptionalProperty(EEFUtils.choiceOfValues(eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty()), eMFComboViewerSample.getEmfcomboviewerOptionalProperty());
 			}
+			if (isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty)) {
+				basePart.initEmfcomboviewerROProperty(EEFUtils.choiceOfValues(eMFComboViewerSample, EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty()), eMFComboViewerSample.getEmfcomboviewerROProperty());
+			}
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -85,6 +103,7 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -100,6 +119,9 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 		}
 		if (editorKey == EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty) {
+			return EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -124,16 +146,34 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EMFComboViewerSamplePropertiesEditionPart basePart = (EMFComboViewerSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty))
+			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerRequiredProperty))
 				basePart.setEmfcomboviewerRequiredProperty((ENUM_SAMPLE)msg.getNewValue());
 			
-			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().equals(msg.getFeature()) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty))
+			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerOptionalProperty))
 				basePart.setEmfcomboviewerOptionalProperty((ENUM_SAMPLE)msg.getNewValue());
+			
+			if (EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty))
+				basePart.setEmfcomboviewerROProperty((ENUM_SAMPLE)msg.getNewValue());
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerRequiredProperty(),
+			EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty(),
+			EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -171,6 +211,13 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerOptionalProperty().getEAttributeType(), newValue);
 				}
+				if (EefnrViewsRepository.EMFComboViewerSample.Properties.emfcomboviewerROProperty == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getEMFComboViewerSample_EmfcomboviewerROProperty().getEAttributeType(), newValue);
+				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -179,5 +226,8 @@ public class EMFComboViewerSamplePropertiesEditionComponent extends SinglePartPr
 		}
 		return ret;
 	}
+
+
+	
 
 }

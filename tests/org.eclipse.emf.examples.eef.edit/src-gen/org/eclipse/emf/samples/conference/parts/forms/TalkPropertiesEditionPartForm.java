@@ -12,48 +12,69 @@ package org.eclipse.emf.samples.conference.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
+
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart;
+
 import org.eclipse.emf.samples.conference.providers.ConferenceMessages;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -231,6 +252,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		EditingUtils.setID(title_, ConferenceViewsRepository.Talk.Properties.title_);
 		EditingUtils.setEEFtype(title_, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.title_, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTitle_Text
+
+		// End of user code
 		return parent;
 	}
 
@@ -261,6 +285,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		});
 		topic.setID(ConferenceViewsRepository.Talk.Properties.topic);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.topic, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTopicFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -288,6 +315,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		});
 		type.setID(ConferenceViewsRepository.Talk.Properties.type);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.type, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTypeEMFComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -318,6 +348,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		});
 		presenter.setID(ConferenceViewsRepository.Talk.Properties.presenter);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.presenter, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createPresenterFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -348,6 +381,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		});
 		creator.setID(ConferenceViewsRepository.Talk.Properties.creator);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.creator, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCreatorFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -404,6 +440,9 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		EditingUtils.setID(documentation, ConferenceViewsRepository.Talk.Properties.documentation);
 		EditingUtils.setEEFtype(documentation, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ConferenceViewsRepository.Talk.Properties.documentation, ConferenceViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDocumentationTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -442,6 +481,14 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		} else {
 			title_.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Talk.Properties.title_);
+		if (eefElementEditorReadOnlyState && title_.isEnabled()) {
+			title_.setEnabled(false);
+			title_.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !title_.isEnabled()) {
+			title_.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -469,6 +516,14 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		if (current != null) {
 			topic.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Talk.Properties.topic);
+		if (eefElementEditorReadOnlyState && topic.isEnabled()) {
+			topic.setEnabled(false);
+			topic.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !topic.isEnabled()) {
+			topic.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -483,6 +538,14 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		} else {
 			topic.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Talk.Properties.topic);
+		if (eefElementEditorReadOnlyState && topic.isEnabled()) {
+			topic.setEnabled(false);
+			topic.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !topic.isEnabled()) {
+			topic.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -533,6 +596,14 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	public void initType(Object input, Enumerator current) {
 		type.setInput(input);
 		type.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Talk.Properties.type);
+		if (eefElementEditorReadOnlyState && type.isEnabled()) {
+			type.setEnabled(false);
+			type.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !type.isEnabled()) {
+			type.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -543,6 +614,14 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	 */
 	public void setType(Enumerator newValue) {
 		type.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Talk.Properties.type);
+		if (eefElementEditorReadOnlyState && type.isEnabled()) {
+			type.setEnabled(false);
+			type.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !type.isEnabled()) {
+			type.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -570,6 +649,14 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		if (current != null) {
 			presenter.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Talk.Properties.presenter);
+		if (eefElementEditorReadOnlyState && presenter.isEnabled()) {
+			presenter.setEnabled(false);
+			presenter.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !presenter.isEnabled()) {
+			presenter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -584,6 +671,14 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		} else {
 			presenter.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Talk.Properties.presenter);
+		if (eefElementEditorReadOnlyState && presenter.isEnabled()) {
+			presenter.setEnabled(false);
+			presenter.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !presenter.isEnabled()) {
+			presenter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -640,6 +735,14 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		if (current != null) {
 			creator.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Talk.Properties.creator);
+		if (eefElementEditorReadOnlyState && creator.isEnabled()) {
+			creator.setEnabled(false);
+			creator.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !creator.isEnabled()) {
+			creator.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -654,6 +757,14 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		} else {
 			creator.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Talk.Properties.creator);
+		if (eefElementEditorReadOnlyState && creator.isEnabled()) {
+			creator.setEnabled(false);
+			creator.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !creator.isEnabled()) {
+			creator.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -707,6 +818,15 @@ public class TalkPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		} else {
 			documentation.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Talk.Properties.documentation);
+		if (eefElementEditorReadOnlyState && documentation.isEnabled()) {
+			documentation.setEnabled(false);
+			documentation.setBackground(documentation.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			documentation.setToolTipText(ConferenceMessages.Talk_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !documentation.isEnabled()) {
+			documentation.setEnabled(true);
+		}	
+		
 	}
 
 

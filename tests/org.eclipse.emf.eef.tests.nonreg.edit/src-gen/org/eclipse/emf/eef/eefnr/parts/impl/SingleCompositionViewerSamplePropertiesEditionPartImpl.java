@@ -13,37 +13,56 @@ package org.eclipse.emf.eef.eefnr.parts.impl;
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.edit.domain.EditingDomain;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.SingleCompositionViewerSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SingleCompositionViewer;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.custom.ScrolledComposite;
+
 import org.eclipse.swt.events.ControlListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.ui.internal.forms.widgets.FormUtil;
 
+import org.eclipse.ui.internal.forms.widgets.FormUtil;
 
 // End of user code
 
@@ -57,6 +76,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	protected SingleCompositionViewer<? extends EObject> singlecompositionviewerSingleOptionalProperty;
 	protected SingleCompositionViewer<? extends EObject> singlecompositionviewerMultiRequiredProperty;
 	protected SingleCompositionViewer<? extends EObject> singlecompositionviewerMultiOptionalProperty;
+	protected SingleCompositionViewer<? extends EObject> singlecompositionviewerSingleROProperty;
 
 
 
@@ -99,6 +119,7 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 		propertiesStep.addStep(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty);
 		propertiesStep.addStep(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleROProperty);
 		
 		
 		composer = new PartComposer(singleCompositionViewerSampleStep) {
@@ -119,6 +140,9 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 				}
 				if (key == EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty) {
 					return createSinglecompositionviewerMultiOptionalPropertySingleCompositionViewer(parent);
+				}
+				if (key == EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleROProperty) {
+					return createSinglecompositionviewerSingleROPropertySingleCompositionViewer(parent);
 				}
 				return parent;
 			}
@@ -186,6 +210,9 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 
 				}
 			});
+		// Start of user code for createSinglecompositionviewerSingleRequiredPropertySingleCompositionViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -234,6 +261,9 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 
 				}
 			});
+		// Start of user code for createSinglecompositionviewerSingleOptionalPropertySingleCompositionViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -282,6 +312,9 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 
 				}
 			});
+		// Start of user code for createSinglecompositionviewerMultiRequiredPropertySingleCompositionViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -330,6 +363,23 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 
 				}
 			});
+		// Start of user code for createSinglecompositionviewerMultiOptionalPropertySingleCompositionViewer
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createSinglecompositionviewerSingleROPropertySingleCompositionViewer(Composite parent) {
+		GridData singlecompositionviewerSingleROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		singlecompositionviewerSingleROPropertyData.horizontalSpan = 3;
+		this.singlecompositionviewerSingleROProperty = new SingleCompositionViewer<EObject>(getDescription(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleROProperty, EefnrMessages.SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerSingleROPropertyLabel), parent, SWT.NONE, null, EefnrViewsRepository.SWT_KIND, propertiesEditionComponent.isRequired(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleROProperty, EefnrViewsRepository.SWT_KIND));
+		this.singlecompositionviewerSingleROProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		this.singlecompositionviewerSingleROProperty.setLayoutData(singlecompositionviewerSingleROPropertyData);
+			singlecompositionviewerSingleROProperty.setEnabled(false);
+		// Start of user code for createSinglecompositionviewerSingleROPropertySingleCompositionViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -379,6 +429,14 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	 */
 	public void setSinglecompositionviewerSingleRequiredProperty(EObject newValue) {
 		singlecompositionviewerSingleRequiredProperty.update(newValue);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleRequiredProperty);
+		if (eefElementEditorReadOnlyState && singlecompositionviewerSingleRequiredProperty.isEnabled()) {
+			singlecompositionviewerSingleRequiredProperty.setEnabled(false);
+			singlecompositionviewerSingleRequiredProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !singlecompositionviewerSingleRequiredProperty.isEnabled()) {
+			singlecompositionviewerSingleRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -423,6 +481,14 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	 */
 	public void setSinglecompositionviewerSingleOptionalProperty(EObject newValue) {
 		singlecompositionviewerSingleOptionalProperty.update(newValue);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerSingleOptionalProperty);
+		if (eefElementEditorReadOnlyState && singlecompositionviewerSingleOptionalProperty.isEnabled()) {
+			singlecompositionviewerSingleOptionalProperty.setEnabled(false);
+			singlecompositionviewerSingleOptionalProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !singlecompositionviewerSingleOptionalProperty.isEnabled()) {
+			singlecompositionviewerSingleOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -467,6 +533,14 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	 */
 	public void setSinglecompositionviewerMultiRequiredProperty(EObject newValue) {
 		singlecompositionviewerMultiRequiredProperty.update(newValue);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiRequiredProperty);
+		if (eefElementEditorReadOnlyState && singlecompositionviewerMultiRequiredProperty.isEnabled()) {
+			singlecompositionviewerMultiRequiredProperty.setEnabled(false);
+			singlecompositionviewerMultiRequiredProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !singlecompositionviewerMultiRequiredProperty.isEnabled()) {
+			singlecompositionviewerMultiRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -511,6 +585,14 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	 */
 	public void setSinglecompositionviewerMultiOptionalProperty(EObject newValue) {
 		singlecompositionviewerMultiOptionalProperty.update(newValue);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.SingleCompositionViewerSample.Properties.singlecompositionviewerMultiOptionalProperty);
+		if (eefElementEditorReadOnlyState && singlecompositionviewerMultiOptionalProperty.isEnabled()) {
+			singlecompositionviewerMultiOptionalProperty.setEnabled(false);
+			singlecompositionviewerMultiOptionalProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !singlecompositionviewerMultiOptionalProperty.isEnabled()) {
+			singlecompositionviewerMultiOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -520,6 +602,53 @@ public class SingleCompositionViewerSamplePropertiesEditionPartImpl extends Comp
 	 */
 	public void addSinglecompositionviewerMultiOptionalPropertyControlListener(ControlListener listener) {
 		singlecompositionviewerMultiOptionalProperty.addControlListener(listener);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.SingleCompositionViewerSamplePropertiesEditionPart#getSinglecompositionviewerSingleROProperty()
+	 * 
+	 */
+	public EObject getSinglecompositionviewerSingleROProperty() {
+		return singlecompositionviewerSingleROProperty.getElement();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.SingleCompositionViewerSamplePropertiesEditionPart#initSinglecompositionviewerSingleROProperty(EObject current, EReference containingFeature, EReference feature, EditingDomain editingDomain)
+	 */
+	public void initSinglecompositionviewerSingleROProperty(EObject current, EReference containingFeature, EReference feature, EditingDomain editingDomain) {
+		this.singlecompositionviewerSingleROProperty.setInput(current, feature, resourceSet);
+		this.singlecompositionviewerSingleROProperty.init(editingDomain);
+		if (current != null) {
+			this.singlecompositionviewerSingleROProperty.setSelection(new StructuredSelection(current), feature);
+		}
+		singlecompositionviewerSingleROProperty.refresh();
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.SingleCompositionViewerSamplePropertiesEditionPart#setSinglecompositionviewerSingleROProperty(EObject newValue)
+	 * 
+	 */
+	public void setSinglecompositionviewerSingleROProperty(EObject newValue) {
+		singlecompositionviewerSingleROProperty.update(newValue);
+		singlecompositionviewerSingleROProperty.setEnabled(false);
+		singlecompositionviewerSingleROProperty.setToolTipText(EefnrMessages.SingleCompositionViewerSample_ReadOnly);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.SingleCompositionViewerSamplePropertiesEditionPart#initSinglecompositionviewerSingleROProperty(ControlListener listener)
+	 */
+	public void addSinglecompositionviewerSingleROPropertyControlListener(ControlListener listener) {
+		singlecompositionviewerSingleROProperty.addControlListener(listener);
 	}
 
 

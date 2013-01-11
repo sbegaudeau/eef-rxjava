@@ -16,41 +16,60 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFModelViewerDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.graphics.Image;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.TableColumn;
-
 
 // End of user code
 
@@ -70,6 +89,11 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	protected Button removeReferencestableOptionalProperty;
 	protected List<ViewerFilter> referencestableOptionalPropertyBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> referencestableOptionalPropertyFilters = new ArrayList<ViewerFilter>();
+	protected TableViewer referencestableROProperty;
+	protected Button addReferencestableROProperty;
+	protected Button removeReferencestableROProperty;
+	protected List<ViewerFilter> referencestableROPropertyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> referencestableROPropertyFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -110,6 +134,7 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		CompositionStep propertiesStep = referencesTableSampleStep.addStep(EefnrViewsRepository.ReferencesTableSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty);
 		
 		
 		composer = new PartComposer(referencesTableSampleStep) {
@@ -124,6 +149,9 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 				}
 				if (key == EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty) {
 					return createReferencestableOptionalPropertyReferencesTable(parent);
+				}
+				if (key == EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty) {
+					return createReferencestableROPropertyReferencesTable(parent);
 				}
 				return parent;
 			}
@@ -289,6 +317,9 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 
 		};
 		dialog.open();
+		// Start of user code for addReferencestableRequiredProperty
+
+		// End of user code
 		referencestableRequiredProperty.refresh();
 	}
 
@@ -447,6 +478,9 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 
 		};
 		dialog.open();
+		// Start of user code for addReferencestableOptionalProperty
+
+		// End of user code
 		referencestableOptionalProperty.refresh();
 	}
 
@@ -460,6 +494,167 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
 		}
 		referencestableOptionalProperty.refresh();
+	}
+
+	/**
+	 * @param parent
+	 * 
+	 */
+	protected Composite createReferencestableROPropertyReferencesTable(Composite parent) {
+		Label referencestableROPropertyLabel = createDescription(parent, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty, EefnrMessages.ReferencesTableSamplePropertiesEditionPart_ReferencestableROPropertyLabel);
+		GridData referencestableROPropertyLabelData = new GridData();
+		referencestableROPropertyLabelData.horizontalSpan = 3;
+		referencestableROPropertyLabel.setLayoutData(referencestableROPropertyLabelData);
+		referencestableROProperty = createReferencestableROPropertyViewer(parent, adapterFactory);
+		GridData referencestableROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		referencestableROPropertyData.horizontalSpan = 2;
+		referencestableROPropertyData.minimumHeight = 120;
+		referencestableROPropertyData.heightHint = 120;
+		referencestableROProperty.getTable().setLayoutData(referencestableROPropertyData);
+		EditingUtils.setID(referencestableROProperty.getTable(), EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty);
+		EditingUtils.setEEFtype(referencestableROProperty.getTable(), "eef::ReferencesTable::field"); //$NON-NLS-1$
+		createReferencestableROPropertyControlPanel(parent);
+		return parent;
+	}
+
+	/**
+	 * 
+	 */
+	protected TableViewer createReferencestableROPropertyViewer(Composite container, AdapterFactory adapter) {
+		org.eclipse.swt.widgets.Table table = new org.eclipse.swt.widgets.Table(container, SWT.FULL_SELECTION);
+		table.setHeaderVisible(true);
+		GridData gd = new GridData();
+		gd.grabExcessHorizontalSpace = true;
+		gd.horizontalAlignment = GridData.FILL;
+		gd.grabExcessVerticalSpace = true;
+		gd.verticalAlignment = GridData.FILL;
+		table.setLayoutData(gd);
+		table.setLinesVisible(true);
+		// Start of user code for table referencestableROProperty s columns definition
+				TableColumn name = new TableColumn(table, SWT.NONE);
+				name.setWidth(80);
+				name.setText("Label"); //$NON-NLS-1$
+		
+		// End of user code
+
+		TableViewer result = new TableViewer(table);
+		result.setLabelProvider(new ITableLabelProvider() {
+
+			// Start of user code for table referencestableROProperty label provider
+						public String getColumnText(Object object, int columnIndex) {
+							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+							if (object instanceof EObject) {
+								switch (columnIndex) {
+								case 0:
+									return labelProvider.getText(object);
+								}
+							}
+							return ""; //$NON-NLS-1$
+						}
+			
+						public Image getColumnImage(Object element, int columnIndex) {
+							return null;
+						}
+			
+			// End of user code
+
+			public void addListener(ILabelProviderListener listener) {
+			}
+
+			public void dispose() {
+			}
+
+			public boolean isLabelProperty(Object element, String property) {
+				return false;
+			}
+
+			public void removeListener(ILabelProviderListener listener) {
+			}
+
+		});
+		return result;
+	}
+
+	/**
+	 * 
+	 */
+	protected void createReferencestableROPropertyControlPanel(Composite container) {
+		Composite result = new Composite(container, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 1;
+		result.setLayout(layout);
+		addReferencestableROProperty = new Button(result, SWT.NONE);
+		addReferencestableROProperty.setText(EefnrMessages.PropertiesEditionPart_AddListViewerLabel);
+		GridData addData = new GridData(GridData.FILL_HORIZONTAL);
+		addReferencestableROProperty.setLayoutData(addData);
+		addReferencestableROProperty.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				addReferencestableROProperty();
+			}
+
+		});
+		EditingUtils.setID(addReferencestableROProperty, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty);
+		EditingUtils.setEEFtype(addReferencestableROProperty, "eef::ReferencesTable::addbutton"); //$NON-NLS-1$
+		removeReferencestableROProperty = new Button(result, SWT.NONE);
+		removeReferencestableROProperty.setText(EefnrMessages.PropertiesEditionPart_RemoveListViewerLabel);
+		GridData removeData = new GridData(GridData.FILL_HORIZONTAL);
+		removeReferencestableROProperty.setLayoutData(removeData);
+		removeReferencestableROProperty.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (referencestableROProperty.getSelection() instanceof IStructuredSelection) {
+					removeReferencestableROProperty((IStructuredSelection) referencestableROProperty.getSelection());
+				}
+			}
+
+		});
+		EditingUtils.setID(removeReferencestableROProperty, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty);
+		EditingUtils.setEEFtype(removeReferencestableROProperty, "eef::ReferencesTable::removebutton"); //$NON-NLS-1$
+	}
+
+	/**
+	 * 
+	 */
+	protected void addReferencestableROProperty() {
+		EMFModelViewerDialog dialog = new EMFModelViewerDialog(new AdapterFactoryLabelProvider(adapterFactory), referencestableROProperty.getInput(), referencestableROPropertyFilters, referencestableROPropertyBusinessFilters, false, true) {
+			public void process(IStructuredSelection selection) {
+				for (Iterator iter = selection.iterator(); iter.hasNext();) {
+					EObject elem = (EObject) iter.next();
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+				}
+			}
+
+		};
+		dialog.open();
+		// Start of user code for addReferencestableROProperty
+
+		// End of user code
+		referencestableROProperty.refresh();
+	}
+
+	/**
+	 * @param selection the referencestableROProperty to remove
+	 * 
+	 */
+	protected void removeReferencestableROProperty(IStructuredSelection selection) {
+		for (Iterator iter = selection.iterator(); iter.hasNext();) {
+			EObject elem = (EObject) iter.next();
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReferencesTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.ReferencesTableSample.Properties.referencestableROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, elem));
+		}
+		referencestableROProperty.refresh();
 	}
 
 
@@ -488,6 +683,20 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableRequiredProperty.setContentProvider(contentProvider);
 		referencestableRequiredProperty.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty);
+		if (eefElementEditorReadOnlyState && referencestableRequiredProperty.getTable().isEnabled()) {
+			referencestableRequiredProperty.getTable().setEnabled(false);
+			referencestableRequiredProperty.getTable().setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+			addReferencestableRequiredProperty.setEnabled(false);
+			addReferencestableRequiredProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+			removeReferencestableRequiredProperty.setEnabled(false);
+			removeReferencestableRequiredProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !referencestableRequiredProperty.getTable().isEnabled()) {
+			referencestableRequiredProperty.getTable().setEnabled(true);
+			addReferencestableRequiredProperty.setEnabled(true);
+			removeReferencestableRequiredProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -543,6 +752,20 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableOptionalProperty.setContentProvider(contentProvider);
 		referencestableOptionalProperty.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty);
+		if (eefElementEditorReadOnlyState && referencestableOptionalProperty.getTable().isEnabled()) {
+			referencestableOptionalProperty.getTable().setEnabled(false);
+			referencestableOptionalProperty.getTable().setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+			addReferencestableOptionalProperty.setEnabled(false);
+			addReferencestableOptionalProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+			removeReferencestableOptionalProperty.setEnabled(false);
+			removeReferencestableOptionalProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !referencestableOptionalProperty.getTable().isEnabled()) {
+			referencestableOptionalProperty.getTable().setEnabled(true);
+			addReferencestableOptionalProperty.setEnabled(true);
+			removeReferencestableOptionalProperty.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -583,6 +806,68 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 	 */
 	public boolean isContainedInReferencestableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)referencestableOptionalProperty.getInput()).contains(element);
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#initReferencestableROProperty(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+	 */
+	public void initReferencestableROProperty(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		referencestableROProperty.setContentProvider(contentProvider);
+		referencestableROProperty.setInput(settings);
+		referencestableROProperty.getTable().setEnabled(false);
+		referencestableROProperty.getTable().setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		addReferencestableROProperty.setEnabled(false);
+		addReferencestableROProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		removeReferencestableROProperty.setEnabled(false);
+		removeReferencestableROProperty.setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#updateReferencestableROProperty()
+	 * 
+	 */
+	public void updateReferencestableROProperty() {
+	referencestableROProperty.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#addFilterReferencestableROProperty(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToReferencestableROProperty(ViewerFilter filter) {
+		referencestableROPropertyFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#addBusinessFilterReferencestableROProperty(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToReferencestableROProperty(ViewerFilter filter) {
+		referencestableROPropertyBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.ReferencesTableSamplePropertiesEditionPart#isContainedInReferencestableROPropertyTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInReferencestableROPropertyTable(EObject element) {
+		return ((ReferencesTableSettings)referencestableROProperty.getInput()).contains(element);
 	}
 
 

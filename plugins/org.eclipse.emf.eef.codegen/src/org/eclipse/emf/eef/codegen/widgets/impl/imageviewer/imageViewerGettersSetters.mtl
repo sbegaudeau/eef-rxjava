@@ -64,6 +64,7 @@
 		} else {
 			[elementEditor.elementEditorName()/].setSelection(new StructuredSelection("")); //$NON-NLS-1$
 		}
+		[elementEditor.readOnly()/]
 	}
 [/template]
 
@@ -82,5 +83,6 @@
 		} else {
 			[elementEditor.elementEditorName()/].initViewer(key, ""); //$NON-NLS-1$
 		}
+		[elementEditor.readOnly()/]
 	}
 [/template]

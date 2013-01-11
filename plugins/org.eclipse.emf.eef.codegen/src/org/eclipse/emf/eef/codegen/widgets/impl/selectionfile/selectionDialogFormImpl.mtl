@@ -54,7 +54,6 @@ return create[editor.name.toJavaClassifier()/]SelectionDialog(widgetFactory, par
 		createDescription(parent, [editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]);
 		[/if]
 		[editor.elementEditorName()/] = new SelectionDialog(parent, SWT.NONE, widgetFactory);
-
 		GridData generatorData = new GridData(GridData.FILL_HORIZONTAL);
 		[editor.elementEditorName()/].setLayoutData(generatorData);
 
@@ -92,6 +91,9 @@ return create[editor.name.toJavaClassifier()/]SelectionDialog(widgetFactory, par
 			}
 		});
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('SelectionDialog'))]
+
+		// [/protected]
 		return parent;
 	}
 

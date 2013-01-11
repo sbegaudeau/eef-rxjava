@@ -438,6 +438,14 @@ public class AdvancedEObjectFlatComboViewer implements
 	public void setEnabled(boolean enabled) {
 		browseButton.setEnabled(enabled);
 		valueText.setEnabled(enabled);
+		removeButton.setEnabled(enabled);
+	}
+	
+	/**
+	 * @return if the table is enabled
+	 */
+	public boolean isEnabled() {
+		return valueText.isEnabled();
 	}
 
 	/**

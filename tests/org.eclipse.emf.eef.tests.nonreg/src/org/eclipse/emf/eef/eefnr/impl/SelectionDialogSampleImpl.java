@@ -7,11 +7,8 @@
 package org.eclipse.emf.eef.eefnr.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.SelectionDialogSample;
 
@@ -24,6 +21,7 @@ import org.eclipse.emf.eef.eefnr.SelectionDialogSample;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.SelectionDialogSampleImpl#getSelectionDialogRequiredProperty <em>Selection Dialog Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.SelectionDialogSampleImpl#getSelectionDialogOptionalProperty <em>Selection Dialog Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.SelectionDialogSampleImpl#getSelectionDialogROProperty <em>Selection Dialog RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,6 +67,26 @@ public class SelectionDialogSampleImpl extends AbstractSampleImpl implements Sel
 	 * @ordered
 	 */
 	protected String selectionDialogOptionalProperty = SELECTION_DIALOG_OPTIONAL_PROPERTY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSelectionDialogROProperty() <em>Selection Dialog RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSelectionDialogROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SELECTION_DIALOG_RO_PROPERTY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSelectionDialogROProperty() <em>Selection Dialog RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSelectionDialogROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected String selectionDialogROProperty = SELECTION_DIALOG_RO_PROPERTY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,6 +154,27 @@ public class SelectionDialogSampleImpl extends AbstractSampleImpl implements Sel
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getSelectionDialogROProperty() {
+		return selectionDialogROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSelectionDialogROProperty(String newSelectionDialogROProperty) {
+		String oldSelectionDialogROProperty = selectionDialogROProperty;
+		selectionDialogROProperty = newSelectionDialogROProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_RO_PROPERTY, oldSelectionDialogROProperty, selectionDialogROProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -143,6 +182,8 @@ public class SelectionDialogSampleImpl extends AbstractSampleImpl implements Sel
 				return getSelectionDialogRequiredProperty();
 			case EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_OPTIONAL_PROPERTY:
 				return getSelectionDialogOptionalProperty();
+			case EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_RO_PROPERTY:
+				return getSelectionDialogROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -160,6 +201,9 @@ public class SelectionDialogSampleImpl extends AbstractSampleImpl implements Sel
 				return;
 			case EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_OPTIONAL_PROPERTY:
 				setSelectionDialogOptionalProperty((String)newValue);
+				return;
+			case EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_RO_PROPERTY:
+				setSelectionDialogROProperty((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -179,6 +223,9 @@ public class SelectionDialogSampleImpl extends AbstractSampleImpl implements Sel
 			case EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_OPTIONAL_PROPERTY:
 				setSelectionDialogOptionalProperty(SELECTION_DIALOG_OPTIONAL_PROPERTY_EDEFAULT);
 				return;
+			case EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_RO_PROPERTY:
+				setSelectionDialogROProperty(SELECTION_DIALOG_RO_PROPERTY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -195,6 +242,8 @@ public class SelectionDialogSampleImpl extends AbstractSampleImpl implements Sel
 				return SELECTION_DIALOG_REQUIRED_PROPERTY_EDEFAULT == null ? selectionDialogRequiredProperty != null : !SELECTION_DIALOG_REQUIRED_PROPERTY_EDEFAULT.equals(selectionDialogRequiredProperty);
 			case EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_OPTIONAL_PROPERTY:
 				return SELECTION_DIALOG_OPTIONAL_PROPERTY_EDEFAULT == null ? selectionDialogOptionalProperty != null : !SELECTION_DIALOG_OPTIONAL_PROPERTY_EDEFAULT.equals(selectionDialogOptionalProperty);
+			case EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_RO_PROPERTY:
+				return SELECTION_DIALOG_RO_PROPERTY_EDEFAULT == null ? selectionDialogROProperty != null : !SELECTION_DIALOG_RO_PROPERTY_EDEFAULT.equals(selectionDialogROProperty);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -213,6 +262,8 @@ public class SelectionDialogSampleImpl extends AbstractSampleImpl implements Sel
 		result.append(selectionDialogRequiredProperty);
 		result.append(", selectionDialogOptionalProperty: ");
 		result.append(selectionDialogOptionalProperty);
+		result.append(", selectionDialogROProperty: ");
+		result.append(selectionDialogROProperty);
 		result.append(')');
 		return result.toString();
 	}

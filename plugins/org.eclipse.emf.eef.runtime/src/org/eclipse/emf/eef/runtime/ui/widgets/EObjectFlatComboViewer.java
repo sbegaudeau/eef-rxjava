@@ -24,6 +24,7 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -56,6 +57,10 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 	protected Object input;
 
 	private ButtonsModeEnum button_mode = ButtonsModeEnum.BROWSE;
+	
+	private boolean isSetComparator;
+	
+	private ViewerComparator comparator;
 
 	public EObjectFlatComboViewer(Composite parent, final boolean nullable) {
 		super(parent, SWT.NONE);
@@ -76,7 +81,15 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 
 		editer.addSelectionListener(getSelectionAdapter(nullable));
 		EditingUtils.setEEFtype(editer, "eef::EObjectFlatComboViewer::editbutton");
-
+		
+		isSetComparator = false;
+		comparator = null;
+	}
+	
+	public EObjectFlatComboViewer(Composite parent, final boolean nullable, ViewerComparator comparator) {
+		this(parent, nullable);
+		isSetComparator = true;
+		this.comparator = comparator;
 	}
 
 	/**
@@ -115,6 +128,9 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 									}
 								}
 							};
+							if (isSetComparator) {
+								dialog.setComparator(comparator);
+							}
 							dialog.open();
 						}
 						break;
@@ -219,4 +235,17 @@ public class EObjectFlatComboViewer extends Composite implements ISelectionProvi
 	public void setButtonMode(ButtonsModeEnum button_mode) {
 		this.button_mode = button_mode;
 	}
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		super.setEnabled(enabled);
+		selection.setEnabled(enabled);
+		editer.setEnabled(enabled);
+	}
+	
+	public void setComparator(ViewerComparator comparator) {
+		this.comparator = comparator;
+		isSetComparator = true;
+	}
+
 }

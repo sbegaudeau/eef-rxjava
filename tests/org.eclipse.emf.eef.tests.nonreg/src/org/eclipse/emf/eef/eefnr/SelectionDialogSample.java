@@ -17,6 +17,7 @@ package org.eclipse.emf.eef.eefnr;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.SelectionDialogSample#getSelectionDialogRequiredProperty <em>Selection Dialog Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.SelectionDialogSample#getSelectionDialogOptionalProperty <em>Selection Dialog Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.SelectionDialogSample#getSelectionDialogROProperty <em>Selection Dialog RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +77,31 @@ public interface SelectionDialogSample extends AbstractSample {
 	 * @generated
 	 */
 	void setSelectionDialogOptionalProperty(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Selection Dialog RO Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Selection Dialog RO Property</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Selection Dialog RO Property</em>' attribute.
+	 * @see #setSelectionDialogROProperty(String)
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getSelectionDialogSample_SelectionDialogROProperty()
+	 * @model
+	 * @generated
+	 */
+	String getSelectionDialogROProperty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.eefnr.SelectionDialogSample#getSelectionDialogROProperty <em>Selection Dialog RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Selection Dialog RO Property</em>' attribute.
+	 * @see #getSelectionDialogROProperty()
+	 * @generated
+	 */
+	void setSelectionDialogROProperty(String value);
 
 } // SelectionDialogSample

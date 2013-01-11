@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo;
 import java.util.Arrays;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -70,6 +71,14 @@ public class EObjectFlatComboSettings implements EEFEditorSettings {
 	 */
 	public boolean isAffectingFeature(EStructuralFeature feature) {
 		return Arrays.asList(features).contains(feature);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings#isAffectingEvent(org.eclipse.emf.common.notify.Notification)
+	 */
+	public boolean isAffectingEvent(Notification notification) {
+		return true;
 	}
 
 	/************************************************************************************************

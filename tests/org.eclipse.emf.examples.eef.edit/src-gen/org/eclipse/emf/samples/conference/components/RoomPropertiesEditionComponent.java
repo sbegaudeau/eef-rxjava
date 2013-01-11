@@ -12,21 +12,33 @@ package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Room;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.RoomPropertiesEditionPart;
 
@@ -66,10 +78,11 @@ public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingC
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Room room = (Room)elt;
 			final RoomPropertiesEditionPart basePart = (RoomPropertiesEditionPart)editingPart;
 			// init values
-			if (room.getName() != null && isAccessible(ConferenceViewsRepository.Room.Properties.name))
+			if (isAccessible(ConferenceViewsRepository.Room.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, room.getName()));
 			
 			if (isAccessible(ConferenceViewsRepository.Room.Properties.capacity)) {
@@ -125,16 +138,17 @@ public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			RoomPropertiesEditionPart basePart = (RoomPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getRoom_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.name)) {
+			if (ConferencePackage.eINSTANCE.getRoom_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getRoom_Capacity().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.capacity)) {
+			if (ConferencePackage.eINSTANCE.getRoom_Capacity().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Room.Properties.capacity)) {
 				if (msg.getNewValue() != null) {
 					basePart.setCapacity(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
@@ -143,6 +157,19 @@ public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ConferencePackage.eINSTANCE.getRoom_Name(),
+			ConferencePackage.eINSTANCE.getRoom_Capacity()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -188,5 +215,8 @@ public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingC
 		}
 		return ret;
 	}
+
+
+	
 
 }

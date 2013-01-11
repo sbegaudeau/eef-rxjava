@@ -86,6 +86,9 @@ public class EefnrMessages extends NLS {
 	
 	public static String SingleCompositionViewerSamplePropertiesEditionPart_PropertiesGroupLabel;
 
+	
+	public static String SingleCompositionEditorSamplePropertiesEditionPart_PropertiesGroupLabel;
+
 
 	
 	public static String Root_ReadOnly;
@@ -219,6 +222,12 @@ public class EefnrMessages extends NLS {
 	
 	public static String SingleCompositionViewerSample_Part_Title;
 
+	
+	public static String SingleCompositionEditorSample_ReadOnly;
+
+	
+	public static String SingleCompositionEditorSample_Part_Title;
+
 
 	
 	public static String RootPropertiesEditionPart_SamplesLabel;
@@ -308,10 +317,16 @@ public class EefnrMessages extends NLS {
 	public static String TextSamplePropertiesEditionPart_TextOptionalPropertyLabel;
 
 	
+	public static String TextSamplePropertiesEditionPart_TextROPropertyLabel;
+
+	
 	public static String CheckboxSamplePropertiesEditionPart_CheckboxRequiredPropertyLabel;
 
 	
 	public static String CheckboxSamplePropertiesEditionPart_CheckboxOptionalPropertyLabel;
+
+	
+	public static String CheckboxSamplePropertiesEditionPart_CheckboxROPropertyLabel;
 
 	
 	public static String TextareaSamplePropertiesEditionPart_TextareaRequiredPropertyLabel;
@@ -320,10 +335,16 @@ public class EefnrMessages extends NLS {
 	public static String TextareaSamplePropertiesEditionPart_TextareaOptionalPropertyLabel;
 
 	
+	public static String TextareaSamplePropertiesEditionPart_TextareaROPropertyLabel;
+
+	
 	public static String RadioSamplePropertiesEditionPart_RadioRequiredPropertyLabel;
 
 	
 	public static String RadioSamplePropertiesEditionPart_RadioOptionalPropertyLabel;
+
+	
+	public static String RadioSamplePropertiesEditionPart_RadioROPropertyLabel;
 
 	
 	public static String EObjectFlatComboViewerSamplePropertiesEditionPart_EobjectflatcomboviewerRequiredProperyLabel;
@@ -332,10 +353,16 @@ public class EefnrMessages extends NLS {
 	public static String EObjectFlatComboViewerSamplePropertiesEditionPart_EobjectflatcomboviewerOptionalProperyLabel;
 
 	
+	public static String EObjectFlatComboViewerSamplePropertiesEditionPart_EobjectflatcomboviewerROProperyLabel;
+
+	
 	public static String ReferencesTableSamplePropertiesEditionPart_ReferencestableRequiredPropertyLabel;
 
 	
 	public static String ReferencesTableSamplePropertiesEditionPart_ReferencestableOptionalPropertyLabel;
+
+	
+	public static String ReferencesTableSamplePropertiesEditionPart_ReferencestableROPropertyLabel;
 
 	
 	public static String EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerRequiredPropertyLabel;
@@ -344,10 +371,16 @@ public class EefnrMessages extends NLS {
 	public static String EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerOptionalPropertyLabel;
 
 	
+	public static String EMFComboViewerSamplePropertiesEditionPart_EmfcomboviewerROPropertyLabel;
+
+	
 	public static String MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorRequiredPropertyLabel;
 
 	
 	public static String MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorOptionalPropertyLabel;
+
+	
+	public static String MultiValuedEditorSamplePropertiesEditionPart_MultivaluededitorROPropertyLabel;
 
 	
 	public static String TableCompositionEditorSamplePropertiesEditionPart_TablecompositionRequiredPropertyLabel;
@@ -356,10 +389,16 @@ public class EefnrMessages extends NLS {
 	public static String TableCompositionEditorSamplePropertiesEditionPart_TablecompositionOptionalPropertyLabel;
 
 	
+	public static String TableCompositionEditorSamplePropertiesEditionPart_TablecompositionROPropertyLabel;
+
+	
 	public static String AdvancedReferencesTableSamplePropertiesEditionPart_AdvancedreferencestableRequiredPropertyLabel;
 
 	
 	public static String AdvancedReferencesTableSamplePropertiesEditionPart_AdvancedreferencestableOptionalPropertyLabel;
+
+	
+	public static String AdvancedReferencesTableSamplePropertiesEditionPart_AdvancedreferencestableROPropertyLabel;
 
 	
 	public static String AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerRequiredPropertyLabel;
@@ -368,16 +407,31 @@ public class EefnrMessages extends NLS {
 	public static String AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerOptionalPropertyLabel;
 
 	
+	public static String AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerROPropertyLabel;
+
+	
+	public static String AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerCompoRequiredPropertyLabel;
+
+	
+	public static String AdvancedEObjectFlatComboViewerSamplePropertiesEditionPart_AdvancedeobjectflatcomboviewerCompoOptionalPropertyLabel;
+
+	
 	public static String AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionRequiredPropertyLabel;
 
 	
 	public static String AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionOptionalPropertyLabel;
 
 	
+	public static String AdvancedTableCompositionEditorSamplePropertiesEditionPart_AdvancedtablecompositionROPropertyLabel;
+
+	
 	public static String FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableRequiredPropertyLabel;
 
 	
 	public static String FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableOptionalPropertyLabel;
+
+	
+	public static String FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableROPropertyLabel;
 
 	
 	public static String SamplePropertiesEditionPart_TextRequiredPropertyLabel;
@@ -413,10 +467,16 @@ public class EefnrMessages extends NLS {
 	public static String ImageViewerSamplePropertiesEditionPart_ImageviewerOptionalPropertyLabel;
 
 	
+	public static String ImageViewerSamplePropertiesEditionPart_ImageviewerROPropertyLabel;
+
+	
 	public static String SelectionDialogSamplePropertiesEditionPart_SelectionDialogRequiredPropertyLabel;
 
 	
 	public static String SelectionDialogSamplePropertiesEditionPart_SelectionDialogOptionalPropertyLabel;
+
+	
+	public static String SelectionDialogSamplePropertiesEditionPart_SelectionDialogROPropertyLabel;
 
 	
 	public static String SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerSingleRequiredPropertyLabel;
@@ -429,6 +489,21 @@ public class EefnrMessages extends NLS {
 
 	
 	public static String SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerMultiOptionalPropertyLabel;
+
+	
+	public static String SingleCompositionViewerSamplePropertiesEditionPart_SinglecompositionviewerSingleROPropertyLabel;
+
+	
+	public static String SingleCompositionEditorSamplePropertiesEditionPart_SinglecompositionviewerRequiredPropertyLabel;
+
+	
+	public static String SingleCompositionEditorSamplePropertiesEditionPart_SinglecompositionviewerOptionalPropertyLabel;
+
+	
+	public static String SingleCompositionEditorSamplePropertiesEditionPart_SinglecompositionviewerROPropertyLabel;
+
+	
+	public static String SingleCompositionEditorSamplePropertiesEditionPart_SinglecompositionviewerOnAbstractOptionalPropertyLabel;
 
 
 	

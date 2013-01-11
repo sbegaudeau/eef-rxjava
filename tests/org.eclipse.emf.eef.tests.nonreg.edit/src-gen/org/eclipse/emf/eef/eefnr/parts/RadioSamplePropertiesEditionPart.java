@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.eefnr.parts;
 import org.eclipse.emf.common.util.Enumerator;
 
 
-
 // End of user code
 
 /**
@@ -63,6 +62,27 @@ public interface RadioSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setRadioOptionalProperty(Object newValue);
+
+
+	/**
+	 * @return the radioROProperty
+	 * 
+	 */
+	public Object getRadioROProperty();
+
+	/**
+	 * Init the radioROProperty
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initRadioROProperty(Object input, Enumerator current);
+
+	/**
+	 * Defines a new radioROProperty
+	 * @param newValue the new radioROProperty to set
+	 * 
+	 */
+	public void setRadioROProperty(Object newValue);
 
 
 

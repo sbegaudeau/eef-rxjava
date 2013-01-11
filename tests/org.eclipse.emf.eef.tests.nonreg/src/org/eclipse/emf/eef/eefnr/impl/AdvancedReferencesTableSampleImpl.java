@@ -9,11 +9,8 @@ package org.eclipse.emf.eef.eefnr.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import org.eclipse.emf.eef.eefnr.AdvancedReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.TotalSample;
@@ -27,6 +24,7 @@ import org.eclipse.emf.eef.eefnr.TotalSample;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.AdvancedReferencesTableSampleImpl#getAdvancedreferencestableRequiredProperty <em>Advancedreferencestable Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.AdvancedReferencesTableSampleImpl#getAdvancedreferencestableOptionalProperty <em>Advancedreferencestable Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.AdvancedReferencesTableSampleImpl#getAdvancedreferencestableROProperty <em>Advancedreferencestable RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,6 +50,16 @@ public class AdvancedReferencesTableSampleImpl extends AbstractSampleImpl implem
 	 * @ordered
 	 */
 	protected EList<TotalSample> advancedreferencestableOptionalProperty;
+
+	/**
+	 * The cached value of the '{@link #getAdvancedreferencestableROProperty() <em>Advancedreferencestable RO Property</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAdvancedreferencestableROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TotalSample> advancedreferencestableROProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,6 +109,18 @@ public class AdvancedReferencesTableSampleImpl extends AbstractSampleImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<TotalSample> getAdvancedreferencestableROProperty() {
+		if (advancedreferencestableROProperty == null) {
+			advancedreferencestableROProperty = new EObjectResolvingEList<TotalSample>(TotalSample.class, this, EefnrPackage.ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_RO_PROPERTY);
+		}
+		return advancedreferencestableROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -108,6 +128,8 @@ public class AdvancedReferencesTableSampleImpl extends AbstractSampleImpl implem
 				return getAdvancedreferencestableRequiredProperty();
 			case EefnrPackage.ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_OPTIONAL_PROPERTY:
 				return getAdvancedreferencestableOptionalProperty();
+			case EefnrPackage.ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_RO_PROPERTY:
+				return getAdvancedreferencestableROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -129,6 +151,10 @@ public class AdvancedReferencesTableSampleImpl extends AbstractSampleImpl implem
 				getAdvancedreferencestableOptionalProperty().clear();
 				getAdvancedreferencestableOptionalProperty().addAll((Collection<? extends TotalSample>)newValue);
 				return;
+			case EefnrPackage.ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_RO_PROPERTY:
+				getAdvancedreferencestableROProperty().clear();
+				getAdvancedreferencestableROProperty().addAll((Collection<? extends TotalSample>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -147,6 +173,9 @@ public class AdvancedReferencesTableSampleImpl extends AbstractSampleImpl implem
 			case EefnrPackage.ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_OPTIONAL_PROPERTY:
 				getAdvancedreferencestableOptionalProperty().clear();
 				return;
+			case EefnrPackage.ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_RO_PROPERTY:
+				getAdvancedreferencestableROProperty().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -163,6 +192,8 @@ public class AdvancedReferencesTableSampleImpl extends AbstractSampleImpl implem
 				return advancedreferencestableRequiredProperty != null && !advancedreferencestableRequiredProperty.isEmpty();
 			case EefnrPackage.ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_OPTIONAL_PROPERTY:
 				return advancedreferencestableOptionalProperty != null && !advancedreferencestableOptionalProperty.isEmpty();
+			case EefnrPackage.ADVANCED_REFERENCES_TABLE_SAMPLE__ADVANCEDREFERENCESTABLE_RO_PROPERTY:
+				return advancedreferencestableROProperty != null && !advancedreferencestableROProperty.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

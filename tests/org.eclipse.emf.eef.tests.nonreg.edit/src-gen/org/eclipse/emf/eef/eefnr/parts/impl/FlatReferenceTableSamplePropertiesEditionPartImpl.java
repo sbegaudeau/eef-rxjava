@@ -12,32 +12,47 @@ package org.eclipse.emf.eef.eefnr.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnr.providers.EefnrMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-
 
 // End of user code
 
@@ -49,6 +64,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 
 	protected FlatReferencesTable flatreferencetableRequiredProperty;
 	protected FlatReferencesTable flatreferencetableOptionalProperty;
+	protected FlatReferencesTable flatreferencetableROProperty;
 
 
 
@@ -89,6 +105,7 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		CompositionStep propertiesStep = flatReferenceTableSampleStep.addStep(EefnrViewsRepository.FlatReferenceTableSample.Properties.class);
 		propertiesStep.addStep(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty);
 		propertiesStep.addStep(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty);
+		propertiesStep.addStep(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty);
 		
 		
 		composer = new PartComposer(flatReferenceTableSampleStep) {
@@ -103,6 +120,9 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 				}
 				if (key == EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty) {
 					return createFlatreferencetableOptionalPropertyFlatReferencesTable(parent);
+				}
+				if (key == EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty) {
+					return createFlatreferencetableROPropertyFlatReferencesTable(parent);
 				}
 				return parent;
 			}
@@ -133,7 +153,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		createDescription(parent, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty, EefnrMessages.FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableRequiredPropertyLabel);
 		flatreferencetableRequiredProperty = new FlatReferencesTable(parent);
 		flatreferencetableRequiredProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
 		flatreferencetableRequiredProperty.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -146,6 +165,9 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		flatreferencetableRequiredProperty.setLayoutData(flatreferencetableRequiredPropertyData);
 		flatreferencetableRequiredProperty.setID(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatreferencetableRequiredPropertyFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -158,7 +180,6 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		createDescription(parent, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty, EefnrMessages.FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableOptionalPropertyLabel);
 		flatreferencetableOptionalProperty = new FlatReferencesTable(parent);
 		flatreferencetableOptionalProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
 		flatreferencetableOptionalProperty.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -171,6 +192,36 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		flatreferencetableOptionalProperty.setLayoutData(flatreferencetableOptionalPropertyData);
 		flatreferencetableOptionalProperty.setID(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatreferencetableOptionalPropertyFlatReferencesTable
+
+		// End of user code
+		return parent;
+	}
+
+
+	/**
+	 * @param parent
+	 * 
+	 */
+	protected Composite createFlatreferencetableROPropertyFlatReferencesTable(Composite parent) {
+		createDescription(parent, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty, EefnrMessages.FlatReferenceTableSamplePropertiesEditionPart_FlatreferencetableROPropertyLabel);
+		flatreferencetableROProperty = new FlatReferencesTable(parent);
+		flatreferencetableROProperty.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		flatreferencetableROProperty.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (event.getSelection() instanceof StructuredSelection) 
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FlatReferenceTableSamplePropertiesEditionPartImpl.this, EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).toList()));
+			}
+
+		});
+		GridData flatreferencetableROPropertyData = new GridData(GridData.FILL_HORIZONTAL);
+		flatreferencetableROProperty.setLayoutData(flatreferencetableROPropertyData);
+		flatreferencetableROProperty.setID(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableROProperty, EefnrViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFlatreferencetableROPropertyFlatReferencesTable
+
+		// End of user code
 		return parent;
 	}
 
@@ -199,6 +250,14 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatreferencetableRequiredProperty.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableRequiredProperty);
+		if (eefElementEditorReadOnlyState && flatreferencetableRequiredProperty.isEnabled()) {
+			flatreferencetableRequiredProperty.setEnabled(false);
+			flatreferencetableRequiredProperty.setToolTipText(EefnrMessages.FlatReferenceTableSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !flatreferencetableRequiredProperty.isEnabled()) {
+			flatreferencetableRequiredProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -252,6 +311,14 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		flatreferencetableOptionalProperty.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.FlatReferenceTableSample.Properties.flatreferencetableOptionalProperty);
+		if (eefElementEditorReadOnlyState && flatreferencetableOptionalProperty.isEnabled()) {
+			flatreferencetableOptionalProperty.setEnabled(false);
+			flatreferencetableOptionalProperty.setToolTipText(EefnrMessages.FlatReferenceTableSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !flatreferencetableOptionalProperty.isEnabled()) {
+			flatreferencetableOptionalProperty.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -292,6 +359,62 @@ public class FlatReferenceTableSamplePropertiesEditionPartImpl extends Composite
 	 */
 	public boolean isContainedInFlatreferencetableOptionalPropertyTable(EObject element) {
 		return ((ReferencesTableSettings)flatreferencetableOptionalProperty.getInput()).contains(element);
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#initFlatreferencetableROProperty(ReferencesTableSettings)
+	 */
+	public void initFlatreferencetableROProperty(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		flatreferencetableROProperty.setInput(settings);
+		flatreferencetableROProperty.setEnabled(false);
+		flatreferencetableROProperty.setToolTipText(EefnrMessages.FlatReferenceTableSample_ReadOnly);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#updateFlatreferencetableROProperty()
+	 * 
+	 */
+	public void updateFlatreferencetableROProperty() {
+	flatreferencetableROProperty.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#addFilterFlatreferencetableROProperty(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToFlatreferencetableROProperty(ViewerFilter filter) {
+		flatreferencetableROProperty.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#addBusinessFilterFlatreferencetableROProperty(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToFlatreferencetableROProperty(ViewerFilter filter) {
+		flatreferencetableROProperty.addBusinessRuleFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.eefnr.parts.FlatReferenceTableSamplePropertiesEditionPart#isContainedInFlatreferencetableROPropertyTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInFlatreferencetableROPropertyTable(EObject element) {
+		return ((ReferencesTableSettings)flatreferencetableROProperty.getInput()).contains(element);
 	}
 
 

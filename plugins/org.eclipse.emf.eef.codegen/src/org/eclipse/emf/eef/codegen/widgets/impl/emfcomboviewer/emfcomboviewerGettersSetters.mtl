@@ -68,12 +68,14 @@
 [elementEditor.initSignature()/] {
 		[elementEditor.elementEditorName()/].setInput(input);
 		[elementEditor.elementEditorName()/].modelUpdating(new StructuredSelection(current));
+		[elementEditor.readOnly()/]
 	}
 [/template]
 
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('EMFComboViewer'))]
 [elementEditor.setterSignature()/] {
 		[elementEditor.elementEditorName()/].modelUpdating(new StructuredSelection(newValue));
+		[elementEditor.readOnly()/]
 	}
 [/template]
 

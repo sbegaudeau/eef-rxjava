@@ -49,7 +49,7 @@ public class EEFRuntimePlugin extends AbstractUIPlugin {
 
 	/** The shared imageRegistry. */
 	private static ImageRegistry imageRegistry = null;
-
+	
 	/**
 	 * @return the Image associated to the key
 	 */

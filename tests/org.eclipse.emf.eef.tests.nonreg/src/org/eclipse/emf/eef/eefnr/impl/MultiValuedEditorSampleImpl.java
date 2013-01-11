@@ -9,11 +9,8 @@ package org.eclipse.emf.eef.eefnr.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
 
@@ -26,6 +23,7 @@ import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.MultiValuedEditorSampleImpl#getMultivaluededitorRequiredProperty <em>Multivaluededitor Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.MultiValuedEditorSampleImpl#getMultivaluededitorOptionalProperty <em>Multivaluededitor Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.MultiValuedEditorSampleImpl#getMultivaluededitorROProperty <em>Multivaluededitor RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +49,16 @@ public class MultiValuedEditorSampleImpl extends AbstractSampleImpl implements M
 	 * @ordered
 	 */
 	protected EList<String> multivaluededitorOptionalProperty;
+
+	/**
+	 * The cached value of the '{@link #getMultivaluededitorROProperty() <em>Multivaluededitor RO Property</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMultivaluededitorROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> multivaluededitorROProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,6 +108,18 @@ public class MultiValuedEditorSampleImpl extends AbstractSampleImpl implements M
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<String> getMultivaluededitorROProperty() {
+		if (multivaluededitorROProperty == null) {
+			multivaluededitorROProperty = new EDataTypeUniqueEList<String>(String.class, this, EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_RO_PROPERTY);
+		}
+		return multivaluededitorROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -107,6 +127,8 @@ public class MultiValuedEditorSampleImpl extends AbstractSampleImpl implements M
 				return getMultivaluededitorRequiredProperty();
 			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY:
 				return getMultivaluededitorOptionalProperty();
+			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_RO_PROPERTY:
+				return getMultivaluededitorROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -128,6 +150,10 @@ public class MultiValuedEditorSampleImpl extends AbstractSampleImpl implements M
 				getMultivaluededitorOptionalProperty().clear();
 				getMultivaluededitorOptionalProperty().addAll((Collection<? extends String>)newValue);
 				return;
+			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_RO_PROPERTY:
+				getMultivaluededitorROProperty().clear();
+				getMultivaluededitorROProperty().addAll((Collection<? extends String>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -146,6 +172,9 @@ public class MultiValuedEditorSampleImpl extends AbstractSampleImpl implements M
 			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY:
 				getMultivaluededitorOptionalProperty().clear();
 				return;
+			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_RO_PROPERTY:
+				getMultivaluededitorROProperty().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -162,6 +191,8 @@ public class MultiValuedEditorSampleImpl extends AbstractSampleImpl implements M
 				return multivaluededitorRequiredProperty != null && !multivaluededitorRequiredProperty.isEmpty();
 			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_OPTIONAL_PROPERTY:
 				return multivaluededitorOptionalProperty != null && !multivaluededitorOptionalProperty.isEmpty();
+			case EefnrPackage.MULTI_VALUED_EDITOR_SAMPLE__MULTIVALUEDEDITOR_RO_PROPERTY:
+				return multivaluededitorROProperty != null && !multivaluededitorROProperty.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -180,6 +211,8 @@ public class MultiValuedEditorSampleImpl extends AbstractSampleImpl implements M
 		result.append(multivaluededitorRequiredProperty);
 		result.append(", multivaluededitorOptionalProperty: ");
 		result.append(multivaluededitorOptionalProperty);
+		result.append(", multivaluededitorROProperty: ");
+		result.append(multivaluededitorROProperty);
 		result.append(')');
 		return result.toString();
 	}

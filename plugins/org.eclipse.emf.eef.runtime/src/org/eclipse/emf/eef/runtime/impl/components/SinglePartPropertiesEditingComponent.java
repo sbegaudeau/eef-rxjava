@@ -10,17 +10,22 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.impl.components;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionComponentListener;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+import org.eclipse.emf.eef.runtime.context.ExtendedPropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.impl.notify.EEFLockNotification;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionComponentListenerProviderService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
 
 /**
@@ -70,7 +75,13 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 */
 	public void activate() {
 		if (semanticAdapter != null) {
-			this.semanticObject.eAdapters().add(semanticAdapter);
+			PropertiesEditingContext editingContext = getEditingContext();
+			if (editingContext instanceof ExtendedPropertiesEditingContext) {
+				((ExtendedPropertiesEditingContext)editingContext).getResourceSetAdapter().addEditingSemanticListener(semanticAdapter);
+			}
+		}
+		for (IPropertiesEditionComponentListener listener : PropertiesEditionComponentListenerProviderService.getInstance().getListeners()) {
+			listener.activate(this);
 		}
 	}
 
@@ -81,7 +92,13 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 */
 	public void deactivate() {
 		if (semanticAdapter != null) {
-			this.semanticObject.eAdapters().remove(semanticAdapter);
+			PropertiesEditingContext editingContext = getEditingContext();
+			if (editingContext instanceof ExtendedPropertiesEditingContext && ((ExtendedPropertiesEditingContext)editingContext).canReachResourceSetAdapter()) {
+				((ExtendedPropertiesEditingContext)editingContext).getResourceSetAdapter().removeEditingSemanticListener(semanticAdapter);
+			}
+		}
+		for (IPropertiesEditionComponentListener listener : PropertiesEditionComponentListenerProviderService.getInstance().getListeners()) {
+			listener.deactivate(this);
 		}
 	}
 
@@ -125,10 +142,14 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#shouldProcess(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
 	protected boolean shouldProcess(IPropertiesEditionEvent event) {
-		if (event instanceof PropertiesEditionEvent && associatedFeature(event.getAffectedEditor()) != null) {
-			Object currentValue = semanticObject.eGet(associatedFeature(event.getAffectedEditor()));
-			return (currentValue == null && event.getNewValue() != null)
-					|| (currentValue != null && !currentValue.equals(event.getNewValue()));
+		if (event.getKind() == PropertiesEditionEvent.EDIT) {
+			return true;
+		} else {
+			if (event instanceof PropertiesEditionEvent && (!(event.getKind() == PropertiesEditionEvent.EDIT)) && associatedFeature(event.getAffectedEditor()) != null) {
+				Object currentValue = semanticObject.eGet(associatedFeature(event.getAffectedEditor()));
+				return (currentValue == null && event.getNewValue() != null)
+						|| (currentValue != null && !currentValue.equals(event.getNewValue()));
+			}
 		}
 		return super.shouldProcess(event);
 	}
@@ -205,4 +226,20 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 		}
 		return false;
 	}
+
+	@Override
+	public void updatePart(Notification msg) {
+		if (msg instanceof EEFLockNotification && editingPart  instanceof CompositePropertiesEditionPart) {
+			((CompositePropertiesEditionPart) editingPart).refresh();
+		}
+	}
+
+	/**
+	 * @return IPropertiesEditionPart
+	 */
+	public IPropertiesEditionPart getEditingPart() {
+		return editingPart;
+	}
+	
+	
 }

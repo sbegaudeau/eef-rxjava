@@ -362,3 +362,63 @@ public [include('org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart')/
 	 * [elementEditor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
 [/template]
+
+[comment ======== read only implementation ======/]
+[template public setReadOnly (editor : ElementEditor)]
+[editor.elementEditorName()/].setEnabled(false);
+[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[/template]
+
+[template public unsetReadOnly (editor : ElementEditor)]
+[editor.elementEditorName()/].setEnabled(true);
+[/template]
+
+[template public setRemoveButtonReadOnly (editor : ElementEditor) ]
+remove[editor.name.toJavaClassifier()/].setEnabled(false);
+remove[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[/template]
+
+[template public unsetRemoveButtonReadOnly (editor : ElementEditor) ]
+remove[editor.name.toJavaClassifier()/].setEnabled(true);
+[/template]
+
+[template public setAddButtonReadOnly (editor : ElementEditor) ]
+add[editor.name.toJavaClassifier()/].setEnabled(false);
+add[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[/template]
+
+[template public unsetAddButtonReadOnly (editor : ElementEditor) ]
+add[editor.name.toJavaClassifier()/].setEnabled(true);
+[/template]
+
+[template public setEditButtonReadOnly (editor : ElementEditor) ]
+edit[editor.name.toJavaClassifier()/].setEnabled(false);
+edit[editor.name.toJavaClassifier()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
+[/template]
+
+[template public unsetEditButtonReadOnly (editor : ElementEditor) ]
+edit[editor.name.toJavaClassifier()/].setEnabled(true);
+[/template]
+
+[template public readOnly (editor : ElementEditor)]
+[if (editor.readOnly)]
+[editor.setReadOnly()/]
+[else]
+boolean eefElementEditorReadOnlyState = isReadOnly([editor.editorID()/][navigationReadOnly()/]);
+if (eefElementEditorReadOnlyState && [editor.elementEditorName()/].isEnabled()) {
+	[editor.setReadOnly()/]
+} else if (!eefElementEditorReadOnlyState && ![editor.elementEditorName()/].isEnabled()) {
+	[editor.unsetReadOnly()/]
+}	
+[/if]
+[/template]
+
+[template public navigationReadOnly (editor : ElementEditor) post (trim())]
+[if (editor.involvedPropertiesEditionElement().canGeneratemodelNavigation())]
+	, (([addImports(Sequence{editor.getPecImport()})/][editor.involvedPropertiesEditionElement().eContainer(PropertiesEditionComponent).subPECClass(editor.owningView())/]) propertiesEditionComponent).get[editor.involvedPropertiesEditionElement().name.toJavaClassifier()/]Settings().getOrCreateSignificantObject()
+[/if]
+[/template]
+
+[template public getPecImport(editor : ElementEditor) post (trim())]
+[editor.involvedPropertiesEditionElement().eContainer(PropertiesEditionComponent).componentsPackage()/].[editor.involvedPropertiesEditionElement().eContainer(PropertiesEditionComponent).subPECClass(editor.owningView())/]
+[/template]

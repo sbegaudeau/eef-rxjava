@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.eefnr.parts;
 
 
 
-
 // End of user code
 
 /**
@@ -63,6 +62,27 @@ public interface ImageViewerSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setImageviewerOptionalProperty(String newValue);
+
+
+	/**
+	 * @return the imageviewerROProperty
+	 * 
+	 */
+	public String getImageviewerROProperty();
+
+	/**
+	 * Init the imageviewerROProperty
+	 * @param key the key of the editor 
+	 * @param current the new path of the pics
+	 */
+	public void initImageviewerROProperty(String key, String newValue);
+
+	/**
+	 * Defines a new imageviewerROProperty
+	 * @param newValue the new imageviewerROProperty to set
+	 * 
+	 */
+	public void setImageviewerROProperty(String newValue);
 
 
 

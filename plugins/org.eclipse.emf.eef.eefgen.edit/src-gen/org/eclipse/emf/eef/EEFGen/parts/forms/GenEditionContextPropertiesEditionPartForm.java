@@ -220,6 +220,9 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		});
 		propertiesEditionContext.setID(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createPropertiesEditionContextFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -302,6 +305,9 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		EditingUtils.setID(basePackage, EEFGenViewsRepository.GenEditionContext.Parameters.basePackage);
 		EditingUtils.setEEFtype(basePackage, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Parameters.basePackage, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createBasePackageText
+
+		// End of user code
 		return parent;
 	}
 
@@ -367,6 +373,9 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		EditingUtils.setID(descriptorsContributorID, EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID);
 		EditingUtils.setEEFtype(descriptorsContributorID, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDescriptorsContributorIDText
+
+		// End of user code
 		return parent;
 	}
 
@@ -410,6 +419,9 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		EditingUtils.setID(genericPropertiesViewsDescriptors, EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors);
 		EditingUtils.setEEFtype(genericPropertiesViewsDescriptors, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createGenericPropertiesViewsDescriptorsCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -436,6 +448,9 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		EditingUtils.setID(gMFSpecificPropertiesViews, EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews);
 		EditingUtils.setEEFtype(gMFSpecificPropertiesViews, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createGMFSpecificPropertiesViewsCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -462,6 +477,9 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		EditingUtils.setID(jUnitTestCases, EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases);
 		EditingUtils.setEEFtype(jUnitTestCases, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createJUnitTestCasesCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -544,6 +562,9 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		EditingUtils.setID(leafComponentsSuperClass, EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass);
 		EditingUtils.setEEFtype(leafComponentsSuperClass, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createLeafComponentsSuperClassText
+
+		// End of user code
 		return parent;
 	}
 
@@ -609,6 +630,9 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		EditingUtils.setID(propertiesEditingProvidersSuperClass, EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass);
 		EditingUtils.setEEFtype(propertiesEditingProvidersSuperClass, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass, EEFGenViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createPropertiesEditingProvidersSuperClassText
+
+		// End of user code
 		return parent;
 	}
 
@@ -650,6 +674,14 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		if (current != null) {
 			propertiesEditionContext.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext);
+		if (eefElementEditorReadOnlyState && propertiesEditionContext.isEnabled()) {
+			propertiesEditionContext.setEnabled(false);
+			propertiesEditionContext.setToolTipText(EEFGenMessages.GenEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !propertiesEditionContext.isEnabled()) {
+			propertiesEditionContext.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -664,6 +696,14 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		} else {
 			propertiesEditionContext.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.GenEditionContext.Reference.propertiesEditionContext);
+		if (eefElementEditorReadOnlyState && propertiesEditionContext.isEnabled()) {
+			propertiesEditionContext.setEnabled(false);
+			propertiesEditionContext.setToolTipText(EEFGenMessages.GenEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !propertiesEditionContext.isEnabled()) {
+			propertiesEditionContext.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -717,6 +757,14 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		} else {
 			basePackage.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.GenEditionContext.Parameters.basePackage);
+		if (eefElementEditorReadOnlyState && basePackage.isEnabled()) {
+			basePackage.setEnabled(false);
+			basePackage.setToolTipText(EEFGenMessages.GenEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !basePackage.isEnabled()) {
+			basePackage.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -741,6 +789,14 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		} else {
 			descriptorsContributorID.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.GenEditionContext.Parameters.descriptorsContributorID);
+		if (eefElementEditorReadOnlyState && descriptorsContributorID.isEnabled()) {
+			descriptorsContributorID.setEnabled(false);
+			descriptorsContributorID.setToolTipText(EEFGenMessages.GenEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !descriptorsContributorID.isEnabled()) {
+			descriptorsContributorID.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -765,6 +821,14 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		} else {
 			genericPropertiesViewsDescriptors.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.GenEditionContext.Activation.genericPropertiesViewsDescriptors);
+		if (eefElementEditorReadOnlyState && genericPropertiesViewsDescriptors.isEnabled()) {
+			genericPropertiesViewsDescriptors.setEnabled(false);
+			genericPropertiesViewsDescriptors.setToolTipText(EEFGenMessages.GenEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !genericPropertiesViewsDescriptors.isEnabled()) {
+			genericPropertiesViewsDescriptors.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -789,6 +853,14 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		} else {
 			gMFSpecificPropertiesViews.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.GenEditionContext.Activation.gMFSpecificPropertiesViews);
+		if (eefElementEditorReadOnlyState && gMFSpecificPropertiesViews.isEnabled()) {
+			gMFSpecificPropertiesViews.setEnabled(false);
+			gMFSpecificPropertiesViews.setToolTipText(EEFGenMessages.GenEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !gMFSpecificPropertiesViews.isEnabled()) {
+			gMFSpecificPropertiesViews.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -813,6 +885,14 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		} else {
 			jUnitTestCases.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.GenEditionContext.Activation.jUnitTestCases);
+		if (eefElementEditorReadOnlyState && jUnitTestCases.isEnabled()) {
+			jUnitTestCases.setEnabled(false);
+			jUnitTestCases.setToolTipText(EEFGenMessages.GenEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !jUnitTestCases.isEnabled()) {
+			jUnitTestCases.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -837,6 +917,14 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		} else {
 			leafComponentsSuperClass.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.GenEditionContext.Implementation.leafComponentsSuperClass);
+		if (eefElementEditorReadOnlyState && leafComponentsSuperClass.isEnabled()) {
+			leafComponentsSuperClass.setEnabled(false);
+			leafComponentsSuperClass.setToolTipText(EEFGenMessages.GenEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !leafComponentsSuperClass.isEnabled()) {
+			leafComponentsSuperClass.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -861,6 +949,14 @@ public class GenEditionContextPropertiesEditionPartForm extends SectionPropertie
 		} else {
 			propertiesEditingProvidersSuperClass.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.GenEditionContext.Implementation.propertiesEditingProvidersSuperClass);
+		if (eefElementEditorReadOnlyState && propertiesEditingProvidersSuperClass.isEnabled()) {
+			propertiesEditingProvidersSuperClass.setEnabled(false);
+			propertiesEditingProvidersSuperClass.setToolTipText(EEFGenMessages.GenEditionContext_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !propertiesEditingProvidersSuperClass.isEnabled()) {
+			propertiesEditingProvidersSuperClass.setEnabled(true);
+		}	
+		
 	}
 
 

@@ -44,10 +44,6 @@ return create[editor.name.toJavaClassifier()/]Checkbox(widgetFactory, parent);
 	[editor.owningViewsRepository().associatedGenModel().generationComment()/]
 	protected Composite create[editor.name.toJavaClassifier()/]Checkbox(FormToolkit widgetFactory, Composite parent) {
 		[editor.elementEditorName()/] = widgetFactory.createButton(parent, getDescription([editor.editorID()/], [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/]), SWT.CHECK);
-		[if (editor.readOnly)]
-		[editor.elementEditorName()/].setEnabled(false);
-		[editor.elementEditorName()/].setToolTipText([editor.owningViewsRepository().messagesProvider()/].[editor.owningViewString()/]_ReadOnly);
-		[/if]
 		[editor.elementEditorName()/].addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -68,6 +64,9 @@ return create[editor.name.toJavaClassifier()/]Checkbox(widgetFactory, parent);
 		EditingUtils.setID([editor.elementEditorName()/], [editor.editorID()/]);
 		EditingUtils.setEEFtype([editor.elementEditorName()/], "eef::[editor.representation.name/]"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('Checkbox'))]
+
+		// [/protected]
 		return parent;
 	}
 [/template]

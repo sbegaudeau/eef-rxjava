@@ -13,33 +13,48 @@ package org.eclipse.emf.eef.eefnr.navigation.parts.forms;
 // Start of user code for imports
 import org.eclipse.emf.eef.eefnr.navigation.parts.AttributeNavigationSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.navigation.parts.NavigationViewsRepository;
+
 import org.eclipse.emf.eef.eefnr.navigation.providers.NavigationMessages;
+
+import org.eclipse.emf.eef.navigation.components.AttributeNavigationSamplePropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.views.properties.tabbed.ISection;
-
 
 // End of user code
 
@@ -212,6 +227,9 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		EditingUtils.setID(name, NavigationViewsRepository.AttributeNavigationSample.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AttributeNavigationSample.Properties.name, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -277,6 +295,9 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		EditingUtils.setID(delegate1ForSingleValued, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued);
 		EditingUtils.setEEFtype(delegate1ForSingleValued, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDelegate1ForSingleValuedText
+
+		// End of user code
 		return parent;
 	}
 
@@ -342,6 +363,9 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		EditingUtils.setID(delegate2ForSingleValued, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued);
 		EditingUtils.setEEFtype(delegate2ForSingleValued, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDelegate2ForSingleValuedText
+
+		// End of user code
 		return parent;
 	}
 
@@ -407,6 +431,9 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		EditingUtils.setID(delegate1ForMultiValued, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued);
 		EditingUtils.setEEFtype(delegate1ForMultiValued, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDelegate1ForMultiValuedText
+
+		// End of user code
 		return parent;
 	}
 
@@ -472,6 +499,9 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		EditingUtils.setID(delegate2ForMultiValued, NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued);
 		EditingUtils.setEEFtype(delegate2ForMultiValued, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDelegate2ForMultiValuedText
+
+		// End of user code
 		return parent;
 	}
 
@@ -510,6 +540,14 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.AttributeNavigationSample.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -534,6 +572,14 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		} else {
 			delegate1ForSingleValued.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForSingleValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate1ForSingleValuedSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && delegate1ForSingleValued.isEnabled()) {
+			delegate1ForSingleValued.setEnabled(false);
+			delegate1ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !delegate1ForSingleValued.isEnabled()) {
+			delegate1ForSingleValued.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -558,6 +604,14 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		} else {
 			delegate2ForSingleValued.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForSingleValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate2ForSingleValuedSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && delegate2ForSingleValued.isEnabled()) {
+			delegate2ForSingleValued.setEnabled(false);
+			delegate2ForSingleValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !delegate2ForSingleValued.isEnabled()) {
+			delegate2ForSingleValued.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -582,6 +636,14 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		} else {
 			delegate1ForMultiValued.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate1ForMultiValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate1ForMultiValuedSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && delegate1ForMultiValued.isEnabled()) {
+			delegate1ForMultiValued.setEnabled(false);
+			delegate1ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !delegate1ForMultiValued.isEnabled()) {
+			delegate1ForMultiValued.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -606,6 +668,14 @@ public class AttributeNavigationSamplePropertiesEditionPartForm extends SectionP
 		} else {
 			delegate2ForMultiValued.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.AttributeNavigationSample.Properties.delegate2ForMultiValued, ((AttributeNavigationSamplePropertiesEditionComponent) propertiesEditionComponent).getDelegate2ForMultiValuedSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && delegate2ForMultiValued.isEnabled()) {
+			delegate2ForMultiValued.setEnabled(false);
+			delegate2ForMultiValued.setToolTipText(NavigationMessages.AttributeNavigationSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !delegate2ForMultiValued.isEnabled()) {
+			delegate2ForMultiValued.setEnabled(true);
+		}	
+		
 	}
 
 

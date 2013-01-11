@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.widgets.settings;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EReference;
 
@@ -39,5 +41,15 @@ public interface NavigationStep {
 	 * @return a type discrimination for the step.
 	 */
 	public EClassifier getDiscriminator();
+	
+	/**
+	 * @return the initialisation for the step
+	 */
+	public EEFInitializer getInit();
+	
+	/**
+	 * @return the filter for the step
+	 */
+	public List<EEFFilter> getFilters();
 	
 }

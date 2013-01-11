@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.MultiValuedEditorSample#getMultivaluededitorRequiredProperty <em>Multivaluededitor Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.MultiValuedEditorSample#getMultivaluededitorOptionalProperty <em>Multivaluededitor Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.MultiValuedEditorSample#getMultivaluededitorROProperty <em>Multivaluededitor RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,5 +58,21 @@ public interface MultiValuedEditorSample extends AbstractSample {
 	 * @generated
 	 */
 	EList<String> getMultivaluededitorOptionalProperty();
+
+	/**
+	 * Returns the value of the '<em><b>Multivaluededitor RO Property</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Multivaluededitor RO Property</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Multivaluededitor RO Property</em>' attribute list.
+	 * @see org.eclipse.emf.eef.eefnr.EefnrPackage#getMultiValuedEditorSample_MultivaluededitorROProperty()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getMultivaluededitorROProperty();
 
 } // MultiValuedEditorSample

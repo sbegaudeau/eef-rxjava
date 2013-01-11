@@ -96,6 +96,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LHwwvEd-uP4lw9e0IMw" name="textOptionalProperty" views="_Fx_LYwwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TextSample/textOptionalProperty"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ak1MEBFREeK9-dPF-WhGng" name="textROProperty" views="_P-_OkREsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TextSample/textROProperty"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TextSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Fx_LIAwvEd-uP4lw9e0IMw" name="CheckboxSample" views="_Fx_LZAwvEd-uP4lw9e0IMw">
@@ -104,6 +107,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LIgwvEd-uP4lw9e0IMw" name="checkboxOptionalProperty" views="_Fx_LZwwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//CheckboxSample/checkboxOptionalProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_eSS8UBFREeK9-dPF-WhGng" name="checkboxROProperty" views="_SygfEBEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//CheckboxSample/checkboxROProperty"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//CheckboxSample"/>
       </bindings>
@@ -114,6 +120,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LJQwvEd-uP4lw9e0IMw" name="textareaOptionalProperty" views="_Fx_yEAwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TextareaSample/textareaOptionalProperty"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_jzCBABFREeK9-dPF-WhGng" name="textareaROProperty" views="_VUYl8BEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TextareaSample/textareaROProperty"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TextareaSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Fx_LJgwvEd-uP4lw9e0IMw" name="RadioSample" views="_Fx_yEQwvEd-uP4lw9e0IMw">
@@ -122,6 +131,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LKAwvEd-uP4lw9e0IMw" name="radioOptionalProperty" views="_Fx_yFAwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//RadioSample/radioOptionalProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_o8ZHgBFREeK9-dPF-WhGng" name="radioROProperty" views="_YUkZcBEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//RadioSample/radioROProperty"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//RadioSample"/>
       </bindings>
@@ -132,6 +144,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LKwwvEd-uP4lw9e0IMw" name="eobjectflatcomboviewerOptionalPropery" views="_Fx_yGAwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//EObjectFlatComboViewerSample/eobjectflatcomboviewerOptionalPropery"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yY3B8BFREeK9-dPF-WhGng" name="eobjectflatcomboviewerROProperty" views="_fje3MBEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//EObjectFlatComboViewerSample/eobjectflatcomboviewerROProperty"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//EObjectFlatComboViewerSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Fx_LLAwvEd-uP4lw9e0IMw" name="ReferencesTableSample" views="_Fx_yGQwvEd-uP4lw9e0IMw">
@@ -140,6 +155,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LLgwvEd-uP4lw9e0IMw" name="referencestableOptionalProperty" views="_Fx_yHAwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//ReferencesTableSample/referencestableOptionalProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_58yGYBFREeK9-dPF-WhGng" name="referencestableROProperty" views="_iWYcoBEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//ReferencesTableSample/referencestableROProperty"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//ReferencesTableSample"/>
       </bindings>
@@ -150,6 +168,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LMQwvEd-uP4lw9e0IMw" name="emfcomboviewerOptionalProperty" views="_Fx_yIAwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//EMFComboViewerSample/emfcomboviewerOptionalProperty"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_-pLkEBFREeK9-dPF-WhGng" name="emfcomboviewerROProperty" views="_kw4JIBEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//EMFComboViewerSample/emfcomboviewerROProperty"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//EMFComboViewerSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Fx_LMgwvEd-uP4lw9e0IMw" name="MultiValuedEditorSample" views="_Fx_yIQwvEd-uP4lw9e0IMw">
@@ -158,6 +179,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LNAwvEd-uP4lw9e0IMw" name="multivaluededitorOptionalProperty" views="_Fx_yJAwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//MultiValuedEditorSample/multivaluededitorOptionalProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CPsXwBFSEeK9-dPF-WhGng" name="multivaluededitorROProperty" views="_nlJnkBEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//MultiValuedEditorSample/multivaluededitorROProperty"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//MultiValuedEditorSample"/>
       </bindings>
@@ -168,6 +192,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LNwwvEd-uP4lw9e0IMw" name="tablecompositionOptionalProperty" views="_Fx_yKAwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TableCompositionEditorSample/tablecompositionOptionalProperty"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_GP42wBFSEeK9-dPF-WhGng" name="tablecompositionROProperty" views="_vp3r8BEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TableCompositionEditorSample/tablecompositionROProperty"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//TableCompositionEditorSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Fx_LOAwvEd-uP4lw9e0IMw" name="AdvancedReferencesTableSample" views="_Fx_yKQwvEd-uP4lw9e0IMw">
@@ -176,6 +203,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LOgwvEd-uP4lw9e0IMw" name="advancedreferencestableOptionalProperty" views="_Fx_yLAwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedReferencesTableSample/advancedreferencestableOptionalProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_JwsrEBFSEeK9-dPF-WhGng" name="advancedreferencestableROProperty" views="_yIecYBEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedReferencesTableSample/advancedreferencestableROProperty"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedReferencesTableSample"/>
       </bindings>
@@ -186,6 +216,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LPQwvEd-uP4lw9e0IMw" name="advancedeobjectflatcomboviewerOptionalProperty" views="_Fx_yMAwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerOptionalProperty"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VWCWgBFSEeK9-dPF-WhGng" name="advancedeobjectflatcomboviewerROProperty" views="_0WSXwBEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedEObjectFlatComboViewerSample/advancedeobjectflatcomboviewerROPropery"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedEObjectFlatComboViewerSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Fx_LPgwvEd-uP4lw9e0IMw" name="AdvancedTableCompositionEditorSample" views="_Fx_yMQwvEd-uP4lw9e0IMw">
@@ -195,6 +228,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fx_LQAwvEd-uP4lw9e0IMw" name="advancedtablecompositionOptionalProperty" views="_Fx_yNAwvEd-uP4lw9e0IMw">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedTableCompositionEditorSample/advancedtablecompositionOptionalProperty"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_YllbsBFSEeK9-dPF-WhGng" name="advancedtablecompositionROProperty" views="_3scbQBEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedTableCompositionEditorSample/advancedtablecompositionROProperty"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AdvancedTableCompositionEditorSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_xkhXcA80Ed-d58aiOCdYlA" name="FlatReferenceTableSample" views="_kBt5wQ80Ed-d58aiOCdYlA">
@@ -203,6 +239,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xkhXcg80Ed-d58aiOCdYlA" name="flatreferencetableOptionalProperty" views="_kBt5xA80Ed-d58aiOCdYlA">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//FlatReferencesTableSample/flatreferencestableOptionalProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_f0BYUBFSEeK9-dPF-WhGng" name="flatreferencetableROProperty" views="_6WQ9MBEsEeKsDfmeKGw7WA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//FlatReferencesTableSample/flatreferencestableROProperty"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//FlatReferencesTableSample"/>
       </bindings>
@@ -246,6 +285,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_qVdwkD3AEeCcBM_A84SeOQ" name="imageviewerOptionalProperty" views="_eK4qED3AEeCcBM_A84SeOQ" helpID="">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//ImageViewerSample/imageviewerOptionalProperty"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_EBbFABFbEeK9-dPF-WhGng" name="imageviewerROProperty" views="_-BU5sBEsEeKsDfmeKGw7WA" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//ImageViewerSample/imageviewerROProperty"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//ImageViewerSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_pUBDMD3XEeCUIo-uNw_UtA" name="SelectionDialogSample" views="_bhVWcD3XEeCUIo-uNw_UtA">
@@ -254,6 +296,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_zaeV0D3XEeCUIo-uNw_UtA" name="selectionDialogOptionalProperty" views="_lOCsUD3XEeCUIo-uNw_UtA" helpID="">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SelectionDialogSample/selectionDialogOptionalProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_7Me9QBFdEeK9-dPF-WhGng" name="selectionDialogROProperty" views="_1jetYBFdEeK9-dPF-WhGng" helpID="">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SelectionDialogSample/selectionDialogROProperty"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SelectionDialogSample"/>
       </bindings>
@@ -270,7 +315,25 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sxuM0D5eEeCwE69ZEpp39A" name="singlecompositionviewMultiOptionalProperty" views="_bUKJwD5eEeCwE69ZEpp39A">
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewMultiOptionalProperty"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_-qZ1oBFdEeK9-dPF-WhGng" name="singlecompositionviewSingleROProperty" views="_3yDdwBFdEeK9-dPF-WhGng">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionViewerSample/singlecompositionviewSingleROProperty"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionViewerSample"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_AHMpUTPEEeKeQut77qHbTQ" name="SingleCompositionEditorSample" views="_SPu8ADPEEeKeQut77qHbTQ">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AHMpUjPEEeKeQut77qHbTQ" name="singlecompositioneditorRequiredProperty" views="_SPu8AjPEEeKeQut77qHbTQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorRequiredProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AHMpUzPEEeKeQut77qHbTQ" name="singlecompositioneditorOptionalProperty" views="_SPu8AzPEEeKeQut77qHbTQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorOptionalProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AHMpVDPEEeKeQut77qHbTQ" name="singlecompositioneditorROProperty" views="_SPu8BDPEEeKeQut77qHbTQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorROPropery"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_IEeZgT6nEeKQ5q1xcsGDyQ" name="singlecompositioneditorOnAbstractOptionalProperty" views="_Oj3e0D6nEeKQ5q1xcsGDyQ">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionEditorSample/singlecompositioneditorOnAbstractOptionalProperty"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionEditorSample"/>
       </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.genmodel#//eefnr"/>
@@ -473,6 +536,120 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/AttributeNavigationSample"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_jZsNUPvvEeGL44pIBfzmNw" name="SmartModelNavigationSample" views="_-ld3kPvuEeGL44pIBfzmNw _1kLQYEkVEeKWgJcp6Y4wLg">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_jZsNUfvvEeGL44pIBfzmNw" name="name" views="_-ld3kvvuEeGL44pIBfzmNw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_jZsNUvvvEeGL44pIBfzmNw" name="firstModelNavigationSingleValue" views="_BzR3YPvvEeGL44pIBfzmNw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_uRdLoPvwEeGL44pIBfzmNw">
+            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_4vLHsPvwEeGL44pIBfzmNw">
+              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_uKMQkPvxEeGL44pIBfzmNw" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="initFirstModelNavigationSingleValue2"/>
+              <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample/firstModelNavigation2"/>
+            </step>
+          </navigation>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_jZsNVPvvEeGL44pIBfzmNw" name="firstModelNavigationMultiValue" views="_MtkasPvvEeGL44pIBfzmNw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_HkPXIPv0EeGL44pIBfzmNw">
+            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_IHSZ0Pv0EeGL44pIBfzmNw">
+              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_LIruQPv0EeGL44pIBfzmNw" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="initFirstModelNavigationMultiValue2" staticMethod="true"/>
+              <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample/severalFirstModelNavigation2"/>
+            </step>
+          </navigation>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__GNlcPv0EeGL44pIBfzmNw" name="secondMNSingleValueWithFirstMNSingleValue" views="_CB7XYPvvEeGL44pIBfzmNw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="__GNlcfv0EeGL44pIBfzmNw">
+            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="__GNlcvv0EeGL44pIBfzmNw">
+              <subStep xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_LmHbsPv1EeGL44pIBfzmNw">
+                <initializer xsi:type="eef-mapping-navigation:JavaBodyStepInitializer" xmi:id="_Y9244Pv1EeGL44pIBfzmNw" body="if (semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) {&#xD;&#xA;org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation result = org.eclipse.emf.eef.eefnr.navigation.NavigationFactory.eINSTANCE.createSecondModelNavigation();&#xD;&#xA;((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).setSecondModelNavigation(result);&#xD;&#xA;result.setName(&quot;FSM single&quot;);&#xD;&#xA;return result;&#xD;&#xA;}&#xD;&#xA;return null;"/>
+                <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/FirstModelNavigation/secondModelNavigation"/>
+              </subStep>
+              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_pUjagPv1EeGL44pIBfzmNw" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="initFirstModelNavigationSingleValue"/>
+              <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample/firstModelNavigation"/>
+            </step>
+          </navigation>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_R00ZoPv1EeGL44pIBfzmNw" name="secondMNSingleValueWithFirstMNMultiValue" views="_MtkasfvvEeGL44pIBfzmNw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_R00Zofv1EeGL44pIBfzmNw">
+            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_R00Zovv1EeGL44pIBfzmNw">
+              <subStep xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_R00Zo_v1EeGL44pIBfzmNw">
+                <initializer xsi:type="eef-mapping-navigation:JavaBodyStepInitializer" xmi:id="_V_1zIPv2EeGL44pIBfzmNw" body="if (semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) {&#xD;&#xA;org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation result = org.eclipse.emf.eef.eefnr.navigation.NavigationFactory.eINSTANCE.createSecondModelNavigation();&#xD;&#xA;((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).getSeveralSecondModelNavigation().add((org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation) result);&#xD;&#xA;result.setName(&quot;SSM multi&quot;);&#xD;&#xA;return result;&#xD;&#xA;}&#xD;&#xA;return null;"/>
+                <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/FirstModelNavigation/severalSecondModelNavigation"/>
+              </subStep>
+              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_HUA34Pv2EeGL44pIBfzmNw" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="initFirstModelNavigationSingleValue"/>
+              <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample/firstModelNavigation"/>
+            </step>
+          </navigation>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_f1BvkPv2EeGL44pIBfzmNw" name="secondMNMultiValueWithFirstMNSingleValue" views="_L0GicPv3EeGL44pIBfzmNw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_f1Bvkfv2EeGL44pIBfzmNw">
+            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_f1Bvkvv2EeGL44pIBfzmNw">
+              <subStep xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_f1Bvk_v2EeGL44pIBfzmNw">
+                <initializer xsi:type="eef-mapping-navigation:JavaBodyStepInitializer" xmi:id="_f1BvlPv2EeGL44pIBfzmNw" body="if (semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) {&#xD;&#xA;org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation result = org.eclipse.emf.eef.eefnr.navigation.NavigationFactory.eINSTANCE.createSecondModelNavigation();&#xD;&#xA;((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).setSecondModelNavigation(result);&#xD;&#xA;result.setName(&quot;SSM single&quot;);&#xD;&#xA;return result;&#xD;&#xA;}&#xD;&#xA;return null;"/>
+                <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/FirstModelNavigation/secondModelNavigation"/>
+              </subStep>
+              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_f1Bvlfv2EeGL44pIBfzmNw" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="initFirstModelNavigationMultiValue" staticMethod="true"/>
+              <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample/severalFirstModelNavigation"/>
+            </step>
+          </navigation>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_f1Bvlvv2EeGL44pIBfzmNw" name="secondMNMultiValueWithFirstMNMultiValue" views="_L0Gicfv3EeGL44pIBfzmNw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_f1Bvl_v2EeGL44pIBfzmNw">
+            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_f1BvmPv2EeGL44pIBfzmNw">
+              <subStep xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_f1Bvmfv2EeGL44pIBfzmNw">
+                <initializer xsi:type="eef-mapping-navigation:JavaBodyStepInitializer" xmi:id="_f1Bvmvv2EeGL44pIBfzmNw" body="if (semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) {&#xD;&#xA;org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation result = org.eclipse.emf.eef.eefnr.navigation.NavigationFactory.eINSTANCE.createSecondModelNavigation();&#xD;&#xA;((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).getSeveralSecondModelNavigation().add((org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation) result);&#xD;&#xA;result.setName(&quot;SSM multi&quot;);&#xD;&#xA;return result;&#xD;&#xA;}&#xD;&#xA;return null;"/>
+                <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/FirstModelNavigation/severalSecondModelNavigation"/>
+              </subStep>
+              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_Bc1MoPv3EeGL44pIBfzmNw" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="initFirstModelNavigationMultiValue" staticMethod="true"/>
+              <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample/severalFirstModelNavigation"/>
+            </step>
+          </navigation>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_LmgwIPysEeGJEqQYVg2nYg" name="secondMNMultiValueWithFirstMNMultiValueWithFilter" views="_UmO80PyvEeGJEqQYVg2nYg">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_LmgwIfysEeGJEqQYVg2nYg">
+            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_LmgwIvysEeGJEqQYVg2nYg">
+              <subStep xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_LmgwI_ysEeGJEqQYVg2nYg">
+                <initializer xsi:type="eef-mapping-navigation:JavaBodyStepInitializer" xmi:id="_LmgwJPysEeGJEqQYVg2nYg" body="if (semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) {&#xD;&#xA;org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation result = org.eclipse.emf.eef.eefnr.navigation.NavigationFactory.eINSTANCE.createSecondModelNavigation();&#xD;&#xA;((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).getSeveralSecondModelNavigation().add((org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation) result);&#xD;&#xA;result.setFilter3(true);&#xD;&#xA;result.setFilter4(true);&#xD;&#xA;result.setName(&quot;SSM multi with filters&quot;);&#xD;&#xA;return result;&#xD;&#xA;}&#xD;&#xA;return null;"/>
+                <filters xsi:type="eef-mapping-filters:JavaDeclarationStepFilter" xmi:id="_fnKbAPysEeGJEqQYVg2nYg" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="filter3FirstModelNavigation" staticMethod="true"/>
+                <filters xsi:type="eef-mapping-filters:JavaBodyStepFilter" xmi:id="_fnKbAfysEeGJEqQYVg2nYg" body="return semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation &amp;&amp; ((org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation) semanticObject).isFilter4();"/>
+                <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/FirstModelNavigation/severalSecondModelNavigation"/>
+              </subStep>
+              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_LmgwJfysEeGJEqQYVg2nYg" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="initFirstModelNavigationMultiValueWithFilters" staticMethod="true"/>
+              <filters xsi:type="eef-mapping-filters:JavaDeclarationStepFilter" xmi:id="_PW874PysEeGJEqQYVg2nYg" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="filter1FirstModelNavigation"/>
+              <filters xsi:type="eef-mapping-filters:JavaBodyStepFilter" xmi:id="_aXa_sPysEeGJEqQYVg2nYg" body="return semanticObject instanceof org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation &amp;&amp; ((org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation) semanticObject).isFilter2();"/>
+              <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample/severalFirstModelNavigation"/>
+            </step>
+          </navigation>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_MSKEMEkWEeKWgJcp6Y4wLg" name="secondMNSingleValueOnglet2" views="_1kLQZEkVEeKWgJcp6Y4wLg">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/FirstModelNavigation/secondModelNavigation"/>
+          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_MSKEMUkWEeKWgJcp6Y4wLg">
+            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_MSKEMkkWEeKWgJcp6Y4wLg">
+              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_MSKENUkWEeKWgJcp6Y4wLg" qualifiedClass="org.eclipse.emf.eef.eefnr.utils.Utils" methodName="initFirstModelNavigationSingleValue"/>
+              <feature href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample/firstModelNavigation"/>
+            </step>
+          </navigation>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SmartModelNavigationSample"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_HGlsoPwGEeGL44pIBfzmNw" name="FirstModelNavigationSample" views="_cAiOcPvvEeGL44pIBfzmNw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_HGlsofwGEeGL44pIBfzmNw" name="name" views="_cAiOcvvvEeGL44pIBfzmNw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/FirstModelNavigation"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_QnlhwPwGEeGL44pIBfzmNw" name="SecondModelNavigationSample" views="_gP0SUPvvEeGL44pIBfzmNw">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_QnlhwfwGEeGL44pIBfzmNw" name="name" views="_gP0SUvvvEeGL44pIBfzmNw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//AbstractSample/name"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//navigation/SecondModelNavigation"/>
+      </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.genmodel#//eefnr/navigation"/>
   </eef-components:PropertiesEditionContext>
@@ -595,10 +772,10 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LTgwvEd-uP4lw9e0IMw" name="radioRequiredProperty">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.5"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LTwwvEd-uP4lw9e0IMw" name="radioOptionalProperty">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.5"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LUAwvEd-uP4lw9e0IMw" name="eobjectflatcomboviewerRequiredProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
@@ -663,6 +840,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LYwwvEd-uP4lw9e0IMw" name="textOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_P-_OkREsEeKsDfmeKGw7WA" name="textROProperty" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_Fx_LZAwvEd-uP4lw9e0IMw" name="CheckboxSample">
@@ -672,6 +852,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_LZwwvEd-uP4lw9e0IMw" name="checkboxOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_SygfEBEsEeKsDfmeKGw7WA" name="checkboxROProperty" readOnly="true">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
@@ -685,6 +868,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_yEAwvEd-uP4lw9e0IMw" name="textareaOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_VUYl8BEsEeKsDfmeKGw7WA" name="textareaROProperty" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_Fx_yEQwvEd-uP4lw9e0IMw" name="RadioSample">
@@ -694,6 +880,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.5"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_yFAwvEd-uP4lw9e0IMw" name="radioOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.5"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_YUkZcBEsEeKsDfmeKGw7WA" name="radioROProperty" readOnly="true">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.5"/>
           </elements>
         </elements>
@@ -707,6 +896,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_yGAwvEd-uP4lw9e0IMw" name="eobjectflatcomboviewerOptionalPropery">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_fje3MBEsEeKsDfmeKGw7WA" name="eobjectflatcomboviewerROPropery" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_Fx_yGQwvEd-uP4lw9e0IMw" name="ReferencesTableSample">
@@ -716,6 +908,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_yHAwvEd-uP4lw9e0IMw" name="referencestableOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_iWYcoBEsEeKsDfmeKGw7WA" name="referencestableROProperty" readOnly="true">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.1"/>
           </elements>
         </elements>
@@ -729,6 +924,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_yIAwvEd-uP4lw9e0IMw" name="emfcomboviewerOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_kw4JIBEsEeKsDfmeKGw7WA" name="emfcomboviewerROProperty" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_Fx_yIQwvEd-uP4lw9e0IMw" name="MultiValuedEditorSample">
@@ -738,6 +936,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_yJAwvEd-uP4lw9e0IMw" name="multivaluededitorOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_nlJnkBEsEeKsDfmeKGw7WA" name="multivaluededitorROProperty" readOnly="true">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
         </elements>
@@ -751,6 +952,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_yKAwvEd-uP4lw9e0IMw" name="tablecompositionOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.4"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_vp3r8BEsEeKsDfmeKGw7WA" name="tablecompositionROProperty" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.4"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_Fx_yKQwvEd-uP4lw9e0IMw" name="AdvancedReferencesTableSample">
@@ -760,6 +964,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_yLAwvEd-uP4lw9e0IMw" name="advancedreferencestableOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_yIecYBEsEeKsDfmeKGw7WA" name="advancedreferencestableROProperty" readOnly="true">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
           </elements>
         </elements>
@@ -773,6 +980,15 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_yMAwvEd-uP4lw9e0IMw" name="advancedeobjectflatcomboviewerOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_0WSXwBEsEeKsDfmeKGw7WA" name="advancedeobjectflatcomboviewerROProperty" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_3eL5YS8TEeK_A82pEPogkw" name="advancedeobjectflatcomboviewerCompoRequiredProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.14"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_3eL5Yi8TEeK_A82pEPogkw" name="advancedeobjectflatcomboviewerCompoOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_Fx_yMQwvEd-uP4lw9e0IMw" name="AdvancedTableCompositionEditorSample">
@@ -784,6 +1000,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Fx_yNAwvEd-uP4lw9e0IMw" name="advancedtablecompositionOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_3scbQBEsEeKsDfmeKGw7WA" name="advancedtablecompositionROProperty" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_kBt5wQ80Ed-d58aiOCdYlA" name="FlatReferenceTableSample">
@@ -793,6 +1012,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.10"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_kBt5xA80Ed-d58aiOCdYlA" name="flatreferencetableOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.10"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_6WQ9MBEsEeKsDfmeKGw7WA" name="flatreferencetableROProperty" readOnly="true">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.10"/>
           </elements>
         </elements>
@@ -853,6 +1075,9 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_eK4qED3AEeCcBM_A84SeOQ" name="imageviewerOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.11"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_-BU5sBEsEeKsDfmeKGw7WA" name="imageviewerROProperty" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.11"/>
+          </elements>
         </elements>
       </views>
       <views xmi:id="_bhVWcD3XEeCUIo-uNw_UtA" name="SelectionDialogSample">
@@ -862,6 +1087,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.13"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_lOCsUD3XEeCUIo-uNw_UtA" name="selectionDialogOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.13"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_1jetYBFdEeK9-dPF-WhGng" name="selectionDialogROProperty" readOnly="true">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.13"/>
           </elements>
         </elements>
@@ -880,6 +1108,26 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_bUKJwD5eEeCwE69ZEpp39A" name="singlecompositionviewerMultiOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.12"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_3yDdwBFdEeK9-dPF-WhGng" name="singlecompositionviewerSingleROProperty" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.12"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_SPu8ADPEEeKeQut77qHbTQ" name="SingleCompositionEditorSample">
+        <elements xsi:type="eef-views:Container" xmi:id="_SPu8ATPEEeKeQut77qHbTQ" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_SPu8AjPEEeKeQut77qHbTQ" name="singlecompositionviewerRequiredProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.14"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_SPu8AzPEEeKeQut77qHbTQ" name="singlecompositionviewerOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.14"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_SPu8BDPEEeKeQut77qHbTQ" name="singlecompositionviewerROProperty" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.14"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Oj3e0D6nEeKQ5q1xcsGDyQ" name="singlecompositionviewerOnAbstractOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.14"/>
           </elements>
         </elements>
       </views>
@@ -1045,6 +1293,59 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_zlTZcLEdEeCT1Zh48D5qPg" name="delegate2ForMultiValued">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_-ld3kPvuEeGL44pIBfzmNw" name="SmartNavigationSample">
+        <elements xsi:type="eef-views:Container" xmi:id="_-ld3kfvuEeGL44pIBfzmNw" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_-ld3kvvuEeGL44pIBfzmNw" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_BzR3YPvvEeGL44pIBfzmNw" name="firstModelNavigationSingleValue">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CB7XYPvvEeGL44pIBfzmNw" name="secondModelNavigationSingleValue">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_MtkasPvvEeGL44pIBfzmNw" name="firstModelNavigationMultiValue">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_MtkasfvvEeGL44pIBfzmNw" name="secondModelNavigationMultiValue">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_L0GicPv3EeGL44pIBfzmNw" name="secondModelNavigationSingleValue2">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_L0Gicfv3EeGL44pIBfzmNw" name="secondModelNavigationMultiValue2">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_UmO80PyvEeGJEqQYVg2nYg" name="secondModelNavigationMultiValueFilter">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_cAiOcPvvEeGL44pIBfzmNw" name="FirstNavigationSample">
+        <elements xsi:type="eef-views:Container" xmi:id="_cAiOcfvvEeGL44pIBfzmNw" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_cAiOcvvvEeGL44pIBfzmNw" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_gP0SUPvvEeGL44pIBfzmNw" name="SecondNavigationSample">
+        <elements xsi:type="eef-views:Container" xmi:id="_gP0SUfvvEeGL44pIBfzmNw" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_gP0SUvvvEeGL44pIBfzmNw" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_1kLQYEkVEeKWgJcp6Y4wLg" name="SmartNavigationSampleOnglet2">
+        <elements xsi:type="eef-views:Container" xmi:id="_1kLQYUkVEeKWgJcp6Y4wLg" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_1kLQZEkVEeKWgJcp6Y4wLg" name="secondModelNavigationSingleValueOnglet2">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>

@@ -63,6 +63,7 @@ public class SelectionDialogSampleItemProvider
 
 			addSelectionDialogRequiredPropertyPropertyDescriptor(object);
 			addSelectionDialogOptionalPropertyPropertyDescriptor(object);
+			addSelectionDialogROPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,6 +113,28 @@ public class SelectionDialogSampleItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Selection Dialog RO Property feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSelectionDialogROPropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SelectionDialogSample_selectionDialogROProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SelectionDialogSample_selectionDialogROProperty_feature", "_UI_SelectionDialogSample_type"),
+				 EefnrPackage.Literals.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_RO_PROPERTY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns SelectionDialogSample.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,6 +173,7 @@ public class SelectionDialogSampleItemProvider
 		switch (notification.getFeatureID(SelectionDialogSample.class)) {
 			case EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_REQUIRED_PROPERTY:
 			case EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_OPTIONAL_PROPERTY:
+			case EefnrPackage.SELECTION_DIALOG_SAMPLE__SELECTION_DIALOG_RO_PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

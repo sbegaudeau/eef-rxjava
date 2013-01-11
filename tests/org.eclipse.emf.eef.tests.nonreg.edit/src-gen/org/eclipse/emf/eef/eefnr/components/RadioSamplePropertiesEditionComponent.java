@@ -12,21 +12,34 @@ package org.eclipse.emf.eef.eefnr.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.eefnr.ENUM_SAMPLE;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.RadioSample;
+
 import org.eclipse.emf.eef.eefnr.parts.EefnrViewsRepository;
 import org.eclipse.emf.eef.eefnr.parts.RadioSamplePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
@@ -66,6 +79,7 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final RadioSample radioSample = (RadioSample)elt;
 			final RadioSamplePropertiesEditionPart basePart = (RadioSamplePropertiesEditionPart)editingPart;
 			// init values
@@ -75,7 +89,11 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 			if (isAccessible(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty)) {
 				basePart.initRadioOptionalProperty(EEFUtils.choiceOfValues(radioSample, EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty()), radioSample.getRadioOptionalProperty());
 			}
+			if (isAccessible(EefnrViewsRepository.RadioSample.Properties.radioROProperty)) {
+				basePart.initRadioROProperty(EEFUtils.choiceOfValues(radioSample, EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty()), radioSample.getRadioROProperty());
+			}
 			// init filters
+			
 			
 			
 			// init values for referenced views
@@ -85,6 +103,7 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -100,6 +119,9 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (editorKey == EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty) {
 			return EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty();
+		}
+		if (editorKey == EefnrViewsRepository.RadioSample.Properties.radioROProperty) {
+			return EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -124,16 +146,34 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			RadioSamplePropertiesEditionPart basePart = (RadioSamplePropertiesEditionPart)editingPart;
-			if (EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().equals(msg.getFeature()) && basePart != null  && isAccessible(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty))
+			if (EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null  && isAccessible(EefnrViewsRepository.RadioSample.Properties.radioRequiredProperty))
 				basePart.setRadioRequiredProperty((Object)msg.getNewValue());
 			
-			if (EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().equals(msg.getFeature()) && basePart != null  && isAccessible(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty))
+			if (EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null  && isAccessible(EefnrViewsRepository.RadioSample.Properties.radioOptionalProperty))
 				basePart.setRadioOptionalProperty((Object)msg.getNewValue());
+			
+			if (EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null  && isAccessible(EefnrViewsRepository.RadioSample.Properties.radioROProperty))
+				basePart.setRadioROProperty((Object)msg.getNewValue());
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EefnrPackage.eINSTANCE.getRadioSample_RadioRequiredProperty(),
+			EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty(),
+			EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -171,6 +211,13 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 					}
 					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getRadioSample_RadioOptionalProperty().getEAttributeType(), newValue);
 				}
+				if (EefnrViewsRepository.RadioSample.Properties.radioROProperty == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getRadioSample_RadioROProperty().getEAttributeType(), newValue);
+				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -179,5 +226,8 @@ public class RadioSamplePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		return ret;
 	}
+
+
+	
 
 }

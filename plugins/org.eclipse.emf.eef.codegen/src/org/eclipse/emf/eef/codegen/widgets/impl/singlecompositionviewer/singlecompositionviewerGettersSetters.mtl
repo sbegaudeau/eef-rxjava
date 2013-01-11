@@ -86,6 +86,7 @@
 [template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('SingleCompositionViewer'))]
 [elementEditor.setterSignature()/] {
 		[elementEditor.elementEditorName()/].update(newValue);
+		[elementEditor.readOnly()/]
 	}
 [/template]
 

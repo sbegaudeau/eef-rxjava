@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.eefnr.parts;
 import org.eclipse.emf.common.util.Enumerator;
 
 
-
 // End of user code
 
 /**
@@ -63,6 +62,27 @@ public interface EMFComboViewerSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setEmfcomboviewerOptionalProperty(Enumerator newValue);
+
+
+	/**
+	 * @return the emfcomboviewerROProperty
+	 * 
+	 */
+	public Enumerator getEmfcomboviewerROProperty();
+
+	/**
+	 * Init the emfcomboviewerROProperty
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initEmfcomboviewerROProperty(Object input, Enumerator current);
+
+	/**
+	 * Defines a new emfcomboviewerROProperty
+	 * @param newValue the new emfcomboviewerROProperty to set
+	 * 
+	 */
+	public void setEmfcomboviewerROProperty(Enumerator newValue);
 
 
 

@@ -47,11 +47,18 @@ public interface IModelingBotInterpreter {
 	 *            Sequence
 	 */
 	void runSequence(Sequence sequence);
+	
+	/**
+	 * Prepares the processing of a sequence.
+	 * @param sequence {@link Sequence} to process.
+	 */
+	void preProcessing(Sequence sequence);
 
 	/**
-	 * @param processing
+	 * Finishes the processing of a sequence.
+	 * @param sequence {@link Sequence} to process.
 	 */
-	void finishBatchEditing(Processing processing);
+	void postProcessing(Sequence sequence);
 
 	/**
 	 * @return the PropertiesEditionContext

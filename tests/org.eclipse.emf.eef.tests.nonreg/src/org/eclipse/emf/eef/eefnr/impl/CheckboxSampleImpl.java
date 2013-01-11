@@ -7,11 +7,8 @@
 package org.eclipse.emf.eef.eefnr.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.eefnr.CheckboxSample;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 
@@ -24,6 +21,7 @@ import org.eclipse.emf.eef.eefnr.EefnrPackage;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.CheckboxSampleImpl#isCheckboxRequiredProperty <em>Checkbox Required Property</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.impl.CheckboxSampleImpl#isCheckboxOptionalProperty <em>Checkbox Optional Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.impl.CheckboxSampleImpl#isCheckboxROProperty <em>Checkbox RO Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,6 +67,26 @@ public class CheckboxSampleImpl extends AbstractSampleImpl implements CheckboxSa
 	 * @ordered
 	 */
 	protected boolean checkboxOptionalProperty = CHECKBOX_OPTIONAL_PROPERTY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isCheckboxROProperty() <em>Checkbox RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCheckboxROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CHECKBOX_RO_PROPERTY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isCheckboxROProperty() <em>Checkbox RO Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCheckboxROProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean checkboxROProperty = CHECKBOX_RO_PROPERTY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,6 +154,27 @@ public class CheckboxSampleImpl extends AbstractSampleImpl implements CheckboxSa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isCheckboxROProperty() {
+		return checkboxROProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCheckboxROProperty(boolean newCheckboxROProperty) {
+		boolean oldCheckboxROProperty = checkboxROProperty;
+		checkboxROProperty = newCheckboxROProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_RO_PROPERTY, oldCheckboxROProperty, checkboxROProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -143,6 +182,8 @@ public class CheckboxSampleImpl extends AbstractSampleImpl implements CheckboxSa
 				return isCheckboxRequiredProperty();
 			case EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_OPTIONAL_PROPERTY:
 				return isCheckboxOptionalProperty();
+			case EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_RO_PROPERTY:
+				return isCheckboxROProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -160,6 +201,9 @@ public class CheckboxSampleImpl extends AbstractSampleImpl implements CheckboxSa
 				return;
 			case EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_OPTIONAL_PROPERTY:
 				setCheckboxOptionalProperty((Boolean)newValue);
+				return;
+			case EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_RO_PROPERTY:
+				setCheckboxROProperty((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -179,6 +223,9 @@ public class CheckboxSampleImpl extends AbstractSampleImpl implements CheckboxSa
 			case EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_OPTIONAL_PROPERTY:
 				setCheckboxOptionalProperty(CHECKBOX_OPTIONAL_PROPERTY_EDEFAULT);
 				return;
+			case EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_RO_PROPERTY:
+				setCheckboxROProperty(CHECKBOX_RO_PROPERTY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -195,6 +242,8 @@ public class CheckboxSampleImpl extends AbstractSampleImpl implements CheckboxSa
 				return checkboxRequiredProperty != CHECKBOX_REQUIRED_PROPERTY_EDEFAULT;
 			case EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_OPTIONAL_PROPERTY:
 				return checkboxOptionalProperty != CHECKBOX_OPTIONAL_PROPERTY_EDEFAULT;
+			case EefnrPackage.CHECKBOX_SAMPLE__CHECKBOX_RO_PROPERTY:
+				return checkboxROProperty != CHECKBOX_RO_PROPERTY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -213,6 +262,8 @@ public class CheckboxSampleImpl extends AbstractSampleImpl implements CheckboxSa
 		result.append(checkboxRequiredProperty);
 		result.append(", checkboxOptionalProperty: ");
 		result.append(checkboxOptionalProperty);
+		result.append(", checkboxROProperty: ");
+		result.append(checkboxROProperty);
 		result.append(')');
 		return result.toString();
 	}

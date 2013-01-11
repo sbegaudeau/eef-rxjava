@@ -21,7 +21,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
@@ -66,10 +68,11 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final CustomElementEditor customElementEditor = (CustomElementEditor)elt;
 			final CustomElementEditorPropertiesEditionPart basePart = (CustomElementEditorPropertiesEditionPart)editingPart;
 			// init values
-			if (customElementEditor.getName() != null && isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.name))
+			if (isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, customElementEditor.getName()));
 			
 			if (isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.readOnly)) {
@@ -124,20 +127,34 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			CustomElementEditorPropertiesEditionPart basePart = (CustomElementEditorPropertiesEditionPart)editingPart;
-			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.name)) {
+			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().equals(msg.getFeature()) && basePart != null && isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.readOnly))
+			if (ViewsPackage.eINSTANCE.getElementEditor_ReadOnly().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ViewsViewsRepository.CustomElementEditor.Properties.readOnly))
 				basePart.setReadOnly((Boolean)msg.getNewValue());
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ViewsPackage.eINSTANCE.getViewElement_Name(),
+			ViewsPackage.eINSTANCE.getElementEditor_ReadOnly()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -197,5 +214,8 @@ public class CustomElementEditorBasePropertiesEditionComponent extends SinglePar
 		}
 		return ret;
 	}
+
+
+	
 
 }

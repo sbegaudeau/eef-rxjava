@@ -17,8 +17,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -35,8 +37,11 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
+import org.eclipse.emf.eef.modelingBot.Action;
 import org.eclipse.emf.eef.modelingBot.IModelingBot;
+import org.eclipse.emf.eef.modelingBot.Processing;
 import org.eclipse.emf.eef.modelingBot.SequenceType;
+import org.eclipse.emf.eef.modelingBot.Wizard;
 import org.eclipse.emf.eef.modelingBot.interpreter.ComposedEEFInterpreter;
 import org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter;
 import org.eclipse.emf.eef.modelingBot.uri.EEFURIConverter;
@@ -164,8 +169,8 @@ public class ComposedEEFBot implements IModelingBot {
 	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature,
 	 *      org.eclipse.emf.ecore.EClass)
 	 */
-	public EObject add(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, EClass type) {
+	public EObject add(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature, EClass type) {
 		// do nothing
 		return null;
 	}
@@ -176,31 +181,34 @@ public class ComposedEEFBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#remove(org.eclipse.emf.eef.components.PropertiesEditionElement,
 	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject)
 	 */
-	public void remove(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject) {
+	public void remove(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject) {
 		// do nothing
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement,
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#setAttribute(org.eclipse.emf.eef.components.PropertiesEditionElement,
 	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature,
-	 *      java.lang.String)
+	 *      java.util.Collection)
 	 */
-	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, String value) {
+	public void setAttribute(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<String> values) {
 		// do nothing
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#set(org.eclipse.emf.eef.components.PropertiesEditionElement,
+	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#setReference(org.eclipse.emf.eef.components.PropertiesEditionElement,
 	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature,
-	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject)
+	 *      java.util.Collection)
 	 */
-	public void set(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature, ReferenceableObject value) {
+	public void setReference(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<ReferenceableObject> values) {
 		// do nothing
 	}
 
@@ -210,8 +218,8 @@ public class ComposedEEFBot implements IModelingBot {
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#unset(org.eclipse.emf.eef.components.PropertiesEditionElement,
 	 *      org.eclipse.emf.eef.extended.editor.ReferenceableObject, org.eclipse.emf.ecore.EStructuralFeature)
 	 */
-	public void unset(PropertiesEditionElement propertiesEditionElement, ReferenceableObject referenceableObject,
-			EStructuralFeature eContainingFeature) {
+	public void unset(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature) {
 		// do nothing
 	}
 
@@ -231,7 +239,7 @@ public class ComposedEEFBot implements IModelingBot {
 	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.IModelingBot#cancel()
 	 */
-	public void cancel() {
+	public void cancel(Processing processing) {
 		// do nothing
 	}
 
@@ -274,13 +282,15 @@ public class ComposedEEFBot implements IModelingBot {
 		}
 	}
 
-	public void assertExpectedModelReached(Resource expectedModel, Resource batchModel) throws InterruptedException {
+	public void assertExpectedModelReached(Resource expectedModel, Resource batchModel)
+			throws InterruptedException {
 		final Map<String, Object> options = new HashMap<String, Object>();
 		options.put(org.eclipse.emf.compare.match.MatchOptions.OPTION_IGNORE_XMI_ID, Boolean.TRUE);
+		options.put(org.eclipse.emf.compare.match.MatchOptions.OPTION_DISTINCT_METAMODELS, Boolean.TRUE);
 		final MatchModel match = MatchService.doResourceMatch(batchModel, expectedModel, options);
 		final DiffModel diff = DiffService.doDiff(match);
 		final List<EObject> diffList = EEFUtils.asEObjectList(diff.eAllContents());
-		final List<EObject> result = filterAbnormalDiffElement(diffList);
+		final Collection<EObject> result = filterAbnormalDiffElement(diffList);
 		if (!result.isEmpty()) {
 			System.out.println(result);
 		}
@@ -294,8 +304,8 @@ public class ComposedEEFBot implements IModelingBot {
 	 *            the list to filter
 	 * @return the list of "good" diff
 	 */
-	private List<EObject> filterAbnormalDiffElement(List<EObject> diffList) {
-		final List<EObject> result = new ArrayList<EObject>();
+	private Collection<EObject> filterAbnormalDiffElement(List<EObject> diffList) {
+		final Set<EObject> result = new HashSet<EObject>();
 		for (EObject object : diffList) {
 			if (!(object instanceof DiffGroup))
 				result.add(object);
@@ -321,6 +331,62 @@ public class ComposedEEFBot implements IModelingBot {
 	 */
 	public IModelingBotInterpreter getModelingBotInterpreter() {
 		return interpreter;
+	}
+
+	public EObject add(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObjectContainer, ReferenceableObject referenceableObject,
+			EStructuralFeature eContainingFeature, EClass type) {
+		// do nothing
+		return null;
+	}
+
+	public void unsetAttribute(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<String> values) {
+		// do nothing
+
+	}
+
+	public void unsetReference(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject, EStructuralFeature eContainingFeature,
+			Collection<ReferenceableObject> values) {
+		// do nothing
+
+	}
+
+	public EObject openEditor(String path) {
+		// nothing to do
+		return null;
+	}
+
+	public void undo(Action action) {
+		// do nothing
+
+	}
+
+	public void redo(Action action) {
+		// do nothing
+
+	}
+
+	public void initWizard(Wizard wizard) {
+		// do nothing
+
+	}
+
+	public void closeWizard(Wizard wizard) {
+		// do nothing
+
+	}
+
+	public void moveUp(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject) {
+		// do nothing	
+	}
+
+	public void moveDown(PropertiesEditionElement propertiesEditionElement,
+			ReferenceableObject referenceableObject) {
+		// do nothing
 	}
 
 }

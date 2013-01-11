@@ -58,6 +58,15 @@
 [/for]
 [/template]
 
+
+[template public liveUpdaterNavigationCondition (editionElement : PropertiesEditionElement, pec : PropertiesEditionComponent) ]
+[if (editionElement.canGeneratemodelNavigation())][editionElement.name.toJavaIdentifier()/]Settings.isAffectingEvent(msg)[else][editionElement.metamodelGetter()/].equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject)[/if]
+[/template]
+
+[template public liveUpdaterNavigationConditionForText (editionElement : PropertiesEditionElement, pec : PropertiesEditionComponent) ]
+[if (editionElement.canGeneratemodelNavigation())]!(msg.getNewValue() instanceof EObject) && [editionElement.name.toJavaIdentifier()/]Settings.isAffectingEvent(msg)[else][editionElement.metamodelGetter()/].equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject)[/if]
+[/template]
+
 [template public updaterForReferencedViews(view : View, pec : PropertiesEditionComponent)]
 [for (v : View | view.referencedViews())]
 		[view.viewIdentifier(pec)/].get[v.name.toJavaClassifier()/]ReferencedView().setContext(elt, allResource);

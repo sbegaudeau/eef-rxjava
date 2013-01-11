@@ -200,6 +200,9 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setID(name, ViewsViewsRepository.CustomElementEditor.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.Properties.name, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -226,6 +229,9 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 		EditingUtils.setID(readOnly, ViewsViewsRepository.CustomElementEditor.Properties.readOnly);
 		EditingUtils.setEEFtype(readOnly, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.CustomElementEditor.Properties.readOnly, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createReadOnlyCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -264,6 +270,14 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.CustomElementEditor.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(ViewsMessages.CustomElementEditor_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -288,6 +302,14 @@ public class CustomElementEditorPropertiesEditionPartForm extends SectionPropert
 		} else {
 			readOnly.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.CustomElementEditor.Properties.readOnly);
+		if (eefElementEditorReadOnlyState && readOnly.isEnabled()) {
+			readOnly.setEnabled(false);
+			readOnly.setToolTipText(ViewsMessages.CustomElementEditor_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !readOnly.isEnabled()) {
+			readOnly.setEnabled(true);
+		}	
+		
 	}
 
 

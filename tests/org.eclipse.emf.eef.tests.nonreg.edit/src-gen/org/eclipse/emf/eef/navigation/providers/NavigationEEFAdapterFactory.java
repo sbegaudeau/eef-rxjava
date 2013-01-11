@@ -17,15 +17,6 @@ import org.eclipse.emf.common.notify.Adapter;
 
 import org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory;
 
-import org.eclipse.emf.eef.navigation.providers.AnotherSubtypePropertiesEditionProvider;
-import org.eclipse.emf.eef.navigation.providers.AttributeNavigationSamplePropertiesEditionProvider;
-import org.eclipse.emf.eef.navigation.providers.DeferedFlatReferencesTableSampleEditorPropertiesEditionProvider;
-import org.eclipse.emf.eef.navigation.providers.DeferedReferencesTableSampleEditorPropertiesEditionProvider;
-import org.eclipse.emf.eef.navigation.providers.ElementPropertiesEditionProvider;
-import org.eclipse.emf.eef.navigation.providers.NamedElementPropertiesEditionProvider;
-import org.eclipse.emf.eef.navigation.providers.OwnerPropertiesEditionProvider;
-import org.eclipse.emf.eef.navigation.providers.SubtypePropertiesEditionProvider;
-
 import org.eclipse.emf.eef.references.providers.AbstractSamplePropertiesEditionProvider;
 
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
@@ -38,27 +29,11 @@ public class NavigationEEFAdapterFactory extends NavigationAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createAbstractSampleAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createNamedElementAdapter()
 	 * 
 	 */
-	public Adapter createAbstractSampleAdapter() {
-		return new AbstractSamplePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createDeferedFlatReferenceTableEditorSampleAdapter()
-	 * 
-	 */
-	public Adapter createDeferedFlatReferenceTableEditorSampleAdapter() {
-		return new DeferedFlatReferencesTableSampleEditorPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createDeferedReferenceTableEditorSampleAdapter()
-	 * 
-	 */
-	public Adapter createDeferedReferenceTableEditorSampleAdapter() {
-		return new DeferedReferencesTableSampleEditorPropertiesEditionProvider();
+	public Adapter createNamedElementAdapter() {
+		return new NamedElementPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -70,13 +45,19 @@ public class NavigationEEFAdapterFactory extends NavigationAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createSubtypeAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createFirstModelNavigationAdapter()
 	 * 
 	 */
-	public Adapter createSubtypeAdapter() {
-		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
-		providers.add((PropertiesEditingProvider)createOwnerAdapter());
-		return new SubtypePropertiesEditionProvider(providers);
+	public Adapter createFirstModelNavigationAdapter() {
+		return new FirstModelNavigationSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createSecondModelNavigationAdapter()
+	 * 
+	 */
+	public Adapter createSecondModelNavigationAdapter() {
+		return new SecondModelNavigationSamplePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -90,11 +71,19 @@ public class NavigationEEFAdapterFactory extends NavigationAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createNamedElementAdapter()
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createDeferedFlatReferenceTableEditorSampleAdapter()
 	 * 
 	 */
-	public Adapter createNamedElementAdapter() {
-		return new NamedElementPropertiesEditionProvider();
+	public Adapter createDeferedFlatReferenceTableEditorSampleAdapter() {
+		return new DeferedFlatReferencesTableSampleEditorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createAbstractSampleAdapter()
+	 * 
+	 */
+	public Adapter createAbstractSampleAdapter() {
+		return new AbstractSamplePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -108,11 +97,37 @@ public class NavigationEEFAdapterFactory extends NavigationAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createSmartModelNavigationSampleAdapter()
+	 * 
+	 */
+	public Adapter createSmartModelNavigationSampleAdapter() {
+		return new SmartModelNavigationSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createAttributeNavigationSampleAdapter()
 	 * 
 	 */
 	public Adapter createAttributeNavigationSampleAdapter() {
 		return new AttributeNavigationSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createSubtypeAdapter()
+	 * 
+	 */
+	public Adapter createSubtypeAdapter() {
+		List<PropertiesEditingProvider> providers = new ArrayList<PropertiesEditingProvider>(1);
+		providers.add((PropertiesEditingProvider)createOwnerAdapter());
+		return new SubtypePropertiesEditionProvider(providers);
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.navigation.util.NavigationAdapterFactory#createDeferedReferenceTableEditorSampleAdapter()
+	 * 
+	 */
+	public Adapter createDeferedReferenceTableEditorSampleAdapter() {
+		return new DeferedReferencesTableSampleEditorPropertiesEditionProvider();
 	}
 
 }

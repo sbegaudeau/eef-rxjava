@@ -13,7 +13,7 @@
 	</prerequisites>
 	<groupId>org.eclipse.emf</groupId>
 	<artifactId>org.eclipse.emf.eef.releng.parent</artifactId>
-	<version>1.1.1-SNAPSHOT</version>
+	<version>1.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>EEF Parent</name>
@@ -44,7 +44,7 @@
 				<repository>
 					<id>releasetrain</id>
 					<layout>p2</layout>
-					<url>http://download.eclipse.org/eclipse/updates/4.2-I-builds</url>
+					<url>http://download.eclipse.org/eclipse/updates/4.2</url>
 				</repository>
 				<repository>
 					<id>swtbot</id>
@@ -64,7 +64,7 @@
 				<repository>
 					<id>ocl</id>
 					<layout>p2</layout>
-					<url>http://download.eclipse.org/modeling/mdt/ocl/updates/milestones/4.0.0</url>
+					<url>http://download.eclipse.org/modeling/mdt/ocl/updates/releases/4.0.0</url>
 				</repository>
 				<repository>
 					<id>acceleo</id>
@@ -81,6 +81,11 @@
 					<layout>p2</layout>
 					<url>http://build.eclipse.org/modeling/emf/eef/epf/</url>
 				</repository>
+				<repository>
+					<id>cdo</id>
+					<layout>p2</layout>
+					<url>http://download.eclipse.org/modeling/emf/cdo/updates/releases/4.0/</url>
+				</repository>
 			</repositories>
 		</profile>
 		<profile>
@@ -89,7 +94,7 @@
 				<repository>
 					<id>releasetrain</id>
 					<layout>p2</layout>
-					<url>http://download.eclipse.org/eclipse/updates/3.8milestones</url>
+					<url>http://download.eclipse.org/eclipse/updates/3.8</url>
 				</repository>
 				<repository>
 					<id>swtbot</id>
@@ -109,7 +114,7 @@
 				<repository>
 					<id>ocl</id>
 					<layout>p2</layout>
-					<url>http://download.eclipse.org/modeling/mdt/ocl/updates/milestones/4.0.0</url>
+					<url>http://download.eclipse.org/modeling/mdt/ocl/updates/releases/4.0.0</url>
 				</repository>
 				<repository>
 					<id>acceleo</id>
@@ -126,6 +131,11 @@
 					<layout>p2</layout>
 					<url>http://build.eclipse.org/modeling/emf/eef/epf/</url>
 				</repository>
+				<repository>
+					<id>cdo</id>
+					<layout>p2</layout>
+					<url>http://download.eclipse.org/modeling/emf/cdo/updates/releases/4.0/</url>
+				</repository>
 			</repositories>
 		</profile>
 
@@ -135,6 +145,7 @@
 		<module>../../plugins/org.eclipse.emf.eef.runtime</module>
 		<module>../../plugins/org.eclipse.emf.eef.runtime.extended</module>
 		<module>../../plugins/org.eclipse.emf.eef.runtime.tests</module>
+		<module>../../plugins/org.eclipse.emf.eef.cdo.runtime</module>
 
 		<module>../../doc/org.eclipse.emf.eef.doc</module>
 
@@ -162,17 +173,9 @@
 		<module>../../plugins/org.eclipse.emf.eef.codegen.extended</module>
 		<!-- <module>../../plugins/org.eclipse.emf.eef.tests.codegen</module> -->
 
-		<module>../../tests/org.eclipse.emf.examples.eef</module>
-		<module>../../tests/org.eclipse.emf.examples.eef.edit</module>
-		<module>../../tests/org.eclipse.emf.examples.eef.editor</module>
-		<module>../../tests/org.eclipse.emf.examples.eef.tests.junit</module>
-		<!--<module>../org.eclipse.emf.eef.tests.nonreg</module>
-		<module>../org.eclipse.emf.eef.tests.nonreg.edit</module>
-		<module>../org.eclipse.emf.eef.tests.nonreg.editor</module>
-		<module>../org.eclipse.emf.eef.tests.nonreg.junit</module> -->
-
 		<module>../../plugins/org.eclipse.emf.eef.branding</module>
 		<module>../../features/org.eclipse.emf.eef.runtime-feature</module>
+		<module>../../features/org.eclipse.emf.eef.collab.runtime-feature</module>
 		<module>../../features/org.eclipse.emf.eef.extended-feature</module>
 		<module>../../features/org.eclipse.emf.eef.richtext-feature</module>
 		<module>../../features/org.eclipse.emf.eef.edt-feature</module>
@@ -181,6 +184,15 @@
 		<!-- deprecated <module>../../features/org.eclipse.emf.eef.indigo-feature</module> -->
 
 		<module>../org.eclipse.emf.eef.update</module>
+
+		<module>../../tests/org.eclipse.emf.examples.eef</module>
+		<module>../../tests/org.eclipse.emf.examples.eef.edit</module>
+		<module>../../tests/org.eclipse.emf.examples.eef.editor</module>
+		<module>../../tests/org.eclipse.emf.examples.eef.tests.junit</module>
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg</module>
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.edit</module>
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.editor</module>
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.junit</module>
 
 	</modules>
 

@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.eefnr.parts;
 
 
 
-
 // End of user code
 
 /**
@@ -49,6 +48,20 @@ public interface TextareaSamplePropertiesEditionPart {
 	 * 
 	 */
 	public void setTextareaOptionalProperty(String newValue);
+
+
+	/**
+	 * @return the textareaROProperty
+	 * 
+	 */
+	public String getTextareaROProperty();
+
+	/**
+	 * Defines a new textareaROProperty
+	 * @param newValue the new textareaROProperty to set
+	 * 
+	 */
+	public void setTextareaROProperty(String newValue);
 
 
 

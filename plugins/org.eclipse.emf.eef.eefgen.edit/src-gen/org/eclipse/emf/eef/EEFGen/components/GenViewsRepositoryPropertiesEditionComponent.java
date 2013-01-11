@@ -26,7 +26,9 @@ import org.eclipse.emf.eef.EEFGen.GenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.HELP_STRATEGY;
 import org.eclipse.emf.eef.EEFGen.parts.EEFGenViewsRepository;
 import org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -83,10 +85,11 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final GenViewsRepository genViewsRepository = (GenViewsRepository)elt;
 			final GenViewsRepositoryPropertiesEditionPart basePart = (GenViewsRepositoryPropertiesEditionPart)editingPart;
 			// init values
-			if (genViewsRepository.getBasePackage() != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage))
+			if (isAccessible(EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage))
 				basePart.setBasePackage(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, genViewsRepository.getBasePackage()));
 			
 			if (isAccessible(EEFGenViewsRepository.GenViewsRepository.Activation.sWTViews)) {
@@ -105,7 +108,7 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 				// set the button mode
 				basePart.setViewsRepositoryButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			if (genViewsRepository.getPartsSuperClass() != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass))
+			if (isAccessible(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass))
 				basePart.setPartsSuperClass(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, genViewsRepository.getPartsSuperClass()));
 			
 			// init filters
@@ -218,27 +221,28 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			GenViewsRepositoryPropertiesEditionPart basePart = (GenViewsRepositoryPropertiesEditionPart)editingPart;
-			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage)) {
+			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Parameters.basePackage)) {
 				if (msg.getNewValue() != null) {
 					basePart.setBasePackage(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setBasePackage("");
 				}
 			}
-			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Activation.sWTViews))
+			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Activation.sWTViews))
 				basePart.setSWTViews((Boolean)msg.getNewValue());
 			
-			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Activation.formsViews))
+			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Activation.formsViews))
 				basePart.setFormsViews((Boolean)msg.getNewValue());
 			
-			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().equals(msg.getFeature()) && isAccessible(EEFGenViewsRepository.GenViewsRepository.Parameters.helpStrategy))
+			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EEFGenViewsRepository.GenViewsRepository.Parameters.helpStrategy))
 				basePart.setHelpStrategy((HELP_STRATEGY)msg.getNewValue());
 			
 			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Reference.viewsRepository))
 				basePart.setViewsRepository((EObject)msg.getNewValue());
-			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_PartsSuperClass().equals(msg.getFeature()) && basePart != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass)) {
+			if (EEFGenPackage.eINSTANCE.getGenViewsRepository_PartsSuperClass().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass)) {
 				if (msg.getNewValue() != null) {
 					basePart.setPartsSuperClass(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -247,6 +251,23 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_BasePackage(),
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_SwtViews(),
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_FormViews(),
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_HelpStrategy(),
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_ViewsRepository(),
+			EEFGenPackage.eINSTANCE.getGenViewsRepository_PartsSuperClass()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -325,5 +346,8 @@ public class GenViewsRepositoryPropertiesEditionComponent extends SinglePartProp
 		}
 		return ret;
 	}
+
+
+	
 
 }

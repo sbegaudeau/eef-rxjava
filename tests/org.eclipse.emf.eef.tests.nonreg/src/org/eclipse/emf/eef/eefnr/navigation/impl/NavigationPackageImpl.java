@@ -27,11 +27,14 @@ import org.eclipse.emf.eef.eefnr.navigation.DeferedFlatReferenceTableEditorSampl
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReference;
 import org.eclipse.emf.eef.eefnr.navigation.DeferedReferenceTableEditorSample;
 import org.eclipse.emf.eef.eefnr.navigation.Element;
+import org.eclipse.emf.eef.eefnr.navigation.FirstModelNavigation;
 import org.eclipse.emf.eef.eefnr.navigation.MultipleReferencer;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationFactory;
 import org.eclipse.emf.eef.eefnr.navigation.NavigationPackage;
 import org.eclipse.emf.eef.eefnr.navigation.Owner;
+import org.eclipse.emf.eef.eefnr.navigation.SecondModelNavigation;
 import org.eclipse.emf.eef.eefnr.navigation.SingleReferencer;
+import org.eclipse.emf.eef.eefnr.navigation.SmartModelNavigationSample;
 import org.eclipse.emf.eef.eefnr.navigation.Subtype;
 import org.eclipse.emf.eef.eefnr.references.ReferencesPackage;
 import org.eclipse.emf.eef.eefnr.references.impl.ReferencesPackageImpl;
@@ -121,6 +124,27 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * @generated
 	 */
 	private EClass attributeDelegateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass smartModelNavigationSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass firstModelNavigationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass secondModelNavigationEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -577,6 +601,123 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSmartModelNavigationSample() {
+		return smartModelNavigationSampleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSmartModelNavigationSample_FirstModelNavigation() {
+		return (EReference)smartModelNavigationSampleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSmartModelNavigationSample_SeveralFirstModelNavigation() {
+		return (EReference)smartModelNavigationSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSmartModelNavigationSample_FirstModelNavigation2() {
+		return (EReference)smartModelNavigationSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSmartModelNavigationSample_SeveralFirstModelNavigation2() {
+		return (EReference)smartModelNavigationSampleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFirstModelNavigation() {
+		return firstModelNavigationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFirstModelNavigation_SecondModelNavigation() {
+		return (EReference)firstModelNavigationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFirstModelNavigation_SeveralSecondModelNavigation() {
+		return (EReference)firstModelNavigationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFirstModelNavigation_Filter1() {
+		return (EAttribute)firstModelNavigationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFirstModelNavigation_Filter2() {
+		return (EAttribute)firstModelNavigationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSecondModelNavigation() {
+		return secondModelNavigationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSecondModelNavigation_Filter3() {
+		return (EAttribute)secondModelNavigationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSecondModelNavigation_Filter4() {
+		return (EAttribute)secondModelNavigationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NavigationFactory getNavigationFactory() {
 		return (NavigationFactory)getEFactoryInstance();
 	}
@@ -651,6 +792,22 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 		attributeDelegateEClass = createEClass(ATTRIBUTE_DELEGATE);
 		createEAttribute(attributeDelegateEClass, ATTRIBUTE_DELEGATE__DELEGATE1);
 		createEAttribute(attributeDelegateEClass, ATTRIBUTE_DELEGATE__DELEGATE2);
+
+		smartModelNavigationSampleEClass = createEClass(SMART_MODEL_NAVIGATION_SAMPLE);
+		createEReference(smartModelNavigationSampleEClass, SMART_MODEL_NAVIGATION_SAMPLE__FIRST_MODEL_NAVIGATION);
+		createEReference(smartModelNavigationSampleEClass, SMART_MODEL_NAVIGATION_SAMPLE__SEVERAL_FIRST_MODEL_NAVIGATION);
+		createEReference(smartModelNavigationSampleEClass, SMART_MODEL_NAVIGATION_SAMPLE__FIRST_MODEL_NAVIGATION2);
+		createEReference(smartModelNavigationSampleEClass, SMART_MODEL_NAVIGATION_SAMPLE__SEVERAL_FIRST_MODEL_NAVIGATION2);
+
+		firstModelNavigationEClass = createEClass(FIRST_MODEL_NAVIGATION);
+		createEReference(firstModelNavigationEClass, FIRST_MODEL_NAVIGATION__SECOND_MODEL_NAVIGATION);
+		createEReference(firstModelNavigationEClass, FIRST_MODEL_NAVIGATION__SEVERAL_SECOND_MODEL_NAVIGATION);
+		createEAttribute(firstModelNavigationEClass, FIRST_MODEL_NAVIGATION__FILTER1);
+		createEAttribute(firstModelNavigationEClass, FIRST_MODEL_NAVIGATION__FILTER2);
+
+		secondModelNavigationEClass = createEClass(SECOND_MODEL_NAVIGATION);
+		createEAttribute(secondModelNavigationEClass, SECOND_MODEL_NAVIGATION__FILTER3);
+		createEAttribute(secondModelNavigationEClass, SECOND_MODEL_NAVIGATION__FILTER4);
 	}
 
 	/**
@@ -691,6 +848,9 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 		anotherSubTypeEClass.getESuperTypes().add(this.getSubtype());
 		elementEClass.getESuperTypes().add(theEefnrPackage.getNamedElement());
 		attributeNavigationSampleEClass.getESuperTypes().add(theEefnrPackage.getAbstractSample());
+		smartModelNavigationSampleEClass.getESuperTypes().add(theEefnrPackage.getNamedElement());
+		firstModelNavigationEClass.getESuperTypes().add(theEefnrPackage.getNamedElement());
+		secondModelNavigationEClass.getESuperTypes().add(theEefnrPackage.getNamedElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(deferedFlatReferenceTableEditorSampleEClass, DeferedFlatReferenceTableEditorSample.class, "DeferedFlatReferenceTableEditorSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -747,6 +907,22 @@ public class NavigationPackageImpl extends EPackageImpl implements NavigationPac
 		initEClass(attributeDelegateEClass, AttributeDelegate.class, "AttributeDelegate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAttributeDelegate_Delegate1(), ecorePackage.getEString(), "delegate1", null, 1, 1, AttributeDelegate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttributeDelegate_Delegate2(), ecorePackage.getEInt(), "delegate2", null, 0, 1, AttributeDelegate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(smartModelNavigationSampleEClass, SmartModelNavigationSample.class, "SmartModelNavigationSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSmartModelNavigationSample_FirstModelNavigation(), this.getFirstModelNavigation(), null, "firstModelNavigation", null, 0, 1, SmartModelNavigationSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSmartModelNavigationSample_SeveralFirstModelNavigation(), this.getFirstModelNavigation(), null, "severalFirstModelNavigation", null, 0, -1, SmartModelNavigationSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSmartModelNavigationSample_FirstModelNavigation2(), this.getFirstModelNavigation(), null, "firstModelNavigation2", null, 0, 1, SmartModelNavigationSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSmartModelNavigationSample_SeveralFirstModelNavigation2(), this.getFirstModelNavigation(), null, "severalFirstModelNavigation2", null, 0, -1, SmartModelNavigationSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(firstModelNavigationEClass, FirstModelNavigation.class, "FirstModelNavigation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFirstModelNavigation_SecondModelNavigation(), this.getSecondModelNavigation(), null, "secondModelNavigation", null, 0, 1, FirstModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFirstModelNavigation_SeveralSecondModelNavigation(), this.getSecondModelNavigation(), null, "severalSecondModelNavigation", null, 0, -1, FirstModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFirstModelNavigation_Filter1(), ecorePackage.getEBoolean(), "filter1", null, 0, 1, FirstModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFirstModelNavigation_Filter2(), ecorePackage.getEBoolean(), "filter2", null, 0, 1, FirstModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(secondModelNavigationEClass, SecondModelNavigation.class, "SecondModelNavigation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSecondModelNavigation_Filter3(), ecorePackage.getEBoolean(), "filter3", null, 0, 1, SecondModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSecondModelNavigation_Filter4(), ecorePackage.getEBoolean(), "filter4", null, 0, 1, SecondModelNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //NavigationPackageImpl

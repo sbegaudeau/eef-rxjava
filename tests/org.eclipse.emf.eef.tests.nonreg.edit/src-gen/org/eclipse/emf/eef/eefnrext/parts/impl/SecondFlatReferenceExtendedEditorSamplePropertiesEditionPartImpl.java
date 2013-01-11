@@ -13,29 +13,42 @@ package org.eclipse.emf.eef.eefnrext.parts.impl;
 // Start of user code for imports
 import org.eclipse.emf.eef.eefnrext.parts.EefnrextViewsRepository;
 import org.eclipse.emf.eef.eefnrext.parts.SecondFlatReferenceExtendedEditorSamplePropertiesEditionPart;
+
 import org.eclipse.emf.eef.eefnrext.providers.EefnrextMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-
 
 // End of user code
 
@@ -166,6 +179,9 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 		EditingUtils.setID(demo, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo);
 		EditingUtils.setEEFtype(demo, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDemoText
+
+		// End of user code
 		return parent;
 	}
 
@@ -212,6 +228,9 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 		EditingUtils.setID(size, EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size);
 		EditingUtils.setEEFtype(size, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size, EefnrextViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSizeText
+
+		// End of user code
 		return parent;
 	}
 
@@ -250,6 +269,14 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 		} else {
 			demo.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.demo);
+		if (eefElementEditorReadOnlyState && demo.isEnabled()) {
+			demo.setEnabled(false);
+			demo.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !demo.isEnabled()) {
+			demo.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -274,6 +301,14 @@ public class SecondFlatReferenceExtendedEditorSamplePropertiesEditionPartImpl ex
 		} else {
 			size.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrextViewsRepository.SecondFlatReferenceExtendedEditorSample.Extended.size);
+		if (eefElementEditorReadOnlyState && size.isEnabled()) {
+			size.setEnabled(false);
+			size.setToolTipText(EefnrextMessages.SecondFlatReferenceExtendedEditorSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !size.isEnabled()) {
+			size.setEnabled(true);
+		}	
+		
 	}
 
 

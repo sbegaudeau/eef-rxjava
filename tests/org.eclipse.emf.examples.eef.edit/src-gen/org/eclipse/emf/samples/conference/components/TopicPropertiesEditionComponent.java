@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
@@ -25,7 +26,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
@@ -71,16 +74,17 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Topic topic = (Topic)elt;
 			final TopicPropertiesEditionPart basePart = (TopicPropertiesEditionPart)editingPart;
 			// init values
-			if (topic.getDescription() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.description))
+			if (isAccessible(ConferenceViewsRepository.Topic.Properties.description))
 				basePart.setDescription(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, topic.getDescription()));
 			
-			if (topic.getReferences() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.references))
+			if (isAccessible(ConferenceViewsRepository.Topic.Properties.references))
 				basePart.setReferences(topic.getReferences());
 			
-			if (topic.getDocumentation() != null && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation))
+			if (isAccessible(ConferenceViewsRepository.Topic.Properties.documentation))
 				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, topic.getDocumentation()));
 			// init filters
 			
@@ -129,7 +133,7 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 		if (ConferenceViewsRepository.Topic.Properties.references == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				topic.getReferences().clear();
-				topic.getReferences().addAll(((List) event.getNewValue()));
+				topic.getReferences().addAll(((EList) event.getNewValue()));
 			}
 		}
 		if (ConferenceViewsRepository.Topic.Properties.documentation == event.getAffectedEditor()) {
@@ -142,20 +146,29 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TopicPropertiesEditionPart basePart = (TopicPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.description)) {
+			if (ConferencePackage.eINSTANCE.getTopic_Description().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.description)) {
 				if (msg.getNewValue() != null) {
 					basePart.setDescription(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setDescription("");
 				}
 			}
-			if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.references)) {
-				basePart.setReferences((EList)msg.getNewValue());
+			if (ConferencePackage.eINSTANCE.getTopic_References().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.references)) {
+				if (msg.getNewValue() instanceof EList<?>) {
+					basePart.setReferences((EList<?>)msg.getNewValue());
+				} else if (msg.getNewValue() == null) {
+					basePart.setReferences(new BasicEList<Object>());
+				} else {
+					BasicEList<Object> newValueAsList = new BasicEList<Object>();
+					newValueAsList.add(msg.getNewValue());
+					basePart.setReferences(newValueAsList);
+				}
 			}
 			
-			if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation)){
+			if (ConferencePackage.eINSTANCE.getTopic_Documentation().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Topic.Properties.documentation)){
 				if (msg.getNewValue() != null) {
 					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -164,6 +177,20 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ConferencePackage.eINSTANCE.getTopic_Description(),
+			ConferencePackage.eINSTANCE.getTopic_References(),
+			ConferencePackage.eINSTANCE.getTopic_Documentation()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -232,5 +259,8 @@ public class TopicPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		return ret;
 	}
+
+
+	
 
 }

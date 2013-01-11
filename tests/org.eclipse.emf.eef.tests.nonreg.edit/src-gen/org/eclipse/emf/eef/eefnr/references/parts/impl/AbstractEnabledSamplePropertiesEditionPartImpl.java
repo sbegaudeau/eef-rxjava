@@ -14,29 +14,44 @@ package org.eclipse.emf.eef.eefnr.references.parts.impl;
 import org.eclipse.emf.eef.eefnr.references.parts.AbstractEnabledSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.AbstractSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.references.parts.ReferencesViewsRepository;
+
 import org.eclipse.emf.eef.eefnr.references.providers.ReferencesMessages;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesEditionPartProviderService;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-
 
 // End of user code
 
@@ -149,6 +164,9 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(enabled, ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
 		EditingUtils.setEEFtype(enabled, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled, ReferencesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createEnabledCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -195,6 +213,14 @@ public class AbstractEnabledSamplePropertiesEditionPartImpl extends CompositePro
 		} else {
 			enabled.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ReferencesViewsRepository.AbstractEnabledSample.EnabledProperties.enabled);
+		if (eefElementEditorReadOnlyState && enabled.isEnabled()) {
+			enabled.setEnabled(false);
+			enabled.setToolTipText(ReferencesMessages.AbstractEnabledSample_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !enabled.isEnabled()) {
+			enabled.setEnabled(true);
+		}	
+		
 	}
 
 

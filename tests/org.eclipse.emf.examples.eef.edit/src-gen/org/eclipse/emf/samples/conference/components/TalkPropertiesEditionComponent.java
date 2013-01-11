@@ -12,34 +12,53 @@ package org.eclipse.emf.samples.conference.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.samples.conference.ConferenceFactory;
 import org.eclipse.emf.samples.conference.ConferencePackage;
 import org.eclipse.emf.samples.conference.Person;
 import org.eclipse.emf.samples.conference.TALK_TYPE;
 import org.eclipse.emf.samples.conference.Talk;
 import org.eclipse.emf.samples.conference.Topic;
+
 import org.eclipse.emf.samples.conference.parts.ConferenceViewsRepository;
 import org.eclipse.emf.samples.conference.parts.TalkPropertiesEditionPart;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -94,10 +113,11 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Talk talk = (Talk)elt;
 			final TalkPropertiesEditionPart basePart = (TalkPropertiesEditionPart)editingPart;
 			// init values
-			if (talk.getTitle() != null && isAccessible(ConferenceViewsRepository.Talk.Properties.title_))
+			if (isAccessible(ConferenceViewsRepository.Talk.Properties.title_))
 				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, talk.getTitle()));
 			
 			if (isAccessible(ConferenceViewsRepository.Talk.Properties.topic)) {
@@ -124,7 +144,7 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 				// set the button mode
 				basePart.setCreatorButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			if (talk.getDocumentation() != null && isAccessible(ConferenceViewsRepository.Talk.Properties.documentation))
+			if (isAccessible(ConferenceViewsRepository.Talk.Properties.documentation))
 				basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, talk.getDocumentation()));
 			// init filters
 			
@@ -142,7 +162,6 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 					
 				});
 				// Start of user code for additional businessfilters for topic
-				
 				// End of user code
 			}
 			
@@ -160,7 +179,6 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 					
 				});
 				// Start of user code for additional businessfilters for presenter
-				
 				// End of user code
 			}
 			if (isAccessible(ConferenceViewsRepository.Talk.Properties.creator)) {
@@ -177,7 +195,6 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 					
 				});
 				// Start of user code for additional businessfilters for creator
-				
 				// End of user code
 			}
 			
@@ -294,9 +311,10 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TalkPropertiesEditionPart basePart = (TalkPropertiesEditionPart)editingPart;
-			if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.title_)) {
+			if (ConferencePackage.eINSTANCE.getTalk_Title().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.title_)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -305,14 +323,14 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 			if (ConferencePackage.eINSTANCE.getTalk_Topic().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.topic))
 				basePart.setTopic((EObject)msg.getNewValue());
-			if (ConferencePackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && isAccessible(ConferenceViewsRepository.Talk.Properties.type))
+			if (ConferencePackage.eINSTANCE.getTalk_Type().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(ConferenceViewsRepository.Talk.Properties.type))
 				basePart.setType((TALK_TYPE)msg.getNewValue());
 			
 			if (ConferencePackage.eINSTANCE.getTalk_Presenter().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.presenter))
 				basePart.setPresenter((EObject)msg.getNewValue());
 			if (ConferencePackage.eINSTANCE.getTalk_Creator().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.creator))
 				basePart.setCreator((EObject)msg.getNewValue());
-			if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.documentation)){
+			if (ConferencePackage.eINSTANCE.getTalk_Documentation().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ConferenceViewsRepository.Talk.Properties.documentation)){
 				if (msg.getNewValue() != null) {
 					basePart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -321,6 +339,23 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			ConferencePackage.eINSTANCE.getTalk_Title(),
+			ConferencePackage.eINSTANCE.getTalk_Topic(),
+			ConferencePackage.eINSTANCE.getTalk_Type(),
+			ConferencePackage.eINSTANCE.getTalk_Presenter(),
+			ConferencePackage.eINSTANCE.getTalk_Creator(),
+			ConferencePackage.eINSTANCE.getTalk_Documentation()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -395,5 +430,8 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 		}
 		return ret;
 	}
+
+
+	
 
 }

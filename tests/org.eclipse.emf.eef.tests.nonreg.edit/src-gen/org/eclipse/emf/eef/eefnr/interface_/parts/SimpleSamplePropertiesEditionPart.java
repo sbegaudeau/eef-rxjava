@@ -14,7 +14,6 @@ package org.eclipse.emf.eef.eefnr.interface_.parts;
 
 
 
-
 // End of user code
 
 /**
@@ -31,7 +30,7 @@ public interface SimpleSamplePropertiesEditionPart {
 	 */
 	public String getTitle();
 
-	// Start of user code for getters and setters declaration
+	// Start of user code  for getters and setters declaration
 	
 	// End of user code
 
