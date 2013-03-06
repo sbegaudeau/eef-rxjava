@@ -694,8 +694,10 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 		public void handleEvent(Event event) {
 			if (table.getSelection().length > 0) {
 				TableItem item = table.getSelection()[0];
-				// Edit
-				referencesTableListener.handleEdit((EObject)item.getData());
+				if (item.getData() instanceof EObject) {
+					// Edit
+					referencesTableListener.handleEdit((EObject)item.getData());
+				}
 			}
 		}
 	}
