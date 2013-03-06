@@ -424,28 +424,25 @@ public class PropertiesEditionElementPropertiesEditionPartForm extends SectionPr
 		table.setLayoutData(gd);
 		table.setLinesVisible(true);
 		// Start of user code for table views s columns definition
-				TableColumn name = new TableColumn(table, SWT.NONE);
-				name.setWidth(80);
-				name.setText("Label"); //$NON-NLS-1$
-		
+		TableColumn name = new TableColumn(table, SWT.NONE);
+		name.setWidth(80);
+		name.setText("Label"); //$NON-NLS-1$
 		// End of user code
 
 		TableViewer result = new TableViewer(table);
 		result.setLabelProvider(new ITableLabelProvider() {
 
 			// Start of user code for table views label provider
-						public String getColumnText(Object object, int columnIndex) {
-							AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-							if (object instanceof EObject) {
-								switch (columnIndex) {
-								case 0:
-									return labelProvider.getText(object);
-								}
-							}
-							return ""; //$NON-NLS-1$
-						}
-			
-			
+			public String getColumnText(Object object, int columnIndex) {
+				AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+				if (object instanceof EObject) {
+					switch (columnIndex) {
+					case 0:
+						return labelProvider.getText(object);
+					}
+				}
+				return ""; //$NON-NLS-1$
+			}
 			// End of user code
 
 			public Image getColumnImage(Object element, int columnIndex) {
