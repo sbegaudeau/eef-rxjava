@@ -100,22 +100,22 @@ public class ReferencesTable implements IPropertiesFilteredWidget {
 	/**
 	 * Button that adds an element.
 	 */
-	private Button addButton;
+	protected Button addButton;
 
 	/**
 	 * Button that removes an element.
 	 */
-	private Button removeButton;
+	protected Button removeButton;
 
 	/**
 	 * button that moves the element up.
 	 */
-	private Button upButton;
+	protected Button upButton;
 
 	/**
 	 * button that moves the element down.
 	 */
-	private Button downButton;
+	protected Button downButton;
 
 	/**
 	 * Listener for the add button.
