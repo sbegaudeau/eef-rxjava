@@ -35,6 +35,11 @@ public interface PropertiesEditingContext {
 	public ChangeRecorder getChangeRecorder();
 
 	/**
+	 * Dispose and "nullify" the nested change recorder 
+	 */
+	public void disposeRecorder();
+
+	/**
 	 * @return the currently edited {@link EObject}.
 	 */
 	public EObject getEObject();
@@ -62,6 +67,7 @@ public interface PropertiesEditingContext {
 	/**
 	 * @param eObject
 	 */
-	public abstract void seteObject(EObject eObject);
+	public void seteObject(EObject eObject);
+
 	
 }

@@ -131,6 +131,15 @@ public class EObjectPropertiesEditionContext implements ExtendedPropertiesEditin
 	}
 
 	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.context.PropertiesEditingContext#disposeRecorder()
+	 */
+	public void disposeRecorder() {
+		changeRecorder.dispose();
+		changeRecorder = null;
+	}
+
+	/**
 	 * @return the eObject
 	 */
 	public EObject getEObject() {

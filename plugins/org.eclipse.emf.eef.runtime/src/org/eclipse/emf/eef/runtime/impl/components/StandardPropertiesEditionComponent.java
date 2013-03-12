@@ -218,7 +218,7 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 									ChangeRecorder changeRecorder = editingContext.getChangeRecorder();
 									if (changeRecorder != null) {
 										description = changeRecorder.endRecording();
-										changeRecorder.dispose();
+										editingContext.disposeRecorder();
 									}
 								}
 
