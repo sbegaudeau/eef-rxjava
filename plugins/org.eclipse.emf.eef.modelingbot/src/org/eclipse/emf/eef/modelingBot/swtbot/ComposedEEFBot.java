@@ -16,19 +16,17 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.command.BasicCommandStack;
-import org.eclipse.emf.compare.diff.metamodel.DiffGroup;
-import org.eclipse.emf.compare.diff.metamodel.DiffModel;
-import org.eclipse.emf.compare.diff.service.DiffService;
-import org.eclipse.emf.compare.match.metamodel.MatchModel;
-import org.eclipse.emf.compare.match.service.MatchService;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.compare.Comparison;
+import org.eclipse.emf.compare.Diff;
+import org.eclipse.emf.compare.EMFCompare;
+import org.eclipse.emf.compare.EMFCompare.Builder;
+import org.eclipse.emf.compare.match.DefaultMatchEngine;
+import org.eclipse.emf.compare.utils.UseIdentifiers;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -46,7 +44,6 @@ import org.eclipse.emf.eef.modelingBot.interpreter.ComposedEEFInterpreter;
 import org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter;
 import org.eclipse.emf.eef.modelingBot.uri.EEFURIConverter;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 /**
  * Composed eef bot : SWTEEFbot and BatchModeling bot.
@@ -284,35 +281,15 @@ public class ComposedEEFBot implements IModelingBot {
 
 	public void assertExpectedModelReached(Resource expectedModel, Resource batchModel)
 			throws InterruptedException {
-		final Map<String, Object> options = new HashMap<String, Object>();
-		options.put(org.eclipse.emf.compare.match.MatchOptions.OPTION_IGNORE_XMI_ID, Boolean.TRUE);
-		options.put(org.eclipse.emf.compare.match.MatchOptions.OPTION_DISTINCT_METAMODELS, Boolean.TRUE);
-		final MatchModel match = MatchService.doResourceMatch(batchModel, expectedModel, options);
-		final DiffModel diff = DiffService.doDiff(match);
-		final List<EObject> diffList = EEFUtils.asEObjectList(diff.eAllContents());
-		final Collection<EObject> result = filterAbnormalDiffElement(diffList);
-		if (!result.isEmpty()) {
-			System.out.println(result);
+		Builder builder = EMFCompare.builder();
+		builder.setMatchEngine(DefaultMatchEngine.create(UseIdentifiers.NEVER));
+		Comparison compare = builder.build()
+				.compare(EMFCompare.createDefaultScope(expectedModel, batchModel));
+		EList<Diff> differences = compare.getDifferences();
+		if (!differences.isEmpty()) {
+			System.out.println(differences);
 		}
-		assertTrue("The active model isn't the same that the expected model.", result.isEmpty());
-	}
-
-	/**
-	 * TODO: check this with the EMF Compare team
-	 * 
-	 * @param diffList
-	 *            the list to filter
-	 * @return the list of "good" diff
-	 */
-	private Collection<EObject> filterAbnormalDiffElement(List<EObject> diffList) {
-		final Set<EObject> result = new HashSet<EObject>();
-		for (EObject object : diffList) {
-			if (!(object instanceof DiffGroup))
-				result.add(object);
-			else if (object.eContents().size() > 0)
-				result.addAll(filterAbnormalDiffElement(object.eContents()));
-		}
-		return result;
+		assertTrue("The active model isn't the same that the expected model.", differences.isEmpty());
 	}
 
 	/**
@@ -381,7 +358,7 @@ public class ComposedEEFBot implements IModelingBot {
 
 	public void moveUp(PropertiesEditionElement propertiesEditionElement,
 			ReferenceableObject referenceableObject) {
-		// do nothing	
+		// do nothing
 	}
 
 	public void moveDown(PropertiesEditionElement propertiesEditionElement,

@@ -13,6 +13,7 @@ package org.eclipse.emf.eef.modelingBot.interpreter;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.Collection;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -103,12 +105,21 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 		final Resource modelingBotResource = loadModel(path);
 		EcoreUtil.resolveAll(modelingBotResource.getResourceSet());
 		assertFalse("The modeling bot resource is empty.", modelingBotResource.getContents().isEmpty());
-		assertTrue("The modeling bot model contains errors, correct them first", modelingBotResource.getErrors()
-				.isEmpty());
-		final ModelingBot mbot = (ModelingBot)modelingBotResource.getContents().get(0);
+		assertTrue("The modeling bot model contains errors, correct them first", modelingBotResource
+				.getErrors().isEmpty());
+
+		EObject modelingBotResourceRoot = modelingBotResource.getContents().iterator().next();
+		ModelingBot mbot = null;
+		if (modelingBotResourceRoot instanceof ModelingBot) {
+			mbot = (ModelingBot)modelingBotResourceRoot;
+		} else {
+			fail("Invalid content for resource '" + path
+					+ "': expecting a ModelingBot or a Scenario contained in a ModelingBot");
+		}
 		final Diagnostic diag = Diagnostician.INSTANCE.validate(mbot);
-		assertTrue("The modeling bot model contains errors, correct them first", diag.getSeverity() == Diagnostic.OK);
-		
+		assertTrue("The modeling bot model contains errors, correct them first",
+				diag.getSeverity() == Diagnostic.OK);
+
 		assertNotNull("The modeling bot resource is empty.", mbot);
 		for (IModelingBot bot : modelingBots) {
 			bot.getModelingBotInterpreter().setPropertiesEditionContext(mbot.getPropertiesEditionContext());
@@ -147,22 +158,24 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#preProcessing(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
 	public void preProcessing(Sequence sequence) {
 		for (IModelingBot iModelingBot : modelingBots) {
 			iModelingBot.getModelingBotInterpreter().preProcessing(sequence);
-		}		
+		}
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#postProcessing(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
 	public void postProcessing(Sequence sequence) {
 		for (IModelingBot iModelingBot : modelingBots) {
 			iModelingBot.getModelingBotInterpreter().postProcessing(sequence);
-		}		
+		}
 	}
 
 	/**
@@ -187,16 +200,22 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 	}
 
 	/**
-	 * Get the loaded resource.
+	 * Loads the model located at the given uri.
 	 * 
-	 * @param path
-	 *            path of the model
-	 * @return the resource loaded
+	 * @param uri
+	 *            the URI of the model to load. By convention, if giving a path (i.e. an URI with no scheme),
+	 *            then a platform:/plugins URI will be created
+	 * @return a resource containing the loaded model
 	 * @throws IOException
 	 * @throws CoreException
 	 */
-	public Resource loadModel(String path) throws IOException, CoreException {
-		final URI fileURI = URI.createPlatformPluginURI(path, true);
+	public Resource loadModel(String uri) throws IOException, CoreException {
+		URI fileURI = URI.createURI(uri);
+		// If the URI does not contains any scheme
+		// Then by convention we consider it referecences a model located in platform:/plugins
+		if (fileURI.scheme() == null || fileURI.scheme().length() == 0) {
+			fileURI = URI.createPlatformPluginURI(uri, true);
+		}
 		final Resource resource = editingDomain.getResourceSet().getResource(fileURI, true);
 		assertNotNull("The modeling bot resource can not be loaded.", resource);
 		return resource;
