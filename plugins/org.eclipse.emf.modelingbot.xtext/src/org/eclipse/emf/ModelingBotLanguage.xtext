@@ -1,0 +1,41 @@
+grammar org.eclipse.emf.eef.ModelingBot with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+import "platform:/resource/org.eclipse.emf.eef.modelingbot/model/mbot.ecore" as mbot
+
+Scenario returns mbot::Scenario: 
+	'scenario' name=EString '{'
+		processings+=EEFProcessings*
+	'}';
+
+EEFProcessings returns mbot::Processing:
+	Details | Wizard | PropertiesView
+;
+
+PropertiesView returns mbot::PropertiesView:
+	'propertiesView' (name=EString)? '{'
+		processings+=SubProcessings*
+	'}'
+;
+
+Wizard returns mbot::Wizard:
+	'wizard' (name=EString)? '{'
+		processings+=SubProcessings*
+	'}'
+;
+
+
+Details returns mbot::DetailsPage:
+	'detailsPage' (name=EString)? '{'
+		processings+=SubProcessings*
+	'}'
+;
+
+
+SubProcessings returns mbot::Processing:
+	Wizard
+;
+
+EString returns ecore::EString:
+	STRING | ID;

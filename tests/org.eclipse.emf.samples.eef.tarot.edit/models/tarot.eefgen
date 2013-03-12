@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/org.eclipse.emf.samples.eef.tarot.edit/src-gen">
-  <editionContexts basePackage="org.eclipse.emf.samples.eef" descriptorsGenericPropertiesViews="true">
-    <PropertiesEditionContext href="tarot.components#_xVtasNNwEd6isJi8yZqD2Q"/>
-  </editionContexts>
-  <viewsRepositories basePackage="org.eclipse.emf.samples.eef.tarot" swtViews="true" formViews="true">
-    <viewsRepository href="tarot.components#_xVuo0tNwEd6isJi8yZqD2Q"/>
-  </viewsRepositories>
-</eef-gen:EEFGenModel>
