@@ -52,6 +52,10 @@
 					<url>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</url>
 				</repository>
 				<repository>
+					<id>EMF Compare 2.1</id>
+					<url>http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.1/S201302050831</url>
+				</repository>
+				<repository>
 					<id>emf</id>
 					<layout>p2</layout>
 					<url>http://download.eclipse.org/modeling/emf/emf/updates/2.8milestones</url>
@@ -102,6 +106,11 @@
 					<url>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</url>
 				</repository>
 				<repository>
+					<id>EMF Compare 2.1</id>
+					<layout>p2</layout>
+					<url>http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.1/S201302050831</url>
+				</repository>
+				<repository>
 					<id>emf</id>
 					<layout>p2</layout>
 					<url>http://download.eclipse.org/modeling/emf/emf/updates/2.8milestones</url>
@@ -144,7 +153,6 @@
 	<modules>
 		<module>../../plugins/org.eclipse.emf.eef.runtime</module>
 		<module>../../plugins/org.eclipse.emf.eef.runtime.extended</module>
-		<module>../../plugins/org.eclipse.emf.eef.runtime.tests</module>
 		<module>../../plugins/org.eclipse.emf.eef.cdo.runtime</module>
 
 		<module>../../doc/org.eclipse.emf.eef.doc</module>
@@ -181,7 +189,6 @@
 		<module>../../features/org.eclipse.emf.eef.edt-feature</module>
 		<module>../../features/org.eclipse.emf.eef.codegen.ecore-feature</module>
 		<module>../../features/org.eclipse.emf.eef.sdk-feature</module>
-		<!-- deprecated <module>../../features/org.eclipse.emf.eef.indigo-feature</module> -->
 
 		<module>../org.eclipse.emf.eef.update</module>
 
