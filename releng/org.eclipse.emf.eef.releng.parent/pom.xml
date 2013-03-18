@@ -189,6 +189,7 @@
 		<module>../../features/org.eclipse.emf.eef.edt-feature</module>
 		<module>../../features/org.eclipse.emf.eef.codegen.ecore-feature</module>
 		<module>../../features/org.eclipse.emf.eef.sdk-feature</module>
+		<module>../../features/org.eclipse.emf.eef.tests-feature</module>
 
 		<module>../org.eclipse.emf.eef.update</module>
 
