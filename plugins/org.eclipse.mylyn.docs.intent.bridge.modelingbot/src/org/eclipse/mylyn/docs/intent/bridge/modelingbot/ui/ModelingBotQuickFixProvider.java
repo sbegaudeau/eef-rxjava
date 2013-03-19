@@ -11,6 +11,7 @@
 package org.eclipse.mylyn.docs.intent.bridge.modelingbot.ui;
 
 import org.eclipse.emf.eef.modelingBot.ModelingBot;
+import org.eclipse.emf.eef.modelingBot.Scenario;
 import org.eclipse.mylyn.docs.intent.client.ui.editor.annotation.IntentAnnotation;
 import org.eclipse.mylyn.docs.intent.client.ui.editor.quickfix.AbstractIntentFix;
 import org.eclipse.mylyn.docs.intent.client.ui.editor.quickfix.provider.IntentQuickFixProvider;
@@ -24,9 +25,13 @@ public class ModelingBotQuickFixProvider implements IntentQuickFixProvider {
 	 * @see org.eclipse.mylyn.docs.intent.client.ui.editor.quickfix.provider.IntentQuickFixProvider#canCreateQuickFix(org.eclipse.mylyn.docs.intent.client.ui.editor.annotation.IntentAnnotation)
 	 */
 	public boolean canCreateQuickFix(IntentAnnotation annotation) {
-		return (annotation.getCompilationStatus().getTarget() instanceof ExternalContentReference)
-				&& ((ExternalContentReference)annotation.getCompilationStatus().getTarget())
-						.getExternalContent() instanceof ModelingBot;
+		if (annotation.getCompilationStatus().getTarget() instanceof ExternalContentReference) {
+			ExternalContentReference target = (ExternalContentReference)annotation.getCompilationStatus()
+					.getTarget();
+			return target.getExternalContent() instanceof ModelingBot
+					|| target.getExternalContent() instanceof Scenario;
+		}
+		return false;
 	}
 
 	/**

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2008, 2010 Obeo.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+   
+    Contributors:
+        Obeo - initial API and implementation
+ -->
+<feature
+      id="org.eclipse.emf.eef.tests.intent-feature"
+      label="%featureName"
+      version="1.2.0.qualifier"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
+      Copyright (c) 2013 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%modelingUpdateSiteName" url="http://www.eclipse.org/modeling/updates/"/>
+      <discovery label="%modelingUpdateSiteName" url="http://www.eclipse.org/modeling/updates/"/>
+   </url>
+
+   <requires>
+      <import feature="org.eclipse.emf.eef.runtime-feature" version="1.2.0.201301111054"/>
+      <import feature="org.eclipse.xtext.runtime" version="2.3.1.v201208210947"/>
+      <import feature="org.eclipse.mylyn.docs.intent.feature" version="0.8.0.201303111418"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.emf.modelingbot.xtext"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.modelingbot.xtext.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.mylyn.docs.intent.bridge.modelingbot"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.modelingBot.impl;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -46,6 +48,7 @@ import org.eclipse.emf.eef.modelingBot.Scenario;
 import org.eclipse.emf.eef.modelingBot.Sequence;
 import org.eclipse.emf.eef.modelingBot.SequenceType;
 import org.eclipse.emf.eef.modelingBot.Wizard;
+import org.eclipse.emf.eef.modelingBot.util.ModelingBotValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -187,6 +190,15 @@ public class ModelingBotPackageImpl extends EPackageImpl implements ModelingBotP
 		theModelingBotPackage.initializePackageContents();
 		theEEFActionsPackage.initializePackageContents();
 		theEclipseActionsPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theModelingBotPackage, 
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return ModelingBotValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theModelingBotPackage.freeze();
@@ -511,6 +523,29 @@ public class ModelingBotPackageImpl extends EPackageImpl implements ModelingBotP
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";		
+		addAnnotation
+		  (scenarioEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "JavaTestExistsForScenarioConstraint"
+		   },
+		   new URI[] {
+			 URI.createURI(eNS_URI).appendFragment("//Scenario")
+		   });
 	}
 
 } //ModelingBotPackageImpl

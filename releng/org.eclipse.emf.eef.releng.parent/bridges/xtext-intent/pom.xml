@@ -12,11 +12,19 @@
 		<maven>3.0</maven>
 	</prerequisites>
 	<groupId>org.eclipse.emf</groupId>
-	<artifactId>org.eclipse.emf.eef.releng.parent</artifactId>
+	<artifactId>org.eclipse.emf.eef.releng.bridge.xtext-intent.parent</artifactId>
 	<version>1.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>EEF Parent</name>
+	<parent>
+		<groupId>org.eclipse.emf</groupId>
+		<artifactId>org.eclipse.emf.eef.releng.parent</artifactId>
+		<relativePath>../../../org.eclipse.emf.eef.releng.parent</relativePath>
+		<version>1.2.0-SNAPSHOT</version>
+	</parent>
+
+
+	<name>EEF Parent for XText-Intent bridge</name>
 
 	<licenses>
 		<license>
@@ -39,52 +47,42 @@
 
 	<repositories>
 		<repository>
-			<id>releasetrain</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/eclipse/updates/3.8</url>
-		</repository>
-		<repository>
-			<id>emf</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/emf/emf/updates/2.8milestones</url>
-		</repository>
-		<repository>
-			<id>emf-tools</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/emf/updates/milestones</url>
-		</repository>
-		<repository>
-			<id>ocl</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/mdt/ocl/updates/releases/4.0.0</url>
-		</repository>
-		<repository>
-			<id>acceleo</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/m2t/acceleo/updates/milestones/3.3</url>
-		</repository>
-		<repository>
-			<id>orbit</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository</url>
-		</repository>
-		<repository>
-			<id>epf</id>
-			<layout>p2</layout>
-			<url>http://build.eclipse.org/modeling/emf/eef/epf/</url>
-		</repository>
-		<repository>
-			<id>cdo</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/emf/cdo/updates/releases/4.0/</url>
-		</repository>
-		<repository>
 			<id>kepler</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/kepler</url>
 		</repository>
+		<repository>
+			<id>juno</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/juno</url>
+		</repository>
+		<repository>
+			<id>indigo</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/indigo</url>
+		</repository>
+		<repository>
+			<id>Latest EMFCompare</id>
+			<layout>p2</layout>
+			<url>https://hudson.eclipse.org/hudson/job/emf-compare-master/lastSuccessfulBuild/artifact/packaging/org.eclipse.emf.compare.update/target/repository/</url>
+		</repository>
+		<repository>
+			<id>orbit</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/tools/orbit/downloads/drops/updateSite</url>
+		</repository>
+		<repository>
+			<id>swtbot</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</url>
+		</repository>
+		<repository>
+			<id>Latest Intent</id>
+			<layout>p2</layout>
+			<url>https://hudson.eclipse.org/hudson/job/mylyn-docs-intent-0.7-nightly/lastSuccessfulBuild/artifact/features/org.eclipse.mylyn.docs.intent.update/target/repository</url>
+		</repository>
 	</repositories>
-
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -169,5 +167,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 </project>

@@ -30,14 +30,10 @@ public class ModelingBotResourceInitializer implements IIntentResourceInitialize
 	 * @see org.eclipse.mylyn.docs.intent.collab.common.uri.IIntentResourceInitializer#getInitialContent(org.eclipse.emf.common.util.URI)
 	 */
 	public EObject getInitialContent(URI emptyResourceURI) {
-		// Create a ModelingBot
-		// ModelingBot mBot = ModelingBotFactory.eINSTANCE.createModelingBot();
-
-		// Containing a Scenario
+		// Create a Scenario
 		Scenario scenario = ModelingBotFactory.eINSTANCE.createScenario();
 		scenario.setName(emptyResourceURI.trimFileExtension().lastSegment());
-		// mBot.getSequences().add(scenario);
-
 		return scenario;
 	}
+
 }

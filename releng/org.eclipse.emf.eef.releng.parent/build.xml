@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2011 Obeo. All rights reserved. This program and the accompanying 
+	materials are made available under the terms of the Eclipse Public License 
+	v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html 
+	Contributors: Obeo - initial creator -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
+	<groupId>org.eclipse.emf</groupId>
+	<artifactId>org.eclipse.emf.eef.releng.build</artifactId>
+	<version>1.2.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>EEF Build</name>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0</name>
+			<comments>
+       All rights reserved.
+
+       This program and the accompanying materials are made
+       available under the terms of the Eclipse Public License v1.0
+       which accompanies this distribution, and is available at
+       http://www.eclipse.org/legal/epl-v10.htm</comments>
+		</license>
+	</licenses>
+
+	<properties>
+		<tycho-version>0.14.1</tycho-version>
+		<tycho-extras-version>0.14.0</tycho-extras-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<modules>
+		<module>../../plugins/org.eclipse.emf.eef.runtime</module>
+		<module>../../plugins/org.eclipse.emf.eef.runtime.extended</module>
+		<module>../../plugins/org.eclipse.emf.eef.cdo.runtime</module>
+
+		<module>../../doc/org.eclipse.emf.eef.doc</module>
+
+		<module>../../plugins/org.eclipse.emf.eef.components</module>
+		<module>../../plugins/org.eclipse.emf.eef.components.edit</module>
+		<module>../../plugins/org.eclipse.emf.eef.components.editor</module>
+		<module>../../plugins/org.eclipse.emf.eef.eefgen</module>
+		<module>../../plugins/org.eclipse.emf.eef.eefgen.edit</module>
+		<module>../../plugins/org.eclipse.emf.eef.eefgen.editor</module>
+		<module>../../plugins/org.eclipse.emf.eef.mapping</module>
+		<module>../../plugins/org.eclipse.emf.eef.mapping.edit</module>
+		<module>../../plugins/org.eclipse.emf.eef.views</module>
+		<module>../../plugins/org.eclipse.emf.eef.views.edit</module>
+		<module>../../plugins/org.eclipse.emf.eef.views.editor</module>
+		<module>../../plugins/org.eclipse.emf.eef.editor.model</module>
+		<module>../../plugins/org.eclipse.emf.eef.extended.widgets.richtext</module>
+
+		<module>../../plugins/org.eclipse.emf.eef.codegen</module>
+		<module>../../plugins/org.eclipse.emf.eef.codegen.launcher</module>
+		<module>../../plugins/org.eclipse.emf.eef.codegen.ecore</module>
+		<module>../../plugins/org.eclipse.emf.eef.codegen.extended</module>
+
+		<module>../../plugins/org.eclipse.emf.eef.modelingbot</module>
+		<module>../../plugins/org.eclipse.emf.eef.modelingbot.edit</module>
+		<module>../../plugins/org.eclipse.emf.eef.modelingbot.editor</module>
+
+		<module>../../plugins/org.eclipse.emf.modelingbot.xtext</module>
+		<module>../../plugins/org.eclipse.emf.modelingbot.xtext.ui</module>
+		<module>../../plugins/org.eclipse.mylyn.docs.intent.bridge.modelingbot</module>
+
+		<module>../../plugins/org.eclipse.emf.eef.branding</module>
+		<module>../../features/org.eclipse.emf.eef.runtime-feature</module>
+		<module>../../features/org.eclipse.emf.eef.collab.runtime-feature</module>
+		<module>../../features/org.eclipse.emf.eef.extended-feature</module>
+		<module>../../features/org.eclipse.emf.eef.richtext-feature</module>
+		<module>../../features/org.eclipse.emf.eef.edt-feature</module>
+		<module>../../features/org.eclipse.emf.eef.codegen.ecore-feature</module>
+		<module>../../features/org.eclipse.emf.eef.sdk-feature</module>
+		<module>../../features/org.eclipse.emf.eef.tests-feature</module>
+		<module>../../features/org.eclipse.emf.eef.tests.intent-feature</module>
+
+		<module>../org.eclipse.emf.eef.update</module>
+
+		<!--module>../../tests/org.eclipse.emf.examples.eef</module>
+		<module>../../tests/org.eclipse.emf.examples.eef.edit</module>
+		<module>../../tests/org.eclipse.emf.examples.eef.editor</module>
+		<module>../../tests/org.eclipse.emf.examples.eef.tests.junit</module>
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg</module>
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.edit</module>
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.editor</module>
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.junit</module-->
+
+	</modules>
+
+</project>

@@ -27,6 +27,9 @@
    <feature id="org.eclipse.emf.eef.tests-feature" version="0.0.0">
       <category name="eef.tests"/>
    </feature>
+   <feature id="org.eclipse.emf.eef.tests.intent-feature" version="0.0.0">
+      <category name="eef.tests"/>
+   </feature>
    <category-def name="eef.sdk" label="EEF SDK">
       <description>
          EEF SDK package. It contains runtime, metamodels, generators,

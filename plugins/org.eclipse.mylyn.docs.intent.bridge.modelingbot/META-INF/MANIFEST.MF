@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Modelingbot
 Bundle-SymbolicName: org.eclipse.mylyn.docs.intent.bridge.modelingbot;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.mylyn.docs.intent.core;bundle-version="[0.8.0,0.9.0)",
  org.eclipse.mylyn.docs.intent.collab;bundle-version="[0.8.0,0.9.0)",
@@ -10,6 +10,7 @@ Require-Bundle: org.eclipse.mylyn.docs.intent.core;bundle-version="[0.8.0,0.9.0)
  org.eclipse.mylyn.docs.intent.client.ui;bundle-version="[0.8.0,0.9.0)",
  org.eclipse.emf.eef.modelingbot,
  org.eclipse.jface.text,
- org.eclipse.emf.modelingbot.xtext
+ org.eclipse.emf.modelingbot.xtext,
+ org.eclipse.core.resources;bundle-version="3.8.1"
 Export-Package: org.eclipse.mylyn.docs.intent.bridge.modelingbot,
  org.eclipse.mylyn.docs.intent.bridge.modelingbot.ui

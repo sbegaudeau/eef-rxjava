@@ -25,7 +25,10 @@ import org.eclipse.emf.compare.Comparison;
 import org.eclipse.emf.compare.Diff;
 import org.eclipse.emf.compare.EMFCompare;
 import org.eclipse.emf.compare.EMFCompare.Builder;
-import org.eclipse.emf.compare.match.DefaultMatchEngine;
+import org.eclipse.emf.compare.match.IMatchEngine;
+import org.eclipse.emf.compare.match.IMatchEngine.Factory.Registry;
+import org.eclipse.emf.compare.match.impl.MatchEngineFactoryImpl;
+import org.eclipse.emf.compare.match.impl.MatchEngineFactoryRegistryImpl;
 import org.eclipse.emf.compare.utils.UseIdentifiers;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -282,7 +285,10 @@ public class ComposedEEFBot implements IModelingBot {
 	public void assertExpectedModelReached(Resource expectedModel, Resource batchModel)
 			throws InterruptedException {
 		Builder builder = EMFCompare.builder();
-		builder.setMatchEngine(DefaultMatchEngine.create(UseIdentifiers.NEVER));
+		IMatchEngine.Factory matchEngineFactory = new MatchEngineFactoryImpl(UseIdentifiers.NEVER);
+		Registry matchEngineFactoryRegistry = MatchEngineFactoryRegistryImpl.createStandaloneInstance();
+		matchEngineFactoryRegistry.add(matchEngineFactory);
+		builder.setMatchEngineFactoryRegistry(matchEngineFactoryRegistry);
 		Comparison compare = builder.build()
 				.compare(EMFCompare.createDefaultScope(expectedModel, batchModel));
 		EList<Diff> differences = compare.getDifferences();
