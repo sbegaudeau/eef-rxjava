@@ -421,6 +421,24 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getCreateModel_ComputedRoot() {
+		return (EReference)createModelEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCreateModel_RootURI() {
+		return (EAttribute)createModelEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EclipseActionsFactory getEclipseActionsFactory() {
 		return (EclipseActionsFactory)getEFactoryInstance();
 	}
@@ -478,6 +496,8 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 		createEAttribute(createModelEClass, CREATE_MODEL__MODEL_NAME);
 		createEAttribute(createModelEClass, CREATE_MODEL__PATH);
 		createEReference(createModelEClass, CREATE_MODEL__ROOT);
+		createEReference(createModelEClass, CREATE_MODEL__COMPUTED_ROOT);
+		createEAttribute(createModelEClass, CREATE_MODEL__ROOT_URI);
 	}
 
 	/**
@@ -531,7 +551,7 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 		initEClass(eclipseActionEClass, EclipseAction.class, "EclipseAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(createProjectEClass, CreateProject.class, "CreateProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCreateProject_ProjectName(), ecorePackage.getEString(), "projectName", null, 0, 1, CreateProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCreateProject_ProjectName(), ecorePackage.getEString(), "projectName", null, 1, 1, CreateProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(openPerspectiveEClass, OpenPerspective.class, "OpenPerspective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOpenPerspective_Type(), ecorePackage.getEString(), "type", null, 0, 1, OpenPerspective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -559,9 +579,11 @@ public class EclipseActionsPackageImpl extends EPackageImpl implements EclipseAc
 		initEReference(getOpenEditor_Root(), theEcorePackage.getEClass(), null, "root", null, 0, 1, OpenEditor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(createModelEClass, CreateModel.class, "CreateModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCreateModel_ModelName(), ecorePackage.getEString(), "modelName", null, 0, 1, CreateModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCreateModel_Path(), ecorePackage.getEString(), "path", null, 0, 1, CreateModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCreateModel_ModelName(), ecorePackage.getEString(), "modelName", null, 1, 1, CreateModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCreateModel_Path(), ecorePackage.getEString(), "path", null, 1, 1, CreateModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCreateModel_Root(), theEcorePackage.getEClass(), null, "root", null, 0, 1, CreateModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCreateModel_ComputedRoot(), theEcorePackage.getEClass(), null, "computedRoot", null, 1, 1, CreateModel.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCreateModel_RootURI(), ecorePackage.getEString(), "rootURI", null, 0, 1, CreateModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //EclipseActionsPackageImpl

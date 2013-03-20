@@ -10,10 +10,14 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.CommandActionDelegate;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
@@ -143,4 +147,30 @@ public class EMFHelper {
 	}
 	
 
+	/**
+	 * Compute the value of a {@link EReference} following two input EReferences:
+	 * 	- a direct EReference
+	 *  - a URI Attribute
+	 * @param target the source {@link EObject}.
+	 * @param directReferenceFeature the direct {@link EReference}.
+	 * @param uriReferenceFeature the URI {@link EAttribute}.
+	 * @return the resulting {@link EReference}.
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> T computeEObject(EObject target, EStructuralFeature directReferenceFeature, EStructuralFeature uriReferenceFeature) {
+		if (target.eGet(directReferenceFeature) != null) {
+			return (T) target.eGet(directReferenceFeature);
+		} else if (target.eGet(uriReferenceFeature) != null && !"".equals(target.eGet(uriReferenceFeature))) {
+			URI uri = URI.createURI((String) target.eGet(uriReferenceFeature));
+			if (target.eResource() != null && target.eResource().getResourceSet() != null) {
+				Resource resource = target.eResource().getResourceSet().getResource(uri, true);
+				return (T) resource.getEObject(uri.fragment());
+			} else {
+				//TODO
+			}
+		
+		}
+		return null;
+	}
+	
 }

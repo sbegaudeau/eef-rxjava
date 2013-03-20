@@ -22,22 +22,27 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalModelingBotParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'scenario'", "'{'", "'}'", "'propertiesView'", "'wizard'", "'detailsPage'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'scenario'", "'{'", "'}'", "'propertiesView'", "'wizard'", "'detailsPage'", "'create project '", "'create model '", "' at '", "' with RootType '", "'check'"
     };
     public static final int RULE_ID=5;
+    public static final int RULE_ANY_OTHER=10;
+    public static final int T__21=21;
+    public static final int T__20=20;
+    public static final int EOF=-1;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__19=19;
     public static final int RULE_STRING=4;
     public static final int T__16=16;
     public static final int T__15=15;
+    public static final int T__18=18;
+    public static final int T__17=17;
     public static final int T__12=12;
     public static final int T__11=11;
     public static final int T__14=14;
     public static final int T__13=13;
-    public static final int RULE_ANY_OTHER=10;
     public static final int RULE_INT=6;
     public static final int RULE_WS=9;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int EOF=-1;
-    public static final int RULE_ML_COMMENT=7;
 
     // delegates
     // delegators
@@ -153,21 +158,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
     // $ANTLR end "ruleScenario"
 
 
-    // $ANTLR start "entryRuleEEFProcessings"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:88:1: entryRuleEEFProcessings : ruleEEFProcessings EOF ;
-    public final void entryRuleEEFProcessings() throws RecognitionException {
+    // $ANTLR start "entryRuleProcessings"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:88:1: entryRuleProcessings : ruleProcessings EOF ;
+    public final void entryRuleProcessings() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:89:1: ( ruleEEFProcessings EOF )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:90:1: ruleEEFProcessings EOF
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:89:1: ( ruleProcessings EOF )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:90:1: ruleProcessings EOF
             {
-             before(grammarAccess.getEEFProcessingsRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEEFProcessings_in_entryRuleEEFProcessings121);
-            ruleEEFProcessings();
+             before(grammarAccess.getProcessingsRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleProcessings_in_entryRuleProcessings121);
+            ruleProcessings();
 
             state._fsp--;
 
-             after(grammarAccess.getEEFProcessingsRule()); 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEEFProcessings128); 
+             after(grammarAccess.getProcessingsRule()); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleProcessings128); 
 
             }
 
@@ -180,35 +185,35 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "entryRuleEEFProcessings"
+    // $ANTLR end "entryRuleProcessings"
 
 
-    // $ANTLR start "ruleEEFProcessings"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:97:1: ruleEEFProcessings : ( ( rule__EEFProcessings__Alternatives ) ) ;
-    public final void ruleEEFProcessings() throws RecognitionException {
+    // $ANTLR start "ruleProcessings"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:97:1: ruleProcessings : ( ( rule__Processings__Alternatives ) ) ;
+    public final void ruleProcessings() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:101:2: ( ( ( rule__EEFProcessings__Alternatives ) ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:102:1: ( ( rule__EEFProcessings__Alternatives ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:101:2: ( ( ( rule__Processings__Alternatives ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:102:1: ( ( rule__Processings__Alternatives ) )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:102:1: ( ( rule__EEFProcessings__Alternatives ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:103:1: ( rule__EEFProcessings__Alternatives )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:102:1: ( ( rule__Processings__Alternatives ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:103:1: ( rule__Processings__Alternatives )
             {
-             before(grammarAccess.getEEFProcessingsAccess().getAlternatives()); 
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:104:1: ( rule__EEFProcessings__Alternatives )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:104:2: rule__EEFProcessings__Alternatives
+             before(grammarAccess.getProcessingsAccess().getAlternatives()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:104:1: ( rule__Processings__Alternatives )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:104:2: rule__Processings__Alternatives
             {
-            pushFollow(FollowSets000.FOLLOW_rule__EEFProcessings__Alternatives_in_ruleEEFProcessings154);
-            rule__EEFProcessings__Alternatives();
+            pushFollow(FollowSets000.FOLLOW_rule__Processings__Alternatives_in_ruleProcessings154);
+            rule__Processings__Alternatives();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getEEFProcessingsAccess().getAlternatives()); 
+             after(grammarAccess.getProcessingsAccess().getAlternatives()); 
 
             }
 
@@ -227,7 +232,7 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "ruleEEFProcessings"
+    // $ANTLR end "ruleProcessings"
 
 
     // $ANTLR start "entryRulePropertiesView"
@@ -492,25 +497,31 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleSubProcessings"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:209:1: ruleSubProcessings : ( ruleWizard ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:209:1: ruleSubProcessings : ( ( rule__SubProcessings__Alternatives ) ) ;
     public final void ruleSubProcessings() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:213:2: ( ( ruleWizard ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:214:1: ( ruleWizard )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:213:2: ( ( ( rule__SubProcessings__Alternatives ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:214:1: ( ( rule__SubProcessings__Alternatives ) )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:214:1: ( ruleWizard )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:215:1: ruleWizard
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:214:1: ( ( rule__SubProcessings__Alternatives ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:215:1: ( rule__SubProcessings__Alternatives )
             {
-             before(grammarAccess.getSubProcessingsAccess().getWizardParserRuleCall()); 
-            pushFollow(FollowSets000.FOLLOW_ruleWizard_in_ruleSubProcessings394);
-            ruleWizard();
+             before(grammarAccess.getSubProcessingsAccess().getAlternatives()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:216:1: ( rule__SubProcessings__Alternatives )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:216:2: rule__SubProcessings__Alternatives
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__SubProcessings__Alternatives_in_ruleSubProcessings394);
+            rule__SubProcessings__Alternatives();
 
             state._fsp--;
 
-             after(grammarAccess.getSubProcessingsAccess().getWizardParserRuleCall()); 
+
+            }
+
+             after(grammarAccess.getSubProcessingsAccess().getAlternatives()); 
 
             }
 
@@ -532,21 +543,477 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
     // $ANTLR end "ruleSubProcessings"
 
 
+    // $ANTLR start "entryRuleAction"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:228:1: entryRuleAction : ruleAction EOF ;
+    public final void entryRuleAction() throws RecognitionException {
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:229:1: ( ruleAction EOF )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:230:1: ruleAction EOF
+            {
+             before(grammarAccess.getActionRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleAction_in_entryRuleAction421);
+            ruleAction();
+
+            state._fsp--;
+
+             after(grammarAccess.getActionRule()); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleAction428); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleAction"
+
+
+    // $ANTLR start "ruleAction"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:237:1: ruleAction : ( ( rule__Action__Alternatives ) ) ;
+    public final void ruleAction() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:241:2: ( ( ( rule__Action__Alternatives ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:242:1: ( ( rule__Action__Alternatives ) )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:242:1: ( ( rule__Action__Alternatives ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:243:1: ( rule__Action__Alternatives )
+            {
+             before(grammarAccess.getActionAccess().getAlternatives()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:244:1: ( rule__Action__Alternatives )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:244:2: rule__Action__Alternatives
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__Action__Alternatives_in_ruleAction454);
+            rule__Action__Alternatives();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getActionAccess().getAlternatives()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleAction"
+
+
+    // $ANTLR start "entryRuleEclipseAction"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:256:1: entryRuleEclipseAction : ruleEclipseAction EOF ;
+    public final void entryRuleEclipseAction() throws RecognitionException {
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:257:1: ( ruleEclipseAction EOF )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:258:1: ruleEclipseAction EOF
+            {
+             before(grammarAccess.getEclipseActionRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleEclipseAction_in_entryRuleEclipseAction481);
+            ruleEclipseAction();
+
+            state._fsp--;
+
+             after(grammarAccess.getEclipseActionRule()); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEclipseAction488); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleEclipseAction"
+
+
+    // $ANTLR start "ruleEclipseAction"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:265:1: ruleEclipseAction : ( ( rule__EclipseAction__Alternatives ) ) ;
+    public final void ruleEclipseAction() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:269:2: ( ( ( rule__EclipseAction__Alternatives ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:270:1: ( ( rule__EclipseAction__Alternatives ) )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:270:1: ( ( rule__EclipseAction__Alternatives ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:271:1: ( rule__EclipseAction__Alternatives )
+            {
+             before(grammarAccess.getEclipseActionAccess().getAlternatives()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:272:1: ( rule__EclipseAction__Alternatives )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:272:2: rule__EclipseAction__Alternatives
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__EclipseAction__Alternatives_in_ruleEclipseAction514);
+            rule__EclipseAction__Alternatives();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getEclipseActionAccess().getAlternatives()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleEclipseAction"
+
+
+    // $ANTLR start "entryRuleCreateProject"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:284:1: entryRuleCreateProject : ruleCreateProject EOF ;
+    public final void entryRuleCreateProject() throws RecognitionException {
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:285:1: ( ruleCreateProject EOF )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:286:1: ruleCreateProject EOF
+            {
+             before(grammarAccess.getCreateProjectRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleCreateProject_in_entryRuleCreateProject541);
+            ruleCreateProject();
+
+            state._fsp--;
+
+             after(grammarAccess.getCreateProjectRule()); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleCreateProject548); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleCreateProject"
+
+
+    // $ANTLR start "ruleCreateProject"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:293:1: ruleCreateProject : ( ( rule__CreateProject__Group__0 ) ) ;
+    public final void ruleCreateProject() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:297:2: ( ( ( rule__CreateProject__Group__0 ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:298:1: ( ( rule__CreateProject__Group__0 ) )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:298:1: ( ( rule__CreateProject__Group__0 ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:299:1: ( rule__CreateProject__Group__0 )
+            {
+             before(grammarAccess.getCreateProjectAccess().getGroup()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:300:1: ( rule__CreateProject__Group__0 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:300:2: rule__CreateProject__Group__0
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateProject__Group__0_in_ruleCreateProject574);
+            rule__CreateProject__Group__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getCreateProjectAccess().getGroup()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleCreateProject"
+
+
+    // $ANTLR start "entryRuleCreateModel"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:312:1: entryRuleCreateModel : ruleCreateModel EOF ;
+    public final void entryRuleCreateModel() throws RecognitionException {
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:313:1: ( ruleCreateModel EOF )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:314:1: ruleCreateModel EOF
+            {
+             before(grammarAccess.getCreateModelRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleCreateModel_in_entryRuleCreateModel601);
+            ruleCreateModel();
+
+            state._fsp--;
+
+             after(grammarAccess.getCreateModelRule()); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleCreateModel608); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleCreateModel"
+
+
+    // $ANTLR start "ruleCreateModel"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:321:1: ruleCreateModel : ( ( rule__CreateModel__Group__0 ) ) ;
+    public final void ruleCreateModel() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:325:2: ( ( ( rule__CreateModel__Group__0 ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:326:1: ( ( rule__CreateModel__Group__0 ) )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:326:1: ( ( rule__CreateModel__Group__0 ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:327:1: ( rule__CreateModel__Group__0 )
+            {
+             before(grammarAccess.getCreateModelAccess().getGroup()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:328:1: ( rule__CreateModel__Group__0 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:328:2: rule__CreateModel__Group__0
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__0_in_ruleCreateModel634);
+            rule__CreateModel__Group__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getCreateModelAccess().getGroup()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleCreateModel"
+
+
+    // $ANTLR start "entryRuleEEFAction"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:340:1: entryRuleEEFAction : ruleEEFAction EOF ;
+    public final void entryRuleEEFAction() throws RecognitionException {
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:341:1: ( ruleEEFAction EOF )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:342:1: ruleEEFAction EOF
+            {
+             before(grammarAccess.getEEFActionRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleEEFAction_in_entryRuleEEFAction661);
+            ruleEEFAction();
+
+            state._fsp--;
+
+             after(grammarAccess.getEEFActionRule()); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEEFAction668); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleEEFAction"
+
+
+    // $ANTLR start "ruleEEFAction"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:349:1: ruleEEFAction : ( ruleCheck ) ;
+    public final void ruleEEFAction() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:353:2: ( ( ruleCheck ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:354:1: ( ruleCheck )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:354:1: ( ruleCheck )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:355:1: ruleCheck
+            {
+             before(grammarAccess.getEEFActionAccess().getCheckParserRuleCall()); 
+            pushFollow(FollowSets000.FOLLOW_ruleCheck_in_ruleEEFAction694);
+            ruleCheck();
+
+            state._fsp--;
+
+             after(grammarAccess.getEEFActionAccess().getCheckParserRuleCall()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleEEFAction"
+
+
+    // $ANTLR start "entryRuleCheck"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:368:1: entryRuleCheck : ruleCheck EOF ;
+    public final void entryRuleCheck() throws RecognitionException {
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:369:1: ( ruleCheck EOF )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:370:1: ruleCheck EOF
+            {
+             before(grammarAccess.getCheckRule()); 
+            pushFollow(FollowSets000.FOLLOW_ruleCheck_in_entryRuleCheck720);
+            ruleCheck();
+
+            state._fsp--;
+
+             after(grammarAccess.getCheckRule()); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleCheck727); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleCheck"
+
+
+    // $ANTLR start "ruleCheck"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:377:1: ruleCheck : ( ( rule__Check__Group__0 ) ) ;
+    public final void ruleCheck() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:381:2: ( ( ( rule__Check__Group__0 ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:382:1: ( ( rule__Check__Group__0 ) )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:382:1: ( ( rule__Check__Group__0 ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:383:1: ( rule__Check__Group__0 )
+            {
+             before(grammarAccess.getCheckAccess().getGroup()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:384:1: ( rule__Check__Group__0 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:384:2: rule__Check__Group__0
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__Check__Group__0_in_ruleCheck753);
+            rule__Check__Group__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getCheckAccess().getGroup()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleCheck"
+
+
     // $ANTLR start "entryRuleEString"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:228:1: entryRuleEString : ruleEString EOF ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:396:1: entryRuleEString : ruleEString EOF ;
     public final void entryRuleEString() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:229:1: ( ruleEString EOF )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:230:1: ruleEString EOF
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:397:1: ( ruleEString EOF )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:398:1: ruleEString EOF
             {
              before(grammarAccess.getEStringRule()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_entryRuleEString420);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_entryRuleEString780);
             ruleEString();
 
             state._fsp--;
 
              after(grammarAccess.getEStringRule()); 
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEString427); 
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleEString787); 
 
             }
 
@@ -563,23 +1030,23 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleEString"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:237:1: ruleEString : ( ( rule__EString__Alternatives ) ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:405:1: ruleEString : ( ( rule__EString__Alternatives ) ) ;
     public final void ruleEString() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:241:2: ( ( ( rule__EString__Alternatives ) ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:242:1: ( ( rule__EString__Alternatives ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:409:2: ( ( ( rule__EString__Alternatives ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:410:1: ( ( rule__EString__Alternatives ) )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:242:1: ( ( rule__EString__Alternatives ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:243:1: ( rule__EString__Alternatives )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:410:1: ( ( rule__EString__Alternatives ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:411:1: ( rule__EString__Alternatives )
             {
              before(grammarAccess.getEStringAccess().getAlternatives()); 
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:244:1: ( rule__EString__Alternatives )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:244:2: rule__EString__Alternatives
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:412:1: ( rule__EString__Alternatives )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:412:2: rule__EString__Alternatives
             {
-            pushFollow(FollowSets000.FOLLOW_rule__EString__Alternatives_in_ruleEString453);
+            pushFollow(FollowSets000.FOLLOW_rule__EString__Alternatives_in_ruleEString813);
             rule__EString__Alternatives();
 
             state._fsp--;
@@ -609,15 +1076,15 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
     // $ANTLR end "ruleEString"
 
 
-    // $ANTLR start "rule__EEFProcessings__Alternatives"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:256:1: rule__EEFProcessings__Alternatives : ( ( ruleDetails ) | ( ruleWizard ) | ( rulePropertiesView ) );
-    public final void rule__EEFProcessings__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__Processings__Alternatives"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:424:1: rule__Processings__Alternatives : ( ( ruleDetails ) | ( ruleWizard ) | ( rulePropertiesView ) | ( ruleAction ) );
+    public final void rule__Processings__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:260:1: ( ( ruleDetails ) | ( ruleWizard ) | ( rulePropertiesView ) )
-            int alt1=3;
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:428:1: ( ( ruleDetails ) | ( ruleWizard ) | ( rulePropertiesView ) | ( ruleAction ) )
+            int alt1=4;
             switch ( input.LA(1) ) {
             case 16:
                 {
@@ -634,6 +1101,13 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
                 alt1=3;
                 }
                 break;
+            case 17:
+            case 18:
+            case 21:
+                {
+                alt1=4;
+                }
+                break;
             default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 1, 0, input);
@@ -643,18 +1117,18 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
             switch (alt1) {
                 case 1 :
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:261:1: ( ruleDetails )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:429:1: ( ruleDetails )
                     {
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:261:1: ( ruleDetails )
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:262:1: ruleDetails
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:429:1: ( ruleDetails )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:430:1: ruleDetails
                     {
-                     before(grammarAccess.getEEFProcessingsAccess().getDetailsParserRuleCall_0()); 
-                    pushFollow(FollowSets000.FOLLOW_ruleDetails_in_rule__EEFProcessings__Alternatives489);
+                     before(grammarAccess.getProcessingsAccess().getDetailsParserRuleCall_0()); 
+                    pushFollow(FollowSets000.FOLLOW_ruleDetails_in_rule__Processings__Alternatives849);
                     ruleDetails();
 
                     state._fsp--;
 
-                     after(grammarAccess.getEEFProcessingsAccess().getDetailsParserRuleCall_0()); 
+                     after(grammarAccess.getProcessingsAccess().getDetailsParserRuleCall_0()); 
 
                     }
 
@@ -662,18 +1136,18 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:267:6: ( ruleWizard )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:435:6: ( ruleWizard )
                     {
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:267:6: ( ruleWizard )
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:268:1: ruleWizard
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:435:6: ( ruleWizard )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:436:1: ruleWizard
                     {
-                     before(grammarAccess.getEEFProcessingsAccess().getWizardParserRuleCall_1()); 
-                    pushFollow(FollowSets000.FOLLOW_ruleWizard_in_rule__EEFProcessings__Alternatives506);
+                     before(grammarAccess.getProcessingsAccess().getWizardParserRuleCall_1()); 
+                    pushFollow(FollowSets000.FOLLOW_ruleWizard_in_rule__Processings__Alternatives866);
                     ruleWizard();
 
                     state._fsp--;
 
-                     after(grammarAccess.getEEFProcessingsAccess().getWizardParserRuleCall_1()); 
+                     after(grammarAccess.getProcessingsAccess().getWizardParserRuleCall_1()); 
 
                     }
 
@@ -681,18 +1155,37 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 3 :
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:273:6: ( rulePropertiesView )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:441:6: ( rulePropertiesView )
                     {
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:273:6: ( rulePropertiesView )
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:274:1: rulePropertiesView
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:441:6: ( rulePropertiesView )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:442:1: rulePropertiesView
                     {
-                     before(grammarAccess.getEEFProcessingsAccess().getPropertiesViewParserRuleCall_2()); 
-                    pushFollow(FollowSets000.FOLLOW_rulePropertiesView_in_rule__EEFProcessings__Alternatives523);
+                     before(grammarAccess.getProcessingsAccess().getPropertiesViewParserRuleCall_2()); 
+                    pushFollow(FollowSets000.FOLLOW_rulePropertiesView_in_rule__Processings__Alternatives883);
                     rulePropertiesView();
 
                     state._fsp--;
 
-                     after(grammarAccess.getEEFProcessingsAccess().getPropertiesViewParserRuleCall_2()); 
+                     after(grammarAccess.getProcessingsAccess().getPropertiesViewParserRuleCall_2()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:447:6: ( ruleAction )
+                    {
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:447:6: ( ruleAction )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:448:1: ruleAction
+                    {
+                     before(grammarAccess.getProcessingsAccess().getActionParserRuleCall_3()); 
+                    pushFollow(FollowSets000.FOLLOW_ruleAction_in_rule__Processings__Alternatives900);
+                    ruleAction();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getProcessingsAccess().getActionParserRuleCall_3()); 
 
                     }
 
@@ -713,41 +1206,332 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
         }
         return ;
     }
-    // $ANTLR end "rule__EEFProcessings__Alternatives"
+    // $ANTLR end "rule__Processings__Alternatives"
 
 
-    // $ANTLR start "rule__EString__Alternatives"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:284:1: rule__EString__Alternatives : ( ( RULE_STRING ) | ( RULE_ID ) );
-    public final void rule__EString__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__SubProcessings__Alternatives"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:458:1: rule__SubProcessings__Alternatives : ( ( ruleWizard ) | ( ruleDetails ) | ( rulePropertiesView ) | ( ruleAction ) );
+    public final void rule__SubProcessings__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:288:1: ( ( RULE_STRING ) | ( RULE_ID ) )
-            int alt2=2;
-            int LA2_0 = input.LA(1);
-
-            if ( (LA2_0==RULE_STRING) ) {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:462:1: ( ( ruleWizard ) | ( ruleDetails ) | ( rulePropertiesView ) | ( ruleAction ) )
+            int alt2=4;
+            switch ( input.LA(1) ) {
+            case 15:
+                {
                 alt2=1;
-            }
-            else if ( (LA2_0==RULE_ID) ) {
+                }
+                break;
+            case 16:
+                {
                 alt2=2;
-            }
-            else {
+                }
+                break;
+            case 14:
+                {
+                alt2=3;
+                }
+                break;
+            case 17:
+            case 18:
+            case 21:
+                {
+                alt2=4;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 2, 0, input);
 
                 throw nvae;
             }
+
             switch (alt2) {
                 case 1 :
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:289:1: ( RULE_STRING )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:463:1: ( ruleWizard )
                     {
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:289:1: ( RULE_STRING )
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:290:1: RULE_STRING
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:463:1: ( ruleWizard )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:464:1: ruleWizard
+                    {
+                     before(grammarAccess.getSubProcessingsAccess().getWizardParserRuleCall_0()); 
+                    pushFollow(FollowSets000.FOLLOW_ruleWizard_in_rule__SubProcessings__Alternatives932);
+                    ruleWizard();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getSubProcessingsAccess().getWizardParserRuleCall_0()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:469:6: ( ruleDetails )
+                    {
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:469:6: ( ruleDetails )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:470:1: ruleDetails
+                    {
+                     before(grammarAccess.getSubProcessingsAccess().getDetailsParserRuleCall_1()); 
+                    pushFollow(FollowSets000.FOLLOW_ruleDetails_in_rule__SubProcessings__Alternatives949);
+                    ruleDetails();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getSubProcessingsAccess().getDetailsParserRuleCall_1()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:475:6: ( rulePropertiesView )
+                    {
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:475:6: ( rulePropertiesView )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:476:1: rulePropertiesView
+                    {
+                     before(grammarAccess.getSubProcessingsAccess().getPropertiesViewParserRuleCall_2()); 
+                    pushFollow(FollowSets000.FOLLOW_rulePropertiesView_in_rule__SubProcessings__Alternatives966);
+                    rulePropertiesView();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getSubProcessingsAccess().getPropertiesViewParserRuleCall_2()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:481:6: ( ruleAction )
+                    {
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:481:6: ( ruleAction )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:482:1: ruleAction
+                    {
+                     before(grammarAccess.getSubProcessingsAccess().getActionParserRuleCall_3()); 
+                    pushFollow(FollowSets000.FOLLOW_ruleAction_in_rule__SubProcessings__Alternatives983);
+                    ruleAction();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getSubProcessingsAccess().getActionParserRuleCall_3()); 
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__SubProcessings__Alternatives"
+
+
+    // $ANTLR start "rule__Action__Alternatives"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:492:1: rule__Action__Alternatives : ( ( ruleEclipseAction ) | ( ruleEEFAction ) );
+    public final void rule__Action__Alternatives() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:496:1: ( ( ruleEclipseAction ) | ( ruleEEFAction ) )
+            int alt3=2;
+            int LA3_0 = input.LA(1);
+
+            if ( ((LA3_0>=17 && LA3_0<=18)) ) {
+                alt3=1;
+            }
+            else if ( (LA3_0==21) ) {
+                alt3=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 3, 0, input);
+
+                throw nvae;
+            }
+            switch (alt3) {
+                case 1 :
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:497:1: ( ruleEclipseAction )
+                    {
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:497:1: ( ruleEclipseAction )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:498:1: ruleEclipseAction
+                    {
+                     before(grammarAccess.getActionAccess().getEclipseActionParserRuleCall_0()); 
+                    pushFollow(FollowSets000.FOLLOW_ruleEclipseAction_in_rule__Action__Alternatives1015);
+                    ruleEclipseAction();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getActionAccess().getEclipseActionParserRuleCall_0()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:503:6: ( ruleEEFAction )
+                    {
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:503:6: ( ruleEEFAction )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:504:1: ruleEEFAction
+                    {
+                     before(grammarAccess.getActionAccess().getEEFActionParserRuleCall_1()); 
+                    pushFollow(FollowSets000.FOLLOW_ruleEEFAction_in_rule__Action__Alternatives1032);
+                    ruleEEFAction();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getActionAccess().getEEFActionParserRuleCall_1()); 
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Action__Alternatives"
+
+
+    // $ANTLR start "rule__EclipseAction__Alternatives"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:514:1: rule__EclipseAction__Alternatives : ( ( ruleCreateProject ) | ( ruleCreateModel ) );
+    public final void rule__EclipseAction__Alternatives() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:518:1: ( ( ruleCreateProject ) | ( ruleCreateModel ) )
+            int alt4=2;
+            int LA4_0 = input.LA(1);
+
+            if ( (LA4_0==17) ) {
+                alt4=1;
+            }
+            else if ( (LA4_0==18) ) {
+                alt4=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 4, 0, input);
+
+                throw nvae;
+            }
+            switch (alt4) {
+                case 1 :
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:519:1: ( ruleCreateProject )
+                    {
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:519:1: ( ruleCreateProject )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:520:1: ruleCreateProject
+                    {
+                     before(grammarAccess.getEclipseActionAccess().getCreateProjectParserRuleCall_0()); 
+                    pushFollow(FollowSets000.FOLLOW_ruleCreateProject_in_rule__EclipseAction__Alternatives1064);
+                    ruleCreateProject();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getEclipseActionAccess().getCreateProjectParserRuleCall_0()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:525:6: ( ruleCreateModel )
+                    {
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:525:6: ( ruleCreateModel )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:526:1: ruleCreateModel
+                    {
+                     before(grammarAccess.getEclipseActionAccess().getCreateModelParserRuleCall_1()); 
+                    pushFollow(FollowSets000.FOLLOW_ruleCreateModel_in_rule__EclipseAction__Alternatives1081);
+                    ruleCreateModel();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getEclipseActionAccess().getCreateModelParserRuleCall_1()); 
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EclipseAction__Alternatives"
+
+
+    // $ANTLR start "rule__EString__Alternatives"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:536:1: rule__EString__Alternatives : ( ( RULE_STRING ) | ( RULE_ID ) );
+    public final void rule__EString__Alternatives() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:540:1: ( ( RULE_STRING ) | ( RULE_ID ) )
+            int alt5=2;
+            int LA5_0 = input.LA(1);
+
+            if ( (LA5_0==RULE_STRING) ) {
+                alt5=1;
+            }
+            else if ( (LA5_0==RULE_ID) ) {
+                alt5=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 5, 0, input);
+
+                throw nvae;
+            }
+            switch (alt5) {
+                case 1 :
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:541:1: ( RULE_STRING )
+                    {
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:541:1: ( RULE_STRING )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:542:1: RULE_STRING
                     {
                      before(grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_0()); 
-                    match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_rule__EString__Alternatives555); 
+                    match(input,RULE_STRING,FollowSets000.FOLLOW_RULE_STRING_in_rule__EString__Alternatives1113); 
                      after(grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_0()); 
 
                     }
@@ -756,13 +1540,13 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:295:6: ( RULE_ID )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:547:6: ( RULE_ID )
                     {
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:295:6: ( RULE_ID )
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:296:1: RULE_ID
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:547:6: ( RULE_ID )
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:548:1: RULE_ID
                     {
                      before(grammarAccess.getEStringAccess().getIDTerminalRuleCall_1()); 
-                    match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rule__EString__Alternatives572); 
+                    match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_rule__EString__Alternatives1130); 
                      after(grammarAccess.getEStringAccess().getIDTerminalRuleCall_1()); 
 
                     }
@@ -788,21 +1572,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Scenario__Group__0"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:308:1: rule__Scenario__Group__0 : rule__Scenario__Group__0__Impl rule__Scenario__Group__1 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:560:1: rule__Scenario__Group__0 : rule__Scenario__Group__0__Impl rule__Scenario__Group__1 ;
     public final void rule__Scenario__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:312:1: ( rule__Scenario__Group__0__Impl rule__Scenario__Group__1 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:313:2: rule__Scenario__Group__0__Impl rule__Scenario__Group__1
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:564:1: ( rule__Scenario__Group__0__Impl rule__Scenario__Group__1 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:565:2: rule__Scenario__Group__0__Impl rule__Scenario__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__0__Impl_in_rule__Scenario__Group__0602);
+            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__0__Impl_in_rule__Scenario__Group__01160);
             rule__Scenario__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__1_in_rule__Scenario__Group__0605);
+            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__1_in_rule__Scenario__Group__01163);
             rule__Scenario__Group__1();
 
             state._fsp--;
@@ -826,20 +1610,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Scenario__Group__0__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:320:1: rule__Scenario__Group__0__Impl : ( 'scenario' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:572:1: rule__Scenario__Group__0__Impl : ( 'scenario' ) ;
     public final void rule__Scenario__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:324:1: ( ( 'scenario' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:325:1: ( 'scenario' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:576:1: ( ( 'scenario' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:577:1: ( 'scenario' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:325:1: ( 'scenario' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:326:1: 'scenario'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:577:1: ( 'scenario' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:578:1: 'scenario'
             {
              before(grammarAccess.getScenarioAccess().getScenarioKeyword_0()); 
-            match(input,11,FollowSets000.FOLLOW_11_in_rule__Scenario__Group__0__Impl633); 
+            match(input,11,FollowSets000.FOLLOW_11_in_rule__Scenario__Group__0__Impl1191); 
              after(grammarAccess.getScenarioAccess().getScenarioKeyword_0()); 
 
             }
@@ -863,21 +1647,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Scenario__Group__1"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:339:1: rule__Scenario__Group__1 : rule__Scenario__Group__1__Impl rule__Scenario__Group__2 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:591:1: rule__Scenario__Group__1 : rule__Scenario__Group__1__Impl rule__Scenario__Group__2 ;
     public final void rule__Scenario__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:343:1: ( rule__Scenario__Group__1__Impl rule__Scenario__Group__2 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:344:2: rule__Scenario__Group__1__Impl rule__Scenario__Group__2
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:595:1: ( rule__Scenario__Group__1__Impl rule__Scenario__Group__2 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:596:2: rule__Scenario__Group__1__Impl rule__Scenario__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__1__Impl_in_rule__Scenario__Group__1664);
+            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__1__Impl_in_rule__Scenario__Group__11222);
             rule__Scenario__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__2_in_rule__Scenario__Group__1667);
+            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__2_in_rule__Scenario__Group__11225);
             rule__Scenario__Group__2();
 
             state._fsp--;
@@ -901,23 +1685,23 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Scenario__Group__1__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:351:1: rule__Scenario__Group__1__Impl : ( ( rule__Scenario__NameAssignment_1 ) ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:603:1: rule__Scenario__Group__1__Impl : ( ( rule__Scenario__NameAssignment_1 ) ) ;
     public final void rule__Scenario__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:355:1: ( ( ( rule__Scenario__NameAssignment_1 ) ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:356:1: ( ( rule__Scenario__NameAssignment_1 ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:607:1: ( ( ( rule__Scenario__NameAssignment_1 ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:608:1: ( ( rule__Scenario__NameAssignment_1 ) )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:356:1: ( ( rule__Scenario__NameAssignment_1 ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:357:1: ( rule__Scenario__NameAssignment_1 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:608:1: ( ( rule__Scenario__NameAssignment_1 ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:609:1: ( rule__Scenario__NameAssignment_1 )
             {
              before(grammarAccess.getScenarioAccess().getNameAssignment_1()); 
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:358:1: ( rule__Scenario__NameAssignment_1 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:358:2: rule__Scenario__NameAssignment_1
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:610:1: ( rule__Scenario__NameAssignment_1 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:610:2: rule__Scenario__NameAssignment_1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Scenario__NameAssignment_1_in_rule__Scenario__Group__1__Impl694);
+            pushFollow(FollowSets000.FOLLOW_rule__Scenario__NameAssignment_1_in_rule__Scenario__Group__1__Impl1252);
             rule__Scenario__NameAssignment_1();
 
             state._fsp--;
@@ -948,21 +1732,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Scenario__Group__2"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:368:1: rule__Scenario__Group__2 : rule__Scenario__Group__2__Impl rule__Scenario__Group__3 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:620:1: rule__Scenario__Group__2 : rule__Scenario__Group__2__Impl rule__Scenario__Group__3 ;
     public final void rule__Scenario__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:372:1: ( rule__Scenario__Group__2__Impl rule__Scenario__Group__3 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:373:2: rule__Scenario__Group__2__Impl rule__Scenario__Group__3
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:624:1: ( rule__Scenario__Group__2__Impl rule__Scenario__Group__3 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:625:2: rule__Scenario__Group__2__Impl rule__Scenario__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__2__Impl_in_rule__Scenario__Group__2724);
+            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__2__Impl_in_rule__Scenario__Group__21282);
             rule__Scenario__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__3_in_rule__Scenario__Group__2727);
+            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__3_in_rule__Scenario__Group__21285);
             rule__Scenario__Group__3();
 
             state._fsp--;
@@ -986,20 +1770,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Scenario__Group__2__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:380:1: rule__Scenario__Group__2__Impl : ( '{' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:632:1: rule__Scenario__Group__2__Impl : ( '{' ) ;
     public final void rule__Scenario__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:384:1: ( ( '{' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:385:1: ( '{' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:636:1: ( ( '{' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:637:1: ( '{' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:385:1: ( '{' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:386:1: '{'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:637:1: ( '{' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:638:1: '{'
             {
              before(grammarAccess.getScenarioAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,12,FollowSets000.FOLLOW_12_in_rule__Scenario__Group__2__Impl755); 
+            match(input,12,FollowSets000.FOLLOW_12_in_rule__Scenario__Group__2__Impl1313); 
              after(grammarAccess.getScenarioAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -1023,21 +1807,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Scenario__Group__3"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:399:1: rule__Scenario__Group__3 : rule__Scenario__Group__3__Impl rule__Scenario__Group__4 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:651:1: rule__Scenario__Group__3 : rule__Scenario__Group__3__Impl rule__Scenario__Group__4 ;
     public final void rule__Scenario__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:403:1: ( rule__Scenario__Group__3__Impl rule__Scenario__Group__4 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:404:2: rule__Scenario__Group__3__Impl rule__Scenario__Group__4
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:655:1: ( rule__Scenario__Group__3__Impl rule__Scenario__Group__4 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:656:2: rule__Scenario__Group__3__Impl rule__Scenario__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__3__Impl_in_rule__Scenario__Group__3786);
+            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__3__Impl_in_rule__Scenario__Group__31344);
             rule__Scenario__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__4_in_rule__Scenario__Group__3789);
+            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__4_in_rule__Scenario__Group__31347);
             rule__Scenario__Group__4();
 
             state._fsp--;
@@ -1061,35 +1845,35 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Scenario__Group__3__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:411:1: rule__Scenario__Group__3__Impl : ( ( rule__Scenario__ProcessingsAssignment_3 )* ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:663:1: rule__Scenario__Group__3__Impl : ( ( rule__Scenario__ProcessingsAssignment_3 )* ) ;
     public final void rule__Scenario__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:415:1: ( ( ( rule__Scenario__ProcessingsAssignment_3 )* ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:416:1: ( ( rule__Scenario__ProcessingsAssignment_3 )* )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:667:1: ( ( ( rule__Scenario__ProcessingsAssignment_3 )* ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:668:1: ( ( rule__Scenario__ProcessingsAssignment_3 )* )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:416:1: ( ( rule__Scenario__ProcessingsAssignment_3 )* )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:417:1: ( rule__Scenario__ProcessingsAssignment_3 )*
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:668:1: ( ( rule__Scenario__ProcessingsAssignment_3 )* )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:669:1: ( rule__Scenario__ProcessingsAssignment_3 )*
             {
              before(grammarAccess.getScenarioAccess().getProcessingsAssignment_3()); 
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:418:1: ( rule__Scenario__ProcessingsAssignment_3 )*
-            loop3:
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:670:1: ( rule__Scenario__ProcessingsAssignment_3 )*
+            loop6:
             do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-                if ( ((LA3_0>=14 && LA3_0<=16)) ) {
-                    alt3=1;
+                if ( ((LA6_0>=14 && LA6_0<=18)||LA6_0==21) ) {
+                    alt6=1;
                 }
 
 
-                switch (alt3) {
+                switch (alt6) {
             	case 1 :
-            	    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:418:2: rule__Scenario__ProcessingsAssignment_3
+            	    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:670:2: rule__Scenario__ProcessingsAssignment_3
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__Scenario__ProcessingsAssignment_3_in_rule__Scenario__Group__3__Impl816);
+            	    pushFollow(FollowSets000.FOLLOW_rule__Scenario__ProcessingsAssignment_3_in_rule__Scenario__Group__3__Impl1374);
             	    rule__Scenario__ProcessingsAssignment_3();
 
             	    state._fsp--;
@@ -1099,7 +1883,7 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
             	    break;
 
             	default :
-            	    break loop3;
+            	    break loop6;
                 }
             } while (true);
 
@@ -1126,16 +1910,16 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Scenario__Group__4"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:428:1: rule__Scenario__Group__4 : rule__Scenario__Group__4__Impl ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:680:1: rule__Scenario__Group__4 : rule__Scenario__Group__4__Impl ;
     public final void rule__Scenario__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:432:1: ( rule__Scenario__Group__4__Impl )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:433:2: rule__Scenario__Group__4__Impl
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:684:1: ( rule__Scenario__Group__4__Impl )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:685:2: rule__Scenario__Group__4__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__4__Impl_in_rule__Scenario__Group__4847);
+            pushFollow(FollowSets000.FOLLOW_rule__Scenario__Group__4__Impl_in_rule__Scenario__Group__41405);
             rule__Scenario__Group__4__Impl();
 
             state._fsp--;
@@ -1159,20 +1943,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Scenario__Group__4__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:439:1: rule__Scenario__Group__4__Impl : ( '}' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:691:1: rule__Scenario__Group__4__Impl : ( '}' ) ;
     public final void rule__Scenario__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:443:1: ( ( '}' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:444:1: ( '}' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:695:1: ( ( '}' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:696:1: ( '}' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:444:1: ( '}' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:445:1: '}'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:696:1: ( '}' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:697:1: '}'
             {
              before(grammarAccess.getScenarioAccess().getRightCurlyBracketKeyword_4()); 
-            match(input,13,FollowSets000.FOLLOW_13_in_rule__Scenario__Group__4__Impl875); 
+            match(input,13,FollowSets000.FOLLOW_13_in_rule__Scenario__Group__4__Impl1433); 
              after(grammarAccess.getScenarioAccess().getRightCurlyBracketKeyword_4()); 
 
             }
@@ -1196,21 +1980,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__Group__0"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:468:1: rule__PropertiesView__Group__0 : rule__PropertiesView__Group__0__Impl rule__PropertiesView__Group__1 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:720:1: rule__PropertiesView__Group__0 : rule__PropertiesView__Group__0__Impl rule__PropertiesView__Group__1 ;
     public final void rule__PropertiesView__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:472:1: ( rule__PropertiesView__Group__0__Impl rule__PropertiesView__Group__1 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:473:2: rule__PropertiesView__Group__0__Impl rule__PropertiesView__Group__1
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:724:1: ( rule__PropertiesView__Group__0__Impl rule__PropertiesView__Group__1 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:725:2: rule__PropertiesView__Group__0__Impl rule__PropertiesView__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__0__Impl_in_rule__PropertiesView__Group__0916);
+            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__0__Impl_in_rule__PropertiesView__Group__01474);
             rule__PropertiesView__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__1_in_rule__PropertiesView__Group__0919);
+            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__1_in_rule__PropertiesView__Group__01477);
             rule__PropertiesView__Group__1();
 
             state._fsp--;
@@ -1234,20 +2018,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__Group__0__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:480:1: rule__PropertiesView__Group__0__Impl : ( 'propertiesView' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:732:1: rule__PropertiesView__Group__0__Impl : ( 'propertiesView' ) ;
     public final void rule__PropertiesView__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:484:1: ( ( 'propertiesView' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:485:1: ( 'propertiesView' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:736:1: ( ( 'propertiesView' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:737:1: ( 'propertiesView' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:485:1: ( 'propertiesView' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:486:1: 'propertiesView'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:737:1: ( 'propertiesView' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:738:1: 'propertiesView'
             {
              before(grammarAccess.getPropertiesViewAccess().getPropertiesViewKeyword_0()); 
-            match(input,14,FollowSets000.FOLLOW_14_in_rule__PropertiesView__Group__0__Impl947); 
+            match(input,14,FollowSets000.FOLLOW_14_in_rule__PropertiesView__Group__0__Impl1505); 
              after(grammarAccess.getPropertiesViewAccess().getPropertiesViewKeyword_0()); 
 
             }
@@ -1271,21 +2055,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__Group__1"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:499:1: rule__PropertiesView__Group__1 : rule__PropertiesView__Group__1__Impl rule__PropertiesView__Group__2 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:751:1: rule__PropertiesView__Group__1 : rule__PropertiesView__Group__1__Impl rule__PropertiesView__Group__2 ;
     public final void rule__PropertiesView__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:503:1: ( rule__PropertiesView__Group__1__Impl rule__PropertiesView__Group__2 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:504:2: rule__PropertiesView__Group__1__Impl rule__PropertiesView__Group__2
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:755:1: ( rule__PropertiesView__Group__1__Impl rule__PropertiesView__Group__2 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:756:2: rule__PropertiesView__Group__1__Impl rule__PropertiesView__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__1__Impl_in_rule__PropertiesView__Group__1978);
+            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__1__Impl_in_rule__PropertiesView__Group__11536);
             rule__PropertiesView__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__2_in_rule__PropertiesView__Group__1981);
+            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__2_in_rule__PropertiesView__Group__11539);
             rule__PropertiesView__Group__2();
 
             state._fsp--;
@@ -1309,31 +2093,31 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__Group__1__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:511:1: rule__PropertiesView__Group__1__Impl : ( ( rule__PropertiesView__NameAssignment_1 )? ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:763:1: rule__PropertiesView__Group__1__Impl : ( ( rule__PropertiesView__NameAssignment_1 )? ) ;
     public final void rule__PropertiesView__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:515:1: ( ( ( rule__PropertiesView__NameAssignment_1 )? ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:516:1: ( ( rule__PropertiesView__NameAssignment_1 )? )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:767:1: ( ( ( rule__PropertiesView__NameAssignment_1 )? ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:768:1: ( ( rule__PropertiesView__NameAssignment_1 )? )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:516:1: ( ( rule__PropertiesView__NameAssignment_1 )? )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:517:1: ( rule__PropertiesView__NameAssignment_1 )?
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:768:1: ( ( rule__PropertiesView__NameAssignment_1 )? )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:769:1: ( rule__PropertiesView__NameAssignment_1 )?
             {
              before(grammarAccess.getPropertiesViewAccess().getNameAssignment_1()); 
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:518:1: ( rule__PropertiesView__NameAssignment_1 )?
-            int alt4=2;
-            int LA4_0 = input.LA(1);
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:770:1: ( rule__PropertiesView__NameAssignment_1 )?
+            int alt7=2;
+            int LA7_0 = input.LA(1);
 
-            if ( ((LA4_0>=RULE_STRING && LA4_0<=RULE_ID)) ) {
-                alt4=1;
+            if ( ((LA7_0>=RULE_STRING && LA7_0<=RULE_ID)) ) {
+                alt7=1;
             }
-            switch (alt4) {
+            switch (alt7) {
                 case 1 :
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:518:2: rule__PropertiesView__NameAssignment_1
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:770:2: rule__PropertiesView__NameAssignment_1
                     {
-                    pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__NameAssignment_1_in_rule__PropertiesView__Group__1__Impl1008);
+                    pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__NameAssignment_1_in_rule__PropertiesView__Group__1__Impl1566);
                     rule__PropertiesView__NameAssignment_1();
 
                     state._fsp--;
@@ -1367,21 +2151,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__Group__2"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:528:1: rule__PropertiesView__Group__2 : rule__PropertiesView__Group__2__Impl rule__PropertiesView__Group__3 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:780:1: rule__PropertiesView__Group__2 : rule__PropertiesView__Group__2__Impl rule__PropertiesView__Group__3 ;
     public final void rule__PropertiesView__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:532:1: ( rule__PropertiesView__Group__2__Impl rule__PropertiesView__Group__3 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:533:2: rule__PropertiesView__Group__2__Impl rule__PropertiesView__Group__3
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:784:1: ( rule__PropertiesView__Group__2__Impl rule__PropertiesView__Group__3 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:785:2: rule__PropertiesView__Group__2__Impl rule__PropertiesView__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__2__Impl_in_rule__PropertiesView__Group__21039);
+            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__2__Impl_in_rule__PropertiesView__Group__21597);
             rule__PropertiesView__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__3_in_rule__PropertiesView__Group__21042);
+            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__3_in_rule__PropertiesView__Group__21600);
             rule__PropertiesView__Group__3();
 
             state._fsp--;
@@ -1405,20 +2189,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__Group__2__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:540:1: rule__PropertiesView__Group__2__Impl : ( '{' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:792:1: rule__PropertiesView__Group__2__Impl : ( '{' ) ;
     public final void rule__PropertiesView__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:544:1: ( ( '{' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:545:1: ( '{' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:796:1: ( ( '{' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:797:1: ( '{' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:545:1: ( '{' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:546:1: '{'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:797:1: ( '{' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:798:1: '{'
             {
              before(grammarAccess.getPropertiesViewAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,12,FollowSets000.FOLLOW_12_in_rule__PropertiesView__Group__2__Impl1070); 
+            match(input,12,FollowSets000.FOLLOW_12_in_rule__PropertiesView__Group__2__Impl1628); 
              after(grammarAccess.getPropertiesViewAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -1442,21 +2226,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__Group__3"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:559:1: rule__PropertiesView__Group__3 : rule__PropertiesView__Group__3__Impl rule__PropertiesView__Group__4 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:811:1: rule__PropertiesView__Group__3 : rule__PropertiesView__Group__3__Impl rule__PropertiesView__Group__4 ;
     public final void rule__PropertiesView__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:563:1: ( rule__PropertiesView__Group__3__Impl rule__PropertiesView__Group__4 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:564:2: rule__PropertiesView__Group__3__Impl rule__PropertiesView__Group__4
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:815:1: ( rule__PropertiesView__Group__3__Impl rule__PropertiesView__Group__4 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:816:2: rule__PropertiesView__Group__3__Impl rule__PropertiesView__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__3__Impl_in_rule__PropertiesView__Group__31101);
+            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__3__Impl_in_rule__PropertiesView__Group__31659);
             rule__PropertiesView__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__4_in_rule__PropertiesView__Group__31104);
+            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__4_in_rule__PropertiesView__Group__31662);
             rule__PropertiesView__Group__4();
 
             state._fsp--;
@@ -1480,35 +2264,35 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__Group__3__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:571:1: rule__PropertiesView__Group__3__Impl : ( ( rule__PropertiesView__ProcessingsAssignment_3 )* ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:823:1: rule__PropertiesView__Group__3__Impl : ( ( rule__PropertiesView__ProcessingsAssignment_3 )* ) ;
     public final void rule__PropertiesView__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:575:1: ( ( ( rule__PropertiesView__ProcessingsAssignment_3 )* ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:576:1: ( ( rule__PropertiesView__ProcessingsAssignment_3 )* )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:827:1: ( ( ( rule__PropertiesView__ProcessingsAssignment_3 )* ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:828:1: ( ( rule__PropertiesView__ProcessingsAssignment_3 )* )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:576:1: ( ( rule__PropertiesView__ProcessingsAssignment_3 )* )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:577:1: ( rule__PropertiesView__ProcessingsAssignment_3 )*
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:828:1: ( ( rule__PropertiesView__ProcessingsAssignment_3 )* )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:829:1: ( rule__PropertiesView__ProcessingsAssignment_3 )*
             {
              before(grammarAccess.getPropertiesViewAccess().getProcessingsAssignment_3()); 
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:578:1: ( rule__PropertiesView__ProcessingsAssignment_3 )*
-            loop5:
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:830:1: ( rule__PropertiesView__ProcessingsAssignment_3 )*
+            loop8:
             do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                int alt8=2;
+                int LA8_0 = input.LA(1);
 
-                if ( (LA5_0==15) ) {
-                    alt5=1;
+                if ( ((LA8_0>=14 && LA8_0<=18)||LA8_0==21) ) {
+                    alt8=1;
                 }
 
 
-                switch (alt5) {
+                switch (alt8) {
             	case 1 :
-            	    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:578:2: rule__PropertiesView__ProcessingsAssignment_3
+            	    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:830:2: rule__PropertiesView__ProcessingsAssignment_3
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__ProcessingsAssignment_3_in_rule__PropertiesView__Group__3__Impl1131);
+            	    pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__ProcessingsAssignment_3_in_rule__PropertiesView__Group__3__Impl1689);
             	    rule__PropertiesView__ProcessingsAssignment_3();
 
             	    state._fsp--;
@@ -1518,7 +2302,7 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
             	    break;
 
             	default :
-            	    break loop5;
+            	    break loop8;
                 }
             } while (true);
 
@@ -1545,16 +2329,16 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__Group__4"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:588:1: rule__PropertiesView__Group__4 : rule__PropertiesView__Group__4__Impl ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:840:1: rule__PropertiesView__Group__4 : rule__PropertiesView__Group__4__Impl ;
     public final void rule__PropertiesView__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:592:1: ( rule__PropertiesView__Group__4__Impl )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:593:2: rule__PropertiesView__Group__4__Impl
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:844:1: ( rule__PropertiesView__Group__4__Impl )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:845:2: rule__PropertiesView__Group__4__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__4__Impl_in_rule__PropertiesView__Group__41162);
+            pushFollow(FollowSets000.FOLLOW_rule__PropertiesView__Group__4__Impl_in_rule__PropertiesView__Group__41720);
             rule__PropertiesView__Group__4__Impl();
 
             state._fsp--;
@@ -1578,20 +2362,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__Group__4__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:599:1: rule__PropertiesView__Group__4__Impl : ( '}' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:851:1: rule__PropertiesView__Group__4__Impl : ( '}' ) ;
     public final void rule__PropertiesView__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:603:1: ( ( '}' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:604:1: ( '}' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:855:1: ( ( '}' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:856:1: ( '}' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:604:1: ( '}' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:605:1: '}'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:856:1: ( '}' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:857:1: '}'
             {
              before(grammarAccess.getPropertiesViewAccess().getRightCurlyBracketKeyword_4()); 
-            match(input,13,FollowSets000.FOLLOW_13_in_rule__PropertiesView__Group__4__Impl1190); 
+            match(input,13,FollowSets000.FOLLOW_13_in_rule__PropertiesView__Group__4__Impl1748); 
              after(grammarAccess.getPropertiesViewAccess().getRightCurlyBracketKeyword_4()); 
 
             }
@@ -1615,21 +2399,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__Group__0"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:628:1: rule__Wizard__Group__0 : rule__Wizard__Group__0__Impl rule__Wizard__Group__1 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:880:1: rule__Wizard__Group__0 : rule__Wizard__Group__0__Impl rule__Wizard__Group__1 ;
     public final void rule__Wizard__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:632:1: ( rule__Wizard__Group__0__Impl rule__Wizard__Group__1 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:633:2: rule__Wizard__Group__0__Impl rule__Wizard__Group__1
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:884:1: ( rule__Wizard__Group__0__Impl rule__Wizard__Group__1 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:885:2: rule__Wizard__Group__0__Impl rule__Wizard__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__0__Impl_in_rule__Wizard__Group__01231);
+            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__0__Impl_in_rule__Wizard__Group__01789);
             rule__Wizard__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__1_in_rule__Wizard__Group__01234);
+            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__1_in_rule__Wizard__Group__01792);
             rule__Wizard__Group__1();
 
             state._fsp--;
@@ -1653,20 +2437,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__Group__0__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:640:1: rule__Wizard__Group__0__Impl : ( 'wizard' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:892:1: rule__Wizard__Group__0__Impl : ( 'wizard' ) ;
     public final void rule__Wizard__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:644:1: ( ( 'wizard' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:645:1: ( 'wizard' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:896:1: ( ( 'wizard' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:897:1: ( 'wizard' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:645:1: ( 'wizard' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:646:1: 'wizard'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:897:1: ( 'wizard' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:898:1: 'wizard'
             {
              before(grammarAccess.getWizardAccess().getWizardKeyword_0()); 
-            match(input,15,FollowSets000.FOLLOW_15_in_rule__Wizard__Group__0__Impl1262); 
+            match(input,15,FollowSets000.FOLLOW_15_in_rule__Wizard__Group__0__Impl1820); 
              after(grammarAccess.getWizardAccess().getWizardKeyword_0()); 
 
             }
@@ -1690,21 +2474,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__Group__1"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:659:1: rule__Wizard__Group__1 : rule__Wizard__Group__1__Impl rule__Wizard__Group__2 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:911:1: rule__Wizard__Group__1 : rule__Wizard__Group__1__Impl rule__Wizard__Group__2 ;
     public final void rule__Wizard__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:663:1: ( rule__Wizard__Group__1__Impl rule__Wizard__Group__2 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:664:2: rule__Wizard__Group__1__Impl rule__Wizard__Group__2
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:915:1: ( rule__Wizard__Group__1__Impl rule__Wizard__Group__2 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:916:2: rule__Wizard__Group__1__Impl rule__Wizard__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__1__Impl_in_rule__Wizard__Group__11293);
+            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__1__Impl_in_rule__Wizard__Group__11851);
             rule__Wizard__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__2_in_rule__Wizard__Group__11296);
+            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__2_in_rule__Wizard__Group__11854);
             rule__Wizard__Group__2();
 
             state._fsp--;
@@ -1728,31 +2512,31 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__Group__1__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:671:1: rule__Wizard__Group__1__Impl : ( ( rule__Wizard__NameAssignment_1 )? ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:923:1: rule__Wizard__Group__1__Impl : ( ( rule__Wizard__NameAssignment_1 )? ) ;
     public final void rule__Wizard__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:675:1: ( ( ( rule__Wizard__NameAssignment_1 )? ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:676:1: ( ( rule__Wizard__NameAssignment_1 )? )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:927:1: ( ( ( rule__Wizard__NameAssignment_1 )? ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:928:1: ( ( rule__Wizard__NameAssignment_1 )? )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:676:1: ( ( rule__Wizard__NameAssignment_1 )? )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:677:1: ( rule__Wizard__NameAssignment_1 )?
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:928:1: ( ( rule__Wizard__NameAssignment_1 )? )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:929:1: ( rule__Wizard__NameAssignment_1 )?
             {
              before(grammarAccess.getWizardAccess().getNameAssignment_1()); 
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:678:1: ( rule__Wizard__NameAssignment_1 )?
-            int alt6=2;
-            int LA6_0 = input.LA(1);
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:930:1: ( rule__Wizard__NameAssignment_1 )?
+            int alt9=2;
+            int LA9_0 = input.LA(1);
 
-            if ( ((LA6_0>=RULE_STRING && LA6_0<=RULE_ID)) ) {
-                alt6=1;
+            if ( ((LA9_0>=RULE_STRING && LA9_0<=RULE_ID)) ) {
+                alt9=1;
             }
-            switch (alt6) {
+            switch (alt9) {
                 case 1 :
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:678:2: rule__Wizard__NameAssignment_1
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:930:2: rule__Wizard__NameAssignment_1
                     {
-                    pushFollow(FollowSets000.FOLLOW_rule__Wizard__NameAssignment_1_in_rule__Wizard__Group__1__Impl1323);
+                    pushFollow(FollowSets000.FOLLOW_rule__Wizard__NameAssignment_1_in_rule__Wizard__Group__1__Impl1881);
                     rule__Wizard__NameAssignment_1();
 
                     state._fsp--;
@@ -1786,21 +2570,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__Group__2"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:688:1: rule__Wizard__Group__2 : rule__Wizard__Group__2__Impl rule__Wizard__Group__3 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:940:1: rule__Wizard__Group__2 : rule__Wizard__Group__2__Impl rule__Wizard__Group__3 ;
     public final void rule__Wizard__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:692:1: ( rule__Wizard__Group__2__Impl rule__Wizard__Group__3 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:693:2: rule__Wizard__Group__2__Impl rule__Wizard__Group__3
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:944:1: ( rule__Wizard__Group__2__Impl rule__Wizard__Group__3 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:945:2: rule__Wizard__Group__2__Impl rule__Wizard__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__2__Impl_in_rule__Wizard__Group__21354);
+            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__2__Impl_in_rule__Wizard__Group__21912);
             rule__Wizard__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__3_in_rule__Wizard__Group__21357);
+            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__3_in_rule__Wizard__Group__21915);
             rule__Wizard__Group__3();
 
             state._fsp--;
@@ -1824,20 +2608,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__Group__2__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:700:1: rule__Wizard__Group__2__Impl : ( '{' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:952:1: rule__Wizard__Group__2__Impl : ( '{' ) ;
     public final void rule__Wizard__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:704:1: ( ( '{' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:705:1: ( '{' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:956:1: ( ( '{' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:957:1: ( '{' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:705:1: ( '{' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:706:1: '{'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:957:1: ( '{' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:958:1: '{'
             {
              before(grammarAccess.getWizardAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,12,FollowSets000.FOLLOW_12_in_rule__Wizard__Group__2__Impl1385); 
+            match(input,12,FollowSets000.FOLLOW_12_in_rule__Wizard__Group__2__Impl1943); 
              after(grammarAccess.getWizardAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -1861,21 +2645,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__Group__3"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:719:1: rule__Wizard__Group__3 : rule__Wizard__Group__3__Impl rule__Wizard__Group__4 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:971:1: rule__Wizard__Group__3 : rule__Wizard__Group__3__Impl rule__Wizard__Group__4 ;
     public final void rule__Wizard__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:723:1: ( rule__Wizard__Group__3__Impl rule__Wizard__Group__4 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:724:2: rule__Wizard__Group__3__Impl rule__Wizard__Group__4
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:975:1: ( rule__Wizard__Group__3__Impl rule__Wizard__Group__4 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:976:2: rule__Wizard__Group__3__Impl rule__Wizard__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__3__Impl_in_rule__Wizard__Group__31416);
+            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__3__Impl_in_rule__Wizard__Group__31974);
             rule__Wizard__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__4_in_rule__Wizard__Group__31419);
+            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__4_in_rule__Wizard__Group__31977);
             rule__Wizard__Group__4();
 
             state._fsp--;
@@ -1899,35 +2683,35 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__Group__3__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:731:1: rule__Wizard__Group__3__Impl : ( ( rule__Wizard__ProcessingsAssignment_3 )* ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:983:1: rule__Wizard__Group__3__Impl : ( ( rule__Wizard__ProcessingsAssignment_3 )* ) ;
     public final void rule__Wizard__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:735:1: ( ( ( rule__Wizard__ProcessingsAssignment_3 )* ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:736:1: ( ( rule__Wizard__ProcessingsAssignment_3 )* )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:987:1: ( ( ( rule__Wizard__ProcessingsAssignment_3 )* ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:988:1: ( ( rule__Wizard__ProcessingsAssignment_3 )* )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:736:1: ( ( rule__Wizard__ProcessingsAssignment_3 )* )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:737:1: ( rule__Wizard__ProcessingsAssignment_3 )*
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:988:1: ( ( rule__Wizard__ProcessingsAssignment_3 )* )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:989:1: ( rule__Wizard__ProcessingsAssignment_3 )*
             {
              before(grammarAccess.getWizardAccess().getProcessingsAssignment_3()); 
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:738:1: ( rule__Wizard__ProcessingsAssignment_3 )*
-            loop7:
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:990:1: ( rule__Wizard__ProcessingsAssignment_3 )*
+            loop10:
             do {
-                int alt7=2;
-                int LA7_0 = input.LA(1);
+                int alt10=2;
+                int LA10_0 = input.LA(1);
 
-                if ( (LA7_0==15) ) {
-                    alt7=1;
+                if ( ((LA10_0>=14 && LA10_0<=18)||LA10_0==21) ) {
+                    alt10=1;
                 }
 
 
-                switch (alt7) {
+                switch (alt10) {
             	case 1 :
-            	    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:738:2: rule__Wizard__ProcessingsAssignment_3
+            	    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:990:2: rule__Wizard__ProcessingsAssignment_3
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__Wizard__ProcessingsAssignment_3_in_rule__Wizard__Group__3__Impl1446);
+            	    pushFollow(FollowSets000.FOLLOW_rule__Wizard__ProcessingsAssignment_3_in_rule__Wizard__Group__3__Impl2004);
             	    rule__Wizard__ProcessingsAssignment_3();
 
             	    state._fsp--;
@@ -1937,7 +2721,7 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
             	    break;
 
             	default :
-            	    break loop7;
+            	    break loop10;
                 }
             } while (true);
 
@@ -1964,16 +2748,16 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__Group__4"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:748:1: rule__Wizard__Group__4 : rule__Wizard__Group__4__Impl ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1000:1: rule__Wizard__Group__4 : rule__Wizard__Group__4__Impl ;
     public final void rule__Wizard__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:752:1: ( rule__Wizard__Group__4__Impl )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:753:2: rule__Wizard__Group__4__Impl
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1004:1: ( rule__Wizard__Group__4__Impl )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1005:2: rule__Wizard__Group__4__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__4__Impl_in_rule__Wizard__Group__41477);
+            pushFollow(FollowSets000.FOLLOW_rule__Wizard__Group__4__Impl_in_rule__Wizard__Group__42035);
             rule__Wizard__Group__4__Impl();
 
             state._fsp--;
@@ -1997,20 +2781,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__Group__4__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:759:1: rule__Wizard__Group__4__Impl : ( '}' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1011:1: rule__Wizard__Group__4__Impl : ( '}' ) ;
     public final void rule__Wizard__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:763:1: ( ( '}' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:764:1: ( '}' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1015:1: ( ( '}' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1016:1: ( '}' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:764:1: ( '}' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:765:1: '}'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1016:1: ( '}' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1017:1: '}'
             {
              before(grammarAccess.getWizardAccess().getRightCurlyBracketKeyword_4()); 
-            match(input,13,FollowSets000.FOLLOW_13_in_rule__Wizard__Group__4__Impl1505); 
+            match(input,13,FollowSets000.FOLLOW_13_in_rule__Wizard__Group__4__Impl2063); 
              after(grammarAccess.getWizardAccess().getRightCurlyBracketKeyword_4()); 
 
             }
@@ -2034,21 +2818,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__Group__0"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:788:1: rule__Details__Group__0 : rule__Details__Group__0__Impl rule__Details__Group__1 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1040:1: rule__Details__Group__0 : rule__Details__Group__0__Impl rule__Details__Group__1 ;
     public final void rule__Details__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:792:1: ( rule__Details__Group__0__Impl rule__Details__Group__1 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:793:2: rule__Details__Group__0__Impl rule__Details__Group__1
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1044:1: ( rule__Details__Group__0__Impl rule__Details__Group__1 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1045:2: rule__Details__Group__0__Impl rule__Details__Group__1
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__0__Impl_in_rule__Details__Group__01546);
+            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__0__Impl_in_rule__Details__Group__02104);
             rule__Details__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__1_in_rule__Details__Group__01549);
+            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__1_in_rule__Details__Group__02107);
             rule__Details__Group__1();
 
             state._fsp--;
@@ -2072,20 +2856,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__Group__0__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:800:1: rule__Details__Group__0__Impl : ( 'detailsPage' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1052:1: rule__Details__Group__0__Impl : ( 'detailsPage' ) ;
     public final void rule__Details__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:804:1: ( ( 'detailsPage' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:805:1: ( 'detailsPage' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1056:1: ( ( 'detailsPage' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1057:1: ( 'detailsPage' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:805:1: ( 'detailsPage' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:806:1: 'detailsPage'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1057:1: ( 'detailsPage' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1058:1: 'detailsPage'
             {
              before(grammarAccess.getDetailsAccess().getDetailsPageKeyword_0()); 
-            match(input,16,FollowSets000.FOLLOW_16_in_rule__Details__Group__0__Impl1577); 
+            match(input,16,FollowSets000.FOLLOW_16_in_rule__Details__Group__0__Impl2135); 
              after(grammarAccess.getDetailsAccess().getDetailsPageKeyword_0()); 
 
             }
@@ -2109,21 +2893,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__Group__1"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:819:1: rule__Details__Group__1 : rule__Details__Group__1__Impl rule__Details__Group__2 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1071:1: rule__Details__Group__1 : rule__Details__Group__1__Impl rule__Details__Group__2 ;
     public final void rule__Details__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:823:1: ( rule__Details__Group__1__Impl rule__Details__Group__2 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:824:2: rule__Details__Group__1__Impl rule__Details__Group__2
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1075:1: ( rule__Details__Group__1__Impl rule__Details__Group__2 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1076:2: rule__Details__Group__1__Impl rule__Details__Group__2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__1__Impl_in_rule__Details__Group__11608);
+            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__1__Impl_in_rule__Details__Group__12166);
             rule__Details__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__2_in_rule__Details__Group__11611);
+            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__2_in_rule__Details__Group__12169);
             rule__Details__Group__2();
 
             state._fsp--;
@@ -2147,31 +2931,31 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__Group__1__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:831:1: rule__Details__Group__1__Impl : ( ( rule__Details__NameAssignment_1 )? ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1083:1: rule__Details__Group__1__Impl : ( ( rule__Details__NameAssignment_1 )? ) ;
     public final void rule__Details__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:835:1: ( ( ( rule__Details__NameAssignment_1 )? ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:836:1: ( ( rule__Details__NameAssignment_1 )? )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1087:1: ( ( ( rule__Details__NameAssignment_1 )? ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1088:1: ( ( rule__Details__NameAssignment_1 )? )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:836:1: ( ( rule__Details__NameAssignment_1 )? )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:837:1: ( rule__Details__NameAssignment_1 )?
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1088:1: ( ( rule__Details__NameAssignment_1 )? )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1089:1: ( rule__Details__NameAssignment_1 )?
             {
              before(grammarAccess.getDetailsAccess().getNameAssignment_1()); 
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:838:1: ( rule__Details__NameAssignment_1 )?
-            int alt8=2;
-            int LA8_0 = input.LA(1);
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1090:1: ( rule__Details__NameAssignment_1 )?
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( ((LA8_0>=RULE_STRING && LA8_0<=RULE_ID)) ) {
-                alt8=1;
+            if ( ((LA11_0>=RULE_STRING && LA11_0<=RULE_ID)) ) {
+                alt11=1;
             }
-            switch (alt8) {
+            switch (alt11) {
                 case 1 :
-                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:838:2: rule__Details__NameAssignment_1
+                    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1090:2: rule__Details__NameAssignment_1
                     {
-                    pushFollow(FollowSets000.FOLLOW_rule__Details__NameAssignment_1_in_rule__Details__Group__1__Impl1638);
+                    pushFollow(FollowSets000.FOLLOW_rule__Details__NameAssignment_1_in_rule__Details__Group__1__Impl2196);
                     rule__Details__NameAssignment_1();
 
                     state._fsp--;
@@ -2205,21 +2989,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__Group__2"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:848:1: rule__Details__Group__2 : rule__Details__Group__2__Impl rule__Details__Group__3 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1100:1: rule__Details__Group__2 : rule__Details__Group__2__Impl rule__Details__Group__3 ;
     public final void rule__Details__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:852:1: ( rule__Details__Group__2__Impl rule__Details__Group__3 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:853:2: rule__Details__Group__2__Impl rule__Details__Group__3
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1104:1: ( rule__Details__Group__2__Impl rule__Details__Group__3 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1105:2: rule__Details__Group__2__Impl rule__Details__Group__3
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__2__Impl_in_rule__Details__Group__21669);
+            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__2__Impl_in_rule__Details__Group__22227);
             rule__Details__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__3_in_rule__Details__Group__21672);
+            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__3_in_rule__Details__Group__22230);
             rule__Details__Group__3();
 
             state._fsp--;
@@ -2243,20 +3027,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__Group__2__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:860:1: rule__Details__Group__2__Impl : ( '{' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1112:1: rule__Details__Group__2__Impl : ( '{' ) ;
     public final void rule__Details__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:864:1: ( ( '{' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:865:1: ( '{' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1116:1: ( ( '{' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1117:1: ( '{' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:865:1: ( '{' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:866:1: '{'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1117:1: ( '{' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1118:1: '{'
             {
              before(grammarAccess.getDetailsAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,12,FollowSets000.FOLLOW_12_in_rule__Details__Group__2__Impl1700); 
+            match(input,12,FollowSets000.FOLLOW_12_in_rule__Details__Group__2__Impl2258); 
              after(grammarAccess.getDetailsAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -2280,21 +3064,21 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__Group__3"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:879:1: rule__Details__Group__3 : rule__Details__Group__3__Impl rule__Details__Group__4 ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1131:1: rule__Details__Group__3 : rule__Details__Group__3__Impl rule__Details__Group__4 ;
     public final void rule__Details__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:883:1: ( rule__Details__Group__3__Impl rule__Details__Group__4 )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:884:2: rule__Details__Group__3__Impl rule__Details__Group__4
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1135:1: ( rule__Details__Group__3__Impl rule__Details__Group__4 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1136:2: rule__Details__Group__3__Impl rule__Details__Group__4
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__3__Impl_in_rule__Details__Group__31731);
+            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__3__Impl_in_rule__Details__Group__32289);
             rule__Details__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__4_in_rule__Details__Group__31734);
+            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__4_in_rule__Details__Group__32292);
             rule__Details__Group__4();
 
             state._fsp--;
@@ -2318,35 +3102,35 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__Group__3__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:891:1: rule__Details__Group__3__Impl : ( ( rule__Details__ProcessingsAssignment_3 )* ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1143:1: rule__Details__Group__3__Impl : ( ( rule__Details__ProcessingsAssignment_3 )* ) ;
     public final void rule__Details__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:895:1: ( ( ( rule__Details__ProcessingsAssignment_3 )* ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:896:1: ( ( rule__Details__ProcessingsAssignment_3 )* )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1147:1: ( ( ( rule__Details__ProcessingsAssignment_3 )* ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1148:1: ( ( rule__Details__ProcessingsAssignment_3 )* )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:896:1: ( ( rule__Details__ProcessingsAssignment_3 )* )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:897:1: ( rule__Details__ProcessingsAssignment_3 )*
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1148:1: ( ( rule__Details__ProcessingsAssignment_3 )* )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1149:1: ( rule__Details__ProcessingsAssignment_3 )*
             {
              before(grammarAccess.getDetailsAccess().getProcessingsAssignment_3()); 
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:898:1: ( rule__Details__ProcessingsAssignment_3 )*
-            loop9:
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1150:1: ( rule__Details__ProcessingsAssignment_3 )*
+            loop12:
             do {
-                int alt9=2;
-                int LA9_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA9_0==15) ) {
-                    alt9=1;
+                if ( ((LA12_0>=14 && LA12_0<=18)||LA12_0==21) ) {
+                    alt12=1;
                 }
 
 
-                switch (alt9) {
+                switch (alt12) {
             	case 1 :
-            	    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:898:2: rule__Details__ProcessingsAssignment_3
+            	    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1150:2: rule__Details__ProcessingsAssignment_3
             	    {
-            	    pushFollow(FollowSets000.FOLLOW_rule__Details__ProcessingsAssignment_3_in_rule__Details__Group__3__Impl1761);
+            	    pushFollow(FollowSets000.FOLLOW_rule__Details__ProcessingsAssignment_3_in_rule__Details__Group__3__Impl2319);
             	    rule__Details__ProcessingsAssignment_3();
 
             	    state._fsp--;
@@ -2356,7 +3140,7 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
             	    break;
 
             	default :
-            	    break loop9;
+            	    break loop12;
                 }
             } while (true);
 
@@ -2383,16 +3167,16 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__Group__4"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:908:1: rule__Details__Group__4 : rule__Details__Group__4__Impl ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1160:1: rule__Details__Group__4 : rule__Details__Group__4__Impl ;
     public final void rule__Details__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:912:1: ( rule__Details__Group__4__Impl )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:913:2: rule__Details__Group__4__Impl
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1164:1: ( rule__Details__Group__4__Impl )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1165:2: rule__Details__Group__4__Impl
             {
-            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__4__Impl_in_rule__Details__Group__41792);
+            pushFollow(FollowSets000.FOLLOW_rule__Details__Group__4__Impl_in_rule__Details__Group__42350);
             rule__Details__Group__4__Impl();
 
             state._fsp--;
@@ -2416,20 +3200,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__Group__4__Impl"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:919:1: rule__Details__Group__4__Impl : ( '}' ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1171:1: rule__Details__Group__4__Impl : ( '}' ) ;
     public final void rule__Details__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:923:1: ( ( '}' ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:924:1: ( '}' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1175:1: ( ( '}' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1176:1: ( '}' )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:924:1: ( '}' )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:925:1: '}'
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1176:1: ( '}' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1177:1: '}'
             {
              before(grammarAccess.getDetailsAccess().getRightCurlyBracketKeyword_4()); 
-            match(input,13,FollowSets000.FOLLOW_13_in_rule__Details__Group__4__Impl1820); 
+            match(input,13,FollowSets000.FOLLOW_13_in_rule__Details__Group__4__Impl2378); 
              after(grammarAccess.getDetailsAccess().getRightCurlyBracketKeyword_4()); 
 
             }
@@ -2452,21 +3236,796 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
     // $ANTLR end "rule__Details__Group__4__Impl"
 
 
+    // $ANTLR start "rule__CreateProject__Group__0"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1200:1: rule__CreateProject__Group__0 : rule__CreateProject__Group__0__Impl rule__CreateProject__Group__1 ;
+    public final void rule__CreateProject__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1204:1: ( rule__CreateProject__Group__0__Impl rule__CreateProject__Group__1 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1205:2: rule__CreateProject__Group__0__Impl rule__CreateProject__Group__1
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateProject__Group__0__Impl_in_rule__CreateProject__Group__02419);
+            rule__CreateProject__Group__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FollowSets000.FOLLOW_rule__CreateProject__Group__1_in_rule__CreateProject__Group__02422);
+            rule__CreateProject__Group__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateProject__Group__0"
+
+
+    // $ANTLR start "rule__CreateProject__Group__0__Impl"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1212:1: rule__CreateProject__Group__0__Impl : ( 'create project ' ) ;
+    public final void rule__CreateProject__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1216:1: ( ( 'create project ' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1217:1: ( 'create project ' )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1217:1: ( 'create project ' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1218:1: 'create project '
+            {
+             before(grammarAccess.getCreateProjectAccess().getCreateProjectKeyword_0()); 
+            match(input,17,FollowSets000.FOLLOW_17_in_rule__CreateProject__Group__0__Impl2450); 
+             after(grammarAccess.getCreateProjectAccess().getCreateProjectKeyword_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateProject__Group__0__Impl"
+
+
+    // $ANTLR start "rule__CreateProject__Group__1"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1231:1: rule__CreateProject__Group__1 : rule__CreateProject__Group__1__Impl ;
+    public final void rule__CreateProject__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1235:1: ( rule__CreateProject__Group__1__Impl )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1236:2: rule__CreateProject__Group__1__Impl
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateProject__Group__1__Impl_in_rule__CreateProject__Group__12481);
+            rule__CreateProject__Group__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateProject__Group__1"
+
+
+    // $ANTLR start "rule__CreateProject__Group__1__Impl"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1242:1: rule__CreateProject__Group__1__Impl : ( ( rule__CreateProject__ProjectNameAssignment_1 ) ) ;
+    public final void rule__CreateProject__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1246:1: ( ( ( rule__CreateProject__ProjectNameAssignment_1 ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1247:1: ( ( rule__CreateProject__ProjectNameAssignment_1 ) )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1247:1: ( ( rule__CreateProject__ProjectNameAssignment_1 ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1248:1: ( rule__CreateProject__ProjectNameAssignment_1 )
+            {
+             before(grammarAccess.getCreateProjectAccess().getProjectNameAssignment_1()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1249:1: ( rule__CreateProject__ProjectNameAssignment_1 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1249:2: rule__CreateProject__ProjectNameAssignment_1
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateProject__ProjectNameAssignment_1_in_rule__CreateProject__Group__1__Impl2508);
+            rule__CreateProject__ProjectNameAssignment_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getCreateProjectAccess().getProjectNameAssignment_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateProject__Group__1__Impl"
+
+
+    // $ANTLR start "rule__CreateModel__Group__0"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1263:1: rule__CreateModel__Group__0 : rule__CreateModel__Group__0__Impl rule__CreateModel__Group__1 ;
+    public final void rule__CreateModel__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1267:1: ( rule__CreateModel__Group__0__Impl rule__CreateModel__Group__1 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1268:2: rule__CreateModel__Group__0__Impl rule__CreateModel__Group__1
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__0__Impl_in_rule__CreateModel__Group__02542);
+            rule__CreateModel__Group__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__1_in_rule__CreateModel__Group__02545);
+            rule__CreateModel__Group__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__0"
+
+
+    // $ANTLR start "rule__CreateModel__Group__0__Impl"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1275:1: rule__CreateModel__Group__0__Impl : ( 'create model ' ) ;
+    public final void rule__CreateModel__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1279:1: ( ( 'create model ' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1280:1: ( 'create model ' )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1280:1: ( 'create model ' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1281:1: 'create model '
+            {
+             before(grammarAccess.getCreateModelAccess().getCreateModelKeyword_0()); 
+            match(input,18,FollowSets000.FOLLOW_18_in_rule__CreateModel__Group__0__Impl2573); 
+             after(grammarAccess.getCreateModelAccess().getCreateModelKeyword_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__0__Impl"
+
+
+    // $ANTLR start "rule__CreateModel__Group__1"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1294:1: rule__CreateModel__Group__1 : rule__CreateModel__Group__1__Impl rule__CreateModel__Group__2 ;
+    public final void rule__CreateModel__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1298:1: ( rule__CreateModel__Group__1__Impl rule__CreateModel__Group__2 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1299:2: rule__CreateModel__Group__1__Impl rule__CreateModel__Group__2
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__1__Impl_in_rule__CreateModel__Group__12604);
+            rule__CreateModel__Group__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__2_in_rule__CreateModel__Group__12607);
+            rule__CreateModel__Group__2();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__1"
+
+
+    // $ANTLR start "rule__CreateModel__Group__1__Impl"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1306:1: rule__CreateModel__Group__1__Impl : ( ( rule__CreateModel__ModelNameAssignment_1 ) ) ;
+    public final void rule__CreateModel__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1310:1: ( ( ( rule__CreateModel__ModelNameAssignment_1 ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1311:1: ( ( rule__CreateModel__ModelNameAssignment_1 ) )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1311:1: ( ( rule__CreateModel__ModelNameAssignment_1 ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1312:1: ( rule__CreateModel__ModelNameAssignment_1 )
+            {
+             before(grammarAccess.getCreateModelAccess().getModelNameAssignment_1()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1313:1: ( rule__CreateModel__ModelNameAssignment_1 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1313:2: rule__CreateModel__ModelNameAssignment_1
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__ModelNameAssignment_1_in_rule__CreateModel__Group__1__Impl2634);
+            rule__CreateModel__ModelNameAssignment_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getCreateModelAccess().getModelNameAssignment_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__1__Impl"
+
+
+    // $ANTLR start "rule__CreateModel__Group__2"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1323:1: rule__CreateModel__Group__2 : rule__CreateModel__Group__2__Impl rule__CreateModel__Group__3 ;
+    public final void rule__CreateModel__Group__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1327:1: ( rule__CreateModel__Group__2__Impl rule__CreateModel__Group__3 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1328:2: rule__CreateModel__Group__2__Impl rule__CreateModel__Group__3
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__2__Impl_in_rule__CreateModel__Group__22664);
+            rule__CreateModel__Group__2__Impl();
+
+            state._fsp--;
+
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__3_in_rule__CreateModel__Group__22667);
+            rule__CreateModel__Group__3();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__2"
+
+
+    // $ANTLR start "rule__CreateModel__Group__2__Impl"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1335:1: rule__CreateModel__Group__2__Impl : ( ' at ' ) ;
+    public final void rule__CreateModel__Group__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1339:1: ( ( ' at ' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1340:1: ( ' at ' )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1340:1: ( ' at ' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1341:1: ' at '
+            {
+             before(grammarAccess.getCreateModelAccess().getAtKeyword_2()); 
+            match(input,19,FollowSets000.FOLLOW_19_in_rule__CreateModel__Group__2__Impl2695); 
+             after(grammarAccess.getCreateModelAccess().getAtKeyword_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__2__Impl"
+
+
+    // $ANTLR start "rule__CreateModel__Group__3"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1354:1: rule__CreateModel__Group__3 : rule__CreateModel__Group__3__Impl rule__CreateModel__Group__4 ;
+    public final void rule__CreateModel__Group__3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1358:1: ( rule__CreateModel__Group__3__Impl rule__CreateModel__Group__4 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1359:2: rule__CreateModel__Group__3__Impl rule__CreateModel__Group__4
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__3__Impl_in_rule__CreateModel__Group__32726);
+            rule__CreateModel__Group__3__Impl();
+
+            state._fsp--;
+
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__4_in_rule__CreateModel__Group__32729);
+            rule__CreateModel__Group__4();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__3"
+
+
+    // $ANTLR start "rule__CreateModel__Group__3__Impl"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1366:1: rule__CreateModel__Group__3__Impl : ( ( rule__CreateModel__PathAssignment_3 ) ) ;
+    public final void rule__CreateModel__Group__3__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1370:1: ( ( ( rule__CreateModel__PathAssignment_3 ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1371:1: ( ( rule__CreateModel__PathAssignment_3 ) )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1371:1: ( ( rule__CreateModel__PathAssignment_3 ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1372:1: ( rule__CreateModel__PathAssignment_3 )
+            {
+             before(grammarAccess.getCreateModelAccess().getPathAssignment_3()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1373:1: ( rule__CreateModel__PathAssignment_3 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1373:2: rule__CreateModel__PathAssignment_3
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__PathAssignment_3_in_rule__CreateModel__Group__3__Impl2756);
+            rule__CreateModel__PathAssignment_3();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getCreateModelAccess().getPathAssignment_3()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__3__Impl"
+
+
+    // $ANTLR start "rule__CreateModel__Group__4"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1383:1: rule__CreateModel__Group__4 : rule__CreateModel__Group__4__Impl rule__CreateModel__Group__5 ;
+    public final void rule__CreateModel__Group__4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1387:1: ( rule__CreateModel__Group__4__Impl rule__CreateModel__Group__5 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1388:2: rule__CreateModel__Group__4__Impl rule__CreateModel__Group__5
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__4__Impl_in_rule__CreateModel__Group__42786);
+            rule__CreateModel__Group__4__Impl();
+
+            state._fsp--;
+
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__5_in_rule__CreateModel__Group__42789);
+            rule__CreateModel__Group__5();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__4"
+
+
+    // $ANTLR start "rule__CreateModel__Group__4__Impl"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1395:1: rule__CreateModel__Group__4__Impl : ( ' with RootType ' ) ;
+    public final void rule__CreateModel__Group__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1399:1: ( ( ' with RootType ' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1400:1: ( ' with RootType ' )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1400:1: ( ' with RootType ' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1401:1: ' with RootType '
+            {
+             before(grammarAccess.getCreateModelAccess().getWithRootTypeKeyword_4()); 
+            match(input,20,FollowSets000.FOLLOW_20_in_rule__CreateModel__Group__4__Impl2817); 
+             after(grammarAccess.getCreateModelAccess().getWithRootTypeKeyword_4()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__4__Impl"
+
+
+    // $ANTLR start "rule__CreateModel__Group__5"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1414:1: rule__CreateModel__Group__5 : rule__CreateModel__Group__5__Impl ;
+    public final void rule__CreateModel__Group__5() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1418:1: ( rule__CreateModel__Group__5__Impl )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1419:2: rule__CreateModel__Group__5__Impl
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__Group__5__Impl_in_rule__CreateModel__Group__52848);
+            rule__CreateModel__Group__5__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__5"
+
+
+    // $ANTLR start "rule__CreateModel__Group__5__Impl"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1425:1: rule__CreateModel__Group__5__Impl : ( ( rule__CreateModel__RootURIAssignment_5 ) ) ;
+    public final void rule__CreateModel__Group__5__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1429:1: ( ( ( rule__CreateModel__RootURIAssignment_5 ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1430:1: ( ( rule__CreateModel__RootURIAssignment_5 ) )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1430:1: ( ( rule__CreateModel__RootURIAssignment_5 ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1431:1: ( rule__CreateModel__RootURIAssignment_5 )
+            {
+             before(grammarAccess.getCreateModelAccess().getRootURIAssignment_5()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1432:1: ( rule__CreateModel__RootURIAssignment_5 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1432:2: rule__CreateModel__RootURIAssignment_5
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__CreateModel__RootURIAssignment_5_in_rule__CreateModel__Group__5__Impl2875);
+            rule__CreateModel__RootURIAssignment_5();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getCreateModelAccess().getRootURIAssignment_5()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__Group__5__Impl"
+
+
+    // $ANTLR start "rule__Check__Group__0"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1454:1: rule__Check__Group__0 : rule__Check__Group__0__Impl rule__Check__Group__1 ;
+    public final void rule__Check__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1458:1: ( rule__Check__Group__0__Impl rule__Check__Group__1 )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1459:2: rule__Check__Group__0__Impl rule__Check__Group__1
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__Check__Group__0__Impl_in_rule__Check__Group__02917);
+            rule__Check__Group__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FollowSets000.FOLLOW_rule__Check__Group__1_in_rule__Check__Group__02920);
+            rule__Check__Group__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Check__Group__0"
+
+
+    // $ANTLR start "rule__Check__Group__0__Impl"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1466:1: rule__Check__Group__0__Impl : ( 'check' ) ;
+    public final void rule__Check__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1470:1: ( ( 'check' ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1471:1: ( 'check' )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1471:1: ( 'check' )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1472:1: 'check'
+            {
+             before(grammarAccess.getCheckAccess().getCheckKeyword_0()); 
+            match(input,21,FollowSets000.FOLLOW_21_in_rule__Check__Group__0__Impl2948); 
+             after(grammarAccess.getCheckAccess().getCheckKeyword_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Check__Group__0__Impl"
+
+
+    // $ANTLR start "rule__Check__Group__1"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1485:1: rule__Check__Group__1 : rule__Check__Group__1__Impl ;
+    public final void rule__Check__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1489:1: ( rule__Check__Group__1__Impl )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1490:2: rule__Check__Group__1__Impl
+            {
+            pushFollow(FollowSets000.FOLLOW_rule__Check__Group__1__Impl_in_rule__Check__Group__12979);
+            rule__Check__Group__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Check__Group__1"
+
+
+    // $ANTLR start "rule__Check__Group__1__Impl"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1496:1: rule__Check__Group__1__Impl : ( () ) ;
+    public final void rule__Check__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1500:1: ( ( () ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1501:1: ( () )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1501:1: ( () )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1502:1: ()
+            {
+             before(grammarAccess.getCheckAccess().getCheckAction_1()); 
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1503:1: ()
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1505:1: 
+            {
+            }
+
+             after(grammarAccess.getCheckAccess().getCheckAction_1()); 
+
+            }
+
+
+            }
+
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Check__Group__1__Impl"
+
+
     // $ANTLR start "rule__Scenario__NameAssignment_1"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:949:1: rule__Scenario__NameAssignment_1 : ( ruleEString ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1520:1: rule__Scenario__NameAssignment_1 : ( ruleEString ) ;
     public final void rule__Scenario__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:953:1: ( ( ruleEString ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:954:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1524:1: ( ( ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1525:1: ( ruleEString )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:954:1: ( ruleEString )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:955:1: ruleEString
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1525:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1526:1: ruleEString
             {
              before(grammarAccess.getScenarioAccess().getNameEStringParserRuleCall_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Scenario__NameAssignment_11866);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Scenario__NameAssignment_13046);
             ruleEString();
 
             state._fsp--;
@@ -2494,25 +4053,25 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Scenario__ProcessingsAssignment_3"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:964:1: rule__Scenario__ProcessingsAssignment_3 : ( ruleEEFProcessings ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1535:1: rule__Scenario__ProcessingsAssignment_3 : ( ruleProcessings ) ;
     public final void rule__Scenario__ProcessingsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:968:1: ( ( ruleEEFProcessings ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:969:1: ( ruleEEFProcessings )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1539:1: ( ( ruleProcessings ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1540:1: ( ruleProcessings )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:969:1: ( ruleEEFProcessings )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:970:1: ruleEEFProcessings
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1540:1: ( ruleProcessings )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1541:1: ruleProcessings
             {
-             before(grammarAccess.getScenarioAccess().getProcessingsEEFProcessingsParserRuleCall_3_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEEFProcessings_in_rule__Scenario__ProcessingsAssignment_31897);
-            ruleEEFProcessings();
+             before(grammarAccess.getScenarioAccess().getProcessingsProcessingsParserRuleCall_3_0()); 
+            pushFollow(FollowSets000.FOLLOW_ruleProcessings_in_rule__Scenario__ProcessingsAssignment_33077);
+            ruleProcessings();
 
             state._fsp--;
 
-             after(grammarAccess.getScenarioAccess().getProcessingsEEFProcessingsParserRuleCall_3_0()); 
+             after(grammarAccess.getScenarioAccess().getProcessingsProcessingsParserRuleCall_3_0()); 
 
             }
 
@@ -2535,20 +4094,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__NameAssignment_1"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:979:1: rule__PropertiesView__NameAssignment_1 : ( ruleEString ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1550:1: rule__PropertiesView__NameAssignment_1 : ( ruleEString ) ;
     public final void rule__PropertiesView__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:983:1: ( ( ruleEString ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:984:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1554:1: ( ( ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1555:1: ( ruleEString )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:984:1: ( ruleEString )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:985:1: ruleEString
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1555:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1556:1: ruleEString
             {
              before(grammarAccess.getPropertiesViewAccess().getNameEStringParserRuleCall_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__PropertiesView__NameAssignment_11928);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__PropertiesView__NameAssignment_13108);
             ruleEString();
 
             state._fsp--;
@@ -2576,20 +4135,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PropertiesView__ProcessingsAssignment_3"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:994:1: rule__PropertiesView__ProcessingsAssignment_3 : ( ruleSubProcessings ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1565:1: rule__PropertiesView__ProcessingsAssignment_3 : ( ruleSubProcessings ) ;
     public final void rule__PropertiesView__ProcessingsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:998:1: ( ( ruleSubProcessings ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:999:1: ( ruleSubProcessings )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1569:1: ( ( ruleSubProcessings ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1570:1: ( ruleSubProcessings )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:999:1: ( ruleSubProcessings )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1000:1: ruleSubProcessings
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1570:1: ( ruleSubProcessings )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1571:1: ruleSubProcessings
             {
              before(grammarAccess.getPropertiesViewAccess().getProcessingsSubProcessingsParserRuleCall_3_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleSubProcessings_in_rule__PropertiesView__ProcessingsAssignment_31959);
+            pushFollow(FollowSets000.FOLLOW_ruleSubProcessings_in_rule__PropertiesView__ProcessingsAssignment_33139);
             ruleSubProcessings();
 
             state._fsp--;
@@ -2617,20 +4176,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__NameAssignment_1"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1009:1: rule__Wizard__NameAssignment_1 : ( ruleEString ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1580:1: rule__Wizard__NameAssignment_1 : ( ruleEString ) ;
     public final void rule__Wizard__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1013:1: ( ( ruleEString ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1014:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1584:1: ( ( ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1585:1: ( ruleEString )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1014:1: ( ruleEString )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1015:1: ruleEString
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1585:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1586:1: ruleEString
             {
              before(grammarAccess.getWizardAccess().getNameEStringParserRuleCall_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Wizard__NameAssignment_11990);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Wizard__NameAssignment_13170);
             ruleEString();
 
             state._fsp--;
@@ -2658,20 +4217,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Wizard__ProcessingsAssignment_3"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1024:1: rule__Wizard__ProcessingsAssignment_3 : ( ruleSubProcessings ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1595:1: rule__Wizard__ProcessingsAssignment_3 : ( ruleSubProcessings ) ;
     public final void rule__Wizard__ProcessingsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1028:1: ( ( ruleSubProcessings ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1029:1: ( ruleSubProcessings )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1599:1: ( ( ruleSubProcessings ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1600:1: ( ruleSubProcessings )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1029:1: ( ruleSubProcessings )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1030:1: ruleSubProcessings
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1600:1: ( ruleSubProcessings )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1601:1: ruleSubProcessings
             {
              before(grammarAccess.getWizardAccess().getProcessingsSubProcessingsParserRuleCall_3_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleSubProcessings_in_rule__Wizard__ProcessingsAssignment_32021);
+            pushFollow(FollowSets000.FOLLOW_ruleSubProcessings_in_rule__Wizard__ProcessingsAssignment_33201);
             ruleSubProcessings();
 
             state._fsp--;
@@ -2699,20 +4258,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__NameAssignment_1"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1039:1: rule__Details__NameAssignment_1 : ( ruleEString ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1610:1: rule__Details__NameAssignment_1 : ( ruleEString ) ;
     public final void rule__Details__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1043:1: ( ( ruleEString ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1044:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1614:1: ( ( ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1615:1: ( ruleEString )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1044:1: ( ruleEString )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1045:1: ruleEString
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1615:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1616:1: ruleEString
             {
              before(grammarAccess.getDetailsAccess().getNameEStringParserRuleCall_1_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Details__NameAssignment_12052);
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__Details__NameAssignment_13232);
             ruleEString();
 
             state._fsp--;
@@ -2740,20 +4299,20 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Details__ProcessingsAssignment_3"
-    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1054:1: rule__Details__ProcessingsAssignment_3 : ( ruleSubProcessings ) ;
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1625:1: rule__Details__ProcessingsAssignment_3 : ( ruleSubProcessings ) ;
     public final void rule__Details__ProcessingsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1058:1: ( ( ruleSubProcessings ) )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1059:1: ( ruleSubProcessings )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1629:1: ( ( ruleSubProcessings ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1630:1: ( ruleSubProcessings )
             {
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1059:1: ( ruleSubProcessings )
-            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1060:1: ruleSubProcessings
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1630:1: ( ruleSubProcessings )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1631:1: ruleSubProcessings
             {
              before(grammarAccess.getDetailsAccess().getProcessingsSubProcessingsParserRuleCall_3_0()); 
-            pushFollow(FollowSets000.FOLLOW_ruleSubProcessings_in_rule__Details__ProcessingsAssignment_32083);
+            pushFollow(FollowSets000.FOLLOW_ruleSubProcessings_in_rule__Details__ProcessingsAssignment_33263);
             ruleSubProcessings();
 
             state._fsp--;
@@ -2779,6 +4338,170 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
     }
     // $ANTLR end "rule__Details__ProcessingsAssignment_3"
 
+
+    // $ANTLR start "rule__CreateProject__ProjectNameAssignment_1"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1640:1: rule__CreateProject__ProjectNameAssignment_1 : ( ruleEString ) ;
+    public final void rule__CreateProject__ProjectNameAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1644:1: ( ( ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1645:1: ( ruleEString )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1645:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1646:1: ruleEString
+            {
+             before(grammarAccess.getCreateProjectAccess().getProjectNameEStringParserRuleCall_1_0()); 
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__CreateProject__ProjectNameAssignment_13294);
+            ruleEString();
+
+            state._fsp--;
+
+             after(grammarAccess.getCreateProjectAccess().getProjectNameEStringParserRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateProject__ProjectNameAssignment_1"
+
+
+    // $ANTLR start "rule__CreateModel__ModelNameAssignment_1"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1655:1: rule__CreateModel__ModelNameAssignment_1 : ( ruleEString ) ;
+    public final void rule__CreateModel__ModelNameAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1659:1: ( ( ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1660:1: ( ruleEString )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1660:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1661:1: ruleEString
+            {
+             before(grammarAccess.getCreateModelAccess().getModelNameEStringParserRuleCall_1_0()); 
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__CreateModel__ModelNameAssignment_13325);
+            ruleEString();
+
+            state._fsp--;
+
+             after(grammarAccess.getCreateModelAccess().getModelNameEStringParserRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__ModelNameAssignment_1"
+
+
+    // $ANTLR start "rule__CreateModel__PathAssignment_3"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1670:1: rule__CreateModel__PathAssignment_3 : ( ruleEString ) ;
+    public final void rule__CreateModel__PathAssignment_3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1674:1: ( ( ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1675:1: ( ruleEString )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1675:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1676:1: ruleEString
+            {
+             before(grammarAccess.getCreateModelAccess().getPathEStringParserRuleCall_3_0()); 
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__CreateModel__PathAssignment_33356);
+            ruleEString();
+
+            state._fsp--;
+
+             after(grammarAccess.getCreateModelAccess().getPathEStringParserRuleCall_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__PathAssignment_3"
+
+
+    // $ANTLR start "rule__CreateModel__RootURIAssignment_5"
+    // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1685:1: rule__CreateModel__RootURIAssignment_5 : ( ruleEString ) ;
+    public final void rule__CreateModel__RootURIAssignment_5() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1689:1: ( ( ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1690:1: ( ruleEString )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1690:1: ( ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext.ui/src-gen/org/eclipse/emf/eef/ui/contentassist/antlr/internal/InternalModelingBot.g:1691:1: ruleEString
+            {
+             before(grammarAccess.getCreateModelAccess().getRootURIEStringParserRuleCall_5_0()); 
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_rule__CreateModel__RootURIAssignment_53387);
+            ruleEString();
+
+            state._fsp--;
+
+             after(grammarAccess.getCreateModelAccess().getRootURIEStringParserRuleCall_5_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__CreateModel__RootURIAssignment_5"
+
     // Delegated rules
 
 
@@ -2789,9 +4512,9 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
         public static final BitSet FOLLOW_ruleScenario_in_entryRuleScenario61 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleScenario68 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__Scenario__Group__0_in_ruleScenario94 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEEFProcessings_in_entryRuleEEFProcessings121 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleEEFProcessings128 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__EEFProcessings__Alternatives_in_ruleEEFProcessings154 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleProcessings_in_entryRuleProcessings121 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleProcessings128 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Processings__Alternatives_in_ruleProcessings154 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rulePropertiesView_in_entryRulePropertiesView181 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRulePropertiesView188 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__PropertiesView__Group__0_in_rulePropertiesView214 = new BitSet(new long[]{0x0000000000000002L});
@@ -2803,79 +4526,136 @@ public class InternalModelingBotParser extends AbstractInternalContentAssistPars
         public static final BitSet FOLLOW_rule__Details__Group__0_in_ruleDetails334 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleSubProcessings_in_entryRuleSubProcessings361 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleSubProcessings368 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleWizard_in_ruleSubProcessings394 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_entryRuleEString420 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleEString427 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__EString__Alternatives_in_ruleEString453 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleDetails_in_rule__EEFProcessings__Alternatives489 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleWizard_in_rule__EEFProcessings__Alternatives506 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rulePropertiesView_in_rule__EEFProcessings__Alternatives523 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_STRING_in_rule__EString__Alternatives555 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_ID_in_rule__EString__Alternatives572 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Scenario__Group__0__Impl_in_rule__Scenario__Group__0602 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_rule__Scenario__Group__1_in_rule__Scenario__Group__0605 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_11_in_rule__Scenario__Group__0__Impl633 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Scenario__Group__1__Impl_in_rule__Scenario__Group__1664 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_rule__Scenario__Group__2_in_rule__Scenario__Group__1667 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Scenario__NameAssignment_1_in_rule__Scenario__Group__1__Impl694 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Scenario__Group__2__Impl_in_rule__Scenario__Group__2724 = new BitSet(new long[]{0x000000000001E000L});
-        public static final BitSet FOLLOW_rule__Scenario__Group__3_in_rule__Scenario__Group__2727 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_12_in_rule__Scenario__Group__2__Impl755 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Scenario__Group__3__Impl_in_rule__Scenario__Group__3786 = new BitSet(new long[]{0x000000000001E000L});
-        public static final BitSet FOLLOW_rule__Scenario__Group__4_in_rule__Scenario__Group__3789 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Scenario__ProcessingsAssignment_3_in_rule__Scenario__Group__3__Impl816 = new BitSet(new long[]{0x000000000001C002L});
-        public static final BitSet FOLLOW_rule__Scenario__Group__4__Impl_in_rule__Scenario__Group__4847 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_13_in_rule__Scenario__Group__4__Impl875 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__PropertiesView__Group__0__Impl_in_rule__PropertiesView__Group__0916 = new BitSet(new long[]{0x0000000000001030L});
-        public static final BitSet FOLLOW_rule__PropertiesView__Group__1_in_rule__PropertiesView__Group__0919 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_14_in_rule__PropertiesView__Group__0__Impl947 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__PropertiesView__Group__1__Impl_in_rule__PropertiesView__Group__1978 = new BitSet(new long[]{0x0000000000001030L});
-        public static final BitSet FOLLOW_rule__PropertiesView__Group__2_in_rule__PropertiesView__Group__1981 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__PropertiesView__NameAssignment_1_in_rule__PropertiesView__Group__1__Impl1008 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__PropertiesView__Group__2__Impl_in_rule__PropertiesView__Group__21039 = new BitSet(new long[]{0x000000000000A000L});
-        public static final BitSet FOLLOW_rule__PropertiesView__Group__3_in_rule__PropertiesView__Group__21042 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_12_in_rule__PropertiesView__Group__2__Impl1070 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__PropertiesView__Group__3__Impl_in_rule__PropertiesView__Group__31101 = new BitSet(new long[]{0x000000000000A000L});
-        public static final BitSet FOLLOW_rule__PropertiesView__Group__4_in_rule__PropertiesView__Group__31104 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__PropertiesView__ProcessingsAssignment_3_in_rule__PropertiesView__Group__3__Impl1131 = new BitSet(new long[]{0x0000000000008002L});
-        public static final BitSet FOLLOW_rule__PropertiesView__Group__4__Impl_in_rule__PropertiesView__Group__41162 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_13_in_rule__PropertiesView__Group__4__Impl1190 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Wizard__Group__0__Impl_in_rule__Wizard__Group__01231 = new BitSet(new long[]{0x0000000000001030L});
-        public static final BitSet FOLLOW_rule__Wizard__Group__1_in_rule__Wizard__Group__01234 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_15_in_rule__Wizard__Group__0__Impl1262 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Wizard__Group__1__Impl_in_rule__Wizard__Group__11293 = new BitSet(new long[]{0x0000000000001030L});
-        public static final BitSet FOLLOW_rule__Wizard__Group__2_in_rule__Wizard__Group__11296 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Wizard__NameAssignment_1_in_rule__Wizard__Group__1__Impl1323 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Wizard__Group__2__Impl_in_rule__Wizard__Group__21354 = new BitSet(new long[]{0x000000000000A000L});
-        public static final BitSet FOLLOW_rule__Wizard__Group__3_in_rule__Wizard__Group__21357 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_12_in_rule__Wizard__Group__2__Impl1385 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Wizard__Group__3__Impl_in_rule__Wizard__Group__31416 = new BitSet(new long[]{0x000000000000A000L});
-        public static final BitSet FOLLOW_rule__Wizard__Group__4_in_rule__Wizard__Group__31419 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Wizard__ProcessingsAssignment_3_in_rule__Wizard__Group__3__Impl1446 = new BitSet(new long[]{0x0000000000008002L});
-        public static final BitSet FOLLOW_rule__Wizard__Group__4__Impl_in_rule__Wizard__Group__41477 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_13_in_rule__Wizard__Group__4__Impl1505 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Details__Group__0__Impl_in_rule__Details__Group__01546 = new BitSet(new long[]{0x0000000000001030L});
-        public static final BitSet FOLLOW_rule__Details__Group__1_in_rule__Details__Group__01549 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_16_in_rule__Details__Group__0__Impl1577 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Details__Group__1__Impl_in_rule__Details__Group__11608 = new BitSet(new long[]{0x0000000000001030L});
-        public static final BitSet FOLLOW_rule__Details__Group__2_in_rule__Details__Group__11611 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Details__NameAssignment_1_in_rule__Details__Group__1__Impl1638 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Details__Group__2__Impl_in_rule__Details__Group__21669 = new BitSet(new long[]{0x000000000000A000L});
-        public static final BitSet FOLLOW_rule__Details__Group__3_in_rule__Details__Group__21672 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_12_in_rule__Details__Group__2__Impl1700 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Details__Group__3__Impl_in_rule__Details__Group__31731 = new BitSet(new long[]{0x000000000000A000L});
-        public static final BitSet FOLLOW_rule__Details__Group__4_in_rule__Details__Group__31734 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__Details__ProcessingsAssignment_3_in_rule__Details__Group__3__Impl1761 = new BitSet(new long[]{0x0000000000008002L});
-        public static final BitSet FOLLOW_rule__Details__Group__4__Impl_in_rule__Details__Group__41792 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_13_in_rule__Details__Group__4__Impl1820 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Scenario__NameAssignment_11866 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEEFProcessings_in_rule__Scenario__ProcessingsAssignment_31897 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__PropertiesView__NameAssignment_11928 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleSubProcessings_in_rule__PropertiesView__ProcessingsAssignment_31959 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Wizard__NameAssignment_11990 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleSubProcessings_in_rule__Wizard__ProcessingsAssignment_32021 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleEString_in_rule__Details__NameAssignment_12052 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleSubProcessings_in_rule__Details__ProcessingsAssignment_32083 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__SubProcessings__Alternatives_in_ruleSubProcessings394 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAction_in_entryRuleAction421 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleAction428 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Action__Alternatives_in_ruleAction454 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEclipseAction_in_entryRuleEclipseAction481 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleEclipseAction488 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__EclipseAction__Alternatives_in_ruleEclipseAction514 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCreateProject_in_entryRuleCreateProject541 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleCreateProject548 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateProject__Group__0_in_ruleCreateProject574 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCreateModel_in_entryRuleCreateModel601 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleCreateModel608 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__0_in_ruleCreateModel634 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEEFAction_in_entryRuleEEFAction661 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleEEFAction668 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCheck_in_ruleEEFAction694 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCheck_in_entryRuleCheck720 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleCheck727 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Check__Group__0_in_ruleCheck753 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_entryRuleEString780 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleEString787 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__EString__Alternatives_in_ruleEString813 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleDetails_in_rule__Processings__Alternatives849 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleWizard_in_rule__Processings__Alternatives866 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rulePropertiesView_in_rule__Processings__Alternatives883 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAction_in_rule__Processings__Alternatives900 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleWizard_in_rule__SubProcessings__Alternatives932 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleDetails_in_rule__SubProcessings__Alternatives949 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rulePropertiesView_in_rule__SubProcessings__Alternatives966 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAction_in_rule__SubProcessings__Alternatives983 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEclipseAction_in_rule__Action__Alternatives1015 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEEFAction_in_rule__Action__Alternatives1032 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCreateProject_in_rule__EclipseAction__Alternatives1064 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleCreateModel_in_rule__EclipseAction__Alternatives1081 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_STRING_in_rule__EString__Alternatives1113 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_ID_in_rule__EString__Alternatives1130 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Scenario__Group__0__Impl_in_rule__Scenario__Group__01160 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__Scenario__Group__1_in_rule__Scenario__Group__01163 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_11_in_rule__Scenario__Group__0__Impl1191 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Scenario__Group__1__Impl_in_rule__Scenario__Group__11222 = new BitSet(new long[]{0x0000000000001000L});
+        public static final BitSet FOLLOW_rule__Scenario__Group__2_in_rule__Scenario__Group__11225 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Scenario__NameAssignment_1_in_rule__Scenario__Group__1__Impl1252 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Scenario__Group__2__Impl_in_rule__Scenario__Group__21282 = new BitSet(new long[]{0x000000000027E000L});
+        public static final BitSet FOLLOW_rule__Scenario__Group__3_in_rule__Scenario__Group__21285 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_12_in_rule__Scenario__Group__2__Impl1313 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Scenario__Group__3__Impl_in_rule__Scenario__Group__31344 = new BitSet(new long[]{0x000000000027E000L});
+        public static final BitSet FOLLOW_rule__Scenario__Group__4_in_rule__Scenario__Group__31347 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Scenario__ProcessingsAssignment_3_in_rule__Scenario__Group__3__Impl1374 = new BitSet(new long[]{0x000000000027C002L});
+        public static final BitSet FOLLOW_rule__Scenario__Group__4__Impl_in_rule__Scenario__Group__41405 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_13_in_rule__Scenario__Group__4__Impl1433 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__PropertiesView__Group__0__Impl_in_rule__PropertiesView__Group__01474 = new BitSet(new long[]{0x0000000000001030L});
+        public static final BitSet FOLLOW_rule__PropertiesView__Group__1_in_rule__PropertiesView__Group__01477 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_14_in_rule__PropertiesView__Group__0__Impl1505 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__PropertiesView__Group__1__Impl_in_rule__PropertiesView__Group__11536 = new BitSet(new long[]{0x0000000000001030L});
+        public static final BitSet FOLLOW_rule__PropertiesView__Group__2_in_rule__PropertiesView__Group__11539 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__PropertiesView__NameAssignment_1_in_rule__PropertiesView__Group__1__Impl1566 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__PropertiesView__Group__2__Impl_in_rule__PropertiesView__Group__21597 = new BitSet(new long[]{0x000000000027E000L});
+        public static final BitSet FOLLOW_rule__PropertiesView__Group__3_in_rule__PropertiesView__Group__21600 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_12_in_rule__PropertiesView__Group__2__Impl1628 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__PropertiesView__Group__3__Impl_in_rule__PropertiesView__Group__31659 = new BitSet(new long[]{0x000000000027E000L});
+        public static final BitSet FOLLOW_rule__PropertiesView__Group__4_in_rule__PropertiesView__Group__31662 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__PropertiesView__ProcessingsAssignment_3_in_rule__PropertiesView__Group__3__Impl1689 = new BitSet(new long[]{0x000000000027C002L});
+        public static final BitSet FOLLOW_rule__PropertiesView__Group__4__Impl_in_rule__PropertiesView__Group__41720 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_13_in_rule__PropertiesView__Group__4__Impl1748 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Wizard__Group__0__Impl_in_rule__Wizard__Group__01789 = new BitSet(new long[]{0x0000000000001030L});
+        public static final BitSet FOLLOW_rule__Wizard__Group__1_in_rule__Wizard__Group__01792 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_15_in_rule__Wizard__Group__0__Impl1820 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Wizard__Group__1__Impl_in_rule__Wizard__Group__11851 = new BitSet(new long[]{0x0000000000001030L});
+        public static final BitSet FOLLOW_rule__Wizard__Group__2_in_rule__Wizard__Group__11854 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Wizard__NameAssignment_1_in_rule__Wizard__Group__1__Impl1881 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Wizard__Group__2__Impl_in_rule__Wizard__Group__21912 = new BitSet(new long[]{0x000000000027E000L});
+        public static final BitSet FOLLOW_rule__Wizard__Group__3_in_rule__Wizard__Group__21915 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_12_in_rule__Wizard__Group__2__Impl1943 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Wizard__Group__3__Impl_in_rule__Wizard__Group__31974 = new BitSet(new long[]{0x000000000027E000L});
+        public static final BitSet FOLLOW_rule__Wizard__Group__4_in_rule__Wizard__Group__31977 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Wizard__ProcessingsAssignment_3_in_rule__Wizard__Group__3__Impl2004 = new BitSet(new long[]{0x000000000027C002L});
+        public static final BitSet FOLLOW_rule__Wizard__Group__4__Impl_in_rule__Wizard__Group__42035 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_13_in_rule__Wizard__Group__4__Impl2063 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Details__Group__0__Impl_in_rule__Details__Group__02104 = new BitSet(new long[]{0x0000000000001030L});
+        public static final BitSet FOLLOW_rule__Details__Group__1_in_rule__Details__Group__02107 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_16_in_rule__Details__Group__0__Impl2135 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Details__Group__1__Impl_in_rule__Details__Group__12166 = new BitSet(new long[]{0x0000000000001030L});
+        public static final BitSet FOLLOW_rule__Details__Group__2_in_rule__Details__Group__12169 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Details__NameAssignment_1_in_rule__Details__Group__1__Impl2196 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Details__Group__2__Impl_in_rule__Details__Group__22227 = new BitSet(new long[]{0x000000000027E000L});
+        public static final BitSet FOLLOW_rule__Details__Group__3_in_rule__Details__Group__22230 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_12_in_rule__Details__Group__2__Impl2258 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Details__Group__3__Impl_in_rule__Details__Group__32289 = new BitSet(new long[]{0x000000000027E000L});
+        public static final BitSet FOLLOW_rule__Details__Group__4_in_rule__Details__Group__32292 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Details__ProcessingsAssignment_3_in_rule__Details__Group__3__Impl2319 = new BitSet(new long[]{0x000000000027C002L});
+        public static final BitSet FOLLOW_rule__Details__Group__4__Impl_in_rule__Details__Group__42350 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_13_in_rule__Details__Group__4__Impl2378 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateProject__Group__0__Impl_in_rule__CreateProject__Group__02419 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__CreateProject__Group__1_in_rule__CreateProject__Group__02422 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_17_in_rule__CreateProject__Group__0__Impl2450 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateProject__Group__1__Impl_in_rule__CreateProject__Group__12481 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateProject__ProjectNameAssignment_1_in_rule__CreateProject__Group__1__Impl2508 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__0__Impl_in_rule__CreateModel__Group__02542 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__1_in_rule__CreateModel__Group__02545 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_18_in_rule__CreateModel__Group__0__Impl2573 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__1__Impl_in_rule__CreateModel__Group__12604 = new BitSet(new long[]{0x0000000000080000L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__2_in_rule__CreateModel__Group__12607 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateModel__ModelNameAssignment_1_in_rule__CreateModel__Group__1__Impl2634 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__2__Impl_in_rule__CreateModel__Group__22664 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__3_in_rule__CreateModel__Group__22667 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_19_in_rule__CreateModel__Group__2__Impl2695 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__3__Impl_in_rule__CreateModel__Group__32726 = new BitSet(new long[]{0x0000000000100000L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__4_in_rule__CreateModel__Group__32729 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateModel__PathAssignment_3_in_rule__CreateModel__Group__3__Impl2756 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__4__Impl_in_rule__CreateModel__Group__42786 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__5_in_rule__CreateModel__Group__42789 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_20_in_rule__CreateModel__Group__4__Impl2817 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateModel__Group__5__Impl_in_rule__CreateModel__Group__52848 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__CreateModel__RootURIAssignment_5_in_rule__CreateModel__Group__5__Impl2875 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Check__Group__0__Impl_in_rule__Check__Group__02917 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_rule__Check__Group__1_in_rule__Check__Group__02920 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_21_in_rule__Check__Group__0__Impl2948 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__Check__Group__1__Impl_in_rule__Check__Group__12979 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Scenario__NameAssignment_13046 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleProcessings_in_rule__Scenario__ProcessingsAssignment_33077 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__PropertiesView__NameAssignment_13108 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleSubProcessings_in_rule__PropertiesView__ProcessingsAssignment_33139 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Wizard__NameAssignment_13170 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleSubProcessings_in_rule__Wizard__ProcessingsAssignment_33201 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__Details__NameAssignment_13232 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleSubProcessings_in_rule__Details__ProcessingsAssignment_33263 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__CreateProject__ProjectNameAssignment_13294 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__CreateModel__ModelNameAssignment_13325 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__CreateModel__PathAssignment_33356 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleEString_in_rule__CreateModel__RootURIAssignment_53387 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

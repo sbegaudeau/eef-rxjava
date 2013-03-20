@@ -68,6 +68,7 @@ public class CreateModelItemProvider
 			addModelNamePropertyDescriptor(object);
 			addPathPropertyDescriptor(object);
 			addRootPropertyDescriptor(object);
+			addRootURIPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -139,6 +140,28 @@ public class CreateModelItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Root URI feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRootURIPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CreateModel_rootURI_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CreateModel_rootURI_feature", "_UI_CreateModel_type"),
+				 EclipseActionsPackage.Literals.CREATE_MODEL__ROOT_URI,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns CreateModel.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -177,6 +200,7 @@ public class CreateModelItemProvider
 		switch (notification.getFeatureID(CreateModel.class)) {
 			case EclipseActionsPackage.CREATE_MODEL__MODEL_NAME:
 			case EclipseActionsPackage.CREATE_MODEL__PATH:
+			case EclipseActionsPackage.CREATE_MODEL__ROOT_URI:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

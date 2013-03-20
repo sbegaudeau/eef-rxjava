@@ -37,12 +37,18 @@ public class ModelingBotParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getEEFProcessingsAccess().getAlternatives(), "rule__EEFProcessings__Alternatives");
+					put(grammarAccess.getProcessingsAccess().getAlternatives(), "rule__Processings__Alternatives");
+					put(grammarAccess.getSubProcessingsAccess().getAlternatives(), "rule__SubProcessings__Alternatives");
+					put(grammarAccess.getActionAccess().getAlternatives(), "rule__Action__Alternatives");
+					put(grammarAccess.getEclipseActionAccess().getAlternatives(), "rule__EclipseAction__Alternatives");
 					put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 					put(grammarAccess.getScenarioAccess().getGroup(), "rule__Scenario__Group__0");
 					put(grammarAccess.getPropertiesViewAccess().getGroup(), "rule__PropertiesView__Group__0");
 					put(grammarAccess.getWizardAccess().getGroup(), "rule__Wizard__Group__0");
 					put(grammarAccess.getDetailsAccess().getGroup(), "rule__Details__Group__0");
+					put(grammarAccess.getCreateProjectAccess().getGroup(), "rule__CreateProject__Group__0");
+					put(grammarAccess.getCreateModelAccess().getGroup(), "rule__CreateModel__Group__0");
+					put(grammarAccess.getCheckAccess().getGroup(), "rule__Check__Group__0");
 					put(grammarAccess.getScenarioAccess().getNameAssignment_1(), "rule__Scenario__NameAssignment_1");
 					put(grammarAccess.getScenarioAccess().getProcessingsAssignment_3(), "rule__Scenario__ProcessingsAssignment_3");
 					put(grammarAccess.getPropertiesViewAccess().getNameAssignment_1(), "rule__PropertiesView__NameAssignment_1");
@@ -51,6 +57,10 @@ public class ModelingBotParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWizardAccess().getProcessingsAssignment_3(), "rule__Wizard__ProcessingsAssignment_3");
 					put(grammarAccess.getDetailsAccess().getNameAssignment_1(), "rule__Details__NameAssignment_1");
 					put(grammarAccess.getDetailsAccess().getProcessingsAssignment_3(), "rule__Details__ProcessingsAssignment_3");
+					put(grammarAccess.getCreateProjectAccess().getProjectNameAssignment_1(), "rule__CreateProject__ProjectNameAssignment_1");
+					put(grammarAccess.getCreateModelAccess().getModelNameAssignment_1(), "rule__CreateModel__ModelNameAssignment_1");
+					put(grammarAccess.getCreateModelAccess().getPathAssignment_3(), "rule__CreateModel__PathAssignment_3");
+					put(grammarAccess.getCreateModelAccess().getRootURIAssignment_5(), "rule__CreateModel__RootURIAssignment_5");
 				}
 			};
 		}

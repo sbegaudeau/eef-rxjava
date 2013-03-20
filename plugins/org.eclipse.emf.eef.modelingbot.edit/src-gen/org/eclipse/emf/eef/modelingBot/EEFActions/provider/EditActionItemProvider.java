@@ -25,6 +25,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EditAction;
 
@@ -64,6 +66,7 @@ public class EditActionItemProvider
 			super.getPropertyDescriptors(object);
 
 			addPropertiesEditionElementPropertyDescriptor(object);
+			addPropertiesEditionElementURIPropertyDescriptor(object);
 			addReferenceableObjectPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -87,6 +90,28 @@ public class EditActionItemProvider
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Properties Edition Element URI feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPropertiesEditionElementURIPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EditAction_propertiesEditionElementURI_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EditAction_propertiesEditionElementURI_feature", "_UI_EditAction_type"),
+				 EEFActionsPackage.Literals.EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -137,6 +162,12 @@ public class EditActionItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(EditAction.class)) {
+			case EEFActionsPackage.EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

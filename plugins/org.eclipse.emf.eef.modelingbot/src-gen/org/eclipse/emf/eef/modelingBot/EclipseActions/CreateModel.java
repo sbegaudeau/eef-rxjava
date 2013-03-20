@@ -25,6 +25,8 @@ import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel#getModelName <em>Model Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel#getPath <em>Path</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel#getRoot <em>Root</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel#getComputedRoot <em>Computed Root</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel#getRootURI <em>Root URI</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,7 +46,7 @@ public interface CreateModel extends EclipseAction, ReferenceableObject {
 	 * @return the value of the '<em>Model Name</em>' attribute.
 	 * @see #setModelName(String)
 	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage#getCreateModel_ModelName()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getModelName();
@@ -70,7 +72,7 @@ public interface CreateModel extends EclipseAction, ReferenceableObject {
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
 	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage#getCreateModel_Path()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getPath();
@@ -110,5 +112,46 @@ public interface CreateModel extends EclipseAction, ReferenceableObject {
 	 * @generated
 	 */
 	void setRoot(EClass value);
+
+	/**
+	 * Returns the value of the '<em><b>Computed Root</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Computed Root</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Computed Root</em>' reference.
+	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage#getCreateModel_ComputedRoot()
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	EClass getComputedRoot();
+
+	/**
+	 * Returns the value of the '<em><b>Root URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Root URI</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Root URI</em>' attribute.
+	 * @see #setRootURI(String)
+	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage#getCreateModel_RootURI()
+	 * @model
+	 * @generated
+	 */
+	String getRootURI();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel#getRootURI <em>Root URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Root URI</em>' attribute.
+	 * @see #getRootURI()
+	 * @generated
+	 */
+	void setRootURI(String value);
 
 } // CreateModel

@@ -11,14 +11,12 @@
 package org.eclipse.emf.eef.modelingBot.EclipseActions.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage;
+import org.eclipse.emf.eef.modelingBot.helper.EMFHelper;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +28,8 @@ import org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage;
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl#getModelName <em>Model Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl#getRoot <em>Root</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl#getComputedRoot <em>Computed Root</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl#getRootURI <em>Root URI</em>}</li>
  * </ul>
  * </p>
  *
@@ -85,6 +85,26 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 	 * @ordered
 	 */
 	protected EClass root;
+
+	/**
+	 * The default value of the '{@link #getRootURI() <em>Root URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRootURI()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ROOT_URI_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRootURI() <em>Root URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRootURI()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rootURI = ROOT_URI_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -190,6 +210,46 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getComputedRoot() {
+		EClass computedRoot = basicGetComputedRoot();
+		return computedRoot != null && computedRoot.eIsProxy() ? (EClass)eResolveProxy((InternalEObject)computedRoot) : computedRoot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EClass basicGetComputedRoot() {
+		return EMFHelper.computeEObject(this, EclipseActionsPackage.Literals.CREATE_MODEL__ROOT, EclipseActionsPackage.Literals.CREATE_MODEL__ROOT_URI);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRootURI() {
+		return rootURI;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRootURI(String newRootURI) {
+		String oldRootURI = rootURI;
+		rootURI = newRootURI;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EclipseActionsPackage.CREATE_MODEL__ROOT_URI, oldRootURI, rootURI));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -200,6 +260,11 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 			case EclipseActionsPackage.CREATE_MODEL__ROOT:
 				if (resolve) return getRoot();
 				return basicGetRoot();
+			case EclipseActionsPackage.CREATE_MODEL__COMPUTED_ROOT:
+				if (resolve) return getComputedRoot();
+				return basicGetComputedRoot();
+			case EclipseActionsPackage.CREATE_MODEL__ROOT_URI:
+				return getRootURI();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -220,6 +285,9 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 				return;
 			case EclipseActionsPackage.CREATE_MODEL__ROOT:
 				setRoot((EClass)newValue);
+				return;
+			case EclipseActionsPackage.CREATE_MODEL__ROOT_URI:
+				setRootURI((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -242,6 +310,9 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 			case EclipseActionsPackage.CREATE_MODEL__ROOT:
 				setRoot((EClass)null);
 				return;
+			case EclipseActionsPackage.CREATE_MODEL__ROOT_URI:
+				setRootURI(ROOT_URI_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -260,6 +331,10 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
 			case EclipseActionsPackage.CREATE_MODEL__ROOT:
 				return root != null;
+			case EclipseActionsPackage.CREATE_MODEL__COMPUTED_ROOT:
+				return basicGetComputedRoot() != null;
+			case EclipseActionsPackage.CREATE_MODEL__ROOT_URI:
+				return ROOT_URI_EDEFAULT == null ? rootURI != null : !ROOT_URI_EDEFAULT.equals(rootURI);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -278,6 +353,8 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 		result.append(modelName);
 		result.append(", path: ");
 		result.append(path);
+		result.append(", rootURI: ");
+		result.append(rootURI);
 		result.append(')');
 		return result.toString();
 	}

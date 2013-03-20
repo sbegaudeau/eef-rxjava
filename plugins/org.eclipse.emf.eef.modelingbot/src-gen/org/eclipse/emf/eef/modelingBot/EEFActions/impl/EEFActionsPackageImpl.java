@@ -250,8 +250,26 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getEditAction_PropertiesEditionElementURI() {
+		return (EAttribute)editActionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEditAction_ComputedPropertiesEditionElement() {
+		return (EReference)editActionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getEditAction_ReferenceableObject() {
-		return (EReference)editActionEClass.getEStructuralFeatures().get(1);
+		return (EReference)editActionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -277,8 +295,44 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAdd_TypeURI() {
+		return (EAttribute)addEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAdd_ComputedType() {
+		return (EReference)addEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getAdd_EContainingFeature() {
-		return (EReference)addEClass.getEStructuralFeatures().get(1);
+		return (EReference)addEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAdd_EContainingFeatureURI() {
+		return (EAttribute)addEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAdd_ComputedEContainingFeature() {
+		return (EReference)addEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -511,11 +565,17 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 
 		editActionEClass = createEClass(EDIT_ACTION);
 		createEReference(editActionEClass, EDIT_ACTION__PROPERTIES_EDITION_ELEMENT);
+		createEAttribute(editActionEClass, EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI);
+		createEReference(editActionEClass, EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT);
 		createEReference(editActionEClass, EDIT_ACTION__REFERENCEABLE_OBJECT);
 
 		addEClass = createEClass(ADD);
 		createEReference(addEClass, ADD__TYPE);
+		createEAttribute(addEClass, ADD__TYPE_URI);
+		createEReference(addEClass, ADD__COMPUTED_TYPE);
 		createEReference(addEClass, ADD__ECONTAINING_FEATURE);
+		createEAttribute(addEClass, ADD__ECONTAINING_FEATURE_URI);
+		createEReference(addEClass, ADD__COMPUTED_ECONTAINING_FEATURE);
 
 		removeEClass = createEClass(REMOVE);
 
@@ -606,11 +666,17 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 
 		initEClass(editActionEClass, EditAction.class, "EditAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEditAction_PropertiesEditionElement(), theComponentsPackage.getPropertiesEditionElement(), null, "propertiesEditionElement", null, 0, 1, EditAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEditAction_PropertiesEditionElementURI(), ecorePackage.getEString(), "propertiesEditionElementURI", null, 0, 1, EditAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEditAction_ComputedPropertiesEditionElement(), theComponentsPackage.getPropertiesEditionElement(), null, "computedPropertiesEditionElement", null, 1, 1, EditAction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEditAction_ReferenceableObject(), theEditorPackage.getReferenceableObject(), null, "referenceableObject", null, 0, 1, EditAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(addEClass, Add.class, "Add", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAdd_Type(), theEcorePackage.getEClass(), null, "type", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAdd_EContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "eContainingFeature", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAdd_TypeURI(), ecorePackage.getEString(), "typeURI", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdd_ComputedType(), theEcorePackage.getEClass(), null, "computedType", null, 1, 1, Add.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getAdd_EContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "eContainingFeature", null, 1, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAdd_EContainingFeatureURI(), ecorePackage.getEString(), "eContainingFeatureURI", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdd_ComputedEContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "computedEContainingFeature", null, 1, 1, Add.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(removeEClass, Remove.class, "Remove", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

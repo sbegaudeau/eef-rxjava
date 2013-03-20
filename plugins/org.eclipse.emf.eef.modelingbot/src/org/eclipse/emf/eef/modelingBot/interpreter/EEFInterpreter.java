@@ -301,7 +301,7 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 				}
 			} else if (action instanceof CreateModel) {
 				final EObject addedObject = bot.createModel(((CreateModel)action).getPath(),
-						((CreateModel)action).getModelName(), ((CreateModel)action).getRoot());
+						((CreateModel)action).getModelName(), ((CreateModel)action).getComputedRoot());
 				addModelMap((CreateModel)action, addedObject);
 			} else if (action instanceof Add) {
 				PropertiesEditionElement propertiesEditionElement = ((Add)action)

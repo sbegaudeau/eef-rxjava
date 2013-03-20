@@ -601,13 +601,31 @@ public interface EclipseActionsPackage extends EPackage {
 	int CREATE_MODEL__ROOT = ECLIPSE_ACTION_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Computed Root</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_MODEL__COMPUTED_ROOT = ECLIPSE_ACTION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Root URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_MODEL__ROOT_URI = ECLIPSE_ACTION_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Create Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CREATE_MODEL_FEATURE_COUNT = ECLIPSE_ACTION_FEATURE_COUNT + 3;
+	int CREATE_MODEL_FEATURE_COUNT = ECLIPSE_ACTION_FEATURE_COUNT + 5;
 
 
 	/**
@@ -852,6 +870,28 @@ public interface EclipseActionsPackage extends EPackage {
 	EReference getCreateModel_Root();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel#getComputedRoot <em>Computed Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Computed Root</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel#getComputedRoot()
+	 * @see #getCreateModel()
+	 * @generated
+	 */
+	EReference getCreateModel_ComputedRoot();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel#getRootURI <em>Root URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Root URI</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel#getRootURI()
+	 * @see #getCreateModel()
+	 * @generated
+	 */
+	EAttribute getCreateModel_RootURI();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1080,6 +1120,22 @@ public interface EclipseActionsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CREATE_MODEL__ROOT = eINSTANCE.getCreateModel_Root();
+
+		/**
+		 * The meta object literal for the '<em><b>Computed Root</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CREATE_MODEL__COMPUTED_ROOT = eINSTANCE.getCreateModel_ComputedRoot();
+
+		/**
+		 * The meta object literal for the '<em><b>Root URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CREATE_MODEL__ROOT_URI = eINSTANCE.getCreateModel_RootURI();
 
 	}
 
