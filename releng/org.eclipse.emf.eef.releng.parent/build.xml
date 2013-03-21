@@ -84,14 +84,14 @@
 
 		<module>../org.eclipse.emf.eef.update</module>
 
-		<!--module>../../tests/org.eclipse.emf.examples.eef</module>
+		<module>../../tests/org.eclipse.emf.examples.eef</module>
 		<module>../../tests/org.eclipse.emf.examples.eef.edit</module>
 		<module>../../tests/org.eclipse.emf.examples.eef.editor</module>
 		<module>../../tests/org.eclipse.emf.examples.eef.tests.junit</module>
 		<module>../../tests/org.eclipse.emf.eef.tests.nonreg</module>
 		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.edit</module>
 		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.editor</module>
-		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.junit</module-->
+		<module>../../tests/org.eclipse.emf.eef.tests.nonreg.junit</module>
 
 	</modules>
 
