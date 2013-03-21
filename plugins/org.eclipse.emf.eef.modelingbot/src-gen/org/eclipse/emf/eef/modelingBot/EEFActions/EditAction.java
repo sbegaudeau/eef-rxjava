@@ -96,7 +96,7 @@ public interface EditAction extends EEFAction, ReferenceableObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Computed Properties Edition Element</em>' reference.
 	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage#getEditAction_ComputedPropertiesEditionElement()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	PropertiesEditionElement getComputedPropertiesEditionElement();

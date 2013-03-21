@@ -67,6 +67,7 @@ public class SetAttributeItemProvider
 
 			addValuesPropertyDescriptor(object);
 			addEContainingFeaturePropertyDescriptor(object);
+			addEContainingFeatureURIPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -116,6 +117,28 @@ public class SetAttributeItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the EContaining Feature URI feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEContainingFeatureURIPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SetAttribute_eContainingFeatureURI_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SetAttribute_eContainingFeatureURI_feature", "_UI_SetAttribute_type"),
+				 EEFActionsPackage.Literals.SET_ATTRIBUTE__ECONTAINING_FEATURE_URI,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns SetAttribute.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -153,6 +176,7 @@ public class SetAttributeItemProvider
 
 		switch (notification.getFeatureID(SetAttribute.class)) {
 			case EEFActionsPackage.SET_ATTRIBUTE__VALUES:
+			case EEFActionsPackage.SET_ATTRIBUTE__ECONTAINING_FEATURE_URI:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

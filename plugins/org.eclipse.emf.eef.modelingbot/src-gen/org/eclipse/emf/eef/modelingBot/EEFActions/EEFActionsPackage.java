@@ -494,13 +494,31 @@ public interface EEFActionsPackage extends EPackage {
 	int SET_ATTRIBUTE__ECONTAINING_FEATURE = EDIT_ACTION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>EContaining Feature URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_ATTRIBUTE__ECONTAINING_FEATURE_URI = EDIT_ACTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Computed EContaining Feature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_ATTRIBUTE__COMPUTED_ECONTAINING_FEATURE = EDIT_ACTION_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Set Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_ATTRIBUTE_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 2;
+	int SET_ATTRIBUTE_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.UnsetAttributeImpl <em>Unset Attribute</em>}' class.
@@ -1372,6 +1390,28 @@ public interface EEFActionsPackage extends EPackage {
 	EReference getSetAttribute_EContainingFeature();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute#getEContainingFeatureURI <em>EContaining Feature URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>EContaining Feature URI</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute#getEContainingFeatureURI()
+	 * @see #getSetAttribute()
+	 * @generated
+	 */
+	EAttribute getSetAttribute_EContainingFeatureURI();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute#getComputedEContainingFeature <em>Computed EContaining Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Computed EContaining Feature</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute#getComputedEContainingFeature()
+	 * @see #getSetAttribute()
+	 * @generated
+	 */
+	EReference getSetAttribute_ComputedEContainingFeature();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.EEFActions.UnsetAttribute <em>Unset Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1727,6 +1767,22 @@ public interface EEFActionsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SET_ATTRIBUTE__ECONTAINING_FEATURE = eINSTANCE.getSetAttribute_EContainingFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>EContaining Feature URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SET_ATTRIBUTE__ECONTAINING_FEATURE_URI = eINSTANCE.getSetAttribute_EContainingFeatureURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Computed EContaining Feature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SET_ATTRIBUTE__COMPUTED_ECONTAINING_FEATURE = eINSTANCE.getSetAttribute_ComputedEContainingFeature();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.UnsetAttributeImpl <em>Unset Attribute</em>}' class.

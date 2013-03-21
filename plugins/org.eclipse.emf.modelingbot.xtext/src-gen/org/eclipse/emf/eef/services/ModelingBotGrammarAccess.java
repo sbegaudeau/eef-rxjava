@@ -260,12 +260,14 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cCreateProjectParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cCreateModelParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cSaveParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cRemoveProjectParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//EclipseAction returns EclipseActions::EclipseAction:
-		//	CreateProject | CreateModel;
+		//	CreateProject | CreateModel | Save | RemoveProject;
 		public ParserRule getRule() { return rule; }
 
-		//CreateProject | CreateModel
+		//CreateProject | CreateModel | Save | RemoveProject
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//CreateProject
@@ -273,24 +275,30 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 
 		//CreateModel
 		public RuleCall getCreateModelParserRuleCall_1() { return cCreateModelParserRuleCall_1; }
+
+		//Save
+		public RuleCall getSaveParserRuleCall_2() { return cSaveParserRuleCall_2; }
+
+		//RemoveProject
+		public RuleCall getRemoveProjectParserRuleCall_3() { return cRemoveProjectParserRuleCall_3; }
 	}
 
 	public class CreateProjectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CreateProject");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cCreateProjectKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cCreateKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cProjectNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cProjectNameEStringParserRuleCall_1_0 = (RuleCall)cProjectNameAssignment_1.eContents().get(0);
 		
 		//CreateProject returns EclipseActions::CreateProject:
-		//	"create project " projectName=EString;
+		//	"create" projectName=EString;
 		public ParserRule getRule() { return rule; }
 
-		//"create project " projectName=EString
+		//"create" projectName=EString
 		public Group getGroup() { return cGroup; }
 
-		//"create project "
-		public Keyword getCreateProjectKeyword_0() { return cCreateProjectKeyword_0; }
+		//"create"
+		public Keyword getCreateKeyword_0() { return cCreateKeyword_0; }
 
 		//projectName=EString
 		public Assignment getProjectNameAssignment_1() { return cProjectNameAssignment_1; }
@@ -299,28 +307,75 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getProjectNameEStringParserRuleCall_1_0() { return cProjectNameEStringParserRuleCall_1_0; }
 	}
 
+	public class RemoveProjectElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RemoveProject");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cDeleteKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cProjectNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cProjectNameEStringParserRuleCall_1_0 = (RuleCall)cProjectNameAssignment_1.eContents().get(0);
+		
+		//RemoveProject returns EclipseActions::RemoveProject:
+		//	"delete" projectName=EString;
+		public ParserRule getRule() { return rule; }
+
+		//"delete" projectName=EString
+		public Group getGroup() { return cGroup; }
+
+		//"delete"
+		public Keyword getDeleteKeyword_0() { return cDeleteKeyword_0; }
+
+		//projectName=EString
+		public Assignment getProjectNameAssignment_1() { return cProjectNameAssignment_1; }
+
+		//EString
+		public RuleCall getProjectNameEStringParserRuleCall_1_0() { return cProjectNameEStringParserRuleCall_1_0; }
+	}
+
+	public class ReferenceableObjectElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ReferenceableObject");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cCreateModelParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cAddParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//ReferenceableObject returns EEFExtended::ReferenceableObject:
+		//	CreateModel | Add;
+		public ParserRule getRule() { return rule; }
+
+		//CreateModel | Add
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//CreateModel
+		public RuleCall getCreateModelParserRuleCall_0() { return cCreateModelParserRuleCall_0; }
+
+		//Add
+		public RuleCall getAddParserRuleCall_1() { return cAddParserRuleCall_1; }
+	}
+
 	public class CreateModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CreateModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cCreateModelKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cCreateKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cModelNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cModelNameEStringParserRuleCall_1_0 = (RuleCall)cModelNameAssignment_1.eContents().get(0);
-		private final Keyword cAtKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cInKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cPathAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cPathEStringParserRuleCall_3_0 = (RuleCall)cPathAssignment_3.eContents().get(0);
-		private final Keyword cWithRootTypeKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cRootKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cRootURIAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cRootURIEStringParserRuleCall_5_0 = (RuleCall)cRootURIAssignment_5.eContents().get(0);
+		private final Keyword cAsKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cReferenceNameAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cReferenceNameIDTerminalRuleCall_7_0 = (RuleCall)cReferenceNameAssignment_7.eContents().get(0);
 		
 		//CreateModel returns EclipseActions::CreateModel:
-		//	"create model " modelName=EString " at " path=EString " with RootType " rootURI=EString;
+		//	"create" modelName=EString "in" path=EString "root" rootURI=EString "as" referenceName=ID;
 		public ParserRule getRule() { return rule; }
 
-		//"create model " modelName=EString " at " path=EString " with RootType " rootURI=EString
+		//"create" modelName=EString "in" path=EString "root" rootURI=EString "as" referenceName=ID
 		public Group getGroup() { return cGroup; }
 
-		//"create model "
-		public Keyword getCreateModelKeyword_0() { return cCreateModelKeyword_0; }
+		//"create"
+		public Keyword getCreateKeyword_0() { return cCreateKeyword_0; }
 
 		//modelName=EString
 		public Assignment getModelNameAssignment_1() { return cModelNameAssignment_1; }
@@ -328,8 +383,8 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getModelNameEStringParserRuleCall_1_0() { return cModelNameEStringParserRuleCall_1_0; }
 
-		//" at "
-		public Keyword getAtKeyword_2() { return cAtKeyword_2; }
+		//"in"
+		public Keyword getInKeyword_2() { return cInKeyword_2; }
 
 		//path=EString
 		public Assignment getPathAssignment_3() { return cPathAssignment_3; }
@@ -337,26 +392,67 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getPathEStringParserRuleCall_3_0() { return cPathEStringParserRuleCall_3_0; }
 
-		//" with RootType "
-		public Keyword getWithRootTypeKeyword_4() { return cWithRootTypeKeyword_4; }
+		//"root"
+		public Keyword getRootKeyword_4() { return cRootKeyword_4; }
 
 		//rootURI=EString
 		public Assignment getRootURIAssignment_5() { return cRootURIAssignment_5; }
 
 		//EString
 		public RuleCall getRootURIEStringParserRuleCall_5_0() { return cRootURIEStringParserRuleCall_5_0; }
+
+		//"as"
+		public Keyword getAsKeyword_6() { return cAsKeyword_6; }
+
+		//referenceName=ID
+		public Assignment getReferenceNameAssignment_7() { return cReferenceNameAssignment_7; }
+
+		//ID
+		public RuleCall getReferenceNameIDTerminalRuleCall_7_0() { return cReferenceNameIDTerminalRuleCall_7_0; }
+	}
+
+	public class SaveElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Save");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSaveKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Action cSaveAction_1 = (Action)cGroup.eContents().get(1);
+		
+		//Save returns EclipseActions::Save:
+		//	"save" {EclipseActions::Save};
+		public ParserRule getRule() { return rule; }
+
+		//"save" {EclipseActions::Save}
+		public Group getGroup() { return cGroup; }
+
+		//"save"
+		public Keyword getSaveKeyword_0() { return cSaveKeyword_0; }
+
+		//{EclipseActions::Save}
+		public Action getSaveAction_1() { return cSaveAction_1; }
 	}
 
 	public class EEFActionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EEFAction");
-		private final RuleCall cCheckParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cCheckParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cAddParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cSetAttributeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//EEFAction returns EEFActions::EEFAction:
-		//	Check;
+		//	Check | Add | SetAttribute;
 		public ParserRule getRule() { return rule; }
 
+		//Check | Add | SetAttribute
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//Check
-		public RuleCall getCheckParserRuleCall() { return cCheckParserRuleCall; }
+		public RuleCall getCheckParserRuleCall_0() { return cCheckParserRuleCall_0; }
+
+		//Add
+		public RuleCall getAddParserRuleCall_1() { return cAddParserRuleCall_1; }
+
+		//SetAttribute
+		public RuleCall getSetAttributeParserRuleCall_2() { return cSetAttributeParserRuleCall_2; }
 	}
 
 	public class CheckElements extends AbstractParserRuleElementFinder {
@@ -377,6 +473,158 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 
 		//{EEFActions::Check}
 		public Action getCheckAction_1() { return cCheckAction_1; }
+	}
+
+	public class AddElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Add");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cNewKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeURIAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeURIEStringParserRuleCall_1_0 = (RuleCall)cTypeURIAssignment_1.eContents().get(0);
+		private final Keyword cInKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cReferenceableObjectAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cReferenceableObjectReferenceableObjectCrossReference_3_0 = (CrossReference)cReferenceableObjectAssignment_3.eContents().get(0);
+		private final RuleCall cReferenceableObjectReferenceableObjectIDTerminalRuleCall_3_0_1 = (RuleCall)cReferenceableObjectReferenceableObjectCrossReference_3_0.eContents().get(1);
+		private final Keyword cFeatureKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cEContainingFeatureURIAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cEContainingFeatureURIEStringParserRuleCall_5_0 = (RuleCall)cEContainingFeatureURIAssignment_5.eContents().get(0);
+		private final Keyword cAsKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cReferenceNameAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cReferenceNameIDTerminalRuleCall_7_0 = (RuleCall)cReferenceNameAssignment_7.eContents().get(0);
+		
+		//Add returns EEFActions::Add:
+		//	"new" typeURI=EString "in" referenceableObject=[EEFExtended::ReferenceableObject] "feature"
+		//	eContainingFeatureURI=EString "as" referenceName=ID;
+		public ParserRule getRule() { return rule; }
+
+		//"new" typeURI=EString "in" referenceableObject=[EEFExtended::ReferenceableObject] "feature"
+		//eContainingFeatureURI=EString "as" referenceName=ID
+		public Group getGroup() { return cGroup; }
+
+		//"new"
+		public Keyword getNewKeyword_0() { return cNewKeyword_0; }
+
+		//typeURI=EString
+		public Assignment getTypeURIAssignment_1() { return cTypeURIAssignment_1; }
+
+		//EString
+		public RuleCall getTypeURIEStringParserRuleCall_1_0() { return cTypeURIEStringParserRuleCall_1_0; }
+
+		//"in"
+		public Keyword getInKeyword_2() { return cInKeyword_2; }
+
+		//referenceableObject=[EEFExtended::ReferenceableObject]
+		public Assignment getReferenceableObjectAssignment_3() { return cReferenceableObjectAssignment_3; }
+
+		//[EEFExtended::ReferenceableObject]
+		public CrossReference getReferenceableObjectReferenceableObjectCrossReference_3_0() { return cReferenceableObjectReferenceableObjectCrossReference_3_0; }
+
+		//ID
+		public RuleCall getReferenceableObjectReferenceableObjectIDTerminalRuleCall_3_0_1() { return cReferenceableObjectReferenceableObjectIDTerminalRuleCall_3_0_1; }
+
+		//"feature"
+		public Keyword getFeatureKeyword_4() { return cFeatureKeyword_4; }
+
+		//eContainingFeatureURI=EString
+		public Assignment getEContainingFeatureURIAssignment_5() { return cEContainingFeatureURIAssignment_5; }
+
+		//EString
+		public RuleCall getEContainingFeatureURIEStringParserRuleCall_5_0() { return cEContainingFeatureURIEStringParserRuleCall_5_0; }
+
+		//"as"
+		public Keyword getAsKeyword_6() { return cAsKeyword_6; }
+
+		//referenceName=ID
+		public Assignment getReferenceNameAssignment_7() { return cReferenceNameAssignment_7; }
+
+		//ID
+		public RuleCall getReferenceNameIDTerminalRuleCall_7_0() { return cReferenceNameIDTerminalRuleCall_7_0; }
+	}
+
+	public class SetAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SetAttribute");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSetKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cReferenceableObjectAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cReferenceableObjectReferenceableObjectCrossReference_1_0 = (CrossReference)cReferenceableObjectAssignment_1.eContents().get(0);
+		private final RuleCall cReferenceableObjectReferenceableObjectIDTerminalRuleCall_1_0_1 = (RuleCall)cReferenceableObjectReferenceableObjectCrossReference_1_0.eContents().get(1);
+		private final Keyword cFeatureKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cEContainingFeatureURIAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cEContainingFeatureURIEStringParserRuleCall_3_0 = (RuleCall)cEContainingFeatureURIAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cViaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cPropertiesEditionElementURIAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cPropertiesEditionElementURIEStringParserRuleCall_4_1_0 = (RuleCall)cPropertiesEditionElementURIAssignment_4_1.eContents().get(0);
+		private final Keyword cValuesKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cValuesAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cValuesEStringParserRuleCall_6_0 = (RuleCall)cValuesAssignment_6.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cCommaKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cValuesAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cValuesEStringParserRuleCall_7_1_0 = (RuleCall)cValuesAssignment_7_1.eContents().get(0);
+		
+		//SetAttribute returns EEFActions::SetAttribute:
+		//	"set" referenceableObject=[EEFExtended::ReferenceableObject] "feature" eContainingFeatureURI=EString ("via"
+		//	propertiesEditionElementURI=EString)? "values" values+=EString ("," values+=EString)*;
+		public ParserRule getRule() { return rule; }
+
+		//"set" referenceableObject=[EEFExtended::ReferenceableObject] "feature" eContainingFeatureURI=EString ("via"
+		//propertiesEditionElementURI=EString)? "values" values+=EString ("," values+=EString)*
+		public Group getGroup() { return cGroup; }
+
+		//"set"
+		public Keyword getSetKeyword_0() { return cSetKeyword_0; }
+
+		//referenceableObject=[EEFExtended::ReferenceableObject]
+		public Assignment getReferenceableObjectAssignment_1() { return cReferenceableObjectAssignment_1; }
+
+		//[EEFExtended::ReferenceableObject]
+		public CrossReference getReferenceableObjectReferenceableObjectCrossReference_1_0() { return cReferenceableObjectReferenceableObjectCrossReference_1_0; }
+
+		//ID
+		public RuleCall getReferenceableObjectReferenceableObjectIDTerminalRuleCall_1_0_1() { return cReferenceableObjectReferenceableObjectIDTerminalRuleCall_1_0_1; }
+
+		//"feature"
+		public Keyword getFeatureKeyword_2() { return cFeatureKeyword_2; }
+
+		//eContainingFeatureURI=EString
+		public Assignment getEContainingFeatureURIAssignment_3() { return cEContainingFeatureURIAssignment_3; }
+
+		//EString
+		public RuleCall getEContainingFeatureURIEStringParserRuleCall_3_0() { return cEContainingFeatureURIEStringParserRuleCall_3_0; }
+
+		//("via" propertiesEditionElementURI=EString)?
+		public Group getGroup_4() { return cGroup_4; }
+
+		//"via"
+		public Keyword getViaKeyword_4_0() { return cViaKeyword_4_0; }
+
+		//propertiesEditionElementURI=EString
+		public Assignment getPropertiesEditionElementURIAssignment_4_1() { return cPropertiesEditionElementURIAssignment_4_1; }
+
+		//EString
+		public RuleCall getPropertiesEditionElementURIEStringParserRuleCall_4_1_0() { return cPropertiesEditionElementURIEStringParserRuleCall_4_1_0; }
+
+		//"values"
+		public Keyword getValuesKeyword_5() { return cValuesKeyword_5; }
+
+		//values+=EString
+		public Assignment getValuesAssignment_6() { return cValuesAssignment_6; }
+
+		//EString
+		public RuleCall getValuesEStringParserRuleCall_6_0() { return cValuesEStringParserRuleCall_6_0; }
+
+		//("," values+=EString)*
+		public Group getGroup_7() { return cGroup_7; }
+
+		//","
+		public Keyword getCommaKeyword_7_0() { return cCommaKeyword_7_0; }
+
+		//values+=EString
+		public Assignment getValuesAssignment_7_1() { return cValuesAssignment_7_1; }
+
+		//EString
+		public RuleCall getValuesEStringParserRuleCall_7_1_0() { return cValuesEStringParserRuleCall_7_1_0; }
 	}
 
 	public class EStringElements extends AbstractParserRuleElementFinder {
@@ -409,9 +657,14 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	private ActionElements pAction;
 	private EclipseActionElements pEclipseAction;
 	private CreateProjectElements pCreateProject;
+	private RemoveProjectElements pRemoveProject;
+	private ReferenceableObjectElements pReferenceableObject;
 	private CreateModelElements pCreateModel;
+	private SaveElements pSave;
 	private EEFActionElements pEEFAction;
 	private CheckElements pCheck;
+	private AddElements pAdd;
+	private SetAttributeElements pSetAttribute;
 	private EStringElements pEString;
 	
 	private final Grammar grammar;
@@ -523,7 +776,7 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EclipseAction returns EclipseActions::EclipseAction:
-	//	CreateProject | CreateModel;
+	//	CreateProject | CreateModel | Save | RemoveProject;
 	public EclipseActionElements getEclipseActionAccess() {
 		return (pEclipseAction != null) ? pEclipseAction : (pEclipseAction = new EclipseActionElements());
 	}
@@ -533,7 +786,7 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CreateProject returns EclipseActions::CreateProject:
-	//	"create project " projectName=EString;
+	//	"create" projectName=EString;
 	public CreateProjectElements getCreateProjectAccess() {
 		return (pCreateProject != null) ? pCreateProject : (pCreateProject = new CreateProjectElements());
 	}
@@ -542,8 +795,28 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 		return getCreateProjectAccess().getRule();
 	}
 
+	//RemoveProject returns EclipseActions::RemoveProject:
+	//	"delete" projectName=EString;
+	public RemoveProjectElements getRemoveProjectAccess() {
+		return (pRemoveProject != null) ? pRemoveProject : (pRemoveProject = new RemoveProjectElements());
+	}
+	
+	public ParserRule getRemoveProjectRule() {
+		return getRemoveProjectAccess().getRule();
+	}
+
+	//ReferenceableObject returns EEFExtended::ReferenceableObject:
+	//	CreateModel | Add;
+	public ReferenceableObjectElements getReferenceableObjectAccess() {
+		return (pReferenceableObject != null) ? pReferenceableObject : (pReferenceableObject = new ReferenceableObjectElements());
+	}
+	
+	public ParserRule getReferenceableObjectRule() {
+		return getReferenceableObjectAccess().getRule();
+	}
+
 	//CreateModel returns EclipseActions::CreateModel:
-	//	"create model " modelName=EString " at " path=EString " with RootType " rootURI=EString;
+	//	"create" modelName=EString "in" path=EString "root" rootURI=EString "as" referenceName=ID;
 	public CreateModelElements getCreateModelAccess() {
 		return (pCreateModel != null) ? pCreateModel : (pCreateModel = new CreateModelElements());
 	}
@@ -552,8 +825,18 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 		return getCreateModelAccess().getRule();
 	}
 
+	//Save returns EclipseActions::Save:
+	//	"save" {EclipseActions::Save};
+	public SaveElements getSaveAccess() {
+		return (pSave != null) ? pSave : (pSave = new SaveElements());
+	}
+	
+	public ParserRule getSaveRule() {
+		return getSaveAccess().getRule();
+	}
+
 	//EEFAction returns EEFActions::EEFAction:
-	//	Check;
+	//	Check | Add | SetAttribute;
 	public EEFActionElements getEEFActionAccess() {
 		return (pEEFAction != null) ? pEEFAction : (pEEFAction = new EEFActionElements());
 	}
@@ -570,6 +853,28 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getCheckRule() {
 		return getCheckAccess().getRule();
+	}
+
+	//Add returns EEFActions::Add:
+	//	"new" typeURI=EString "in" referenceableObject=[EEFExtended::ReferenceableObject] "feature"
+	//	eContainingFeatureURI=EString "as" referenceName=ID;
+	public AddElements getAddAccess() {
+		return (pAdd != null) ? pAdd : (pAdd = new AddElements());
+	}
+	
+	public ParserRule getAddRule() {
+		return getAddAccess().getRule();
+	}
+
+	//SetAttribute returns EEFActions::SetAttribute:
+	//	"set" referenceableObject=[EEFExtended::ReferenceableObject] "feature" eContainingFeatureURI=EString ("via"
+	//	propertiesEditionElementURI=EString)? "values" values+=EString ("," values+=EString)*;
+	public SetAttributeElements getSetAttributeAccess() {
+		return (pSetAttribute != null) ? pSetAttribute : (pSetAttribute = new SetAttributeElements());
+	}
+	
+	public ParserRule getSetAttributeRule() {
+		return getSetAttributeAccess().getRule();
 	}
 
 	//EString returns ecore::EString:

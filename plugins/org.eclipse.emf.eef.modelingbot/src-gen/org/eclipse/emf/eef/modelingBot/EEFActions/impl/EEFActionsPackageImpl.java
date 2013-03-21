@@ -376,6 +376,24 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSetAttribute_EContainingFeatureURI() {
+		return (EAttribute)setAttributeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSetAttribute_ComputedEContainingFeature() {
+		return (EReference)setAttributeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUnsetAttribute() {
 		return unsetAttributeEClass;
 	}
@@ -582,6 +600,8 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 		setAttributeEClass = createEClass(SET_ATTRIBUTE);
 		createEAttribute(setAttributeEClass, SET_ATTRIBUTE__VALUES);
 		createEReference(setAttributeEClass, SET_ATTRIBUTE__ECONTAINING_FEATURE);
+		createEAttribute(setAttributeEClass, SET_ATTRIBUTE__ECONTAINING_FEATURE_URI);
+		createEReference(setAttributeEClass, SET_ATTRIBUTE__COMPUTED_ECONTAINING_FEATURE);
 
 		unsetAttributeEClass = createEClass(UNSET_ATTRIBUTE);
 		createEAttribute(unsetAttributeEClass, UNSET_ATTRIBUTE__VALUES);
@@ -667,14 +687,14 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 		initEClass(editActionEClass, EditAction.class, "EditAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEditAction_PropertiesEditionElement(), theComponentsPackage.getPropertiesEditionElement(), null, "propertiesEditionElement", null, 0, 1, EditAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEditAction_PropertiesEditionElementURI(), ecorePackage.getEString(), "propertiesEditionElementURI", null, 0, 1, EditAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEditAction_ComputedPropertiesEditionElement(), theComponentsPackage.getPropertiesEditionElement(), null, "computedPropertiesEditionElement", null, 1, 1, EditAction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getEditAction_ComputedPropertiesEditionElement(), theComponentsPackage.getPropertiesEditionElement(), null, "computedPropertiesEditionElement", null, 0, 1, EditAction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getEditAction_ReferenceableObject(), theEditorPackage.getReferenceableObject(), null, "referenceableObject", null, 0, 1, EditAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(addEClass, Add.class, "Add", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAdd_Type(), theEcorePackage.getEClass(), null, "type", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdd_TypeURI(), ecorePackage.getEString(), "typeURI", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdd_ComputedType(), theEcorePackage.getEClass(), null, "computedType", null, 1, 1, Add.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getAdd_EContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "eContainingFeature", null, 1, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdd_EContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "eContainingFeature", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdd_EContainingFeatureURI(), ecorePackage.getEString(), "eContainingFeatureURI", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdd_ComputedEContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "computedEContainingFeature", null, 1, 1, Add.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
@@ -683,6 +703,8 @@ public class EEFActionsPackageImpl extends EPackageImpl implements EEFActionsPac
 		initEClass(setAttributeEClass, SetAttribute.class, "SetAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSetAttribute_Values(), theEcorePackage.getEString(), "values", null, 0, -1, SetAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSetAttribute_EContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "eContainingFeature", null, 0, 1, SetAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSetAttribute_EContainingFeatureURI(), ecorePackage.getEString(), "eContainingFeatureURI", null, 0, 1, SetAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSetAttribute_ComputedEContainingFeature(), theEcorePackage.getEStructuralFeature(), null, "computedEContainingFeature", null, 1, 1, SetAttribute.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(unsetAttributeEClass, UnsetAttribute.class, "UnsetAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUnsetAttribute_Values(), theEcorePackage.getEString(), "values", null, 0, -1, UnsetAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -5,6 +5,7 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://www.eclipse.org/emf/eef/mbot/1.0.0" as mbot
 import "http://www.eclipse.org/emf/eef/test/EclipseActions/1.0.0" as EclipseActions
 import "http://www.eclipse.org/emf/eef/test/EEFActions/1.0.0" as EEFActions
+import "http://www.eclipse.org/emf/eef/extended/editor/1.0.0" as EEFExtended
 
 Scenario returns mbot::Scenario: 
 	'scenario' name=EString '{'
@@ -48,31 +49,40 @@ EclipseAction returns EclipseActions::EclipseAction:
 ;
 
 CreateProject returns EclipseActions::CreateProject:
-	"create project " (projectName=EString)
+	'create' (projectName=EString)
 ;
 
 RemoveProject returns EclipseActions::RemoveProject:
-	"remove project " (projectName=EString)
+	'delete' (projectName=EString)
+;
+
+ReferenceableObject returns EEFExtended::ReferenceableObject:
+	CreateModel | Add
 ;
 
 CreateModel returns EclipseActions::CreateModel:
-	"create model " (modelName=EString) " at " (path=EString) " with RootType " (rootURI=EString) 
+	'create' modelName=EString 'in' path=EString 'root' rootURI=EString 'as' referenceName=ID
 ;
 
 Save returns EclipseActions::Save:
-	"save" {EclipseActions::Save}
+	'save' {EclipseActions::Save}
 ;
 
 EEFAction returns EEFActions::EEFAction:
-	Check
+	Check | Add | SetAttribute
 ;
 
 Check returns EEFActions::Check:
-	"check" {EEFActions::Check}
+	'check' {EEFActions::Check}
 ;
 
 Add returns EEFActions::Add:
-	"create new " (typeURI=EString) " in " (eContainingFeatureURI=EString)
+	'new'  typeURI=EString 'in' referenceableObject=[EEFExtended::ReferenceableObject] 'feature' eContainingFeatureURI=EString 'as' referenceName=ID  
+;
+
+SetAttribute returns EEFActions::SetAttribute:
+	'set' referenceableObject=[EEFExtended::ReferenceableObject] 'feature' eContainingFeatureURI=EString ('via' propertiesEditionElementURI=EString)?
+		'values' (values+=EString)("," values+=EString)*
 ;
 
 EString returns ecore::EString:

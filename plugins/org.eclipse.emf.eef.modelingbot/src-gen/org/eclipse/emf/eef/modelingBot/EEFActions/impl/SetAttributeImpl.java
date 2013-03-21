@@ -33,6 +33,8 @@ import org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.SetAttributeImpl#getValues <em>Values</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.SetAttributeImpl#getEContainingFeature <em>EContaining Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.SetAttributeImpl#getEContainingFeatureURI <em>EContaining Feature URI</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.SetAttributeImpl#getComputedEContainingFeature <em>Computed EContaining Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,6 +60,26 @@ public class SetAttributeImpl extends EditActionImpl implements SetAttribute {
 	 * @ordered
 	 */
 	protected EStructuralFeature eContainingFeature;
+
+	/**
+	 * The default value of the '{@link #getEContainingFeatureURI() <em>EContaining Feature URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEContainingFeatureURI()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ECONTAINING_FEATURE_URI_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getEContainingFeatureURI() <em>EContaining Feature URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEContainingFeatureURI()
+	 * @generated
+	 * @ordered
+	 */
+	protected String eContainingFeatureURI = ECONTAINING_FEATURE_URI_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +155,49 @@ public class SetAttributeImpl extends EditActionImpl implements SetAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getEContainingFeatureURI() {
+		return eContainingFeatureURI;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEContainingFeatureURI(String newEContainingFeatureURI) {
+		String oldEContainingFeatureURI = eContainingFeatureURI;
+		eContainingFeatureURI = newEContainingFeatureURI;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EEFActionsPackage.SET_ATTRIBUTE__ECONTAINING_FEATURE_URI, oldEContainingFeatureURI, eContainingFeatureURI));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EStructuralFeature getComputedEContainingFeature() {
+		EStructuralFeature computedEContainingFeature = basicGetComputedEContainingFeature();
+		return computedEContainingFeature != null && computedEContainingFeature.eIsProxy() ? (EStructuralFeature)eResolveProxy((InternalEObject)computedEContainingFeature) : computedEContainingFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EStructuralFeature basicGetComputedEContainingFeature() {
+		// TODO: implement this method to return the 'Computed EContaining Feature' reference
+		// -> do not perform proxy resolution
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -141,6 +206,11 @@ public class SetAttributeImpl extends EditActionImpl implements SetAttribute {
 			case EEFActionsPackage.SET_ATTRIBUTE__ECONTAINING_FEATURE:
 				if (resolve) return getEContainingFeature();
 				return basicGetEContainingFeature();
+			case EEFActionsPackage.SET_ATTRIBUTE__ECONTAINING_FEATURE_URI:
+				return getEContainingFeatureURI();
+			case EEFActionsPackage.SET_ATTRIBUTE__COMPUTED_ECONTAINING_FEATURE:
+				if (resolve) return getComputedEContainingFeature();
+				return basicGetComputedEContainingFeature();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -161,6 +231,9 @@ public class SetAttributeImpl extends EditActionImpl implements SetAttribute {
 			case EEFActionsPackage.SET_ATTRIBUTE__ECONTAINING_FEATURE:
 				setEContainingFeature((EStructuralFeature)newValue);
 				return;
+			case EEFActionsPackage.SET_ATTRIBUTE__ECONTAINING_FEATURE_URI:
+				setEContainingFeatureURI((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -179,6 +252,9 @@ public class SetAttributeImpl extends EditActionImpl implements SetAttribute {
 			case EEFActionsPackage.SET_ATTRIBUTE__ECONTAINING_FEATURE:
 				setEContainingFeature((EStructuralFeature)null);
 				return;
+			case EEFActionsPackage.SET_ATTRIBUTE__ECONTAINING_FEATURE_URI:
+				setEContainingFeatureURI(ECONTAINING_FEATURE_URI_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -195,6 +271,10 @@ public class SetAttributeImpl extends EditActionImpl implements SetAttribute {
 				return values != null && !values.isEmpty();
 			case EEFActionsPackage.SET_ATTRIBUTE__ECONTAINING_FEATURE:
 				return eContainingFeature != null;
+			case EEFActionsPackage.SET_ATTRIBUTE__ECONTAINING_FEATURE_URI:
+				return ECONTAINING_FEATURE_URI_EDEFAULT == null ? eContainingFeatureURI != null : !ECONTAINING_FEATURE_URI_EDEFAULT.equals(eContainingFeatureURI);
+			case EEFActionsPackage.SET_ATTRIBUTE__COMPUTED_ECONTAINING_FEATURE:
+				return basicGetComputedEContainingFeature() != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -211,6 +291,8 @@ public class SetAttributeImpl extends EditActionImpl implements SetAttribute {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (values: ");
 		result.append(values);
+		result.append(", eContainingFeatureURI: ");
+		result.append(eContainingFeatureURI);
 		result.append(')');
 		return result.toString();
 	}

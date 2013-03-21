@@ -13,6 +13,7 @@ public class AbstractModelingBotJavaValidator extends AbstractDeclarativeValidat
 	    List<EPackage> result = new ArrayList<EPackage>();
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/emf/eef/mbot/1.0.0"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/emf/eef/test/EclipseActions/1.0.0"));
+	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/emf/eef/extended/editor/1.0.0"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/emf/eef/test/EEFActions/1.0.0"));
 		return result;
 	}

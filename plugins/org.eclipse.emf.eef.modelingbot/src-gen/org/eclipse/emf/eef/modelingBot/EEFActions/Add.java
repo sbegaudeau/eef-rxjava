@@ -115,7 +115,7 @@ public interface Add extends EditAction {
 	 * @return the value of the '<em>EContaining Feature</em>' reference.
 	 * @see #setEContainingFeature(EStructuralFeature)
 	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage#getAdd_EContainingFeature()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	EStructuralFeature getEContainingFeature();

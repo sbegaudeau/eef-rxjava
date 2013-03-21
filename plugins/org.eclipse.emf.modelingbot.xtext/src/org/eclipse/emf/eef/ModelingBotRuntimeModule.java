@@ -3,9 +3,19 @@
  */
 package org.eclipse.emf.eef;
 
+import org.eclipse.emf.eef.naming.ModelingBotQualifiedNameProvider;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class ModelingBotRuntimeModule extends org.eclipse.emf.eef.AbstractModelingBotRuntimeModule {
 
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return ModelingBotQualifiedNameProvider.class;
+	}
+
+	
+	
 }

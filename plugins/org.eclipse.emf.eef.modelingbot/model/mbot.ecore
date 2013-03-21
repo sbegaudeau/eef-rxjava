@@ -48,7 +48,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertiesEditionElementURI"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="computedPropertiesEditionElement"
-          lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.eef.components/model/components.ecore#//PropertiesEditionElement"
+          eType="ecore:EClass platform:/plugin/org.eclipse.emf.eef.components/model/components.ecore#//PropertiesEditionElement"
           changeable="false" volatile="true" transient="true" derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="referenceableObject"
           eType="ecore:EClass platform:/plugin/org.eclipse.emf.eef.editor.model/model/extended.ecore#//editor/ReferenceableObject"/>
@@ -59,8 +59,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="computedType" lowerBound="1"
           eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"
           changeable="false" volatile="true" transient="true" derived="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainingFeature" lowerBound="1"
-          eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainingFeature" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="eContainingFeatureURI"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="computedEContainingFeature"
@@ -72,6 +71,11 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" upperBound="-1"
           eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="eContainingFeature" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="eContainingFeatureURI"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="computedEContainingFeature"
+          lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"
+          changeable="false" volatile="true" transient="true" derived="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="UnsetAttribute" eSuperTypes="#//EEFActions/EditAction">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" upperBound="-1"

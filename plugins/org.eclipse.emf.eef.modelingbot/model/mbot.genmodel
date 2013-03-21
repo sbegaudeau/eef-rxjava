@@ -64,6 +64,9 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mbot.ecore#//EEFActions/SetAttribute/values"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference mbot.ecore#//EEFActions/SetAttribute/eContainingFeature"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mbot.ecore#//EEFActions/SetAttribute/eContainingFeatureURI"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference mbot.ecore#//EEFActions/SetAttribute/computedEContainingFeature"/>
       </genClasses>
       <genClasses ecoreClass="mbot.ecore#//EEFActions/UnsetAttribute">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mbot.ecore#//EEFActions/UnsetAttribute/values"/>
