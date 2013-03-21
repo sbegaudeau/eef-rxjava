@@ -1200,13 +1200,22 @@ public interface EditorPackage extends EPackage {
 	int REFERENCEABLE_OBJECT = 14;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCEABLE_OBJECT__REFERENCE_NAME = 0;
+
+	/**
 	 * The number of structural features of the '<em>Referenceable Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCEABLE_OBJECT_FEATURE_COUNT = 0;
+	int REFERENCEABLE_OBJECT_FEATURE_COUNT = 1;
 
 
 	/**
@@ -1448,6 +1457,17 @@ public interface EditorPackage extends EPackage {
 	EClass getReferenceableObject();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.extended.editor.ReferenceableObject#getReferenceName <em>Reference Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Reference Name</em>'.
+	 * @see org.eclipse.emf.eef.extended.editor.ReferenceableObject#getReferenceName()
+	 * @see #getReferenceableObject()
+	 * @generated
+	 */
+	EAttribute getReferenceableObject_ReferenceName();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1682,6 +1702,14 @@ public interface EditorPackage extends EPackage {
 		 * @generated
 		 */
 		EClass REFERENCEABLE_OBJECT = eINSTANCE.getReferenceableObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Reference Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCEABLE_OBJECT__REFERENCE_NAME = eINSTANCE.getReferenceableObject_ReferenceName();
 
 	}
 

@@ -574,13 +574,22 @@ public interface EclipseActionsPackage extends EPackage {
 	int CREATE_MODEL__DOCUMENTATION = ECLIPSE_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_MODEL__REFERENCE_NAME = ECLIPSE_ACTION_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Model Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CREATE_MODEL__MODEL_NAME = ECLIPSE_ACTION_FEATURE_COUNT + 0;
+	int CREATE_MODEL__MODEL_NAME = ECLIPSE_ACTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -589,7 +598,7 @@ public interface EclipseActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CREATE_MODEL__PATH = ECLIPSE_ACTION_FEATURE_COUNT + 1;
+	int CREATE_MODEL__PATH = ECLIPSE_ACTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Root</b></em>' reference.
@@ -598,7 +607,7 @@ public interface EclipseActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CREATE_MODEL__ROOT = ECLIPSE_ACTION_FEATURE_COUNT + 2;
+	int CREATE_MODEL__ROOT = ECLIPSE_ACTION_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Computed Root</b></em>' reference.
@@ -607,7 +616,7 @@ public interface EclipseActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CREATE_MODEL__COMPUTED_ROOT = ECLIPSE_ACTION_FEATURE_COUNT + 3;
+	int CREATE_MODEL__COMPUTED_ROOT = ECLIPSE_ACTION_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Root URI</b></em>' attribute.
@@ -616,7 +625,7 @@ public interface EclipseActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CREATE_MODEL__ROOT_URI = ECLIPSE_ACTION_FEATURE_COUNT + 4;
+	int CREATE_MODEL__ROOT_URI = ECLIPSE_ACTION_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Create Model</em>' class.
@@ -625,7 +634,7 @@ public interface EclipseActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CREATE_MODEL_FEATURE_COUNT = ECLIPSE_ACTION_FEATURE_COUNT + 5;
+	int CREATE_MODEL_FEATURE_COUNT = ECLIPSE_ACTION_FEATURE_COUNT + 6;
 
 
 	/**

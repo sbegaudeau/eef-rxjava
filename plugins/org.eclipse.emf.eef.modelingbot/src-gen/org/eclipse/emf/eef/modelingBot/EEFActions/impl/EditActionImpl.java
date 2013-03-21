@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
+import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EditAction;
@@ -27,6 +28,7 @@ import org.eclipse.emf.eef.modelingBot.helper.EMFHelper;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.EditActionImpl#getReferenceName <em>Reference Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.EditActionImpl#getPropertiesEditionElement <em>Properties Edition Element</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.EditActionImpl#getPropertiesEditionElementURI <em>Properties Edition Element URI</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.EditActionImpl#getComputedPropertiesEditionElement <em>Computed Properties Edition Element</em>}</li>
@@ -37,6 +39,26 @@ import org.eclipse.emf.eef.modelingBot.helper.EMFHelper;
  * @generated
  */
 public abstract class EditActionImpl extends EEFActionImpl implements EditAction {
+	/**
+	 * The default value of the '{@link #getReferenceName() <em>Reference Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferenceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REFERENCE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getReferenceName() <em>Reference Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferenceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String referenceName = REFERENCE_NAME_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getPropertiesEditionElement() <em>Properties Edition Element</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -94,6 +116,27 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 	@Override
 	protected EClass eStaticClass() {
 		return EEFActionsPackage.Literals.EDIT_ACTION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getReferenceName() {
+		return referenceName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReferenceName(String newReferenceName) {
+		String oldReferenceName = referenceName;
+		referenceName = newReferenceName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EEFActionsPackage.EDIT_ACTION__REFERENCE_NAME, oldReferenceName, referenceName));
 	}
 
 	/**
@@ -220,6 +263,8 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case EEFActionsPackage.EDIT_ACTION__REFERENCE_NAME:
+				return getReferenceName();
 			case EEFActionsPackage.EDIT_ACTION__PROPERTIES_EDITION_ELEMENT:
 				if (resolve) return getPropertiesEditionElement();
 				return basicGetPropertiesEditionElement();
@@ -243,6 +288,9 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case EEFActionsPackage.EDIT_ACTION__REFERENCE_NAME:
+				setReferenceName((String)newValue);
+				return;
 			case EEFActionsPackage.EDIT_ACTION__PROPERTIES_EDITION_ELEMENT:
 				setPropertiesEditionElement((PropertiesEditionElement)newValue);
 				return;
@@ -264,6 +312,9 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case EEFActionsPackage.EDIT_ACTION__REFERENCE_NAME:
+				setReferenceName(REFERENCE_NAME_EDEFAULT);
+				return;
 			case EEFActionsPackage.EDIT_ACTION__PROPERTIES_EDITION_ELEMENT:
 				setPropertiesEditionElement((PropertiesEditionElement)null);
 				return;
@@ -285,6 +336,8 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case EEFActionsPackage.EDIT_ACTION__REFERENCE_NAME:
+				return REFERENCE_NAME_EDEFAULT == null ? referenceName != null : !REFERENCE_NAME_EDEFAULT.equals(referenceName);
 			case EEFActionsPackage.EDIT_ACTION__PROPERTIES_EDITION_ELEMENT:
 				return propertiesEditionElement != null;
 			case EEFActionsPackage.EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI:
@@ -303,11 +356,45 @@ public abstract class EditActionImpl extends EEFActionImpl implements EditAction
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ReferenceableObject.class) {
+			switch (derivedFeatureID) {
+				case EEFActionsPackage.EDIT_ACTION__REFERENCE_NAME: return EditorPackage.REFERENCEABLE_OBJECT__REFERENCE_NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ReferenceableObject.class) {
+			switch (baseFeatureID) {
+				case EditorPackage.REFERENCEABLE_OBJECT__REFERENCE_NAME: return EEFActionsPackage.EDIT_ACTION__REFERENCE_NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (propertiesEditionElementURI: ");
+		result.append(" (referenceName: ");
+		result.append(referenceName);
+		result.append(", propertiesEditionElementURI: ");
 		result.append(propertiesEditionElementURI);
 		result.append(')');
 		return result.toString();

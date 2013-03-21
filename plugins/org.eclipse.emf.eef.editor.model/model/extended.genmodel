@@ -40,7 +40,9 @@
       <genClasses ecoreClass="extended.ecore#//editor/EEFEditorPages"/>
       <genClasses ecoreClass="extended.ecore#//editor/StaticEEFEditorContribution"/>
       <genClasses ecoreClass="extended.ecore#//editor/DynamicEEFEditorContribution"/>
-      <genClasses ecoreClass="extended.ecore#//editor/ReferenceableObject"/>
+      <genClasses ecoreClass="extended.ecore#//editor/ReferenceableObject">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute extended.ecore#//editor/ReferenceableObject/referenceName"/>
+      </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="Query" basePackage="org.eclipse.emf.eef.extended" disposableProviderFactory="true"
         ecorePackage="extended.ecore#//query">

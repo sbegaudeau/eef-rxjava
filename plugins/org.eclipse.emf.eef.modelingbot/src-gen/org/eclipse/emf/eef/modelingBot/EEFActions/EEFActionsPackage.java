@@ -131,13 +131,22 @@ public interface EEFActionsPackage extends EPackage {
 	int EDIT_ACTION__DOCUMENTATION = EEF_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDIT_ACTION__REFERENCE_NAME = EEF_ACTION_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDIT_ACTION__PROPERTIES_EDITION_ELEMENT = EEF_ACTION_FEATURE_COUNT + 0;
+	int EDIT_ACTION__PROPERTIES_EDITION_ELEMENT = EEF_ACTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Properties Edition Element URI</b></em>' attribute.
@@ -146,7 +155,7 @@ public interface EEFActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI = EEF_ACTION_FEATURE_COUNT + 1;
+	int EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI = EEF_ACTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Computed Properties Edition Element</b></em>' reference.
@@ -155,7 +164,7 @@ public interface EEFActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT = EEF_ACTION_FEATURE_COUNT + 2;
+	int EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT = EEF_ACTION_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
@@ -164,7 +173,7 @@ public interface EEFActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EDIT_ACTION__REFERENCEABLE_OBJECT = EEF_ACTION_FEATURE_COUNT + 3;
+	int EDIT_ACTION__REFERENCEABLE_OBJECT = EEF_ACTION_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Edit Action</em>' class.
@@ -173,7 +182,7 @@ public interface EEFActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EDIT_ACTION_FEATURE_COUNT = EEF_ACTION_FEATURE_COUNT + 4;
+	int EDIT_ACTION_FEATURE_COUNT = EEF_ACTION_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.AddImpl <em>Add</em>}' class.
@@ -202,6 +211,15 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int ADD__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
@@ -331,6 +349,15 @@ public interface EEFActionsPackage extends EPackage {
 	int REMOVE__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -402,6 +429,15 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SET_ATTRIBUTE__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_ATTRIBUTE__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
@@ -495,6 +531,15 @@ public interface EEFActionsPackage extends EPackage {
 	int UNSET_ATTRIBUTE__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET_ATTRIBUTE__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -584,6 +629,15 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNSET__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
@@ -798,6 +852,15 @@ public interface EEFActionsPackage extends EPackage {
 	int SET_REFERENCE__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_REFERENCE__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -888,6 +951,15 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNSET_REFERENCE__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET_REFERENCE__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
@@ -982,6 +1054,15 @@ public interface EEFActionsPackage extends EPackage {
 	int MOVE_UP__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_UP__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1053,6 +1134,15 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int MOVE_DOWN__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_DOWN__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.

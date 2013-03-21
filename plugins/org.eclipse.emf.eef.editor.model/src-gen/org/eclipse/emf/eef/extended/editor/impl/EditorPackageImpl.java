@@ -433,6 +433,15 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getReferenceableObject_ReferenceName() {
+		return (EAttribute)referenceableObjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EditorFactory getEditorFactory() {
 		return (EditorFactory)getEFactoryInstance();
 	}
@@ -493,6 +502,7 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 		dynamicEEFEditorContributionEClass = createEClass(DYNAMIC_EEF_EDITOR_CONTRIBUTION);
 
 		referenceableObjectEClass = createEClass(REFERENCEABLE_OBJECT);
+		createEAttribute(referenceableObjectEClass, REFERENCEABLE_OBJECT__REFERENCE_NAME);
 	}
 
 	/**
@@ -584,6 +594,7 @@ public class EditorPackageImpl extends EPackageImpl implements EditorPackage {
 		initEClass(dynamicEEFEditorContributionEClass, DynamicEEFEditorContribution.class, "DynamicEEFEditorContribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(referenceableObjectEClass, ReferenceableObject.class, "ReferenceableObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getReferenceableObject_ReferenceName(), ecorePackage.getEString(), "referenceName", null, 0, 1, ReferenceableObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

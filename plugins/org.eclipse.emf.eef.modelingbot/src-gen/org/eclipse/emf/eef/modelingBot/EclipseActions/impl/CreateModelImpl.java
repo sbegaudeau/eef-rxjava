@@ -14,6 +14,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.eef.extended.editor.EditorPackage;
+import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage;
 import org.eclipse.emf.eef.modelingBot.helper.EMFHelper;
@@ -25,6 +27,7 @@ import org.eclipse.emf.eef.modelingBot.helper.EMFHelper;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl#getReferenceName <em>Reference Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl#getModelName <em>Model Name</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EclipseActions.impl.CreateModelImpl#getRoot <em>Root</em>}</li>
@@ -36,6 +39,26 @@ import org.eclipse.emf.eef.modelingBot.helper.EMFHelper;
  * @generated
  */
 public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
+	/**
+	 * The default value of the '{@link #getReferenceName() <em>Reference Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferenceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REFERENCE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getReferenceName() <em>Reference Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferenceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String referenceName = REFERENCE_NAME_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getModelName() <em>Model Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -123,6 +146,27 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 	@Override
 	protected EClass eStaticClass() {
 		return EclipseActionsPackage.Literals.CREATE_MODEL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getReferenceName() {
+		return referenceName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReferenceName(String newReferenceName) {
+		String oldReferenceName = referenceName;
+		referenceName = newReferenceName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EclipseActionsPackage.CREATE_MODEL__REFERENCE_NAME, oldReferenceName, referenceName));
 	}
 
 	/**
@@ -253,6 +297,8 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case EclipseActionsPackage.CREATE_MODEL__REFERENCE_NAME:
+				return getReferenceName();
 			case EclipseActionsPackage.CREATE_MODEL__MODEL_NAME:
 				return getModelName();
 			case EclipseActionsPackage.CREATE_MODEL__PATH:
@@ -277,6 +323,9 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case EclipseActionsPackage.CREATE_MODEL__REFERENCE_NAME:
+				setReferenceName((String)newValue);
+				return;
 			case EclipseActionsPackage.CREATE_MODEL__MODEL_NAME:
 				setModelName((String)newValue);
 				return;
@@ -301,6 +350,9 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case EclipseActionsPackage.CREATE_MODEL__REFERENCE_NAME:
+				setReferenceName(REFERENCE_NAME_EDEFAULT);
+				return;
 			case EclipseActionsPackage.CREATE_MODEL__MODEL_NAME:
 				setModelName(MODEL_NAME_EDEFAULT);
 				return;
@@ -325,6 +377,8 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case EclipseActionsPackage.CREATE_MODEL__REFERENCE_NAME:
+				return REFERENCE_NAME_EDEFAULT == null ? referenceName != null : !REFERENCE_NAME_EDEFAULT.equals(referenceName);
 			case EclipseActionsPackage.CREATE_MODEL__MODEL_NAME:
 				return MODEL_NAME_EDEFAULT == null ? modelName != null : !MODEL_NAME_EDEFAULT.equals(modelName);
 			case EclipseActionsPackage.CREATE_MODEL__PATH:
@@ -345,11 +399,45 @@ public class CreateModelImpl extends EclipseActionImpl implements CreateModel {
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ReferenceableObject.class) {
+			switch (derivedFeatureID) {
+				case EclipseActionsPackage.CREATE_MODEL__REFERENCE_NAME: return EditorPackage.REFERENCEABLE_OBJECT__REFERENCE_NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ReferenceableObject.class) {
+			switch (baseFeatureID) {
+				case EditorPackage.REFERENCEABLE_OBJECT__REFERENCE_NAME: return EclipseActionsPackage.CREATE_MODEL__REFERENCE_NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (modelName: ");
+		result.append(" (referenceName: ");
+		result.append(referenceName);
+		result.append(", modelName: ");
 		result.append(modelName);
 		result.append(", path: ");
 		result.append(path);
