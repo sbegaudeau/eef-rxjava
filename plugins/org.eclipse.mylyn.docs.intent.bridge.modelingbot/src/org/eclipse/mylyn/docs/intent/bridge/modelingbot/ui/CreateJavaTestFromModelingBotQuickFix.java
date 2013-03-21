@@ -14,9 +14,12 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -115,16 +118,18 @@ public class CreateJavaTestFromModelingBotQuickFix extends AbstractIntentFix {
 		// Step 1: Create the corresponding java test file
 		IProject project = ResourcesPlugin.getWorkspace().getRoot()
 				.getProject(ModelingBotValidationUtils.getProjectName(EcoreUtil.getURI(scenario)));
-		String expectedPath = ModelingBotValidationUtils.getExpectedPath(project, scenario);
-		File file = new File(ResourcesPlugin.getWorkspace().getRoot().getLocation() + "/" + project.getName()
-				+ "/" + expectedPath);
-
+		String expectedTestPath = ModelingBotValidationUtils.getExpectedPath(project, scenario);
+		String testSuitePath = "src/" + project.getName().replace(".", "/") + "/ScenariosTestSuite.java";
+		File testFile = new File(ResourcesPlugin.getWorkspace().getRoot().getLocation() + "/"
+				+ project.getName() + "/" + expectedTestPath);
+		File testSuiteFile = new File(ResourcesPlugin.getWorkspace().getRoot().getLocation() + "/"
+				+ project.getName() + "/" + testSuitePath);
 		boolean fileWasCreated = false;
 		Throwable cause = null;
-		if (!file.exists()) {
+		if (!testFile.exists()) {
 			try {
 				ArrayList<File> parentFiles = Lists.newArrayList();
-				File parentFile = file.getParentFile();
+				File parentFile = testFile.getParentFile();
 				while (parentFile != null && !parentFile.exists()) {
 					parentFiles.add(0, parentFile);
 					parentFile = parentFile.getParentFile();
@@ -132,18 +137,33 @@ public class CreateJavaTestFromModelingBotQuickFix extends AbstractIntentFix {
 				for (File parentFileToCreate : parentFiles) {
 					parentFileToCreate.mkdir();
 				}
-				if (file.createNewFile()) {
+				if (testFile.createNewFile()) {
 					project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-					IFile iFile = project.getFile(expectedPath);
+					IFile iFile = project.getFile(expectedTestPath);
 
 					// Step 2: set test file content
 					String javaFileContent = getScenarioTestFileContent(scenario,
-							URI.createURI(instruction.getUri().toString()), expectedPath);
+							URI.createURI(instruction.getUri().toString()), expectedTestPath);
 					iFile.setContents(new ByteArrayInputStream(javaFileContent.getBytes()), true, true,
 							new NullProgressMonitor());
 					fileWasCreated = true;
-					createdTestPath.add(project.getName() + "/" + expectedPath);
+					createdTestPath.add(project.getName() + "/" + expectedTestPath);
 				}
+
+				// Step 3: create test suite if needed
+				if (!testSuiteFile.exists()) {
+					if (testSuiteFile.createNewFile()) {
+						project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+						IFile iFile = project.getFile(testSuitePath);
+						String testSuiteContent = getTestSuiteFileContent(testSuitePath);
+						iFile.setContents(new ByteArrayInputStream(testSuiteContent.getBytes()), true, true,
+								new NullProgressMonitor());
+						createdTestPath.add(project.getName() + "/" + expectedTestPath);
+					}
+				}
+
+				// Step 4: add test to test suite
+				addTestToTestSuite(project, testSuitePath, expectedTestPath);
 			} catch (IOException e) {
 				cause = e;
 			} catch (CoreException e) {
@@ -186,6 +206,71 @@ public class CreateJavaTestFromModelingBotQuickFix extends AbstractIntentFix {
 		content.append("\n\t}");
 		content.append("\n}");
 		return content.toString();
+	}
+
+	/**
+	 * Returns the initial content of the scenario test suite.
+	 * 
+	 * @param testSuitePath
+	 *            the testSuitePath
+	 * @return the initial content of the scenario test suite.
+	 */
+	private String getTestSuiteFileContent(String testSuitePath) {
+		String packageName = testSuitePath.replace("src/", "").replace(".java", "").replace("/", ".");
+		packageName = packageName.substring(0, packageName.lastIndexOf(".")).toLowerCase();
+		String className = "ScenariosTestSuite";
+		StringBuilder content = new StringBuilder();
+		content.append("package " + packageName + ";");
+		content.append("\nimport junit.framework.Test;");
+		content.append("\nimport junit.framework.TestCase;");
+		content.append("\nimport junit.framework.TestSuite;\n");
+		content.append("\n/**");
+		content.append("\n* Launches all the defined Scenarios.");
+		content.append("\n*/");
+		content.append("\npublic class " + className + " extends TestCase {");
+		content.append("\n\tpublic static Test suite() {");
+		content.append("\n\t\tTestSuite suite = new TestSuite(" + className + ".class.getName());");
+		content.append("\n\t\treturn suite;");
+		content.append("\n\t}");
+		content.append("\n}");
+		return content.toString();
+	}
+
+	/**
+	 * Adds the given test to the given test suite.
+	 * 
+	 * @param project
+	 *            the {@link IProject} containing the test and test suite
+	 * @param testSuitePath
+	 *            the path of the test suite to modify
+	 * @param testToAddPath
+	 *            the path of the test to add to the test suite
+	 * @throws CoreException
+	 *             if issues occur while trying to modify file
+	 * @throws IOException
+	 *             if issues occur while trying to modify file
+	 */
+	private void addTestToTestSuite(IProject project, String testSuitePath, String testToAddPath)
+			throws CoreException, IOException {
+		IFile iFile = project.getFile(testSuitePath);
+		InputStream in = iFile.getContents();
+		InputStreamReader is = new InputStreamReader(in);
+		StringBuilder sb = new StringBuilder();
+		BufferedReader br = new BufferedReader(is);
+		String read = br.readLine();
+
+		while (read != null) {
+			// System.out.println(read);
+			sb.append("\n" + read);
+			read = br.readLine();
+		}
+		String createdTestClass = testToAddPath.replace(".java", "").replace("src/", "").replace("/", ".");
+		String testSuiteContent = sb
+				.toString()
+				.replace("return suite;",
+						"suite.addTestSuite(" + createdTestClass + ".class);\n\t\treturn suite;").trim();
+		iFile.setContents(new ByteArrayInputStream(testSuiteContent.getBytes()), true, true,
+				new NullProgressMonitor());
 	}
 
 	/**
