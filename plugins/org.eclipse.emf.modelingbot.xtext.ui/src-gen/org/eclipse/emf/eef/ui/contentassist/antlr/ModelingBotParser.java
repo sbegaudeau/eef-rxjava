@@ -67,19 +67,19 @@ public class ModelingBotParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDetailsAccess().getProcessingsAssignment_3(), "rule__Details__ProcessingsAssignment_3");
 					put(grammarAccess.getCreateProjectAccess().getProjectNameAssignment_1(), "rule__CreateProject__ProjectNameAssignment_1");
 					put(grammarAccess.getRemoveProjectAccess().getProjectNameAssignment_1(), "rule__RemoveProject__ProjectNameAssignment_1");
-					put(grammarAccess.getCreateModelAccess().getModelNameAssignment_1(), "rule__CreateModel__ModelNameAssignment_1");
-					put(grammarAccess.getCreateModelAccess().getPathAssignment_3(), "rule__CreateModel__PathAssignment_3");
-					put(grammarAccess.getCreateModelAccess().getRootURIAssignment_5(), "rule__CreateModel__RootURIAssignment_5");
-					put(grammarAccess.getCreateModelAccess().getReferenceNameAssignment_7(), "rule__CreateModel__ReferenceNameAssignment_7");
-					put(grammarAccess.getAddAccess().getTypeURIAssignment_1(), "rule__Add__TypeURIAssignment_1");
-					put(grammarAccess.getAddAccess().getReferenceableObjectAssignment_3(), "rule__Add__ReferenceableObjectAssignment_3");
-					put(grammarAccess.getAddAccess().getEContainingFeatureURIAssignment_5(), "rule__Add__EContainingFeatureURIAssignment_5");
-					put(grammarAccess.getAddAccess().getReferenceNameAssignment_7(), "rule__Add__ReferenceNameAssignment_7");
+					put(grammarAccess.getCreateModelAccess().getReferenceNameAssignment_1(), "rule__CreateModel__ReferenceNameAssignment_1");
+					put(grammarAccess.getCreateModelAccess().getRootURIAssignment_3(), "rule__CreateModel__RootURIAssignment_3");
+					put(grammarAccess.getCreateModelAccess().getModelNameAssignment_5(), "rule__CreateModel__ModelNameAssignment_5");
+					put(grammarAccess.getCreateModelAccess().getPathAssignment_7(), "rule__CreateModel__PathAssignment_7");
+					put(grammarAccess.getAddAccess().getReferenceNameAssignment_1(), "rule__Add__ReferenceNameAssignment_1");
+					put(grammarAccess.getAddAccess().getTypeURIAssignment_3(), "rule__Add__TypeURIAssignment_3");
+					put(grammarAccess.getAddAccess().getReferenceableObjectAssignment_5(), "rule__Add__ReferenceableObjectAssignment_5");
+					put(grammarAccess.getAddAccess().getEContainingFeatureURIAssignment_7(), "rule__Add__EContainingFeatureURIAssignment_7");
 					put(grammarAccess.getSetAttributeAccess().getReferenceableObjectAssignment_1(), "rule__SetAttribute__ReferenceableObjectAssignment_1");
-					put(grammarAccess.getSetAttributeAccess().getEContainingFeatureURIAssignment_3(), "rule__SetAttribute__EContainingFeatureURIAssignment_3");
-					put(grammarAccess.getSetAttributeAccess().getPropertiesEditionElementURIAssignment_4_1(), "rule__SetAttribute__PropertiesEditionElementURIAssignment_4_1");
-					put(grammarAccess.getSetAttributeAccess().getValuesAssignment_6(), "rule__SetAttribute__ValuesAssignment_6");
-					put(grammarAccess.getSetAttributeAccess().getValuesAssignment_7_1(), "rule__SetAttribute__ValuesAssignment_7_1");
+					put(grammarAccess.getSetAttributeAccess().getValuesAssignment_3(), "rule__SetAttribute__ValuesAssignment_3");
+					put(grammarAccess.getSetAttributeAccess().getValuesAssignment_4_1(), "rule__SetAttribute__ValuesAssignment_4_1");
+					put(grammarAccess.getSetAttributeAccess().getEContainingFeatureURIAssignment_6(), "rule__SetAttribute__EContainingFeatureURIAssignment_6");
+					put(grammarAccess.getSetAttributeAccess().getPropertiesEditionElementURIAssignment_7_1(), "rule__SetAttribute__PropertiesEditionElementURIAssignment_7_1");
 				}
 			};
 		}

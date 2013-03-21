@@ -49,11 +49,11 @@ EclipseAction returns EclipseActions::EclipseAction:
 ;
 
 CreateProject returns EclipseActions::CreateProject:
-	'create' (projectName=EString)
+	'createProject' (projectName=EString)
 ;
 
 RemoveProject returns EclipseActions::RemoveProject:
-	'delete' (projectName=EString)
+	'deleteProject' (projectName=EString)
 ;
 
 ReferenceableObject returns EEFExtended::ReferenceableObject:
@@ -61,7 +61,9 @@ ReferenceableObject returns EEFExtended::ReferenceableObject:
 ;
 
 CreateModel returns EclipseActions::CreateModel:
-	'create' modelName=EString 'in' path=EString 'root' rootURI=EString 'as' referenceName=ID
+	'createObject' referenceName=ID ':' rootURI=EString 
+	'inResource' modelName=EString 
+	'at' path=EString 
 ;
 
 Save returns EclipseActions::Save:
@@ -73,16 +75,20 @@ EEFAction returns EEFActions::EEFAction:
 ;
 
 Check returns EEFActions::Check:
-	'check' {EEFActions::Check}
+	'check!' {EEFActions::Check}
 ;
 
 Add returns EEFActions::Add:
-	'new'  typeURI=EString 'in' referenceableObject=[EEFExtended::ReferenceableObject] 'feature' eContainingFeatureURI=EString 'as' referenceName=ID  
+	'createObject' referenceName=ID ':' typeURI=EString 
+		'inElement' referenceableObject=[EEFExtended::ReferenceableObject]
+		'inFeature' eContainingFeatureURI=EString  
 ;
 
 SetAttribute returns EEFActions::SetAttribute:
-	'set' referenceableObject=[EEFExtended::ReferenceableObject] 'feature' eContainingFeatureURI=EString ('via' propertiesEditionElementURI=EString)?
+	'set' referenceableObject=[EEFExtended::ReferenceableObject] 
 		'values' (values+=EString)("," values+=EString)*
+		'inFeature' eContainingFeatureURI=EString 
+		('usingWidget' propertiesEditionElementURI=EString)?
 ;
 
 EString returns ecore::EString:

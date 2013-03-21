@@ -127,7 +127,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mbot/1.0.0#//EclipseActions/CreateProject"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="create"/>
+        <elements xsi:type="xtext:Keyword" value="createProject"/>
         <elements xsi:type="xtext:Assignment" feature="projectName" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
         </elements>
@@ -138,7 +138,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mbot/1.0.0#//EclipseActions/RemoveProject"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="delete"/>
+        <elements xsi:type="xtext:Keyword" value="deleteProject"/>
         <elements xsi:type="xtext:Assignment" feature="projectName" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
         </elements>
@@ -158,21 +158,21 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mbot/1.0.0#//EclipseActions/CreateModel"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="create"/>
-        <elements xsi:type="xtext:Assignment" feature="modelName" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+        <elements xsi:type="xtext:Keyword" value="createObject"/>
+        <elements xsi:type="xtext:Assignment" feature="referenceName" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="in"/>
-        <elements xsi:type="xtext:Assignment" feature="path" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="root"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
         <elements xsi:type="xtext:Assignment" feature="rootURI" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="as"/>
-        <elements xsi:type="xtext:Assignment" feature="referenceName" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+        <elements xsi:type="xtext:Keyword" value="inResource"/>
+        <elements xsi:type="xtext:Assignment" feature="modelName" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="at"/>
+        <elements xsi:type="xtext:Assignment" feature="path" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
         </elements>
       </alternatives>
     </rules>
@@ -204,7 +204,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mbot/1.0.0#//EEFActions/Check"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="check"/>
+        <elements xsi:type="xtext:Keyword" value="check!"/>
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.3">
             <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mbot/1.0.0#//EEFActions/Check"/>
@@ -217,11 +217,15 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/eef/mbot/1.0.0#//EEFActions/Add"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="new"/>
+        <elements xsi:type="xtext:Keyword" value="createObject"/>
+        <elements xsi:type="xtext:Assignment" feature="referenceName" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=":"/>
         <elements xsi:type="xtext:Assignment" feature="typeURI" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="in"/>
+        <elements xsi:type="xtext:Keyword" value="inElement"/>
         <elements xsi:type="xtext:Assignment" feature="referenceableObject" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.4">
@@ -230,13 +234,9 @@
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="feature"/>
+        <elements xsi:type="xtext:Keyword" value="inFeature"/>
         <elements xsi:type="xtext:Assignment" feature="eContainingFeatureURI" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="as"/>
-        <elements xsi:type="xtext:Assignment" feature="referenceName" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
       </alternatives>
     </rules>
@@ -254,16 +254,6 @@
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="feature"/>
-        <elements xsi:type="xtext:Assignment" feature="eContainingFeatureURI" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="via"/>
-          <elements xsi:type="xtext:Assignment" feature="propertiesEditionElementURI" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
-          </elements>
-        </elements>
         <elements xsi:type="xtext:Keyword" value="values"/>
         <elements xsi:type="xtext:Assignment" feature="values" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
@@ -271,6 +261,16 @@
         <elements xsi:type="xtext:Group" cardinality="*">
           <elements xsi:type="xtext:Keyword" value=","/>
           <elements xsi:type="xtext:Assignment" feature="values" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="inFeature"/>
+        <elements xsi:type="xtext:Assignment" feature="eContainingFeatureURI" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="usingWidget"/>
+          <elements xsi:type="xtext:Assignment" feature="propertiesEditionElementURI" operator="=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
           </elements>
         </elements>

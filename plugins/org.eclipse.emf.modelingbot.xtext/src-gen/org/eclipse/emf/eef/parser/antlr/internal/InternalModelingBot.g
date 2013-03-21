@@ -573,9 +573,9 @@ ruleCreateProject returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='create' 
+(	otherlv_0='createProject' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getCreateProjectAccess().getCreateKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getCreateProjectAccess().getCreateProjectKeyword_0());
     }
 (
 (
@@ -616,9 +616,9 @@ ruleRemoveProject returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='delete' 
+(	otherlv_0='deleteProject' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getRemoveProjectAccess().getDeleteKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getRemoveProjectAccess().getDeleteProjectKeyword_0());
     }
 (
 (
@@ -661,81 +661,15 @@ ruleCreateModel returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='create' 
+(	otherlv_0='createObject' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getCreateModelAccess().getCreateKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getCreateModelAccess().getCreateObjectKeyword_0());
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getCreateModelAccess().getModelNameEStringParserRuleCall_1_0()); 
-	    }
-		lv_modelName_1_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getCreateModelRule());
-	        }
-       		set(
-       			$current, 
-       			"modelName",
-        		lv_modelName_1_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_2='in' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getCreateModelAccess().getInKeyword_2());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getCreateModelAccess().getPathEStringParserRuleCall_3_0()); 
-	    }
-		lv_path_3_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getCreateModelRule());
-	        }
-       		set(
-       			$current, 
-       			"path",
-        		lv_path_3_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_4='root' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getCreateModelAccess().getRootKeyword_4());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getCreateModelAccess().getRootURIEStringParserRuleCall_5_0()); 
-	    }
-		lv_rootURI_5_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getCreateModelRule());
-	        }
-       		set(
-       			$current, 
-       			"rootURI",
-        		lv_rootURI_5_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_6='as' 
-    {
-    	newLeafNode(otherlv_6, grammarAccess.getCreateModelAccess().getAsKeyword_6());
-    }
-(
-(
-		lv_referenceName_7_0=RULE_ID
+		lv_referenceName_1_0=RULE_ID
 		{
-			newLeafNode(lv_referenceName_7_0, grammarAccess.getCreateModelAccess().getReferenceNameIDTerminalRuleCall_7_0()); 
+			newLeafNode(lv_referenceName_1_0, grammarAccess.getCreateModelAccess().getReferenceNameIDTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -744,8 +678,74 @@ ruleCreateModel returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"referenceName",
-        		lv_referenceName_7_0, 
+        		lv_referenceName_1_0, 
         		"ID");
+	    }
+
+)
+)	otherlv_2=':' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getCreateModelAccess().getColonKeyword_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCreateModelAccess().getRootURIEStringParserRuleCall_3_0()); 
+	    }
+		lv_rootURI_3_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCreateModelRule());
+	        }
+       		set(
+       			$current, 
+       			"rootURI",
+        		lv_rootURI_3_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_4='inResource' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getCreateModelAccess().getInResourceKeyword_4());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCreateModelAccess().getModelNameEStringParserRuleCall_5_0()); 
+	    }
+		lv_modelName_5_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCreateModelRule());
+	        }
+       		set(
+       			$current, 
+       			"modelName",
+        		lv_modelName_5_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_6='at' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getCreateModelAccess().getAtKeyword_6());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getCreateModelAccess().getPathEStringParserRuleCall_7_0()); 
+	    }
+		lv_path_7_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getCreateModelRule());
+	        }
+       		set(
+       			$current, 
+       			"path",
+        		lv_path_7_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -851,7 +851,7 @@ ruleCheck returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='check' 
+(	otherlv_0='check!' 
     {
     	newLeafNode(otherlv_0, grammarAccess.getCheckAccess().getCheckKeyword_0());
     }
@@ -882,76 +882,15 @@ ruleAdd returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='new' 
+(	otherlv_0='createObject' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getAddAccess().getNewKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getAddAccess().getCreateObjectKeyword_0());
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getAddAccess().getTypeURIEStringParserRuleCall_1_0()); 
-	    }
-		lv_typeURI_1_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getAddRule());
-	        }
-       		set(
-       			$current, 
-       			"typeURI",
-        		lv_typeURI_1_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_2='in' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getAddAccess().getInKeyword_2());
-    }
-(
-(
+		lv_referenceName_1_0=RULE_ID
 		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getAddRule());
-	        }
-        }
-	otherlv_3=RULE_ID
-	{
-		newLeafNode(otherlv_3, grammarAccess.getAddAccess().getReferenceableObjectReferenceableObjectCrossReference_3_0()); 
-	}
-
-)
-)	otherlv_4='feature' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getAddAccess().getFeatureKeyword_4());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getAddAccess().getEContainingFeatureURIEStringParserRuleCall_5_0()); 
-	    }
-		lv_eContainingFeatureURI_5_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getAddRule());
-	        }
-       		set(
-       			$current, 
-       			"eContainingFeatureURI",
-        		lv_eContainingFeatureURI_5_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_6='as' 
-    {
-    	newLeafNode(otherlv_6, grammarAccess.getAddAccess().getAsKeyword_6());
-    }
-(
-(
-		lv_referenceName_7_0=RULE_ID
-		{
-			newLeafNode(lv_referenceName_7_0, grammarAccess.getAddAccess().getReferenceNameIDTerminalRuleCall_7_0()); 
+			newLeafNode(lv_referenceName_1_0, grammarAccess.getAddAccess().getReferenceNameIDTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -960,8 +899,69 @@ ruleAdd returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"referenceName",
-        		lv_referenceName_7_0, 
+        		lv_referenceName_1_0, 
         		"ID");
+	    }
+
+)
+)	otherlv_2=':' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getAddAccess().getColonKeyword_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAddAccess().getTypeURIEStringParserRuleCall_3_0()); 
+	    }
+		lv_typeURI_3_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAddRule());
+	        }
+       		set(
+       			$current, 
+       			"typeURI",
+        		lv_typeURI_3_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_4='inElement' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getAddAccess().getInElementKeyword_4());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAddRule());
+	        }
+        }
+	otherlv_5=RULE_ID
+	{
+		newLeafNode(otherlv_5, grammarAccess.getAddAccess().getReferenceableObjectReferenceableObjectCrossReference_5_0()); 
+	}
+
+)
+)	otherlv_6='inFeature' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getAddAccess().getInFeatureKeyword_6());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAddAccess().getEContainingFeatureURIEStringParserRuleCall_7_0()); 
+	    }
+		lv_eContainingFeatureURI_7_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAddRule());
+	        }
+       		set(
+       			$current, 
+       			"eContainingFeatureURI",
+        		lv_eContainingFeatureURI_7_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -1003,95 +1003,95 @@ ruleSetAttribute returns [EObject current=null]
 	}
 
 )
-)	otherlv_2='feature' 
+)	otherlv_2='values' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getSetAttributeAccess().getFeatureKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getSetAttributeAccess().getValuesKeyword_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSetAttributeAccess().getEContainingFeatureURIEStringParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getSetAttributeAccess().getValuesEStringParserRuleCall_3_0()); 
 	    }
-		lv_eContainingFeatureURI_3_0=ruleEString		{
+		lv_values_3_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSetAttributeRule());
+	        }
+       		add(
+       			$current, 
+       			"values",
+        		lv_values_3_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_4=',' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getSetAttributeAccess().getCommaKeyword_4_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSetAttributeAccess().getValuesEStringParserRuleCall_4_1_0()); 
+	    }
+		lv_values_5_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSetAttributeRule());
+	        }
+       		add(
+       			$current, 
+       			"values",
+        		lv_values_5_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*	otherlv_6='inFeature' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getSetAttributeAccess().getInFeatureKeyword_5());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSetAttributeAccess().getEContainingFeatureURIEStringParserRuleCall_6_0()); 
+	    }
+		lv_eContainingFeatureURI_7_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSetAttributeRule());
 	        }
        		set(
        			$current, 
        			"eContainingFeatureURI",
-        		lv_eContainingFeatureURI_3_0, 
+        		lv_eContainingFeatureURI_7_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_4='via' 
+)(	otherlv_8='usingWidget' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getSetAttributeAccess().getViaKeyword_4_0());
+    	newLeafNode(otherlv_8, grammarAccess.getSetAttributeAccess().getUsingWidgetKeyword_7_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSetAttributeAccess().getPropertiesEditionElementURIEStringParserRuleCall_4_1_0()); 
+	        newCompositeNode(grammarAccess.getSetAttributeAccess().getPropertiesEditionElementURIEStringParserRuleCall_7_1_0()); 
 	    }
-		lv_propertiesEditionElementURI_5_0=ruleEString		{
+		lv_propertiesEditionElementURI_9_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSetAttributeRule());
 	        }
        		set(
        			$current, 
        			"propertiesEditionElementURI",
-        		lv_propertiesEditionElementURI_5_0, 
+        		lv_propertiesEditionElementURI_9_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?	otherlv_6='values' 
-    {
-    	newLeafNode(otherlv_6, grammarAccess.getSetAttributeAccess().getValuesKeyword_5());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getSetAttributeAccess().getValuesEStringParserRuleCall_6_0()); 
-	    }
-		lv_values_7_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getSetAttributeRule());
-	        }
-       		add(
-       			$current, 
-       			"values",
-        		lv_values_7_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(	otherlv_8=',' 
-    {
-    	newLeafNode(otherlv_8, grammarAccess.getSetAttributeAccess().getCommaKeyword_7_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getSetAttributeAccess().getValuesEStringParserRuleCall_7_1_0()); 
-	    }
-		lv_values_9_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getSetAttributeRule());
-	        }
-       		add(
-       			$current, 
-       			"values",
-        		lv_values_9_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))*)
+))?)
 ;
 
 

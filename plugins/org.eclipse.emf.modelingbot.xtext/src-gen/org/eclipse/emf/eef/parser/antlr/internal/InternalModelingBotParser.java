@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalModelingBotParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'scenario'", "'{'", "'}'", "'propertiesView'", "'wizard'", "'detailsPage'", "'create'", "'delete'", "'in'", "'root'", "'as'", "'save'", "'check'", "'new'", "'feature'", "'set'", "'via'", "'values'", "','"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'scenario'", "'{'", "'}'", "'propertiesView'", "'wizard'", "'detailsPage'", "'createProject'", "'deleteProject'", "'createObject'", "':'", "'inResource'", "'at'", "'save'", "'check!'", "'inElement'", "'inFeature'", "'set'", "'values'", "','", "'usingWidget'"
     };
     public static final int RULE_ID=4;
     public static final int T__29=29;
@@ -38,6 +38,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
     public static final int RULE_SL_COMMENT=8;
     public static final int EOF=-1;
     public static final int RULE_ML_COMMENT=7;
+    public static final int T__30=30;
     public static final int T__19=19;
     public static final int RULE_STRING=5;
     public static final int T__16=16;
@@ -192,7 +193,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( ((LA1_0>=14 && LA1_0<=18)||(LA1_0>=22 && LA1_0<=24)||LA1_0==26) ) {
+                if ( ((LA1_0>=14 && LA1_0<=19)||(LA1_0>=23 && LA1_0<=24)||LA1_0==27) ) {
                     alt1=1;
                 }
 
@@ -335,10 +336,10 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
                 break;
             case 17:
             case 18:
-            case 22:
+            case 19:
             case 23:
             case 24:
-            case 26:
+            case 27:
                 {
                 alt2=4;
                 }
@@ -557,7 +558,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( ((LA4_0>=14 && LA4_0<=18)||(LA4_0>=22 && LA4_0<=24)||LA4_0==26) ) {
+                if ( ((LA4_0>=14 && LA4_0<=19)||(LA4_0>=23 && LA4_0<=24)||LA4_0==27) ) {
                     alt4=1;
                 }
 
@@ -738,7 +739,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
                 int alt6=2;
                 int LA6_0 = input.LA(1);
 
-                if ( ((LA6_0>=14 && LA6_0<=18)||(LA6_0>=22 && LA6_0<=24)||LA6_0==26) ) {
+                if ( ((LA6_0>=14 && LA6_0<=19)||(LA6_0>=23 && LA6_0<=24)||LA6_0==27) ) {
                     alt6=1;
                 }
 
@@ -919,7 +920,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
                 int alt8=2;
                 int LA8_0 = input.LA(1);
 
-                if ( ((LA8_0>=14 && LA8_0<=18)||(LA8_0>=22 && LA8_0<=24)||LA8_0==26) ) {
+                if ( ((LA8_0>=14 && LA8_0<=19)||(LA8_0>=23 && LA8_0<=24)||LA8_0==27) ) {
                     alt8=1;
                 }
 
@@ -1062,10 +1063,10 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
                 break;
             case 17:
             case 18:
-            case 22:
+            case 19:
             case 23:
             case 24:
-            case 26:
+            case 27:
                 {
                 alt9=4;
                 }
@@ -1224,20 +1225,91 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
             {
             // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:476:1: (this_EclipseAction_0= ruleEclipseAction | this_EEFAction_1= ruleEEFAction )
             int alt10=2;
-            int LA10_0 = input.LA(1);
-
-            if ( ((LA10_0>=17 && LA10_0<=18)||LA10_0==22) ) {
+            switch ( input.LA(1) ) {
+            case 17:
+            case 18:
+            case 23:
+                {
                 alt10=1;
-            }
-            else if ( ((LA10_0>=23 && LA10_0<=24)||LA10_0==26) ) {
+                }
+                break;
+            case 19:
+                {
+                int LA10_2 = input.LA(2);
+
+                if ( (LA10_2==RULE_ID) ) {
+                    int LA10_4 = input.LA(3);
+
+                    if ( (LA10_4==20) ) {
+                        int LA10_5 = input.LA(4);
+
+                        if ( (LA10_5==RULE_STRING) ) {
+                            int LA10_6 = input.LA(5);
+
+                            if ( (LA10_6==25) ) {
+                                alt10=2;
+                            }
+                            else if ( (LA10_6==21) ) {
+                                alt10=1;
+                            }
+                            else {
+                                NoViableAltException nvae =
+                                    new NoViableAltException("", 10, 6, input);
+
+                                throw nvae;
+                            }
+                        }
+                        else if ( (LA10_5==RULE_ID) ) {
+                            int LA10_7 = input.LA(5);
+
+                            if ( (LA10_7==21) ) {
+                                alt10=1;
+                            }
+                            else if ( (LA10_7==25) ) {
+                                alt10=2;
+                            }
+                            else {
+                                NoViableAltException nvae =
+                                    new NoViableAltException("", 10, 7, input);
+
+                                throw nvae;
+                            }
+                        }
+                        else {
+                            NoViableAltException nvae =
+                                new NoViableAltException("", 10, 5, input);
+
+                            throw nvae;
+                        }
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 10, 4, input);
+
+                        throw nvae;
+                    }
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 10, 2, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case 24:
+            case 27:
+                {
                 alt10=2;
-            }
-            else {
+                }
+                break;
+            default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 10, 0, input);
 
                 throw nvae;
             }
+
             switch (alt10) {
                 case 1 :
                     // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:477:5: this_EclipseAction_0= ruleEclipseAction
@@ -1356,49 +1428,15 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
             switch ( input.LA(1) ) {
             case 17:
                 {
-                int LA11_1 = input.LA(2);
-
-                if ( (LA11_1==RULE_STRING) ) {
-                    int LA11_4 = input.LA(3);
-
-                    if ( (LA11_4==EOF||(LA11_4>=13 && LA11_4<=18)||(LA11_4>=22 && LA11_4<=24)||LA11_4==26) ) {
-                        alt11=1;
-                    }
-                    else if ( (LA11_4==19) ) {
-                        alt11=2;
-                    }
-                    else {
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 11, 4, input);
-
-                        throw nvae;
-                    }
-                }
-                else if ( (LA11_1==RULE_ID) ) {
-                    int LA11_5 = input.LA(3);
-
-                    if ( (LA11_5==19) ) {
-                        alt11=2;
-                    }
-                    else if ( (LA11_5==EOF||(LA11_5>=13 && LA11_5<=18)||(LA11_5>=22 && LA11_5<=24)||LA11_5==26) ) {
-                        alt11=1;
-                    }
-                    else {
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 11, 5, input);
-
-                        throw nvae;
-                    }
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 11, 1, input);
-
-                    throw nvae;
-                }
+                alt11=1;
                 }
                 break;
-            case 22:
+            case 19:
+                {
+                alt11=2;
+                }
+                break;
+            case 23:
                 {
                 alt11=3;
                 }
@@ -1545,7 +1583,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCreateProject"
-    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:572:1: ruleCreateProject returns [EObject current=null] : (otherlv_0= 'create' ( (lv_projectName_1_0= ruleEString ) ) ) ;
+    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:572:1: ruleCreateProject returns [EObject current=null] : (otherlv_0= 'createProject' ( (lv_projectName_1_0= ruleEString ) ) ) ;
     public final EObject ruleCreateProject() throws RecognitionException {
         EObject current = null;
 
@@ -1556,15 +1594,15 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:575:28: ( (otherlv_0= 'create' ( (lv_projectName_1_0= ruleEString ) ) ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:576:1: (otherlv_0= 'create' ( (lv_projectName_1_0= ruleEString ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:575:28: ( (otherlv_0= 'createProject' ( (lv_projectName_1_0= ruleEString ) ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:576:1: (otherlv_0= 'createProject' ( (lv_projectName_1_0= ruleEString ) ) )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:576:1: (otherlv_0= 'create' ( (lv_projectName_1_0= ruleEString ) ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:576:3: otherlv_0= 'create' ( (lv_projectName_1_0= ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:576:1: (otherlv_0= 'createProject' ( (lv_projectName_1_0= ruleEString ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:576:3: otherlv_0= 'createProject' ( (lv_projectName_1_0= ruleEString ) )
             {
             otherlv_0=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleCreateProject1363); 
 
-                	newLeafNode(otherlv_0, grammarAccess.getCreateProjectAccess().getCreateKeyword_0());
+                	newLeafNode(otherlv_0, grammarAccess.getCreateProjectAccess().getCreateProjectKeyword_0());
                 
             // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:580:1: ( (lv_projectName_1_0= ruleEString ) )
             // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:581:1: (lv_projectName_1_0= ruleEString )
@@ -1654,7 +1692,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRemoveProject"
-    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:615:1: ruleRemoveProject returns [EObject current=null] : (otherlv_0= 'delete' ( (lv_projectName_1_0= ruleEString ) ) ) ;
+    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:615:1: ruleRemoveProject returns [EObject current=null] : (otherlv_0= 'deleteProject' ( (lv_projectName_1_0= ruleEString ) ) ) ;
     public final EObject ruleRemoveProject() throws RecognitionException {
         EObject current = null;
 
@@ -1665,15 +1703,15 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:618:28: ( (otherlv_0= 'delete' ( (lv_projectName_1_0= ruleEString ) ) ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:619:1: (otherlv_0= 'delete' ( (lv_projectName_1_0= ruleEString ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:618:28: ( (otherlv_0= 'deleteProject' ( (lv_projectName_1_0= ruleEString ) ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:619:1: (otherlv_0= 'deleteProject' ( (lv_projectName_1_0= ruleEString ) ) )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:619:1: (otherlv_0= 'delete' ( (lv_projectName_1_0= ruleEString ) ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:619:3: otherlv_0= 'delete' ( (lv_projectName_1_0= ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:619:1: (otherlv_0= 'deleteProject' ( (lv_projectName_1_0= ruleEString ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:619:3: otherlv_0= 'deleteProject' ( (lv_projectName_1_0= ruleEString ) )
             {
             otherlv_0=(Token)match(input,18,FollowSets000.FOLLOW_18_in_ruleRemoveProject1467); 
 
-                	newLeafNode(otherlv_0, grammarAccess.getRemoveProjectAccess().getDeleteKeyword_0());
+                	newLeafNode(otherlv_0, grammarAccess.getRemoveProjectAccess().getDeleteProjectKeyword_0());
                 
             // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:623:1: ( (lv_projectName_1_0= ruleEString ) )
             // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:624:1: (lv_projectName_1_0= ruleEString )
@@ -1763,59 +1801,54 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCreateModel"
-    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:660:1: ruleCreateModel returns [EObject current=null] : (otherlv_0= 'create' ( (lv_modelName_1_0= ruleEString ) ) otherlv_2= 'in' ( (lv_path_3_0= ruleEString ) ) otherlv_4= 'root' ( (lv_rootURI_5_0= ruleEString ) ) otherlv_6= 'as' ( (lv_referenceName_7_0= RULE_ID ) ) ) ;
+    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:660:1: ruleCreateModel returns [EObject current=null] : (otherlv_0= 'createObject' ( (lv_referenceName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_rootURI_3_0= ruleEString ) ) otherlv_4= 'inResource' ( (lv_modelName_5_0= ruleEString ) ) otherlv_6= 'at' ( (lv_path_7_0= ruleEString ) ) ) ;
     public final EObject ruleCreateModel() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
+        Token lv_referenceName_1_0=null;
         Token otherlv_2=null;
         Token otherlv_4=null;
         Token otherlv_6=null;
-        Token lv_referenceName_7_0=null;
-        AntlrDatatypeRuleToken lv_modelName_1_0 = null;
+        AntlrDatatypeRuleToken lv_rootURI_3_0 = null;
 
-        AntlrDatatypeRuleToken lv_path_3_0 = null;
+        AntlrDatatypeRuleToken lv_modelName_5_0 = null;
 
-        AntlrDatatypeRuleToken lv_rootURI_5_0 = null;
+        AntlrDatatypeRuleToken lv_path_7_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:663:28: ( (otherlv_0= 'create' ( (lv_modelName_1_0= ruleEString ) ) otherlv_2= 'in' ( (lv_path_3_0= ruleEString ) ) otherlv_4= 'root' ( (lv_rootURI_5_0= ruleEString ) ) otherlv_6= 'as' ( (lv_referenceName_7_0= RULE_ID ) ) ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:664:1: (otherlv_0= 'create' ( (lv_modelName_1_0= ruleEString ) ) otherlv_2= 'in' ( (lv_path_3_0= ruleEString ) ) otherlv_4= 'root' ( (lv_rootURI_5_0= ruleEString ) ) otherlv_6= 'as' ( (lv_referenceName_7_0= RULE_ID ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:663:28: ( (otherlv_0= 'createObject' ( (lv_referenceName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_rootURI_3_0= ruleEString ) ) otherlv_4= 'inResource' ( (lv_modelName_5_0= ruleEString ) ) otherlv_6= 'at' ( (lv_path_7_0= ruleEString ) ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:664:1: (otherlv_0= 'createObject' ( (lv_referenceName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_rootURI_3_0= ruleEString ) ) otherlv_4= 'inResource' ( (lv_modelName_5_0= ruleEString ) ) otherlv_6= 'at' ( (lv_path_7_0= ruleEString ) ) )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:664:1: (otherlv_0= 'create' ( (lv_modelName_1_0= ruleEString ) ) otherlv_2= 'in' ( (lv_path_3_0= ruleEString ) ) otherlv_4= 'root' ( (lv_rootURI_5_0= ruleEString ) ) otherlv_6= 'as' ( (lv_referenceName_7_0= RULE_ID ) ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:664:3: otherlv_0= 'create' ( (lv_modelName_1_0= ruleEString ) ) otherlv_2= 'in' ( (lv_path_3_0= ruleEString ) ) otherlv_4= 'root' ( (lv_rootURI_5_0= ruleEString ) ) otherlv_6= 'as' ( (lv_referenceName_7_0= RULE_ID ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:664:1: (otherlv_0= 'createObject' ( (lv_referenceName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_rootURI_3_0= ruleEString ) ) otherlv_4= 'inResource' ( (lv_modelName_5_0= ruleEString ) ) otherlv_6= 'at' ( (lv_path_7_0= ruleEString ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:664:3: otherlv_0= 'createObject' ( (lv_referenceName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_rootURI_3_0= ruleEString ) ) otherlv_4= 'inResource' ( (lv_modelName_5_0= ruleEString ) ) otherlv_6= 'at' ( (lv_path_7_0= ruleEString ) )
             {
-            otherlv_0=(Token)match(input,17,FollowSets000.FOLLOW_17_in_ruleCreateModel1573); 
+            otherlv_0=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleCreateModel1573); 
 
-                	newLeafNode(otherlv_0, grammarAccess.getCreateModelAccess().getCreateKeyword_0());
+                	newLeafNode(otherlv_0, grammarAccess.getCreateModelAccess().getCreateObjectKeyword_0());
                 
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:668:1: ( (lv_modelName_1_0= ruleEString ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:669:1: (lv_modelName_1_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:668:1: ( (lv_referenceName_1_0= RULE_ID ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:669:1: (lv_referenceName_1_0= RULE_ID )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:669:1: (lv_modelName_1_0= ruleEString )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:670:3: lv_modelName_1_0= ruleEString
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:669:1: (lv_referenceName_1_0= RULE_ID )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:670:3: lv_referenceName_1_0= RULE_ID
             {
-             
-            	        newCompositeNode(grammarAccess.getCreateModelAccess().getModelNameEStringParserRuleCall_1_0()); 
-            	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleCreateModel1594);
-            lv_modelName_1_0=ruleEString();
+            lv_referenceName_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleCreateModel1590); 
 
-            state._fsp--;
-
+            			newLeafNode(lv_referenceName_1_0, grammarAccess.getCreateModelAccess().getReferenceNameIDTerminalRuleCall_1_0()); 
+            		
 
             	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getCreateModelRule());
+            	            current = createModelElement(grammarAccess.getCreateModelRule());
             	        }
-                   		set(
+                   		setWithLastConsumed(
                    			current, 
-                   			"modelName",
-                    		lv_modelName_1_0, 
-                    		"EString");
-            	        afterParserOrEnumRuleCall();
+                   			"referenceName",
+                    		lv_referenceName_1_0, 
+                    		"ID");
             	    
 
             }
@@ -1823,56 +1856,21 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleCreateModel1606); 
+            otherlv_2=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleCreateModel1607); 
 
-                	newLeafNode(otherlv_2, grammarAccess.getCreateModelAccess().getInKeyword_2());
+                	newLeafNode(otherlv_2, grammarAccess.getCreateModelAccess().getColonKeyword_2());
                 
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:690:1: ( (lv_path_3_0= ruleEString ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:691:1: (lv_path_3_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:690:1: ( (lv_rootURI_3_0= ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:691:1: (lv_rootURI_3_0= ruleEString )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:691:1: (lv_path_3_0= ruleEString )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:692:3: lv_path_3_0= ruleEString
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:691:1: (lv_rootURI_3_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:692:3: lv_rootURI_3_0= ruleEString
             {
              
-            	        newCompositeNode(grammarAccess.getCreateModelAccess().getPathEStringParserRuleCall_3_0()); 
+            	        newCompositeNode(grammarAccess.getCreateModelAccess().getRootURIEStringParserRuleCall_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleCreateModel1627);
-            lv_path_3_0=ruleEString();
-
-            state._fsp--;
-
-
-            	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getCreateModelRule());
-            	        }
-                   		set(
-                   			current, 
-                   			"path",
-                    		lv_path_3_0, 
-                    		"EString");
-            	        afterParserOrEnumRuleCall();
-            	    
-
-            }
-
-
-            }
-
-            otherlv_4=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleCreateModel1639); 
-
-                	newLeafNode(otherlv_4, grammarAccess.getCreateModelAccess().getRootKeyword_4());
-                
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:712:1: ( (lv_rootURI_5_0= ruleEString ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:713:1: (lv_rootURI_5_0= ruleEString )
-            {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:713:1: (lv_rootURI_5_0= ruleEString )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:714:3: lv_rootURI_5_0= ruleEString
-            {
-             
-            	        newCompositeNode(grammarAccess.getCreateModelAccess().getRootURIEStringParserRuleCall_5_0()); 
-            	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleCreateModel1660);
-            lv_rootURI_5_0=ruleEString();
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleCreateModel1628);
+            lv_rootURI_3_0=ruleEString();
 
             state._fsp--;
 
@@ -1883,7 +1881,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
                    		set(
                    			current, 
                    			"rootURI",
-                    		lv_rootURI_5_0, 
+                    		lv_rootURI_3_0, 
                     		"EString");
             	        afterParserOrEnumRuleCall();
             	    
@@ -1893,29 +1891,69 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleCreateModel1672); 
+            otherlv_4=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleCreateModel1640); 
 
-                	newLeafNode(otherlv_6, grammarAccess.getCreateModelAccess().getAsKeyword_6());
+                	newLeafNode(otherlv_4, grammarAccess.getCreateModelAccess().getInResourceKeyword_4());
                 
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:734:1: ( (lv_referenceName_7_0= RULE_ID ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:735:1: (lv_referenceName_7_0= RULE_ID )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:712:1: ( (lv_modelName_5_0= ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:713:1: (lv_modelName_5_0= ruleEString )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:735:1: (lv_referenceName_7_0= RULE_ID )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:736:3: lv_referenceName_7_0= RULE_ID
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:713:1: (lv_modelName_5_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:714:3: lv_modelName_5_0= ruleEString
             {
-            lv_referenceName_7_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleCreateModel1689); 
+             
+            	        newCompositeNode(grammarAccess.getCreateModelAccess().getModelNameEStringParserRuleCall_5_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleCreateModel1661);
+            lv_modelName_5_0=ruleEString();
 
-            			newLeafNode(lv_referenceName_7_0, grammarAccess.getCreateModelAccess().getReferenceNameIDTerminalRuleCall_7_0()); 
-            		
+            state._fsp--;
+
 
             	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getCreateModelRule());
+            	            current = createModelElementForParent(grammarAccess.getCreateModelRule());
             	        }
-                   		setWithLastConsumed(
+                   		set(
                    			current, 
-                   			"referenceName",
-                    		lv_referenceName_7_0, 
-                    		"ID");
+                   			"modelName",
+                    		lv_modelName_5_0, 
+                    		"EString");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            otherlv_6=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleCreateModel1673); 
+
+                	newLeafNode(otherlv_6, grammarAccess.getCreateModelAccess().getAtKeyword_6());
+                
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:734:1: ( (lv_path_7_0= ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:735:1: (lv_path_7_0= ruleEString )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:735:1: (lv_path_7_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:736:3: lv_path_7_0= ruleEString
+            {
+             
+            	        newCompositeNode(grammarAccess.getCreateModelAccess().getPathEStringParserRuleCall_7_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleCreateModel1694);
+            lv_path_7_0=ruleEString();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getCreateModelRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"path",
+                    		lv_path_7_0, 
+                    		"EString");
+            	        afterParserOrEnumRuleCall();
             	    
 
             }
@@ -1995,7 +2033,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
             // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:773:1: (otherlv_0= 'save' () )
             // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:773:3: otherlv_0= 'save' ()
             {
-            otherlv_0=(Token)match(input,22,FollowSets000.FOLLOW_22_in_ruleSave1777); 
+            otherlv_0=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleSave1777); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getSaveAccess().getSaveKeyword_0());
                 
@@ -2087,17 +2125,17 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
             // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:804:1: (this_Check_0= ruleCheck | this_Add_1= ruleAdd | this_SetAttribute_2= ruleSetAttribute )
             int alt12=3;
             switch ( input.LA(1) ) {
-            case 23:
+            case 24:
                 {
                 alt12=1;
                 }
                 break;
-            case 24:
+            case 19:
                 {
                 alt12=2;
                 }
                 break;
-            case 26:
+            case 27:
                 {
                 alt12=3;
                 }
@@ -2221,7 +2259,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCheck"
-    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:850:1: ruleCheck returns [EObject current=null] : (otherlv_0= 'check' () ) ;
+    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:850:1: ruleCheck returns [EObject current=null] : (otherlv_0= 'check!' () ) ;
     public final EObject ruleCheck() throws RecognitionException {
         EObject current = null;
 
@@ -2230,13 +2268,13 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:853:28: ( (otherlv_0= 'check' () ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:854:1: (otherlv_0= 'check' () )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:853:28: ( (otherlv_0= 'check!' () ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:854:1: (otherlv_0= 'check!' () )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:854:1: (otherlv_0= 'check' () )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:854:3: otherlv_0= 'check' ()
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:854:1: (otherlv_0= 'check!' () )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:854:3: otherlv_0= 'check!' ()
             {
-            otherlv_0=(Token)match(input,23,FollowSets000.FOLLOW_23_in_ruleCheck2015); 
+            otherlv_0=(Token)match(input,24,FollowSets000.FOLLOW_24_in_ruleCheck2015); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getCheckAccess().getCheckKeyword_0());
                 
@@ -2308,45 +2346,75 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAdd"
-    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:881:1: ruleAdd returns [EObject current=null] : (otherlv_0= 'new' ( (lv_typeURI_1_0= ruleEString ) ) otherlv_2= 'in' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'feature' ( (lv_eContainingFeatureURI_5_0= ruleEString ) ) otherlv_6= 'as' ( (lv_referenceName_7_0= RULE_ID ) ) ) ;
+    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:881:1: ruleAdd returns [EObject current=null] : (otherlv_0= 'createObject' ( (lv_referenceName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_typeURI_3_0= ruleEString ) ) otherlv_4= 'inElement' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'inFeature' ( (lv_eContainingFeatureURI_7_0= ruleEString ) ) ) ;
     public final EObject ruleAdd() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
+        Token lv_referenceName_1_0=null;
         Token otherlv_2=null;
-        Token otherlv_3=null;
         Token otherlv_4=null;
+        Token otherlv_5=null;
         Token otherlv_6=null;
-        Token lv_referenceName_7_0=null;
-        AntlrDatatypeRuleToken lv_typeURI_1_0 = null;
+        AntlrDatatypeRuleToken lv_typeURI_3_0 = null;
 
-        AntlrDatatypeRuleToken lv_eContainingFeatureURI_5_0 = null;
+        AntlrDatatypeRuleToken lv_eContainingFeatureURI_7_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:884:28: ( (otherlv_0= 'new' ( (lv_typeURI_1_0= ruleEString ) ) otherlv_2= 'in' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'feature' ( (lv_eContainingFeatureURI_5_0= ruleEString ) ) otherlv_6= 'as' ( (lv_referenceName_7_0= RULE_ID ) ) ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:885:1: (otherlv_0= 'new' ( (lv_typeURI_1_0= ruleEString ) ) otherlv_2= 'in' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'feature' ( (lv_eContainingFeatureURI_5_0= ruleEString ) ) otherlv_6= 'as' ( (lv_referenceName_7_0= RULE_ID ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:884:28: ( (otherlv_0= 'createObject' ( (lv_referenceName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_typeURI_3_0= ruleEString ) ) otherlv_4= 'inElement' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'inFeature' ( (lv_eContainingFeatureURI_7_0= ruleEString ) ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:885:1: (otherlv_0= 'createObject' ( (lv_referenceName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_typeURI_3_0= ruleEString ) ) otherlv_4= 'inElement' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'inFeature' ( (lv_eContainingFeatureURI_7_0= ruleEString ) ) )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:885:1: (otherlv_0= 'new' ( (lv_typeURI_1_0= ruleEString ) ) otherlv_2= 'in' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'feature' ( (lv_eContainingFeatureURI_5_0= ruleEString ) ) otherlv_6= 'as' ( (lv_referenceName_7_0= RULE_ID ) ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:885:3: otherlv_0= 'new' ( (lv_typeURI_1_0= ruleEString ) ) otherlv_2= 'in' ( (otherlv_3= RULE_ID ) ) otherlv_4= 'feature' ( (lv_eContainingFeatureURI_5_0= ruleEString ) ) otherlv_6= 'as' ( (lv_referenceName_7_0= RULE_ID ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:885:1: (otherlv_0= 'createObject' ( (lv_referenceName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_typeURI_3_0= ruleEString ) ) otherlv_4= 'inElement' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'inFeature' ( (lv_eContainingFeatureURI_7_0= ruleEString ) ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:885:3: otherlv_0= 'createObject' ( (lv_referenceName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_typeURI_3_0= ruleEString ) ) otherlv_4= 'inElement' ( (otherlv_5= RULE_ID ) ) otherlv_6= 'inFeature' ( (lv_eContainingFeatureURI_7_0= ruleEString ) )
             {
-            otherlv_0=(Token)match(input,24,FollowSets000.FOLLOW_24_in_ruleAdd2107); 
+            otherlv_0=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleAdd2107); 
 
-                	newLeafNode(otherlv_0, grammarAccess.getAddAccess().getNewKeyword_0());
+                	newLeafNode(otherlv_0, grammarAccess.getAddAccess().getCreateObjectKeyword_0());
                 
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:889:1: ( (lv_typeURI_1_0= ruleEString ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:890:1: (lv_typeURI_1_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:889:1: ( (lv_referenceName_1_0= RULE_ID ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:890:1: (lv_referenceName_1_0= RULE_ID )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:890:1: (lv_typeURI_1_0= ruleEString )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:891:3: lv_typeURI_1_0= ruleEString
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:890:1: (lv_referenceName_1_0= RULE_ID )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:891:3: lv_referenceName_1_0= RULE_ID
+            {
+            lv_referenceName_1_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleAdd2124); 
+
+            			newLeafNode(lv_referenceName_1_0, grammarAccess.getAddAccess().getReferenceNameIDTerminalRuleCall_1_0()); 
+            		
+
+            	        if (current==null) {
+            	            current = createModelElement(grammarAccess.getAddRule());
+            	        }
+                   		setWithLastConsumed(
+                   			current, 
+                   			"referenceName",
+                    		lv_referenceName_1_0, 
+                    		"ID");
+            	    
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,20,FollowSets000.FOLLOW_20_in_ruleAdd2141); 
+
+                	newLeafNode(otherlv_2, grammarAccess.getAddAccess().getColonKeyword_2());
+                
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:911:1: ( (lv_typeURI_3_0= ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:912:1: (lv_typeURI_3_0= ruleEString )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:912:1: (lv_typeURI_3_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:913:3: lv_typeURI_3_0= ruleEString
             {
              
-            	        newCompositeNode(grammarAccess.getAddAccess().getTypeURIEStringParserRuleCall_1_0()); 
+            	        newCompositeNode(grammarAccess.getAddAccess().getTypeURIEStringParserRuleCall_3_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAdd2128);
-            lv_typeURI_1_0=ruleEString();
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAdd2162);
+            lv_typeURI_3_0=ruleEString();
 
             state._fsp--;
 
@@ -2357,7 +2425,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
                    		set(
                    			current, 
                    			"typeURI",
-                    		lv_typeURI_1_0, 
+                    		lv_typeURI_3_0, 
                     		"EString");
             	        afterParserOrEnumRuleCall();
             	    
@@ -2367,24 +2435,24 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,19,FollowSets000.FOLLOW_19_in_ruleAdd2140); 
+            otherlv_4=(Token)match(input,25,FollowSets000.FOLLOW_25_in_ruleAdd2174); 
 
-                	newLeafNode(otherlv_2, grammarAccess.getAddAccess().getInKeyword_2());
+                	newLeafNode(otherlv_4, grammarAccess.getAddAccess().getInElementKeyword_4());
                 
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:911:1: ( (otherlv_3= RULE_ID ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:912:1: (otherlv_3= RULE_ID )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:933:1: ( (otherlv_5= RULE_ID ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:934:1: (otherlv_5= RULE_ID )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:912:1: (otherlv_3= RULE_ID )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:913:3: otherlv_3= RULE_ID
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:934:1: (otherlv_5= RULE_ID )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:935:3: otherlv_5= RULE_ID
             {
 
             			if (current==null) {
             	            current = createModelElement(grammarAccess.getAddRule());
             	        }
                     
-            otherlv_3=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleAdd2160); 
+            otherlv_5=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleAdd2194); 
 
-            		newLeafNode(otherlv_3, grammarAccess.getAddAccess().getReferenceableObjectReferenceableObjectCrossReference_3_0()); 
+            		newLeafNode(otherlv_5, grammarAccess.getAddAccess().getReferenceableObjectReferenceableObjectCrossReference_5_0()); 
             	
 
             }
@@ -2392,21 +2460,21 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,25,FollowSets000.FOLLOW_25_in_ruleAdd2172); 
+            otherlv_6=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleAdd2206); 
 
-                	newLeafNode(otherlv_4, grammarAccess.getAddAccess().getFeatureKeyword_4());
+                	newLeafNode(otherlv_6, grammarAccess.getAddAccess().getInFeatureKeyword_6());
                 
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:928:1: ( (lv_eContainingFeatureURI_5_0= ruleEString ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:929:1: (lv_eContainingFeatureURI_5_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:950:1: ( (lv_eContainingFeatureURI_7_0= ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:951:1: (lv_eContainingFeatureURI_7_0= ruleEString )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:929:1: (lv_eContainingFeatureURI_5_0= ruleEString )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:930:3: lv_eContainingFeatureURI_5_0= ruleEString
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:951:1: (lv_eContainingFeatureURI_7_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:952:3: lv_eContainingFeatureURI_7_0= ruleEString
             {
              
-            	        newCompositeNode(grammarAccess.getAddAccess().getEContainingFeatureURIEStringParserRuleCall_5_0()); 
+            	        newCompositeNode(grammarAccess.getAddAccess().getEContainingFeatureURIEStringParserRuleCall_7_0()); 
             	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAdd2193);
-            lv_eContainingFeatureURI_5_0=ruleEString();
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleAdd2227);
+            lv_eContainingFeatureURI_7_0=ruleEString();
 
             state._fsp--;
 
@@ -2417,39 +2485,9 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
                    		set(
                    			current, 
                    			"eContainingFeatureURI",
-                    		lv_eContainingFeatureURI_5_0, 
+                    		lv_eContainingFeatureURI_7_0, 
                     		"EString");
             	        afterParserOrEnumRuleCall();
-            	    
-
-            }
-
-
-            }
-
-            otherlv_6=(Token)match(input,21,FollowSets000.FOLLOW_21_in_ruleAdd2205); 
-
-                	newLeafNode(otherlv_6, grammarAccess.getAddAccess().getAsKeyword_6());
-                
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:950:1: ( (lv_referenceName_7_0= RULE_ID ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:951:1: (lv_referenceName_7_0= RULE_ID )
-            {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:951:1: (lv_referenceName_7_0= RULE_ID )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:952:3: lv_referenceName_7_0= RULE_ID
-            {
-            lv_referenceName_7_0=(Token)match(input,RULE_ID,FollowSets000.FOLLOW_RULE_ID_in_ruleAdd2222); 
-
-            			newLeafNode(lv_referenceName_7_0, grammarAccess.getAddAccess().getReferenceNameIDTerminalRuleCall_7_0()); 
-            		
-
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getAddRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"referenceName",
-                    		lv_referenceName_7_0, 
-                    		"ID");
             	    
 
             }
@@ -2514,7 +2552,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSetAttribute"
-    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:985:1: ruleSetAttribute returns [EObject current=null] : (otherlv_0= 'set' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'feature' ( (lv_eContainingFeatureURI_3_0= ruleEString ) ) (otherlv_4= 'via' ( (lv_propertiesEditionElementURI_5_0= ruleEString ) ) )? otherlv_6= 'values' ( (lv_values_7_0= ruleEString ) ) (otherlv_8= ',' ( (lv_values_9_0= ruleEString ) ) )* ) ;
+    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:985:1: ruleSetAttribute returns [EObject current=null] : (otherlv_0= 'set' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'values' ( (lv_values_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_values_5_0= ruleEString ) ) )* otherlv_6= 'inFeature' ( (lv_eContainingFeatureURI_7_0= ruleEString ) ) (otherlv_8= 'usingWidget' ( (lv_propertiesEditionElementURI_9_0= ruleEString ) ) )? ) ;
     public final EObject ruleSetAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2524,25 +2562,25 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
         Token otherlv_4=null;
         Token otherlv_6=null;
         Token otherlv_8=null;
-        AntlrDatatypeRuleToken lv_eContainingFeatureURI_3_0 = null;
+        AntlrDatatypeRuleToken lv_values_3_0 = null;
 
-        AntlrDatatypeRuleToken lv_propertiesEditionElementURI_5_0 = null;
+        AntlrDatatypeRuleToken lv_values_5_0 = null;
 
-        AntlrDatatypeRuleToken lv_values_7_0 = null;
+        AntlrDatatypeRuleToken lv_eContainingFeatureURI_7_0 = null;
 
-        AntlrDatatypeRuleToken lv_values_9_0 = null;
+        AntlrDatatypeRuleToken lv_propertiesEditionElementURI_9_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:988:28: ( (otherlv_0= 'set' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'feature' ( (lv_eContainingFeatureURI_3_0= ruleEString ) ) (otherlv_4= 'via' ( (lv_propertiesEditionElementURI_5_0= ruleEString ) ) )? otherlv_6= 'values' ( (lv_values_7_0= ruleEString ) ) (otherlv_8= ',' ( (lv_values_9_0= ruleEString ) ) )* ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:989:1: (otherlv_0= 'set' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'feature' ( (lv_eContainingFeatureURI_3_0= ruleEString ) ) (otherlv_4= 'via' ( (lv_propertiesEditionElementURI_5_0= ruleEString ) ) )? otherlv_6= 'values' ( (lv_values_7_0= ruleEString ) ) (otherlv_8= ',' ( (lv_values_9_0= ruleEString ) ) )* )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:988:28: ( (otherlv_0= 'set' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'values' ( (lv_values_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_values_5_0= ruleEString ) ) )* otherlv_6= 'inFeature' ( (lv_eContainingFeatureURI_7_0= ruleEString ) ) (otherlv_8= 'usingWidget' ( (lv_propertiesEditionElementURI_9_0= ruleEString ) ) )? ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:989:1: (otherlv_0= 'set' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'values' ( (lv_values_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_values_5_0= ruleEString ) ) )* otherlv_6= 'inFeature' ( (lv_eContainingFeatureURI_7_0= ruleEString ) ) (otherlv_8= 'usingWidget' ( (lv_propertiesEditionElementURI_9_0= ruleEString ) ) )? )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:989:1: (otherlv_0= 'set' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'feature' ( (lv_eContainingFeatureURI_3_0= ruleEString ) ) (otherlv_4= 'via' ( (lv_propertiesEditionElementURI_5_0= ruleEString ) ) )? otherlv_6= 'values' ( (lv_values_7_0= ruleEString ) ) (otherlv_8= ',' ( (lv_values_9_0= ruleEString ) ) )* )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:989:3: otherlv_0= 'set' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'feature' ( (lv_eContainingFeatureURI_3_0= ruleEString ) ) (otherlv_4= 'via' ( (lv_propertiesEditionElementURI_5_0= ruleEString ) ) )? otherlv_6= 'values' ( (lv_values_7_0= ruleEString ) ) (otherlv_8= ',' ( (lv_values_9_0= ruleEString ) ) )*
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:989:1: (otherlv_0= 'set' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'values' ( (lv_values_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_values_5_0= ruleEString ) ) )* otherlv_6= 'inFeature' ( (lv_eContainingFeatureURI_7_0= ruleEString ) ) (otherlv_8= 'usingWidget' ( (lv_propertiesEditionElementURI_9_0= ruleEString ) ) )? )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:989:3: otherlv_0= 'set' ( (otherlv_1= RULE_ID ) ) otherlv_2= 'values' ( (lv_values_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_values_5_0= ruleEString ) ) )* otherlv_6= 'inFeature' ( (lv_eContainingFeatureURI_7_0= ruleEString ) ) (otherlv_8= 'usingWidget' ( (lv_propertiesEditionElementURI_9_0= ruleEString ) ) )?
             {
-            otherlv_0=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleSetAttribute2310); 
+            otherlv_0=(Token)match(input,27,FollowSets000.FOLLOW_27_in_ruleSetAttribute2310); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getSetAttributeAccess().getSetKeyword_0());
                 
@@ -2567,108 +2605,21 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,25,FollowSets000.FOLLOW_25_in_ruleSetAttribute2342); 
+            otherlv_2=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleSetAttribute2342); 
 
-                	newLeafNode(otherlv_2, grammarAccess.getSetAttributeAccess().getFeatureKeyword_2());
+                	newLeafNode(otherlv_2, grammarAccess.getSetAttributeAccess().getValuesKeyword_2());
                 
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1010:1: ( (lv_eContainingFeatureURI_3_0= ruleEString ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1011:1: (lv_eContainingFeatureURI_3_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1010:1: ( (lv_values_3_0= ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1011:1: (lv_values_3_0= ruleEString )
             {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1011:1: (lv_eContainingFeatureURI_3_0= ruleEString )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1012:3: lv_eContainingFeatureURI_3_0= ruleEString
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1011:1: (lv_values_3_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1012:3: lv_values_3_0= ruleEString
             {
              
-            	        newCompositeNode(grammarAccess.getSetAttributeAccess().getEContainingFeatureURIEStringParserRuleCall_3_0()); 
+            	        newCompositeNode(grammarAccess.getSetAttributeAccess().getValuesEStringParserRuleCall_3_0()); 
             	    
             pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSetAttribute2363);
-            lv_eContainingFeatureURI_3_0=ruleEString();
-
-            state._fsp--;
-
-
-            	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getSetAttributeRule());
-            	        }
-                   		set(
-                   			current, 
-                   			"eContainingFeatureURI",
-                    		lv_eContainingFeatureURI_3_0, 
-                    		"EString");
-            	        afterParserOrEnumRuleCall();
-            	    
-
-            }
-
-
-            }
-
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1028:2: (otherlv_4= 'via' ( (lv_propertiesEditionElementURI_5_0= ruleEString ) ) )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
-
-            if ( (LA13_0==27) ) {
-                alt13=1;
-            }
-            switch (alt13) {
-                case 1 :
-                    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1028:4: otherlv_4= 'via' ( (lv_propertiesEditionElementURI_5_0= ruleEString ) )
-                    {
-                    otherlv_4=(Token)match(input,27,FollowSets000.FOLLOW_27_in_ruleSetAttribute2376); 
-
-                        	newLeafNode(otherlv_4, grammarAccess.getSetAttributeAccess().getViaKeyword_4_0());
-                        
-                    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1032:1: ( (lv_propertiesEditionElementURI_5_0= ruleEString ) )
-                    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1033:1: (lv_propertiesEditionElementURI_5_0= ruleEString )
-                    {
-                    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1033:1: (lv_propertiesEditionElementURI_5_0= ruleEString )
-                    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1034:3: lv_propertiesEditionElementURI_5_0= ruleEString
-                    {
-                     
-                    	        newCompositeNode(grammarAccess.getSetAttributeAccess().getPropertiesEditionElementURIEStringParserRuleCall_4_1_0()); 
-                    	    
-                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSetAttribute2397);
-                    lv_propertiesEditionElementURI_5_0=ruleEString();
-
-                    state._fsp--;
-
-
-                    	        if (current==null) {
-                    	            current = createModelElementForParent(grammarAccess.getSetAttributeRule());
-                    	        }
-                           		set(
-                           			current, 
-                           			"propertiesEditionElementURI",
-                            		lv_propertiesEditionElementURI_5_0, 
-                            		"EString");
-                    	        afterParserOrEnumRuleCall();
-                    	    
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-            otherlv_6=(Token)match(input,28,FollowSets000.FOLLOW_28_in_ruleSetAttribute2411); 
-
-                	newLeafNode(otherlv_6, grammarAccess.getSetAttributeAccess().getValuesKeyword_5());
-                
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1054:1: ( (lv_values_7_0= ruleEString ) )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1055:1: (lv_values_7_0= ruleEString )
-            {
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1055:1: (lv_values_7_0= ruleEString )
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1056:3: lv_values_7_0= ruleEString
-            {
-             
-            	        newCompositeNode(grammarAccess.getSetAttributeAccess().getValuesEStringParserRuleCall_6_0()); 
-            	    
-            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSetAttribute2432);
-            lv_values_7_0=ruleEString();
+            lv_values_3_0=ruleEString();
 
             state._fsp--;
 
@@ -2679,7 +2630,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
                    		add(
                    			current, 
                    			"values",
-                    		lv_values_7_0, 
+                    		lv_values_3_0, 
                     		"EString");
             	        afterParserOrEnumRuleCall();
             	    
@@ -2689,36 +2640,36 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1072:2: (otherlv_8= ',' ( (lv_values_9_0= ruleEString ) ) )*
-            loop14:
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1028:2: (otherlv_4= ',' ( (lv_values_5_0= ruleEString ) ) )*
+            loop13:
             do {
-                int alt14=2;
-                int LA14_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA14_0==29) ) {
-                    alt14=1;
+                if ( (LA13_0==29) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt14) {
+                switch (alt13) {
             	case 1 :
-            	    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1072:4: otherlv_8= ',' ( (lv_values_9_0= ruleEString ) )
+            	    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1028:4: otherlv_4= ',' ( (lv_values_5_0= ruleEString ) )
             	    {
-            	    otherlv_8=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleSetAttribute2445); 
+            	    otherlv_4=(Token)match(input,29,FollowSets000.FOLLOW_29_in_ruleSetAttribute2376); 
 
-            	        	newLeafNode(otherlv_8, grammarAccess.getSetAttributeAccess().getCommaKeyword_7_0());
+            	        	newLeafNode(otherlv_4, grammarAccess.getSetAttributeAccess().getCommaKeyword_4_0());
             	        
-            	    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1076:1: ( (lv_values_9_0= ruleEString ) )
-            	    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1077:1: (lv_values_9_0= ruleEString )
+            	    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1032:1: ( (lv_values_5_0= ruleEString ) )
+            	    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1033:1: (lv_values_5_0= ruleEString )
             	    {
-            	    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1077:1: (lv_values_9_0= ruleEString )
-            	    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1078:3: lv_values_9_0= ruleEString
+            	    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1033:1: (lv_values_5_0= ruleEString )
+            	    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1034:3: lv_values_5_0= ruleEString
             	    {
             	     
-            	    	        newCompositeNode(grammarAccess.getSetAttributeAccess().getValuesEStringParserRuleCall_7_1_0()); 
+            	    	        newCompositeNode(grammarAccess.getSetAttributeAccess().getValuesEStringParserRuleCall_4_1_0()); 
             	    	    
-            	    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSetAttribute2466);
-            	    lv_values_9_0=ruleEString();
+            	    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSetAttribute2397);
+            	    lv_values_5_0=ruleEString();
 
             	    state._fsp--;
 
@@ -2729,7 +2680,7 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
             	           		add(
             	           			current, 
             	           			"values",
-            	            		lv_values_9_0, 
+            	            		lv_values_5_0, 
             	            		"EString");
             	    	        afterParserOrEnumRuleCall();
             	    	    
@@ -2744,9 +2695,96 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop14;
+            	    break loop13;
                 }
             } while (true);
+
+            otherlv_6=(Token)match(input,26,FollowSets000.FOLLOW_26_in_ruleSetAttribute2411); 
+
+                	newLeafNode(otherlv_6, grammarAccess.getSetAttributeAccess().getInFeatureKeyword_5());
+                
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1054:1: ( (lv_eContainingFeatureURI_7_0= ruleEString ) )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1055:1: (lv_eContainingFeatureURI_7_0= ruleEString )
+            {
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1055:1: (lv_eContainingFeatureURI_7_0= ruleEString )
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1056:3: lv_eContainingFeatureURI_7_0= ruleEString
+            {
+             
+            	        newCompositeNode(grammarAccess.getSetAttributeAccess().getEContainingFeatureURIEStringParserRuleCall_6_0()); 
+            	    
+            pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSetAttribute2432);
+            lv_eContainingFeatureURI_7_0=ruleEString();
+
+            state._fsp--;
+
+
+            	        if (current==null) {
+            	            current = createModelElementForParent(grammarAccess.getSetAttributeRule());
+            	        }
+                   		set(
+                   			current, 
+                   			"eContainingFeatureURI",
+                    		lv_eContainingFeatureURI_7_0, 
+                    		"EString");
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1072:2: (otherlv_8= 'usingWidget' ( (lv_propertiesEditionElementURI_9_0= ruleEString ) ) )?
+            int alt14=2;
+            int LA14_0 = input.LA(1);
+
+            if ( (LA14_0==30) ) {
+                alt14=1;
+            }
+            switch (alt14) {
+                case 1 :
+                    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1072:4: otherlv_8= 'usingWidget' ( (lv_propertiesEditionElementURI_9_0= ruleEString ) )
+                    {
+                    otherlv_8=(Token)match(input,30,FollowSets000.FOLLOW_30_in_ruleSetAttribute2445); 
+
+                        	newLeafNode(otherlv_8, grammarAccess.getSetAttributeAccess().getUsingWidgetKeyword_7_0());
+                        
+                    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1076:1: ( (lv_propertiesEditionElementURI_9_0= ruleEString ) )
+                    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1077:1: (lv_propertiesEditionElementURI_9_0= ruleEString )
+                    {
+                    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1077:1: (lv_propertiesEditionElementURI_9_0= ruleEString )
+                    // ../org.eclipse.emf.modelingbot.xtext/src-gen/org/eclipse/emf/eef/parser/antlr/internal/InternalModelingBot.g:1078:3: lv_propertiesEditionElementURI_9_0= ruleEString
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getSetAttributeAccess().getPropertiesEditionElementURIEStringParserRuleCall_7_1_0()); 
+                    	    
+                    pushFollow(FollowSets000.FOLLOW_ruleEString_in_ruleSetAttribute2466);
+                    lv_propertiesEditionElementURI_9_0=ruleEString();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getSetAttributeRule());
+                    	        }
+                           		set(
+                           			current, 
+                           			"propertiesEditionElementURI",
+                            		lv_propertiesEditionElementURI_9_0, 
+                            		"EString");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
 
 
             }
@@ -2891,8 +2929,8 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_EOF_in_entryRuleScenario85 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_11_in_ruleScenario122 = new BitSet(new long[]{0x0000000000000030L});
         public static final BitSet FOLLOW_ruleEString_in_ruleScenario143 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_12_in_ruleScenario155 = new BitSet(new long[]{0x0000000005C7E000L});
-        public static final BitSet FOLLOW_ruleProcessings_in_ruleScenario176 = new BitSet(new long[]{0x0000000005C7E000L});
+        public static final BitSet FOLLOW_12_in_ruleScenario155 = new BitSet(new long[]{0x00000000098FE000L});
+        public static final BitSet FOLLOW_ruleProcessings_in_ruleScenario176 = new BitSet(new long[]{0x00000000098FE000L});
         public static final BitSet FOLLOW_13_in_ruleScenario189 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleProcessings_in_entryRuleProcessings225 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleProcessings235 = new BitSet(new long[]{0x0000000000000002L});
@@ -2904,22 +2942,22 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_EOF_in_entryRulePropertiesView408 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_14_in_rulePropertiesView445 = new BitSet(new long[]{0x0000000000001030L});
         public static final BitSet FOLLOW_ruleEString_in_rulePropertiesView466 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_12_in_rulePropertiesView479 = new BitSet(new long[]{0x0000000005C7E000L});
-        public static final BitSet FOLLOW_ruleSubProcessings_in_rulePropertiesView500 = new BitSet(new long[]{0x0000000005C7E000L});
+        public static final BitSet FOLLOW_12_in_rulePropertiesView479 = new BitSet(new long[]{0x00000000098FE000L});
+        public static final BitSet FOLLOW_ruleSubProcessings_in_rulePropertiesView500 = new BitSet(new long[]{0x00000000098FE000L});
         public static final BitSet FOLLOW_13_in_rulePropertiesView513 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleWizard_in_entryRuleWizard549 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleWizard559 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_15_in_ruleWizard596 = new BitSet(new long[]{0x0000000000001030L});
         public static final BitSet FOLLOW_ruleEString_in_ruleWizard617 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_12_in_ruleWizard630 = new BitSet(new long[]{0x0000000005C7E000L});
-        public static final BitSet FOLLOW_ruleSubProcessings_in_ruleWizard651 = new BitSet(new long[]{0x0000000005C7E000L});
+        public static final BitSet FOLLOW_12_in_ruleWizard630 = new BitSet(new long[]{0x00000000098FE000L});
+        public static final BitSet FOLLOW_ruleSubProcessings_in_ruleWizard651 = new BitSet(new long[]{0x00000000098FE000L});
         public static final BitSet FOLLOW_13_in_ruleWizard664 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleDetails_in_entryRuleDetails700 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleDetails710 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_16_in_ruleDetails747 = new BitSet(new long[]{0x0000000000001030L});
         public static final BitSet FOLLOW_ruleEString_in_ruleDetails768 = new BitSet(new long[]{0x0000000000001000L});
-        public static final BitSet FOLLOW_12_in_ruleDetails781 = new BitSet(new long[]{0x0000000005C7E000L});
-        public static final BitSet FOLLOW_ruleSubProcessings_in_ruleDetails802 = new BitSet(new long[]{0x0000000005C7E000L});
+        public static final BitSet FOLLOW_12_in_ruleDetails781 = new BitSet(new long[]{0x00000000098FE000L});
+        public static final BitSet FOLLOW_ruleSubProcessings_in_ruleDetails802 = new BitSet(new long[]{0x00000000098FE000L});
         public static final BitSet FOLLOW_13_in_ruleDetails815 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleSubProcessings_in_entryRuleSubProcessings851 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleSubProcessings861 = new BitSet(new long[]{0x0000000000000002L});
@@ -2947,17 +2985,17 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleEString_in_ruleRemoveProject1488 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleCreateModel_in_entryRuleCreateModel1526 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleCreateModel1536 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_17_in_ruleCreateModel1573 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleCreateModel1594 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleCreateModel1606 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleCreateModel1627 = new BitSet(new long[]{0x0000000000100000L});
-        public static final BitSet FOLLOW_20_in_ruleCreateModel1639 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleCreateModel1660 = new BitSet(new long[]{0x0000000000200000L});
-        public static final BitSet FOLLOW_21_in_ruleCreateModel1672 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleCreateModel1689 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_19_in_ruleCreateModel1573 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleCreateModel1590 = new BitSet(new long[]{0x0000000000100000L});
+        public static final BitSet FOLLOW_20_in_ruleCreateModel1607 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleCreateModel1628 = new BitSet(new long[]{0x0000000000200000L});
+        public static final BitSet FOLLOW_21_in_ruleCreateModel1640 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleCreateModel1661 = new BitSet(new long[]{0x0000000000400000L});
+        public static final BitSet FOLLOW_22_in_ruleCreateModel1673 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleCreateModel1694 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleSave_in_entryRuleSave1730 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleSave1740 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_22_in_ruleSave1777 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_23_in_ruleSave1777 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleEEFAction_in_entryRuleEEFAction1822 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleEEFAction1832 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleCheck_in_ruleEEFAction1879 = new BitSet(new long[]{0x0000000000000002L});
@@ -2965,29 +3003,29 @@ public class InternalModelingBotParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleSetAttribute_in_ruleEEFAction1933 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleCheck_in_entryRuleCheck1968 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleCheck1978 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_23_in_ruleCheck2015 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_24_in_ruleCheck2015 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleAdd_in_entryRuleAdd2060 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleAdd2070 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_24_in_ruleAdd2107 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleAdd2128 = new BitSet(new long[]{0x0000000000080000L});
-        public static final BitSet FOLLOW_19_in_ruleAdd2140 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleAdd2160 = new BitSet(new long[]{0x0000000002000000L});
-        public static final BitSet FOLLOW_25_in_ruleAdd2172 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleAdd2193 = new BitSet(new long[]{0x0000000000200000L});
-        public static final BitSet FOLLOW_21_in_ruleAdd2205 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleAdd2222 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_19_in_ruleAdd2107 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleAdd2124 = new BitSet(new long[]{0x0000000000100000L});
+        public static final BitSet FOLLOW_20_in_ruleAdd2141 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleAdd2162 = new BitSet(new long[]{0x0000000002000000L});
+        public static final BitSet FOLLOW_25_in_ruleAdd2174 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleAdd2194 = new BitSet(new long[]{0x0000000004000000L});
+        public static final BitSet FOLLOW_26_in_ruleAdd2206 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleAdd2227 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleSetAttribute_in_entryRuleSetAttribute2263 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleSetAttribute2273 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_26_in_ruleSetAttribute2310 = new BitSet(new long[]{0x0000000000000010L});
-        public static final BitSet FOLLOW_RULE_ID_in_ruleSetAttribute2330 = new BitSet(new long[]{0x0000000002000000L});
-        public static final BitSet FOLLOW_25_in_ruleSetAttribute2342 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleSetAttribute2363 = new BitSet(new long[]{0x0000000018000000L});
-        public static final BitSet FOLLOW_27_in_ruleSetAttribute2376 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleSetAttribute2397 = new BitSet(new long[]{0x0000000010000000L});
-        public static final BitSet FOLLOW_28_in_ruleSetAttribute2411 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleSetAttribute2432 = new BitSet(new long[]{0x0000000020000002L});
-        public static final BitSet FOLLOW_29_in_ruleSetAttribute2445 = new BitSet(new long[]{0x0000000000000030L});
-        public static final BitSet FOLLOW_ruleEString_in_ruleSetAttribute2466 = new BitSet(new long[]{0x0000000020000002L});
+        public static final BitSet FOLLOW_27_in_ruleSetAttribute2310 = new BitSet(new long[]{0x0000000000000010L});
+        public static final BitSet FOLLOW_RULE_ID_in_ruleSetAttribute2330 = new BitSet(new long[]{0x0000000010000000L});
+        public static final BitSet FOLLOW_28_in_ruleSetAttribute2342 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleSetAttribute2363 = new BitSet(new long[]{0x0000000024000000L});
+        public static final BitSet FOLLOW_29_in_ruleSetAttribute2376 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleSetAttribute2397 = new BitSet(new long[]{0x0000000024000000L});
+        public static final BitSet FOLLOW_26_in_ruleSetAttribute2411 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleSetAttribute2432 = new BitSet(new long[]{0x0000000040000002L});
+        public static final BitSet FOLLOW_30_in_ruleSetAttribute2445 = new BitSet(new long[]{0x0000000000000030L});
+        public static final BitSet FOLLOW_ruleEString_in_ruleSetAttribute2466 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleEString_in_entryRuleEString2505 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleEString2516 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_RULE_STRING_in_ruleEString2556 = new BitSet(new long[]{0x0000000000000002L});

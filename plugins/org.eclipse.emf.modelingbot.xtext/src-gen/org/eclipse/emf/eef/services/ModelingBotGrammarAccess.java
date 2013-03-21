@@ -286,19 +286,19 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	public class CreateProjectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CreateProject");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cCreateKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cCreateProjectKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cProjectNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cProjectNameEStringParserRuleCall_1_0 = (RuleCall)cProjectNameAssignment_1.eContents().get(0);
 		
 		//CreateProject returns EclipseActions::CreateProject:
-		//	"create" projectName=EString;
+		//	"createProject" projectName=EString;
 		public ParserRule getRule() { return rule; }
 
-		//"create" projectName=EString
+		//"createProject" projectName=EString
 		public Group getGroup() { return cGroup; }
 
-		//"create"
-		public Keyword getCreateKeyword_0() { return cCreateKeyword_0; }
+		//"createProject"
+		public Keyword getCreateProjectKeyword_0() { return cCreateProjectKeyword_0; }
 
 		//projectName=EString
 		public Assignment getProjectNameAssignment_1() { return cProjectNameAssignment_1; }
@@ -310,19 +310,19 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	public class RemoveProjectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RemoveProject");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cDeleteKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cDeleteProjectKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cProjectNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cProjectNameEStringParserRuleCall_1_0 = (RuleCall)cProjectNameAssignment_1.eContents().get(0);
 		
 		//RemoveProject returns EclipseActions::RemoveProject:
-		//	"delete" projectName=EString;
+		//	"deleteProject" projectName=EString;
 		public ParserRule getRule() { return rule; }
 
-		//"delete" projectName=EString
+		//"deleteProject" projectName=EString
 		public Group getGroup() { return cGroup; }
 
-		//"delete"
-		public Keyword getDeleteKeyword_0() { return cDeleteKeyword_0; }
+		//"deleteProject"
+		public Keyword getDeleteProjectKeyword_0() { return cDeleteProjectKeyword_0; }
 
 		//projectName=EString
 		public Assignment getProjectNameAssignment_1() { return cProjectNameAssignment_1; }
@@ -354,61 +354,61 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	public class CreateModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CreateModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cCreateKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cModelNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cModelNameEStringParserRuleCall_1_0 = (RuleCall)cModelNameAssignment_1.eContents().get(0);
-		private final Keyword cInKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cPathAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cPathEStringParserRuleCall_3_0 = (RuleCall)cPathAssignment_3.eContents().get(0);
-		private final Keyword cRootKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cRootURIAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cRootURIEStringParserRuleCall_5_0 = (RuleCall)cRootURIAssignment_5.eContents().get(0);
-		private final Keyword cAsKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cReferenceNameAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cReferenceNameIDTerminalRuleCall_7_0 = (RuleCall)cReferenceNameAssignment_7.eContents().get(0);
+		private final Keyword cCreateObjectKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cReferenceNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cReferenceNameIDTerminalRuleCall_1_0 = (RuleCall)cReferenceNameAssignment_1.eContents().get(0);
+		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cRootURIAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cRootURIEStringParserRuleCall_3_0 = (RuleCall)cRootURIAssignment_3.eContents().get(0);
+		private final Keyword cInResourceKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cModelNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cModelNameEStringParserRuleCall_5_0 = (RuleCall)cModelNameAssignment_5.eContents().get(0);
+		private final Keyword cAtKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cPathAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cPathEStringParserRuleCall_7_0 = (RuleCall)cPathAssignment_7.eContents().get(0);
 		
 		//CreateModel returns EclipseActions::CreateModel:
-		//	"create" modelName=EString "in" path=EString "root" rootURI=EString "as" referenceName=ID;
+		//	"createObject" referenceName=ID ":" rootURI=EString "inResource" modelName=EString "at" path=EString;
 		public ParserRule getRule() { return rule; }
 
-		//"create" modelName=EString "in" path=EString "root" rootURI=EString "as" referenceName=ID
+		//"createObject" referenceName=ID ":" rootURI=EString "inResource" modelName=EString "at" path=EString
 		public Group getGroup() { return cGroup; }
 
-		//"create"
-		public Keyword getCreateKeyword_0() { return cCreateKeyword_0; }
-
-		//modelName=EString
-		public Assignment getModelNameAssignment_1() { return cModelNameAssignment_1; }
-
-		//EString
-		public RuleCall getModelNameEStringParserRuleCall_1_0() { return cModelNameEStringParserRuleCall_1_0; }
-
-		//"in"
-		public Keyword getInKeyword_2() { return cInKeyword_2; }
-
-		//path=EString
-		public Assignment getPathAssignment_3() { return cPathAssignment_3; }
-
-		//EString
-		public RuleCall getPathEStringParserRuleCall_3_0() { return cPathEStringParserRuleCall_3_0; }
-
-		//"root"
-		public Keyword getRootKeyword_4() { return cRootKeyword_4; }
-
-		//rootURI=EString
-		public Assignment getRootURIAssignment_5() { return cRootURIAssignment_5; }
-
-		//EString
-		public RuleCall getRootURIEStringParserRuleCall_5_0() { return cRootURIEStringParserRuleCall_5_0; }
-
-		//"as"
-		public Keyword getAsKeyword_6() { return cAsKeyword_6; }
+		//"createObject"
+		public Keyword getCreateObjectKeyword_0() { return cCreateObjectKeyword_0; }
 
 		//referenceName=ID
-		public Assignment getReferenceNameAssignment_7() { return cReferenceNameAssignment_7; }
+		public Assignment getReferenceNameAssignment_1() { return cReferenceNameAssignment_1; }
 
 		//ID
-		public RuleCall getReferenceNameIDTerminalRuleCall_7_0() { return cReferenceNameIDTerminalRuleCall_7_0; }
+		public RuleCall getReferenceNameIDTerminalRuleCall_1_0() { return cReferenceNameIDTerminalRuleCall_1_0; }
+
+		//":"
+		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
+
+		//rootURI=EString
+		public Assignment getRootURIAssignment_3() { return cRootURIAssignment_3; }
+
+		//EString
+		public RuleCall getRootURIEStringParserRuleCall_3_0() { return cRootURIEStringParserRuleCall_3_0; }
+
+		//"inResource"
+		public Keyword getInResourceKeyword_4() { return cInResourceKeyword_4; }
+
+		//modelName=EString
+		public Assignment getModelNameAssignment_5() { return cModelNameAssignment_5; }
+
+		//EString
+		public RuleCall getModelNameEStringParserRuleCall_5_0() { return cModelNameEStringParserRuleCall_5_0; }
+
+		//"at"
+		public Keyword getAtKeyword_6() { return cAtKeyword_6; }
+
+		//path=EString
+		public Assignment getPathAssignment_7() { return cPathAssignment_7; }
+
+		//EString
+		public RuleCall getPathEStringParserRuleCall_7_0() { return cPathEStringParserRuleCall_7_0; }
 	}
 
 	public class SaveElements extends AbstractParserRuleElementFinder {
@@ -462,13 +462,13 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cCheckAction_1 = (Action)cGroup.eContents().get(1);
 		
 		//Check returns EEFActions::Check:
-		//	"check" {EEFActions::Check};
+		//	"check!" {EEFActions::Check};
 		public ParserRule getRule() { return rule; }
 
-		//"check" {EEFActions::Check}
+		//"check!" {EEFActions::Check}
 		public Group getGroup() { return cGroup; }
 
-		//"check"
+		//"check!"
 		public Keyword getCheckKeyword_0() { return cCheckKeyword_0; }
 
 		//{EEFActions::Check}
@@ -478,67 +478,67 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	public class AddElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Add");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cNewKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTypeURIAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeURIEStringParserRuleCall_1_0 = (RuleCall)cTypeURIAssignment_1.eContents().get(0);
-		private final Keyword cInKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cReferenceableObjectAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cReferenceableObjectReferenceableObjectCrossReference_3_0 = (CrossReference)cReferenceableObjectAssignment_3.eContents().get(0);
-		private final RuleCall cReferenceableObjectReferenceableObjectIDTerminalRuleCall_3_0_1 = (RuleCall)cReferenceableObjectReferenceableObjectCrossReference_3_0.eContents().get(1);
-		private final Keyword cFeatureKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cEContainingFeatureURIAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cEContainingFeatureURIEStringParserRuleCall_5_0 = (RuleCall)cEContainingFeatureURIAssignment_5.eContents().get(0);
-		private final Keyword cAsKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cReferenceNameAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cReferenceNameIDTerminalRuleCall_7_0 = (RuleCall)cReferenceNameAssignment_7.eContents().get(0);
+		private final Keyword cCreateObjectKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cReferenceNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cReferenceNameIDTerminalRuleCall_1_0 = (RuleCall)cReferenceNameAssignment_1.eContents().get(0);
+		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTypeURIAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTypeURIEStringParserRuleCall_3_0 = (RuleCall)cTypeURIAssignment_3.eContents().get(0);
+		private final Keyword cInElementKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cReferenceableObjectAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cReferenceableObjectReferenceableObjectCrossReference_5_0 = (CrossReference)cReferenceableObjectAssignment_5.eContents().get(0);
+		private final RuleCall cReferenceableObjectReferenceableObjectIDTerminalRuleCall_5_0_1 = (RuleCall)cReferenceableObjectReferenceableObjectCrossReference_5_0.eContents().get(1);
+		private final Keyword cInFeatureKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cEContainingFeatureURIAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cEContainingFeatureURIEStringParserRuleCall_7_0 = (RuleCall)cEContainingFeatureURIAssignment_7.eContents().get(0);
 		
 		//Add returns EEFActions::Add:
-		//	"new" typeURI=EString "in" referenceableObject=[EEFExtended::ReferenceableObject] "feature"
-		//	eContainingFeatureURI=EString "as" referenceName=ID;
+		//	"createObject" referenceName=ID ":" typeURI=EString "inElement" referenceableObject=[EEFExtended::ReferenceableObject]
+		//	"inFeature" eContainingFeatureURI=EString;
 		public ParserRule getRule() { return rule; }
 
-		//"new" typeURI=EString "in" referenceableObject=[EEFExtended::ReferenceableObject] "feature"
-		//eContainingFeatureURI=EString "as" referenceName=ID
+		//"createObject" referenceName=ID ":" typeURI=EString "inElement" referenceableObject=[EEFExtended::ReferenceableObject]
+		//"inFeature" eContainingFeatureURI=EString
 		public Group getGroup() { return cGroup; }
 
-		//"new"
-		public Keyword getNewKeyword_0() { return cNewKeyword_0; }
-
-		//typeURI=EString
-		public Assignment getTypeURIAssignment_1() { return cTypeURIAssignment_1; }
-
-		//EString
-		public RuleCall getTypeURIEStringParserRuleCall_1_0() { return cTypeURIEStringParserRuleCall_1_0; }
-
-		//"in"
-		public Keyword getInKeyword_2() { return cInKeyword_2; }
-
-		//referenceableObject=[EEFExtended::ReferenceableObject]
-		public Assignment getReferenceableObjectAssignment_3() { return cReferenceableObjectAssignment_3; }
-
-		//[EEFExtended::ReferenceableObject]
-		public CrossReference getReferenceableObjectReferenceableObjectCrossReference_3_0() { return cReferenceableObjectReferenceableObjectCrossReference_3_0; }
-
-		//ID
-		public RuleCall getReferenceableObjectReferenceableObjectIDTerminalRuleCall_3_0_1() { return cReferenceableObjectReferenceableObjectIDTerminalRuleCall_3_0_1; }
-
-		//"feature"
-		public Keyword getFeatureKeyword_4() { return cFeatureKeyword_4; }
-
-		//eContainingFeatureURI=EString
-		public Assignment getEContainingFeatureURIAssignment_5() { return cEContainingFeatureURIAssignment_5; }
-
-		//EString
-		public RuleCall getEContainingFeatureURIEStringParserRuleCall_5_0() { return cEContainingFeatureURIEStringParserRuleCall_5_0; }
-
-		//"as"
-		public Keyword getAsKeyword_6() { return cAsKeyword_6; }
+		//"createObject"
+		public Keyword getCreateObjectKeyword_0() { return cCreateObjectKeyword_0; }
 
 		//referenceName=ID
-		public Assignment getReferenceNameAssignment_7() { return cReferenceNameAssignment_7; }
+		public Assignment getReferenceNameAssignment_1() { return cReferenceNameAssignment_1; }
 
 		//ID
-		public RuleCall getReferenceNameIDTerminalRuleCall_7_0() { return cReferenceNameIDTerminalRuleCall_7_0; }
+		public RuleCall getReferenceNameIDTerminalRuleCall_1_0() { return cReferenceNameIDTerminalRuleCall_1_0; }
+
+		//":"
+		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
+
+		//typeURI=EString
+		public Assignment getTypeURIAssignment_3() { return cTypeURIAssignment_3; }
+
+		//EString
+		public RuleCall getTypeURIEStringParserRuleCall_3_0() { return cTypeURIEStringParserRuleCall_3_0; }
+
+		//"inElement"
+		public Keyword getInElementKeyword_4() { return cInElementKeyword_4; }
+
+		//referenceableObject=[EEFExtended::ReferenceableObject]
+		public Assignment getReferenceableObjectAssignment_5() { return cReferenceableObjectAssignment_5; }
+
+		//[EEFExtended::ReferenceableObject]
+		public CrossReference getReferenceableObjectReferenceableObjectCrossReference_5_0() { return cReferenceableObjectReferenceableObjectCrossReference_5_0; }
+
+		//ID
+		public RuleCall getReferenceableObjectReferenceableObjectIDTerminalRuleCall_5_0_1() { return cReferenceableObjectReferenceableObjectIDTerminalRuleCall_5_0_1; }
+
+		//"inFeature"
+		public Keyword getInFeatureKeyword_6() { return cInFeatureKeyword_6; }
+
+		//eContainingFeatureURI=EString
+		public Assignment getEContainingFeatureURIAssignment_7() { return cEContainingFeatureURIAssignment_7; }
+
+		//EString
+		public RuleCall getEContainingFeatureURIEStringParserRuleCall_7_0() { return cEContainingFeatureURIEStringParserRuleCall_7_0; }
 	}
 
 	public class SetAttributeElements extends AbstractParserRuleElementFinder {
@@ -548,28 +548,28 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cReferenceableObjectAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cReferenceableObjectReferenceableObjectCrossReference_1_0 = (CrossReference)cReferenceableObjectAssignment_1.eContents().get(0);
 		private final RuleCall cReferenceableObjectReferenceableObjectIDTerminalRuleCall_1_0_1 = (RuleCall)cReferenceableObjectReferenceableObjectCrossReference_1_0.eContents().get(1);
-		private final Keyword cFeatureKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cEContainingFeatureURIAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cEContainingFeatureURIEStringParserRuleCall_3_0 = (RuleCall)cEContainingFeatureURIAssignment_3.eContents().get(0);
+		private final Keyword cValuesKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cValuesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cValuesEStringParserRuleCall_3_0 = (RuleCall)cValuesAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cViaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cPropertiesEditionElementURIAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cPropertiesEditionElementURIEStringParserRuleCall_4_1_0 = (RuleCall)cPropertiesEditionElementURIAssignment_4_1.eContents().get(0);
-		private final Keyword cValuesKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cValuesAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cValuesEStringParserRuleCall_6_0 = (RuleCall)cValuesAssignment_6.eContents().get(0);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cValuesAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cValuesEStringParserRuleCall_4_1_0 = (RuleCall)cValuesAssignment_4_1.eContents().get(0);
+		private final Keyword cInFeatureKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cEContainingFeatureURIAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cEContainingFeatureURIEStringParserRuleCall_6_0 = (RuleCall)cEContainingFeatureURIAssignment_6.eContents().get(0);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cCommaKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cValuesAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cValuesEStringParserRuleCall_7_1_0 = (RuleCall)cValuesAssignment_7_1.eContents().get(0);
+		private final Keyword cUsingWidgetKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cPropertiesEditionElementURIAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cPropertiesEditionElementURIEStringParserRuleCall_7_1_0 = (RuleCall)cPropertiesEditionElementURIAssignment_7_1.eContents().get(0);
 		
 		//SetAttribute returns EEFActions::SetAttribute:
-		//	"set" referenceableObject=[EEFExtended::ReferenceableObject] "feature" eContainingFeatureURI=EString ("via"
-		//	propertiesEditionElementURI=EString)? "values" values+=EString ("," values+=EString)*;
+		//	"set" referenceableObject=[EEFExtended::ReferenceableObject] "values" values+=EString ("," values+=EString)*
+		//	"inFeature" eContainingFeatureURI=EString ("usingWidget" propertiesEditionElementURI=EString)?;
 		public ParserRule getRule() { return rule; }
 
-		//"set" referenceableObject=[EEFExtended::ReferenceableObject] "feature" eContainingFeatureURI=EString ("via"
-		//propertiesEditionElementURI=EString)? "values" values+=EString ("," values+=EString)*
+		//"set" referenceableObject=[EEFExtended::ReferenceableObject] "values" values+=EString ("," values+=EString)* "inFeature"
+		//eContainingFeatureURI=EString ("usingWidget" propertiesEditionElementURI=EString)?
 		public Group getGroup() { return cGroup; }
 
 		//"set"
@@ -584,47 +584,47 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getReferenceableObjectReferenceableObjectIDTerminalRuleCall_1_0_1() { return cReferenceableObjectReferenceableObjectIDTerminalRuleCall_1_0_1; }
 
-		//"feature"
-		public Keyword getFeatureKeyword_2() { return cFeatureKeyword_2; }
-
-		//eContainingFeatureURI=EString
-		public Assignment getEContainingFeatureURIAssignment_3() { return cEContainingFeatureURIAssignment_3; }
-
-		//EString
-		public RuleCall getEContainingFeatureURIEStringParserRuleCall_3_0() { return cEContainingFeatureURIEStringParserRuleCall_3_0; }
-
-		//("via" propertiesEditionElementURI=EString)?
-		public Group getGroup_4() { return cGroup_4; }
-
-		//"via"
-		public Keyword getViaKeyword_4_0() { return cViaKeyword_4_0; }
-
-		//propertiesEditionElementURI=EString
-		public Assignment getPropertiesEditionElementURIAssignment_4_1() { return cPropertiesEditionElementURIAssignment_4_1; }
-
-		//EString
-		public RuleCall getPropertiesEditionElementURIEStringParserRuleCall_4_1_0() { return cPropertiesEditionElementURIEStringParserRuleCall_4_1_0; }
-
 		//"values"
-		public Keyword getValuesKeyword_5() { return cValuesKeyword_5; }
+		public Keyword getValuesKeyword_2() { return cValuesKeyword_2; }
 
 		//values+=EString
-		public Assignment getValuesAssignment_6() { return cValuesAssignment_6; }
+		public Assignment getValuesAssignment_3() { return cValuesAssignment_3; }
 
 		//EString
-		public RuleCall getValuesEStringParserRuleCall_6_0() { return cValuesEStringParserRuleCall_6_0; }
+		public RuleCall getValuesEStringParserRuleCall_3_0() { return cValuesEStringParserRuleCall_3_0; }
 
 		//("," values+=EString)*
-		public Group getGroup_7() { return cGroup_7; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//","
-		public Keyword getCommaKeyword_7_0() { return cCommaKeyword_7_0; }
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 
 		//values+=EString
-		public Assignment getValuesAssignment_7_1() { return cValuesAssignment_7_1; }
+		public Assignment getValuesAssignment_4_1() { return cValuesAssignment_4_1; }
 
 		//EString
-		public RuleCall getValuesEStringParserRuleCall_7_1_0() { return cValuesEStringParserRuleCall_7_1_0; }
+		public RuleCall getValuesEStringParserRuleCall_4_1_0() { return cValuesEStringParserRuleCall_4_1_0; }
+
+		//"inFeature"
+		public Keyword getInFeatureKeyword_5() { return cInFeatureKeyword_5; }
+
+		//eContainingFeatureURI=EString
+		public Assignment getEContainingFeatureURIAssignment_6() { return cEContainingFeatureURIAssignment_6; }
+
+		//EString
+		public RuleCall getEContainingFeatureURIEStringParserRuleCall_6_0() { return cEContainingFeatureURIEStringParserRuleCall_6_0; }
+
+		//("usingWidget" propertiesEditionElementURI=EString)?
+		public Group getGroup_7() { return cGroup_7; }
+
+		//"usingWidget"
+		public Keyword getUsingWidgetKeyword_7_0() { return cUsingWidgetKeyword_7_0; }
+
+		//propertiesEditionElementURI=EString
+		public Assignment getPropertiesEditionElementURIAssignment_7_1() { return cPropertiesEditionElementURIAssignment_7_1; }
+
+		//EString
+		public RuleCall getPropertiesEditionElementURIEStringParserRuleCall_7_1_0() { return cPropertiesEditionElementURIEStringParserRuleCall_7_1_0; }
 	}
 
 	public class EStringElements extends AbstractParserRuleElementFinder {
@@ -786,7 +786,7 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CreateProject returns EclipseActions::CreateProject:
-	//	"create" projectName=EString;
+	//	"createProject" projectName=EString;
 	public CreateProjectElements getCreateProjectAccess() {
 		return (pCreateProject != null) ? pCreateProject : (pCreateProject = new CreateProjectElements());
 	}
@@ -796,7 +796,7 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RemoveProject returns EclipseActions::RemoveProject:
-	//	"delete" projectName=EString;
+	//	"deleteProject" projectName=EString;
 	public RemoveProjectElements getRemoveProjectAccess() {
 		return (pRemoveProject != null) ? pRemoveProject : (pRemoveProject = new RemoveProjectElements());
 	}
@@ -816,7 +816,7 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CreateModel returns EclipseActions::CreateModel:
-	//	"create" modelName=EString "in" path=EString "root" rootURI=EString "as" referenceName=ID;
+	//	"createObject" referenceName=ID ":" rootURI=EString "inResource" modelName=EString "at" path=EString;
 	public CreateModelElements getCreateModelAccess() {
 		return (pCreateModel != null) ? pCreateModel : (pCreateModel = new CreateModelElements());
 	}
@@ -846,7 +846,7 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Check returns EEFActions::Check:
-	//	"check" {EEFActions::Check};
+	//	"check!" {EEFActions::Check};
 	public CheckElements getCheckAccess() {
 		return (pCheck != null) ? pCheck : (pCheck = new CheckElements());
 	}
@@ -856,8 +856,8 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Add returns EEFActions::Add:
-	//	"new" typeURI=EString "in" referenceableObject=[EEFExtended::ReferenceableObject] "feature"
-	//	eContainingFeatureURI=EString "as" referenceName=ID;
+	//	"createObject" referenceName=ID ":" typeURI=EString "inElement" referenceableObject=[EEFExtended::ReferenceableObject]
+	//	"inFeature" eContainingFeatureURI=EString;
 	public AddElements getAddAccess() {
 		return (pAdd != null) ? pAdd : (pAdd = new AddElements());
 	}
@@ -867,8 +867,8 @@ public class ModelingBotGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SetAttribute returns EEFActions::SetAttribute:
-	//	"set" referenceableObject=[EEFExtended::ReferenceableObject] "feature" eContainingFeatureURI=EString ("via"
-	//	propertiesEditionElementURI=EString)? "values" values+=EString ("," values+=EString)*;
+	//	"set" referenceableObject=[EEFExtended::ReferenceableObject] "values" values+=EString ("," values+=EString)*
+	//	"inFeature" eContainingFeatureURI=EString ("usingWidget" propertiesEditionElementURI=EString)?;
 	public SetAttributeElements getSetAttributeAccess() {
 		return (pSetAttribute != null) ? pSetAttribute : (pSetAttribute = new SetAttributeElements());
 	}

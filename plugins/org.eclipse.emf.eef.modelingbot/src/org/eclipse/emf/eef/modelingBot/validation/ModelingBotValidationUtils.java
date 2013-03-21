@@ -29,37 +29,42 @@ public class ModelingBotValidationUtils {
 	 * 
 	 * @param element
 	 *            the element to test (a Scenario or a ModelingBot)
-	 * @return true if a junit tests corresponding to the given element exists, false otherwise
+	 * @return true if a junit tests corresponding to the given element exists,
+	 *         false otherwise
 	 */
 	public static boolean isAssociatedToTest(EObject element) {
 		boolean isAssociatedToTest = true;
 		URI uri = EcoreUtil.getURI(element);
-		if (element instanceof Scenario) {
-			isAssociatedToTest = false;
+		if (element instanceof Scenario && element.eResource() != null) {
 			String projectName = getProjectName(uri);
 			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-			String expectedPath = getExpectedPath(project, (Scenario)element);
-			return project.getFile(expectedPath).exists();
+			if (project.exists()) {
+				isAssociatedToTest = false;
+				String expectedPath = getExpectedPath(project, (Scenario)element);
+				return project.getFile(expectedPath).exists();
+			}
 		}
 		return isAssociatedToTest;
 	}
 
 	/**
-	 * Returns the relative path (from the project) that indicates where should be located the junit test of
-	 * the given scenario.
+	 * Returns the relative path (from the project) that indicates where should
+	 * be located the junit test of the given scenario.
 	 * 
 	 * @param project
 	 *            the project helding the scenario
 	 * @param scenario
 	 *            the scenario to query
-	 * @return the relative path (from the project) that indicates where should be located the junit test of
-	 *         the given scenario
+	 * @return the relative path (from the project) that indicates where should
+	 *         be located the junit test of the given scenario
 	 */
 	public static String getExpectedPath(IProject project, Scenario scenario) {
 		if (project.exists()) {
 			String className = scenario.getName().replace(" ", "");
-			className = className.substring(0, 1).toUpperCase() + className.substring(1);
-			return "src/" + project.getName().replace(".", "/") + "/scenarios/" + className + "Test.java";
+			className = className.substring(0, 1).toUpperCase()
+					+ className.substring(1);
+			return "src/" + project.getName().replace(".", "/") + "/scenarios/"
+					+ className + "Test.java";
 		}
 		return null;
 	}
@@ -72,6 +77,7 @@ public class ModelingBotValidationUtils {
 	 * @return the project name from the given element {@link URI}
 	 */
 	public static String getProjectName(URI elementURI) {
-		return elementURI.toString().replace("platform:/resource/", "").replace("intent:/", "").split("/")[0];
+		return elementURI.toString().replace("platform:/resource/", "")
+				.replace("intent:/", "").split("/")[0];
 	}
 }
