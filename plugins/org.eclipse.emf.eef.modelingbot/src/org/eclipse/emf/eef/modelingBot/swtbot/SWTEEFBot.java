@@ -473,7 +473,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 					container, values, sequenceType);
 		} else if (sequenceType.equals(SequenceType.WIZARD)) {
 			EObject containerOfcontainer = null;
-			if (((EditAction)referenceableObject).getPropertiesEditionElement() != null) {
+			if (((EditAction)referenceableObject).getComputedPropertiesEditionElement() != null) {
 				containerOfcontainer = getEObjectFromReferenceableEObject(((EditAction)referenceableObject)
 						.getReferenceableObject());
 			} else {
@@ -641,7 +641,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 					values, sequenceType);
 		} else if (sequenceType.equals(SequenceType.WIZARD)) {
 			EObject containerOfcontainer = null;
-			if (((EditAction)referenceableObject).getPropertiesEditionElement() != null) {
+			if (((EditAction)referenceableObject).getComputedPropertiesEditionElement() != null) {
 				containerOfcontainer = getEObjectFromReferenceableEObject(((EditAction)referenceableObject)
 						.getReferenceableObject());
 			} else {
@@ -790,8 +790,7 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 		button(UIConstants.NEXT_BUTTON).click();
 
 		button("Browse Registered Packages...").click();
-		final String nsURI = interpreter.getPropertiesEditionContext().getModel().getEcorePackage()
-				.getNsURI();
+		final String nsURI = root.getEPackage().getNsURI();
 		table().getTableItem(nsURI).select();
 		button(UIConstants.OK_BUTTON).click();
 		button(UIConstants.NEXT_BUTTON).click();

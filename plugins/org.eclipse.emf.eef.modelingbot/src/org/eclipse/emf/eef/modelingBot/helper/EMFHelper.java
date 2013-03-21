@@ -122,8 +122,8 @@ public class EMFHelper {
 		if (SequenceType.DETAILS_PAGE == sequenceType || SequenceType.PROPERTIES_VIEW == sequenceType) {
 			target = container;
 		} else if (SequenceType.WIZARD == sequenceType) {
-			if (((EditAction)referenceableObject).getPropertiesEditionElement() != null) {
-				target = (EObject)EEFModelHelper.eGet(container, ((EditAction)referenceableObject).getPropertiesEditionElement().getModel());
+			if (((EditAction)referenceableObject).getComputedPropertiesEditionElement() != null) {
+				target = (EObject)EEFModelHelper.eGet(container, ((EditAction)referenceableObject).getComputedPropertiesEditionElement().getModel());
 			} else {
 				target = container;
 				

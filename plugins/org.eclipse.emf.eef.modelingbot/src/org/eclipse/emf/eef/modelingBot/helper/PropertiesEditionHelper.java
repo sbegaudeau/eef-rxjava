@@ -479,11 +479,11 @@ public class PropertiesEditionHelper {
 			if (referenceableObject instanceof Add
 					&& referenceableObject.eContainer() instanceof Wizard) {
 				EStructuralFeature feature = ((Add) referenceableObject)
-						.getEContainingFeature();
+						.getComputedEContainingFeature();
 				EClassifier type = feature.getEType();
 				if (type != null && type instanceof EClass
 						&& ((EClass) type).isAbstract()) {
-					SWTBotRadio radio = bot.radio(((Add) referenceableObject).getType().getName());
+					SWTBotRadio radio = bot.radio(((Add) referenceableObject).getComputedType().getName());
 					WrappedSWTBotRadio wrappedRadio = new WrappedSWTBotRadio(radio);
 					wrappedRadio.click();
 					bot.button(UIConstants.NEXT_BUTTON).click();

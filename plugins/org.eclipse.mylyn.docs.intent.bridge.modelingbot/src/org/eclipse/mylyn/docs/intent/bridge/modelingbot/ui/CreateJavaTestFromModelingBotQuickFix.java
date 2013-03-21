@@ -18,6 +18,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -34,8 +35,11 @@ import org.eclipse.mylyn.docs.intent.client.ui.editor.IntentEditorDocument;
 import org.eclipse.mylyn.docs.intent.client.ui.editor.annotation.IntentAnnotation;
 import org.eclipse.mylyn.docs.intent.client.ui.editor.quickfix.AbstractIntentFix;
 import org.eclipse.mylyn.docs.intent.client.ui.logger.IntentUiLogger;
+import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.IntentCommand;
 import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.RepositoryAdapter;
 import org.eclipse.mylyn.docs.intent.core.modelingunit.ExternalContentReference;
+import org.eclipse.mylyn.docs.intent.core.modelingunit.ModelingUnit;
+import org.eclipse.mylyn.docs.intent.core.modelingunit.ModelingUnitFactory;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -62,7 +66,7 @@ public class CreateJavaTestFromModelingBotQuickFix extends AbstractIntentFix {
 	protected void applyFix(RepositoryAdapter repositoryAdapter, IntentEditorDocument document) {
 		if (syncAnnotation.getCompilationStatus().getTarget() instanceof ExternalContentReference) {
 			// Step 1: getting scenarios from currently focused instruction
-			ExternalContentReference instruction = (ExternalContentReference)syncAnnotation
+			final ExternalContentReference instruction = (ExternalContentReference)syncAnnotation
 					.getCompilationStatus().getTarget();
 			Iterable<Scenario> scenarios = Sets.newLinkedHashSet();
 			if (instruction.getExternalContent() instanceof ModelingBot) {
@@ -72,14 +76,29 @@ public class CreateJavaTestFromModelingBotQuickFix extends AbstractIntentFix {
 				scenarios = Lists.newArrayList((Scenario)instruction.getExternalContent());
 
 			// Step 2: generate junit tests for each scenario
+			final Collection<String> createdTestsPath = Sets.newLinkedHashSet();
 			for (Scenario scenario : scenarios) {
-				createJUnitTestForScenario(instruction, scenario);
+				createdTestsPath.addAll(createJUnitTestForScenario(instruction, scenario));
 			}
 
-			// Step 3: set document dirty
+			// Step 3: generated @ref for each created test
 			if (scenarios.iterator().hasNext()) {
-				document.set(document.get() + " ");
+				repositoryAdapter.execute(new IntentCommand() {
+
+					public void execute() {
+						if (instruction.eContainer() instanceof ModelingUnit) {
+							ModelingUnit modelingUnit = (ModelingUnit)instruction.eContainer();
+							for (String createdTestPath : createdTestsPath) {
+								ExternalContentReference testReferenceInstruction = ModelingUnitFactory.eINSTANCE
+										.createExternalContentReference();
+								testReferenceInstruction.setUri(createdTestPath);
+								modelingUnit.getInstructions().add(testReferenceInstruction);
+							}
+						}
+					}
+				});
 			}
+			document.reloadFromAST();
 		}
 	}
 
@@ -88,8 +107,11 @@ public class CreateJavaTestFromModelingBotQuickFix extends AbstractIntentFix {
 	 * 
 	 * @param scenario
 	 *            the {@link Scenario} to test
+	 * @return the pathes of the created tests
 	 */
-	private void createJUnitTestForScenario(ExternalContentReference instruction, Scenario scenario) {
+	private Collection<? extends String> createJUnitTestForScenario(ExternalContentReference instruction,
+			Scenario scenario) {
+		Collection<String> createdTestPath = Sets.newLinkedHashSet();
 		// Step 1: Create the corresponding java test file
 		IProject project = ResourcesPlugin.getWorkspace().getRoot()
 				.getProject(ModelingBotValidationUtils.getProjectName(EcoreUtil.getURI(scenario)));
@@ -120,6 +142,7 @@ public class CreateJavaTestFromModelingBotQuickFix extends AbstractIntentFix {
 					iFile.setContents(new ByteArrayInputStream(javaFileContent.getBytes()), true, true,
 							new NullProgressMonitor());
 					fileWasCreated = true;
+					createdTestPath.add(project.getName() + "/" + expectedPath);
 				}
 			} catch (IOException e) {
 				cause = e;
@@ -131,6 +154,7 @@ public class CreateJavaTestFromModelingBotQuickFix extends AbstractIntentFix {
 			IntentUiLogger.logError("Could not create the java test corresponding to the new scenario "
 					+ scenario.getName() + ".", cause);
 		}
+		return createdTestPath;
 	}
 
 	/**
@@ -145,7 +169,6 @@ public class CreateJavaTestFromModelingBotQuickFix extends AbstractIntentFix {
 	 * @return the content of the test file allowing to test the given {@link Scenario}
 	 */
 	private String getScenarioTestFileContent(Scenario scenario, URI intentURI, String filePath) {
-		// TODO remove *.java and improve class name
 		String packageName = filePath.replace("src/", "").replace(".java", "").replace("/", ".");
 		packageName = packageName.substring(0, packageName.lastIndexOf(".")).toLowerCase();
 		String className = scenario.getName().replace(" ", "");
@@ -153,6 +176,9 @@ public class CreateJavaTestFromModelingBotQuickFix extends AbstractIntentFix {
 		StringBuilder content = new StringBuilder();
 
 		content.append("package " + packageName + ";");
+		content.append("\n/**");
+		content.append("\n* Tests the '" + scenario.getName() + "' Scenario.");
+		content.append("\n*/");
 		content.append("\npublic class " + className
 				+ " extends org.eclipse.emf.eef.modelingBot.testcase.AbstractComposedModelingBotTestCase {");
 		content.append("\n\tpublic void testModelingBot() throws Exception {");

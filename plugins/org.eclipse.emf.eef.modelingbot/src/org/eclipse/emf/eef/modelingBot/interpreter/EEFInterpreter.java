@@ -15,9 +15,11 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -29,7 +31,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.Action;
@@ -97,11 +98,6 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 	 * Modeling bot.
 	 */
 	private IModelingBot bot;
-
-	/**
-	 * PropertiesEditionContext.
-	 */
-	private PropertiesEditionContext propertiesEditionContext;
 
 	/**
 	 * Collection of Actions already processed.
@@ -197,20 +193,28 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 		assertFalse("The modeling bot resource is empty.", modelingBotResource.getContents().isEmpty());
 		assertTrue("The modeling bot model contains errors, correct them first", modelingBotResource
 				.getErrors().isEmpty());
-		final ModelingBot mbot = (ModelingBot)modelingBotResource.getContents().get(0);
-		final Diagnostic diag = Diagnostician.INSTANCE.validate(mbot);
+		List<Scenario> scenarii = new ArrayList<Scenario>();
+		EObject root = modelingBotResource.getContents().get(0);
+		if (root instanceof ModelingBot) {
+			for (Sequence sequence : ((ModelingBot) root).getSequences()) {
+				if (sequence instanceof Scenario) {
+					scenarii.add((Scenario)sequence);
+				}
+			}
+		} else {
+			if (root instanceof Scenario) {
+				scenarii.add((Scenario) root);
+			}
+		}
+		final Diagnostic diag = Diagnostician.INSTANCE.validate(root);
 		if (diag.getSeverity() != Diagnostic.OK) {
 			displayDiag(diag);
 		}
 		assertTrue("The modeling bot model contains errors, correct them first",
 				diag.getSeverity() == Diagnostic.OK);
-		assertNotNull("The modeling bot resource is empty.", mbot);
-		propertiesEditionContext = mbot.getPropertiesEditionContext();
-		for (Sequence sequence : mbot.getSequences()) {
-			if (sequence instanceof Scenario) {
-				final Scenario scenario = (Scenario)sequence;
-				runSequence(scenario);
-			}
+		for (Scenario sequence : scenarii) {
+			final Scenario scenario = (Scenario)sequence;
+			runSequence(scenario);
 		}
 	}
 
@@ -283,7 +287,7 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 		if (!processedActions.contains(action)) {
 
 			if (action instanceof EditAction && EEFModelingBotHelper.isFollowingByCancel(action)) {
-				actionsToCancel.add(((EditAction)action).getPropertiesEditionElement());
+				actionsToCancel.add(((EditAction)action).getComputedPropertiesEditionElement());
 //				if (bot instanceof SWTEEFBot) {
 //					processedActions.add(EEFModelingBotHelper.getFollowingCancelAction(action));
 //				}
@@ -305,34 +309,34 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 				addModelMap((CreateModel)action, addedObject);
 			} else if (action instanceof Add) {
 				PropertiesEditionElement propertiesEditionElement = ((Add)action)
-						.getPropertiesEditionElement();
+						.getComputedPropertiesEditionElement();
 				if (propertiesEditionElement != null) {
 					final EObject addedObject = bot.add(propertiesEditionElement,
 							((Add)action).getReferenceableObject(), (ReferenceableObject)action,
-							((Add)action).getEContainingFeature(), ((Add)action).getType());
+							((Add)action).getComputedEContainingFeature(), ((Add)action).getComputedType());
 					if (addedObject != null) {
 						addActionMap((Add)action, addedObject);
 					}
 				} else {
 					final EObject addedObject = bot.add(propertiesEditionElement, null,
-							((Add)action).getReferenceableObject(), ((Add)action).getEContainingFeature(),
-							((Add)action).getType());
+							((Add)action).getReferenceableObject(), ((Add)action).getComputedEContainingFeature(),
+							((Add)action).getComputedType());
 					if (addedObject != null) {
 						addActionMap((Add)action, addedObject);
 					}
 				}
 			} else if (action instanceof MoveDown) {
-				bot.moveDown(((MoveDown)action).getPropertiesEditionElement(),
+				bot.moveDown(((MoveDown)action).getComputedPropertiesEditionElement(),
 						((MoveDown)action).getReferenceableObject());
 			} else if (action instanceof MoveUp) {
-				bot.moveUp(((MoveUp)action).getPropertiesEditionElement(),
+				bot.moveUp(((MoveUp)action).getComputedPropertiesEditionElement(),
 						((MoveUp)action).getReferenceableObject());
 			} else if (action instanceof SetAttribute) {
-				bot.setAttribute(((SetAttribute)action).getPropertiesEditionElement(),
+				bot.setAttribute(((SetAttribute)action).getComputedPropertiesEditionElement(),
 						((SetAttribute)action).getReferenceableObject(),
-						((SetAttribute)action).getEContainingFeature(), ((SetAttribute)action).getValues());
+						((SetAttribute)action).getComputedEContainingFeature(), ((SetAttribute)action).getValues());
 			} else if (action instanceof SetReference) {
-				bot.setReference(((SetReference)action).getPropertiesEditionElement(),
+				bot.setReference(((SetReference)action).getComputedPropertiesEditionElement(),
 						((SetReference)action).getReferenceableObject(),
 						((SetReference)action).getEContainingFeature(), ((SetReference)action).getValues());
 			} else if (action instanceof Save) {
@@ -352,19 +356,19 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 					bot.cancel(((Cancel)action).getProcessing());
 				}
 			} else if (action instanceof Unset) {
-				bot.unset(((Unset)action).getPropertiesEditionElement(),
+				bot.unset(((Unset)action).getComputedPropertiesEditionElement(),
 						((Unset)action).getReferenceableObject(), ((Unset)action).getFeature());
 			} else if (action instanceof UnsetAttribute) {
-				bot.unsetAttribute(((UnsetAttribute)action).getPropertiesEditionElement(),
+				bot.unsetAttribute(((UnsetAttribute)action).getComputedPropertiesEditionElement(),
 						((UnsetAttribute)action).getReferenceableObject(),
 						((UnsetAttribute)action).getEContainingFeature(),
 						((UnsetAttribute)action).getValues());
 			} else if (action instanceof UnsetReference) {
-				bot.unsetReference(((UnsetReference)action).getPropertiesEditionElement(),
+				bot.unsetReference(((UnsetReference)action).getComputedPropertiesEditionElement(),
 						((UnsetReference)action).getReferenceableObject(),
 						((UnsetReference)action).getFeature(), ((UnsetReference)action).getValues());
 			} else if (action instanceof Remove) {
-				bot.remove(((Remove)action).getPropertiesEditionElement(),
+				bot.remove(((Remove)action).getComputedPropertiesEditionElement(),
 						((Remove)action).getReferenceableObject());
 				refObjectToEObjectMap.remove(((Remove)action).getReferenceableObject());
 			} else if (action instanceof Undo) {
@@ -382,23 +386,6 @@ public class EEFInterpreter implements IModelingBotInterpreter {
 
 	private void addModelMap(CreateModel action, EObject obj) {
 		refObjectToEObjectMap.put(action, obj);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#getPropertiesEditionContext()
-	 */
-	public PropertiesEditionContext getPropertiesEditionContext() {
-		return propertiesEditionContext;
-	}
-
-	/**
-	 * @param pec
-	 *            the propertiesEditionContext to set
-	 */
-	public void setPropertiesEditionContext(PropertiesEditionContext pec) {
-		this.propertiesEditionContext = pec;
 	}
 
 }

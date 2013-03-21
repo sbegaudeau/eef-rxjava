@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage;
 import org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute;
+import org.eclipse.emf.eef.modelingBot.helper.EMFHelper;
 
 /**
  * <!-- begin-user-doc -->
@@ -184,13 +185,10 @@ public class SetAttributeImpl extends EditActionImpl implements SetAttribute {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EStructuralFeature basicGetComputedEContainingFeature() {
-		// TODO: implement this method to return the 'Computed EContaining Feature' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return EMFHelper.computeEObject(this, EEFActionsPackage.Literals.SET_ATTRIBUTE__ECONTAINING_FEATURE, EEFActionsPackage.Literals.SET_ATTRIBUTE__ECONTAINING_FEATURE_URI);
 	}
 
 	/**

@@ -18,6 +18,7 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -108,27 +109,35 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 		assertTrue("The modeling bot model contains errors, correct them first", modelingBotResource
 				.getErrors().isEmpty());
 
-		EObject modelingBotResourceRoot = modelingBotResource.getContents().iterator().next();
-		ModelingBot mbot = null;
-		if (modelingBotResourceRoot instanceof ModelingBot) {
-			mbot = (ModelingBot)modelingBotResourceRoot;
+		List<Scenario> scenarii = new ArrayList<Scenario>();
+		EObject root = modelingBotResource.getContents().get(0);
+		if (root instanceof ModelingBot) {
+			for (Sequence sequence : ((ModelingBot) root).getSequences()) {
+				if (sequence instanceof Scenario) {
+					scenarii.add((Scenario)sequence);
+				}
+			}
 		} else {
-			fail("Invalid content for resource '" + path
-					+ "': expecting a ModelingBot or a Scenario contained in a ModelingBot");
+			if (root instanceof Scenario) {
+				scenarii.add((Scenario) root);
+			}
 		}
-		final Diagnostic diag = Diagnostician.INSTANCE.validate(mbot);
+		final Diagnostic diag = Diagnostician.INSTANCE.validate(root);
+		if (diag.getSeverity() != Diagnostic.OK) {
+			displayDiag(diag);
+		}
 		assertTrue("The modeling bot model contains errors, correct them first",
 				diag.getSeverity() == Diagnostic.OK);
-
-		assertNotNull("The modeling bot resource is empty.", mbot);
-		for (IModelingBot bot : modelingBots) {
-			bot.getModelingBotInterpreter().setPropertiesEditionContext(mbot.getPropertiesEditionContext());
+		for (Scenario sequence : scenarii) {
+			final Scenario scenario = (Scenario)sequence;
+			runSequence(scenario);
 		}
-		for (Sequence sequence : mbot.getSequences()) {
-			if (sequence instanceof Scenario) {
-				final Scenario scenario = (Scenario)sequence;
-				runSequence(scenario);
-			}
+	}
+	
+	private void displayDiag(final Diagnostic diag) {
+		System.out.println("Source: " + diag.getSource() + " - Message: " + diag.getMessage() + " - Ex:" + diag.getException());
+		for (Diagnostic subDiag : diag.getChildren()) {
+			displayDiag(subDiag);
 		}
 	}
 
@@ -219,24 +228,6 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 		final Resource resource = editingDomain.getResourceSet().getResource(fileURI, true);
 		assertNotNull("The modeling bot resource can not be loaded.", resource);
 		return resource;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#getPropertiesEditionContext()
-	 */
-	public PropertiesEditionContext getPropertiesEditionContext() {
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#setPropertiesEditionContext(org.eclipse.emf.eef.components.PropertiesEditionContext)
-	 */
-	public void setPropertiesEditionContext(PropertiesEditionContext context) {
-
 	}
 
 }
