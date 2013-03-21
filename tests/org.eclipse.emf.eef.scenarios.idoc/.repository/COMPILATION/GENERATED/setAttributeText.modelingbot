@@ -1,0 +1,19 @@
+scenario setAttributeText {
+	createProject "setAttributeText"
+	createObject testModel : "platform:/plugin/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference" 
+	  inResource "setAttributeText.conference" 
+	  at "setAttributeText"
+	check!
+	detailsPage {
+		createObject personTest : "platform:/plugin/org.eclipse.emf.examples.eef/model/conference.ecore#//Person" 
+		  inElement testModel
+		  inFeature "platform:/plugin/org.eclipse.emf.examples.eef/model/conference.ecore#//Conference/participants" 
+		set personTest 
+		  values "John"
+		  inFeature "platform:/plugin/org.eclipse.emf.examples.eef/model/conference.ecore#//Person/firstname" 
+		  usingWidget "platform:/plugin/org.eclipse.emf.examples.eef.edit/models/conference.components#_KvJBKJkmEd6sxtwdpecy3w"
+		}
+	save
+	check!
+	deleteProject "setAttributeText"
+}
