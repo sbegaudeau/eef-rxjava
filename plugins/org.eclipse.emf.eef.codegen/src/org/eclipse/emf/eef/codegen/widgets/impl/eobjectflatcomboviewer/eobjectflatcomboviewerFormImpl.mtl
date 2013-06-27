@@ -122,6 +122,10 @@ return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFact
 				return null;
 			}
 
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element)); 
+			}
+
 		};
 		//create widget
 		[editor.elementEditorName()/] = new AdvancedEObjectFlatComboViewer([editor.owningViewsRepository().messagesProvider()/].[editor.editorKey(editor.owningView())/], resourceSet, [editor.elementEditorName()/]Filter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);

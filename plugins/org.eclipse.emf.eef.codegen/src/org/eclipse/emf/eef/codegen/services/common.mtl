@@ -226,8 +226,8 @@
 				or (pee.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and pee.model.isReferenceMany() and (pee.representationName('ReferencesTable') or pee.representationName('AdvancedReferencesTable')))
 				or (pee.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and pee.model.isContainmentMany() and (pee.representationName('TableComposition') or pee.representationName('AdvancedTableComposition')))
 				or (pee.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentMany() and pee.model.isContainmentSingle() and (pee.representationName('TableComposition') or pee.representationName('AdvancedTableComposition')))
-				or (pee.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and pee.model.isReferenceSingle() and (pee.representationName('EObjectFlatComboViewer') or pee.representationName('AdvancedEObjectFlatComboViewer')))
-		))) or (pee.model.isContainmentSingle() and (pee.representationName('EObjectFlatComboViewer') or pee.representationName('AdvancedEObjectFlatComboViewer'))))/]
+				or (pee.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and pee.model.isReferenceSingle() and (pee.representationName('EObjectFlatComboViewer') or pee.representationName('AdvancedEObjectFlatComboViewer') or pee.representationName('LinkEObjectFlatComboViewer')))
+		))) or (pee.model.isContainmentSingle() and (pee.representationName('EObjectFlatComboViewer') or pee.representationName('AdvancedEObjectFlatComboViewer') or pee.representationName('LinkEObjectFlatComboViewer'))))/]
 
 [comment --------------- Common templates --------------- /]
 
@@ -323,7 +323,7 @@ String
 [include('org.eclipse.emf.common.util.Enumerator')/]
 [elseif (view.representationName('MultiValuedEditor'))]
 [include('org.eclipse.emf.common.util.EList')/]
-[elseif (view.representationName('EObjectFlatComboViewer') or view.representationName('AdvancedEObjectFlatComboViewer') or view.representationName('SingleCompositionViewer') or view.representationName('SingleCompositionEditor'))]
+[elseif (view.representationName('EObjectFlatComboViewer') or view.representationName('LinkEObjectFlatComboViewer') or view.representationName('AdvancedEObjectFlatComboViewer') or view.representationName('SingleCompositionViewer') or view.representationName('SingleCompositionEditor'))]
 [include('org.eclipse.emf.ecore.EObject')/]
 [elseif (view.representationName('ReferencesTable') or view.representationName('AdvancedReferencesTable') or view.representationName('FlatReferencesTable') or view.representationName('TableComposition') or view.representationName('AdvancedTableComposition'))]
 [include('java.util.List')/]
