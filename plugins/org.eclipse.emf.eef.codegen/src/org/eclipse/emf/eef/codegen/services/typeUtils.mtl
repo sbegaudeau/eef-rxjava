@@ -13,7 +13,7 @@
 [module typeUtils('http://www.eclipse.org/emf/2002/Ecore')/]
 
 [query public isBoolean(a : EAttribute) : Boolean = 
-	not oclIsUndefined() and eType.name = 'EBool' or eType.name = 'EBoolean' or eType.name = 'Boolean' or eType.name = 'boolean'/]
+	not oclIsUndefined() and eType.name = 'EBool' or eType.name = 'EBoolean' or eType.name = 'Boolean' or eType.name = 'boolean' or eType.name = 'EBooleanObject'/]
 
 [query public isString(a : EAttribute) : Boolean = 
 	not oclIsUndefined() and eType.name = 'EString' or eType.name = 'String' or eType.instanceClassName = 'java.lang.String'/]

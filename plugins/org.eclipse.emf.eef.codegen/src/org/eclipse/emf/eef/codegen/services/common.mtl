@@ -443,7 +443,7 @@ DEPRECATED. using now a java service to do so.
 
 [comment ==== For boolean model features getters (thanks to UML !) ==== /]
 [template public booleanGetter(feature : EStructuralFeature)]
-is
+[if (feature.eType.name() = 'EBooleanObject')]get[else]is[/if]
 [/template]
 
 [query public eefPackage(eClassifier : EClassifier, basePackage : String) : String = eClassifier.ePackage.eefPackage(basePackage)/]
