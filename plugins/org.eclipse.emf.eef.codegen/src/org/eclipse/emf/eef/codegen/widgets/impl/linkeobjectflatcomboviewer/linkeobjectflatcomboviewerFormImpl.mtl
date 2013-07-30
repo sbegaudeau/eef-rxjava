@@ -34,7 +34,7 @@
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'LinkEObjectFlatComboViewer')]
-return create[editor.name.toJavaClassifier()/]TypeFlatComboViewer(parent, widgetFactory);
+return create[editor.name.toJavaClassifier()/]LinkFlatComboViewer(parent, widgetFactory);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'LinkEObjectFlatComboViewer')]
@@ -43,7 +43,7 @@ return create[editor.name.toJavaClassifier()/]TypeFlatComboViewer(parent, widget
 	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected Composite create[editor.name.toJavaClassifier()/]TypeFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+	protected Composite create[editor.name.toJavaClassifier()/]LinkFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
 		[if (editor.nameAsLabel)]
 		FormUtils.createPartLabel(widgetFactory, parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND));
 		[else]
@@ -72,7 +72,7 @@ return create[editor.name.toJavaClassifier()/]TypeFlatComboViewer(parent, widget
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].FORM_KIND), null); //$NON-NLS-1$
-		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('TypeFlatComboViewer'))]
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('LinkFlatComboViewer'))]
 
 		// [/protected]
 		return parent;

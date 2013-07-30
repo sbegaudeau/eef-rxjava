@@ -34,7 +34,7 @@
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'LinkEObjectFlatComboViewer')]
-return create[editor.name.toJavaClassifier()/]TypeFlatComboViewer(parent);
+return create[editor.name.toJavaClassifier()/]LinkFlatComboViewer(parent);
 [/template]
 
 [template public additionalImplementation(editor : ElementEditor, pec : PropertiesEditionComponent, inputPEC: PropertiesEditionComponent) overrides additionalImplementation ? (editor.representation.name = 'LinkEObjectFlatComboViewer')] 
@@ -42,7 +42,7 @@ return create[editor.name.toJavaClassifier()/]TypeFlatComboViewer(parent);
 	 * @param parent the parent composite
 	 * [editor.owningViewsRepository().associatedGenModel().generationMark()/]
 	 */
-	protected Composite create[editor.name.toJavaClassifier()/]TypeFlatComboViewer(Composite parent) {
+	protected Composite create[editor.name.toJavaClassifier()/]LinkFlatComboViewer(Composite parent) {
 		[if (editor.nameAsLabel)]
 		SWTUtils.createPartLabel(parent, [include(editor.owningViewsRepository().qualifiedMessagesProvider())/].[editor.editorKey(editor.owningView())/], propertiesEditionComponent.isRequired([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND));
 		[else]
@@ -71,7 +71,7 @@ return create[editor.name.toJavaClassifier()/]TypeFlatComboViewer(parent);
 		[editor.elementEditorName()/].setLayoutData([editor.elementEditorName()/]Data);
 		[editor.elementEditorName()/].setID([editor.editorID()/]);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent([editor.editorID()/], [editor.owningViewsRepository().vrClass()/].SWT_KIND), null); //$NON-NLS-1$
-		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('TypeFlatComboViewer'))]
+		// [protected ('for create'.concat(editor.name.toJavaClassifier()).concat('LinkFlatComboViewer'))]
 
 		// [/protected]
 		return parent;
