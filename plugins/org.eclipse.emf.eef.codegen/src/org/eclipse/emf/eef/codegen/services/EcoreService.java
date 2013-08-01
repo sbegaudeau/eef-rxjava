@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.codegen.services;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.codegen.util.ImportManager;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -44,5 +45,10 @@ public class EcoreService {
 			return genModel;
 		}
 		throw new RuntimeException("Unable to retrieve Ecore gen model from " + eo);
+	}
+	
+	public String getFormattedName(String name) {
+		String string = CodeGenUtil.upperName(name);
+		return CodeGenUtil.format(string, '_', null, false, false);
 	}
 }

@@ -28,7 +28,11 @@
 [/template]
 
 [template public qualifiedMetamodelPackage(ePackage : EPackage)]
+[if (ePackage.nsURI='http://www.eclipse.org/emf/2003/XMLType')]
+org.eclipse.emf.ecore.xml.type.XMLTypePackage
+[else]
 [ePackage.getGenPackage().getQualifiedPackageInterfaceName()/]
+[/if]
 [/template]
 
 [template public completePackage(ePackage : EPackage)]
@@ -60,8 +64,12 @@ endif/]
 [eClassifier.eInverse(GenClassifier).getQualifiedClassifierAccessor()/]
 [/template]
 
-[template public metamodelGetter(eDataType : EDataType)]
-[eDataType.getGenDataType().getQualifiedClassifierAccessor()/]
+[template public metamodelGetter(eDataType : EDataType) post (trim())]
+[if (self.ePackage.nsURI='http://www.eclipse.org/emf/2003/XMLType')]
+XMLTypePackage.Literals.[eDataType.getFormattedName()/]
+[else]
+[eDataType.getGenDataType().getQualifiedClassifierAccessor()/]	
+[/if]
 [/template]
 
 [template public metamodelGetter(eClass : EClass)]
@@ -125,3 +133,6 @@ if self.ePackage.nsURI = 'http://www.eclipse.org/emf/2002/Ecore'
 	then self.ePackage.getGenPackage().genDataTypes -> select(ecoreDataType.name = eDataType.name) -> first()
 	else self.eInverse(GenDataType) -> first() 
 endif/]
+
+[query public getFormattedName(e : EDataType) : String
+	= invoke('org.eclipse.emf.eef.codegen.services.EcoreService', 'getFormattedName(java.lang.String)', Sequence{e.name}) /]
