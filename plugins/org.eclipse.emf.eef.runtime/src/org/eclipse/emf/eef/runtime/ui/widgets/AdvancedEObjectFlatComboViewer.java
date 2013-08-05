@@ -157,6 +157,5 @@ public class AdvancedEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatC
 
 		public EObject handleCreate();
 		
-		public void handleEdit(EObject element);
 	}
 }
