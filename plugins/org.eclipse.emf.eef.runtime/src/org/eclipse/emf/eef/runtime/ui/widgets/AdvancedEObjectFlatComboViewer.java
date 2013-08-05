@@ -51,7 +51,7 @@ public class AdvancedEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatC
 			org.eclipse.emf.eef.runtime.ui.widgets.AbstractAdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener callback) {
 		super(dialogTitle, input, filter, adapterFactory, callback);
 	}
-
+	
 	protected void createLabels(Composite parent) {
 		// Display label
 		// final Label displayLabel = createLabel(parent, dialogTitle,
@@ -150,12 +150,9 @@ public class AdvancedEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatC
 	}
 
 	@Deprecated
-	public interface EObjectFlatComboViewerListener {
-		public void handleSet(EObject element);
+	public static abstract class EObjectFlatComboViewerListener implements org.eclipse.emf.eef.runtime.ui.widgets.AbstractAdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener {
 
-		public void navigateTo(EObject element);
-
-		public EObject handleCreate();
+		public void handleEdit(EObject element) {}
 		
 	}
 }
