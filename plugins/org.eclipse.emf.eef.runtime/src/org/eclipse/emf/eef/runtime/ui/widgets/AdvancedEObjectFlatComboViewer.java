@@ -48,7 +48,7 @@ public class AdvancedEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatC
 	 */
 	public AdvancedEObjectFlatComboViewer(String dialogTitle, Object input,
 			ViewerFilter filter, AdapterFactory adapterFactory,
-			EObjectFlatComboViewerListener callback) {
+			org.eclipse.emf.eef.runtime.ui.widgets.AbstractAdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener callback) {
 		super(dialogTitle, input, filter, adapterFactory, callback);
 	}
 
@@ -149,4 +149,14 @@ public class AdvancedEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatC
 		valueText.setToolTipText(tooltip);
 	}
 
+	@Deprecated
+	public interface EObjectFlatComboViewerListener {
+		public void handleSet(EObject element);
+
+		public void navigateTo(EObject element);
+
+		public EObject handleCreate();
+		
+		public void handleEdit(EObject element);
+	}
 }
