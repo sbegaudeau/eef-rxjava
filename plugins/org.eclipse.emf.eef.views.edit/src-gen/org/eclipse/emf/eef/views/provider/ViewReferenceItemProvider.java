@@ -32,7 +32,9 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ViewReferenceItemProvider extends ViewElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ViewReferenceItemProvider extends ViewElementItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -67,10 +69,13 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider implement
 	 */
 	protected void addViewPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
 				getString("_UI_ViewReference_view_feature"), //$NON-NLS-1$
 				getString("_UI_ViewReference_view_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.VIEW_REFERENCE__VIEW, true, false, true, null, null, null));
+				ViewsPackage.Literals.VIEW_REFERENCE__VIEW, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -81,7 +86,8 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider implement
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ViewReference")); //$NON-NLS-1$
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/ViewReference")); //$NON-NLS-1$
 	}
 
 	/**
@@ -92,7 +98,7 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider implement
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ViewReference)object).getName();
+		String label = ((ViewReference) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_ViewReference_type") : //$NON-NLS-1$
 				getString("_UI_ViewReference_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -109,10 +115,10 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider implement
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ViewReference.class)) {
-			case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -125,7 +131,8 @@ public class ViewReferenceItemProvider extends ViewElementItemProvider implement
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -61,7 +61,8 @@ public interface ViewsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ViewsPackage eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsPackageImpl.init();
+	ViewsPackage eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsPackageImpl
+			.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.DocumentedElementImpl <em>Documented Element</em>}' class.
@@ -384,13 +385,22 @@ public interface ViewsPackage extends EPackage {
 	int VIEW__CATEGORY = CONTAINER_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW__LABEL = CONTAINER_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIEW_FEATURE_COUNT = CONTAINER_FEATURE_COUNT + 3;
+	int VIEW_FEATURE_COUNT = CONTAINER_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.views.impl.ElementEditorImpl <em>Element Editor</em>}' class.
@@ -712,6 +722,15 @@ public interface ViewsPackage extends EPackage {
 	int CUSTOM_VIEW__CATEGORY = VIEW__CATEGORY;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_VIEW__LABEL = VIEW__LABEL;
+
+	/**
 	 * The number of structural features of the '<em>Custom View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -917,6 +936,17 @@ public interface ViewsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getView_Category();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.views.View#getLabel <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Label</em>'.
+	 * @see org.eclipse.emf.eef.views.View#getLabel()
+	 * @see #getView()
+	 * @generated
+	 */
+	EAttribute getView_Label();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.views.ElementEditor <em>Element Editor</em>}'.
@@ -1189,7 +1219,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEWS_REPOSITORY__VIEWS = eINSTANCE.getViewsRepository_Views();
+		EReference VIEWS_REPOSITORY__VIEWS = eINSTANCE
+				.getViewsRepository_Views();
 
 		/**
 		 * The meta object literal for the '<em><b>Repository Kind</b></em>' attribute list feature.
@@ -1197,7 +1228,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VIEWS_REPOSITORY__REPOSITORY_KIND = eINSTANCE.getViewsRepository_RepositoryKind();
+		EAttribute VIEWS_REPOSITORY__REPOSITORY_KIND = eINSTANCE
+				.getViewsRepository_RepositoryKind();
 
 		/**
 		 * The meta object literal for the '<em><b>Categories</b></em>' containment reference list feature.
@@ -1205,7 +1237,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEWS_REPOSITORY__CATEGORIES = eINSTANCE.getViewsRepository_Categories();
+		EReference VIEWS_REPOSITORY__CATEGORIES = eINSTANCE
+				.getViewsRepository_Categories();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1250,6 +1283,14 @@ public interface ViewsPackage extends EPackage {
 		EReference VIEW__CATEGORY = eINSTANCE.getView_Category();
 
 		/**
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VIEW__LABEL = eINSTANCE.getView_Label();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.ElementEditorImpl <em>Element Editor</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1265,7 +1306,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ELEMENT_EDITOR__READ_ONLY = eINSTANCE.getElementEditor_ReadOnly();
+		EAttribute ELEMENT_EDITOR__READ_ONLY = eINSTANCE
+				.getElementEditor_ReadOnly();
 
 		/**
 		 * The meta object literal for the '<em><b>Name As Label</b></em>' attribute feature.
@@ -1273,7 +1315,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ELEMENT_EDITOR__NAME_AS_LABEL = eINSTANCE.getElementEditor_NameAsLabel();
+		EAttribute ELEMENT_EDITOR__NAME_AS_LABEL = eINSTANCE
+				.getElementEditor_NameAsLabel();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.CategoryImpl <em>Category</em>}' class.
@@ -1351,7 +1394,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEW_ELEMENT__REPRESENTATION = eINSTANCE.getViewElement_Representation();
+		EReference VIEW_ELEMENT__REPRESENTATION = eINSTANCE
+				.getViewElement_Representation();
 
 		/**
 		 * The meta object literal for the '<em><b>Container</b></em>' container reference feature.
@@ -1359,7 +1403,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VIEW_ELEMENT__CONTAINER = eINSTANCE.getViewElement_Container();
+		EReference VIEW_ELEMENT__CONTAINER = eINSTANCE
+				.getViewElement_Container();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1405,7 +1450,8 @@ public interface ViewsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DOCUMENTED_ELEMENT__DOCUMENTATION = eINSTANCE.getDocumentedElement_Documentation();
+		EAttribute DOCUMENTED_ELEMENT__DOCUMENTATION = eINSTANCE
+				.getDocumentedElement_Documentation();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.views.impl.ViewReferenceImpl <em>View Reference</em>}' class.

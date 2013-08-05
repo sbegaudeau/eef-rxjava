@@ -55,5 +55,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="eefGenModel" lowerBound="1"
         eType="#//EEFGenModel" eOpposite="#//EEFGenModel/viewsRepositories"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="partsSuperClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="formsSuperClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

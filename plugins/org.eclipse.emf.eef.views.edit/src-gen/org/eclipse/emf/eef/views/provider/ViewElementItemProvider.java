@@ -33,7 +33,9 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ViewElementItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ViewElementItemProvider extends DocumentedElementItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -69,10 +71,13 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider imple
 	 */
 	protected void addRepresentationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
 				getString("_UI_ViewElement_representation_feature"), //$NON-NLS-1$
 				getString("_UI_ViewElement_representation_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.VIEW_ELEMENT__REPRESENTATION, true, false, true, null, null, null));
+				ViewsPackage.Literals.VIEW_ELEMENT__REPRESENTATION, true,
+				false, true, null, null, null));
 	}
 
 	/**
@@ -83,7 +88,8 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider imple
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ViewElement_name_feature"), //$NON-NLS-1$
 				getString("_UI_ViewElement_name_description"), //$NON-NLS-1$
@@ -99,7 +105,7 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider imple
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ViewElement)object).getName();
+		String label = ((ViewElement) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_ViewElement_type") : //$NON-NLS-1$
 				getString("_UI_ViewElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -116,10 +122,10 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider imple
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ViewElement.class)) {
-			case ViewsPackage.VIEW_ELEMENT__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ViewsPackage.VIEW_ELEMENT__NAME:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -132,7 +138,8 @@ public class ViewElementItemProvider extends DocumentedElementItemProvider imple
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

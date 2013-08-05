@@ -19,6 +19,7 @@
         defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="category" eType="#//Category"
         eOpposite="#//Category/views"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ElementEditor" eSuperTypes="#//ViewElement #//IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="readOnly" lowerBound="1"

@@ -21,6 +21,7 @@ package org.eclipse.emf.eef.views;
  *   <li>{@link org.eclipse.emf.eef.views.View#getRepository <em>Repository</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.View#isExplicit <em>Explicit</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.views.View#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.views.View#getLabel <em>Label</em>}</li>
  * </ul>
  * </p>
  *
@@ -111,5 +112,31 @@ public interface View extends Container, IdentifiedElement {
 	 * @generated
 	 */
 	void setCategory(Category value);
+
+	/**
+	 * Returns the value of the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Label</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Label</em>' attribute.
+	 * @see #setLabel(String)
+	 * @see org.eclipse.emf.eef.views.ViewsPackage#getView_Label()
+	 * @model
+	 * @generated
+	 */
+	String getLabel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.views.View#getLabel <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Label</em>' attribute.
+	 * @see #getLabel()
+	 * @generated
+	 */
+	void setLabel(String value);
 
 } // View

@@ -62,8 +62,8 @@ import org.eclipse.ui.views.properties.tabbed.ISection;
 public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ViewPropertiesEditionPart {
 
 	protected Text name;
+	protected Text label;
 	protected EObjectFlatComboViewer representation;
-	protected Button explicit;
 
 
 
@@ -110,8 +110,8 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		CompositionSequence viewStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = viewStep.addStep(ViewsViewsRepository.View.Properties.class);
 		propertiesStep.addStep(ViewsViewsRepository.View.Properties.name);
+		propertiesStep.addStep(ViewsViewsRepository.View.Properties.label);
 		propertiesStep.addStep(ViewsViewsRepository.View.Properties.representation);
-		propertiesStep.addStep(ViewsViewsRepository.View.Properties.explicit);
 		
 		
 		composer = new PartComposer(viewStep) {
@@ -124,11 +124,11 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 				if (key == ViewsViewsRepository.View.Properties.name) {
 					return createNameText(widgetFactory, parent);
 				}
+				if (key == ViewsViewsRepository.View.Properties.label) {
+					return createLabelText(widgetFactory, parent);
+				}
 				if (key == ViewsViewsRepository.View.Properties.representation) {
 					return createRepresentationFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == ViewsViewsRepository.View.Properties.explicit) {
-					return createExplicitCheckbox(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -220,6 +220,74 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		return parent;
 	}
 
+	
+	protected Composite createLabelText(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, ViewsViewsRepository.View.Properties.label, ViewsMessages.ViewPropertiesEditionPart_LabelLabel);
+		label = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		label.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData labelData = new GridData(GridData.FILL_HORIZONTAL);
+		label.setLayoutData(labelData);
+		label.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							ViewPropertiesEditionPartForm.this,
+							ViewsViewsRepository.View.Properties.label,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, label.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									ViewPropertiesEditionPartForm.this,
+									ViewsViewsRepository.View.Properties.label,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, label.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									ViewPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		label.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewPropertiesEditionPartForm.this, ViewsViewsRepository.View.Properties.label, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, label.getText()));
+				}
+			}
+		});
+		EditingUtils.setID(label, ViewsViewsRepository.View.Properties.label);
+		EditingUtils.setEEFtype(label, "eef::Text"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.View.Properties.label, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createLabelText
+
+		// End of user code
+		return parent;
+	}
+
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
@@ -248,35 +316,6 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 		representation.setID(ViewsViewsRepository.View.Properties.representation);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.View.Properties.representation, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createRepresentationFlatComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createExplicitCheckbox(FormToolkit widgetFactory, Composite parent) {
-		explicit = widgetFactory.createButton(parent, getDescription(ViewsViewsRepository.View.Properties.explicit, ViewsMessages.ViewPropertiesEditionPart_ExplicitLabel), SWT.CHECK);
-		explicit.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewPropertiesEditionPartForm.this, ViewsViewsRepository.View.Properties.explicit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(explicit.getSelection())));
-			}
-
-		});
-		GridData explicitData = new GridData(GridData.FILL_HORIZONTAL);
-		explicitData.horizontalSpan = 2;
-		explicit.setLayoutData(explicitData);
-		EditingUtils.setID(explicit, ViewsViewsRepository.View.Properties.explicit);
-		EditingUtils.setEEFtype(explicit, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.View.Properties.explicit, ViewsViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createExplicitCheckbox
 
 		// End of user code
 		return parent;
@@ -324,6 +363,38 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 			name.setToolTipText(ViewsMessages.View_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#getLabel()
+	 * 
+	 */
+	public String getLabel() {
+		return label.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#setLabel(String newValue)
+	 * 
+	 */
+	public void setLabel(String newValue) {
+		if (newValue != null) {
+			label.setText(newValue);
+		} else {
+			label.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.View.Properties.label);
+		if (eefElementEditorReadOnlyState && label.isEnabled()) {
+			label.setEnabled(false);
+			label.setToolTipText(ViewsMessages.View_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !label.isEnabled()) {
+			label.setEnabled(true);
 		}	
 		
 	}
@@ -412,38 +483,6 @@ public class ViewPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 	 */
 	public void addBusinessFilterToRepresentation(ViewerFilter filter) {
 		representation.addBusinessRuleFilter(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#getExplicit()
-	 * 
-	 */
-	public Boolean getExplicit() {
-		return Boolean.valueOf(explicit.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#setExplicit(Boolean newValue)
-	 * 
-	 */
-	public void setExplicit(Boolean newValue) {
-		if (newValue != null) {
-			explicit.setSelection(newValue.booleanValue());
-		} else {
-			explicit.setSelection(false);
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.View.Properties.explicit);
-		if (eefElementEditorReadOnlyState && explicit.isEnabled()) {
-			explicit.setEnabled(false);
-			explicit.setToolTipText(ViewsMessages.View_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !explicit.isEnabled()) {
-			explicit.setEnabled(true);
-		}	
-		
 	}
 
 

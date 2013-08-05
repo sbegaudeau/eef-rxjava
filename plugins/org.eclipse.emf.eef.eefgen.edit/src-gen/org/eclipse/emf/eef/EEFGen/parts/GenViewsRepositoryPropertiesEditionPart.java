@@ -151,6 +151,20 @@ public interface GenViewsRepositoryPropertiesEditionPart {
 	public void setPartsSuperClass(String newValue);
 
 
+	/**
+	 * @return the formsSuperClass
+	 * 
+	 */
+	public String getFormsSuperClass();
+
+	/**
+	 * Defines a new formsSuperClass
+	 * @param newValue the new formsSuperClass to set
+	 * 
+	 */
+	public void setFormsSuperClass(String newValue);
+
+
 
 
 

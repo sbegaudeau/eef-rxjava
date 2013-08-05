@@ -36,7 +36,9 @@ import org.eclipse.emf.eef.toolkits.Widget;
  * <!-- end-user-doc -->
  * @generated
  */
-public class WidgetItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class WidgetItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -73,7 +75,8 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Widget_name_feature"), //$NON-NLS-1$
 				getString("_UI_Widget_name_description"), //$NON-NLS-1$
@@ -89,7 +92,8 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	protected void addIconPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Widget_icon_feature"), //$NON-NLS-1$
 				getString("_UI_Widget_icon_description"), //$NON-NLS-1$
@@ -105,12 +109,13 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	protected void addImplementationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Widget_implementation_feature"), //$NON-NLS-1$
 				getString("_UI_Widget_implementation_description"), //$NON-NLS-1$
-				ToolkitsPackage.Literals.WIDGET__IMPLEMENTATION, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ToolkitsPackage.Literals.WIDGET__IMPLEMENTATION, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -121,7 +126,8 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Widget")); //$NON-NLS-1$
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/Widget")); //$NON-NLS-1$
 	}
 
 	/**
@@ -132,7 +138,7 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Widget)object).getName();
+		String label = ((Widget) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Widget_type") : //$NON-NLS-1$
 				getString("_UI_Widget_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -149,12 +155,12 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Widget.class)) {
-			case ToolkitsPackage.WIDGET__NAME:
-			case ToolkitsPackage.WIDGET__ICON:
-			case ToolkitsPackage.WIDGET__IMPLEMENTATION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ToolkitsPackage.WIDGET__NAME:
+		case ToolkitsPackage.WIDGET__ICON:
+		case ToolkitsPackage.WIDGET__IMPLEMENTATION:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -167,7 +173,8 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -179,7 +186,7 @@ public class WidgetItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

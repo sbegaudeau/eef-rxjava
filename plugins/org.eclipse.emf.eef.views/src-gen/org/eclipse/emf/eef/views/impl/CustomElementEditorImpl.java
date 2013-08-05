@@ -23,7 +23,8 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  *
  * @generated
  */
-public class CustomElementEditorImpl extends ElementEditorImpl implements CustomElementEditor {
+public class CustomElementEditorImpl extends ElementEditorImpl implements
+		CustomElementEditor {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -27,7 +27,8 @@ public interface ViewsFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ViewsFactory eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsFactoryImpl.init();
+	ViewsFactory eINSTANCE = org.eclipse.emf.eef.views.impl.ViewsFactoryImpl
+			.init();
 
 	/**
 	 * Returns a new object of class '<em>Repository</em>'.

@@ -29,7 +29,9 @@ import org.eclipse.emf.eef.views.CustomElementEditor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CustomElementEditorItemProvider extends ElementEditorItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class CustomElementEditorItemProvider extends ElementEditorItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -63,7 +65,8 @@ public class CustomElementEditorItemProvider extends ElementEditorItemProvider i
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomElementEditor")); //$NON-NLS-1$
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/CustomElementEditor")); //$NON-NLS-1$
 	}
 
 	/**
@@ -74,7 +77,7 @@ public class CustomElementEditorItemProvider extends ElementEditorItemProvider i
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CustomElementEditor)object).getName();
+		String label = ((CustomElementEditor) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_CustomElementEditor_type") : //$NON-NLS-1$
 				getString("_UI_CustomElementEditor_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -100,7 +103,8 @@ public class CustomElementEditorItemProvider extends ElementEditorItemProvider i
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

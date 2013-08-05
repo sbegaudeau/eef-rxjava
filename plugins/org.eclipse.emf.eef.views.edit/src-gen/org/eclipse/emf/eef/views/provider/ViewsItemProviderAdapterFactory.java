@@ -44,7 +44,9 @@ import org.eclipse.emf.eef.views.util.ViewsAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
+public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable,
+		IChildCreationExtender {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -224,7 +226,8 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory impleme
 	@Override
 	public Adapter createCustomElementEditorAdapter() {
 		if (customElementEditorItemProvider == null) {
-			customElementEditorItemProvider = new CustomElementEditorItemProvider(this);
+			customElementEditorItemProvider = new CustomElementEditorItemProvider(
+					this);
 		}
 
 		return customElementEditorItemProvider;
@@ -283,7 +286,8 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory impleme
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory
+				.getRootAdapterFactory();
 	}
 
 	/**
@@ -292,7 +296,8 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(
+			ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -326,7 +331,8 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory impleme
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>)
+					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -348,8 +354,10 @@ public class ViewsItemProviderAdapterFactory extends ViewsAdapterFactory impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+	public Collection<?> getNewChildDescriptors(Object object,
+			EditingDomain editingDomain) {
+		return childCreationExtenderManager.getNewChildDescriptors(object,
+				editingDomain);
 	}
 
 	/**

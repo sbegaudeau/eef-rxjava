@@ -91,7 +91,8 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 		while (container != null) {
 			if (container instanceof IdentifiedElement) {
 				result.insert(0, "::"); //$NON-NLS-1$
-				result.insert(0, ((IdentifiedElement)container).getQualifiedIdentifier());
+				result.insert(0, ((IdentifiedElement) container)
+						.getQualifiedIdentifier());
 				return result.toString();
 			}
 			container = container.eContainer();
@@ -106,8 +107,9 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	 */
 	public EList<ViewElement> getElements() {
 		if (elements == null) {
-			elements = new EObjectContainmentWithInverseEList<ViewElement>(ViewElement.class, this,
-					ViewsPackage.CONTAINER__ELEMENTS, ViewsPackage.VIEW_ELEMENT__CONTAINER);
+			elements = new EObjectContainmentWithInverseEList<ViewElement>(
+					ViewElement.class, this, ViewsPackage.CONTAINER__ELEMENTS,
+					ViewsPackage.VIEW_ELEMENT__CONTAINER);
 		}
 		return elements;
 	}
@@ -119,11 +121,12 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getElements()).basicAdd(otherEnd,
-						msgs);
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getElements())
+					.basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -134,10 +137,12 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			return ((InternalEList<?>) getElements()).basicRemove(otherEnd,
+					msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -150,10 +155,10 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__QUALIFIED_IDENTIFIER:
-				return getQualifiedIdentifier();
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				return getElements();
+		case ViewsPackage.CONTAINER__QUALIFIED_IDENTIFIER:
+			return getQualifiedIdentifier();
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -167,10 +172,10 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				getElements().clear();
-				getElements().addAll((Collection<? extends ViewElement>)newValue);
-				return;
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			getElements().clear();
+			getElements().addAll((Collection<? extends ViewElement>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -183,9 +188,9 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				getElements().clear();
-				return;
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			getElements().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -198,11 +203,12 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.CONTAINER__QUALIFIED_IDENTIFIER:
-				return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
-						: !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
-			case ViewsPackage.CONTAINER__ELEMENTS:
-				return elements != null && !elements.isEmpty();
+		case ViewsPackage.CONTAINER__QUALIFIED_IDENTIFIER:
+			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
+					: !QUALIFIED_IDENTIFIER_EDEFAULT
+							.equals(getQualifiedIdentifier());
+		case ViewsPackage.CONTAINER__ELEMENTS:
+			return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -216,10 +222,10 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IdentifiedElement.class) {
 			switch (derivedFeatureID) {
-				case ViewsPackage.CONTAINER__QUALIFIED_IDENTIFIER:
-					return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
-				default:
-					return -1;
+			case ViewsPackage.CONTAINER__QUALIFIED_IDENTIFIER:
+				return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -234,10 +240,10 @@ public class ContainerImpl extends ViewElementImpl implements Container {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IdentifiedElement.class) {
 			switch (baseFeatureID) {
-				case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-					return ViewsPackage.CONTAINER__QUALIFIED_IDENTIFIER;
-				default:
-					return -1;
+			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+				return ViewsPackage.CONTAINER__QUALIFIED_IDENTIFIER;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

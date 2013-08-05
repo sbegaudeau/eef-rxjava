@@ -58,8 +58,8 @@ import org.eclipse.swt.widgets.Text;
 public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ViewPropertiesEditionPart {
 
 	protected Text name;
+	protected Text label;
 	protected EObjectFlatComboViewer representation;
-	protected Button explicit;
 
 
 
@@ -99,8 +99,8 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		CompositionSequence viewStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = viewStep.addStep(ViewsViewsRepository.View.Properties.class);
 		propertiesStep.addStep(ViewsViewsRepository.View.Properties.name);
+		propertiesStep.addStep(ViewsViewsRepository.View.Properties.label);
 		propertiesStep.addStep(ViewsViewsRepository.View.Properties.representation);
-		propertiesStep.addStep(ViewsViewsRepository.View.Properties.explicit);
 		
 		
 		composer = new PartComposer(viewStep) {
@@ -113,11 +113,11 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 				if (key == ViewsViewsRepository.View.Properties.name) {
 					return createNameText(parent);
 				}
+				if (key == ViewsViewsRepository.View.Properties.label) {
+					return createLabelText(parent);
+				}
 				if (key == ViewsViewsRepository.View.Properties.representation) {
 					return createRepresentationFlatComboViewer(parent);
-				}
-				if (key == ViewsViewsRepository.View.Properties.explicit) {
-					return createExplicitCheckbox(parent);
 				}
 				return parent;
 			}
@@ -189,6 +189,55 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		return parent;
 	}
 
+	
+	protected Composite createLabelText(Composite parent) {
+		createDescription(parent, ViewsViewsRepository.View.Properties.label, ViewsMessages.ViewPropertiesEditionPart_LabelLabel);
+		label = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData labelData = new GridData(GridData.FILL_HORIZONTAL);
+		label.setLayoutData(labelData);
+		label.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewPropertiesEditionPartImpl.this, ViewsViewsRepository.View.Properties.label, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, label.getText()));
+			}
+
+		});
+		label.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewPropertiesEditionPartImpl.this, ViewsViewsRepository.View.Properties.label, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, label.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(label, ViewsViewsRepository.View.Properties.label);
+		EditingUtils.setEEFtype(label, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.View.Properties.label, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createLabelText
+
+		// End of user code
+		return parent;
+	}
+
 	/**
 	 * @param parent the parent composite
 	 * 
@@ -210,36 +259,6 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		representation.setID(ViewsViewsRepository.View.Properties.representation);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.View.Properties.representation, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createRepresentationFlatComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createExplicitCheckbox(Composite parent) {
-		explicit = new Button(parent, SWT.CHECK);
-		explicit.setText(getDescription(ViewsViewsRepository.View.Properties.explicit, ViewsMessages.ViewPropertiesEditionPart_ExplicitLabel));
-		explicit.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ViewPropertiesEditionPartImpl.this, ViewsViewsRepository.View.Properties.explicit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(explicit.getSelection())));
-			}
-
-		});
-		GridData explicitData = new GridData(GridData.FILL_HORIZONTAL);
-		explicitData.horizontalSpan = 2;
-		explicit.setLayoutData(explicitData);
-		EditingUtils.setID(explicit, ViewsViewsRepository.View.Properties.explicit);
-		EditingUtils.setEEFtype(explicit, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(ViewsViewsRepository.View.Properties.explicit, ViewsViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createExplicitCheckbox
 
 		// End of user code
 		return parent;
@@ -286,6 +305,38 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 			name.setToolTipText(ViewsMessages.View_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#getLabel()
+	 * 
+	 */
+	public String getLabel() {
+		return label.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#setLabel(String newValue)
+	 * 
+	 */
+	public void setLabel(String newValue) {
+		if (newValue != null) {
+			label.setText(newValue);
+		} else {
+			label.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.View.Properties.label);
+		if (eefElementEditorReadOnlyState && label.isEnabled()) {
+			label.setEnabled(false);
+			label.setToolTipText(ViewsMessages.View_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !label.isEnabled()) {
+			label.setEnabled(true);
 		}	
 		
 	}
@@ -374,38 +425,6 @@ public class ViewPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 */
 	public void addBusinessFilterToRepresentation(ViewerFilter filter) {
 		representation.addBusinessRuleFilter(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#getExplicit()
-	 * 
-	 */
-	public Boolean getExplicit() {
-		return Boolean.valueOf(explicit.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.views.parts.ViewPropertiesEditionPart#setExplicit(Boolean newValue)
-	 * 
-	 */
-	public void setExplicit(Boolean newValue) {
-		if (newValue != null) {
-			explicit.setSelection(newValue.booleanValue());
-		} else {
-			explicit.setSelection(false);
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(ViewsViewsRepository.View.Properties.explicit);
-		if (eefElementEditorReadOnlyState && explicit.isEnabled()) {
-			explicit.setEnabled(false);
-			explicit.setToolTipText(ViewsMessages.View_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !explicit.isEnabled()) {
-			explicit.setEnabled(true);
-		}	
-		
 	}
 
 

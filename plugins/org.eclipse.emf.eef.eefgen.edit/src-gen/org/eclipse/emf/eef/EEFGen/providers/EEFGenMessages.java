@@ -139,6 +139,9 @@ public class EEFGenMessages extends NLS {
 	
 	public static String GenViewsRepositoryPropertiesEditionPart_PartsSuperClassLabel;
 
+	
+	public static String GenViewsRepositoryPropertiesEditionPart_FormsSuperClassLabel;
+
 
 	
 	public static String PropertiesEditionPart_DocumentationLabel;

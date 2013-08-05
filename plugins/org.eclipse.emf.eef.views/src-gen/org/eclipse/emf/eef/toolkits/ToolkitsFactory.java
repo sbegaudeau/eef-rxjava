@@ -27,7 +27,8 @@ public interface ToolkitsFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ToolkitsFactory eINSTANCE = org.eclipse.emf.eef.toolkits.impl.ToolkitsFactoryImpl.init();
+	ToolkitsFactory eINSTANCE = org.eclipse.emf.eef.toolkits.impl.ToolkitsFactoryImpl
+			.init();
 
 	/**
 	 * Returns a new object of class '<em>Toolkit</em>'.

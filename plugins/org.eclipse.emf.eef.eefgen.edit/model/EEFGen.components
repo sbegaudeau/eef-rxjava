@@ -72,6 +72,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Qd_Z8PhsEd-GdKVgEHzVgw" name="partsSuperClass" views="_GsrQ4PhsEd-GdKVgEHzVgw">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenViewsRepository/partsSuperClass"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Z-qAsP3REeKtteBaHzmwOQ" name="formsSuperClass" views="_W_x0wP3REeKtteBaHzmwOQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenViewsRepository/formsSuperClass"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.eefgen/model/EEFGen.ecore#//GenViewsRepository"/>
       </bindings>
     </categories>
@@ -178,6 +181,9 @@
         <elements xsi:type="eef-views:Container" xmi:id="_FONHwPhsEd-GdKVgEHzVgw" name="Implementation">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_GsrQ4PhsEd-GdKVgEHzVgw" name="partsSuperClass">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_W_x0wP3REeKtteBaHzmwOQ" name="formsSuperClass">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
