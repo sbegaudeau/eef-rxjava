@@ -173,11 +173,27 @@ org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart
 [/if]
 [/template]
 
+[template public formQualifiedSuperclass(view : View) post (trim())]
+[if (view.associatedGenRepository().formsSuperClass.oclIsUndefined() or view.associatedGenRepository().formsSuperClass.size() = 0)]
+org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart
+[else]
+[view.associatedGenRepository().formsSuperClass/]
+[/if]
+[/template]
+
 [template public partSuperclass(view : View) post (trim())]
 [if (view.associatedGenRepository().partsSuperClass.oclIsUndefined() or view.associatedGenRepository().partsSuperClass.size() = 0)]
 CompositePropertiesEditionPart
 [else]
 [view.associatedGenRepository().partsSuperClass.tokenize('.')->last()/]
+[/if]
+[/template]
+
+[template public formSuperclass(view : View) post (trim())]
+[if (view.associatedGenRepository().formsSuperClass.oclIsUndefined() or view.associatedGenRepository().formsSuperClass.size() = 0)]
+SectionPropertiesEditingPart
+[else]
+[view.associatedGenRepository().formsSuperClass.tokenize('.')->last()/]
 [/if]
 [/template]
 

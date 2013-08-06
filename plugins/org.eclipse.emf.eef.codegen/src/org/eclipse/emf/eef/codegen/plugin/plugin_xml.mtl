@@ -97,7 +97,7 @@
 [template public propertyTab(editionContext : PropertiesEditionContext, basePackage : String, view : View, pec : PropertiesEditionComponent)]
          <propertyTab
                id="[view.genTabId(pec)/]"
-               label="[view.viewKey(pec)/]"
+               label="[view.genTabLabel(pec)/]"
 [if (pec.involvedViews()->indexOf(view) > 1)]
                category="extended"
                afterTab="[pec.previousView(view).genTabId(pec)/]">
@@ -114,6 +114,14 @@ org.eclipse.gmf.runtime.common.ui.services.util.CommonLabelProvider
 
 [query public genTabId (view : View, pec : PropertiesEditionComponent) : String = 
 view.viewKey(pec).toASCII()/]
+
+[template public genTabLabel(view : View, pec : PropertiesEditionComponent) post (trim())]
+[if (view.label.oclIsUndefined())]
+	[view.viewKey(pec)/]
+[else]
+	[view.label/]
+[/if]
+[/template]
 
 [query public previousView(pec : PropertiesEditionComponent, view : View) : View = 
 	pec.involvedViews()->at(pec.involvedViews()->asOrderedSet()->indexOf(view) -1 ).oclAsType(View)/]

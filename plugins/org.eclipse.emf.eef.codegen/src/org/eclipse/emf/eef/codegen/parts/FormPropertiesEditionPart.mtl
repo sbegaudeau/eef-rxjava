@@ -90,7 +90,7 @@ package [view.partsFormPackage()/];[addImports(Sequence{
  * [peContext.associatedGenModel().authorText().trim()/]
  * [peContext.associatedGenModel().generationMark()/]
  */
-public class [view.pepFormClass()/] extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, [include(view.pepQualifiedInterface())/] {
+public class [view.pepFormClass()/] extends [include(view.formQualifiedSuperclass())/] implements IFormPropertiesEditionPart, [include(view.pepQualifiedInterface())/] {
 
 [for (editor : ElementEditor | view.eAllContents(ElementEditor))]
 [editor.widgetDeclaration()/]
