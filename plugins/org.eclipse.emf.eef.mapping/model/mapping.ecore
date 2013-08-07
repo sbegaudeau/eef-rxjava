@@ -62,6 +62,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="navigation" eType="#//navigation/ModelNavigation"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="editorSetting" eType="#//settings/EditorSettings"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StandardElementBinding" eSuperTypes="#//AbstractElementBinding">
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="#//ModelElement"
@@ -178,5 +180,15 @@
         eSuperTypes="#//filters/StepFilter"/>
     <eClassifiers xsi:type="ecore:EClass" name="JavaBodyStepFilter" eSuperTypes="#//navigation/JavaBodyExpression #//filters/JavaStepFilter"/>
     <eClassifiers xsi:type="ecore:EClass" name="JavaDeclarationStepFilter" eSuperTypes="#//navigation/JavaDeclarationExpression #//filters/JavaStepFilter"/>
+  </eSubpackages>
+  <eSubpackages name="settings" nsURI="http://www.eclipse.org/emf/eef/mapping/settings/1.0.0"
+      nsPrefix="eef-mapping-settings">
+    <eClassifiers xsi:type="ecore:EClass" name="EditorSettings" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EReferenceViewerSettings" eSuperTypes="#//settings/EditorSettings">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1"
+          eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EReference"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="filter" eType="#//filters/StepFilter"
+          containment="true"/>
+    </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

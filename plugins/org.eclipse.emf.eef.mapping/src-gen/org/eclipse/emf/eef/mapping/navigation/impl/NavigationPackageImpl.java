@@ -36,6 +36,8 @@ import org.eclipse.emf.eef.mapping.navigation.SimpleModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.SmartModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.StepInitializer;
 import org.eclipse.emf.eef.mapping.navigation.StructuredModelNavigation;
+import org.eclipse.emf.eef.mapping.settings.SettingsPackage;
+import org.eclipse.emf.eef.mapping.settings.impl.SettingsPackageImpl;
 import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**
@@ -205,16 +207,22 @@ public class NavigationPackageImpl extends EPackageImpl implements
 		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(FiltersPackage.eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(FiltersPackage.eNS_URI) : FiltersPackage.eINSTANCE);
+		SettingsPackageImpl theSettingsPackage = (SettingsPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(SettingsPackage.eNS_URI) instanceof SettingsPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(SettingsPackage.eNS_URI)
+				: SettingsPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theNavigationPackage.createPackageContents();
 		theMappingPackage.createPackageContents();
 		theFiltersPackage.createPackageContents();
+		theSettingsPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theNavigationPackage.initializePackageContents();
 		theMappingPackage.initializePackageContents();
 		theFiltersPackage.initializePackageContents();
+		theSettingsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theNavigationPackage.freeze();

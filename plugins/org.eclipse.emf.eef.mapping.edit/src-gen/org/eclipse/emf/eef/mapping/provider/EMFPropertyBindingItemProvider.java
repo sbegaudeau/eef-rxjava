@@ -33,6 +33,7 @@ import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.navigation.CustomModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.NavigationFactory;
+import org.eclipse.emf.eef.mapping.settings.SettingsFactory;
 import org.eclipse.emf.eef.mapping.navigation.NavigationStep;
 import org.eclipse.emf.eef.mapping.navigation.SmartModelNavigation;
 import org.eclipse.emf.eef.mapping.navigation.StructuredModelNavigation;
@@ -98,6 +99,8 @@ public class EMFPropertyBindingItemProvider extends
 			super.getChildrenFeatures(object);
 			childrenFeatures
 					.add(MappingPackage.Literals.EMF_PROPERTY_BINDING__NAVIGATION);
+			childrenFeatures
+					.add(MappingPackage.Literals.EMF_PROPERTY_BINDING__EDITOR_SETTING);
 		}
 		return childrenFeatures;
 	}
@@ -232,6 +235,7 @@ public class EMFPropertyBindingItemProvider extends
 
 		switch (notification.getFeatureID(EMFPropertyBinding.class)) {
 		case MappingPackage.EMF_PROPERTY_BINDING__NAVIGATION:
+		case MappingPackage.EMF_PROPERTY_BINDING__EDITOR_SETTING:
 			fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 			return;
@@ -266,6 +270,10 @@ public class EMFPropertyBindingItemProvider extends
 		newChildDescriptors.add(createChildParameter(
 				MappingPackage.Literals.EMF_PROPERTY_BINDING__NAVIGATION,
 				NavigationFactory.eINSTANCE.createSmartModelNavigation()));
+
+		newChildDescriptors.add(createChildParameter(
+				MappingPackage.Literals.EMF_PROPERTY_BINDING__EDITOR_SETTING,
+				SettingsFactory.eINSTANCE.createEReferenceViewerSettings()));
 	}
 
 }

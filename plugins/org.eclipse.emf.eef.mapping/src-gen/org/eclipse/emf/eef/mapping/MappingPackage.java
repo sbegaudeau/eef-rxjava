@@ -613,13 +613,22 @@ public interface MappingPackage extends EPackage {
 	int EMF_PROPERTY_BINDING__NAVIGATION = ABSTRACT_PROPERTY_BINDING_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Editor Setting</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_PROPERTY_BINDING__EDITOR_SETTING = ABSTRACT_PROPERTY_BINDING_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>EMF Property Binding</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMF_PROPERTY_BINDING_FEATURE_COUNT = ABSTRACT_PROPERTY_BINDING_FEATURE_COUNT + 2;
+	int EMF_PROPERTY_BINDING_FEATURE_COUNT = ABSTRACT_PROPERTY_BINDING_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.mapping.impl.StandardElementBindingImpl <em>Standard Element Binding</em>}' class.
@@ -1330,6 +1339,17 @@ public interface MappingPackage extends EPackage {
 	EReference getEMFPropertyBinding_Navigation();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.eef.mapping.EMFPropertyBinding#getEditorSetting <em>Editor Setting</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Editor Setting</em>'.
+	 * @see org.eclipse.emf.eef.mapping.EMFPropertyBinding#getEditorSetting()
+	 * @see #getEMFPropertyBinding()
+	 * @generated
+	 */
+	EReference getEMFPropertyBinding_EditorSetting();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.mapping.StandardElementBinding <em>Standard Element Binding</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1805,6 +1825,15 @@ public interface MappingPackage extends EPackage {
 		 */
 		EReference EMF_PROPERTY_BINDING__NAVIGATION = eINSTANCE
 				.getEMFPropertyBinding_Navigation();
+
+		/**
+		 * The meta object literal for the '<em><b>Editor Setting</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EMF_PROPERTY_BINDING__EDITOR_SETTING = eINSTANCE
+				.getEMFPropertyBinding_EditorSetting();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.mapping.impl.StandardElementBindingImpl <em>Standard Element Binding</em>}' class.

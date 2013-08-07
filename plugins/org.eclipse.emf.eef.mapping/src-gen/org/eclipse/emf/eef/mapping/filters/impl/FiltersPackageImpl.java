@@ -34,6 +34,8 @@ import org.eclipse.emf.eef.mapping.filters.StrictTypingFilter;
 import org.eclipse.emf.eef.mapping.impl.MappingPackageImpl;
 import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
 import org.eclipse.emf.eef.mapping.navigation.impl.NavigationPackageImpl;
+import org.eclipse.emf.eef.mapping.settings.SettingsPackage;
+import org.eclipse.emf.eef.mapping.settings.impl.SettingsPackageImpl;
 import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**
@@ -189,16 +191,22 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 				.getEPackage(NavigationPackage.eNS_URI) instanceof NavigationPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(NavigationPackage.eNS_URI)
 				: NavigationPackage.eINSTANCE);
+		SettingsPackageImpl theSettingsPackage = (SettingsPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(SettingsPackage.eNS_URI) instanceof SettingsPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(SettingsPackage.eNS_URI)
+				: SettingsPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theFiltersPackage.createPackageContents();
 		theMappingPackage.createPackageContents();
 		theNavigationPackage.createPackageContents();
+		theSettingsPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theFiltersPackage.initializePackageContents();
 		theMappingPackage.initializePackageContents();
 		theNavigationPackage.initializePackageContents();
+		theSettingsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theFiltersPackage.freeze();
