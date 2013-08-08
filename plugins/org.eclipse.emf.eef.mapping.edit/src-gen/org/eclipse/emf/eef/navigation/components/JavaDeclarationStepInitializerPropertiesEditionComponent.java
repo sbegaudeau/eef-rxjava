@@ -78,13 +78,14 @@ public class JavaDeclarationStepInitializerPropertiesEditionComponent extends Si
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final JavaDeclarationStepInitializer javaDeclarationStepInitializer = (JavaDeclarationStepInitializer)elt;
 			final JavaDeclarationStepInitializerPropertiesEditionPart basePart = (JavaDeclarationStepInitializerPropertiesEditionPart)editingPart;
 			// init values
-			if (javaDeclarationStepInitializer.getQualifiedClass() != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.qualifiedClass))
+			if (isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.qualifiedClass))
 				basePart.setQualifiedClass(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, javaDeclarationStepInitializer.getQualifiedClass()));
 			
-			if (javaDeclarationStepInitializer.getMethodName() != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter))
+			if (isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter))
 				basePart.setMethodFilter(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, javaDeclarationStepInitializer.getMethodName()));
 			
 			if (isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.staticMethod)) {
@@ -147,23 +148,24 @@ public class JavaDeclarationStepInitializerPropertiesEditionComponent extends Si
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			JavaDeclarationStepInitializerPropertiesEditionPart basePart = (JavaDeclarationStepInitializerPropertiesEditionPart)editingPart;
-			if (NavigationPackage.eINSTANCE.getJavaDeclarationExpression_QualifiedClass().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.qualifiedClass)) {
+			if (NavigationPackage.eINSTANCE.getJavaDeclarationExpression_QualifiedClass().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.qualifiedClass)) {
 				if (msg.getNewValue() != null) {
 					basePart.setQualifiedClass(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setQualifiedClass("");
 				}
 			}
-			if (NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter)) {
+			if (NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter)) {
 				if (msg.getNewValue() != null) {
 					basePart.setMethodFilter(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setMethodFilter("");
 				}
 			}
-			if (NavigationPackage.eINSTANCE.getJavaDeclarationExpression_StaticMethod().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.staticMethod))
+			if (NavigationPackage.eINSTANCE.getJavaDeclarationExpression_StaticMethod().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.staticMethod))
 				basePart.setStaticMethod((Boolean)msg.getNewValue());
 			
 			
@@ -180,7 +182,7 @@ public class JavaDeclarationStepInitializerPropertiesEditionComponent extends Si
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_QualifiedClass(),
 			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_MethodName(),
-			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_StaticMethod());
+			NavigationPackage.eINSTANCE.getJavaDeclarationExpression_StaticMethod()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -234,5 +236,8 @@ public class JavaDeclarationStepInitializerPropertiesEditionComponent extends Si
 		}
 		return ret;
 	}
+
+
+	
 
 }

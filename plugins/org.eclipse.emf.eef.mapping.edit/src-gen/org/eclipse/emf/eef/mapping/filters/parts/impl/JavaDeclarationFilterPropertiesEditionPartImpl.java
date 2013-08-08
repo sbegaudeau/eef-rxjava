@@ -172,6 +172,9 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 		EditingUtils.setID(methodName, FiltersViewsRepository.JavaDeclarationFilter.FilterExpression.methodName);
 		EditingUtils.setEEFtype(methodName, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.JavaDeclarationFilter.FilterExpression.methodName, FiltersViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createMethodNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -218,6 +221,14 @@ public class JavaDeclarationFilterPropertiesEditionPartImpl extends CompositePro
 		} else {
 			methodName.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FiltersViewsRepository.JavaDeclarationFilter.FilterExpression.methodName);
+		if (eefElementEditorReadOnlyState && methodName.isEnabled()) {
+			methodName.setEnabled(false);
+			methodName.setToolTipText(FiltersMessages.JavaDeclarationFilter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !methodName.isEnabled()) {
+			methodName.setEnabled(true);
+		}	
+		
 	}
 
 

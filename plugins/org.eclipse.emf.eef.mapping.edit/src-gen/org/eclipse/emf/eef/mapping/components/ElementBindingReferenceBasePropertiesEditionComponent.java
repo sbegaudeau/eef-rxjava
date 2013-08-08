@@ -79,6 +79,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ElementBindingReference elementBindingReference = (ElementBindingReference)elt;
 			final ElementBindingReferencePropertiesEditionPart basePart = (ElementBindingReferencePropertiesEditionPart)editingPart;
 			// init values
@@ -157,6 +158,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ElementBindingReferencePropertiesEditionPart basePart = (ElementBindingReferencePropertiesEditionPart)editingPart;
 			if (MappingPackage.eINSTANCE.getElementBindingReference_Binding().equals(msg.getFeature()) && basePart != null && isAccessible(MappingViewsRepository.ElementBindingReference.Reference.binding))
@@ -173,7 +175,7 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			MappingPackage.eINSTANCE.getElementBindingReference_Binding());
+			MappingPackage.eINSTANCE.getElementBindingReference_Binding()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -218,5 +220,8 @@ public class ElementBindingReferenceBasePropertiesEditionComponent extends Singl
 		}
 		return ret;
 	}
+
+
+	
 
 }

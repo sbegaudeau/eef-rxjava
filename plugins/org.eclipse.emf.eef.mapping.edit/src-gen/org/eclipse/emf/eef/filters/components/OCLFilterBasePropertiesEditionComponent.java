@@ -69,10 +69,11 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final OCLFilter oCLFilter = (OCLFilter)elt;
 			final OCLFilterPropertiesEditionPart basePart = (OCLFilterPropertiesEditionPart)editingPart;
 			// init values
-			if (oCLFilter.getOCLBody() != null && isAccessible(FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody))
+			if (isAccessible(FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody))
 				basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, oCLFilter.getOCLBody()));
 			// init filters
 			
@@ -120,9 +121,10 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			OCLFilterPropertiesEditionPart basePart = (OCLFilterPropertiesEditionPart)editingPart;
-			if (FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody)){
+			if (FiltersPackage.eINSTANCE.getOCLFilter_OCLBody().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody)){
 				if (msg.getNewValue() != null) {
 					basePart.setOCLExpressionBody(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -143,7 +145,7 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			FiltersPackage.eINSTANCE.getBindingFilter_Name(),
 			FiltersPackage.eINSTANCE.getBindingFilter_Mandatory(),
-			FiltersPackage.eINSTANCE.getOCLFilter_OCLBody());
+			FiltersPackage.eINSTANCE.getOCLFilter_OCLBody()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -187,5 +189,8 @@ public class OCLFilterBasePropertiesEditionComponent extends SinglePartPropertie
 		}
 		return ret;
 	}
+
+
+	
 
 }

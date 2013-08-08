@@ -28,7 +28,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface DeclarativeNavigationStepPropertiesEditionPart {
 
-
 	/**
 	 * @return the index
 	 * 

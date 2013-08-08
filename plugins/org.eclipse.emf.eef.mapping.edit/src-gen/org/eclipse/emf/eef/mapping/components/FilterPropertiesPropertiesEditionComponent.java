@@ -68,10 +68,11 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final BindingFilter bindingFilter = (BindingFilter)elt;
 			final FilterPropertiesPropertiesEditionPart filterPropertiesPart = (FilterPropertiesPropertiesEditionPart)editingPart;
 			// init values
-			if (bindingFilter.getName() != null && isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.name))
+			if (isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.name))
 				filterPropertiesPart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, bindingFilter.getName()));
 			
 			if (isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory)) {
@@ -126,16 +127,17 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			FilterPropertiesPropertiesEditionPart filterPropertiesPart = (FilterPropertiesPropertiesEditionPart)editingPart;
-			if (FiltersPackage.eINSTANCE.getBindingFilter_Name().equals(msg.getFeature()) && filterPropertiesPart != null && isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.name)) {
+			if (FiltersPackage.eINSTANCE.getBindingFilter_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && filterPropertiesPart != null && isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.name)) {
 				if (msg.getNewValue() != null) {
 					filterPropertiesPart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					filterPropertiesPart.setName("");
 				}
 			}
-			if (FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().equals(msg.getFeature()) && filterPropertiesPart != null && isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory))
+			if (FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && filterPropertiesPart != null && isAccessible(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory))
 				filterPropertiesPart.setMandatory((Boolean)msg.getNewValue());
 			
 			
@@ -151,7 +153,7 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			FiltersPackage.eINSTANCE.getBindingFilter_Name(),
-			FiltersPackage.eINSTANCE.getBindingFilter_Mandatory());
+			FiltersPackage.eINSTANCE.getBindingFilter_Mandatory()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -188,5 +190,8 @@ public class FilterPropertiesPropertiesEditionComponent extends SinglePartProper
 		}
 		return ret;
 	}
+
+
+	
 
 }

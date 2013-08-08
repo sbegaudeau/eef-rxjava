@@ -195,6 +195,9 @@ public class JavaBodyStepFilterPropertiesEditionPartForm extends SectionProperti
 		EditingUtils.setID(body, FiltersViewsRepository.JavaBodyStepFilter.Properties.body);
 		EditingUtils.setEEFtype(body, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.JavaBodyStepFilter.Properties.body, FiltersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createBodyTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -233,6 +236,15 @@ public class JavaBodyStepFilterPropertiesEditionPartForm extends SectionProperti
 		} else {
 			body.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FiltersViewsRepository.JavaBodyStepFilter.Properties.body);
+		if (eefElementEditorReadOnlyState && body.isEnabled()) {
+			body.setEnabled(false);
+			body.setBackground(body.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			body.setToolTipText(FiltersMessages.JavaBodyStepFilter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !body.isEnabled()) {
+			body.setEnabled(true);
+		}	
+		
 	}
 
 

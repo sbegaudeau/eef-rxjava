@@ -68,10 +68,11 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Category category = (Category)elt;
 			final CategoryPropertiesEditionPart basePart = (CategoryPropertiesEditionPart)editingPart;
 			// init values
-			if (category.getName() != null && isAccessible(MappingViewsRepository.Category.Properties.name))
+			if (isAccessible(MappingViewsRepository.Category.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, category.getName()));
 			
 			// init filters
@@ -115,9 +116,10 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			CategoryPropertiesEditionPart basePart = (CategoryPropertiesEditionPart)editingPart;
-			if (MappingPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && basePart != null && isAccessible(MappingViewsRepository.Category.Properties.name)) {
+			if (MappingPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(MappingViewsRepository.Category.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -136,7 +138,7 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			MappingPackage.eINSTANCE.getCategory_Name());
+			MappingPackage.eINSTANCE.getCategory_Name()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -176,5 +178,8 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 		}
 		return ret;
 	}
+
+
+	
 
 }

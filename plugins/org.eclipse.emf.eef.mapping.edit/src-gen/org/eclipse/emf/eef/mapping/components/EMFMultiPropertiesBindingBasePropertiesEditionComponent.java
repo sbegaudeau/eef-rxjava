@@ -86,10 +86,11 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final EMFMultiPropertiesBinding eMFMultiPropertiesBinding = (EMFMultiPropertiesBinding)elt;
 			final EMFMultiPropertiesBindingPropertiesEditionPart basePart = (EMFMultiPropertiesBindingPropertiesEditionPart)editingPart;
 			// init values
-			if (eMFMultiPropertiesBinding.getName() != null && isAccessible(MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name))
+			if (isAccessible(MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eMFMultiPropertiesBinding.getName()));
 			
 			if (isAccessible(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views)) {
@@ -103,40 +104,12 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 			// init filters
 			
 			if (isAccessible(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views)) {
-				basePart.addFilterToViews(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInViewsTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
 				basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.ELEMENT_EDITOR));
 				// Start of user code for additional businessfilters for views
 				
 				// End of user code
 			}
 			if (isAccessible(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model)) {
-				basePart.addFilterToModel(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInModelTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
 				basePart.addFilterToModel(new EObjectFilter(EcorePackage.Literals.ESTRUCTURAL_FEATURE));
 				// Start of user code for additional businessfilters for model
 				
@@ -211,9 +184,10 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EMFMultiPropertiesBindingPropertiesEditionPart basePart = (EMFMultiPropertiesBindingPropertiesEditionPart)editingPart;
-			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name)) {
+			if (MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -238,7 +212,7 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			MappingPackage.eINSTANCE.getAbstractPropertyBinding_Name(),
 			MappingPackage.eINSTANCE.getAbstractPropertyBinding_Views(),
-			MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model());
+			MappingPackage.eINSTANCE.getEMFMultiPropertiesBinding_Model()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -294,5 +268,8 @@ public class EMFMultiPropertiesBindingBasePropertiesEditionComponent extends Sin
 		}
 		return ret;
 	}
+
+
+	
 
 }

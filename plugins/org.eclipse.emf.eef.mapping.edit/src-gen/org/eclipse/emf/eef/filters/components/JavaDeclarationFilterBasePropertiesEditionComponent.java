@@ -69,10 +69,11 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final JavaDeclarationFilter javaDeclarationFilter = (JavaDeclarationFilter)elt;
 			final JavaDeclarationFilterPropertiesEditionPart basePart = (JavaDeclarationFilterPropertiesEditionPart)editingPart;
 			// init values
-			if (javaDeclarationFilter.getMethodName() != null && isAccessible(FiltersViewsRepository.JavaDeclarationFilter.FilterExpression.methodName))
+			if (isAccessible(FiltersViewsRepository.JavaDeclarationFilter.FilterExpression.methodName))
 				basePart.setMethodName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, javaDeclarationFilter.getMethodName()));
 			
 			// init filters
@@ -121,9 +122,10 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			JavaDeclarationFilterPropertiesEditionPart basePart = (JavaDeclarationFilterPropertiesEditionPart)editingPart;
-			if (FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.JavaDeclarationFilter.FilterExpression.methodName)) {
+			if (FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FiltersViewsRepository.JavaDeclarationFilter.FilterExpression.methodName)) {
 				if (msg.getNewValue() != null) {
 					basePart.setMethodName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -144,7 +146,7 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			FiltersPackage.eINSTANCE.getBindingFilter_Name(),
 			FiltersPackage.eINSTANCE.getBindingFilter_Mandatory(),
-			FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName());
+			FiltersPackage.eINSTANCE.getJavaDeclarationFilter_MethodName()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -188,5 +190,8 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 		}
 		return ret;
 	}
+
+
+	
 
 }

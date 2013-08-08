@@ -152,6 +152,9 @@ public class StrictTypingFilterPropertiesEditionPartImpl extends CompositeProper
 		restriction.setLayoutData(restrictionData);
 		restriction.setID(FiltersViewsRepository.StrictTypingFilter.Type.restriction);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.StrictTypingFilter.Type.restriction, FiltersViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createRestrictionFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -201,6 +204,14 @@ public class StrictTypingFilterPropertiesEditionPartImpl extends CompositeProper
 		if (current != null) {
 			restriction.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FiltersViewsRepository.StrictTypingFilter.Type.restriction);
+		if (eefElementEditorReadOnlyState && restriction.isEnabled()) {
+			restriction.setEnabled(false);
+			restriction.setToolTipText(FiltersMessages.StrictTypingFilter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !restriction.isEnabled()) {
+			restriction.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -215,6 +226,14 @@ public class StrictTypingFilterPropertiesEditionPartImpl extends CompositeProper
 		} else {
 			restriction.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FiltersViewsRepository.StrictTypingFilter.Type.restriction);
+		if (eefElementEditorReadOnlyState && restriction.isEnabled()) {
+			restriction.setEnabled(false);
+			restriction.setToolTipText(FiltersMessages.StrictTypingFilter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !restriction.isEnabled()) {
+			restriction.setEnabled(true);
+		}	
+		
 	}
 
 	/**

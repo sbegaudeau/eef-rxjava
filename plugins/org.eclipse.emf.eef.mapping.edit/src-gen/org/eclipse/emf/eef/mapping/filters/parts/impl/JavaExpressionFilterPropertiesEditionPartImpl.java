@@ -157,6 +157,9 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		EditingUtils.setID(javaExpressionBody, FiltersViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody);
 		EditingUtils.setEEFtype(javaExpressionBody, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody, FiltersViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createJavaExpressionBodyTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -203,6 +206,15 @@ public class JavaExpressionFilterPropertiesEditionPartImpl extends CompositeProp
 		} else {
 			javaExpressionBody.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FiltersViewsRepository.JavaExpressionFilter.FilterExpression.javaExpressionBody);
+		if (eefElementEditorReadOnlyState && javaExpressionBody.isEnabled()) {
+			javaExpressionBody.setEnabled(false);
+			javaExpressionBody.setBackground(javaExpressionBody.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			javaExpressionBody.setToolTipText(FiltersMessages.JavaExpressionFilter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !javaExpressionBody.isEnabled()) {
+			javaExpressionBody.setEnabled(true);
+		}	
+		
 	}
 
 

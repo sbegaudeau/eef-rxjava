@@ -198,6 +198,9 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		EditingUtils.setID(name, MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -415,6 +418,14 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(MappingViewsRepository.EMFMultiPropertiesBinding.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(MappingMessages.EMFMultiPropertiesBinding_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -430,6 +441,14 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		model.setContentProvider(contentProvider);
 		model.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.model);
+		if (eefElementEditorReadOnlyState && model.getTable().isEnabled()) {
+			model.setEnabled(false);
+			model.setToolTipText(MappingMessages.EMFMultiPropertiesBinding_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !model.getTable().isEnabled()) {
+			model.setEnabled(true);
+		}
+		
 	}
 
 	/**
@@ -485,6 +504,14 @@ public class EMFMultiPropertiesBindingPropertiesEditionPartImpl extends Composit
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		views.setContentProvider(contentProvider);
 		views.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(MappingViewsRepository.EMFMultiPropertiesBinding.Binding.views);
+		if (eefElementEditorReadOnlyState && views.getTable().isEnabled()) {
+			views.setEnabled(false);
+			views.setToolTipText(MappingMessages.EMFMultiPropertiesBinding_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !views.getTable().isEnabled()) {
+			views.setEnabled(true);
+		}
+		
 	}
 
 	/**

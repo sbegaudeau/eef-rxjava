@@ -159,6 +159,9 @@ public class JavaBodyStepInitializerPropertiesEditionPartImpl extends CompositeP
 		EditingUtils.setID(body, NavigationViewsRepository.JavaBodyStepInitializer.Properties.body);
 		EditingUtils.setEEFtype(body, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.JavaBodyStepInitializer.Properties.body, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createBodyTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -197,6 +200,15 @@ public class JavaBodyStepInitializerPropertiesEditionPartImpl extends CompositeP
 		} else {
 			body.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.JavaBodyStepInitializer.Properties.body);
+		if (eefElementEditorReadOnlyState && body.isEnabled()) {
+			body.setEnabled(false);
+			body.setBackground(body.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			body.setToolTipText(NavigationMessages.JavaBodyStepInitializer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !body.isEnabled()) {
+			body.setEnabled(true);
+		}	
+		
 	}
 
 
