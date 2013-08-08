@@ -135,7 +135,7 @@
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/JavaDeclarationExpression/qualifiedClass"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6PuU8PDuEeGwi5CNeA0hsQ" name="methodFilter" views="_y2Pl8PDuEeGwi5CNeA0hsQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/JavaDeclarationExpression/methodFilter"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/JavaDeclarationExpression/methodName"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_8r-U8PDuEeGwi5CNeA0hsQ" name="staticMethod" views="_0uL_APDuEeGwi5CNeA0hsQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/JavaDeclarationExpression/staticMethod"/>
@@ -198,7 +198,7 @@
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/JavaDeclarationExpression/qualifiedClass"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_r-7TYPDvEeGwi5CNeA0hsQ" name="methodFilter" views="_elxg8PDvEeGwi5CNeA0hsQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/JavaDeclarationExpression/methodFilter"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/JavaDeclarationExpression/methodName"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_uH4j8PDvEeGwi5CNeA0hsQ" name="staticMethod" views="_gaqmAPDvEeGwi5CNeA0hsQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//navigation/JavaDeclarationExpression/staticMethod"/>
@@ -213,6 +213,17 @@
       </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.genmodel#//mapping/filters"/>
+  </eef-components:PropertiesEditionContext>
+  <eef-components:PropertiesEditionContext xmi:id="_s_oE2w5dvEeG64oJE_RBOAA" documentation="Edition Context for settings GenPackage">
+    <categories xmi:id="_hJc5AA_UEd6yj789UZfl5Q" name="settings">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_1fQDAAACEeOJvY7TgcJYdA" name="EReferenceViewerSettings" views="_DOFxkAADEeOJvY7TgcJYdA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__e8mUAACEeOJvY7TgcJYdA" name="model" views="_GEuAcAADEeOJvY7TgcJYdA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//settings/EReferenceViewerSettings/model"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.ecore#//settings/EReferenceViewerSettings"/>
+      </bindings>
+    </categories>
+    <model href="platform:/resource/org.eclipse.emf.eef.mapping/model/mapping.genmodel#//mapping/settings"/>
   </eef-components:PropertiesEditionContext>
   <eef-views:ViewsRepository xmi:id="_btT4-Qd2Ed6c_JoEf-t5JA" documentation="Views repository for mapping GenPackage" name="common">
     <RepositoryKind>SWT</RepositoryKind>
@@ -476,6 +487,17 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_3mqLgPDvEeGwi5CNeA0hsQ" name="body">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
+        </elements>
+      </views>
+    </categories>
+  </eef-views:ViewsRepository>
+  <eef-views:ViewsRepository xmi:id="_s_pTFA54zed64oJE_RBOAA" documentation="Views repository for settings GenPackage" name="settings">
+    <RepositoryKind>SWT</RepositoryKind>
+    <RepositoryKind>Form</RepositoryKind>
+    <categories xmi:id="_QVvfsA_eEd6yj5ZmUZfl5Q" name="settings">
+      <views xmi:id="_DOFxkAADEeOJvY7TgcJYdA" name="Settings">
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_GEuAcAADEeOJvY7TgcJYdA" name="model">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
         </elements>
       </views>
     </categories>
