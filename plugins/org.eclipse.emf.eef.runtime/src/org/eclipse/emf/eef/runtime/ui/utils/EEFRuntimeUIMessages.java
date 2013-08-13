@@ -32,7 +32,7 @@ public class EEFRuntimeUIMessages extends NLS {
 	public static String AbstractEEFMasterPart_viewer_not_defined_on_selection_listener_adding;
 
 	public static String AdvancedEObjectFlatComboViewer_remove_tooltip;
-
+	
 	public static String AdvancedEObjectFlatComboViewer_set_tooltip;
 
 	public static String EditPropertyWizard_main_page_description;
@@ -68,6 +68,8 @@ public class EEFRuntimeUIMessages extends NLS {
 	public static String FlatReferencesTable_featureEditor_title;
 
 	public static String FlatReferencesTable_nothing_to_do;
+	
+	public static String LinkEReferenceViewer_add_tooltip;
 
 	public static String ModelChooserDialog_choose_model;
 

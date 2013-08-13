@@ -147,7 +147,7 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 		} else {
 			if (event instanceof PropertiesEditionEvent && (!(event.getKind() == PropertiesEditionEvent.EDIT)) && associatedFeature(event.getAffectedEditor()) != null) {
 				Object currentValue = semanticObject.eGet(associatedFeature(event.getAffectedEditor()));
-				return (currentValue == null && event.getNewValue() != null)
+				return (currentValue == null && (event.getNewValue() != null || event.getKind() == PropertiesEditionEvent.ADD))
 						|| (currentValue != null && !currentValue.equals(event.getNewValue()));
 			}
 		}

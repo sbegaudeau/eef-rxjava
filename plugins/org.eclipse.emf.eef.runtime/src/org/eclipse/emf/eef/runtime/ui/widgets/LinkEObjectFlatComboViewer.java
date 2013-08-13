@@ -1,67 +1,47 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2013 CEA LIST and others.
+ * Copyright (c) 2008, 2013 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Patrick Tessier (CEA LIST) Patrick.tessier@cea.fr - Initial API and implementation
- *     Obeo - Some improvements
+ *     Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.ui.widgets;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
-import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.MouseAdapter;
-import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Link;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.widgets.ExpandableComposite;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
- * This is an Abstract class use to display a label with the referenced named
- * Element For example type of a property
+ * AdvancedEObjectFlatComboViewer with a link to set the element properties.
  * 
- * @author Patrick Tessier
- * @author <a href="mailto:jerome.benois@obeo.fr">Jerome Benois</a>
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lépine</a>
  */
 public class LinkEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatComboViewer {
 
-
 	/** Associated link. */
 	protected Link valueLink;
-
+	
 	/**
-	 * the constructor of this display
+	 * Constructor from super class
 	 * 
-	 * @param labeltoDisplay
-	 *            use to display the name is the label
-	 * @param filter
-	 *            use to look for the good element
+	 * @param dialogTitle
+	 * @param input Object
+	 * @param filter ViewerFilter
+	 * @param adapterFactory AdapterFactory
+	 * @param callback EObjectFlatComboViewerListener
 	 */
 	public LinkEObjectFlatComboViewer(String dialogTitle, Object input,
 			ViewerFilter filter, AdapterFactory adapterFactory,
@@ -69,40 +49,24 @@ public class LinkEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatCombo
 		super(dialogTitle, input, filter, adapterFactory, callback);
 	}
 
+	/** (non-Javadoc)
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.AbstractAdvancedEObjectFlatComboViewer#createLabels(org.eclipse.swt.widgets.Composite)
+	 */
 	protected void createLabels(Composite parent) {
-		// Display label
-		// final Label displayLabel = createLabel(parent, dialogTitle,
-		// SWT.NONE);
-		// FormData data = new FormData();
-		// data.left = new FormAttachment(0, 0);
-		// data.top = new FormAttachment(0, 0);
-		// displayLabel.setLayoutData(data);
-
-		// Value Label
 		String value = UNDEFINED_VALUE;
 		if (selection != null) {
 			value = labelProvider.getText(selection);
 		}
 		this.valueLink = createLink(parent, value, SWT.NONE);
-		// valueText.setEditable(false);
-		// TODO set background color and dispose!
-		// valueText.setEnabled(false);
-		// valueText.setBackground(...);
 		FormData data = new FormData();
-		// data.left = new FormAttachment(displayLabel, 5);
 		data.left = new FormAttachment(0, 0);
 		data.right = new FormAttachment(browseButton, 0);
 		data.top = new FormAttachment(0, 1);
 		valueLink.setLayoutData(data);
-		// valueText.addMouseListener(new MouseAdapter() {
-		// @Override
-		// public void mouseDoubleClick(MouseEvent e) {
-		// callback.navigateTo(selection);
-		// }
-		// });
 		valueLink.addSelectionListener(new SelectionAdapter() {
-			@SuppressWarnings("unchecked")
-			@Override
+			/** (non-Javadoc)
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 */
 			public void widgetSelected(SelectionEvent e) {
 				EObject editedElement = getSelection();
 				handleEdit(editedElement);
@@ -110,15 +74,22 @@ public class LinkEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatCombo
 		});
 	}
 
+	/**
+	 * @param parent Composite
+	 * @param value String
+	 * @param style
+	 * @return the created Link
+	 */
 	private Link createLink(Composite parent, String value, int style) {
 		Link link = new Link(parent, style);
 		link.setText(value);
-		EditingUtils.setEEFtype(field,
-		"eef::LinkEObjectFlatComboViewer::link");
+		EditingUtils.setEEFtype(field, "eef::LinkEObjectFlatComboViewer::link");
 		return link;
 	}
 
-	@SuppressWarnings("unchecked")
+	/** (non-Javadoc)
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.AbstractAdvancedEObjectFlatComboViewer#setSelection(org.eclipse.jface.viewers.ISelection)
+	 */
 	public void setSelection(ISelection selection) {
 		if (selection instanceof StructuredSelection) {
 			StructuredSelection structuredSelection = (StructuredSelection) selection;
@@ -127,11 +98,13 @@ public class LinkEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatCombo
 				setSelection((EObject) structuredSelection.getFirstElement());
 			} else {
 				this.valueLink.setText(UNDEFINED_VALUE);
-				// this.parent.pack();
 			}
 		}
 	}
 
+	/** (non-Javadoc)
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.AbstractAdvancedEObjectFlatComboViewer#setSelection(org.eclipse.emf.ecore.EObject)
+	 */
 	public void setSelection(EObject selection) {
 		this.selection = selection;
 		String text = labelProvider.getText(selection);
@@ -139,37 +112,37 @@ public class LinkEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatCombo
 			this.valueLink.setText(UNDEFINED_VALUE);
 		else
 			this.valueLink.setText("<a>" + text + "</a>");
-		// this.parent.pack();
+	}
+	
+	/** (non-Javadoc)
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.AbstractAdvancedEObjectFlatComboViewer#setID(java.lang.Object)
+	 */
+	public void setID(Object id) {
+		super.setID(id);
+		EditingUtils.setID(valueLink, id);
 	}
 
-	/**
-	 * Sets the viewer readonly
-	 * 
-	 * @param enabled
-	 *            sets the viewer read only or not.
+	/** (non-Javadoc)
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.AbstractAdvancedEObjectFlatComboViewer#setEnabled(boolean)
 	 */
 	public void setEnabled(boolean enabled) {
 		super.setEnabled(enabled);
 		valueLink.setEnabled(enabled);
 	}
 	
-	/**
-	 * @return if the table is enabled
+	/** (non-Javadoc)
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.AbstractAdvancedEObjectFlatComboViewer#isEnabled()
 	 */
 	public boolean isEnabled() {
 		return super.isEnabled() && valueLink.isEnabled();
 	}
 
-	/**
-	 * Sets the tooltip text on the viewer
-	 * 
-	 * @param tooltip
-	 *            the tooltip text
+	/** (non-Javadoc)
+	 * @see org.eclipse.emf.eef.runtime.ui.widgets.AbstractAdvancedEObjectFlatComboViewer#setToolTipText(java.lang.String)
 	 */
 	public void setToolTipText(String tooltip) {
 		super.setToolTipText(tooltip);
 		valueLink.setToolTipText(tooltip);
 	}
-
 
 }

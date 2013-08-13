@@ -117,7 +117,6 @@ public class AdvancedEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatC
 			this.valueText.setText(UNDEFINED_VALUE);
 		else
 			this.valueText.setText(text);
-		// this.parent.pack();
 	}
 
 	/**
@@ -130,6 +129,18 @@ public class AdvancedEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatC
 		super.setEnabled(enabled);
 		valueText.setEnabled(enabled);
 	}
+	
+	/**
+	 * Sets the given ID to the EObjectFlatComboViewer
+	 * 
+	 * @param id
+	 *            the id of the widget
+	 */
+	public void setID(Object id) {
+		super.setID(id);
+		EditingUtils.setID(valueText, id);
+	}
+	
 	
 	/**
 	 * @return if the table is enabled

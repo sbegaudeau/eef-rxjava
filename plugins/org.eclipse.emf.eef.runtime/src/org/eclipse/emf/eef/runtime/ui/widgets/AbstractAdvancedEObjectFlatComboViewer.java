@@ -220,7 +220,7 @@ public abstract class AbstractAdvancedEObjectFlatComboViewer implements
 		return composite;
 	}
 
-	private Button createButton(Composite parent, String text, int style) {
+	protected Button createButton(Composite parent, String text, int style) {
 		Button button;
 		if (widgetFactory == null) {
 			button = new Button(parent, style);
