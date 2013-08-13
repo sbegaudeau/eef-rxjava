@@ -323,4 +323,11 @@ SectionPropertiesEditingPart
 [include(reference.owningView().owningViewsRepository().vrQualifiedClass())/].[for (s : String | reference.editorIDSequence()->subSequence(2, reference.editorIDSequence()->size() - 1)) separator ('.')][s.toJavaClassifier()/][/for].[reference.identifiedElementKey().toJavaIdentifier()/]
 [/template]
 
+[template public genTabLabel(view : View, pec : PropertiesEditionComponent) post (trim())]
+[if (view.label.oclIsUndefined())]
+	[view.viewKey(pec)/]
+[else]
+	[view.label/]
+[/if]
+[/template]
 [query public disambiguation(input : String, exclude : String) : String = if (input = exclude) then input.concat('_') else input endif /]

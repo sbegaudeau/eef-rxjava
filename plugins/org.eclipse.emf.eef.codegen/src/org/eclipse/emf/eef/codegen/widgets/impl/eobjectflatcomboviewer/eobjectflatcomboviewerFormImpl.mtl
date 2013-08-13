@@ -84,7 +84,7 @@ return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFact
 	'org.eclipse.swt.widgets.Composite',
 	'org.eclipse.emf.ecore.EObject',
 	'org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent',
-	'org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener',
+	'org.eclipse.emf.eef.runtime.ui.widgets.AbstractAdvancedEObjectFlatComboViewer.EObjectFlatComboViewerListener',
 	'org.eclipse.emf.eef.runtime.ui.widgets.FormUtils',
 	'org.eclipse.swt.layout.GridData'})/]
 [/template]
@@ -119,7 +119,7 @@ return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent, widgetFact
 
 			public EObject handleCreate() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent([editor.editionPart()/].this, [editor.editorID()/], PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null)); 
-				return null;
+				return [editor.viewCompletePackageGetter()/];
 			}
 
 			public void handleEdit(EObject element) {

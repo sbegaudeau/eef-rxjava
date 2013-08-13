@@ -10,14 +10,14 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module linkeobjectflatcomboviewerGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters/]
+[module linkereferenceviewerGettersSetters('http://www.eclipse.org/emf/eef/views/1.0.0') extends org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters/]
 
 [import org::eclipse::emf::eef::codegen::services::common /]
 [import org::eclipse::emf::eef::codegen::services::naming /]
 [import org::eclipse::emf::eef::codegen::widgets::api::widgetGettersSetters /]
 [import org::eclipse::emf::eef::codegen::services::imports /]
 
-[template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('LinkEObjectFlatComboViewer'))]
+[template public setterDeclaration(elementEditor : ElementEditor) overrides setterDeclaration ? (elementEditor.representationName('LinkEReferenceViewer'))]
 [elementEditor.initSignatureDocumentation()/]
 [elementEditor.initSignature()/];
 
@@ -34,24 +34,24 @@
 [elementEditor.addBusinessFilterSignature()/];
 [/template]
 
-[template public initSignatureDocumentation(elementEditor : ElementEditor) overrides initSignatureDocumentation ? (elementEditor.representationName('LinkEObjectFlatComboViewer'))]
+[template public initSignatureDocumentation(elementEditor : ElementEditor) overrides initSignatureDocumentation ? (elementEditor.representationName('LinkEReferenceViewer'))]
 	/**
 	 * Init the [elementEditor.name/]
 	 * @param settings the combo setting
 	 */
 [/template]
 
-[template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('LinkEObjectFlatComboViewer'))]
+[template public initSignature(elementEditor : ElementEditor) overrides initSignature ? (elementEditor.representationName('LinkEReferenceViewer'))]
 	public void init[elementEditor.viewPackageSignature()/]([include('org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings')/] settings)
 [/template]
 
-[template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('LinkEObjectFlatComboViewer'))]
+[template public getterSignatureImplementation(elementEditor : ElementEditor) overrides getterSignatureImplementation ? (elementEditor.representationName('LinkEReferenceViewer'))]
 [elementEditor.getterSignature()/] {
 		return [elementEditor.elementEditorName()/].getSelection();
 	}
 [/template]
 
-[template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides setterImplementation ? (elementEditor.representationName('LinkEObjectFlatComboViewer'))]
+[template public setterImplementation(elementEditor : ElementEditor, fullInterfacePath : String) overrides setterImplementation ? (elementEditor.representationName('LinkEReferenceViewer'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignatureImplementation()/]
 
@@ -68,7 +68,7 @@
 [elementEditor.addBusinessFilterSignatureImplementation()/]
 [/template]
 
-[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides setterImplementationDelegate ? (elementEditor.representationName('LinkEObjectFlatComboViewer'))]
+[template public setterImplementationDelegate(elementEditor : ElementEditor, fullInterfacePath : String, referencedView : View) overrides setterImplementationDelegate ? (elementEditor.representationName('LinkEReferenceViewer'))]
 [initSignatureDocumentationImplementation(elementEditor, fullInterfacePath)/]
 [elementEditor.initSignature()/] {
 		[referencedView.name.toJavaIdentifier()/]PropertiesEditionPart.init[elementEditor.viewPackageSignature()/](settings);
@@ -96,7 +96,7 @@
 
 [/template]
 
-[template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('LinkEObjectFlatComboViewer'))]
+[template public setterSignatureImplementation(elementEditor : ElementEditor) overrides setterSignatureImplementation ? (elementEditor.representationName('LinkEReferenceViewer'))]
 [elementEditor.setterSignature()/] {
 		if (newValue != null) {
 			[elementEditor.elementEditorName()/].setSelection(new [include('org.eclipse.jface.viewers.StructuredSelection')/](newValue));
@@ -107,7 +107,7 @@
 	}
 [/template]
 
-[template public setterButtonModeSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('LinkEObjectFlatComboViewer'))]
+[template public setterButtonModeSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('LinkEReferenceViewer'))]
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -115,7 +115,7 @@
 	 */
 [/template]
 
-[template public initSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('LinkEObjectFlatComboViewer'))]
+[template public initSignatureDocumentationImplementation(elementEditor : ElementEditor, fullInterfacePath : String) ? (elementEditor.representationName('LinkEReferenceViewer'))]
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -123,7 +123,7 @@
 	 */
 [/template]
 
-[template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('LinkEObjectFlatComboViewer'))]
+[template public initSignatureImplementation(elementEditor : ElementEditor) overrides initSignatureImplementation ? (elementEditor.representationName('LinkEReferenceViewer'))]
 [elementEditor.initSignature()/] {
 		[elementEditor.elementEditorName()/].setInput(settings);
 		if (current != null) {
@@ -133,7 +133,7 @@
 	}
 [/template]
 
-[template public addBusinessFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('LinkEObjectFlatComboViewer'))]
+[template public addBusinessFilterSignatureImplementation(elementEditor : ElementEditor) ? (elementEditor.representationName('LinkEReferenceViewer'))]
 [elementEditor.addBusinessFilterSignature()/] {
 		[elementEditor.elementEditorName()/].addBusinessRuleFilter(filter);
 	}

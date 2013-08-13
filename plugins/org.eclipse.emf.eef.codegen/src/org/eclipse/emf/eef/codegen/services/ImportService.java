@@ -33,12 +33,21 @@ public class ImportService {
 		ImportManager importManager = new ImportManager(packageName, className);
 		getGenModel(caller).setImportManager(importManager);
 	}
+	
+	/**
+	 * Initializing EMF importManager on a genmodel.
+	 */
+	public void initializeImportManager2(EObject caller, GenModel model, String packageName, String className) {
+		ImportManager importManager = new ImportManager(packageName, className);
+		model.setImportManager(importManager);
+	}
 
 	/**
 	 * Adds an import.
 	 */
 	public void addImport(EObject caller, String qualifiedName) {
-		getGenModel(caller).addImport(qualifiedName);
+		GenModel genModel = getGenModel(caller);
+		genModel.addImport(qualifiedName);
 	}
 
 	/**
@@ -57,7 +66,7 @@ public class ImportService {
 	 *            any EObject from the components model.
 	 * @return the EMF genModel (intended to hold the ImportManager)
 	 */
-	private GenModel getGenModel(EObject eo) {
+	public GenModel getGenModel(EObject eo) {
 		if (eo.eResource() != null && eo.eResource().getResourceSet() != null) {
 			for (Resource resource : eo.eResource().getResourceSet().getResources()) {
 				if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof GenModel) {
@@ -67,7 +76,7 @@ public class ImportService {
 		}
 		throw new RuntimeException("Unable to retrieve gen model from " + eo);
 	}
-
+	
 	/**
 	 * @deprecated. EEF is using EMF importmanager directy.
 	 * @param cur

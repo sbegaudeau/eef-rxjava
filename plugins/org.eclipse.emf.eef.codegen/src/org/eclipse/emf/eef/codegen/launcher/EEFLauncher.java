@@ -238,17 +238,24 @@ public class EEFLauncher extends AbstractAcceleoGenerator {
 	public EObject getModel() {
 		EObject eObject = super.getModel();
 		if (eObject instanceof EEFGenModel) {
+			ResourceSet resourceSet = null;
 			for (GenEditionContext context : ((EEFGenModel) eObject).getEditionContexts()) {
-				
 				PropertiesEditionContext propertiesEditionContext = context.getPropertiesEditionContext();
 				if (propertiesEditionContext != null) {
-					ResourceSet resourceSet = propertiesEditionContext.getModel().eResource().getResourceSet();
+					resourceSet = propertiesEditionContext.getModel().eResource().getResourceSet();
 					Resource resource = resourceSet.getResource(URI.createPlatformPluginURI("org.eclipse.emf.ecore/model/XMLType.genmodel", true), true);
 					if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof GenModel) {
 						((GenModel) resource.getContents().get(0)).reconcile();
 					};
-					
 					propertiesEditionContext.getModel().reconcile();
+				}
+			}
+			// reconcile all genmodels of the resourceSet
+			if (resourceSet != null) {
+				for (Resource resource : resourceSet.getResources()) {
+					if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof GenModel) {
+						((GenModel) resource.getContents().get(0)).reconcile();
+					};
 				}
 			}
 		}
@@ -411,6 +418,9 @@ public class EEFLauncher extends AbstractAcceleoGenerator {
         }
         if (!isInWorkspace(org.eclipse.emf.eef.mapping.filters.FiltersPackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.filters.FiltersPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.filters.FiltersPackage.eINSTANCE);
+        }
+        if (!isInWorkspace(org.eclipse.emf.eef.mapping.settings.SettingsPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.settings.SettingsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.settings.SettingsPackage.eINSTANCE);
         }
         if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
