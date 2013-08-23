@@ -37,7 +37,7 @@ private [include('org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFl
 if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].SET) {
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([include(editionElement.peeModelQualifiedClass())/])event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-	EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext')/] context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -109,7 +109,7 @@ private [include('org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFl
 if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].SET) {
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([include(editionElement.peeModelQualifiedClass())/])event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-	EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext')/] context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
@@ -183,7 +183,7 @@ private [include('org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFl
 if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].SET) {
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(([include(editionElement.peeModelQualifiedClass())/])event.getNewValue());
 } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-	EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext')/] context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
 	PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 	if (provider != null) {
 		PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
