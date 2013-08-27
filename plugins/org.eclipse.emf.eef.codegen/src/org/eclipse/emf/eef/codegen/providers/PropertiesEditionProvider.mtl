@@ -157,24 +157,32 @@ public class [pec.pecProviderClass()/] extends [include(pec.pecRootProviderQuali
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
 
-	/**
-	 * Provides the filter used by the plugin.xml to assign part forms.
-	 */
-	public static class EditionFilter implements IFilter {
-		
-		/**
-		 * {@inheritDoc}
-		 * 
-		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
-		 */
-		public boolean select(Object toTest) {
-			EObject eObj = [include('org.eclipse.emf.eef.runtime.impl.utils.EEFUtils')/].resolveSemanticObject(toTest);
-			return eObj != null && [pec.metamodelGetter()/] == eObj.eClass();
-		}
-		
-	}
+	[genEditionFilter(pec)/]
 
 }
+[/template]
+
+[template public genEditionFilter (peContext : PropertiesEditionContext, pec : PropertiesEditionComponent) ]
+/**
+ * Provides the filter used by the plugin.xml to assign part forms.
+ */
+public static class EditionFilter implements IFilter {
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+	 */
+	public boolean select(Object toTest) {
+		[genSelectEditionFilter(pec)/]
+	}
+	
+}
+[/template]
+
+[template public genSelectEditionFilter (peContext : PropertiesEditionContext, pec : PropertiesEditionComponent) ]
+EObject eObj = [include('org.eclipse.emf.eef.runtime.impl.utils.EEFUtils')/].resolveSemanticObject(toTest);
+return eObj != null && [pec.metamodelGetter()/] == eObj.eClass();
 [/template]
 
 [template public provideForPart(pec : PropertiesEditionComponent)]
