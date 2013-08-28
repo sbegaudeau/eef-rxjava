@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.eef.runtime.impl.utils.ModelViewerHelper;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.AdvancedEEFEditorContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
@@ -293,8 +294,13 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 				public void doubleClick(DoubleClickEvent event) {
 					if (selection != null && !selection.isEmpty()) {
 						Object o = selection.getFirstElement();
-						if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory)).contains(o) && input instanceof ReferencesTableSettings && o instanceof EObject && !((ReferencesTableSettings) input).contains((EObject) o)) {
-							okPressed();
+						if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory)).contains(o)) {
+							if(input instanceof ReferencesTableSettings && o instanceof EObject && !((ReferencesTableSettings) input).contains((EObject) o)) {
+								okPressed();
+							}
+							else if(input instanceof EObjectFlatComboSettings && o instanceof EObject) {
+								okPressed();
+							}
 						}
 					}
 				}
