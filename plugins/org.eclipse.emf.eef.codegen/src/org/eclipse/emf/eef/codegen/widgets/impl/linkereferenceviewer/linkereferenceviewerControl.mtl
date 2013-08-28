@@ -64,6 +64,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 		}
 	}
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(context.getEObject());
+	(([view.pepInterface()/])editingPart).[editionElement.views->first().viewPackageSetter()/](context.getEObject());
 		[else]
 	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -87,7 +88,7 @@ if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && [view.viewId
 if (isAccessible([editionElement.views->first().editorID()/])) {
 	// init part
 	[editionElement.name.toJavaIdentifier()/]Settings = new EObjectFlatComboSettings([pec.pecModelClass().toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
-	[editionElement.name.toJavaIdentifier()/]CreateSettings = new ReferencesTableSettings(get[editionElement.name.toJavaIdentifier()/]CreateSettingsSource(), [editionElement.editorSetting.oclAsType(EReferenceViewerSettings).metamodelGetter()/]);
+	[editionElement.name.toJavaIdentifier()/]CreateSettings = new ReferencesTableSettings(get[editionElement.name.toJavaIdentifier()/]CreateSettingsSource(), [if (not editionElement.editorSetting.oclIsUndefined())][editionElement.editorSetting.oclAsType(EReferenceViewerSettings).metamodelGetter()/][/if]);
 	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
 	// set the button mode
 	[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]ButtonMode([include('org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum')/].BROWSE);
@@ -137,6 +138,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 		}
 	}
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(context.getEObject());
+	(([view.pepInterface()/])editingPart).[editionElement.views->first().viewPackageSetter()/](context.getEObject());
 		[else]
 	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -217,6 +219,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 		}
 	}
 	[editionElement.name.toJavaIdentifier()/]Settings.setToReference(context.getEObject());
+	(([view.pepInterface()/])editingPart).[editionElement.views->first().viewPackageSetter()/](context.getEObject());
 		[else]
 	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
 	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -258,7 +261,7 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
  * @ return source setting for [editionElement.name.toJavaIdentifier()/]CreateSettings
  */
 public EObject get[editionElement.name.toJavaIdentifier()/]CreateSettingsSource() {
-[editionElement.editorSetting.oclAsType(EReferenceViewerSettings).filter.filterBody()/]
+	[if (not editionElement.editorSetting.oclIsUndefined())][editionElement.editorSetting.oclAsType(EReferenceViewerSettings).filter.filterBody()/][/if]
 }	
 [/if]
 [/template]

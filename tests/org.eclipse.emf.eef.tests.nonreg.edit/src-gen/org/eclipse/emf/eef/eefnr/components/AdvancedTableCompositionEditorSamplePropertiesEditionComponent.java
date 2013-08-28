@@ -324,4 +324,6 @@ public class AdvancedTableCompositionEditorSamplePropertiesEditionComponent exte
 
 	
 
+	
+
 }

@@ -242,6 +242,22 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ereferencesviewerROProperty"
         upperBound="-1" eType="#//TotalSample"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinkEObjectFlatComboViewerSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkeobjectflatcomboviewerRequiredProperty"
+        lowerBound="1" eType="#//TextSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkeobjectflatcomboviewerOptionalProperty"
+        eType="#//TextSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkeobjectflatcomboviewerROPropery"
+        eType="#//TextSample"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinkEReferenceViewerSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkereferenceviewerRequiredProperty"
+        lowerBound="1" eType="#//TextSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkereferenceviewerOptionalProperty"
+        eType="#//TextSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkereferenceviewerROPropery"
+        eType="#//TextSample"/>
+  </eClassifiers>
   <eSubpackages name="references" nsURI="http://www.eclipse.org/emf/eef/nonreg/references/1.0.0"
       nsPrefix="eefnr-ref">
     <eClassifiers xsi:type="ecore:EClass" name="AbstractEnabledSample" abstract="true"

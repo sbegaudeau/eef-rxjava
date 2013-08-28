@@ -21,6 +21,8 @@ import org.eclipse.emf.eef.eefnr.parts.forms.EObjectFlatComboViewerSamplePropert
 import org.eclipse.emf.eef.eefnr.parts.forms.EReferencesViewerSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.FlatReferenceTableSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.ImageViewerSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.parts.forms.LinkEObjectFlatComboViewerSamplePropertiesEditionPartForm;
+import org.eclipse.emf.eef.eefnr.parts.forms.LinkEReferenceViewerSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.MultiValuedEditorSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.RadioSamplePropertiesEditionPartForm;
 import org.eclipse.emf.eef.eefnr.parts.forms.ReferencesTableSamplePropertiesEditionPartForm;
@@ -46,6 +48,8 @@ import org.eclipse.emf.eef.eefnr.parts.impl.EObjectFlatComboViewerSampleProperti
 import org.eclipse.emf.eef.eefnr.parts.impl.EReferencesViewerSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.FlatReferenceTableSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.ImageViewerSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.parts.impl.LinkEObjectFlatComboViewerSamplePropertiesEditionPartImpl;
+import org.eclipse.emf.eef.eefnr.parts.impl.LinkEReferenceViewerSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.MultiValuedEditorSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.RadioSamplePropertiesEditionPartImpl;
 import org.eclipse.emf.eef.eefnr.parts.impl.ReferencesTableSamplePropertiesEditionPartImpl;
@@ -232,6 +236,18 @@ public class EefnrPropertiesEditionPartProvider implements IPropertiesEditionPar
 				return new EReferencesViewerSamplePropertiesEditionPartImpl(component);
 			if (kind == EefnrViewsRepository.FORM_KIND)
 				return new EReferencesViewerSamplePropertiesEditionPartForm(component);
+		}
+		if (key == EefnrViewsRepository.LinkEObjectFlatComboViewerSample.class) {
+			if (kind == EefnrViewsRepository.SWT_KIND)
+				return new LinkEObjectFlatComboViewerSamplePropertiesEditionPartImpl(component);
+			if (kind == EefnrViewsRepository.FORM_KIND)
+				return new LinkEObjectFlatComboViewerSamplePropertiesEditionPartForm(component);
+		}
+		if (key == EefnrViewsRepository.LinkEReferenceViewerSample.class) {
+			if (kind == EefnrViewsRepository.SWT_KIND)
+				return new LinkEReferenceViewerSamplePropertiesEditionPartImpl(component);
+			if (kind == EefnrViewsRepository.FORM_KIND)
+				return new LinkEReferenceViewerSamplePropertiesEditionPartForm(component);
 		}
 		return null;
 	}

@@ -510,7 +510,7 @@ NOTE: Imports are managed here because addImport must be called from a model ele
 [s.feature.metamodelGetter()/][s.addImport(s.feature.eContainingClass.ePackage.qualifiedMetamodelPackage())/]
 [/template]
 
-[template public metamodelGetter(e : EReferenceViewerSettings)]
+[template public metamodelGetter(e : EReferenceViewerSettings) post (trim())]
 [if (e.model.eInverse(GenFeature).genClass.genPackage.genModel.toString() <> e.getImportGenModel())]
 	[e.initializeImportManager2(e.model.eInverse(GenFeature)->first().genClass.genPackage.genModel, '', '')/]
 [/if]

@@ -1090,4 +1090,6 @@ public class TotalSamplePropertiesEditionComponent extends SinglePartPropertiesE
 
 	
 
+	
+
 }

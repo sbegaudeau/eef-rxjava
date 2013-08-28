@@ -25,6 +25,8 @@ import org.eclipse.emf.eef.eefnr.EefnrFactory;
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
 import org.eclipse.emf.eef.eefnr.FlatReferencesTableSample;
 import org.eclipse.emf.eef.eefnr.ImageViewerSample;
+import org.eclipse.emf.eef.eefnr.LinkEObjectFlatComboViewerSample;
+import org.eclipse.emf.eef.eefnr.LinkEReferenceViewerSample;
 import org.eclipse.emf.eef.eefnr.MultiValuedEditorSample;
 import org.eclipse.emf.eef.eefnr.NamedElement;
 import org.eclipse.emf.eef.eefnr.RadioSample;
@@ -241,6 +243,20 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * @generated
 	 */
 	private EClass eReferencesViewerSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linkEObjectFlatComboViewerSampleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linkEReferenceViewerSampleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1406,6 +1422,78 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLinkEObjectFlatComboViewerSample() {
+		return linkEObjectFlatComboViewerSampleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerRequiredProperty() {
+		return (EReference)linkEObjectFlatComboViewerSampleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerOptionalProperty() {
+		return (EReference)linkEObjectFlatComboViewerSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerROPropery() {
+		return (EReference)linkEObjectFlatComboViewerSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLinkEReferenceViewerSample() {
+		return linkEReferenceViewerSampleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkEReferenceViewerSample_LinkereferenceviewerRequiredProperty() {
+		return (EReference)linkEReferenceViewerSampleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkEReferenceViewerSample_LinkereferenceviewerOptionalProperty() {
+		return (EReference)linkEReferenceViewerSampleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkEReferenceViewerSample_LinkereferenceviewerROPropery() {
+		return (EReference)linkEReferenceViewerSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getENUM_SAMPLE() {
 		return enuM_SAMPLEEEnum;
 	}
@@ -1583,6 +1671,16 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		createEReference(eReferencesViewerSampleEClass, EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_OPTIONAL_PROPERTY);
 		createEReference(eReferencesViewerSampleEClass, EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_RO_PROPERTY);
 
+		linkEObjectFlatComboViewerSampleEClass = createEClass(LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE);
+		createEReference(linkEObjectFlatComboViewerSampleEClass, LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__LINKEOBJECTFLATCOMBOVIEWER_REQUIRED_PROPERTY);
+		createEReference(linkEObjectFlatComboViewerSampleEClass, LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__LINKEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERTY);
+		createEReference(linkEObjectFlatComboViewerSampleEClass, LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__LINKEOBJECTFLATCOMBOVIEWER_RO_PROPERY);
+
+		linkEReferenceViewerSampleEClass = createEClass(LINK_EREFERENCE_VIEWER_SAMPLE);
+		createEReference(linkEReferenceViewerSampleEClass, LINK_EREFERENCE_VIEWER_SAMPLE__LINKEREFERENCEVIEWER_REQUIRED_PROPERTY);
+		createEReference(linkEReferenceViewerSampleEClass, LINK_EREFERENCE_VIEWER_SAMPLE__LINKEREFERENCEVIEWER_OPTIONAL_PROPERTY);
+		createEReference(linkEReferenceViewerSampleEClass, LINK_EREFERENCE_VIEWER_SAMPLE__LINKEREFERENCEVIEWER_RO_PROPERY);
+
 		// Create enums
 		enuM_SAMPLEEEnum = createEEnum(ENUM_SAMPLE);
 	}
@@ -1653,6 +1751,8 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		singleCompositionViewerSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		singleCompositionEditorSampleEClass.getESuperTypes().add(this.getAbstractSample());
 		eReferencesViewerSampleEClass.getESuperTypes().add(this.getAbstractSample());
+		linkEObjectFlatComboViewerSampleEClass.getESuperTypes().add(this.getAbstractSample());
+		linkEReferenceViewerSampleEClass.getESuperTypes().add(this.getAbstractSample());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1799,6 +1899,16 @@ public class EefnrPackageImpl extends EPackageImpl implements EefnrPackage {
 		initEReference(getEReferencesViewerSample_EreferencesviewerRequiredProperty(), this.getTotalSample(), null, "ereferencesviewerRequiredProperty", null, 1, -1, EReferencesViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEReferencesViewerSample_EreferencesviewerOptionalProperty(), this.getTotalSample(), null, "ereferencesviewerOptionalProperty", null, 0, -1, EReferencesViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEReferencesViewerSample_EreferencesviewerROProperty(), this.getTotalSample(), null, "ereferencesviewerROProperty", null, 0, -1, EReferencesViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linkEObjectFlatComboViewerSampleEClass, LinkEObjectFlatComboViewerSample.class, "LinkEObjectFlatComboViewerSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerRequiredProperty(), this.getTextSample(), null, "linkeobjectflatcomboviewerRequiredProperty", null, 1, 1, LinkEObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerOptionalProperty(), this.getTextSample(), null, "linkeobjectflatcomboviewerOptionalProperty", null, 0, 1, LinkEObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerROPropery(), this.getTextSample(), null, "linkeobjectflatcomboviewerROPropery", null, 0, 1, LinkEObjectFlatComboViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linkEReferenceViewerSampleEClass, LinkEReferenceViewerSample.class, "LinkEReferenceViewerSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLinkEReferenceViewerSample_LinkereferenceviewerRequiredProperty(), this.getTextSample(), null, "linkereferenceviewerRequiredProperty", null, 1, 1, LinkEReferenceViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkEReferenceViewerSample_LinkereferenceviewerOptionalProperty(), this.getTextSample(), null, "linkereferenceviewerOptionalProperty", null, 0, 1, LinkEReferenceViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkEReferenceViewerSample_LinkereferenceviewerROPropery(), this.getTextSample(), null, "linkereferenceviewerROPropery", null, 0, 1, LinkEReferenceViewerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(enuM_SAMPLEEEnum, org.eclipse.emf.eef.eefnr.ENUM_SAMPLE.class, "ENUM_SAMPLE");

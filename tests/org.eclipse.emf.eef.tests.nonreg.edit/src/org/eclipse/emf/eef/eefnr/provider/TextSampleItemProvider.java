@@ -149,11 +149,11 @@ public class TextSampleItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @not generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TextSample)object).getName();
+		String label = ((TextSample)object).getTextRequiredProperty();
 		return label == null || label.length() == 0 ?
 			getString("_UI_TextSample_type") :
 			getString("_UI_TextSample_type") + " " + label;

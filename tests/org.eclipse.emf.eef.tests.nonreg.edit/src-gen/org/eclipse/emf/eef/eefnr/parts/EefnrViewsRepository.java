@@ -595,4 +595,46 @@ public class EefnrViewsRepository {
 	
 	}
 
+	/**
+	 * LinkEObjectFlatComboViewerSample view descriptor
+	 * 
+	 */
+	public static class LinkEObjectFlatComboViewerSample {
+		public static class Properties {
+	
+			
+			public static String linkeobjectflatcomboviewerRequiredPropery = "eefnr::LinkEObjectFlatComboViewerSample::properties::linkeobjectflatcomboviewerRequiredPropery";
+			
+			
+			public static String linkeobjectflatcomboviewerOptionalPropery = "eefnr::LinkEObjectFlatComboViewerSample::properties::linkeobjectflatcomboviewerOptionalPropery";
+			
+			
+			public static String linkeobjectflatcomboviewerROPropery = "eefnr::LinkEObjectFlatComboViewerSample::properties::linkeobjectflatcomboviewerROPropery";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * LinkEReferenceViewerSample view descriptor
+	 * 
+	 */
+	public static class LinkEReferenceViewerSample {
+		public static class Properties {
+	
+			
+			public static String linkereferenceviewerRequiredPropery = "eefnr::LinkEReferenceViewerSample::properties::linkereferenceviewerRequiredPropery";
+			
+			
+			public static String linkereferenceviewerOptionalPropery = "eefnr::LinkEReferenceViewerSample::properties::linkereferenceviewerOptionalPropery";
+			
+			
+			public static String linkereferenceviewerROPropery = "eefnr::LinkEReferenceViewerSample::properties::linkereferenceviewerROPropery";
+			
+	
+		}
+	
+	}
+
 }

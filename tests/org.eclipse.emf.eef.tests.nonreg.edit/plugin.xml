@@ -367,6 +367,18 @@
                id="org.eclipse.emf.eef.eefnr.section.SingleCompositionViewerSample"
                tab="Base">
          </propertySection>
+        <propertySection
+               class="org.eclipse.emf.eef.eefnr.parts.forms.LinkEObjectFlatComboViewerSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.LinkEObjectFlatComboViewerSamplePropertiesEditionProvider$EditionFilter"
+               id="org.eclipse.emf.eef.eefnr.section.LinkEObjectFlatComboViewerSample"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.eefnr.parts.forms.LinkEReferenceViewerSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.LinkEReferenceViewerSamplePropertiesEditionProvider$EditionFilter"
+               id="org.eclipse.emf.eef.eefnr.section.LinkEReferenceViewerSample"
+               tab="Base">
+         </propertySection>
       </propertySections>
    </extension>
 
@@ -1018,6 +1030,18 @@
                class="org.eclipse.emf.eef.eefnr.parts.forms.SingleCompositionViewerSamplePropertiesEditionPartForm"
                filter="org.eclipse.emf.eef.eefnr.providers.SingleCompositionViewerSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.SingleCompositionViewerSample"
+               tab="Base">
+         </propertySection>
+        <propertySection
+               class="org.eclipse.emf.eef.eefnr.parts.forms.LinkEObjectFlatComboViewerSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.LinkEObjectFlatComboViewerSamplePropertiesEditionProvider$EditionFilter"
+               id="org.eclipse.emf.eef.eefnr.section.LinkEObjectFlatComboViewerSample"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.eclipse.emf.eef.eefnr.parts.forms.LinkEReferenceViewerSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.LinkEReferenceViewerSamplePropertiesEditionProvider$EditionFilter"
+               id="org.eclipse.emf.eef.eefnr.section.LinkEReferenceViewerSample"
                tab="Base">
          </propertySection>
       </propertySections>

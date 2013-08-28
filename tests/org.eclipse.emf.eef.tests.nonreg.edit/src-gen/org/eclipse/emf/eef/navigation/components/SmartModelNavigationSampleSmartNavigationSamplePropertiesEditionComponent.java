@@ -754,4 +754,6 @@ public class SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionCom
 			return secondMNMultiValueWithFirstMNMultiValueWithFilterSettings;
 	}
 
+	
+
 }

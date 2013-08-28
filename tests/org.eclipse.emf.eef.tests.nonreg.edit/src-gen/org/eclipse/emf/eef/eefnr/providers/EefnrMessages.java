@@ -92,6 +92,12 @@ public class EefnrMessages extends NLS {
 	
 	public static String EReferencesViewerSamplePropertiesEditionPart_PropertiesGroupLabel;
 
+	
+	public static String LinkEObjectFlatComboViewerSamplePropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String LinkEReferenceViewerSamplePropertiesEditionPart_PropertiesGroupLabel;
+
 
 	
 	public static String Root_ReadOnly;
@@ -236,6 +242,18 @@ public class EefnrMessages extends NLS {
 
 	
 	public static String EReferencesViewerSample_Part_Title;
+
+	
+	public static String LinkEObjectFlatComboViewerSample_ReadOnly;
+
+	
+	public static String LinkEObjectFlatComboViewerSample_Part_Title;
+
+	
+	public static String LinkEReferenceViewerSample_ReadOnly;
+
+	
+	public static String LinkEReferenceViewerSample_Part_Title;
 
 
 	
@@ -522,6 +540,24 @@ public class EefnrMessages extends NLS {
 
 	
 	public static String EReferencesViewerSamplePropertiesEditionPart_EreferencesviewerROPropertyLabel;
+
+	
+	public static String LinkEObjectFlatComboViewerSamplePropertiesEditionPart_LinkeobjectflatcomboviewerRequiredProperyLabel;
+
+	
+	public static String LinkEObjectFlatComboViewerSamplePropertiesEditionPart_LinkeobjectflatcomboviewerOptionalProperyLabel;
+
+	
+	public static String LinkEObjectFlatComboViewerSamplePropertiesEditionPart_LinkeobjectflatcomboviewerROProperyLabel;
+
+	
+	public static String LinkEReferenceViewerSamplePropertiesEditionPart_LinkereferenceviewerRequiredProperyLabel;
+
+	
+	public static String LinkEReferenceViewerSamplePropertiesEditionPart_LinkereferenceviewerOptionalProperyLabel;
+
+	
+	public static String LinkEReferenceViewerSamplePropertiesEditionPart_LinkereferenceviewerROProperyLabel;
 
 
 	

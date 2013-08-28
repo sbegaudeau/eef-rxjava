@@ -157,6 +157,16 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//EReferencesViewerSample/ereferencesviewerOptionalProperty"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//EReferencesViewerSample/ereferencesviewerROProperty"/>
     </genClasses>
+    <genClasses ecoreClass="eefnr.ecore#//LinkEObjectFlatComboViewerSample">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//LinkEObjectFlatComboViewerSample/linkeobjectflatcomboviewerRequiredProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//LinkEObjectFlatComboViewerSample/linkeobjectflatcomboviewerOptionalProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//LinkEObjectFlatComboViewerSample/linkeobjectflatcomboviewerROPropery"/>
+    </genClasses>
+    <genClasses ecoreClass="eefnr.ecore#//LinkEReferenceViewerSample">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//LinkEReferenceViewerSample/linkereferenceviewerRequiredProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//LinkEReferenceViewerSample/linkereferenceviewerOptionalProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference eefnr.ecore#//LinkEReferenceViewerSample/linkereferenceviewerROPropery"/>
+    </genClasses>
     <nestedGenPackages prefix="References" basePackage="org.eclipse.emf.eef.eefnr"
         disposableProviderFactory="true" ecorePackage="eefnr.ecore#//references">
       <genClasses image="false" ecoreClass="eefnr.ecore#//references/AbstractEnabledSample">

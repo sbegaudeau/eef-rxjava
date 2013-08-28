@@ -285,4 +285,6 @@ public class FlatReferenceTableSamplePropertiesEditionComponent extends SinglePa
 
 	
 
+	
+
 }
