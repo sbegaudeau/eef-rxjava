@@ -335,6 +335,18 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//SingleCompositionEditorSample"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_4xsQkAs5EeOafYLGlDwoXA" name="EReferencesViewerSample" views="_rdf2oAs5EeOafYLGlDwoXA">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_4xsQkQs5EeOafYLGlDwoXA" name="ereferencesviewerRequiredProperty" views="_rdf2ogs5EeOafYLGlDwoXA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//EReferencesViewerSample/ereferencesviewerRequiredProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_4xsQkgs5EeOafYLGlDwoXA" name="advancedreferencestableOptionalProperty" views="_rdf2ows5EeOafYLGlDwoXA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//EReferencesViewerSample/ereferencesviewerOptionalProperty"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_4xsQkws5EeOafYLGlDwoXA" name="ereferencesviewerROProperty" views="_rdf2pAs5EeOafYLGlDwoXA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//EReferencesViewerSample/ereferencesviewerROProperty"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//EReferencesViewerSample"/>
+      </bindings>
     </categories>
     <model href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.genmodel#//eefnr"/>
   </eef-components:PropertiesEditionContext>
@@ -1128,6 +1140,20 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_Oj3e0D6nEeKQ5q1xcsGDyQ" name="singlecompositionviewerOnAbstractOptionalProperty">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.14"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rdf2oAs5EeOafYLGlDwoXA" name="EReferencesViewerSample">
+        <elements xsi:type="eef-views:Container" xmi:id="_rdf2oQs5EeOafYLGlDwoXA" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rdf2ogs5EeOafYLGlDwoXA" name="ereferencesviewerRequiredProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.17"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rdf2ows5EeOafYLGlDwoXA" name="ereferencesviewerOptionalProperty">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.17"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rdf2pAs5EeOafYLGlDwoXA" name="ereferencesviewerROProperty" readOnly="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.17"/>
           </elements>
         </elements>
       </views>

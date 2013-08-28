@@ -224,6 +224,15 @@ public interface EefnrFactory extends EFactory {
 	SingleCompositionEditorSample createSingleCompositionEditorSample();
 
 	/**
+	 * Returns a new object of class '<em>EReferences Viewer Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EReferences Viewer Sample</em>'.
+	 * @generated
+	 */
+	EReferencesViewerSample createEReferencesViewerSample();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

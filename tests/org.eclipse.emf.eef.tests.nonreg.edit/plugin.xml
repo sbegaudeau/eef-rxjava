@@ -301,6 +301,12 @@
                id="org.eclipse.emf.eef.eefnr.section.AdvancedReferencesTableSample"
                tab="Base">
          </propertySection>
+		 <propertySection
+               class="org.eclipse.emf.eef.eefnr.parts.forms.EReferencesViewerSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.EReferencesViewerSamplePropertiesEditionProvider$EditionFilter"
+               id="org.eclipse.emf.eef.eefnr.section.EReferencesViewerSample"
+               tab="Base">
+         </propertySection>
          <propertySection
                class="org.eclipse.emf.eef.eefnr.parts.forms.AdvancedEObjectFlatComboViewerSamplePropertiesEditionPartForm"
                filter="org.eclipse.emf.eef.eefnr.providers.AdvancedEObjectFlatComboViewerSamplePropertiesEditionProvider$EditionFilter"
@@ -946,6 +952,12 @@
                class="org.eclipse.emf.eef.eefnr.parts.forms.AdvancedReferencesTableSamplePropertiesEditionPartForm"
                filter="org.eclipse.emf.eef.eefnr.providers.AdvancedReferencesTableSamplePropertiesEditionProvider$EditionFilter"
                id="org.eclipse.emf.eef.eefnr.section.AdvancedReferencesTableSample"
+               tab="Base">
+         </propertySection>
+		 <propertySection
+               class="org.eclipse.emf.eef.eefnr.parts.forms.EReferencesViewerSamplePropertiesEditionPartForm"
+               filter="org.eclipse.emf.eef.eefnr.providers.EReferencesViewerSamplePropertiesEditionProvider$EditionFilter"
+               id="org.eclipse.emf.eef.eefnr.section.EReferencesViewerSample"
                tab="Base">
          </propertySection>
          <propertySection

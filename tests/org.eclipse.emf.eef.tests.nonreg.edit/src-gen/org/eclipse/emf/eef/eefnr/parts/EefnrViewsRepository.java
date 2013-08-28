@@ -574,4 +574,25 @@ public class EefnrViewsRepository {
 	
 	}
 
+	/**
+	 * EReferencesViewerSample view descriptor
+	 * 
+	 */
+	public static class EReferencesViewerSample {
+		public static class Properties {
+	
+			
+			public static String ereferencesviewerRequiredProperty = "eefnr::EReferencesViewerSample::properties::ereferencesviewerRequiredProperty";
+			
+			
+			public static String ereferencesviewerOptionalProperty = "eefnr::EReferencesViewerSample::properties::ereferencesviewerOptionalProperty";
+			
+			
+			public static String ereferencesviewerROProperty = "eefnr::EReferencesViewerSample::properties::ereferencesviewerROProperty";
+			
+	
+		}
+	
+	}
+
 }

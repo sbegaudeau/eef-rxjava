@@ -105,6 +105,7 @@ public class EefnrFactoryImpl extends EFactoryImpl implements EefnrFactory {
 			case EefnrPackage.SELECTION_DIALOG_SAMPLE: return createSelectionDialogSample();
 			case EefnrPackage.SINGLE_COMPOSITION_VIEWER_SAMPLE: return createSingleCompositionViewerSample();
 			case EefnrPackage.SINGLE_COMPOSITION_EDITOR_SAMPLE: return createSingleCompositionEditorSample();
+			case EefnrPackage.EREFERENCES_VIEWER_SAMPLE: return createEReferencesViewerSample();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -358,6 +359,16 @@ public class EefnrFactoryImpl extends EFactoryImpl implements EefnrFactory {
 	public SingleCompositionEditorSample createSingleCompositionEditorSample() {
 		SingleCompositionEditorSampleImpl singleCompositionEditorSample = new SingleCompositionEditorSampleImpl();
 		return singleCompositionEditorSample;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReferencesViewerSample createEReferencesViewerSample() {
+		EReferencesViewerSampleImpl eReferencesViewerSample = new EReferencesViewerSampleImpl();
+		return eReferencesViewerSample;
 	}
 
 	/**

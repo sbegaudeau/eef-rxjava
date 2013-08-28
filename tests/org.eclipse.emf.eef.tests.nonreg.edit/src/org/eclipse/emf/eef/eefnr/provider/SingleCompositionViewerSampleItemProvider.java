@@ -286,6 +286,11 @@ public class SingleCompositionViewerSampleItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_REQUIRED_PROPERTY,
+				 EefnrFactory.eINSTANCE.createEReferencesViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_REQUIRED_PROPERTY,
 				 ReferencesFactory.eINSTANCE.createReferenceEnabledSample()));
 
 		newChildDescriptors.add
@@ -482,6 +487,11 @@ public class SingleCompositionViewerSampleItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY,
 				 EefnrFactory.eINSTANCE.createSingleCompositionEditorSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_VIEWER_SAMPLE__SINGLECOMPOSITIONVIEW_MULTI_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createEReferencesViewerSample()));
 
 		newChildDescriptors.add
 			(createChildParameter

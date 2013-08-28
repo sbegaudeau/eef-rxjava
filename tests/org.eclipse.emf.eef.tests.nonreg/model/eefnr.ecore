@@ -234,6 +234,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="singlecompositioneditorOnAbstractOptionalProperty"
         eType="#//AbstractSample" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EReferencesViewerSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ereferencesviewerRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ereferencesviewerOptionalProperty"
+        upperBound="-1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ereferencesviewerROProperty"
+        upperBound="-1" eType="#//TotalSample"/>
+  </eClassifiers>
   <eSubpackages name="references" nsURI="http://www.eclipse.org/emf/eef/nonreg/references/1.0.0"
       nsPrefix="eefnr-ref">
     <eClassifiers xsi:type="ecore:EClass" name="AbstractEnabledSample" abstract="true"

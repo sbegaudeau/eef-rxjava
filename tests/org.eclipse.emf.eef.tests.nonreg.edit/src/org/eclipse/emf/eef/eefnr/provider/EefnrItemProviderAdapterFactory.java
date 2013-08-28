@@ -582,6 +582,29 @@ public class EefnrItemProviderAdapterFactory extends EefnrAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EReferencesViewerSampleItemProvider eReferencesViewerSampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEReferencesViewerSampleAdapter() {
+		if (eReferencesViewerSampleItemProvider == null) {
+			eReferencesViewerSampleItemProvider = new EReferencesViewerSampleItemProvider(this);
+		}
+
+		return eReferencesViewerSampleItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -702,6 +725,7 @@ public class EefnrItemProviderAdapterFactory extends EefnrAdapterFactory impleme
 		if (selectionDialogSampleItemProvider != null) selectionDialogSampleItemProvider.dispose();
 		if (singleCompositionViewerSampleItemProvider != null) singleCompositionViewerSampleItemProvider.dispose();
 		if (singleCompositionEditorSampleItemProvider != null) singleCompositionEditorSampleItemProvider.dispose();
+		if (eReferencesViewerSampleItemProvider != null) eReferencesViewerSampleItemProvider.dispose();
 	}
 
 }

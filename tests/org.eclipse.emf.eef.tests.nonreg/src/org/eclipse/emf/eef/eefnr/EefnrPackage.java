@@ -1553,6 +1553,61 @@ public interface EefnrPackage extends EPackage {
 	int SINGLE_COMPOSITION_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.EReferencesViewerSampleImpl <em>EReferences Viewer Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.EReferencesViewerSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getEReferencesViewerSample()
+	 * @generated
+	 */
+	int EREFERENCES_VIEWER_SAMPLE = 25;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCES_VIEWER_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Ereferencesviewer Required Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Ereferencesviewer Optional Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Ereferencesviewer RO Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>EReferences Viewer Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCES_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1560,7 +1615,7 @@ public interface EefnrPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getENUM_SAMPLE()
 	 * @generated
 	 */
-	int ENUM_SAMPLE = 25;
+	int ENUM_SAMPLE = 26;
 
 
 	/**
@@ -2804,6 +2859,49 @@ public interface EefnrPackage extends EPackage {
 	EReference getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample <em>EReferences Viewer Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>EReferences Viewer Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.EReferencesViewerSample
+	 * @generated
+	 */
+	EClass getEReferencesViewerSample();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerRequiredProperty <em>Ereferencesviewer Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Ereferencesviewer Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerRequiredProperty()
+	 * @see #getEReferencesViewerSample()
+	 * @generated
+	 */
+	EReference getEReferencesViewerSample_EreferencesviewerRequiredProperty();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerOptionalProperty <em>Ereferencesviewer Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Ereferencesviewer Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerOptionalProperty()
+	 * @see #getEReferencesViewerSample()
+	 * @generated
+	 */
+	EReference getEReferencesViewerSample_EreferencesviewerOptionalProperty();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerROProperty <em>Ereferencesviewer RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Ereferencesviewer RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerROProperty()
+	 * @see #getEReferencesViewerSample()
+	 * @generated
+	 */
+	EReference getEReferencesViewerSample_EreferencesviewerROProperty();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3804,6 +3902,40 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY = eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.EReferencesViewerSampleImpl <em>EReferences Viewer Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.EReferencesViewerSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getEReferencesViewerSample()
+		 * @generated
+		 */
+		EClass EREFERENCES_VIEWER_SAMPLE = eINSTANCE.getEReferencesViewerSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Ereferencesviewer Required Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_REQUIRED_PROPERTY = eINSTANCE.getEReferencesViewerSample_EreferencesviewerRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Ereferencesviewer Optional Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_OPTIONAL_PROPERTY = eINSTANCE.getEReferencesViewerSample_EreferencesviewerOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Ereferencesviewer RO Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_RO_PROPERTY = eINSTANCE.getEReferencesViewerSample_EreferencesviewerROProperty();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.

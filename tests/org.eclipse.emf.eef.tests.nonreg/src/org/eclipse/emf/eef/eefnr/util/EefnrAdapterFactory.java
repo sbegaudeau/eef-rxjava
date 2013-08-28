@@ -195,6 +195,10 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 				return createSingleCompositionEditorSampleAdapter();
 			}
 			@Override
+			public Adapter caseEReferencesViewerSample(EReferencesViewerSample object) {
+				return createEReferencesViewerSampleAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -561,6 +565,20 @@ public class EefnrAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSingleCompositionEditorSampleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample <em>EReferences Viewer Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.EReferencesViewerSample
+	 * @generated
+	 */
+	public Adapter createEReferencesViewerSampleAdapter() {
 		return null;
 	}
 

@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.eef.runtime.impl.utils.ModelViewerHelper;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider;
@@ -37,8 +36,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.CTabFolder;
-import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -58,8 +55,9 @@ import org.eclipse.ui.dialogs.PatternFilter;
  * @author Patrick Tessier
  * @author <a href="mailto:jerome.benois@obeo.fr">Jerome Benois</a>
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
+ * @author <a href="mailto:stephane.thibaudeau@obeo.fr">Stephane Thibaudeau</a>
  */
-public abstract class TabElementTreeSelectionDialog extends Dialog implements IPropertiesFilteredWidget {
+public abstract class ElementSelectionDialog extends Dialog implements IPropertiesFilteredWidget {
 
 	/**
 	 * the label
@@ -96,11 +94,6 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 	private IStructuredSelection selection;
 
 	/**
-	 * The main resource. It's optional. The first resource is the main resource by default.
-	 */
-	private Resource mainResource;
-
-	/**
 	 * Constructor with parent shell and Element.
 	 * 
 	 * @param parentElement
@@ -117,8 +110,8 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 	 * @param mainResource
 	 *            the main resource.
 	 */
-	public TabElementTreeSelectionDialog(Object input, List<ViewerFilter> filters,
-			List<ViewerFilter> brFilters, String title, AdapterFactory adapterFactory, Resource mainResource) {
+	public ElementSelectionDialog(Object input, List<ViewerFilter> filters,
+			List<ViewerFilter> brFilters, String title, AdapterFactory adapterFactory) {
 		super(Display.getDefault().getActiveShell());
 		// add the resize ability to the window
 		setShellStyle(SWT.RESIZE | super.getShellStyle());
@@ -127,7 +120,6 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 		this.brFilters = brFilters;
 		this.title = title;
 		this.adapterFactory = adapterFactory;
-		this.mainResource = mainResource;
 	}
 
 	/**
@@ -139,58 +131,19 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 	 */
 	protected Control createDialogArea(Composite parent) {
 		this.parent = parent;
-		final CTabFolder tabFolder = new CTabFolder(parent, SWT.BORDER);
-		tabFolder.setMaximized(true);
 
-		CTabItem tabItem = new CTabItem(tabFolder, SWT.NULL);
-		tabItem.setText(EEFRuntimeUIMessages.TabElementTreeSelectionDialog_model_resource_tab_title);
-		tabItem.setControl(fillModelpage(tabFolder, false, new ViewerFilter() {
-			// Filter elements only in main Resource
-			@Override
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				ResourceSet resourceSet = null;
-				if (input instanceof ResourceSet) {
-					resourceSet = (ResourceSet)input;
-				} else if (input instanceof EEFEditorSettings) {
-					if (((EEFEditorSettings)input).getSource().eResource() != null)
-						resourceSet = ((EEFEditorSettings)input).getSource().eResource().getResourceSet();
-				}
-				if (resourceSet != null) {
-					Resource mainResource = TabElementTreeSelectionDialog.this.mainResource != null ? TabElementTreeSelectionDialog.this.mainResource
-							: resourceSet.getResources().get(0);
-					if (mainResource != null && mainResource == element) {
-						return true;
-					}
-					if (element instanceof EObject) {
-						EObject eObject = (EObject)element;
-						if (mainResource != null && mainResource == eObject.eResource()) {
-							return true;
-						}
-					}
-				}
-				return false;
-			}
-		}));
-
-		tabItem = new CTabItem(tabFolder, SWT.NULL);
-		tabItem.setText(EEFRuntimeUIMessages.TabElementTreeSelectionDialog_all_resources_tab_title);
-		tabItem.setControl(fillModelpage(tabFolder, true, null));
-
-		return tabFolder;
+		return fillModelpage(parent);
 	}
 
 	/**
-	 * Used to display a page in a tab
+	 * Used to display a page
 	 * 
-	 * @param tabFolder
-	 *            that contains all tabs
-	 * @param specificTabFilter
-	 *            a specific filter to this page
+	 * @param parent
+	 *            composite which contains the tree
 	 * @return the composite of this page
 	 */
-	public Control fillModelpage(CTabFolder tabFolder, final boolean showResourceItem,
-			final ViewerFilter specificTabFilter) {
-		Composite composite = new Composite(tabFolder, SWT.None);
+	public Control fillModelpage(Composite parent) {
+		Composite composite = new Composite(parent, SWT.None);
 		GridLayout layout = new GridLayout();
 		layout.marginHeight = convertVerticalDLUsToPixels(IDialogConstants.VERTICAL_MARGIN);
 		layout.marginWidth = convertHorizontalDLUsToPixels(IDialogConstants.HORIZONTAL_MARGIN);
@@ -209,14 +162,11 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 		treeViewer.setFilters(new ViewerFilter[0]);
 		treeViewer.setUseHashlookup(true);
 		if (input instanceof EEFEditorSettings)
-			treeViewer.setContentProvider(new AdvancedEEFEditorContentProvider(adapterFactory));
+			treeViewer.setContentProvider(new HideResourcesContentProvider(new AdvancedEEFEditorContentProvider(adapterFactory)));
 		else
-			treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+			treeViewer.setContentProvider(new HideResourcesContentProvider(new AdapterFactoryContentProvider(adapterFactory)));
 
 		ArrayList<ViewerFilter> filters = new ArrayList<ViewerFilter>();
-		if (specificTabFilter != null) {
-			filters.add(specificTabFilter);
-		}
 		if (viewerFilters != null && !viewerFilters.isEmpty()) {
 			for (ViewerFilter filter : viewerFilters) {
 				filters.add(filter);
@@ -309,6 +259,54 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 
 		return composite;
 
+	}
+	
+	/**
+	 * ContentProvider which delegates almost everything to another ContentProvider.
+	 * The purpose is to hide the Resource and display only their contents
+	 *
+	 */
+	private class HideResourcesContentProvider implements ITreeContentProvider {
+		private ITreeContentProvider delegateContentProvider;
+
+		public HideResourcesContentProvider(ITreeContentProvider delegateContentProvider) {
+			this.delegateContentProvider = delegateContentProvider;
+		}
+		
+		public Object[] getElements(Object inputElement) {
+			// Retrieve elements provided by the delegate content provider
+			Object[] elements = delegateContentProvider.getElements(inputElement);
+			List<Object> newElements = new ArrayList<Object>();
+			for (Object element : elements) {
+				// When an element is a resource, return its contents instead of the resource itself
+				if (element instanceof Resource) {
+					newElements.addAll(((Resource)element).getContents());
+				} else {
+					newElements.add(element);
+				}
+			}
+			return newElements.toArray();
+		}
+		
+		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+			delegateContentProvider.inputChanged(viewer, oldInput, newInput);
+		}
+		
+		public Object[] getChildren(Object parentElement) {
+			return delegateContentProvider.getChildren(parentElement);
+		}
+		
+		public Object getParent(Object element) {
+			return delegateContentProvider.getParent(element);
+		}
+		
+		public boolean hasChildren(Object element) {
+			return delegateContentProvider.hasChildren(element);
+		}
+
+		public void dispose() {
+			delegateContentProvider.dispose();
+		}
 	}
 
 	private class TreeSelectionPatternFilter extends PatternFilter {
