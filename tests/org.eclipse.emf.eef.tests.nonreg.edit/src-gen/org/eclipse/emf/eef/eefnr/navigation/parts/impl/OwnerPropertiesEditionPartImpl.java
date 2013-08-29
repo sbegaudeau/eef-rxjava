@@ -1475,7 +1475,11 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 			public EObject handleCreate() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartImpl.this, NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null)); 
-				return null;
+				return getSingleContainmentForAdvancedEObjectFlatComboViewer();
+			}
+
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartImpl.this, NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element)); 
 			}
 		};
 		//create widget
@@ -1506,7 +1510,11 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
 			public EObject handleCreate() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartImpl.this, NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null)); 
-				return null;
+				return getSingleReferencesForAdvancedEObjectFlatComboViewer();
+			}
+
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartImpl.this, NavigationViewsRepository.Owner.Properties.singleReferencesForAdvancedEObjectFlatComboViewer, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element)); 
 			}
 		};
 		//create widget
