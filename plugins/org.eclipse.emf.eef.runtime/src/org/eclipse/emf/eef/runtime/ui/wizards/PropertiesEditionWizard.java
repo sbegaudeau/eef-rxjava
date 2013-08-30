@@ -11,6 +11,7 @@
 package org.eclipse.emf.eef.runtime.ui.wizards;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -29,6 +30,7 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext.InstanciableTypeFilter;
 import org.eclipse.emf.eef.runtime.impl.services.LockPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.services.PropertiesContextService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
@@ -222,8 +224,23 @@ public class PropertiesEditionWizard extends Wizard {
 	@Override
 	public void addPages() {
 		if (inReferenceMode()) {
-			elementCreationPage = new ElementCreationWizardPage();
-			addPage(elementCreationPage);
+			List<EClass> instanciableTypes = getInstanciableTypes();
+			if (instanciableTypes.size() == 1) {
+				// We can directly instantiate the EObject
+				// so the ElementCreationWizardPage is useless
+				EObject create = EcoreUtil.create(instanciableTypes.get(0));
+				editingContext.seteObject(create);
+				eObject = create;
+				if (editingContext instanceof EReferencePropertiesEditionContext) {
+					if (((EReferencePropertiesEditionContext)editingContext).getSettings() != null) {
+						EEFUtils.putToReference(((EReferencePropertiesEditionContext)editingContext).getSettings(), create);
+					}
+				}
+			} else {
+				elementCreationPage = new ElementCreationWizardPage();
+				elementCreationPage.setInstanciableTypes(instanciableTypes);
+				addPage(elementCreationPage);
+			}
 		}
 		mainPage = new EditPropertyWizardPage();
 		addPage(mainPage);
@@ -236,15 +253,64 @@ public class PropertiesEditionWizard extends Wizard {
 	protected boolean inReferenceMode() {
 		return eReference != null && eReference.isContainment() && eObject == null;
 	}
+	
+	protected List<EClass> getInstanciableTypes() {
+		// Get types from the hierarchy
+		List<EClass> instanciableTypesInHierarchy = getInstanciableTypesInHierarchy();
+		
+		// This types list may need to be filtered
+		List<EClass> filteredInstanciableTypesInHierarchy = new ArrayList<EClass>();
+		if (editingContext instanceof EReferencePropertiesEditionContext) {
+			// Get filters defined on the PropertiesEditionContext
+			Collection<InstanciableTypeFilter> instanciableTypeFilters = ((EReferencePropertiesEditionContext) editingContext)
+																												.getInstanciableTypeFilters();
+			// If there is no filter we keep all types
+			if (instanciableTypeFilters.isEmpty()) {
+				filteredInstanciableTypesInHierarchy = instanciableTypesInHierarchy;
+			} else {
+				// Let's use the filters to restrict the list
+				for (EClass instanciableType : instanciableTypesInHierarchy) {
+					for (InstanciableTypeFilter instanciableTypeFilter : instanciableTypeFilters) {
+						if (instanciableTypeFilter.select(instanciableType)) {
+							filteredInstanciableTypesInHierarchy.add(instanciableType);
+							break;
+						}
+					}
+				}
+			}
+		} else {
+			// No need to filter the list
+			filteredInstanciableTypesInHierarchy = instanciableTypesInHierarchy;
+		}
+		return filteredInstanciableTypesInHierarchy;
+	}
+	
+	protected List<EClass> getInstanciableTypesInHierarchy() {
+		List<EClass> instanciableTypesInHierarchy;
+		if (editingContext instanceof DomainPropertiesEditionContext) {
+			instanciableTypesInHierarchy = EEFUtils.allTypeFor(eReference,
+					((DomainPropertiesEditionContext)editingContext).getEditingDomain());
+			editingContext = null;
+		} else {
+			instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(),
+					editingContext.getResourceSet());
+		}
+		return instanciableTypesInHierarchy;
+	}
 
 	protected class ElementCreationWizardPage extends WizardPage {
 
 		private List<Button> buttons = new ArrayList<Button>();
+		private List<EClass> instanciableTypes = null;
 
 		protected ElementCreationWizardPage() {
 			super(EEFRuntimeUIMessages.PropertiesEditionWizard_creation_page_key);
 			this.setTitle(EEFRuntimeUIMessages.PropertiesEditionWizard_creation_page_title);
 			this.setDescription(EEFRuntimeUIMessages.PropertiesEditionWizard_creation_page_description);
+		}
+		
+		protected void setInstanciableTypes(List<EClass> instanciableTypes) {
+			this.instanciableTypes = instanciableTypes;
 		}
 
 		public void createControl(Composite parent) {
@@ -253,16 +319,14 @@ public class PropertiesEditionWizard extends Wizard {
 			control.setLayoutData(gd);
 			GridLayout layout = new GridLayout();
 			control.setLayout(layout);
-			List<EClass> instanciableTypesInHierarchy;
-			if (editingContext instanceof DomainPropertiesEditionContext) {
-				instanciableTypesInHierarchy = EEFUtils.allTypeFor(eReference,
-						((DomainPropertiesEditionContext)editingContext).getEditingDomain());
-				editingContext = null;
-			} else {
-				instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(),
-						editingContext.getResourceSet());
+			
+			// For compatibility, previous version could not be passed the instanciable types list
+			// and had to calculate the list
+			if (instanciableTypes == null) {
+				instanciableTypes = getInstanciableTypesInHierarchy();
 			}
-			for (final EClass eClass : instanciableTypesInHierarchy) {
+			
+			for (final EClass eClass : instanciableTypes) {
 				Button button = new Button(control, SWT.RADIO);
 				button.setText(eClass.getName());
 				button.addSelectionListener(new SelectionAdapter() {
@@ -288,7 +352,7 @@ public class PropertiesEditionWizard extends Wizard {
 			}
 			if (buttons.size() > 0) {
 				buttons.get(0).setSelection(true);
-				eObject = EcoreUtil.create(instanciableTypesInHierarchy.get(0));
+				eObject = EcoreUtil.create(instanciableTypes.get(0));
 				if (editingContext instanceof EReferencePropertiesEditionContext
 						&& ((EReferencePropertiesEditionContext)editingContext).getSettings() != null) {
 					EEFUtils.putToReference(

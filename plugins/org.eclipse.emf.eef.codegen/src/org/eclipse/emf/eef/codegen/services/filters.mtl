@@ -22,6 +22,10 @@
 // FIXME default case for filter body generation.
 [/template]
 
+[template public filterBody(bindingFilter : StrictTypingFilter, editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
+[comment Do nothing. Here to avoid FIXME tag generation /]
+[/template]
+
 [template public filterBody(filter : JavaDeclarationFilter, editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)]
 			[view.viewIdentifier(pec)/].addFilterTo[editionElement.views->first().viewPackageSignature()/](new [include('org.eclipse.jface.viewers.ViewerFilter')/]() {
 

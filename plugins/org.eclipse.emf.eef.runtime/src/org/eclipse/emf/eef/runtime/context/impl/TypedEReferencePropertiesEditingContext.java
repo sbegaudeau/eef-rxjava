@@ -18,6 +18,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>
+ * @deprecated {@link EReferencePropertiesEditionContext} can now handle filters on type in a more generic way
  */
 public class TypedEReferencePropertiesEditingContext extends EReferencePropertiesEditionContext {
 
