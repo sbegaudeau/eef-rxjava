@@ -1532,12 +1532,12 @@ public class OwnerPropertiesEditionPartForm extends SectionPropertiesEditingPart
 
 			public EObject handleCreate() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null)); 
-				return null;//getSingleContainmentForAdvancedEObjectFlatComboViewer();
+				return getSingleContainmentForAdvancedEObjectFlatComboViewer();
 			}
 
-//			public void handleEdit(EObject element) {
-//				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element)); 
-//			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OwnerPropertiesEditionPartForm.this, NavigationViewsRepository.Owner.Properties.singleContainmentForAdvancedEObjectFlatComboViewer, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element)); 
+			}
 
 		};
 		//create widget
