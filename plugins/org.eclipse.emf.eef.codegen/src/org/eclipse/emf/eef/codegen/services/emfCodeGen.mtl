@@ -86,7 +86,7 @@ XMLTypePackage.Literals.[eDataType.getFormattedName()/]
 
 [template public metamodelStrictFilterGetter(eClass : EClassifier) post (trim())]
 [if (eClass.eInverse(GenClassifier).oclAsType(GenClassifier).genPackage.genModel->first().toString() <> eClass.getImportGenModel())]
-	[eClass.initializeImportManager2(eClass.eInverse(GenClassifier).oclAsType(GenClassifier).genPackage.genModel->first(), '', '')/]
+	[eClass.initializeImportManagerForGenmodel(eClass.eInverse(GenClassifier).oclAsType(GenClassifier).genPackage.genModel->first(), '', '')/]
 [/if]
 [eClass.eInverse(GenClassifier).getQualifiedClassifierAccessor()/]
 [/template]

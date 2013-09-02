@@ -36,8 +36,9 @@ public class ImportService {
 	
 	/**
 	 * Initializing EMF importManager on a genmodel.
+	 * To fix call of import manager in a genmodel which is not the genmodel used by the default import manager
 	 */
-	public void initializeImportManager2(EObject caller, GenModel model, String packageName, String className) {
+	public void initializeImportManagerForGenmodel(EObject caller, GenModel model, String packageName, String className) {
 		ImportManager importManager = new ImportManager(packageName, className);
 		model.setImportManager(importManager);
 	}

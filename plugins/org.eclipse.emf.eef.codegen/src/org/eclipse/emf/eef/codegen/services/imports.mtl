@@ -98,9 +98,10 @@
 	Sequence{caller}) /]
 [/template]
 
-[template public initializeImportManager2(caller : EObject, model : GenModel, packageName : String, className : String) post (trim())]
+[comment To fix call of import manager in a genmodel which is not the genmodel used by the default import manager /]
+[template public initializeImportManagerForGenmodel(caller : EObject, model : GenModel, packageName : String, className : String) post (trim())]
 [invoke(
 	'org.eclipse.emf.eef.codegen.services.ImportService',
-	'initializeImportManager2(org.eclipse.emf.ecore.EObject, org.eclipse.emf.codegen.ecore.genmodel.GenModel,java.lang.String,java.lang.String)', 
+	'initializeImportManagerForGenmodel(org.eclipse.emf.ecore.EObject, org.eclipse.emf.codegen.ecore.genmodel.GenModel,java.lang.String,java.lang.String)', 
 	Sequence{caller, model, packageName, className}) /]
 [/template]
