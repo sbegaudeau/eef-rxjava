@@ -157,7 +157,7 @@ if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.Propert
 			[for (eClassifier : EClassifier | editionElement.strictTypingFiltersTypes())]
 	context.addInstanciableTypeFilter(new [include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext.InstanciableTypeFilter')/]() {
 		public boolean select([include('org.eclipse.emf.ecore.EClass')/] instanciableType) {
-			return [eClassifier.metamodelGetter()/][addImport(eClassifier.ePackage.qualifiedMetamodelPackage())/] == instanciableType;
+			return [eClassifier.metamodelStrictFilterGetter()/][addImport(eClassifier.ePackage.qualifiedMetamodelPackage())/] == instanciableType;
 		}
 	});
 			[/for]
