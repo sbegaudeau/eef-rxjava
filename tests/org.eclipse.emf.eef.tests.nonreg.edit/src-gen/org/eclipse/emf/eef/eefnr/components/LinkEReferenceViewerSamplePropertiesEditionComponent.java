@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -41,7 +42,8 @@ import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext.InstanciableTypeFilter;
 
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
@@ -208,7 +210,12 @@ public class LinkEReferenceViewerSamplePropertiesEditionComponent extends Single
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TextSample eObject = EefnrFactory.eINSTANCE.createTextSample();
-				TypedEReferencePropertiesEditingContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, linkereferenceviewerRequiredPropertyCreateSettings, EefnrPackage.Literals.TEXT_SAMPLE, editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, linkereferenceviewerRequiredPropertyCreateSettings, editingContext.getAdapterFactory());
+				context.addInstanciableTypeFilter(new InstanciableTypeFilter() {
+					public boolean select(EClass instanciableType) {
+						return EefnrPackage.Literals.TEXT_SAMPLE == instanciableType;
+					}
+				});
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -234,7 +241,12 @@ public class LinkEReferenceViewerSamplePropertiesEditionComponent extends Single
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TextSample eObject = EefnrFactory.eINSTANCE.createTextSample();
-				TypedEReferencePropertiesEditingContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, linkereferenceviewerOptionalPropertyCreateSettings, EefnrPackage.Literals.TEXT_SAMPLE, editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, linkereferenceviewerOptionalPropertyCreateSettings, editingContext.getAdapterFactory());
+				context.addInstanciableTypeFilter(new InstanciableTypeFilter() {
+					public boolean select(EClass instanciableType) {
+						return EefnrPackage.Literals.TEXT_SAMPLE == instanciableType;
+					}
+				});
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
