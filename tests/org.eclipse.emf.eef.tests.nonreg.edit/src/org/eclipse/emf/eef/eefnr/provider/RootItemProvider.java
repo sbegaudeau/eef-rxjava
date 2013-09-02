@@ -354,6 +354,11 @@ public class RootItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample3()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 CustomNamingFactory.eINSTANCE.createEvent()));
 
 		newChildDescriptors.add

@@ -59,6 +59,12 @@ public class FiltersMessages extends NLS {
 	public static String ConcreteReferenceOwnerSamplePropertiesEditionPart_StrictTypingLabel;
 
 	
+	public static String ConcreteReferenceOwnerSamplePropertiesEditionPart_StrictTypingMultipleOnTableCompositionLabel;
+
+	
+	public static String ConcreteReferenceOwnerSamplePropertiesEditionPart_StrictTypingMultipleOnAdvancedTableCompositionLabel;
+
+	
 	public static String ConcreteReferenceTargetSample1PropertiesEditionPart_NameLabel;
 
 	

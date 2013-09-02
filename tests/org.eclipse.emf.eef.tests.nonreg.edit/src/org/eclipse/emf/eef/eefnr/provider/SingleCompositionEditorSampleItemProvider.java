@@ -375,6 +375,11 @@ public class SingleCompositionEditorSampleItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample3()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
 				 CustomNamingFactory.eINSTANCE.createEvent()));
 
 		newChildDescriptors.add

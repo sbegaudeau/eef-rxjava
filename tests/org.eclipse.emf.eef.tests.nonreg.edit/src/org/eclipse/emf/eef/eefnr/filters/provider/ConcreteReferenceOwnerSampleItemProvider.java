@@ -102,6 +102,8 @@ public class ConcreteReferenceOwnerSampleItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING);
+			childrenFeatures.add(FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING2);
+			childrenFeatures.add(FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING3);
 		}
 		return childrenFeatures;
 	}
@@ -157,6 +159,8 @@ public class ConcreteReferenceOwnerSampleItemProvider
 
 		switch (notification.getFeatureID(ConcreteReferenceOwnerSample.class)) {
 			case FiltersPackage.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING:
+			case FiltersPackage.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING2:
+			case FiltersPackage.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING3:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -183,6 +187,65 @@ public class ConcreteReferenceOwnerSampleItemProvider
 			(createChildParameter
 				(FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING,
 				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample2()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample3()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING2,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample1()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING2,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample2()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING2,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample3()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING3,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample1()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING3,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample2()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING3,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample3()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING ||
+			childFeature == FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING2 ||
+			childFeature == FiltersPackage.Literals.CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING3;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

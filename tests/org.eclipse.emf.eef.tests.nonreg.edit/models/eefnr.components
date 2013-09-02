@@ -719,6 +719,24 @@
           </bindingFilters>
           <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//filters/ConcreteReferenceOwnerSample/strictTyping"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AyErYBF4EeOaZubmM6as9Q" name="strictTypingMultipleOnTableComposition" views="_8OaS8BF3EeOaZubmM6as9Q">
+          <bindingFilters xsi:type="eef-mapping-filters:StrictTypingFilter" xmi:id="_GPWzcBF4EeOaZubmM6as9Q" name="StrictTyping">
+            <type xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//filters/ConcreteReferenceTargetSample2"/>
+          </bindingFilters>
+          <bindingFilters xsi:type="eef-mapping-filters:StrictTypingFilter" xmi:id="_GnnicBF4EeOaZubmM6as9Q" name="StrictTyping2">
+            <type xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//filters/ConcreteReferenceTargetSample3"/>
+          </bindingFilters>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//filters/ConcreteReferenceOwnerSample/strictTyping2"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Kd0X8BF4EeOaZubmM6as9Q" name="strictTypingMultipleOnAdvancedTableComposition" views="_8U5VcBF3EeOaZubmM6as9Q">
+          <bindingFilters xsi:type="eef-mapping-filters:StrictTypingFilter" xmi:id="_Kd0_ABF4EeOaZubmM6as9Q" name="StrictTyping">
+            <type xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//filters/ConcreteReferenceTargetSample2"/>
+          </bindingFilters>
+          <bindingFilters xsi:type="eef-mapping-filters:StrictTypingFilter" xmi:id="_Kd0_ARF4EeOaZubmM6as9Q" name="StrictTyping2">
+            <type xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//filters/ConcreteReferenceTargetSample1"/>
+          </bindingFilters>
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//filters/ConcreteReferenceOwnerSample/strictTyping3"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.tests.nonreg/model/eefnr.ecore#//filters/ConcreteReferenceOwnerSample"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Z3Siby1SEeCoYry1ltbGrg" name="ConcreteReferenceTargetSample1" views="_Z3TwjC1SEeCoYry1ltbGrg">
@@ -1498,6 +1516,12 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_wF62UC3oEeCjCeyEYuXGRQ" name="strictTyping">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_8OaS8BF3EeOaZubmM6as9Q" name="strictTypingMultipleOnTableComposition">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.4"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_8U5VcBF3EeOaZubmM6as9Q" name="strictTypingMultipleOnAdvancedTableComposition">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>

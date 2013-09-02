@@ -16,6 +16,7 @@ import org.eclipse.emf.eef.eefnr.filters.AbstractReferenceTargetSample;
 import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample;
 import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample1;
 import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample2;
+import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample3;
 import org.eclipse.emf.eef.eefnr.filters.FiltersFactory;
 import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
 import org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl;
@@ -71,6 +72,13 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 	 * @generated
 	 */
 	private EClass concreteReferenceTargetSample2EClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass concreteReferenceTargetSample3EClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -212,6 +220,24 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getConcreteReferenceOwnerSample_StrictTyping2() {
+		return (EReference)concreteReferenceOwnerSampleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConcreteReferenceOwnerSample_StrictTyping3() {
+		return (EReference)concreteReferenceOwnerSampleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConcreteReferenceTargetSample1() {
 		return concreteReferenceTargetSample1EClass;
 	}
@@ -223,6 +249,15 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 	 */
 	public EClass getConcreteReferenceTargetSample2() {
 		return concreteReferenceTargetSample2EClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConcreteReferenceTargetSample3() {
+		return concreteReferenceTargetSample3EClass;
 	}
 
 	/**
@@ -261,10 +296,14 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		concreteReferenceOwnerSampleEClass = createEClass(CONCRETE_REFERENCE_OWNER_SAMPLE);
 		createEReference(concreteReferenceOwnerSampleEClass, CONCRETE_REFERENCE_OWNER_SAMPLE__TARGET);
 		createEReference(concreteReferenceOwnerSampleEClass, CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING);
+		createEReference(concreteReferenceOwnerSampleEClass, CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING2);
+		createEReference(concreteReferenceOwnerSampleEClass, CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING3);
 
 		concreteReferenceTargetSample1EClass = createEClass(CONCRETE_REFERENCE_TARGET_SAMPLE1);
 
 		concreteReferenceTargetSample2EClass = createEClass(CONCRETE_REFERENCE_TARGET_SAMPLE2);
+
+		concreteReferenceTargetSample3EClass = createEClass(CONCRETE_REFERENCE_TARGET_SAMPLE3);
 	}
 
 	/**
@@ -303,6 +342,7 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		concreteReferenceOwnerSampleEClass.getESuperTypes().add(this.getAbstractReferenceOwnerSample());
 		concreteReferenceTargetSample1EClass.getESuperTypes().add(this.getAbstractReferenceTargetSample());
 		concreteReferenceTargetSample2EClass.getESuperTypes().add(this.getAbstractReferenceTargetSample());
+		concreteReferenceTargetSample3EClass.getESuperTypes().add(this.getAbstractReferenceTargetSample());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(abstractReferenceOwnerSampleEClass, AbstractReferenceOwnerSample.class, "AbstractReferenceOwnerSample", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -313,10 +353,14 @@ public class FiltersPackageImpl extends EPackageImpl implements FiltersPackage {
 		initEClass(concreteReferenceOwnerSampleEClass, ConcreteReferenceOwnerSample.class, "ConcreteReferenceOwnerSample", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConcreteReferenceOwnerSample_Target(), this.getConcreteReferenceTargetSample1(), null, "target", null, 0, -1, ConcreteReferenceOwnerSample.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getConcreteReferenceOwnerSample_StrictTyping(), this.getAbstractReferenceTargetSample(), null, "strictTyping", null, 0, -1, ConcreteReferenceOwnerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConcreteReferenceOwnerSample_StrictTyping2(), this.getAbstractReferenceTargetSample(), null, "strictTyping2", null, 0, -1, ConcreteReferenceOwnerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConcreteReferenceOwnerSample_StrictTyping3(), this.getAbstractReferenceTargetSample(), null, "strictTyping3", null, 0, -1, ConcreteReferenceOwnerSample.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(concreteReferenceTargetSample1EClass, ConcreteReferenceTargetSample1.class, "ConcreteReferenceTargetSample1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(concreteReferenceTargetSample2EClass, ConcreteReferenceTargetSample2.class, "ConcreteReferenceTargetSample2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(concreteReferenceTargetSample3EClass, ConcreteReferenceTargetSample3.class, "ConcreteReferenceTargetSample3", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}
 
 } //FiltersPackageImpl

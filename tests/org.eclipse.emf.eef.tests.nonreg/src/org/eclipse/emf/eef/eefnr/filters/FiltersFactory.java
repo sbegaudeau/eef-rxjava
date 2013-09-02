@@ -53,6 +53,15 @@ public interface FiltersFactory extends EFactory {
 	ConcreteReferenceTargetSample2 createConcreteReferenceTargetSample2();
 
 	/**
+	 * Returns a new object of class '<em>Concrete Reference Target Sample3</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Concrete Reference Target Sample3</em>'.
+	 * @generated
+	 */
+	ConcreteReferenceTargetSample3 createConcreteReferenceTargetSample3();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

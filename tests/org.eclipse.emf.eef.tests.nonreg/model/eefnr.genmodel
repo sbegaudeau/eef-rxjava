@@ -262,9 +262,12 @@
       <genClasses ecoreClass="eefnr.ecore#//filters/ConcreteReferenceOwnerSample">
         <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference eefnr.ecore#//filters/ConcreteReferenceOwnerSample/target"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//filters/ConcreteReferenceOwnerSample/strictTyping"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//filters/ConcreteReferenceOwnerSample/strictTyping2"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eefnr.ecore#//filters/ConcreteReferenceOwnerSample/strictTyping3"/>
       </genClasses>
       <genClasses ecoreClass="eefnr.ecore#//filters/ConcreteReferenceTargetSample1"/>
       <genClasses ecoreClass="eefnr.ecore#//filters/ConcreteReferenceTargetSample2"/>
+      <genClasses ecoreClass="eefnr.ecore#//filters/ConcreteReferenceTargetSample3"/>
     </nestedGenPackages>
     <nestedGenPackages prefix="CustomNaming" basePackage="org.eclipse.emf.eef.eefnr"
         disposableProviderFactory="true" ecorePackage="eefnr.ecore#//naming">

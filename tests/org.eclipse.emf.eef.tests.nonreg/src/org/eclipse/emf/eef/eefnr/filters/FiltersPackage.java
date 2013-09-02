@@ -171,13 +171,31 @@ public interface FiltersPackage extends EPackage {
 	int CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING = ABSTRACT_REFERENCE_OWNER_SAMPLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Strict Typing2</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING2 = ABSTRACT_REFERENCE_OWNER_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Strict Typing3</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING3 = ABSTRACT_REFERENCE_OWNER_SAMPLE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Concrete Reference Owner Sample</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCRETE_REFERENCE_OWNER_SAMPLE_FEATURE_COUNT = ABSTRACT_REFERENCE_OWNER_SAMPLE_FEATURE_COUNT + 2;
+	int CONCRETE_REFERENCE_OWNER_SAMPLE_FEATURE_COUNT = ABSTRACT_REFERENCE_OWNER_SAMPLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.filters.impl.ConcreteReferenceTargetSample1Impl <em>Concrete Reference Target Sample1</em>}' class.
@@ -234,6 +252,35 @@ public interface FiltersPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCRETE_REFERENCE_TARGET_SAMPLE2_FEATURE_COUNT = ABSTRACT_REFERENCE_TARGET_SAMPLE_FEATURE_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.filters.impl.ConcreteReferenceTargetSample3Impl <em>Concrete Reference Target Sample3</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.filters.impl.ConcreteReferenceTargetSample3Impl
+	 * @see org.eclipse.emf.eef.eefnr.filters.impl.FiltersPackageImpl#getConcreteReferenceTargetSample3()
+	 * @generated
+	 */
+	int CONCRETE_REFERENCE_TARGET_SAMPLE3 = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCRETE_REFERENCE_TARGET_SAMPLE3__NAME = ABSTRACT_REFERENCE_TARGET_SAMPLE__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Concrete Reference Target Sample3</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCRETE_REFERENCE_TARGET_SAMPLE3_FEATURE_COUNT = ABSTRACT_REFERENCE_TARGET_SAMPLE_FEATURE_COUNT + 0;
 
 
 	/**
@@ -300,6 +347,28 @@ public interface FiltersPackage extends EPackage {
 	EReference getConcreteReferenceOwnerSample_StrictTyping();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample#getStrictTyping2 <em>Strict Typing2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Strict Typing2</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample#getStrictTyping2()
+	 * @see #getConcreteReferenceOwnerSample()
+	 * @generated
+	 */
+	EReference getConcreteReferenceOwnerSample_StrictTyping2();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample#getStrictTyping3 <em>Strict Typing3</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Strict Typing3</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample#getStrictTyping3()
+	 * @see #getConcreteReferenceOwnerSample()
+	 * @generated
+	 */
+	EReference getConcreteReferenceOwnerSample_StrictTyping3();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample1 <em>Concrete Reference Target Sample1</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -318,6 +387,16 @@ public interface FiltersPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getConcreteReferenceTargetSample2();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample3 <em>Concrete Reference Target Sample3</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Concrete Reference Target Sample3</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample3
+	 * @generated
+	 */
+	EClass getConcreteReferenceTargetSample3();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -396,6 +475,22 @@ public interface FiltersPackage extends EPackage {
 		EReference CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING = eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping();
 
 		/**
+		 * The meta object literal for the '<em><b>Strict Typing2</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING2 = eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping2();
+
+		/**
+		 * The meta object literal for the '<em><b>Strict Typing3</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCRETE_REFERENCE_OWNER_SAMPLE__STRICT_TYPING3 = eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping3();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.filters.impl.ConcreteReferenceTargetSample1Impl <em>Concrete Reference Target Sample1</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -414,6 +509,16 @@ public interface FiltersPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONCRETE_REFERENCE_TARGET_SAMPLE2 = eINSTANCE.getConcreteReferenceTargetSample2();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.filters.impl.ConcreteReferenceTargetSample3Impl <em>Concrete Reference Target Sample3</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.filters.impl.ConcreteReferenceTargetSample3Impl
+		 * @see org.eclipse.emf.eef.eefnr.filters.impl.FiltersPackageImpl#getConcreteReferenceTargetSample3()
+		 * @generated
+		 */
+		EClass CONCRETE_REFERENCE_TARGET_SAMPLE3 = eINSTANCE.getConcreteReferenceTargetSample3();
 
 	}
 

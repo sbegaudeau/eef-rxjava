@@ -37,6 +37,12 @@ public class FiltersViewsRepository {
 			
 			public static String strictTyping = "filters::ConcreteReferenceOwnerSample::properties::strictTyping";
 			
+			
+			public static String strictTypingMultipleOnTableComposition = "filters::ConcreteReferenceOwnerSample::properties::strictTypingMultipleOnTableComposition";
+			
+			
+			public static String strictTypingMultipleOnAdvancedTableComposition = "filters::ConcreteReferenceOwnerSample::properties::strictTypingMultipleOnAdvancedTableComposition";
+			
 	
 		}
 	
