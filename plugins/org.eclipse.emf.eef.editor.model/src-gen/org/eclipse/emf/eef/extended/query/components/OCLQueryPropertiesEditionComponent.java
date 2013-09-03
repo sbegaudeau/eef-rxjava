@@ -83,10 +83,11 @@ public class OCLQueryPropertiesEditionComponent extends SinglePartPropertiesEdit
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final OCLQuery oCLQuery = (OCLQuery)elt;
 			final OCLQueryPropertiesEditionPart basePart = (OCLQueryPropertiesEditionPart)editingPart;
 			// init values
-			if (oCLQuery.getQuery() != null && isAccessible(QueryViewsRepository.OCLQuery.Properties.query_))
+			if (isAccessible(QueryViewsRepository.OCLQuery.Properties.query_))
 				basePart.setQuery(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, oCLQuery.getQuery()));
 			
 			if (isAccessible(QueryViewsRepository.OCLQuery.Properties.context)) {
@@ -172,9 +173,10 @@ public class OCLQueryPropertiesEditionComponent extends SinglePartPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			OCLQueryPropertiesEditionPart basePart = (OCLQueryPropertiesEditionPart)editingPart;
-			if (QueryPackage.eINSTANCE.getOCLQuery_Query().equals(msg.getFeature()) && basePart != null && isAccessible(QueryViewsRepository.OCLQuery.Properties.query_)) {
+			if (QueryPackage.eINSTANCE.getOCLQuery_Query().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(QueryViewsRepository.OCLQuery.Properties.query_)) {
 				if (msg.getNewValue() != null) {
 					basePart.setQuery(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -196,7 +198,7 @@ public class OCLQueryPropertiesEditionComponent extends SinglePartPropertiesEdit
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			QueryPackage.eINSTANCE.getOCLQuery_Query(),
-			QueryPackage.eINSTANCE.getOCLQuery_Context());
+			QueryPackage.eINSTANCE.getOCLQuery_Context()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -236,5 +238,8 @@ public class OCLQueryPropertiesEditionComponent extends SinglePartPropertiesEdit
 		}
 		return ret;
 	}
+
+
+	
 
 }

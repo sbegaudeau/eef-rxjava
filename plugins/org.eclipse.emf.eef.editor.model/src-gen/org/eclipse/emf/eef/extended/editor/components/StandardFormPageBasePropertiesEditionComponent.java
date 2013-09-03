@@ -69,13 +69,14 @@ public class StandardFormPageBasePropertiesEditionComponent extends SinglePartPr
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final StandardFormPage standardFormPage = (StandardFormPage)elt;
 			final StandardFormPagePropertiesEditionPart basePart = (StandardFormPagePropertiesEditionPart)editingPart;
 			// init values
-			if (standardFormPage.getName() != null && isAccessible(EditorViewsRepository.StandardFormPage.Naming.name))
+			if (isAccessible(EditorViewsRepository.StandardFormPage.Naming.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, standardFormPage.getName()));
 			
-			if (standardFormPage.getTitle() != null && isAccessible(EditorViewsRepository.StandardFormPage.Naming.title_))
+			if (isAccessible(EditorViewsRepository.StandardFormPage.Naming.title_))
 				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, standardFormPage.getTitle()));
 			
 			// init filters
@@ -127,16 +128,17 @@ public class StandardFormPageBasePropertiesEditionComponent extends SinglePartPr
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			StandardFormPagePropertiesEditionPart basePart = (StandardFormPagePropertiesEditionPart)editingPart;
-			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.StandardFormPage.Naming.name)) {
+			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.StandardFormPage.Naming.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (EditorPackage.eINSTANCE.getEEFPage_Title().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.StandardFormPage.Naming.title_)) {
+			if (EditorPackage.eINSTANCE.getEEFPage_Title().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.StandardFormPage.Naming.title_)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -156,7 +158,7 @@ public class StandardFormPageBasePropertiesEditionComponent extends SinglePartPr
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			ViewsPackage.eINSTANCE.getViewElement_Name(),
-			EditorPackage.eINSTANCE.getEEFPage_Title());
+			EditorPackage.eINSTANCE.getEEFPage_Title()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -215,5 +217,8 @@ public class StandardFormPageBasePropertiesEditionComponent extends SinglePartPr
 		}
 		return ret;
 	}
+
+
+	
 
 }

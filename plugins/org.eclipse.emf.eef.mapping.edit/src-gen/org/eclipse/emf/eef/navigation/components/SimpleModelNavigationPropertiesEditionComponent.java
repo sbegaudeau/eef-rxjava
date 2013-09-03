@@ -298,4 +298,6 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 
 	
 
+	
+
 }

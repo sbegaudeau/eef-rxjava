@@ -69,13 +69,14 @@ public class TreeMasterPageBasePropertiesEditionComponent extends SinglePartProp
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final TreeMasterPage treeMasterPage = (TreeMasterPage)elt;
 			final TreeMasterPagePropertiesEditionPart basePart = (TreeMasterPagePropertiesEditionPart)editingPart;
 			// init values
-			if (treeMasterPage.getName() != null && isAccessible(EditorViewsRepository.TreeMasterPage.Naming.name))
+			if (isAccessible(EditorViewsRepository.TreeMasterPage.Naming.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, treeMasterPage.getName()));
 			
-			if (treeMasterPage.getTitle() != null && isAccessible(EditorViewsRepository.TreeMasterPage.Naming.title_))
+			if (isAccessible(EditorViewsRepository.TreeMasterPage.Naming.title_))
 				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, treeMasterPage.getTitle()));
 			
 			if (isAccessible(EditorViewsRepository.TreeMasterPage.Settings.toolbarVisible)) {
@@ -138,23 +139,24 @@ public class TreeMasterPageBasePropertiesEditionComponent extends SinglePartProp
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TreeMasterPagePropertiesEditionPart basePart = (TreeMasterPagePropertiesEditionPart)editingPart;
-			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.TreeMasterPage.Naming.name)) {
+			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.TreeMasterPage.Naming.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (EditorPackage.eINSTANCE.getEEFPage_Title().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.TreeMasterPage.Naming.title_)) {
+			if (EditorPackage.eINSTANCE.getEEFPage_Title().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.TreeMasterPage.Naming.title_)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTitle_("");
 				}
 			}
-			if (EditorPackage.eINSTANCE.getTreeMasterPage_ToolbarVisible().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.TreeMasterPage.Settings.toolbarVisible))
+			if (EditorPackage.eINSTANCE.getTreeMasterPage_ToolbarVisible().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.TreeMasterPage.Settings.toolbarVisible))
 				basePart.setToolbarVisible((Boolean)msg.getNewValue());
 			
 			
@@ -171,7 +173,7 @@ public class TreeMasterPageBasePropertiesEditionComponent extends SinglePartProp
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			ViewsPackage.eINSTANCE.getViewElement_Name(),
 			EditorPackage.eINSTANCE.getEEFPage_Title(),
-			EditorPackage.eINSTANCE.getTreeMasterPage_ToolbarVisible());
+			EditorPackage.eINSTANCE.getTreeMasterPage_ToolbarVisible()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -237,5 +239,8 @@ public class TreeMasterPageBasePropertiesEditionComponent extends SinglePartProp
 		}
 		return ret;
 	}
+
+
+	
 
 }

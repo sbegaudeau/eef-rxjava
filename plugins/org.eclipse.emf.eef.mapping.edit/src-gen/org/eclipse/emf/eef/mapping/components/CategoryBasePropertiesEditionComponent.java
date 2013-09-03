@@ -182,4 +182,6 @@ public class CategoryBasePropertiesEditionComponent extends SinglePartProperties
 
 	
 
+	
+
 }

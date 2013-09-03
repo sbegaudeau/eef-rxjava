@@ -192,6 +192,9 @@ public class EEFEditorPagesPropertiesEditionPartForm extends SectionPropertiesEd
 		EditingUtils.setID(name, EditorViewsRepository.EEFEditorPages.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.EEFEditorPages.Properties.name, EditorViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -230,6 +233,14 @@ public class EEFEditorPagesPropertiesEditionPartForm extends SectionPropertiesEd
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.EEFEditorPages.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(EditorMessages.EEFEditorPages_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 

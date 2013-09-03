@@ -12,36 +12,56 @@ package org.eclipse.emf.eef.extended.editor.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.emf.eef.components.ComponentsFactory;
 import org.eclipse.emf.eef.components.PropertiesEditionComponent;
+
 import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.PartFilter;
+
 import org.eclipse.emf.eef.extended.editor.parts.EditorViewsRepository;
 import org.eclipse.emf.eef.extended.editor.parts.PartFilterPropertiesEditionPart;
+
 import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
+
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewsFactory;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -91,10 +111,11 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final PartFilter partFilter = (PartFilter)elt;
 			final PartFilterPropertiesEditionPart basePart = (PartFilterPropertiesEditionPart)editingPart;
 			// init values
-			if (partFilter.getName() != null && isAccessible(EditorViewsRepository.PartFilter.Naming.name))
+			if (isAccessible(EditorViewsRepository.PartFilter.Naming.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, partFilter.getName()));
 			
 			if (isAccessible(EditorViewsRepository.PartFilter.Settings.mandatory)) {
@@ -131,8 +152,7 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 					
 				});
 				// Start of user code for additional businessfilters for filteredPart
-			
-			// End of user code
+				// End of user code
 			}
 			if (isAccessible(EditorViewsRepository.PartFilter.Filter.contextualComponent)) {
 				basePart.addFilterToContextualComponent(new ViewerFilter() {
@@ -148,8 +168,7 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 					
 				});
 				// Start of user code for additional businessfilters for contextualComponent
-			
-			// End of user code
+				// End of user code
 			}
 			// init values for referenced views
 			
@@ -237,16 +256,17 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			PartFilterPropertiesEditionPart basePart = (PartFilterPropertiesEditionPart)editingPart;
-			if (FiltersPackage.eINSTANCE.getBindingFilter_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.PartFilter.Naming.name)) {
+			if (FiltersPackage.eINSTANCE.getBindingFilter_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.PartFilter.Naming.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.PartFilter.Settings.mandatory))
+			if (FiltersPackage.eINSTANCE.getBindingFilter_Mandatory().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.PartFilter.Settings.mandatory))
 				basePart.setMandatory((Boolean)msg.getNewValue());
 			
 			if (EditorPackage.eINSTANCE.getPartFilter_FilteredPart().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.PartFilter.Filter.filteredPart))
@@ -268,7 +288,7 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 			FiltersPackage.eINSTANCE.getBindingFilter_Name(),
 			FiltersPackage.eINSTANCE.getBindingFilter_Mandatory(),
 			EditorPackage.eINSTANCE.getPartFilter_FilteredPart(),
-			EditorPackage.eINSTANCE.getPartFilter_ContextualComponent());
+			EditorPackage.eINSTANCE.getPartFilter_ContextualComponent()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -315,5 +335,8 @@ public class PartFilterBasePropertiesEditionComponent extends SinglePartProperti
 		}
 		return ret;
 	}
+
+
+	
 
 }

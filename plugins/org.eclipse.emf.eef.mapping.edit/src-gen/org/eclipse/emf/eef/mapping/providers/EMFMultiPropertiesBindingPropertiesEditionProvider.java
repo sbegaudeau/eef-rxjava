@@ -141,7 +141,7 @@ public class EMFMultiPropertiesBindingPropertiesEditionProvider extends Properti
 	 * Provides the filter used by the plugin.xml to assign part forms.
 	 */
 	public static class EditionFilter implements IFilter {
-		
+	
 		/**
 		 * {@inheritDoc}
 		 * 

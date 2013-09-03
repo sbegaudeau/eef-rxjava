@@ -286,4 +286,6 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 
 	
 
+	
+
 }

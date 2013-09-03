@@ -256,4 +256,6 @@ public class ViewReferenceBasePropertiesEditionComponent extends SinglePartPrope
 
 	
 
+	
+
 }

@@ -194,4 +194,6 @@ public class JavaDeclarationFilterBasePropertiesEditionComponent extends SingleP
 
 	
 
+	
+
 }

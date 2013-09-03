@@ -171,6 +171,9 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 		});
 		context.setID(QueryViewsRepository.OCLQuery.Properties.context);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(QueryViewsRepository.OCLQuery.Properties.context, QueryViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createContextFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -236,6 +239,9 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 		EditingUtils.setID(query, QueryViewsRepository.OCLQuery.Properties.query_);
 		EditingUtils.setEEFtype(query, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(QueryViewsRepository.OCLQuery.Properties.query_, QueryViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createQueryText
+
+		// End of user code
 		return parent;
 	}
 
@@ -277,6 +283,14 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 		if (current != null) {
 			context.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(QueryViewsRepository.OCLQuery.Properties.context);
+		if (eefElementEditorReadOnlyState && context.isEnabled()) {
+			context.setEnabled(false);
+			context.setToolTipText(QueryMessages.OCLQuery_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !context.isEnabled()) {
+			context.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -291,6 +305,14 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 		} else {
 			context.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(QueryViewsRepository.OCLQuery.Properties.context);
+		if (eefElementEditorReadOnlyState && context.isEnabled()) {
+			context.setEnabled(false);
+			context.setToolTipText(QueryMessages.OCLQuery_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !context.isEnabled()) {
+			context.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -344,6 +366,14 @@ public class OCLQueryPropertiesEditionPartForm extends SectionPropertiesEditingP
 		} else {
 			query.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(QueryViewsRepository.OCLQuery.Properties.query_);
+		if (eefElementEditorReadOnlyState && query.isEnabled()) {
+			query.setEnabled(false);
+			query.setToolTipText(QueryMessages.OCLQuery_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !query.isEnabled()) {
+			query.setEnabled(true);
+		}	
+		
 	}
 
 

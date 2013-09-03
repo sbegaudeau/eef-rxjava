@@ -79,6 +79,7 @@ public class ExplicitPathQueryPropertiesEditionComponent extends SinglePartPrope
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ExplicitPathQuery explicitPathQuery = (ExplicitPathQuery)elt;
 			final ExplicitPathQueryPropertiesEditionPart basePart = (ExplicitPathQueryPropertiesEditionPart)editingPart;
 			// init values
@@ -157,6 +158,7 @@ public class ExplicitPathQueryPropertiesEditionComponent extends SinglePartPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ExplicitPathQueryPropertiesEditionPart basePart = (ExplicitPathQueryPropertiesEditionPart)editingPart;
 			if (QueryPackage.eINSTANCE.getExplicitPathQuery_Query().equals(msg.getFeature()) && basePart != null && isAccessible(QueryViewsRepository.ExplicitPathQuery.Properties.query_))
@@ -173,7 +175,7 @@ public class ExplicitPathQueryPropertiesEditionComponent extends SinglePartPrope
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			QueryPackage.eINSTANCE.getExplicitPathQuery_Query());
+			QueryPackage.eINSTANCE.getExplicitPathQuery_Query()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -206,5 +208,8 @@ public class ExplicitPathQueryPropertiesEditionComponent extends SinglePartPrope
 		}
 		return ret;
 	}
+
+
+	
 
 }

@@ -191,6 +191,9 @@ public class StaticEEFEditorContributionPropertiesEditionPartImpl extends Compos
 		EditingUtils.setID(name, EditorViewsRepository.StaticEEFEditorContribution.Naming.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.StaticEEFEditorContribution.Naming.name, EditorViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -326,6 +329,14 @@ public class StaticEEFEditorContributionPropertiesEditionPartImpl extends Compos
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.StaticEEFEditorContribution.Naming.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(EditorMessages.StaticEEFEditorContribution_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 
@@ -341,6 +352,14 @@ public class StaticEEFEditorContributionPropertiesEditionPartImpl extends Compos
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		views.setContentProvider(contentProvider);
 		views.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.StaticEEFEditorContribution.Binding.views);
+		if (eefElementEditorReadOnlyState && views.getTable().isEnabled()) {
+			views.setEnabled(false);
+			views.setToolTipText(EditorMessages.StaticEEFEditorContribution_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !views.getTable().isEnabled()) {
+			views.setEnabled(true);
+		}
+		
 	}
 
 	/**

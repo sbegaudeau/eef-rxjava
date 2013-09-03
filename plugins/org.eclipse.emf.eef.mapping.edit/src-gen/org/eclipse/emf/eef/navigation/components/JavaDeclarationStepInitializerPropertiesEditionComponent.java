@@ -240,4 +240,6 @@ public class JavaDeclarationStepInitializerPropertiesEditionComponent extends Si
 
 	
 
+	
+
 }
