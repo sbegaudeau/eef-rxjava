@@ -131,13 +131,40 @@ public interface EEFActionsPackage extends EPackage {
 	int EDIT_ACTION__DOCUMENTATION = EEF_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDIT_ACTION__REFERENCE_NAME = EEF_ACTION_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDIT_ACTION__PROPERTIES_EDITION_ELEMENT = EEF_ACTION_FEATURE_COUNT + 0;
+	int EDIT_ACTION__PROPERTIES_EDITION_ELEMENT = EEF_ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI = EEF_ACTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Computed Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT = EEF_ACTION_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
@@ -146,7 +173,7 @@ public interface EEFActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EDIT_ACTION__REFERENCEABLE_OBJECT = EEF_ACTION_FEATURE_COUNT + 1;
+	int EDIT_ACTION__REFERENCEABLE_OBJECT = EEF_ACTION_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Edit Action</em>' class.
@@ -155,7 +182,7 @@ public interface EEFActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EDIT_ACTION_FEATURE_COUNT = EEF_ACTION_FEATURE_COUNT + 2;
+	int EDIT_ACTION_FEATURE_COUNT = EEF_ACTION_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.AddImpl <em>Add</em>}' class.
@@ -186,6 +213,15 @@ public interface EEFActionsPackage extends EPackage {
 	int ADD__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -193,6 +229,24 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int ADD__PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__PROPERTIES_EDITION_ELEMENT_URI = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI;
+
+	/**
+	 * The feature id for the '<em><b>Computed Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__COMPUTED_PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
@@ -213,13 +267,49 @@ public interface EEFActionsPackage extends EPackage {
 	int ADD__TYPE = EDIT_ACTION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Type URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__TYPE_URI = EDIT_ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Computed Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__COMPUTED_TYPE = EDIT_ACTION_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>EContaining Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADD__ECONTAINING_FEATURE = EDIT_ACTION_FEATURE_COUNT + 1;
+	int ADD__ECONTAINING_FEATURE = EDIT_ACTION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>EContaining Feature URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__ECONTAINING_FEATURE_URI = EDIT_ACTION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Computed EContaining Feature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__COMPUTED_ECONTAINING_FEATURE = EDIT_ACTION_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Add</em>' class.
@@ -228,7 +318,7 @@ public interface EEFActionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADD_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 2;
+	int ADD_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.RemoveImpl <em>Remove</em>}' class.
@@ -259,6 +349,15 @@ public interface EEFActionsPackage extends EPackage {
 	int REMOVE__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -266,6 +365,24 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int REMOVE__PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE__PROPERTIES_EDITION_ELEMENT_URI = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI;
+
+	/**
+	 * The feature id for the '<em><b>Computed Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE__COMPUTED_PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
@@ -314,6 +431,15 @@ public interface EEFActionsPackage extends EPackage {
 	int SET_ATTRIBUTE__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_ATTRIBUTE__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -321,6 +447,24 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SET_ATTRIBUTE__PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_ATTRIBUTE__PROPERTIES_EDITION_ELEMENT_URI = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI;
+
+	/**
+	 * The feature id for the '<em><b>Computed Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_ATTRIBUTE__COMPUTED_PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
@@ -350,13 +494,31 @@ public interface EEFActionsPackage extends EPackage {
 	int SET_ATTRIBUTE__ECONTAINING_FEATURE = EDIT_ACTION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>EContaining Feature URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_ATTRIBUTE__ECONTAINING_FEATURE_URI = EDIT_ACTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Computed EContaining Feature</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_ATTRIBUTE__COMPUTED_ECONTAINING_FEATURE = EDIT_ACTION_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Set Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_ATTRIBUTE_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 2;
+	int SET_ATTRIBUTE_FEATURE_COUNT = EDIT_ACTION_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.UnsetAttributeImpl <em>Unset Attribute</em>}' class.
@@ -387,6 +549,15 @@ public interface EEFActionsPackage extends EPackage {
 	int UNSET_ATTRIBUTE__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET_ATTRIBUTE__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -394,6 +565,24 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNSET_ATTRIBUTE__PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET_ATTRIBUTE__PROPERTIES_EDITION_ELEMENT_URI = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI;
+
+	/**
+	 * The feature id for the '<em><b>Computed Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET_ATTRIBUTE__COMPUTED_PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
@@ -460,6 +649,15 @@ public interface EEFActionsPackage extends EPackage {
 	int UNSET__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -467,6 +665,24 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNSET__PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET__PROPERTIES_EDITION_ELEMENT_URI = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI;
+
+	/**
+	 * The feature id for the '<em><b>Computed Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET__COMPUTED_PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
@@ -654,6 +870,15 @@ public interface EEFActionsPackage extends EPackage {
 	int SET_REFERENCE__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_REFERENCE__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -661,6 +886,24 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SET_REFERENCE__PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_REFERENCE__PROPERTIES_EDITION_ELEMENT_URI = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI;
+
+	/**
+	 * The feature id for the '<em><b>Computed Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_REFERENCE__COMPUTED_PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
@@ -728,6 +971,15 @@ public interface EEFActionsPackage extends EPackage {
 	int UNSET_REFERENCE__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET_REFERENCE__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -735,6 +987,24 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNSET_REFERENCE__PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET_REFERENCE__PROPERTIES_EDITION_ELEMENT_URI = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI;
+
+	/**
+	 * The feature id for the '<em><b>Computed Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSET_REFERENCE__COMPUTED_PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
@@ -802,6 +1072,15 @@ public interface EEFActionsPackage extends EPackage {
 	int MOVE_UP__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_UP__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -809,6 +1088,24 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int MOVE_UP__PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_UP__PROPERTIES_EDITION_ELEMENT_URI = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI;
+
+	/**
+	 * The feature id for the '<em><b>Computed Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_UP__COMPUTED_PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
@@ -857,6 +1154,15 @@ public interface EEFActionsPackage extends EPackage {
 	int MOVE_DOWN__DOCUMENTATION = EDIT_ACTION__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_DOWN__REFERENCE_NAME = EDIT_ACTION__REFERENCE_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Properties Edition Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -864,6 +1170,24 @@ public interface EEFActionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int MOVE_DOWN__PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Properties Edition Element URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_DOWN__PROPERTIES_EDITION_ELEMENT_URI = EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI;
+
+	/**
+	 * The feature id for the '<em><b>Computed Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_DOWN__COMPUTED_PROPERTIES_EDITION_ELEMENT = EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Referenceable Object</b></em>' reference.
@@ -915,6 +1239,28 @@ public interface EEFActionsPackage extends EPackage {
 	EReference getEditAction_PropertiesEditionElement();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.modelingBot.EEFActions.EditAction#getPropertiesEditionElementURI <em>Properties Edition Element URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Properties Edition Element URI</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.EditAction#getPropertiesEditionElementURI()
+	 * @see #getEditAction()
+	 * @generated
+	 */
+	EAttribute getEditAction_PropertiesEditionElementURI();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.EEFActions.EditAction#getComputedPropertiesEditionElement <em>Computed Properties Edition Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Computed Properties Edition Element</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.EditAction#getComputedPropertiesEditionElement()
+	 * @see #getEditAction()
+	 * @generated
+	 */
+	EReference getEditAction_ComputedPropertiesEditionElement();
+
+	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.EEFActions.EditAction#getReferenceableObject <em>Referenceable Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -947,6 +1293,28 @@ public interface EEFActionsPackage extends EPackage {
 	EReference getAdd_Type();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getTypeURI <em>Type URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type URI</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.Add#getTypeURI()
+	 * @see #getAdd()
+	 * @generated
+	 */
+	EAttribute getAdd_TypeURI();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getComputedType <em>Computed Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Computed Type</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.Add#getComputedType()
+	 * @see #getAdd()
+	 * @generated
+	 */
+	EReference getAdd_ComputedType();
+
+	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getEContainingFeature <em>EContaining Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -956,6 +1324,28 @@ public interface EEFActionsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAdd_EContainingFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getEContainingFeatureURI <em>EContaining Feature URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>EContaining Feature URI</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.Add#getEContainingFeatureURI()
+	 * @see #getAdd()
+	 * @generated
+	 */
+	EAttribute getAdd_EContainingFeatureURI();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getComputedEContainingFeature <em>Computed EContaining Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Computed EContaining Feature</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.Add#getComputedEContainingFeature()
+	 * @see #getAdd()
+	 * @generated
+	 */
+	EReference getAdd_ComputedEContainingFeature();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.EEFActions.Remove <em>Remove</em>}'.
@@ -998,6 +1388,28 @@ public interface EEFActionsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSetAttribute_EContainingFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute#getEContainingFeatureURI <em>EContaining Feature URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>EContaining Feature URI</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute#getEContainingFeatureURI()
+	 * @see #getSetAttribute()
+	 * @generated
+	 */
+	EAttribute getSetAttribute_EContainingFeatureURI();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute#getComputedEContainingFeature <em>Computed EContaining Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Computed EContaining Feature</em>'.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.SetAttribute#getComputedEContainingFeature()
+	 * @see #getSetAttribute()
+	 * @generated
+	 */
+	EReference getSetAttribute_ComputedEContainingFeature();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.eef.modelingBot.EEFActions.UnsetAttribute <em>Unset Attribute</em>}'.
@@ -1239,6 +1651,22 @@ public interface EEFActionsPackage extends EPackage {
 		EReference EDIT_ACTION__PROPERTIES_EDITION_ELEMENT = eINSTANCE.getEditAction_PropertiesEditionElement();
 
 		/**
+		 * The meta object literal for the '<em><b>Properties Edition Element URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EDIT_ACTION__PROPERTIES_EDITION_ELEMENT_URI = eINSTANCE.getEditAction_PropertiesEditionElementURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Computed Properties Edition Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EDIT_ACTION__COMPUTED_PROPERTIES_EDITION_ELEMENT = eINSTANCE.getEditAction_ComputedPropertiesEditionElement();
+
+		/**
 		 * The meta object literal for the '<em><b>Referenceable Object</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1265,12 +1693,44 @@ public interface EEFActionsPackage extends EPackage {
 		EReference ADD__TYPE = eINSTANCE.getAdd_Type();
 
 		/**
+		 * The meta object literal for the '<em><b>Type URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADD__TYPE_URI = eINSTANCE.getAdd_TypeURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Computed Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADD__COMPUTED_TYPE = eINSTANCE.getAdd_ComputedType();
+
+		/**
 		 * The meta object literal for the '<em><b>EContaining Feature</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference ADD__ECONTAINING_FEATURE = eINSTANCE.getAdd_EContainingFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>EContaining Feature URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADD__ECONTAINING_FEATURE_URI = eINSTANCE.getAdd_EContainingFeatureURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Computed EContaining Feature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADD__COMPUTED_ECONTAINING_FEATURE = eINSTANCE.getAdd_ComputedEContainingFeature();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.RemoveImpl <em>Remove</em>}' class.
@@ -1307,6 +1767,22 @@ public interface EEFActionsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SET_ATTRIBUTE__ECONTAINING_FEATURE = eINSTANCE.getSetAttribute_EContainingFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>EContaining Feature URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SET_ATTRIBUTE__ECONTAINING_FEATURE_URI = eINSTANCE.getSetAttribute_EContainingFeatureURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Computed EContaining Feature</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SET_ATTRIBUTE__COMPUTED_ECONTAINING_FEATURE = eINSTANCE.getSetAttribute_ComputedEContainingFeature();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.impl.UnsetAttributeImpl <em>Unset Attribute</em>}' class.

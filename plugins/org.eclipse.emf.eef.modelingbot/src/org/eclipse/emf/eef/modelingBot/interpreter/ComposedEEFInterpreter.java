@@ -13,14 +13,17 @@ package org.eclipse.emf.eef.modelingBot.interpreter;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -103,21 +106,38 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 		final Resource modelingBotResource = loadModel(path);
 		EcoreUtil.resolveAll(modelingBotResource.getResourceSet());
 		assertFalse("The modeling bot resource is empty.", modelingBotResource.getContents().isEmpty());
-		assertTrue("The modeling bot model contains errors, correct them first", modelingBotResource.getErrors()
-				.isEmpty());
-		final ModelingBot mbot = (ModelingBot)modelingBotResource.getContents().get(0);
-		final Diagnostic diag = Diagnostician.INSTANCE.validate(mbot);
-		assertTrue("The modeling bot model contains errors, correct them first", diag.getSeverity() == Diagnostic.OK);
-		
-		assertNotNull("The modeling bot resource is empty.", mbot);
-		for (IModelingBot bot : modelingBots) {
-			bot.getModelingBotInterpreter().setPropertiesEditionContext(mbot.getPropertiesEditionContext());
-		}
-		for (Sequence sequence : mbot.getSequences()) {
-			if (sequence instanceof Scenario) {
-				final Scenario scenario = (Scenario)sequence;
-				runSequence(scenario);
+		assertTrue("The modeling bot model contains errors, correct them first", modelingBotResource
+				.getErrors().isEmpty());
+
+		List<Scenario> scenarii = new ArrayList<Scenario>();
+		EObject root = modelingBotResource.getContents().get(0);
+		if (root instanceof ModelingBot) {
+			for (Sequence sequence : ((ModelingBot) root).getSequences()) {
+				if (sequence instanceof Scenario) {
+					scenarii.add((Scenario)sequence);
+				}
 			}
+		} else {
+			if (root instanceof Scenario) {
+				scenarii.add((Scenario) root);
+			}
+		}
+		final Diagnostic diag = Diagnostician.INSTANCE.validate(root);
+		if (diag.getSeverity() != Diagnostic.OK) {
+			displayDiag(diag);
+		}
+		assertTrue("The modeling bot model contains errors, correct them first",
+				diag.getSeverity() == Diagnostic.OK);
+		for (Scenario sequence : scenarii) {
+			final Scenario scenario = (Scenario)sequence;
+			runSequence(scenario);
+		}
+	}
+	
+	private void displayDiag(final Diagnostic diag) {
+		System.out.println("Source: " + diag.getSource() + " - Message: " + diag.getMessage() + " - Ex:" + diag.getException());
+		for (Diagnostic subDiag : diag.getChildren()) {
+			displayDiag(subDiag);
 		}
 	}
 
@@ -147,22 +167,24 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#preProcessing(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
 	public void preProcessing(Sequence sequence) {
 		for (IModelingBot iModelingBot : modelingBots) {
 			iModelingBot.getModelingBotInterpreter().preProcessing(sequence);
-		}		
+		}
 	}
 
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#postProcessing(org.eclipse.emf.eef.modelingBot.Sequence)
 	 */
 	public void postProcessing(Sequence sequence) {
 		for (IModelingBot iModelingBot : modelingBots) {
 			iModelingBot.getModelingBotInterpreter().postProcessing(sequence);
-		}		
+		}
 	}
 
 	/**
@@ -187,37 +209,25 @@ public class ComposedEEFInterpreter implements IModelingBotInterpreter {
 	}
 
 	/**
-	 * Get the loaded resource.
+	 * Loads the model located at the given uri.
 	 * 
-	 * @param path
-	 *            path of the model
-	 * @return the resource loaded
+	 * @param uri
+	 *            the URI of the model to load. By convention, if giving a path (i.e. an URI with no scheme),
+	 *            then a platform:/plugins URI will be created
+	 * @return a resource containing the loaded model
 	 * @throws IOException
 	 * @throws CoreException
 	 */
-	public Resource loadModel(String path) throws IOException, CoreException {
-		final URI fileURI = URI.createPlatformPluginURI(path, true);
+	public Resource loadModel(String uri) throws IOException, CoreException {
+		URI fileURI = URI.createURI(uri);
+		// If the URI does not contains any scheme
+		// Then by convention we consider it referecences a model located in platform:/plugins
+		if (fileURI.scheme() == null || fileURI.scheme().length() == 0) {
+			fileURI = URI.createPlatformPluginURI(uri, true);
+		}
 		final Resource resource = editingDomain.getResourceSet().getResource(fileURI, true);
 		assertNotNull("The modeling bot resource can not be loaded.", resource);
 		return resource;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#getPropertiesEditionContext()
-	 */
-	public PropertiesEditionContext getPropertiesEditionContext() {
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.modelingBot.interpreter.IModelingBotInterpreter#setPropertiesEditionContext(org.eclipse.emf.eef.components.PropertiesEditionContext)
-	 */
-	public void setPropertiesEditionContext(PropertiesEditionContext context) {
-
 	}
 
 }

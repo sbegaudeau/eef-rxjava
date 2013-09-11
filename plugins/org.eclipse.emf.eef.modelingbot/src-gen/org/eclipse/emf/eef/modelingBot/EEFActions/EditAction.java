@@ -23,6 +23,8 @@ import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.EditAction#getPropertiesEditionElement <em>Properties Edition Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.EditAction#getPropertiesEditionElementURI <em>Properties Edition Element URI</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.EditAction#getComputedPropertiesEditionElement <em>Computed Properties Edition Element</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.EditAction#getReferenceableObject <em>Referenceable Object</em>}</li>
  * </ul>
  * </p>
@@ -57,6 +59,47 @@ public interface EditAction extends EEFAction, ReferenceableObject {
 	 * @generated
 	 */
 	void setPropertiesEditionElement(PropertiesEditionElement value);
+
+	/**
+	 * Returns the value of the '<em><b>Properties Edition Element URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Properties Edition Element URI</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Properties Edition Element URI</em>' attribute.
+	 * @see #setPropertiesEditionElementURI(String)
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage#getEditAction_PropertiesEditionElementURI()
+	 * @model
+	 * @generated
+	 */
+	String getPropertiesEditionElementURI();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.EditAction#getPropertiesEditionElementURI <em>Properties Edition Element URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Properties Edition Element URI</em>' attribute.
+	 * @see #getPropertiesEditionElementURI()
+	 * @generated
+	 */
+	void setPropertiesEditionElementURI(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Computed Properties Edition Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Computed Properties Edition Element</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Computed Properties Edition Element</em>' reference.
+	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage#getEditAction_ComputedPropertiesEditionElement()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	PropertiesEditionElement getComputedPropertiesEditionElement();
 
 	/**
 	 * Returns the value of the '<em><b>Referenceable Object</b></em>' reference.
