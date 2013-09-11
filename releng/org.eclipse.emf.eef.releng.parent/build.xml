@@ -67,9 +67,9 @@
 		<module>../../plugins/org.eclipse.emf.eef.modelingbot.edit</module>
 		<module>../../plugins/org.eclipse.emf.eef.modelingbot.editor</module>
 
-		<module>../../plugins/org.eclipse.emf.modelingbot.xtext</module>
-		<module>../../plugins/org.eclipse.emf.modelingbot.xtext.ui</module>
-		<module>../../plugins/org.eclipse.mylyn.docs.intent.bridge.modelingbot</module>
+		<!--module>../../plugins/org.eclipse.emf.modelingbot.xtext</module-->
+		<!--module>../../plugins/org.eclipse.emf.modelingbot.xtext.ui</module-->
+		<!--module>../../plugins/org.eclipse.mylyn.docs.intent.bridge.modelingbot</module-->
 
 		<module>../../plugins/org.eclipse.emf.eef.branding</module>
 		<module>../../features/org.eclipse.emf.eef.runtime-feature</module>
@@ -80,7 +80,7 @@
 		<module>../../features/org.eclipse.emf.eef.codegen.ecore-feature</module>
 		<module>../../features/org.eclipse.emf.eef.sdk-feature</module>
 		<module>../../features/org.eclipse.emf.eef.tests-feature</module>
-		<module>../../features/org.eclipse.emf.eef.tests.intent-feature</module>
+		<!--module>../../features/org.eclipse.emf.eef.tests.intent-feature</module-->
 
 		<module>../org.eclipse.emf.eef.update</module>
 
