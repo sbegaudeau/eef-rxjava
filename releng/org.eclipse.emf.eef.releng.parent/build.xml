@@ -40,6 +40,7 @@
 	<modules>
 		<module>../../plugins/org.eclipse.emf.eef.runtime</module>
 		<module>../../plugins/org.eclipse.emf.eef.runtime.extended</module>
+		<!--module>../../plugins/org.eclipse.emf.eef.runtime.tests</module-->
 		<module>../../plugins/org.eclipse.emf.eef.cdo.runtime</module>
 
 		<module>../../doc/org.eclipse.emf.eef.doc</module>
@@ -58,14 +59,14 @@
 		<module>../../plugins/org.eclipse.emf.eef.editor.model</module>
 		<module>../../plugins/org.eclipse.emf.eef.extended.widgets.richtext</module>
 
+		<module>../../plugins/org.eclipse.emf.eef.modelingbot</module>
+		<module>../../plugins/org.eclipse.emf.eef.modelingbot.edit</module>
+		<module>../../plugins/org.eclipse.emf.eef.modelingbot.editor</module>
+
 		<module>../../plugins/org.eclipse.emf.eef.codegen</module>
 		<module>../../plugins/org.eclipse.emf.eef.codegen.launcher</module>
 		<module>../../plugins/org.eclipse.emf.eef.codegen.ecore</module>
 		<module>../../plugins/org.eclipse.emf.eef.codegen.extended</module>
-
-		<module>../../plugins/org.eclipse.emf.eef.modelingbot</module>
-		<module>../../plugins/org.eclipse.emf.eef.modelingbot.edit</module>
-		<module>../../plugins/org.eclipse.emf.eef.modelingbot.editor</module>
 
 		<!--module>../../plugins/org.eclipse.emf.modelingbot.xtext</module-->
 		<!--module>../../plugins/org.eclipse.emf.modelingbot.xtext.ui</module-->
