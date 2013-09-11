@@ -109,6 +109,7 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final DeclarativeNavigationStep declarativeNavigationStep = (DeclarativeNavigationStep)elt;
 			final DeclarativeNavigationStepPropertiesEditionPart basePart = (DeclarativeNavigationStepPropertiesEditionPart)editingPart;
 			// init values
@@ -131,7 +132,6 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 				basePart.setDiscriminatorTypeButtonMode(ButtonsModeEnum.BROWSE);
 			}
 			// init filters
-			
 			
 			if (isAccessible(NavigationViewsRepository.DeclarativeNavigationStep.Properties.feature)) {
 				basePart.addFilterToFeature(new ViewerFilter() {
@@ -172,7 +172,6 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 		}
 		setInitializing(false);
 	}
-
 
 
 
@@ -243,9 +242,10 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			DeclarativeNavigationStepPropertiesEditionPart basePart = (DeclarativeNavigationStepPropertiesEditionPart)editingPart;
-			if (NavigationPackage.eINSTANCE.getDeclarativeNavigationStep_Index().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.DeclarativeNavigationStep.Properties.index)) {
+			if (NavigationPackage.eINSTANCE.getDeclarativeNavigationStep_Index().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.DeclarativeNavigationStep.Properties.index)) {
 				if (msg.getNewValue() != null) {
 					basePart.setIndex(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
@@ -270,7 +270,7 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			NavigationPackage.eINSTANCE.getDeclarativeNavigationStep_Index(),
 			NavigationPackage.eINSTANCE.getDeclarativeNavigationStep_Feature(),
-			NavigationPackage.eINSTANCE.getDeclarativeNavigationStep_DiscriminatorType());
+			NavigationPackage.eINSTANCE.getDeclarativeNavigationStep_DiscriminatorType()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -310,5 +310,10 @@ public class DeclarativeNavigationStepPropertiesEditionComponent extends SingleP
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

@@ -342,4 +342,6 @@ public class SingleCompositionEditorSamplePropertiesEditionComponent extends Sin
 
 	
 
+	
+
 }

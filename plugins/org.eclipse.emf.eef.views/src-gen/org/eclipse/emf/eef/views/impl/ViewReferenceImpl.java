@@ -89,7 +89,8 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 		while (container != null) {
 			if (container instanceof IdentifiedElement) {
 				result.insert(0, "::"); //$NON-NLS-1$
-				result.insert(0, ((IdentifiedElement)container).getQualifiedIdentifier());
+				result.insert(0, ((IdentifiedElement) container)
+						.getQualifiedIdentifier());
 				return result.toString();
 			}
 			container = container.eContainer();
@@ -104,8 +105,8 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	 */
 	public ViewElement getView() {
 		if (view != null && view.eIsProxy()) {
-			InternalEObject oldView = (InternalEObject)view;
-			view = (ViewElement)eResolveProxy(oldView);
+			InternalEObject oldView = (InternalEObject) view;
+			view = (ViewElement) eResolveProxy(oldView);
 			if (view != oldView) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -133,8 +134,8 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 		ViewElement oldView = view;
 		view = newView;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.VIEW_REFERENCE__VIEW, oldView,
-					view));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ViewsPackage.VIEW_REFERENCE__VIEW, oldView, view));
 	}
 
 	/**
@@ -145,12 +146,12 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
-				return getQualifiedIdentifier();
-			case ViewsPackage.VIEW_REFERENCE__VIEW:
-				if (resolve)
-					return getView();
-				return basicGetView();
+		case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
+			return getQualifiedIdentifier();
+		case ViewsPackage.VIEW_REFERENCE__VIEW:
+			if (resolve)
+				return getView();
+			return basicGetView();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -163,9 +164,9 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ViewsPackage.VIEW_REFERENCE__VIEW:
-				setView((ViewElement)newValue);
-				return;
+		case ViewsPackage.VIEW_REFERENCE__VIEW:
+			setView((ViewElement) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -178,9 +179,9 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.VIEW_REFERENCE__VIEW:
-				setView((ViewElement)null);
-				return;
+		case ViewsPackage.VIEW_REFERENCE__VIEW:
+			setView((ViewElement) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -193,11 +194,12 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
-				return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
-						: !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
-			case ViewsPackage.VIEW_REFERENCE__VIEW:
-				return view != null;
+		case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
+			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
+					: !QUALIFIED_IDENTIFIER_EDEFAULT
+							.equals(getQualifiedIdentifier());
+		case ViewsPackage.VIEW_REFERENCE__VIEW:
+			return view != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -211,10 +213,10 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IdentifiedElement.class) {
 			switch (derivedFeatureID) {
-				case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
-					return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
-				default:
-					return -1;
+			case ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER:
+				return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -229,10 +231,10 @@ public class ViewReferenceImpl extends ViewElementImpl implements ViewReference 
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IdentifiedElement.class) {
 			switch (baseFeatureID) {
-				case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-					return ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER;
-				default:
-					return -1;
+			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+				return ViewsPackage.VIEW_REFERENCE__QUALIFIED_IDENTIFIER;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

@@ -93,10 +93,11 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final EMFElementBinding eMFElementBinding = (EMFElementBinding)elt;
 			final EMFElementBindingPropertiesEditionPart basePart = (EMFElementBindingPropertiesEditionPart)editingPart;
 			// init values
-			if (eMFElementBinding.getName() != null && isAccessible(MappingViewsRepository.EMFElementBinding.Properties.name))
+			if (isAccessible(MappingViewsRepository.EMFElementBinding.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eMFElementBinding.getName()));
 			
 			if (isAccessible(MappingViewsRepository.EMFElementBinding.Binding.views)) {
@@ -113,20 +114,6 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 			// init filters
 			
 			if (isAccessible(MappingViewsRepository.EMFElementBinding.Binding.views)) {
-				basePart.addFilterToViews(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInViewsTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
 				basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.VIEW));
 				// Start of user code for additional businessfilters for views
 				
@@ -221,9 +208,10 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EMFElementBindingPropertiesEditionPart basePart = (EMFElementBindingPropertiesEditionPart)editingPart;
-			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(MappingViewsRepository.EMFElementBinding.Properties.name)) {
+			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(MappingViewsRepository.EMFElementBinding.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -248,7 +236,7 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			MappingPackage.eINSTANCE.getAbstractElementBinding_Name(),
 			MappingPackage.eINSTANCE.getAbstractElementBinding_Views(),
-			MappingPackage.eINSTANCE.getEMFElementBinding_Model());
+			MappingPackage.eINSTANCE.getEMFElementBinding_Model()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -304,5 +292,10 @@ public class EMFElementBindingBasePropertiesEditionComponent extends SinglePartP
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

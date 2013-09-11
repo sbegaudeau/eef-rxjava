@@ -357,13 +357,22 @@ public interface EEFGenPackage extends EPackage {
 	int GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS = 6;
 
 	/**
+	 * The feature id for the '<em><b>Forms Super Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_VIEWS_REPOSITORY__FORMS_SUPER_CLASS = 7;
+
+	/**
 	 * The number of structural features of the '<em>Gen Views Repository</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_VIEWS_REPOSITORY_FEATURE_COUNT = 7;
+	int GEN_VIEWS_REPOSITORY_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.EEFGen.HELP_STRATEGY <em>HELP STRATEGY</em>}' enum.
@@ -692,6 +701,17 @@ public interface EEFGenPackage extends EPackage {
 	EAttribute getGenViewsRepository_PartsSuperClass();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.eef.EEFGen.GenViewsRepository#getFormsSuperClass <em>Forms Super Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Forms Super Class</em>'.
+	 * @see org.eclipse.emf.eef.EEFGen.GenViewsRepository#getFormsSuperClass()
+	 * @see #getGenViewsRepository()
+	 * @generated
+	 */
+	EAttribute getGenViewsRepository_FormsSuperClass();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.EEFGen.HELP_STRATEGY <em>HELP STRATEGY</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -962,6 +982,14 @@ public interface EEFGenPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS = eINSTANCE.getGenViewsRepository_PartsSuperClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Forms Super Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_VIEWS_REPOSITORY__FORMS_SUPER_CLASS = eINSTANCE.getGenViewsRepository_FormsSuperClass();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.EEFGen.HELP_STRATEGY <em>HELP STRATEGY</em>}' enum.

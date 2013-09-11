@@ -192,4 +192,6 @@ public class CheckBoxExtendedEditorSampleBasePropertiesEditionComponent extends 
 
 	
 
+	
+
 }

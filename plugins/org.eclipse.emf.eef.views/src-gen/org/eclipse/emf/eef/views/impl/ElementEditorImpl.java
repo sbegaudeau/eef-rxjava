@@ -118,7 +118,8 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 		while (container != null) {
 			if (container instanceof IdentifiedElement) {
 				result.insert(0, "::"); //$NON-NLS-1$
-				result.insert(0, ((IdentifiedElement)container).getQualifiedIdentifier());
+				result.insert(0, ((IdentifiedElement) container)
+						.getQualifiedIdentifier());
 				return result.toString();
 			}
 			container = container.eContainer();
@@ -144,8 +145,9 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 		boolean oldReadOnly = readOnly;
 		readOnly = newReadOnly;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.ELEMENT_EDITOR__READ_ONLY,
-					oldReadOnly, readOnly));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ViewsPackage.ELEMENT_EDITOR__READ_ONLY, oldReadOnly,
+					readOnly));
 	}
 
 	/**
@@ -166,8 +168,9 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 		boolean oldNameAsLabel = nameAsLabel;
 		nameAsLabel = newNameAsLabel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL,
-					oldNameAsLabel, nameAsLabel));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL, oldNameAsLabel,
+					nameAsLabel));
 	}
 
 	/**
@@ -178,12 +181,12 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
-				return getQualifiedIdentifier();
-			case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
-				return isReadOnly();
-			case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
-				return isNameAsLabel();
+		case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
+			return getQualifiedIdentifier();
+		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
+			return isReadOnly();
+		case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
+			return isNameAsLabel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -196,12 +199,12 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
-				setReadOnly((Boolean)newValue);
-				return;
-			case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
-				setNameAsLabel((Boolean)newValue);
-				return;
+		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
+			setReadOnly((Boolean) newValue);
+			return;
+		case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
+			setNameAsLabel((Boolean) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -214,12 +217,12 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
-				setReadOnly(READ_ONLY_EDEFAULT);
-				return;
-			case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
-				setNameAsLabel(NAME_AS_LABEL_EDEFAULT);
-				return;
+		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
+			setReadOnly(READ_ONLY_EDEFAULT);
+			return;
+		case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
+			setNameAsLabel(NAME_AS_LABEL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -232,13 +235,14 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
-				return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
-						: !QUALIFIED_IDENTIFIER_EDEFAULT.equals(getQualifiedIdentifier());
-			case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
-				return readOnly != READ_ONLY_EDEFAULT;
-			case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
-				return nameAsLabel != NAME_AS_LABEL_EDEFAULT;
+		case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
+			return QUALIFIED_IDENTIFIER_EDEFAULT == null ? getQualifiedIdentifier() != null
+					: !QUALIFIED_IDENTIFIER_EDEFAULT
+							.equals(getQualifiedIdentifier());
+		case ViewsPackage.ELEMENT_EDITOR__READ_ONLY:
+			return readOnly != READ_ONLY_EDEFAULT;
+		case ViewsPackage.ELEMENT_EDITOR__NAME_AS_LABEL:
+			return nameAsLabel != NAME_AS_LABEL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -252,10 +256,10 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == IdentifiedElement.class) {
 			switch (derivedFeatureID) {
-				case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
-					return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
-				default:
-					return -1;
+			case ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER:
+				return ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -270,10 +274,10 @@ public class ElementEditorImpl extends ViewElementImpl implements ElementEditor 
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == IdentifiedElement.class) {
 			switch (baseFeatureID) {
-				case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
-					return ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER;
-				default:
-					return -1;
+			case ViewsPackage.IDENTIFIED_ELEMENT__QUALIFIED_IDENTIFIER:
+				return ViewsPackage.ELEMENT_EDITOR__QUALIFIED_IDENTIFIER;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

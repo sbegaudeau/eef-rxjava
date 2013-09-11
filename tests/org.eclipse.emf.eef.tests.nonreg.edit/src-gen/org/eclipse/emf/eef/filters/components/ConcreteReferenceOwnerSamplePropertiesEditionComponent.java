@@ -14,58 +14,42 @@ package org.eclipse.emf.eef.filters.components;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
-
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.emf.eef.eefnr.EefnrPackage;
-
 import org.eclipse.emf.eef.eefnr.filters.AbstractReferenceTargetSample;
 import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample;
+import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample1;
 import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample2;
+import org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample3;
 import org.eclipse.emf.eef.eefnr.filters.FiltersPackage;
-
 import org.eclipse.emf.eef.eefnr.filters.parts.ConcreteReferenceOwnerSamplePropertiesEditionPart;
 import org.eclipse.emf.eef.eefnr.filters.parts.FiltersViewsRepository;
-
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
-import org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext;
-
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext.InstanciableTypeFilter;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
-
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
-
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -91,6 +75,16 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 	 * Settings for strictTyping ReferencesTable
 	 */
 	protected ReferencesTableSettings strictTypingSettings;
+	
+	/**
+	 * Settings for strictTypingMultipleOnTableComposition ReferencesTable
+	 */
+	protected ReferencesTableSettings strictTypingMultipleOnTableCompositionSettings;
+	
+	/**
+	 * Settings for strictTypingMultipleOnAdvancedTableComposition ReferencesTable
+	 */
+	protected ReferencesTableSettings strictTypingMultipleOnAdvancedTableCompositionSettings;
 	
 	
 	/**
@@ -130,6 +124,14 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 				strictTypingSettings = new ReferencesTableSettings(concreteReferenceOwnerSample, FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping());
 				basePart.initStrictTyping(strictTypingSettings);
 			}
+			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTypingMultipleOnTableComposition)) {
+				strictTypingMultipleOnTableCompositionSettings = new ReferencesTableSettings(concreteReferenceOwnerSample, FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping2());
+				basePart.initStrictTypingMultipleOnTableComposition(strictTypingMultipleOnTableCompositionSettings);
+			}
+			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTypingMultipleOnAdvancedTableComposition)) {
+				strictTypingMultipleOnAdvancedTableCompositionSettings = new ReferencesTableSettings(concreteReferenceOwnerSample, FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping3());
+				basePart.initStrictTypingMultipleOnAdvancedTableComposition(strictTypingMultipleOnAdvancedTableCompositionSettings);
+			}
 			// init filters
 			
 			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget)) {
@@ -166,8 +168,42 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 					}
 			
 				});
-				// FIXME default case for filter body generation.
+				
 				// Start of user code for additional businessfilters for strictTyping
+				// End of user code
+			}
+			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTypingMultipleOnTableComposition)) {
+				basePart.addFilterToStrictTypingMultipleOnTableComposition(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof ConcreteReferenceTargetSample2) || (element instanceof ConcreteReferenceTargetSample3); //$NON-NLS-1$ 
+					}
+			
+				});
+				
+				
+				// Start of user code for additional businessfilters for strictTypingMultipleOnTableComposition
+				// End of user code
+			}
+			if (isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTypingMultipleOnAdvancedTableComposition)) {
+				basePart.addFilterToStrictTypingMultipleOnAdvancedTableComposition(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof ConcreteReferenceTargetSample2) || (element instanceof ConcreteReferenceTargetSample1); //$NON-NLS-1$ 
+					}
+			
+				});
+				
+				
+				// Start of user code for additional businessfilters for strictTypingMultipleOnAdvancedTableComposition
 				// End of user code
 			}
 			// init values for referenced views
@@ -177,6 +213,8 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 		}
 		setInitializing(false);
 	}
+
+
 
 
 
@@ -196,6 +234,12 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 		}
 		if (editorKey == FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping) {
 			return FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping();
+		}
+		if (editorKey == FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTypingMultipleOnTableComposition) {
+			return FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping2();
+		}
+		if (editorKey == FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTypingMultipleOnAdvancedTableComposition) {
+			return FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping3();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -223,7 +267,12 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 		}
 		if (FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new TypedEReferencePropertiesEditingContext(editingContext, this, strictTypingSettings, FiltersPackage.Literals.CONCRETE_REFERENCE_TARGET_SAMPLE2, editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, strictTypingSettings, editingContext.getAdapterFactory());
+				context.addInstanciableTypeFilter(new InstanciableTypeFilter() {
+					public boolean select(EClass instanciableType) {
+						return FiltersPackage.Literals.CONCRETE_REFERENCE_TARGET_SAMPLE2 == instanciableType;
+					}
+				});
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -244,6 +293,76 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 				strictTypingSettings.removeFromReference((EObject) event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
 				strictTypingSettings.move(event.getNewIndex(), (AbstractReferenceTargetSample) event.getNewValue());
+			}
+		}
+		if (FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTypingMultipleOnTableComposition == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, strictTypingMultipleOnTableCompositionSettings, editingContext.getAdapterFactory());
+				context.addInstanciableTypeFilter(new InstanciableTypeFilter() {
+					public boolean select(EClass instanciableType) {
+						return FiltersPackage.Literals.CONCRETE_REFERENCE_TARGET_SAMPLE2 == instanciableType;
+					}
+				});
+				context.addInstanciableTypeFilter(new InstanciableTypeFilter() {
+					public boolean select(EClass instanciableType) {
+						return FiltersPackage.Literals.CONCRETE_REFERENCE_TARGET_SAMPLE3 == instanciableType;
+					}
+				});
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				strictTypingMultipleOnTableCompositionSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				strictTypingMultipleOnTableCompositionSettings.move(event.getNewIndex(), (AbstractReferenceTargetSample) event.getNewValue());
+			}
+		}
+		if (FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTypingMultipleOnAdvancedTableComposition == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, strictTypingMultipleOnAdvancedTableCompositionSettings, editingContext.getAdapterFactory());
+				context.addInstanciableTypeFilter(new InstanciableTypeFilter() {
+					public boolean select(EClass instanciableType) {
+						return FiltersPackage.Literals.CONCRETE_REFERENCE_TARGET_SAMPLE2 == instanciableType;
+					}
+				});
+				context.addInstanciableTypeFilter(new InstanciableTypeFilter() {
+					public boolean select(EClass instanciableType) {
+						return FiltersPackage.Literals.CONCRETE_REFERENCE_TARGET_SAMPLE1 == instanciableType;
+					}
+				});
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				strictTypingMultipleOnAdvancedTableCompositionSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				strictTypingMultipleOnAdvancedTableCompositionSettings.move(event.getNewIndex(), (AbstractReferenceTargetSample) event.getNewValue());
 			}
 		}
 	}
@@ -267,6 +386,10 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 				basePart.updateAbstractTarget();
 			if (FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping().equals(msg.getFeature()) && isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTyping))
 				basePart.updateStrictTyping();
+			if (FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping2().equals(msg.getFeature()) && isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTypingMultipleOnTableComposition))
+				basePart.updateStrictTypingMultipleOnTableComposition();
+			if (FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping3().equals(msg.getFeature()) && isAccessible(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.strictTypingMultipleOnAdvancedTableComposition))
+				basePart.updateStrictTypingMultipleOnAdvancedTableComposition();
 			
 		}
 	}
@@ -281,7 +404,9 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
 			FiltersPackage.eINSTANCE.getAbstractReferenceOwnerSample_AbstractTarget(),
-			FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping()		);
+			FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping(),
+			FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping2(),
+			FiltersPackage.eINSTANCE.getConcreteReferenceOwnerSample_StrictTyping3()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -312,6 +437,8 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionComponent extends Sing
 		return ret;
 	}
 
+
+	
 
 	
 

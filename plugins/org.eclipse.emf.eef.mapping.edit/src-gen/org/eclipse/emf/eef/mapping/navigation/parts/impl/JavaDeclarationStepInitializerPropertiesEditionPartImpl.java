@@ -187,6 +187,9 @@ public class JavaDeclarationStepInitializerPropertiesEditionPartImpl extends Com
 		EditingUtils.setID(qualifiedClass, NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.qualifiedClass);
 		EditingUtils.setEEFtype(qualifiedClass, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.qualifiedClass, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createQualifiedClassText
+
+		// End of user code
 		return parent;
 	}
 
@@ -233,6 +236,9 @@ public class JavaDeclarationStepInitializerPropertiesEditionPartImpl extends Com
 		EditingUtils.setID(methodFilter, NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter);
 		EditingUtils.setEEFtype(methodFilter, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createMethodFilterText
+
+		// End of user code
 		return parent;
 	}
 
@@ -260,6 +266,9 @@ public class JavaDeclarationStepInitializerPropertiesEditionPartImpl extends Com
 		EditingUtils.setID(staticMethod, NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.staticMethod);
 		EditingUtils.setEEFtype(staticMethod, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.staticMethod, NavigationViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createStaticMethodCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -298,6 +307,14 @@ public class JavaDeclarationStepInitializerPropertiesEditionPartImpl extends Com
 		} else {
 			qualifiedClass.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.qualifiedClass);
+		if (eefElementEditorReadOnlyState && qualifiedClass.isEnabled()) {
+			qualifiedClass.setEnabled(false);
+			qualifiedClass.setToolTipText(NavigationMessages.JavaDeclarationStepInitializer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !qualifiedClass.isEnabled()) {
+			qualifiedClass.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -322,6 +339,14 @@ public class JavaDeclarationStepInitializerPropertiesEditionPartImpl extends Com
 		} else {
 			methodFilter.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.methodFilter);
+		if (eefElementEditorReadOnlyState && methodFilter.isEnabled()) {
+			methodFilter.setEnabled(false);
+			methodFilter.setToolTipText(NavigationMessages.JavaDeclarationStepInitializer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !methodFilter.isEnabled()) {
+			methodFilter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -346,6 +371,14 @@ public class JavaDeclarationStepInitializerPropertiesEditionPartImpl extends Com
 		} else {
 			staticMethod.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.JavaDeclarationStepInitializer.Properties.staticMethod);
+		if (eefElementEditorReadOnlyState && staticMethod.isEnabled()) {
+			staticMethod.setEnabled(false);
+			staticMethod.setToolTipText(NavigationMessages.JavaDeclarationStepInitializer_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !staticMethod.isEnabled()) {
+			staticMethod.setEnabled(true);
+		}	
+		
 	}
 
 

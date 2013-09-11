@@ -41,6 +41,20 @@ public interface ViewPropertiesEditionPart {
 
 
 	/**
+	 * @return the label
+	 * 
+	 */
+	public String getLabel();
+
+	/**
+	 * Defines a new label
+	 * @param newValue the new label to set
+	 * 
+	 */
+	public void setLabel(String newValue);
+
+
+	/**
 	 * @return the representation
 	 * 
 	 */
@@ -85,20 +99,6 @@ public interface ViewPropertiesEditionPart {
 	 * 
 	 */
 	public void addBusinessFilterToRepresentation(ViewerFilter filter);
-
-
-	/**
-	 * @return the explicit
-	 * 
-	 */
-	public Boolean getExplicit();
-
-	/**
-	 * Defines a new explicit
-	 * @param newValue the new explicit to set
-	 * 
-	 */
-	public void setExplicit(Boolean newValue);
 
 
 

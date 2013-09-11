@@ -370,9 +370,6 @@ public class EEFEditorLauncher extends AbstractAcceleoGenerator {
 	@Override
 	public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
-        if (!isInWorkspace(org.eclipse.emf.eef.extended.editor.EditorPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.extended.editor.EditorPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.extended.editor.EditorPackage.eINSTANCE);
-        }
         if (!isInWorkspace(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE.getNsURI(), org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eINSTANCE);
         }

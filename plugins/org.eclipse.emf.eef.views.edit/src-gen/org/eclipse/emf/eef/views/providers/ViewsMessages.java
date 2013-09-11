@@ -116,10 +116,10 @@ public class ViewsMessages extends NLS {
 	public static String ViewPropertiesEditionPart_NameLabel;
 
 	
-	public static String ViewPropertiesEditionPart_RepresentationLabel;
+	public static String ViewPropertiesEditionPart_LabelLabel;
 
 	
-	public static String ViewPropertiesEditionPart_ExplicitLabel;
+	public static String ViewPropertiesEditionPart_RepresentationLabel;
 
 	
 	public static String ElementEditorPropertiesEditionPart_NameLabel;

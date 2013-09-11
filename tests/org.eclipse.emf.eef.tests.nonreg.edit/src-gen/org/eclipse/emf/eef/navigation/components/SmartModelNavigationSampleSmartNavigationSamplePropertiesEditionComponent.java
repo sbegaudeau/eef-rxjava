@@ -399,41 +399,41 @@ public class SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionCom
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
 			if (editingPart instanceof CompositePropertiesEditionPart) {
-		((CompositePropertiesEditionPart) editingPart).getSettings().add(firstModelNavigationSingleValueSettings);
-		((CompositePropertiesEditionPart) editingPart).getSettings().add(firstModelNavigationMultiValueSettings);
-		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNSingleValueWithFirstMNSingleValueSettings);
-		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNSingleValueWithFirstMNMultiValueSettings);
-		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNSingleValueSettings);
-		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueSettings);
-		((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueWithFilterSettings);
-	}
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(firstModelNavigationSingleValueSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(firstModelNavigationMultiValueSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNSingleValueWithFirstMNSingleValueSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNSingleValueWithFirstMNMultiValueSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNSingleValueSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueSettings);
+				((CompositePropertiesEditionPart) editingPart).getSettings().add(secondMNMultiValueWithFirstMNMultiValueWithFilterSettings);
+			}
 			final SmartModelNavigationSample smartModelNavigationSample = (SmartModelNavigationSample)elt;
 			final SmartNavigationSamplePropertiesEditionPart smartNavigationSamplePart = (SmartNavigationSamplePropertiesEditionPart)editingPart;
 			// init values
 			if (isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.name))
-		smartNavigationSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, smartModelNavigationSample.getName()));
-	
+				smartNavigationSamplePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, smartModelNavigationSample.getName()));
+			
 			if (firstModelNavigationSingleValueSettings.getValue() != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue))
-		smartNavigationSamplePart.setFirstModelNavigationSingleValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, firstModelNavigationSingleValueSettings.getValue()));
-	
+				smartNavigationSamplePart.setFirstModelNavigationSingleValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, firstModelNavigationSingleValueSettings.getValue()));
+			
 			if (firstModelNavigationMultiValueSettings.getValue() != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue))
-		smartNavigationSamplePart.setFirstModelNavigationMultiValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, firstModelNavigationMultiValueSettings.getValue()));
-	
+				smartNavigationSamplePart.setFirstModelNavigationMultiValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, firstModelNavigationMultiValueSettings.getValue()));
+			
 			if (secondMNSingleValueWithFirstMNSingleValueSettings.getValue() != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue))
-		smartNavigationSamplePart.setSecondModelNavigationSingleValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNSingleValueWithFirstMNSingleValueSettings.getValue()));
-	
+				smartNavigationSamplePart.setSecondModelNavigationSingleValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNSingleValueWithFirstMNSingleValueSettings.getValue()));
+			
 			if (secondMNSingleValueWithFirstMNMultiValueSettings.getValue() != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue))
-		smartNavigationSamplePart.setSecondModelNavigationMultiValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNSingleValueWithFirstMNMultiValueSettings.getValue()));
-	
+				smartNavigationSamplePart.setSecondModelNavigationMultiValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNSingleValueWithFirstMNMultiValueSettings.getValue()));
+			
 			if (secondMNMultiValueWithFirstMNSingleValueSettings.getValue() != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2))
-		smartNavigationSamplePart.setSecondModelNavigationSingleValue2(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNMultiValueWithFirstMNSingleValueSettings.getValue()));
-	
+				smartNavigationSamplePart.setSecondModelNavigationSingleValue2(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNMultiValueWithFirstMNSingleValueSettings.getValue()));
+			
 			if (secondMNMultiValueWithFirstMNMultiValueSettings.getValue() != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2))
-		smartNavigationSamplePart.setSecondModelNavigationMultiValue2(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNMultiValueWithFirstMNMultiValueSettings.getValue()));
-	
+				smartNavigationSamplePart.setSecondModelNavigationMultiValue2(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNMultiValueWithFirstMNMultiValueSettings.getValue()));
+			
 			if (secondMNMultiValueWithFirstMNMultiValueWithFilterSettings.getValue() != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter))
-		smartNavigationSamplePart.setSecondModelNavigationMultiValueFilter(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNMultiValueWithFirstMNMultiValueWithFilterSettings.getValue()));
-	
+				smartNavigationSamplePart.setSecondModelNavigationMultiValueFilter(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, secondMNMultiValueWithFirstMNMultiValueWithFilterSettings.getValue()));
+			
 			// init filters
 			
 			
@@ -543,61 +543,61 @@ public class SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionCom
 		if (editingPart.isVisible()) {
 			SmartNavigationSamplePropertiesEditionPart smartNavigationSamplePart = (SmartNavigationSamplePropertiesEditionPart)editingPart;
 			if (EefnrPackage.eINSTANCE.getAbstractSample_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.name)) {
-		if (msg.getNewValue() != null) {
-			smartNavigationSamplePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-		} else {
-			smartNavigationSamplePart.setName("");
-		}
-	}
+				if (msg.getNewValue() != null) {
+					smartNavigationSamplePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					smartNavigationSamplePart.setName("");
+				}
+			}
 			if (!(msg.getNewValue() instanceof EObject) && firstModelNavigationSingleValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue)) {
-		if (msg.getNewValue() != null) {
-			smartNavigationSamplePart.setFirstModelNavigationSingleValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-		} else {
-			smartNavigationSamplePart.setFirstModelNavigationSingleValue("");
-		}
-	}
+				if (msg.getNewValue() != null) {
+					smartNavigationSamplePart.setFirstModelNavigationSingleValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					smartNavigationSamplePart.setFirstModelNavigationSingleValue("");
+				}
+			}
 			if (!(msg.getNewValue() instanceof EObject) && firstModelNavigationMultiValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue)) {
-		if (msg.getNewValue() != null) {
-			smartNavigationSamplePart.setFirstModelNavigationMultiValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-		} else {
-			smartNavigationSamplePart.setFirstModelNavigationMultiValue("");
-		}
-	}
+				if (msg.getNewValue() != null) {
+					smartNavigationSamplePart.setFirstModelNavigationMultiValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					smartNavigationSamplePart.setFirstModelNavigationMultiValue("");
+				}
+			}
 			if (!(msg.getNewValue() instanceof EObject) && secondMNSingleValueWithFirstMNSingleValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue)) {
-		if (msg.getNewValue() != null) {
-			smartNavigationSamplePart.setSecondModelNavigationSingleValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-		} else {
-			smartNavigationSamplePart.setSecondModelNavigationSingleValue("");
-		}
-	}
+				if (msg.getNewValue() != null) {
+					smartNavigationSamplePart.setSecondModelNavigationSingleValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					smartNavigationSamplePart.setSecondModelNavigationSingleValue("");
+				}
+			}
 			if (!(msg.getNewValue() instanceof EObject) && secondMNSingleValueWithFirstMNMultiValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue)) {
-		if (msg.getNewValue() != null) {
-			smartNavigationSamplePart.setSecondModelNavigationMultiValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-		} else {
-			smartNavigationSamplePart.setSecondModelNavigationMultiValue("");
-		}
-	}
+				if (msg.getNewValue() != null) {
+					smartNavigationSamplePart.setSecondModelNavigationMultiValue(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					smartNavigationSamplePart.setSecondModelNavigationMultiValue("");
+				}
+			}
 			if (!(msg.getNewValue() instanceof EObject) && secondMNMultiValueWithFirstMNSingleValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2)) {
-		if (msg.getNewValue() != null) {
-			smartNavigationSamplePart.setSecondModelNavigationSingleValue2(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-		} else {
-			smartNavigationSamplePart.setSecondModelNavigationSingleValue2("");
-		}
-	}
+				if (msg.getNewValue() != null) {
+					smartNavigationSamplePart.setSecondModelNavigationSingleValue2(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					smartNavigationSamplePart.setSecondModelNavigationSingleValue2("");
+				}
+			}
 			if (!(msg.getNewValue() instanceof EObject) && secondMNMultiValueWithFirstMNMultiValueSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2)) {
-		if (msg.getNewValue() != null) {
-			smartNavigationSamplePart.setSecondModelNavigationMultiValue2(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-		} else {
-			smartNavigationSamplePart.setSecondModelNavigationMultiValue2("");
-		}
-	}
+				if (msg.getNewValue() != null) {
+					smartNavigationSamplePart.setSecondModelNavigationMultiValue2(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					smartNavigationSamplePart.setSecondModelNavigationMultiValue2("");
+				}
+			}
 			if (!(msg.getNewValue() instanceof EObject) && secondMNMultiValueWithFirstMNMultiValueWithFilterSettings.isAffectingEvent(msg) && smartNavigationSamplePart != null && isAccessible(NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter)) {
-		if (msg.getNewValue() != null) {
-			smartNavigationSamplePart.setSecondModelNavigationMultiValueFilter(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-		} else {
-			smartNavigationSamplePart.setSecondModelNavigationMultiValueFilter("");
-		}
-	}
+				if (msg.getNewValue() != null) {
+					smartNavigationSamplePart.setSecondModelNavigationMultiValueFilter(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					smartNavigationSamplePart.setSecondModelNavigationMultiValueFilter("");
+				}
+			}
 			
 		}
 	}
@@ -617,98 +617,98 @@ public class SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionCom
 			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_SeveralFirstModelNavigation2(),
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
 			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_FirstModelNavigation(),
-			NavigationPackage.eINSTANCE.getFirstModelNavigation_SecondModelNavigation(),
+					NavigationPackage.eINSTANCE.getFirstModelNavigation_SecondModelNavigation(),
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
 			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_FirstModelNavigation(),
-			NavigationPackage.eINSTANCE.getFirstModelNavigation_SeveralSecondModelNavigation(),
+					NavigationPackage.eINSTANCE.getFirstModelNavigation_SeveralSecondModelNavigation(),
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
 			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_SeveralFirstModelNavigation(),
-			NavigationPackage.eINSTANCE.getFirstModelNavigation_SecondModelNavigation(),
+					NavigationPackage.eINSTANCE.getFirstModelNavigation_SecondModelNavigation(),
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
 			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_SeveralFirstModelNavigation(),
-			NavigationPackage.eINSTANCE.getFirstModelNavigation_SeveralSecondModelNavigation(),
+					NavigationPackage.eINSTANCE.getFirstModelNavigation_SeveralSecondModelNavigation(),
 			EefnrPackage.eINSTANCE.getAbstractSample_Name(),
 			NavigationPackage.eINSTANCE.getSmartModelNavigationSample_SeveralFirstModelNavigation(),
-			NavigationPackage.eINSTANCE.getFirstModelNavigation_SeveralSecondModelNavigation()		);
+					NavigationPackage.eINSTANCE.getFirstModelNavigation_SeveralSecondModelNavigation()		);
 		return new NotificationFilter[] {filter,};
 	}
 
 
 	/**
-		 * {@inheritDoc}
-		 * 
-		 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-		 * 
-		 */
-		public Diagnostic validateValue(IPropertiesEditionEvent event) {
-			Diagnostic ret = Diagnostic.OK_INSTANCE;
-			if (event.getNewValue() != null) {
-				try {
-					if (NavigationViewsRepository.SmartNavigationSample.Properties.name == event.getAffectedEditor()) {
-						Object newValue = event.getNewValue();
-						if (newValue instanceof String) {
-							newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
-						}
-						ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * 
+	 */
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
+		if (event.getNewValue() != null) {
+			try {
+				if (NavigationViewsRepository.SmartNavigationSample.Properties.name == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
 					}
-					if (NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue == event.getAffectedEditor()) {
-						Object newValue = event.getNewValue();
-						if (newValue instanceof String) {
-							newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
-						}
-						ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
-					}
-					if (NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue == event.getAffectedEditor()) {
-						Object newValue = event.getNewValue();
-						if (newValue instanceof String) {
-							newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
-						}
-						ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
-					}
-					if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue == event.getAffectedEditor()) {
-						Object newValue = event.getNewValue();
-						if (newValue instanceof String) {
-							newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
-						}
-						ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
-					}
-					if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue == event.getAffectedEditor()) {
-						Object newValue = event.getNewValue();
-						if (newValue instanceof String) {
-							newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
-						}
-						ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
-					}
-					if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2 == event.getAffectedEditor()) {
-						Object newValue = event.getNewValue();
-						if (newValue instanceof String) {
-							newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
-						}
-						ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
-					}
-					if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2 == event.getAffectedEditor()) {
-						Object newValue = event.getNewValue();
-						if (newValue instanceof String) {
-							newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
-						}
-						ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
-					}
-					if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter == event.getAffectedEditor()) {
-						Object newValue = event.getNewValue();
-						if (newValue instanceof String) {
-							newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
-						}
-						ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
-					}
-				} catch (IllegalArgumentException iae) {
-					ret = BasicDiagnostic.toDiagnostic(iae);
-				} catch (WrappedException we) {
-					ret = BasicDiagnostic.toDiagnostic(we);
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
 				}
+				if (NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationSingleValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
+				}
+				if (NavigationViewsRepository.SmartNavigationSample.Properties.firstModelNavigationMultiValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
+				}
+				if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
+				}
+				if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
+				}
+				if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationSingleValue2 == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
+				}
+				if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValue2 == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
+				}
+				if (NavigationViewsRepository.SmartNavigationSample.Properties.secondModelNavigationMultiValueFilter == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EefnrPackage.eINSTANCE.getAbstractSample_Name().getEAttributeType(), newValue);
+				}
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
 			}
-			return ret;
 		}
-	
+		return ret;
+	}
+
 
 	
 	/**
@@ -753,5 +753,7 @@ public class SmartModelNavigationSampleSmartNavigationSamplePropertiesEditionCom
 	public EEFEditorSettingsImpl getSecondMNMultiValueWithFirstMNMultiValueWithFilterSettings() {
 			return secondMNMultiValueWithFirstMNMultiValueWithFilterSettings;
 	}
+
+	
 
 }

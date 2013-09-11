@@ -324,4 +324,6 @@ public class TableCompositionEditorSamplePropertiesEditionComponent extends Sing
 
 	
 
+	
+
 }

@@ -159,6 +159,9 @@ public class ElementBindingReferencePropertiesEditionPartForm extends SectionPro
 		});
 		binding.setID(MappingViewsRepository.ElementBindingReference.Reference.binding);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.ElementBindingReference.Reference.binding, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createBindingFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -200,6 +203,14 @@ public class ElementBindingReferencePropertiesEditionPartForm extends SectionPro
 		if (current != null) {
 			binding.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(MappingViewsRepository.ElementBindingReference.Reference.binding);
+		if (eefElementEditorReadOnlyState && binding.isEnabled()) {
+			binding.setEnabled(false);
+			binding.setToolTipText(MappingMessages.ElementBindingReference_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !binding.isEnabled()) {
+			binding.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -214,6 +225,14 @@ public class ElementBindingReferencePropertiesEditionPartForm extends SectionPro
 		} else {
 			binding.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(MappingViewsRepository.ElementBindingReference.Reference.binding);
+		if (eefElementEditorReadOnlyState && binding.isEnabled()) {
+			binding.setEnabled(false);
+			binding.setToolTipText(MappingMessages.ElementBindingReference_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !binding.isEnabled()) {
+			binding.setEnabled(true);
+		}	
+		
 	}
 
 	/**

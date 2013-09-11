@@ -109,3 +109,6 @@
 // [protected ('for additional businessfilters for '.concat(editionElement.name))]
 // [/protected]
 [/template]
+
+[comment additionalComponentGetterForEditorSettings : template to add methods in component class /]
+[template public additionalComponentGetterForEditorSettings(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent)/]

@@ -29,7 +29,9 @@ import org.eclipse.emf.eef.views.CustomView;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CustomViewItemProvider extends ViewItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class CustomViewItemProvider extends ViewItemProvider implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -63,7 +65,8 @@ public class CustomViewItemProvider extends ViewItemProvider implements IEditing
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomView")); //$NON-NLS-1$
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/CustomView")); //$NON-NLS-1$
 	}
 
 	/**
@@ -74,7 +77,7 @@ public class CustomViewItemProvider extends ViewItemProvider implements IEditing
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CustomView)object).getName();
+		String label = ((CustomView) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_CustomView_type") : //$NON-NLS-1$
 				getString("_UI_CustomView_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -100,7 +103,8 @@ public class CustomViewItemProvider extends ViewItemProvider implements IEditing
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -7,6 +7,9 @@
     <PropertiesEditionContext href="mapping.components#_s_oE4Q92EeG64oJE_RBOAA"/>
   </editionContexts>
   <editionContexts basePackage="org.eclipse.emf.eef" descriptorsContributorID="org.eclipse.emf.eef.properties" descriptorsGenericPropertiesViews="true">
+    <PropertiesEditionContext href="mapping.components#_s_oE2w5dvEeG64oJE_RBOAA"/>
+  </editionContexts>
+  <editionContexts basePackage="org.eclipse.emf.eef" descriptorsContributorID="org.eclipse.emf.eef.properties" descriptorsGenericPropertiesViews="true">
     <PropertiesEditionContext href="mapping.components#_s_oE2Q92EeG64oJE_RBOAA"/>
   </editionContexts>
   <viewsRepositories basePackage="org.eclipse.emf.eef.mapping" swtViews="true" formViews="true">
@@ -17,5 +20,8 @@
   </viewsRepositories>
   <viewsRepositories basePackage="org.eclipse.emf.eef.mapping.navigation" swtViews="true" formViews="true">
     <viewsRepository href="mapping.components#_s_pTFA92EeG64oJE_RBOAA"/>
+  </viewsRepositories>
+  <viewsRepositories basePackage="org.eclipse.emf.eef.mapping.settings" swtViews="true" formViews="true">
+    <viewsRepository href="mapping.components#_s_pTFA54zed64oJE_RBOAA"/>
   </viewsRepositories>
 </eef-gen:EEFGenModel>

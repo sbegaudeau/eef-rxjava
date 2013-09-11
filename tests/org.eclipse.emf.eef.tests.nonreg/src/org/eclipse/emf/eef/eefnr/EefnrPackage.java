@@ -1553,6 +1553,171 @@ public interface EefnrPackage extends EPackage {
 	int SINGLE_COMPOSITION_EDITOR_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.EReferencesViewerSampleImpl <em>EReferences Viewer Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.EReferencesViewerSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getEReferencesViewerSample()
+	 * @generated
+	 */
+	int EREFERENCES_VIEWER_SAMPLE = 25;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCES_VIEWER_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Ereferencesviewer Required Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Ereferencesviewer Optional Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Ereferencesviewer RO Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_RO_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>EReferences Viewer Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EREFERENCES_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.LinkEObjectFlatComboViewerSampleImpl <em>Link EObject Flat Combo Viewer Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.LinkEObjectFlatComboViewerSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getLinkEObjectFlatComboViewerSample()
+	 * @generated
+	 */
+	int LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE = 26;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Linkeobjectflatcomboviewer Required Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__LINKEOBJECTFLATCOMBOVIEWER_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Linkeobjectflatcomboviewer Optional Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__LINKEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Linkeobjectflatcomboviewer RO Propery</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__LINKEOBJECTFLATCOMBOVIEWER_RO_PROPERY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Link EObject Flat Combo Viewer Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.impl.LinkEReferenceViewerSampleImpl <em>Link EReference Viewer Sample</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.eef.eefnr.impl.LinkEReferenceViewerSampleImpl
+	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getLinkEReferenceViewerSample()
+	 * @generated
+	 */
+	int LINK_EREFERENCE_VIEWER_SAMPLE = 27;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_EREFERENCE_VIEWER_SAMPLE__NAME = ABSTRACT_SAMPLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Linkereferenceviewer Required Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_EREFERENCE_VIEWER_SAMPLE__LINKEREFERENCEVIEWER_REQUIRED_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Linkereferenceviewer Optional Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_EREFERENCE_VIEWER_SAMPLE__LINKEREFERENCEVIEWER_OPTIONAL_PROPERTY = ABSTRACT_SAMPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Linkereferenceviewer RO Propery</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_EREFERENCE_VIEWER_SAMPLE__LINKEREFERENCEVIEWER_RO_PROPERY = ABSTRACT_SAMPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Link EReference Viewer Sample</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_EREFERENCE_VIEWER_SAMPLE_FEATURE_COUNT = ABSTRACT_SAMPLE_FEATURE_COUNT + 3;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1560,7 +1725,7 @@ public interface EefnrPackage extends EPackage {
 	 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getENUM_SAMPLE()
 	 * @generated
 	 */
-	int ENUM_SAMPLE = 25;
+	int ENUM_SAMPLE = 28;
 
 
 	/**
@@ -2804,6 +2969,135 @@ public interface EefnrPackage extends EPackage {
 	EReference getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample <em>EReferences Viewer Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>EReferences Viewer Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.EReferencesViewerSample
+	 * @generated
+	 */
+	EClass getEReferencesViewerSample();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerRequiredProperty <em>Ereferencesviewer Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Ereferencesviewer Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerRequiredProperty()
+	 * @see #getEReferencesViewerSample()
+	 * @generated
+	 */
+	EReference getEReferencesViewerSample_EreferencesviewerRequiredProperty();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerOptionalProperty <em>Ereferencesviewer Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Ereferencesviewer Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerOptionalProperty()
+	 * @see #getEReferencesViewerSample()
+	 * @generated
+	 */
+	EReference getEReferencesViewerSample_EreferencesviewerOptionalProperty();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerROProperty <em>Ereferencesviewer RO Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Ereferencesviewer RO Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.EReferencesViewerSample#getEreferencesviewerROProperty()
+	 * @see #getEReferencesViewerSample()
+	 * @generated
+	 */
+	EReference getEReferencesViewerSample_EreferencesviewerROProperty();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.LinkEObjectFlatComboViewerSample <em>Link EObject Flat Combo Viewer Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Link EObject Flat Combo Viewer Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.LinkEObjectFlatComboViewerSample
+	 * @generated
+	 */
+	EClass getLinkEObjectFlatComboViewerSample();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.LinkEObjectFlatComboViewerSample#getLinkeobjectflatcomboviewerRequiredProperty <em>Linkeobjectflatcomboviewer Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Linkeobjectflatcomboviewer Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.LinkEObjectFlatComboViewerSample#getLinkeobjectflatcomboviewerRequiredProperty()
+	 * @see #getLinkEObjectFlatComboViewerSample()
+	 * @generated
+	 */
+	EReference getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerRequiredProperty();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.LinkEObjectFlatComboViewerSample#getLinkeobjectflatcomboviewerOptionalProperty <em>Linkeobjectflatcomboviewer Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Linkeobjectflatcomboviewer Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.LinkEObjectFlatComboViewerSample#getLinkeobjectflatcomboviewerOptionalProperty()
+	 * @see #getLinkEObjectFlatComboViewerSample()
+	 * @generated
+	 */
+	EReference getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerOptionalProperty();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.LinkEObjectFlatComboViewerSample#getLinkeobjectflatcomboviewerROPropery <em>Linkeobjectflatcomboviewer RO Propery</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Linkeobjectflatcomboviewer RO Propery</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.LinkEObjectFlatComboViewerSample#getLinkeobjectflatcomboviewerROPropery()
+	 * @see #getLinkEObjectFlatComboViewerSample()
+	 * @generated
+	 */
+	EReference getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerROPropery();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.eef.eefnr.LinkEReferenceViewerSample <em>Link EReference Viewer Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Link EReference Viewer Sample</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.LinkEReferenceViewerSample
+	 * @generated
+	 */
+	EClass getLinkEReferenceViewerSample();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.LinkEReferenceViewerSample#getLinkereferenceviewerRequiredProperty <em>Linkereferenceviewer Required Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Linkereferenceviewer Required Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.LinkEReferenceViewerSample#getLinkereferenceviewerRequiredProperty()
+	 * @see #getLinkEReferenceViewerSample()
+	 * @generated
+	 */
+	EReference getLinkEReferenceViewerSample_LinkereferenceviewerRequiredProperty();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.LinkEReferenceViewerSample#getLinkereferenceviewerOptionalProperty <em>Linkereferenceviewer Optional Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Linkereferenceviewer Optional Property</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.LinkEReferenceViewerSample#getLinkereferenceviewerOptionalProperty()
+	 * @see #getLinkEReferenceViewerSample()
+	 * @generated
+	 */
+	EReference getLinkEReferenceViewerSample_LinkereferenceviewerOptionalProperty();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.eef.eefnr.LinkEReferenceViewerSample#getLinkereferenceviewerROPropery <em>Linkereferenceviewer RO Propery</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Linkereferenceviewer RO Propery</em>'.
+	 * @see org.eclipse.emf.eef.eefnr.LinkEReferenceViewerSample#getLinkereferenceviewerROPropery()
+	 * @see #getLinkEReferenceViewerSample()
+	 * @generated
+	 */
+	EReference getLinkEReferenceViewerSample_LinkereferenceviewerROPropery();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3804,6 +4098,108 @@ public interface EefnrPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY = eINSTANCE.getSingleCompositionEditorSample_SinglecompositioneditorOnAbstractOptionalProperty();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.EReferencesViewerSampleImpl <em>EReferences Viewer Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.EReferencesViewerSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getEReferencesViewerSample()
+		 * @generated
+		 */
+		EClass EREFERENCES_VIEWER_SAMPLE = eINSTANCE.getEReferencesViewerSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Ereferencesviewer Required Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_REQUIRED_PROPERTY = eINSTANCE.getEReferencesViewerSample_EreferencesviewerRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Ereferencesviewer Optional Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_OPTIONAL_PROPERTY = eINSTANCE.getEReferencesViewerSample_EreferencesviewerOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Ereferencesviewer RO Property</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EREFERENCES_VIEWER_SAMPLE__EREFERENCESVIEWER_RO_PROPERTY = eINSTANCE.getEReferencesViewerSample_EreferencesviewerROProperty();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.LinkEObjectFlatComboViewerSampleImpl <em>Link EObject Flat Combo Viewer Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.LinkEObjectFlatComboViewerSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getLinkEObjectFlatComboViewerSample()
+		 * @generated
+		 */
+		EClass LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE = eINSTANCE.getLinkEObjectFlatComboViewerSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Linkeobjectflatcomboviewer Required Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__LINKEOBJECTFLATCOMBOVIEWER_REQUIRED_PROPERTY = eINSTANCE.getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Linkeobjectflatcomboviewer Optional Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__LINKEOBJECTFLATCOMBOVIEWER_OPTIONAL_PROPERTY = eINSTANCE.getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Linkeobjectflatcomboviewer RO Propery</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE__LINKEOBJECTFLATCOMBOVIEWER_RO_PROPERY = eINSTANCE.getLinkEObjectFlatComboViewerSample_LinkeobjectflatcomboviewerROPropery();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.impl.LinkEReferenceViewerSampleImpl <em>Link EReference Viewer Sample</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.eef.eefnr.impl.LinkEReferenceViewerSampleImpl
+		 * @see org.eclipse.emf.eef.eefnr.impl.EefnrPackageImpl#getLinkEReferenceViewerSample()
+		 * @generated
+		 */
+		EClass LINK_EREFERENCE_VIEWER_SAMPLE = eINSTANCE.getLinkEReferenceViewerSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Linkereferenceviewer Required Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_EREFERENCE_VIEWER_SAMPLE__LINKEREFERENCEVIEWER_REQUIRED_PROPERTY = eINSTANCE.getLinkEReferenceViewerSample_LinkereferenceviewerRequiredProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Linkereferenceviewer Optional Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_EREFERENCE_VIEWER_SAMPLE__LINKEREFERENCEVIEWER_OPTIONAL_PROPERTY = eINSTANCE.getLinkEReferenceViewerSample_LinkereferenceviewerOptionalProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Linkereferenceviewer RO Propery</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_EREFERENCE_VIEWER_SAMPLE__LINKEREFERENCEVIEWER_RO_PROPERY = eINSTANCE.getLinkEReferenceViewerSample_LinkereferenceviewerROPropery();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.eef.eefnr.ENUM_SAMPLE <em>ENUM SAMPLE</em>}' enum.

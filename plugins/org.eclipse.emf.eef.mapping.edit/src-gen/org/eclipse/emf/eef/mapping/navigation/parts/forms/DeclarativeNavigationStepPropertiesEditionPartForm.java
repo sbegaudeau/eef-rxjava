@@ -156,7 +156,6 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 	}
 
 	
-	
 	protected Composite createIndexText(FormToolkit widgetFactory, Composite parent) {
 		createDescription(parent, NavigationViewsRepository.DeclarativeNavigationStep.Properties.index, NavigationMessages.DeclarativeNavigationStepPropertiesEditionPart_IndexLabel);
 		index = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -218,6 +217,9 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 		EditingUtils.setID(index, NavigationViewsRepository.DeclarativeNavigationStep.Properties.index);
 		EditingUtils.setEEFtype(index, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeclarativeNavigationStep.Properties.index, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createIndexText
+
+		// End of user code
 		return parent;
 	}
 
@@ -248,6 +250,9 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 		});
 		feature.setID(NavigationViewsRepository.DeclarativeNavigationStep.Properties.feature);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeclarativeNavigationStep.Properties.feature, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFeatureFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -278,6 +283,9 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 		});
 		discriminatorType.setID(NavigationViewsRepository.DeclarativeNavigationStep.Properties.discriminatorType);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(NavigationViewsRepository.DeclarativeNavigationStep.Properties.discriminatorType, NavigationViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDiscriminatorTypeFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -316,6 +324,14 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 		} else {
 			index.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.DeclarativeNavigationStep.Properties.index);
+		if (eefElementEditorReadOnlyState && index.isEnabled()) {
+			index.setEnabled(false);
+			index.setToolTipText(NavigationMessages.DeclarativeNavigationStep_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !index.isEnabled()) {
+			index.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -343,6 +359,14 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 		if (current != null) {
 			feature.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.DeclarativeNavigationStep.Properties.feature);
+		if (eefElementEditorReadOnlyState && feature.isEnabled()) {
+			feature.setEnabled(false);
+			feature.setToolTipText(NavigationMessages.DeclarativeNavigationStep_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !feature.isEnabled()) {
+			feature.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -357,6 +381,14 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 		} else {
 			feature.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.DeclarativeNavigationStep.Properties.feature);
+		if (eefElementEditorReadOnlyState && feature.isEnabled()) {
+			feature.setEnabled(false);
+			feature.setToolTipText(NavigationMessages.DeclarativeNavigationStep_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !feature.isEnabled()) {
+			feature.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -413,6 +445,14 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 		if (current != null) {
 			discriminatorType.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.DeclarativeNavigationStep.Properties.discriminatorType);
+		if (eefElementEditorReadOnlyState && discriminatorType.isEnabled()) {
+			discriminatorType.setEnabled(false);
+			discriminatorType.setToolTipText(NavigationMessages.DeclarativeNavigationStep_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !discriminatorType.isEnabled()) {
+			discriminatorType.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -427,6 +467,14 @@ public class DeclarativeNavigationStepPropertiesEditionPartForm extends SectionP
 		} else {
 			discriminatorType.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.DeclarativeNavigationStep.Properties.discriminatorType);
+		if (eefElementEditorReadOnlyState && discriminatorType.isEnabled()) {
+			discriminatorType.setEnabled(false);
+			discriminatorType.setToolTipText(NavigationMessages.DeclarativeNavigationStep_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !discriminatorType.isEnabled()) {
+			discriminatorType.setEnabled(true);
+		}	
+		
 	}
 
 	/**

@@ -397,6 +397,15 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGenViewsRepository_FormsSuperClass() {
+		return (EAttribute)genViewsRepositoryEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getHELP_STRATEGY() {
 		return helP_STRATEGYEEnum;
 	}
@@ -461,6 +470,7 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		createEAttribute(genViewsRepositoryEClass, GEN_VIEWS_REPOSITORY__HELP_STRATEGY);
 		createEReference(genViewsRepositoryEClass, GEN_VIEWS_REPOSITORY__EEF_GEN_MODEL);
 		createEAttribute(genViewsRepositoryEClass, GEN_VIEWS_REPOSITORY__PARTS_SUPER_CLASS);
+		createEAttribute(genViewsRepositoryEClass, GEN_VIEWS_REPOSITORY__FORMS_SUPER_CLASS);
 
 		// Create enums
 		helP_STRATEGYEEnum = createEEnum(HELP_STRATEGY);
@@ -532,6 +542,7 @@ public class EEFGenPackageImpl extends EPackageImpl implements EEFGenPackage {
 		initEAttribute(getGenViewsRepository_HelpStrategy(), this.getHELP_STRATEGY(), "helpStrategy", null, 1, 1, GenViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGenViewsRepository_EefGenModel(), this.getEEFGenModel(), this.getEEFGenModel_ViewsRepositories(), "eefGenModel", null, 1, 1, GenViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGenViewsRepository_PartsSuperClass(), ecorePackage.getEString(), "partsSuperClass", null, 0, 1, GenViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenViewsRepository_FormsSuperClass(), ecorePackage.getEString(), "formsSuperClass", null, 0, 1, GenViewsRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(helP_STRATEGYEEnum, org.eclipse.emf.eef.EEFGen.HELP_STRATEGY.class, "HELP_STRATEGY");

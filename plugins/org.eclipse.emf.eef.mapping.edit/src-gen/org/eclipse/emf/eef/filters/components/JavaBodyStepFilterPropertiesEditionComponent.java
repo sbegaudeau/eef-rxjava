@@ -79,10 +79,11 @@ public class JavaBodyStepFilterPropertiesEditionComponent extends SinglePartProp
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final JavaBodyStepFilter javaBodyStepFilter = (JavaBodyStepFilter)elt;
 			final JavaBodyStepFilterPropertiesEditionPart basePart = (JavaBodyStepFilterPropertiesEditionPart)editingPart;
 			// init values
-			if (javaBodyStepFilter.getBody() != null && isAccessible(FiltersViewsRepository.JavaBodyStepFilter.Properties.body))
+			if (isAccessible(FiltersViewsRepository.JavaBodyStepFilter.Properties.body))
 				basePart.setBody(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, javaBodyStepFilter.getBody()));
 			// init filters
 			
@@ -125,9 +126,10 @@ public class JavaBodyStepFilterPropertiesEditionComponent extends SinglePartProp
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			JavaBodyStepFilterPropertiesEditionPart basePart = (JavaBodyStepFilterPropertiesEditionPart)editingPart;
-			if (NavigationPackage.eINSTANCE.getJavaBodyExpression_Body().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.JavaBodyStepFilter.Properties.body)){
+			if (NavigationPackage.eINSTANCE.getJavaBodyExpression_Body().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FiltersViewsRepository.JavaBodyStepFilter.Properties.body)){
 				if (msg.getNewValue() != null) {
 					basePart.setBody(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -146,7 +148,7 @@ public class JavaBodyStepFilterPropertiesEditionComponent extends SinglePartProp
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			NavigationPackage.eINSTANCE.getJavaBodyExpression_Body());
+			NavigationPackage.eINSTANCE.getJavaBodyExpression_Body()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -186,5 +188,10 @@ public class JavaBodyStepFilterPropertiesEditionComponent extends SinglePartProp
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

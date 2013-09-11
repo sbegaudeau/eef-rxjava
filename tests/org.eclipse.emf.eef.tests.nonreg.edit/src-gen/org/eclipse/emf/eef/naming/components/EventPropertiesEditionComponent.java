@@ -183,4 +183,6 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 
 	
 
+	
+
 }

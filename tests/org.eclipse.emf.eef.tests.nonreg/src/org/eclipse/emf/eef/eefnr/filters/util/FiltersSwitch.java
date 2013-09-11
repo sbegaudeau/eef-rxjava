@@ -114,6 +114,14 @@ public class FiltersSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case FiltersPackage.CONCRETE_REFERENCE_TARGET_SAMPLE3: {
+				ConcreteReferenceTargetSample3 concreteReferenceTargetSample3 = (ConcreteReferenceTargetSample3)theEObject;
+				T result = caseConcreteReferenceTargetSample3(concreteReferenceTargetSample3);
+				if (result == null) result = caseAbstractReferenceTargetSample(concreteReferenceTargetSample3);
+				if (result == null) result = caseAbstractSample(concreteReferenceTargetSample3);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -190,6 +198,21 @@ public class FiltersSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConcreteReferenceTargetSample2(ConcreteReferenceTargetSample2 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Concrete Reference Target Sample3</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Concrete Reference Target Sample3</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConcreteReferenceTargetSample3(ConcreteReferenceTargetSample3 object) {
 		return null;
 	}
 

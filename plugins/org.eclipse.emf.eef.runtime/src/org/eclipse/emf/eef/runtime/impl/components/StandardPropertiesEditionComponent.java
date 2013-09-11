@@ -33,6 +33,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.command.StandardEditingCommand;
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesValidationEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.StringTools;
 
@@ -141,13 +142,12 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 	 * @return the semantic model listener
 	 */
 	protected PropertiesEditingSemanticListener initializeSemanticAdapter() {
-		PropertiesEditingSemanticListener listener = new PropertiesEditingSemanticListener(this,
-				getNotificationFilters()) {
+		PropertiesEditingSemanticListener listener = new PropertiesEditingSemanticListener(
+				this, getNotificationFilters()) {
 
 			@Override
 			public void runUpdateRunnable(Notification notification) {
-				if (getPart() != null 
-						&& getPart().getFigure() != null 
+				if (getPart() != null && getPart().getFigure() != null
 						&& !getPart().getFigure().isDisposed()) {
 					updatePart(notification);
 				} else {
@@ -201,6 +201,14 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 				if (IPropertiesEditionComponent.BATCH_MODE.equals(editing_mode)) {
 					updateSemanticModel(event);
 				} else if (IPropertiesEditionComponent.LIVE_MODE.equals(editing_mode)) {
+
+					switch (event.getKind()) {
+					case PropertiesEditionEvent.ADD:
+					case PropertiesEditionEvent.CHANGE:
+					case PropertiesEditionEvent.EDIT:
+					case PropertiesEditionEvent.REMOVE:
+					case PropertiesEditionEvent.MOVE:
+					case PropertiesEditionEvent.SET:
 					liveEditingDomain.getCommandStack().execute(
 							new StandardEditingCommand(new EObjectPropertiesEditionContext(editingContext,
 									this, editingContext.getEObject(), editingContext.getAdapterFactory())) {
@@ -210,12 +218,16 @@ public abstract class StandardPropertiesEditionComponent implements IPropertiesE
 									ChangeRecorder changeRecorder = editingContext.getChangeRecorder();
 									if (changeRecorder != null) {
 										description = changeRecorder.endRecording();
-										changeRecorder.dispose();
+										editingContext.disposeRecorder();
 									}
 								}
 
 							});
+					default:
+						break;
+					}
 				}
+
 				Diagnostic validate = validate();
 				propagateEvent(new PropertiesValidationEditionEvent(event, validate));
 			}

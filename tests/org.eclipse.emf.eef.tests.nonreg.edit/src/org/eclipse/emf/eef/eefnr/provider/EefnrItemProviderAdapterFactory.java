@@ -582,6 +582,75 @@ public class EefnrItemProviderAdapterFactory extends EefnrAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EReferencesViewerSampleItemProvider eReferencesViewerSampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.EReferencesViewerSample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEReferencesViewerSampleAdapter() {
+		if (eReferencesViewerSampleItemProvider == null) {
+			eReferencesViewerSampleItemProvider = new EReferencesViewerSampleItemProvider(this);
+		}
+
+		return eReferencesViewerSampleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.LinkEObjectFlatComboViewerSample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LinkEObjectFlatComboViewerSampleItemProvider linkEObjectFlatComboViewerSampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.LinkEObjectFlatComboViewerSample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLinkEObjectFlatComboViewerSampleAdapter() {
+		if (linkEObjectFlatComboViewerSampleItemProvider == null) {
+			linkEObjectFlatComboViewerSampleItemProvider = new LinkEObjectFlatComboViewerSampleItemProvider(this);
+		}
+
+		return linkEObjectFlatComboViewerSampleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.LinkEReferenceViewerSample} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LinkEReferenceViewerSampleItemProvider linkEReferenceViewerSampleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.LinkEReferenceViewerSample}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLinkEReferenceViewerSampleAdapter() {
+		if (linkEReferenceViewerSampleItemProvider == null) {
+			linkEReferenceViewerSampleItemProvider = new LinkEReferenceViewerSampleItemProvider(this);
+		}
+
+		return linkEReferenceViewerSampleItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -702,6 +771,9 @@ public class EefnrItemProviderAdapterFactory extends EefnrAdapterFactory impleme
 		if (selectionDialogSampleItemProvider != null) selectionDialogSampleItemProvider.dispose();
 		if (singleCompositionViewerSampleItemProvider != null) singleCompositionViewerSampleItemProvider.dispose();
 		if (singleCompositionEditorSampleItemProvider != null) singleCompositionEditorSampleItemProvider.dispose();
+		if (eReferencesViewerSampleItemProvider != null) eReferencesViewerSampleItemProvider.dispose();
+		if (linkEObjectFlatComboViewerSampleItemProvider != null) linkEObjectFlatComboViewerSampleItemProvider.dispose();
+		if (linkEReferenceViewerSampleItemProvider != null) linkEReferenceViewerSampleItemProvider.dispose();
 	}
 
 }

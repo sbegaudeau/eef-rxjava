@@ -180,6 +180,9 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 		EditingUtils.setID(name, EditorViewsRepository.TreeMasterPage.Naming.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.TreeMasterPage.Naming.name, EditorViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -226,6 +229,9 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 		EditingUtils.setID(title_, EditorViewsRepository.TreeMasterPage.Naming.title_);
 		EditingUtils.setEEFtype(title_, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.TreeMasterPage.Naming.title_, EditorViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTitle_Text
+
+		// End of user code
 		return parent;
 	}
 
@@ -268,6 +274,9 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 		EditingUtils.setID(toolbarVisible, EditorViewsRepository.TreeMasterPage.Settings.toolbarVisible);
 		EditingUtils.setEEFtype(toolbarVisible, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.TreeMasterPage.Settings.toolbarVisible, EditorViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createToolbarVisibleCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -306,6 +315,14 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.TreeMasterPage.Naming.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(EditorMessages.TreeMasterPage_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -330,6 +347,14 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			title_.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.TreeMasterPage.Naming.title_);
+		if (eefElementEditorReadOnlyState && title_.isEnabled()) {
+			title_.setEnabled(false);
+			title_.setToolTipText(EditorMessages.TreeMasterPage_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !title_.isEnabled()) {
+			title_.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -354,6 +379,14 @@ public class TreeMasterPagePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			toolbarVisible.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.TreeMasterPage.Settings.toolbarVisible);
+		if (eefElementEditorReadOnlyState && toolbarVisible.isEnabled()) {
+			toolbarVisible.setEnabled(false);
+			toolbarVisible.setToolTipText(EditorMessages.TreeMasterPage_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !toolbarVisible.isEnabled()) {
+			toolbarVisible.setEnabled(true);
+		}	
+		
 	}
 
 

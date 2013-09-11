@@ -10,7 +10,7 @@
  *     Obeo - initial API and implementation
  *******************************************************************************
  /]
-[module imports('http://www.eclipse.org/emf/2002/Ecore')/]
+[module imports('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel')/]
 
 [comment ************ IMPORT MANAGER ****************************************** /]
 
@@ -89,4 +89,19 @@
 	'org.eclipse.emf.eef.codegen.services.ImportService',
 	'genSortedImports(org.eclipse.emf.ecore.EObject)',
 	Sequence{caller}) /]
+[/template]
+
+[template public getImportGenModel(caller : EObject) post (trim())]
+[invoke(
+	'org.eclipse.emf.eef.codegen.services.ImportService',
+	'getGenModel(org.eclipse.emf.ecore.EObject)',
+	Sequence{caller}) /]
+[/template]
+
+[comment To fix call of import manager in a genmodel which is not the genmodel used by the default import manager /]
+[template public initializeImportManagerForGenmodel(caller : EObject, model : GenModel, packageName : String, className : String) post (trim())]
+[invoke(
+	'org.eclipse.emf.eef.codegen.services.ImportService',
+	'initializeImportManagerForGenmodel(org.eclipse.emf.ecore.EObject, org.eclipse.emf.codegen.ecore.genmodel.GenModel,java.lang.String,java.lang.String)', 
+	Sequence{caller, model, packageName, className}) /]
 [/template]

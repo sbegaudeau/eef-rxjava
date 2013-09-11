@@ -32,3 +32,24 @@
 		[elementEditor.readOnly()/]
 	}
 [/template]
+
+[template public readOnly (editor : ElementEditor)]
+[if (editor.readOnly)]
+[editor.setReadOnly()/]
+[else]
+boolean eefElementEditorReadOnlyState = isReadOnly([editor.editorID()/][navigationReadOnly()/]);
+if (eefElementEditorReadOnlyState && [editor.elementEditorName()/].getEditable()==true) {
+	[editor.setReadOnly()/]
+} else if (!eefElementEditorReadOnlyState && [editor.elementEditorName()/].getEditable()==false) {
+	[editor.unsetReadOnly()/]
+}	
+[/if]
+[/template]
+
+[template public setReadOnly (editor : ElementEditor)]
+[editor.elementEditorName()/].setEditable(false);
+[/template]
+
+[template public unsetReadOnly (editor : ElementEditor)]
+[editor.elementEditorName()/].setEditable(true);
+[/template]

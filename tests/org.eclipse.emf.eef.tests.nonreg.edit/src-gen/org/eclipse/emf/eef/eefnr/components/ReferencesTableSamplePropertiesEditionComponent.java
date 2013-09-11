@@ -301,4 +301,6 @@ public class ReferencesTableSamplePropertiesEditionComponent extends SinglePartP
 
 	
 
+	
+
 }

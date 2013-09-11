@@ -103,10 +103,9 @@ public class SubtypeBasePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			if (isAccessible(NavigationViewsRepository.Owner.Properties.multipleSampleForTableComposition)) {
 				basePart.addFilterToMultipleSampleForTableComposition(new ViewerFilter() {
-			
 					/**
 					 * {@inheritDoc}
-					 *
+					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
@@ -119,10 +118,9 @@ public class SubtypeBasePropertiesEditionComponent extends SinglePartPropertiesE
 			}
 			if (isAccessible(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedTableComposition)) {
 				basePart.addFilterToMultipleSampleForAdvancedTableComposition(new ViewerFilter() {
-			
 					/**
 					 * {@inheritDoc}
-					 *
+					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
@@ -396,6 +394,8 @@ public class SubtypeBasePropertiesEditionComponent extends SinglePartPropertiesE
 		return ret;
 	}
 
+
+	
 
 	
 

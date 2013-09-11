@@ -33,7 +33,9 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ViewItemProvider extends ContainerItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ViewItemProvider extends ContainerItemProvider implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -56,6 +58,7 @@ public class ViewItemProvider extends ContainerItemProvider implements IEditingD
 			super.getPropertyDescriptors(object);
 
 			addExplicitPropertyDescriptor(object);
+			addLabelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -68,12 +71,32 @@ public class ViewItemProvider extends ContainerItemProvider implements IEditingD
 	 */
 	protected void addExplicitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_View_explicit_feature"), //$NON-NLS-1$
 				getString("_UI_View_explicit_description"), //$NON-NLS-1$
 				ViewsPackage.Literals.VIEW__EXPLICIT, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Label feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLabelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_View_label_feature"), //$NON-NLS-1$
+						getString(
+								"_UI_PropertyDescriptor_description", "_UI_View_label_feature", "_UI_View_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+						ViewsPackage.Literals.VIEW__LABEL, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -84,7 +107,8 @@ public class ViewItemProvider extends ContainerItemProvider implements IEditingD
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/View")); //$NON-NLS-1$
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/View")); //$NON-NLS-1$
 	}
 
 	/**
@@ -95,7 +119,7 @@ public class ViewItemProvider extends ContainerItemProvider implements IEditingD
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((View)object).getName();
+		String label = ((View) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_View_type") : //$NON-NLS-1$
 				getString("_UI_View_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -112,10 +136,11 @@ public class ViewItemProvider extends ContainerItemProvider implements IEditingD
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(View.class)) {
-			case ViewsPackage.VIEW__EXPLICIT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ViewsPackage.VIEW__EXPLICIT:
+		case ViewsPackage.VIEW__LABEL:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -128,7 +153,8 @@ public class ViewItemProvider extends ContainerItemProvider implements IEditingD
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

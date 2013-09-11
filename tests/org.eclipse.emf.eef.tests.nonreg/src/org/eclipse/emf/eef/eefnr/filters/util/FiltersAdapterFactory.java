@@ -97,6 +97,10 @@ public class FiltersAdapterFactory extends AdapterFactoryImpl {
 				return createConcreteReferenceTargetSample2Adapter();
 			}
 			@Override
+			public Adapter caseConcreteReferenceTargetSample3(ConcreteReferenceTargetSample3 object) {
+				return createConcreteReferenceTargetSample3Adapter();
+			}
+			@Override
 			public Adapter caseAbstractSample(AbstractSample object) {
 				return createAbstractSampleAdapter();
 			}
@@ -187,6 +191,20 @@ public class FiltersAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConcreteReferenceTargetSample2Adapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample3 <em>Concrete Reference Target Sample3</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample3
+	 * @generated
+	 */
+	public Adapter createConcreteReferenceTargetSample3Adapter() {
 		return null;
 	}
 

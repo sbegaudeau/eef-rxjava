@@ -264,6 +264,21 @@ public class RootItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrFactory.eINSTANCE.createEReferencesViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrFactory.eINSTANCE.createLinkEObjectFlatComboViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 EefnrFactory.eINSTANCE.createLinkEReferenceViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 ReferencesFactory.eINSTANCE.createReferenceEnabledSample()));
 
 		newChildDescriptors.add
@@ -335,6 +350,11 @@ public class RootItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.ROOT__SAMPLES,
 				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample2()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.ROOT__SAMPLES,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample3()));
 
 		newChildDescriptors.add
 			(createChildParameter

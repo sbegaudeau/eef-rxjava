@@ -15,4 +15,7 @@
   <widgets name="SingleCompositionViewer"/>
   <widgets name="SelectionDialog"/>
   <widgets name="SingleCompositionEditor" implementation=""/>
+  <widgets name="LinkEObjectFlatComboViewer"/>
+  <widgets name="LinkEReferenceViewer"/>
+  <widgets name="EReferencesViewer"/>
 </eef-views:Toolkit>

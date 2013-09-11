@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.eef.mapping.EMFPropertyBinding;
 import org.eclipse.emf.eef.mapping.MappingPackage;
 import org.eclipse.emf.eef.mapping.navigation.ModelNavigation;
+import org.eclipse.emf.eef.mapping.settings.EditorSettings;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +30,7 @@ import org.eclipse.emf.eef.mapping.navigation.ModelNavigation;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.mapping.impl.EMFPropertyBindingImpl#getModel <em>Model</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.impl.EMFPropertyBindingImpl#getNavigation <em>Navigation</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.impl.EMFPropertyBindingImpl#getEditorSetting <em>Editor Setting</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,6 +57,16 @@ public class EMFPropertyBindingImpl extends AbstractPropertyBindingImpl
 	 * @ordered
 	 */
 	protected ModelNavigation navigation;
+
+	/**
+	 * The cached value of the '{@link #getEditorSetting() <em>Editor Setting</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEditorSetting()
+	 * @generated
+	 * @ordered
+	 */
+	protected EditorSettings editorSetting;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -183,12 +195,76 @@ public class EMFPropertyBindingImpl extends AbstractPropertyBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EditorSettings getEditorSetting() {
+		return editorSetting;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetEditorSetting(
+			EditorSettings newEditorSetting, NotificationChain msgs) {
+		EditorSettings oldEditorSetting = editorSetting;
+		editorSetting = newEditorSetting;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					MappingPackage.EMF_PROPERTY_BINDING__EDITOR_SETTING,
+					oldEditorSetting, newEditorSetting);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEditorSetting(EditorSettings newEditorSetting) {
+		if (newEditorSetting != editorSetting) {
+			NotificationChain msgs = null;
+			if (editorSetting != null)
+				msgs = ((InternalEObject) editorSetting)
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- MappingPackage.EMF_PROPERTY_BINDING__EDITOR_SETTING,
+								null, msgs);
+			if (newEditorSetting != null)
+				msgs = ((InternalEObject) newEditorSetting)
+						.eInverseAdd(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- MappingPackage.EMF_PROPERTY_BINDING__EDITOR_SETTING,
+								null, msgs);
+			msgs = basicSetEditorSetting(newEditorSetting, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MappingPackage.EMF_PROPERTY_BINDING__EDITOR_SETTING,
+					newEditorSetting, newEditorSetting));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MappingPackage.EMF_PROPERTY_BINDING__NAVIGATION:
 			return basicSetNavigation(null, msgs);
+		case MappingPackage.EMF_PROPERTY_BINDING__EDITOR_SETTING:
+			return basicSetEditorSetting(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -207,6 +283,8 @@ public class EMFPropertyBindingImpl extends AbstractPropertyBindingImpl
 			return basicGetModel();
 		case MappingPackage.EMF_PROPERTY_BINDING__NAVIGATION:
 			return getNavigation();
+		case MappingPackage.EMF_PROPERTY_BINDING__EDITOR_SETTING:
+			return getEditorSetting();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -224,6 +302,9 @@ public class EMFPropertyBindingImpl extends AbstractPropertyBindingImpl
 			return;
 		case MappingPackage.EMF_PROPERTY_BINDING__NAVIGATION:
 			setNavigation((ModelNavigation) newValue);
+			return;
+		case MappingPackage.EMF_PROPERTY_BINDING__EDITOR_SETTING:
+			setEditorSetting((EditorSettings) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -243,6 +324,9 @@ public class EMFPropertyBindingImpl extends AbstractPropertyBindingImpl
 		case MappingPackage.EMF_PROPERTY_BINDING__NAVIGATION:
 			setNavigation((ModelNavigation) null);
 			return;
+		case MappingPackage.EMF_PROPERTY_BINDING__EDITOR_SETTING:
+			setEditorSetting((EditorSettings) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -259,6 +343,8 @@ public class EMFPropertyBindingImpl extends AbstractPropertyBindingImpl
 			return model != null;
 		case MappingPackage.EMF_PROPERTY_BINDING__NAVIGATION:
 			return navigation != null;
+		case MappingPackage.EMF_PROPERTY_BINDING__EDITOR_SETTING:
+			return editorSetting != null;
 		}
 		return super.eIsSet(featureID);
 	}

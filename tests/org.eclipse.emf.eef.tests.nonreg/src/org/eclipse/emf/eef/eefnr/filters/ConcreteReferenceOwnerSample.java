@@ -18,6 +18,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample#getStrictTyping <em>Strict Typing</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample#getStrictTyping2 <em>Strict Typing2</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceOwnerSample#getStrictTyping3 <em>Strict Typing3</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,5 +59,37 @@ public interface ConcreteReferenceOwnerSample extends AbstractReferenceOwnerSamp
 	 * @generated
 	 */
 	EList<AbstractReferenceTargetSample> getStrictTyping();
+
+	/**
+	 * Returns the value of the '<em><b>Strict Typing2</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.filters.AbstractReferenceTargetSample}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Strict Typing2</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Strict Typing2</em>' containment reference list.
+	 * @see org.eclipse.emf.eef.eefnr.filters.FiltersPackage#getConcreteReferenceOwnerSample_StrictTyping2()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<AbstractReferenceTargetSample> getStrictTyping2();
+
+	/**
+	 * Returns the value of the '<em><b>Strict Typing3</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.eef.eefnr.filters.AbstractReferenceTargetSample}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Strict Typing3</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Strict Typing3</em>' containment reference list.
+	 * @see org.eclipse.emf.eef.eefnr.filters.FiltersPackage#getConcreteReferenceOwnerSample_StrictTyping3()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<AbstractReferenceTargetSample> getStrictTyping3();
 
 } // ConcreteReferenceOwnerSample

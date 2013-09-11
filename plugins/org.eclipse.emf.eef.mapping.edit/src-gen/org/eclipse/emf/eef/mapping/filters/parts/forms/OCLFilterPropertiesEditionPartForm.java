@@ -194,6 +194,9 @@ public class OCLFilterPropertiesEditionPartForm extends SectionPropertiesEditing
 		EditingUtils.setID(oCLExpressionBody, FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody);
 		EditingUtils.setEEFtype(oCLExpressionBody, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody, FiltersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOCLExpressionBodyTextArea
+
+		// End of user code
 		return parent;
 	}
 
@@ -240,6 +243,15 @@ public class OCLFilterPropertiesEditionPartForm extends SectionPropertiesEditing
 		} else {
 			oCLExpressionBody.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FiltersViewsRepository.OCLFilter.FilterExpression.oCLExpressionBody);
+		if (eefElementEditorReadOnlyState && oCLExpressionBody.isEnabled()) {
+			oCLExpressionBody.setEnabled(false);
+			oCLExpressionBody.setBackground(oCLExpressionBody.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			oCLExpressionBody.setToolTipText(FiltersMessages.OCLFilter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !oCLExpressionBody.isEnabled()) {
+			oCLExpressionBody.setEnabled(true);
+		}	
+		
 	}
 
 

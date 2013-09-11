@@ -188,4 +188,6 @@ public class AnotherSubtypeBasePropertiesEditionComponent extends SinglePartProp
 
 	
 
+	
+
 }

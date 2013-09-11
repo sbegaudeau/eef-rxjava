@@ -38,7 +38,9 @@ import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ToolkitItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ToolkitItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -73,7 +75,8 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Toolkit_name_feature"), //$NON-NLS-1$
 				getString("_UI_Toolkit_name_description"), //$NON-NLS-1$
@@ -90,7 +93,8 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ToolkitsPackage.Literals.TOOLKIT__WIDGETS);
@@ -119,7 +123,8 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Toolkit")); //$NON-NLS-1$
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/Toolkit")); //$NON-NLS-1$
 	}
 
 	/**
@@ -130,7 +135,7 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Toolkit)object).getName();
+		String label = ((Toolkit) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Toolkit_type") : //$NON-NLS-1$
 				getString("_UI_Toolkit_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -147,14 +152,14 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements IEditing
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Toolkit.class)) {
-			case ToolkitsPackage.TOOLKIT__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
-			case ToolkitsPackage.TOOLKIT__WIDGETS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true,
-						false));
-				return;
+		case ToolkitsPackage.TOOLKIT__NAME:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
+		case ToolkitsPackage.TOOLKIT__WIDGETS:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -167,10 +172,12 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(ToolkitsPackage.Literals.TOOLKIT__WIDGETS,
+		newChildDescriptors.add(createChildParameter(
+				ToolkitsPackage.Literals.TOOLKIT__WIDGETS,
 				ToolkitsFactory.eINSTANCE.createWidget()));
 	}
 
@@ -182,7 +189,7 @@ public class ToolkitItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

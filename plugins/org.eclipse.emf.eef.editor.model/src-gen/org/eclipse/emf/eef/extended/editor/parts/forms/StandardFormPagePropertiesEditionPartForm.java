@@ -197,6 +197,9 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 		EditingUtils.setID(name, EditorViewsRepository.StandardFormPage.Naming.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.StandardFormPage.Naming.name, EditorViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -262,6 +265,9 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 		EditingUtils.setID(title_, EditorViewsRepository.StandardFormPage.Naming.title_);
 		EditingUtils.setEEFtype(title_, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.StandardFormPage.Naming.title_, EditorViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTitle_Text
+
+		// End of user code
 		return parent;
 	}
 
@@ -300,6 +306,14 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.StandardFormPage.Naming.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(EditorMessages.StandardFormPage_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -324,6 +338,14 @@ public class StandardFormPagePropertiesEditionPartForm extends SectionProperties
 		} else {
 			title_.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.StandardFormPage.Naming.title_);
+		if (eefElementEditorReadOnlyState && title_.isEnabled()) {
+			title_.setEnabled(false);
+			title_.setToolTipText(EditorMessages.StandardFormPage_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !title_.isEnabled()) {
+			title_.setEnabled(true);
+		}	
+		
 	}
 
 

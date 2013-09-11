@@ -12,6 +12,7 @@ package org.eclipse.emf.eef.mapping;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.eef.mapping.navigation.ModelNavigation;
+import org.eclipse.emf.eef.mapping.settings.EditorSettings;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +24,7 @@ import org.eclipse.emf.eef.mapping.navigation.ModelNavigation;
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.mapping.EMFPropertyBinding#getModel <em>Model</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.mapping.EMFPropertyBinding#getNavigation <em>Navigation</em>}</li>
+ *   <li>{@link org.eclipse.emf.eef.mapping.EMFPropertyBinding#getEditorSetting <em>Editor Setting</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,5 +84,31 @@ public interface EMFPropertyBinding extends AbstractPropertyBinding {
 	 * @generated
 	 */
 	void setNavigation(ModelNavigation value);
+
+	/**
+	 * Returns the value of the '<em><b>Editor Setting</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Editor Setting</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Editor Setting</em>' containment reference.
+	 * @see #setEditorSetting(EditorSettings)
+	 * @see org.eclipse.emf.eef.mapping.MappingPackage#getEMFPropertyBinding_EditorSetting()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EditorSettings getEditorSetting();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.eef.mapping.EMFPropertyBinding#getEditorSetting <em>Editor Setting</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Editor Setting</em>' containment reference.
+	 * @see #getEditorSetting()
+	 * @generated
+	 */
+	void setEditorSetting(EditorSettings value);
 
 } // EMFPropertyBinding

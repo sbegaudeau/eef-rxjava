@@ -29,7 +29,7 @@
 [/for]
 [for (view : View | viewsRepository.eAllContents(View))]
 [view.name.toJavaClassifier()/]_ReadOnly=This property is read only
-[view.name.toJavaClassifier()/]_Part_Title=[view.name/]
+[view.name.toJavaClassifier()/]_Part_Title=[if (not view.involvedPropertiesEditionComponent().oclIsUndefined())][view.genTabLabel(view.involvedPropertiesEditionComponent())/][/if]
 [/for]
 [for (editor : ElementEditor | viewsRepository.eAllContents(ElementEditor))]
 [editor.editorKey(editor.owningView())/]=[editor.name.toUpperFirst().toUnicode()/][if ( not editor.representationName('Checkbox') and not editor.representationName('MultiValuedEditor'))] : [/if]

@@ -142,7 +142,7 @@ public class PropertiesMultiEditionElementPropertiesEditionProvider extends Prop
 	 * Provides the filter used by the plugin.xml to assign part forms.
 	 */
 	public static class EditionFilter implements IFilter {
-		
+	
 		/**
 		 * {@inheritDoc}
 		 * 

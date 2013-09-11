@@ -182,4 +182,6 @@ public class AbstractSamplePropertiesEditionComponent extends SinglePartProperti
 
 	
 
+	
+
 }

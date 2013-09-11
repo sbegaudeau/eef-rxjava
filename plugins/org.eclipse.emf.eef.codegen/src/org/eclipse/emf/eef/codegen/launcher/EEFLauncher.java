@@ -21,12 +21,18 @@ import org.eclipse.acceleo.engine.event.IAcceleoTextGenerationListener;
 import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy;
 import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.codegen.ecore.genmodel.GenBase;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.eef.EEFGen.EEFGenModel;
+import org.eclipse.emf.eef.EEFGen.GenEditionContext;
+import org.eclipse.emf.eef.components.PropertiesEditionContext;
 import org.osgi.framework.Bundle;
 
 /**
@@ -226,7 +232,38 @@ public class EEFLauncher extends AbstractAcceleoGenerator {
         super.doGenerate(monitor);
     }
     
-    /**
+    
+    
+    @Override
+	public EObject getModel() {
+		EObject eObject = super.getModel();
+		if (eObject instanceof EEFGenModel) {
+			ResourceSet resourceSet = null;
+			for (GenEditionContext context : ((EEFGenModel) eObject).getEditionContexts()) {
+				PropertiesEditionContext propertiesEditionContext = context.getPropertiesEditionContext();
+				if (propertiesEditionContext != null) {
+					resourceSet = propertiesEditionContext.getModel().eResource().getResourceSet();
+					Resource resource = resourceSet.getResource(URI.createPlatformPluginURI("org.eclipse.emf.ecore/model/XMLType.genmodel", true), true);
+					if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof GenModel) {
+						((GenModel) resource.getContents().get(0)).reconcile();
+					};
+					propertiesEditionContext.getModel().reconcile();
+				}
+			}
+			// reconcile all genmodels of the resourceSet
+			if (resourceSet != null) {
+				for (Resource resource : resourceSet.getResources()) {
+					if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof GenModel) {
+						((GenModel) resource.getContents().get(0)).reconcile();
+					};
+				}
+			}
+		}
+		// load 
+		return eObject;
+	}
+
+	/**
      * If this generator needs to listen to text generation events, listeners can be returned from here.
      * 
      * @return List of listeners that are to be notified when text is generated through this launch.
@@ -381,6 +418,9 @@ public class EEFLauncher extends AbstractAcceleoGenerator {
         }
         if (!isInWorkspace(org.eclipse.emf.eef.mapping.filters.FiltersPackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.filters.FiltersPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.filters.FiltersPackage.eINSTANCE);
+        }
+        if (!isInWorkspace(org.eclipse.emf.eef.mapping.settings.SettingsPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.settings.SettingsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.settings.SettingsPackage.eINSTANCE);
         }
         if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);

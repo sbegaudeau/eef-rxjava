@@ -20,8 +20,6 @@ import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.extended.editor.components.EEFEditorContributionsBasePropertiesEditionComponent;
 import org.eclipse.emf.eef.extended.editor.components.EEFEditorContributionsPropertiesEditionComponent;
 
-import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
@@ -31,6 +29,8 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
+
+import org.eclipse.emf.eef.views.components.DocumentedElementPropertiesEditionComponent;
 
 import org.eclipse.jface.viewers.IFilter;
 

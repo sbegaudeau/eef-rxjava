@@ -285,6 +285,21 @@ public class SingleCompositionEditorSampleItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createEReferencesViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createLinkEObjectFlatComboViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 EefnrFactory.eINSTANCE.createLinkEReferenceViewerSample()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
 				 ReferencesFactory.eINSTANCE.createReferenceEnabledSample()));
 
 		newChildDescriptors.add
@@ -356,6 +371,11 @@ public class SingleCompositionEditorSampleItemProvider
 			(createChildParameter
 				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
 				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample2()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EefnrPackage.Literals.SINGLE_COMPOSITION_EDITOR_SAMPLE__SINGLECOMPOSITIONEDITOR_ON_ABSTRACT_OPTIONAL_PROPERTY,
+				 FiltersFactory.eINSTANCE.createConcreteReferenceTargetSample3()));
 
 		newChildDescriptors.add
 			(createChildParameter

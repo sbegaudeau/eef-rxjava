@@ -217,4 +217,6 @@ public class ViewsRepositoryBasePropertiesEditionComponent extends SinglePartPro
 
 	
 
+	
+
 }

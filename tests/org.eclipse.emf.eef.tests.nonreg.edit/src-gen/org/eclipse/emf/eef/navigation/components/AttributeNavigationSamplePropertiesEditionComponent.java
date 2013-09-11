@@ -383,4 +383,6 @@ public class AttributeNavigationSamplePropertiesEditionComponent extends SingleP
 			return delegate2ForMultiValuedSettings;
 	}
 
+	
+
 }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/org.eclipse.emf.eef.views/src-gen"
-    editDirectory="/org.eclipse.emf.eef.views.edit/src-gen" editorDirectory="/org.eclipse.emf.eef.views.editor/src-gen"
-    modelPluginID="org.eclipse.emf.eef.views" modelName="Views" nonNLSMarkers="true"
-    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
-    copyrightFields="false" runtimeVersion="2.5" language="">
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=""
+    modelDirectory="/org.eclipse.emf.eef.views/src-gen" editDirectory="/org.eclipse.emf.eef.views.edit/src-gen"
+    editorDirectory="/org.eclipse.emf.eef.views.editor/src-gen" modelPluginID="org.eclipse.emf.eef.views"
+    modelName="Views" nonNLSMarkers="true" codeFormatting="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" runtimeVersion="2.5" language="">
   <foreignModel>views.ecore</foreignModel>
   <genPackages prefix="Views" basePackage="org.eclipse.emf.eef" disposableProviderFactory="true"
       multipleEditorPages="false" extensibleProviderFactory="true" childCreationExtenders="true"
@@ -25,6 +26,7 @@
           ecoreFeature="ecore:EAttribute views.ecore#//View/explicit"/>
       <genFeatures property="None" notify="false" createChild="false" propertyCategory=""
           propertyDescription="The owning category" ecoreFeature="ecore:EReference views.ecore#//View/category"/>
+      <genFeatures createChild="false" propertyDescription="The element label" ecoreFeature="ecore:EAttribute views.ecore#//View/label"/>
     </genClasses>
     <genClasses ecoreClass="views.ecore#//ElementEditor">
       <genFeatures createChild="false" propertyDescription="Defines that this editor is in read only mode"

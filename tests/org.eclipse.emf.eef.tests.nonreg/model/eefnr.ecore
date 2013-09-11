@@ -234,6 +234,30 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="singlecompositioneditorOnAbstractOptionalProperty"
         eType="#//AbstractSample" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EReferencesViewerSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ereferencesviewerRequiredProperty"
+        lowerBound="1" upperBound="-1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ereferencesviewerOptionalProperty"
+        upperBound="-1" eType="#//TotalSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ereferencesviewerROProperty"
+        upperBound="-1" eType="#//TotalSample"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinkEObjectFlatComboViewerSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkeobjectflatcomboviewerRequiredProperty"
+        lowerBound="1" eType="#//TextSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkeobjectflatcomboviewerOptionalProperty"
+        eType="#//TextSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkeobjectflatcomboviewerROPropery"
+        eType="#//TextSample"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinkEReferenceViewerSample" eSuperTypes="#//AbstractSample">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkereferenceviewerRequiredProperty"
+        lowerBound="1" eType="#//TextSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkereferenceviewerOptionalProperty"
+        eType="#//TextSample"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkereferenceviewerROPropery"
+        eType="#//TextSample"/>
+  </eClassifiers>
   <eSubpackages name="references" nsURI="http://www.eclipse.org/emf/eef/nonreg/references/1.0.0"
       nsPrefix="eefnr-ref">
     <eClassifiers xsi:type="ecore:EClass" name="AbstractEnabledSample" abstract="true"
@@ -368,9 +392,14 @@
           transient="true" derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="strictTyping" upperBound="-1"
           eType="#//filters/AbstractReferenceTargetSample" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="strictTyping2" upperBound="-1"
+          eType="#//filters/AbstractReferenceTargetSample" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="strictTyping3" upperBound="-1"
+          eType="#//filters/AbstractReferenceTargetSample" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ConcreteReferenceTargetSample1" eSuperTypes="#//filters/AbstractReferenceTargetSample"/>
     <eClassifiers xsi:type="ecore:EClass" name="ConcreteReferenceTargetSample2" eSuperTypes="#//filters/AbstractReferenceTargetSample"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ConcreteReferenceTargetSample3" eSuperTypes="#//filters/AbstractReferenceTargetSample"/>
   </eSubpackages>
   <eSubpackages name="naming" nsURI="http://www.eclipse.org/emf/eef/nonreg/naming/1.0.0"
       nsPrefix="eefnr-name">

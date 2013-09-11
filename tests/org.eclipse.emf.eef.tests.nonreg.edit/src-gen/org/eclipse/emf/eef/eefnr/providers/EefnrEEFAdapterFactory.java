@@ -216,5 +216,29 @@ public class EefnrEEFAdapterFactory extends EefnrAdapterFactory {
 	public Adapter createSingleCompositionEditorSampleAdapter() {
 		return new SingleCompositionEditorSamplePropertiesEditionProvider();
 	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createEReferencesViewerSampleAdapter()
+	 * 
+	 */
+	public Adapter createEReferencesViewerSampleAdapter() {
+		return new EReferencesViewerSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createLinkEObjectFlatComboViewerSampleAdapter()
+	 * 
+	 */
+	public Adapter createLinkEObjectFlatComboViewerSampleAdapter() {
+		return new LinkEObjectFlatComboViewerSamplePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.eefnr.util.EefnrAdapterFactory#createLinkEReferenceViewerSampleAdapter()
+	 * 
+	 */
+	public Adapter createLinkEReferenceViewerSampleAdapter() {
+		return new LinkEReferenceViewerSamplePropertiesEditionProvider();
+	}
 
 }

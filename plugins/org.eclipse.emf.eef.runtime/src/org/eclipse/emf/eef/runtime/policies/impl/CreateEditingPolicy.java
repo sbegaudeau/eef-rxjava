@@ -13,19 +13,14 @@ package org.eclipse.emf.eef.runtime.policies.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.change.ChangeDescription;
-import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.TypedEReferencePropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.services.WizardOpeningPolicyProviderService;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicyWithResult;
-import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-import org.eclipse.emf.eef.runtime.ui.wizards.EEFWizardDialog;
 import org.eclipse.emf.eef.runtime.ui.wizards.IWizardOpeningPolicy;
 import org.eclipse.emf.eef.runtime.ui.wizards.PropertiesEditionWizard;
-import org.eclipse.jface.window.Window;
 
 /**
  * @author <a href="mailto:goulwen.lefur@obeo.fr">Goulwen Le Fur</a>

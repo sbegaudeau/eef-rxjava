@@ -97,7 +97,7 @@
 [template public propertyTab(editionContext : PropertiesEditionContext, basePackage : String, view : View, pec : PropertiesEditionComponent)]
          <propertyTab
                id="[view.genTabId(pec)/]"
-               label="[view.viewKey(pec)/]"
+               label="[view.genTabLabel(pec)/]"
 [if (pec.involvedViews()->indexOf(view) > 1)]
                category="extended"
                afterTab="[pec.previousView(view).genTabId(pec)/]">

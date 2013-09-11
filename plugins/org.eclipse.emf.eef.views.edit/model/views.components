@@ -27,8 +27,8 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_C2Y-XQd9Ed6YkIySVKIecQ" name="name" views="_C2Y-lQd9Ed6YkIySVKIecQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//ViewElement/name"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_KSAn8BydEd6waImJvxo-PQ" name="explicit" views="_FqqCUBydEd6waImJvxo-PQ" helpID="">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//View/explicit"/>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_5y_VAP3REeKtteBaHzmwOQ" name="label" views="_0F8SoP3REeKtteBaHzmwOQ">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//View/label"/>
         </properties>
         <referencedBinding xmi:id="_yvvBgAtmEd6B37SLkBAPJA" binding="_U6-YQAtmEd6B37SLkBAPJA"/>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.eclipse.emf.eef.views/model/views.ecore#//View"/>
@@ -126,11 +126,11 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_C2Y-lQd9Ed6YkIySVKIecQ" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_0F8SoP3REeKtteBaHzmwOQ" name="label">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_C2Y-kwd9Ed6YkIySVKIecQ" name="representation">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_FqqCUBydEd6waImJvxo-PQ" name="explicit">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
       </views>

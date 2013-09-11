@@ -215,6 +215,9 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		EditingUtils.setID(name, EditorViewsRepository.EEFMasterPage.Naming.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.EEFMasterPage.Naming.name, EditorViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -280,6 +283,9 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		EditingUtils.setID(title_, EditorViewsRepository.EEFMasterPage.Naming.title_);
 		EditingUtils.setEEFtype(title_, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.EEFMasterPage.Naming.title_, EditorViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTitle_Text
+
+		// End of user code
 		return parent;
 	}
 
@@ -323,6 +329,9 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		EditingUtils.setID(orientable, EditorViewsRepository.EEFMasterPage.Settings.orientable);
 		EditingUtils.setEEFtype(orientable, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.EEFMasterPage.Settings.orientable, EditorViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOrientableCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -349,6 +358,9 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		EditingUtils.setID(showValidatePage, EditorViewsRepository.EEFMasterPage.Settings.showValidatePage);
 		EditingUtils.setEEFtype(showValidatePage, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.EEFMasterPage.Settings.showValidatePage, EditorViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createShowValidatePageCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -387,6 +399,14 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.EEFMasterPage.Naming.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(EditorMessages.EEFMasterPage_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -411,6 +431,14 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			title_.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.EEFMasterPage.Naming.title_);
+		if (eefElementEditorReadOnlyState && title_.isEnabled()) {
+			title_.setEnabled(false);
+			title_.setToolTipText(EditorMessages.EEFMasterPage_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !title_.isEnabled()) {
+			title_.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -435,6 +463,14 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			orientable.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.EEFMasterPage.Settings.orientable);
+		if (eefElementEditorReadOnlyState && orientable.isEnabled()) {
+			orientable.setEnabled(false);
+			orientable.setToolTipText(EditorMessages.EEFMasterPage_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !orientable.isEnabled()) {
+			orientable.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -459,6 +495,14 @@ public class EEFMasterPagePropertiesEditionPartForm extends SectionPropertiesEdi
 		} else {
 			showValidatePage.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.EEFMasterPage.Settings.showValidatePage);
+		if (eefElementEditorReadOnlyState && showValidatePage.isEnabled()) {
+			showValidatePage.setEnabled(false);
+			showValidatePage.setToolTipText(EditorMessages.EEFMasterPage_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !showValidatePage.isEnabled()) {
+			showValidatePage.setEnabled(true);
+		}	
+		
 	}
 
 

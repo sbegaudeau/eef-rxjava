@@ -67,6 +67,7 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 	protected Button sWTViews;
 	protected Button formsViews;
 	protected Text partsSuperClass;
+	protected Text formsSuperClass;
 
 
 
@@ -116,9 +117,9 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		activationStep.addStep(EEFGenViewsRepository.GenViewsRepository.Activation.sWTViews);
 		activationStep.addStep(EEFGenViewsRepository.GenViewsRepository.Activation.formsViews);
 		
-		genViewsRepositoryStep
-			.addStep(EEFGenViewsRepository.GenViewsRepository.Implementation.class)
-			.addStep(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass);
+		CompositionStep implementationStep = genViewsRepositoryStep.addStep(EEFGenViewsRepository.GenViewsRepository.Implementation.class);
+		implementationStep.addStep(EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass);
+		implementationStep.addStep(EEFGenViewsRepository.GenViewsRepository.Implementation.formsSuperClass);
 		
 		
 		composer = new PartComposer(genViewsRepositoryStep) {
@@ -154,6 +155,9 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 				}
 				if (key == EEFGenViewsRepository.GenViewsRepository.Implementation.partsSuperClass) {
 					return createPartsSuperClassText(parent);
+				}
+				if (key == EEFGenViewsRepository.GenViewsRepository.Implementation.formsSuperClass) {
+					return createFormsSuperClassText(parent);
 				}
 				return parent;
 			}
@@ -435,6 +439,55 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 		return parent;
 	}
 
+	
+	protected Composite createFormsSuperClassText(Composite parent) {
+		createDescription(parent, EEFGenViewsRepository.GenViewsRepository.Implementation.formsSuperClass, EEFGenMessages.GenViewsRepositoryPropertiesEditionPart_FormsSuperClassLabel);
+		formsSuperClass = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData formsSuperClassData = new GridData(GridData.FILL_HORIZONTAL);
+		formsSuperClass.setLayoutData(formsSuperClassData);
+		formsSuperClass.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenViewsRepositoryPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenViewsRepository.Implementation.formsSuperClass, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, formsSuperClass.getText()));
+			}
+
+		});
+		formsSuperClass.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GenViewsRepositoryPropertiesEditionPartImpl.this, EEFGenViewsRepository.GenViewsRepository.Implementation.formsSuperClass, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, formsSuperClass.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(formsSuperClass, EEFGenViewsRepository.GenViewsRepository.Implementation.formsSuperClass);
+		EditingUtils.setEEFtype(formsSuperClass, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EEFGenViewsRepository.GenViewsRepository.Implementation.formsSuperClass, EEFGenViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createFormsSuperClassText
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -705,6 +758,38 @@ public class GenViewsRepositoryPropertiesEditionPartImpl extends CompositeProper
 			partsSuperClass.setToolTipText(EEFGenMessages.GenViewsRepository_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !partsSuperClass.isEnabled()) {
 			partsSuperClass.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#getFormsSuperClass()
+	 * 
+	 */
+	public String getFormsSuperClass() {
+		return formsSuperClass.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.EEFGen.parts.GenViewsRepositoryPropertiesEditionPart#setFormsSuperClass(String newValue)
+	 * 
+	 */
+	public void setFormsSuperClass(String newValue) {
+		if (newValue != null) {
+			formsSuperClass.setText(newValue);
+		} else {
+			formsSuperClass.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EEFGenViewsRepository.GenViewsRepository.Implementation.formsSuperClass);
+		if (eefElementEditorReadOnlyState && formsSuperClass.isEnabled()) {
+			formsSuperClass.setEnabled(false);
+			formsSuperClass.setToolTipText(EEFGenMessages.GenViewsRepository_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !formsSuperClass.isEnabled()) {
+			formsSuperClass.setEnabled(true);
 		}	
 		
 	}

@@ -35,6 +35,8 @@ import org.eclipse.emf.eef.mapping.filters.FiltersPackage;
 import org.eclipse.emf.eef.mapping.filters.impl.FiltersPackageImpl;
 import org.eclipse.emf.eef.mapping.navigation.NavigationPackage;
 import org.eclipse.emf.eef.mapping.navigation.impl.NavigationPackageImpl;
+import org.eclipse.emf.eef.mapping.settings.SettingsPackage;
+import org.eclipse.emf.eef.mapping.settings.impl.SettingsPackageImpl;
 import org.eclipse.emf.eef.views.ViewsPackage;
 
 /**
@@ -197,16 +199,22 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		FiltersPackageImpl theFiltersPackage = (FiltersPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(FiltersPackage.eNS_URI) instanceof FiltersPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(FiltersPackage.eNS_URI) : FiltersPackage.eINSTANCE);
+		SettingsPackageImpl theSettingsPackage = (SettingsPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(SettingsPackage.eNS_URI) instanceof SettingsPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(SettingsPackage.eNS_URI)
+				: SettingsPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theMappingPackage.createPackageContents();
 		theNavigationPackage.createPackageContents();
 		theFiltersPackage.createPackageContents();
+		theSettingsPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theMappingPackage.initializePackageContents();
 		theNavigationPackage.initializePackageContents();
 		theFiltersPackage.initializePackageContents();
+		theSettingsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theMappingPackage.freeze();
@@ -517,6 +525,16 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEMFPropertyBinding_EditorSetting() {
+		return (EReference) emfPropertyBindingEClass.getEStructuralFeatures()
+				.get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStandardElementBinding() {
 		return standardElementBindingEClass;
 	}
@@ -742,6 +760,8 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		createEReference(emfPropertyBindingEClass, EMF_PROPERTY_BINDING__MODEL);
 		createEReference(emfPropertyBindingEClass,
 				EMF_PROPERTY_BINDING__NAVIGATION);
+		createEReference(emfPropertyBindingEClass,
+				EMF_PROPERTY_BINDING__EDITOR_SETTING);
 
 		standardElementBindingEClass = createEClass(STANDARD_ELEMENT_BINDING);
 		createEReference(standardElementBindingEClass,
@@ -801,12 +821,15 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 				.getEPackage(NavigationPackage.eNS_URI);
 		FiltersPackage theFiltersPackage = (FiltersPackage) EPackage.Registry.INSTANCE
 				.getEPackage(FiltersPackage.eNS_URI);
+		SettingsPackage theSettingsPackage = (SettingsPackage) EPackage.Registry.INSTANCE
+				.getEPackage(SettingsPackage.eNS_URI);
 		ViewsPackage theViewsPackage = (ViewsPackage) EPackage.Registry.INSTANCE
 				.getEPackage(ViewsPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theNavigationPackage);
 		getESubpackages().add(theFiltersPackage);
+		getESubpackages().add(theSettingsPackage);
 
 		// Create type parameters
 
@@ -987,6 +1010,11 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEMFPropertyBinding_Navigation(),
 				theNavigationPackage.getModelNavigation(), null, "navigation",
+				null, 0, 1, EMFPropertyBinding.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEMFPropertyBinding_EditorSetting(),
+				theSettingsPackage.getEditorSettings(), null, "editorSetting",
 				null, 0, 1, EMFPropertyBinding.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

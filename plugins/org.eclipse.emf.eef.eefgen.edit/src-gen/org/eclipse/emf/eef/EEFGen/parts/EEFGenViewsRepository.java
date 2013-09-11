@@ -159,6 +159,9 @@ public class EEFGenViewsRepository {
 			
 			public static String partsSuperClass = "EEFGen::GenViewsRepository::Implementation::partsSuperClass";
 			
+			
+			public static String formsSuperClass = "EEFGen::GenViewsRepository::Implementation::formsSuperClass";
+			
 	
 		}
 	

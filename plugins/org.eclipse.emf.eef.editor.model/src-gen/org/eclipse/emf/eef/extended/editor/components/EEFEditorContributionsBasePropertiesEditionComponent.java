@@ -68,10 +68,11 @@ public class EEFEditorContributionsBasePropertiesEditionComponent extends Single
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final EEFEditorContributions eEFEditorContributions = (EEFEditorContributions)elt;
 			final EEFEditorContributionsPropertiesEditionPart basePart = (EEFEditorContributionsPropertiesEditionPart)editingPart;
 			// init values
-			if (eEFEditorContributions.getName() != null && isAccessible(EditorViewsRepository.EEFEditorContributions.Naming.name))
+			if (isAccessible(EditorViewsRepository.EEFEditorContributions.Naming.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFEditorContributions.getName()));
 			
 			// init filters
@@ -115,9 +116,10 @@ public class EEFEditorContributionsBasePropertiesEditionComponent extends Single
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EEFEditorContributionsPropertiesEditionPart basePart = (EEFEditorContributionsPropertiesEditionPart)editingPart;
-			if (MappingPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.EEFEditorContributions.Naming.name)) {
+			if (MappingPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.EEFEditorContributions.Naming.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -136,7 +138,7 @@ public class EEFEditorContributionsBasePropertiesEditionComponent extends Single
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			MappingPackage.eINSTANCE.getCategory_Name());
+			MappingPackage.eINSTANCE.getCategory_Name()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -176,5 +178,8 @@ public class EEFEditorContributionsBasePropertiesEditionComponent extends Single
 		}
 		return ret;
 	}
+
+
+	
 
 }

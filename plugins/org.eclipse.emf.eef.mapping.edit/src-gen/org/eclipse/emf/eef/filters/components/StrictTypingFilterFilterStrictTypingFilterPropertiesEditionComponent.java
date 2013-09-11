@@ -82,6 +82,7 @@ public class StrictTypingFilterFilterStrictTypingFilterPropertiesEditionComponen
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final StrictTypingFilter strictTypingFilter = (StrictTypingFilter)elt;
 			final StrictTypingFilterPropertiesEditionPart strictTypingFilterPart = (StrictTypingFilterPropertiesEditionPart)editingPart;
 			// init values
@@ -165,6 +166,7 @@ public class StrictTypingFilterFilterStrictTypingFilterPropertiesEditionComponen
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			StrictTypingFilterPropertiesEditionPart strictTypingFilterPart = (StrictTypingFilterPropertiesEditionPart)editingPart;
 			if (FiltersPackage.eINSTANCE.getStrictTypingFilter_Type().equals(msg.getFeature()) && strictTypingFilterPart != null && isAccessible(FiltersViewsRepository.StrictTypingFilter.Type.restriction))
@@ -183,7 +185,7 @@ public class StrictTypingFilterFilterStrictTypingFilterPropertiesEditionComponen
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			FiltersPackage.eINSTANCE.getBindingFilter_Name(),
 			FiltersPackage.eINSTANCE.getBindingFilter_Mandatory(),
-			FiltersPackage.eINSTANCE.getStrictTypingFilter_Type());
+			FiltersPackage.eINSTANCE.getStrictTypingFilter_Type()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -230,5 +232,10 @@ public class StrictTypingFilterFilterStrictTypingFilterPropertiesEditionComponen
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

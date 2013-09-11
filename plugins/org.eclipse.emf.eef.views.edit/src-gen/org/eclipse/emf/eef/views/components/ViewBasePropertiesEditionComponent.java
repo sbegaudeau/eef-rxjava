@@ -97,9 +97,9 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 			if (isAccessible(ViewsViewsRepository.View.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, view.getName()));
 			
-			if (isAccessible(ViewsViewsRepository.View.Properties.explicit)) {
-				basePart.setExplicit(view.isExplicit());
-			}
+			if (isAccessible(ViewsViewsRepository.View.Properties.label))
+				basePart.setLabel(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, view.getLabel()));
+			
 			// init filters
 			if (isAccessible(ViewsViewsRepository.View.Properties.representation)) {
 				basePart.addFilterToRepresentation(new ViewerFilter() {
@@ -144,8 +144,8 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 		if (editorKey == ViewsViewsRepository.View.Properties.name) {
 			return ViewsPackage.eINSTANCE.getViewElement_Name();
 		}
-		if (editorKey == ViewsViewsRepository.View.Properties.explicit) {
-			return ViewsPackage.eINSTANCE.getView_Explicit();
+		if (editorKey == ViewsViewsRepository.View.Properties.label) {
+			return ViewsPackage.eINSTANCE.getView_Label();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -176,8 +176,8 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 		if (ViewsViewsRepository.View.Properties.name == event.getAffectedEditor()) {
 			view.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (ViewsViewsRepository.View.Properties.explicit == event.getAffectedEditor()) {
-			view.setExplicit((Boolean)event.getNewValue());
+		if (ViewsViewsRepository.View.Properties.label == event.getAffectedEditor()) {
+			view.setLabel((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -198,9 +198,13 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 					basePart.setName("");
 				}
 			}
-			if (ViewsPackage.eINSTANCE.getView_Explicit().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ViewsViewsRepository.View.Properties.explicit))
-				basePart.setExplicit((Boolean)msg.getNewValue());
-			
+			if (ViewsPackage.eINSTANCE.getView_Label().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ViewsViewsRepository.View.Properties.label)) {
+				if (msg.getNewValue() != null) {
+					basePart.setLabel(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setLabel("");
+				}
+			}
 			
 		}
 	}
@@ -215,7 +219,7 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			ViewsPackage.eINSTANCE.getViewElement_Representation(),
 			ViewsPackage.eINSTANCE.getViewElement_Name(),
-			ViewsPackage.eINSTANCE.getView_Explicit()		);
+			ViewsPackage.eINSTANCE.getView_Label()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -241,8 +245,8 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 			return "The representation of this part of view"; //$NON-NLS-1$
 		if (key == ViewsViewsRepository.View.Properties.name)
 			return "The element name"; //$NON-NLS-1$
-		if (key == ViewsViewsRepository.View.Properties.explicit)
-			return "Whether the view can be directly used"; //$NON-NLS-1$
+		if (key == ViewsViewsRepository.View.Properties.label)
+			return "The element label"; //$NON-NLS-1$
 		return super.getHelpContent(key, kind);
 	}
 
@@ -263,12 +267,12 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 					}
 					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getViewElement_Name().getEAttributeType(), newValue);
 				}
-				if (ViewsViewsRepository.View.Properties.explicit == event.getAffectedEditor()) {
+				if (ViewsViewsRepository.View.Properties.label == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(ViewsPackage.eINSTANCE.getView_Explicit().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(ViewsPackage.eINSTANCE.getView_Label().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getView_Explicit().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(ViewsPackage.eINSTANCE.getView_Label().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
@@ -279,6 +283,8 @@ public class ViewBasePropertiesEditionComponent extends SinglePartPropertiesEdit
 		return ret;
 	}
 
+
+	
 
 	
 

@@ -152,6 +152,9 @@ public class OCLQueryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		context.setLayoutData(contextData);
 		context.setID(QueryViewsRepository.OCLQuery.Properties.context);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(QueryViewsRepository.OCLQuery.Properties.context, QueryViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createContextFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -198,6 +201,9 @@ public class OCLQueryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		EditingUtils.setID(query, QueryViewsRepository.OCLQuery.Properties.query_);
 		EditingUtils.setEEFtype(query, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(QueryViewsRepository.OCLQuery.Properties.query_, QueryViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createQueryText
+
+		// End of user code
 		return parent;
 	}
 
@@ -239,6 +245,14 @@ public class OCLQueryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		if (current != null) {
 			context.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(QueryViewsRepository.OCLQuery.Properties.context);
+		if (eefElementEditorReadOnlyState && context.isEnabled()) {
+			context.setEnabled(false);
+			context.setToolTipText(QueryMessages.OCLQuery_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !context.isEnabled()) {
+			context.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -253,6 +267,14 @@ public class OCLQueryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			context.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(QueryViewsRepository.OCLQuery.Properties.context);
+		if (eefElementEditorReadOnlyState && context.isEnabled()) {
+			context.setEnabled(false);
+			context.setToolTipText(QueryMessages.OCLQuery_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !context.isEnabled()) {
+			context.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -306,6 +328,14 @@ public class OCLQueryPropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			query.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(QueryViewsRepository.OCLQuery.Properties.query_);
+		if (eefElementEditorReadOnlyState && query.isEnabled()) {
+			query.setEnabled(false);
+			query.setToolTipText(QueryMessages.OCLQuery_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !query.isEnabled()) {
+			query.setEnabled(true);
+		}	
+		
 	}
 
 

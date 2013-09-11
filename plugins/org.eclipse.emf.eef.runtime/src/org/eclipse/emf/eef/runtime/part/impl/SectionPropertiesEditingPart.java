@@ -116,7 +116,7 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 	 *      org.eclipse.jface.viewers.ISelection)
 	 */
 	public void setInput(IWorkbenchPart part, ISelection selection) {
-		initializeEditingDomain(part);
+		initializeEditingDomain(part, selection);
 		if (!(selection instanceof IStructuredSelection)) {
 			return;
 		}
@@ -172,7 +172,7 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 		}
 	}
 
-	private void initializeEditingDomain(IWorkbenchPart part) {
+	protected void initializeEditingDomain(IWorkbenchPart part, ISelection selection) {
 		editingDomain = EditingUtils.getResourceSetFromEditor(part);
 	}
 
@@ -384,4 +384,17 @@ public abstract class SectionPropertiesEditingPart extends CompositePropertiesEd
 		return null;
 	}
 
+	/**
+	 * @return the editing domain
+	 */
+	public EditingDomain getEditingDomain() {
+		return editingDomain;
+	}
+
+	/**
+	 * @param editingDomain
+	 */
+	public void setEditingDomain(EditingDomain editingDomain) {
+		this.editingDomain = editingDomain;
+	}
 }

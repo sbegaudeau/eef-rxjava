@@ -68,10 +68,11 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final DocumentedElement documentedElement = (DocumentedElement)elt;
 			final DocumentationPropertiesEditionPart documentationPart = (DocumentationPropertiesEditionPart)editingPart;
 			// init values
-			if (documentedElement.getDocumentation() != null && isAccessible(MappingViewsRepository.Documentation.Documentation_.documentation__))
+			if (isAccessible(MappingViewsRepository.Documentation.Documentation_.documentation__))
 				documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, documentedElement.getDocumentation()));
 			// init filters
 			
@@ -114,9 +115,10 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			DocumentationPropertiesEditionPart documentationPart = (DocumentationPropertiesEditionPart)editingPart;
-			if (MappingPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && documentationPart != null && isAccessible(MappingViewsRepository.Documentation.Documentation_.documentation__)){
+			if (MappingPackage.eINSTANCE.getDocumentedElement_Documentation().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && documentationPart != null && isAccessible(MappingViewsRepository.Documentation.Documentation_.documentation__)){
 				if (msg.getNewValue() != null) {
 					documentationPart.setDocumentation(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -135,7 +137,7 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			MappingPackage.eINSTANCE.getDocumentedElement_Documentation());
+			MappingPackage.eINSTANCE.getDocumentedElement_Documentation()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -177,5 +179,10 @@ public class DocumentedElementPropertiesEditionComponent extends SinglePartPrope
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

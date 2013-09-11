@@ -18,7 +18,6 @@ import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -37,8 +36,6 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.eef.views.View;
 import org.eclipse.emf.eef.views.ViewsPackage;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
 
 
 // End of user code
@@ -81,10 +78,11 @@ public class StaticEEFEditorContributionBasePropertiesEditionComponent extends S
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final StaticEEFEditorContribution staticEEFEditorContribution = (StaticEEFEditorContribution)elt;
 			final StaticEEFEditorContributionPropertiesEditionPart basePart = (StaticEEFEditorContributionPropertiesEditionPart)editingPart;
 			// init values
-			if (staticEEFEditorContribution.getName() != null && isAccessible(EditorViewsRepository.StaticEEFEditorContribution.Naming.name))
+			if (isAccessible(EditorViewsRepository.StaticEEFEditorContribution.Naming.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, staticEEFEditorContribution.getName()));
 			
 			if (isAccessible(EditorViewsRepository.StaticEEFEditorContribution.Binding.views)) {
@@ -94,20 +92,6 @@ public class StaticEEFEditorContributionBasePropertiesEditionComponent extends S
 			// init filters
 			
 			if (isAccessible(EditorViewsRepository.StaticEEFEditorContribution.Binding.views)) {
-				basePart.addFilterToViews(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInViewsTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
 				basePart.addFilterToViews(new EObjectFilter(ViewsPackage.Literals.VIEW));
 				// Start of user code for additional businessfilters for views
 			// End of user code
@@ -166,9 +150,10 @@ public class StaticEEFEditorContributionBasePropertiesEditionComponent extends S
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			StaticEEFEditorContributionPropertiesEditionPart basePart = (StaticEEFEditorContributionPropertiesEditionPart)editingPart;
-			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.StaticEEFEditorContribution.Naming.name)) {
+			if (MappingPackage.eINSTANCE.getAbstractElementBinding_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.StaticEEFEditorContribution.Naming.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -190,7 +175,7 @@ public class StaticEEFEditorContributionBasePropertiesEditionComponent extends S
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			MappingPackage.eINSTANCE.getAbstractElementBinding_Name(),
-			MappingPackage.eINSTANCE.getAbstractElementBinding_Views());
+			MappingPackage.eINSTANCE.getAbstractElementBinding_Views()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -244,5 +229,8 @@ public class StaticEEFEditorContributionBasePropertiesEditionComponent extends S
 		}
 		return ret;
 	}
+
+
+	
 
 }

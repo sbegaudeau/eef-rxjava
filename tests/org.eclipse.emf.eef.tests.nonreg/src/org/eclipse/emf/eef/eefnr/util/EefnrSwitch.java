@@ -266,6 +266,27 @@ public class EefnrSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EefnrPackage.EREFERENCES_VIEWER_SAMPLE: {
+				EReferencesViewerSample eReferencesViewerSample = (EReferencesViewerSample)theEObject;
+				T result = caseEReferencesViewerSample(eReferencesViewerSample);
+				if (result == null) result = caseAbstractSample(eReferencesViewerSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EefnrPackage.LINK_EOBJECT_FLAT_COMBO_VIEWER_SAMPLE: {
+				LinkEObjectFlatComboViewerSample linkEObjectFlatComboViewerSample = (LinkEObjectFlatComboViewerSample)theEObject;
+				T result = caseLinkEObjectFlatComboViewerSample(linkEObjectFlatComboViewerSample);
+				if (result == null) result = caseAbstractSample(linkEObjectFlatComboViewerSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EefnrPackage.LINK_EREFERENCE_VIEWER_SAMPLE: {
+				LinkEReferenceViewerSample linkEReferenceViewerSample = (LinkEReferenceViewerSample)theEObject;
+				T result = caseLinkEReferenceViewerSample(linkEReferenceViewerSample);
+				if (result == null) result = caseAbstractSample(linkEReferenceViewerSample);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -642,6 +663,51 @@ public class EefnrSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSingleCompositionEditorSample(SingleCompositionEditorSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>EReferences Viewer Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>EReferences Viewer Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEReferencesViewerSample(EReferencesViewerSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Link EObject Flat Combo Viewer Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Link EObject Flat Combo Viewer Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLinkEObjectFlatComboViewerSample(LinkEObjectFlatComboViewerSample object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Link EReference Viewer Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Link EReference Viewer Sample</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLinkEReferenceViewerSample(LinkEReferenceViewerSample object) {
 		return null;
 	}
 

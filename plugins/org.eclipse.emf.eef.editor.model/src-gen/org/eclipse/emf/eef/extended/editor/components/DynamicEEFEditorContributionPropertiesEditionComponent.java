@@ -17,11 +17,11 @@ import org.eclipse.emf.eef.extended.editor.DynamicEEFEditorContribution;
 import org.eclipse.emf.eef.extended.editor.parts.DynamicEEFEditorContributionPropertiesEditionPart;
 import org.eclipse.emf.eef.extended.editor.parts.EditorViewsRepository;
 import org.eclipse.emf.eef.mapping.components.DocumentedElementPropertiesEditionComponent;
-import org.eclipse.emf.eef.mapping.parts.MappingViewsRepository;
 import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.views.parts.ViewsViewsRepository;
 
 
 // End of user code
@@ -111,7 +111,7 @@ public class DynamicEEFEditorContributionPropertiesEditionComponent extends Comp
 		if (key == EditorViewsRepository.DynamicEEFEditorContribution.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-		if (key == MappingViewsRepository.Documentation.class) {
+		if (key == ViewsViewsRepository.Documentation.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 	}

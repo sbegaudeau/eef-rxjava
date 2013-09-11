@@ -82,6 +82,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final OnlyReferenceTypeFilter onlyReferenceTypeFilter = (OnlyReferenceTypeFilter)elt;
 			final OnlyReferenceTypeFilterPropertiesEditionPart basePart = (OnlyReferenceTypeFilterPropertiesEditionPart)editingPart;
 			// init values
@@ -167,6 +168,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			OnlyReferenceTypeFilterPropertiesEditionPart basePart = (OnlyReferenceTypeFilterPropertiesEditionPart)editingPart;
 			if (FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference().equals(msg.getFeature()) && basePart != null && isAccessible(FiltersViewsRepository.OnlyReferenceTypeFilter.ReferencedFeature.referencedFeature_))
@@ -185,7 +187,7 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			FiltersPackage.eINSTANCE.getBindingFilter_Name(),
 			FiltersPackage.eINSTANCE.getBindingFilter_Mandatory(),
-			FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference());
+			FiltersPackage.eINSTANCE.getOnlyReferenceTypeFilter_Reference()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -222,5 +224,10 @@ public class OnlyReferenceTypeFilterBasePropertiesEditionComponent extends Singl
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

@@ -166,6 +166,9 @@ public class StandardFormPagePropertiesEditionPartImpl extends CompositeProperti
 		EditingUtils.setID(name, EditorViewsRepository.StandardFormPage.Naming.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.StandardFormPage.Naming.name, EditorViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -212,6 +215,9 @@ public class StandardFormPagePropertiesEditionPartImpl extends CompositeProperti
 		EditingUtils.setID(title_, EditorViewsRepository.StandardFormPage.Naming.title_);
 		EditingUtils.setEEFtype(title_, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EditorViewsRepository.StandardFormPage.Naming.title_, EditorViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTitle_Text
+
+		// End of user code
 		return parent;
 	}
 
@@ -250,6 +256,14 @@ public class StandardFormPagePropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.StandardFormPage.Naming.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(EditorMessages.StandardFormPage_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -274,6 +288,14 @@ public class StandardFormPagePropertiesEditionPartImpl extends CompositeProperti
 		} else {
 			title_.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EditorViewsRepository.StandardFormPage.Naming.title_);
+		if (eefElementEditorReadOnlyState && title_.isEnabled()) {
+			title_.setEnabled(false);
+			title_.setToolTipText(EditorMessages.StandardFormPage_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !title_.isEnabled()) {
+			title_.setEnabled(true);
+		}	
+		
 	}
 
 

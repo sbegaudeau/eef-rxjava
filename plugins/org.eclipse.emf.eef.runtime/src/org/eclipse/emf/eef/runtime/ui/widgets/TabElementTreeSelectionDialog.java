@@ -18,15 +18,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.edit.ui.provider.ExtendedColorRegistry;
 import org.eclipse.emf.eef.runtime.impl.utils.ModelViewerHelper;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.EEFRuntimeUIMessages;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.AdvancedEEFEditorContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.settings.EEFEditorSettings;
-import org.eclipse.jdt.internal.core.ResolvedSourceType;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
@@ -35,7 +33,6 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
@@ -207,7 +204,7 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 		patternFilter.setIncludeLeadingWildcard(true);
 
 		FilteredTree filteredTree = new FilteredTree(composite, SWT.SINGLE | SWT.BORDER | SWT.V_SCROLL
-				| SWT.RESIZE, patternFilter);
+				| SWT.RESIZE, patternFilter, true);
 		// use of EMF facilities
 		final TreeViewer treeViewer = filteredTree.getViewer();
 		treeViewer.setFilters(new ViewerFilter[0]);
@@ -297,8 +294,13 @@ public abstract class TabElementTreeSelectionDialog extends Dialog implements IP
 				public void doubleClick(DoubleClickEvent event) {
 					if (selection != null && !selection.isEmpty()) {
 						Object o = selection.getFirstElement();
-						if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory)).contains(o) && input instanceof ReferencesTableSettings && o instanceof EObject && !((ReferencesTableSettings) input).contains((EObject) o)) {
-							okPressed();
+						if (((List<?>)((EEFEditorSettings)input).choiceOfValues(adapterFactory)).contains(o)) {
+							if(input instanceof ReferencesTableSettings && o instanceof EObject && !((ReferencesTableSettings) input).contains((EObject) o)) {
+								okPressed();
+							}
+							else if(input instanceof EObjectFlatComboSettings && o instanceof EObject) {
+								okPressed();
+							}
 						}
 					}
 				}

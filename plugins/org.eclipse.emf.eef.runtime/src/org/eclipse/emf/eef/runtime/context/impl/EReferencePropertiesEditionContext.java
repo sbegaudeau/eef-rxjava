@@ -10,7 +10,11 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.context.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
@@ -30,6 +34,8 @@ public class EReferencePropertiesEditionContext extends EObjectPropertiesEdition
 	 * EEF editor settings to use.
 	 */
 	private EEFEditorSettings settings;
+	
+	protected Collection<InstanciableTypeFilter> instanciableTypeFilters = new ArrayList<InstanciableTypeFilter>();
 
 	/**
 	 * @param parentContext
@@ -57,4 +63,27 @@ public class EReferencePropertiesEditionContext extends EObjectPropertiesEdition
 		return settings;
 	}
 	
+	/**
+	 * @return the filters
+	 */
+	public Collection<InstanciableTypeFilter> getInstanciableTypeFilters() {
+		return instanciableTypeFilters;
+	}
+	
+	/**
+	 * Add a filter to the list
+	 * @param filter
+	 */
+	public void addInstanciableTypeFilter(InstanciableTypeFilter filter) {
+		instanciableTypeFilters.add(filter);
+	}
+
+	public interface InstanciableTypeFilter {
+		/**
+		 * Tests if the provided type can be instantiated
+		 * @param instanciableType Tested type
+		 * @return True if the type can be instantiate
+		 */
+		public boolean select(EClass instanciableType);
+	}
 }

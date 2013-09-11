@@ -68,10 +68,11 @@ public class EEFEditorPagesBasePropertiesEditionComponent extends SinglePartProp
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final EEFEditorPages eEFEditorPages = (EEFEditorPages)elt;
 			final EEFEditorPagesPropertiesEditionPart basePart = (EEFEditorPagesPropertiesEditionPart)editingPart;
 			// init values
-			if (eEFEditorPages.getName() != null && isAccessible(EditorViewsRepository.EEFEditorPages.Properties.name))
+			if (isAccessible(EditorViewsRepository.EEFEditorPages.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFEditorPages.getName()));
 			
 			// init filters
@@ -115,9 +116,10 @@ public class EEFEditorPagesBasePropertiesEditionComponent extends SinglePartProp
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EEFEditorPagesPropertiesEditionPart basePart = (EEFEditorPagesPropertiesEditionPart)editingPart;
-			if (ViewsPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.EEFEditorPages.Properties.name)) {
+			if (ViewsPackage.eINSTANCE.getCategory_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.EEFEditorPages.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -136,7 +138,7 @@ public class EEFEditorPagesBasePropertiesEditionComponent extends SinglePartProp
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			ViewsPackage.eINSTANCE.getCategory_Name());
+			ViewsPackage.eINSTANCE.getCategory_Name()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -188,5 +190,8 @@ public class EEFEditorPagesBasePropertiesEditionComponent extends SinglePartProp
 		}
 		return ret;
 	}
+
+
+	
 
 }

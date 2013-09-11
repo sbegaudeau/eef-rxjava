@@ -200,6 +200,9 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 		EditingUtils.setID(name, MappingViewsRepository.FilterProperties.FilterProperties_.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.FilterProperties_.name, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -226,6 +229,9 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 		EditingUtils.setID(mandatory, MappingViewsRepository.FilterProperties.FilterProperties_.mandatory);
 		EditingUtils.setEEFtype(mandatory, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory, MappingViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createMandatoryCheckbox
+
+		// End of user code
 		return parent;
 	}
 
@@ -264,6 +270,14 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(MappingViewsRepository.FilterProperties.FilterProperties_.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(MappingMessages.FilterProperties_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -288,6 +302,14 @@ public class FilterPropertiesPropertiesEditionPartForm extends SectionProperties
 		} else {
 			mandatory.setSelection(false);
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(MappingViewsRepository.FilterProperties.FilterProperties_.mandatory);
+		if (eefElementEditorReadOnlyState && mandatory.isEnabled()) {
+			mandatory.setEnabled(false);
+			mandatory.setToolTipText(MappingMessages.FilterProperties_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !mandatory.isEnabled()) {
+			mandatory.setEnabled(true);
+		}	
+		
 	}
 
 

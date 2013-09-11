@@ -134,7 +134,7 @@ public class EEFGenModelReferencePropertiesEditionProvider extends PropertiesEdi
 	 * Provides the filter used by the plugin.xml to assign part forms.
 	 */
 	public static class EditionFilter implements IFilter {
-		
+	
 		/**
 		 * {@inheritDoc}
 		 * 

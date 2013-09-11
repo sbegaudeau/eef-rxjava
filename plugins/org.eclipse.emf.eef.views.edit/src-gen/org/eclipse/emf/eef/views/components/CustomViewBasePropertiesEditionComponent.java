@@ -194,4 +194,6 @@ public class CustomViewBasePropertiesEditionComponent extends SinglePartProperti
 
 	
 
+	
+
 }

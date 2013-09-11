@@ -128,6 +128,94 @@ public interface ConcreteReferenceOwnerSamplePropertiesEditionPart {
 
 
 
+	/**
+	 * Init the strictTypingMultipleOnTableComposition
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initStrictTypingMultipleOnTableComposition(ReferencesTableSettings settings);
+
+	/**
+	 * Update the strictTypingMultipleOnTableComposition
+	 * @param newValue the strictTypingMultipleOnTableComposition to update
+	 * 
+	 */
+	public void updateStrictTypingMultipleOnTableComposition();
+
+	/**
+	 * Adds the given filter to the strictTypingMultipleOnTableComposition edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToStrictTypingMultipleOnTableComposition(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the strictTypingMultipleOnTableComposition edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToStrictTypingMultipleOnTableComposition(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the strictTypingMultipleOnTableComposition table
+	 * 
+	 */
+	public boolean isContainedInStrictTypingMultipleOnTableCompositionTable(EObject element);
+
+
+
+
+	/**
+	 * Init the strictTypingMultipleOnAdvancedTableComposition
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initStrictTypingMultipleOnAdvancedTableComposition(ReferencesTableSettings settings);
+
+	/**
+	 * Update the strictTypingMultipleOnAdvancedTableComposition
+	 * @param newValue the strictTypingMultipleOnAdvancedTableComposition to update
+	 * 
+	 */
+	public void updateStrictTypingMultipleOnAdvancedTableComposition();
+
+	/**
+	 * Adds the given filter to the strictTypingMultipleOnAdvancedTableComposition edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToStrictTypingMultipleOnAdvancedTableComposition(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the strictTypingMultipleOnAdvancedTableComposition edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToStrictTypingMultipleOnAdvancedTableComposition(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the strictTypingMultipleOnAdvancedTableComposition table
+	 * 
+	 */
+	public boolean isContainedInStrictTypingMultipleOnAdvancedTableCompositionTable(EObject element);
+
+
+
+
 
 	/**
 	 * Returns the internationalized title text.

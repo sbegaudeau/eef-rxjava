@@ -145,6 +145,29 @@ public class FiltersItemProviderAdapterFactory extends FiltersAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample3} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConcreteReferenceTargetSample3ItemProvider concreteReferenceTargetSample3ItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.eef.eefnr.filters.ConcreteReferenceTargetSample3}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConcreteReferenceTargetSample3Adapter() {
+		if (concreteReferenceTargetSample3ItemProvider == null) {
+			concreteReferenceTargetSample3ItemProvider = new ConcreteReferenceTargetSample3ItemProvider(this);
+		}
+
+		return concreteReferenceTargetSample3ItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -246,6 +269,7 @@ public class FiltersItemProviderAdapterFactory extends FiltersAdapterFactory imp
 		if (concreteReferenceOwnerSampleItemProvider != null) concreteReferenceOwnerSampleItemProvider.dispose();
 		if (concreteReferenceTargetSample1ItemProvider != null) concreteReferenceTargetSample1ItemProvider.dispose();
 		if (concreteReferenceTargetSample2ItemProvider != null) concreteReferenceTargetSample2ItemProvider.dispose();
+		if (concreteReferenceTargetSample3ItemProvider != null) concreteReferenceTargetSample3ItemProvider.dispose();
 	}
 
 }

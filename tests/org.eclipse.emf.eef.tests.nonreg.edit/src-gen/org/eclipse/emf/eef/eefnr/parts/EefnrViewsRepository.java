@@ -574,4 +574,67 @@ public class EefnrViewsRepository {
 	
 	}
 
+	/**
+	 * EReferencesViewerSample view descriptor
+	 * 
+	 */
+	public static class EReferencesViewerSample {
+		public static class Properties {
+	
+			
+			public static String ereferencesviewerRequiredProperty = "eefnr::EReferencesViewerSample::properties::ereferencesviewerRequiredProperty";
+			
+			
+			public static String ereferencesviewerOptionalProperty = "eefnr::EReferencesViewerSample::properties::ereferencesviewerOptionalProperty";
+			
+			
+			public static String ereferencesviewerROProperty = "eefnr::EReferencesViewerSample::properties::ereferencesviewerROProperty";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * LinkEObjectFlatComboViewerSample view descriptor
+	 * 
+	 */
+	public static class LinkEObjectFlatComboViewerSample {
+		public static class Properties {
+	
+			
+			public static String linkeobjectflatcomboviewerRequiredPropery = "eefnr::LinkEObjectFlatComboViewerSample::properties::linkeobjectflatcomboviewerRequiredPropery";
+			
+			
+			public static String linkeobjectflatcomboviewerOptionalPropery = "eefnr::LinkEObjectFlatComboViewerSample::properties::linkeobjectflatcomboviewerOptionalPropery";
+			
+			
+			public static String linkeobjectflatcomboviewerROPropery = "eefnr::LinkEObjectFlatComboViewerSample::properties::linkeobjectflatcomboviewerROPropery";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * LinkEReferenceViewerSample view descriptor
+	 * 
+	 */
+	public static class LinkEReferenceViewerSample {
+		public static class Properties {
+	
+			
+			public static String linkereferenceviewerRequiredPropery = "eefnr::LinkEReferenceViewerSample::properties::linkereferenceviewerRequiredPropery";
+			
+			
+			public static String linkereferenceviewerOptionalPropery = "eefnr::LinkEReferenceViewerSample::properties::linkereferenceviewerOptionalPropery";
+			
+			
+			public static String linkereferenceviewerROPropery = "eefnr::LinkEReferenceViewerSample::properties::linkereferenceviewerROPropery";
+			
+	
+		}
+	
+	}
+
 }

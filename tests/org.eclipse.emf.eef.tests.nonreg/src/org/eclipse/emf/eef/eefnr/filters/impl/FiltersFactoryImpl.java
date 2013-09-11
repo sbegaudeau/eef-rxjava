@@ -66,6 +66,7 @@ public class FiltersFactoryImpl extends EFactoryImpl implements FiltersFactory {
 			case FiltersPackage.CONCRETE_REFERENCE_OWNER_SAMPLE: return createConcreteReferenceOwnerSample();
 			case FiltersPackage.CONCRETE_REFERENCE_TARGET_SAMPLE1: return createConcreteReferenceTargetSample1();
 			case FiltersPackage.CONCRETE_REFERENCE_TARGET_SAMPLE2: return createConcreteReferenceTargetSample2();
+			case FiltersPackage.CONCRETE_REFERENCE_TARGET_SAMPLE3: return createConcreteReferenceTargetSample3();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -99,6 +100,16 @@ public class FiltersFactoryImpl extends EFactoryImpl implements FiltersFactory {
 	public ConcreteReferenceTargetSample2 createConcreteReferenceTargetSample2() {
 		ConcreteReferenceTargetSample2Impl concreteReferenceTargetSample2 = new ConcreteReferenceTargetSample2Impl();
 		return concreteReferenceTargetSample2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConcreteReferenceTargetSample3 createConcreteReferenceTargetSample3() {
+		ConcreteReferenceTargetSample3Impl concreteReferenceTargetSample3 = new ConcreteReferenceTargetSample3Impl();
+		return concreteReferenceTargetSample3;
 	}
 
 	/**

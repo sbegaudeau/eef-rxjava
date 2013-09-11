@@ -91,6 +91,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final SimpleModelNavigation simpleModelNavigation = (SimpleModelNavigation)elt;
 			final SimpleModelNavigationPropertiesEditionPart basePart = (SimpleModelNavigationPropertiesEditionPart)editingPart;
 			// init values
@@ -225,9 +226,10 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SimpleModelNavigationPropertiesEditionPart basePart = (SimpleModelNavigationPropertiesEditionPart)editingPart;
-			if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().equals(msg.getFeature()) && basePart != null && isAccessible(NavigationViewsRepository.SimpleModelNavigation.Properties.index)) {
+			if (NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(NavigationViewsRepository.SimpleModelNavigation.Properties.index)) {
 				if (msg.getNewValue() != null) {
 					basePart.setIndex(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
 				} else {
@@ -252,7 +254,7 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			NavigationPackage.eINSTANCE.getSimpleModelNavigation_Index(),
 			NavigationPackage.eINSTANCE.getSimpleModelNavigation_Feature(),
-			NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType());
+			NavigationPackage.eINSTANCE.getSimpleModelNavigation_DiscriminatorType()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -292,5 +294,10 @@ public class SimpleModelNavigationPropertiesEditionComponent extends SinglePartP
 		}
 		return ret;
 	}
+
+
+	
+
+	
 
 }

@@ -203,6 +203,9 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		EditingUtils.setID(name, MappingViewsRepository.EMFPropertyBinding.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFPropertyBinding.Properties.name, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNameText
+
+		// End of user code
 		return parent;
 	}
 
@@ -241,6 +244,9 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		model.setLayoutData(modelData);
 		model.setID(MappingViewsRepository.EMFPropertyBinding.Binding.model);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(MappingViewsRepository.EMFPropertyBinding.Binding.model, MappingViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createModelFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -361,6 +367,14 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(MappingViewsRepository.EMFPropertyBinding.Properties.name);
+		if (eefElementEditorReadOnlyState && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(MappingMessages.EMFPropertyBinding_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -388,6 +402,14 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		if (current != null) {
 			model.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(MappingViewsRepository.EMFPropertyBinding.Binding.model);
+		if (eefElementEditorReadOnlyState && model.isEnabled()) {
+			model.setEnabled(false);
+			model.setToolTipText(MappingMessages.EMFPropertyBinding_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !model.isEnabled()) {
+			model.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -402,6 +424,14 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		} else {
 			model.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(MappingViewsRepository.EMFPropertyBinding.Binding.model);
+		if (eefElementEditorReadOnlyState && model.isEnabled()) {
+			model.setEnabled(false);
+			model.setToolTipText(MappingMessages.EMFPropertyBinding_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !model.isEnabled()) {
+			model.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -446,6 +476,14 @@ public class EMFPropertyBindingPropertiesEditionPartImpl extends CompositeProper
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		views.setContentProvider(contentProvider);
 		views.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(MappingViewsRepository.EMFPropertyBinding.Binding.views);
+		if (eefElementEditorReadOnlyState && views.getTable().isEnabled()) {
+			views.setEnabled(false);
+			views.setToolTipText(MappingMessages.EMFPropertyBinding_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !views.getTable().isEnabled()) {
+			views.setEnabled(true);
+		}
+		
 	}
 
 	/**

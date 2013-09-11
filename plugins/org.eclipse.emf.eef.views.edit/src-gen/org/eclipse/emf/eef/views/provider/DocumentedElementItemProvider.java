@@ -36,7 +36,9 @@ import org.eclipse.emf.eef.views.ViewsPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DocumentedElementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class DocumentedElementItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -71,12 +73,14 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 	 */
 	protected void addDocumentationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
 				getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
-				ViewsPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				ViewsPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true,
+				true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -87,7 +91,8 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/DocumentedElement")); //$NON-NLS-1$
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/DocumentedElement")); //$NON-NLS-1$
 	}
 
 	/**
@@ -98,7 +103,7 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = crop(((DocumentedElement)object).getDocumentation());
+		String label = crop(((DocumentedElement) object).getDocumentation());
 		return label == null || label.length() == 0 ? getString("_UI_DocumentedElement_type") : //$NON-NLS-1$
 				getString("_UI_DocumentedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -115,10 +120,10 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DocumentedElement.class)) {
-			case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
-						true));
-				return;
+		case ViewsPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -131,7 +136,8 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -143,7 +149,7 @@ public class DocumentedElementItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

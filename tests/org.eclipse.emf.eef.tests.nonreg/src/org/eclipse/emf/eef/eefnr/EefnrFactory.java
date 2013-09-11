@@ -224,6 +224,33 @@ public interface EefnrFactory extends EFactory {
 	SingleCompositionEditorSample createSingleCompositionEditorSample();
 
 	/**
+	 * Returns a new object of class '<em>EReferences Viewer Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EReferences Viewer Sample</em>'.
+	 * @generated
+	 */
+	EReferencesViewerSample createEReferencesViewerSample();
+
+	/**
+	 * Returns a new object of class '<em>Link EObject Flat Combo Viewer Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Link EObject Flat Combo Viewer Sample</em>'.
+	 * @generated
+	 */
+	LinkEObjectFlatComboViewerSample createLinkEObjectFlatComboViewerSample();
+
+	/**
+	 * Returns a new object of class '<em>Link EReference Viewer Sample</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Link EReference Viewer Sample</em>'.
+	 * @generated
+	 */
+	LinkEReferenceViewerSample createLinkEReferenceViewerSample();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

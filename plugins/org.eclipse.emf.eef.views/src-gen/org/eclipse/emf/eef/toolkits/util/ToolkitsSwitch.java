@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.eef.toolkits.*;
 import org.eclipse.emf.eef.toolkits.Toolkit;
 import org.eclipse.emf.eef.toolkits.ToolkitsPackage;
 import org.eclipse.emf.eef.toolkits.Widget;
@@ -75,7 +76,8 @@ public class ToolkitsSwitch<T> {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		} else {
 			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
+			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(
+					eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -88,22 +90,22 @@ public class ToolkitsSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ToolkitsPackage.TOOLKIT: {
-				Toolkit toolkit = (Toolkit)theEObject;
-				T result = caseToolkit(toolkit);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case ToolkitsPackage.WIDGET: {
-				Widget widget = (Widget)theEObject;
-				T result = caseWidget(widget);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			default:
-				return defaultCase(theEObject);
+		case ToolkitsPackage.TOOLKIT: {
+			Toolkit toolkit = (Toolkit) theEObject;
+			T result = caseToolkit(toolkit);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case ToolkitsPackage.WIDGET: {
+			Widget widget = (Widget) theEObject;
+			T result = caseWidget(widget);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		default:
+			return defaultCase(theEObject);
 		}
 	}
 

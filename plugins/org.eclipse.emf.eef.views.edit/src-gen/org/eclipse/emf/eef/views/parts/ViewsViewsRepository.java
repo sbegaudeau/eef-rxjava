@@ -66,10 +66,10 @@ public class ViewsViewsRepository {
 			public static String name = "views::View::Properties::name";
 			
 			
+			public static String label = "views::View::Properties::label";
+			
+			
 			public static String representation = "views::View::Properties::representation";
-			
-			
-			public static String explicit = "views::View::Properties::explicit";
 			
 	
 		}

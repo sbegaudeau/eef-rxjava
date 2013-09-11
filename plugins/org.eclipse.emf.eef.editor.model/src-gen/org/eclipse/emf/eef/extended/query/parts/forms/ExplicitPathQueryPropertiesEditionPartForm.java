@@ -159,6 +159,9 @@ public class ExplicitPathQueryPropertiesEditionPartForm extends SectionPropertie
 		});
 		query.setID(QueryViewsRepository.ExplicitPathQuery.Properties.query_);
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(QueryViewsRepository.ExplicitPathQuery.Properties.query_, QueryViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createQueryFlatComboViewer
+
+		// End of user code
 		return parent;
 	}
 
@@ -200,6 +203,14 @@ public class ExplicitPathQueryPropertiesEditionPartForm extends SectionPropertie
 		if (current != null) {
 			query.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(QueryViewsRepository.ExplicitPathQuery.Properties.query_);
+		if (eefElementEditorReadOnlyState && query.isEnabled()) {
+			query.setEnabled(false);
+			query.setToolTipText(QueryMessages.ExplicitPathQuery_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !query.isEnabled()) {
+			query.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -214,6 +225,14 @@ public class ExplicitPathQueryPropertiesEditionPartForm extends SectionPropertie
 		} else {
 			query.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(QueryViewsRepository.ExplicitPathQuery.Properties.query_);
+		if (eefElementEditorReadOnlyState && query.isEnabled()) {
+			query.setEnabled(false);
+			query.setToolTipText(QueryMessages.ExplicitPathQuery_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !query.isEnabled()) {
+			query.setEnabled(true);
+		}	
+		
 	}
 
 	/**

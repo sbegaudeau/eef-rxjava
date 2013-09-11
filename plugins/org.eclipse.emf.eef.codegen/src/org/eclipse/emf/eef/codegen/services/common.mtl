@@ -226,8 +226,12 @@
 				or (pee.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and pee.model.isReferenceMany() and (pee.representationName('ReferencesTable') or pee.representationName('AdvancedReferencesTable')))
 				or (pee.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and pee.model.isContainmentMany() and (pee.representationName('TableComposition') or pee.representationName('AdvancedTableComposition')))
 				or (pee.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentMany() and pee.model.isContainmentSingle() and (pee.representationName('TableComposition') or pee.representationName('AdvancedTableComposition')))
-				or (pee.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and pee.model.isReferenceSingle() and (pee.representationName('EObjectFlatComboViewer') or pee.representationName('AdvancedEObjectFlatComboViewer')))
-		))) or (pee.model.isContainmentSingle() and (pee.representationName('EObjectFlatComboViewer') or pee.representationName('AdvancedEObjectFlatComboViewer'))))/]
+				or (pee.navigation.oclAsType(navigation::SimpleModelNavigation).feature.isContainmentSingle() and pee.model.isReferenceSingle() and (pee.representationName('EObjectFlatComboViewer') or pee.representationName('AdvancedEObjectFlatComboViewer') or pee.representationName('LinkEObjectFlatComboViewer') or pee.representationName('LinkERefenceViewer')))
+		))) or (pee.model.isContainmentSingle() and (pee.representationName('EObjectFlatComboViewer') or pee.representationName('AdvancedEObjectFlatComboViewer') or pee.representationName('LinkEObjectFlatComboViewer') or pee.representationName('LinkEReferenceViewer'))))/]
+
+[comment ----- Editor settings ---------/]
+[query public canGenerateEditorSettings(pee : PropertiesEditionElement) : Boolean = 
+	not pee.editorSetting.oclIsUndefined()/]
 
 [comment --------------- Common templates --------------- /]
 
@@ -323,7 +327,7 @@ String
 [include('org.eclipse.emf.common.util.Enumerator')/]
 [elseif (view.representationName('MultiValuedEditor'))]
 [include('org.eclipse.emf.common.util.EList')/]
-[elseif (view.representationName('EObjectFlatComboViewer') or view.representationName('AdvancedEObjectFlatComboViewer') or view.representationName('SingleCompositionViewer') or view.representationName('SingleCompositionEditor'))]
+[elseif (view.representationName('EObjectFlatComboViewer') or view.representationName('LinkEReferenceViewer')or view.representationName('LinkEObjectFlatComboViewer') or view.representationName('AdvancedEObjectFlatComboViewer') or view.representationName('SingleCompositionViewer') or view.representationName('SingleCompositionEditor'))]
 [include('org.eclipse.emf.ecore.EObject')/]
 [elseif (view.representationName('ReferencesTable') or view.representationName('AdvancedReferencesTable') or view.representationName('FlatReferencesTable') or view.representationName('TableComposition') or view.representationName('AdvancedTableComposition'))]
 [include('java.util.List')/]
@@ -443,7 +447,7 @@ DEPRECATED. using now a java service to do so.
 
 [comment ==== For boolean model features getters (thanks to UML !) ==== /]
 [template public booleanGetter(feature : EStructuralFeature)]
-is
+[if (feature.eType.name() = 'EBooleanObject')]get[else]is[/if]
 [/template]
 
 [query public eefPackage(eClassifier : EClassifier, basePackage : String) : String = eClassifier.ePackage.eefPackage(basePackage)/]
@@ -506,7 +510,13 @@ NOTE: Imports are managed here because addImport must be called from a model ele
 [s.feature.metamodelGetter()/][s.addImport(s.feature.eContainingClass.ePackage.qualifiedMetamodelPackage())/]
 [/template]
 
+[template public metamodelGetter(e : EReferenceViewerSettings) post (trim())]
+[if (e.model.eInverse(GenFeature).genClass.genPackage.genModel.toString() <> e.getImportGenModel())]
+	[e.initializeImportManagerForGenmodel(e.model.eInverse(GenFeature)->first().genClass.genPackage.genModel, '', '')/]
+[/if]
+[e.model.metamodelGetter()/][e.addImport(e.model.eContainingClass.ePackage.qualifiedMetamodelPackage())/]
+[/template]
+
 [template public factoryCreator(p : PropertiesEditionElement)]
 [p.model.eType.factoryCreator()/][p.addImport(p.model.eType.getQualifiedFactoryInterfaceName())/]
 [/template]
-

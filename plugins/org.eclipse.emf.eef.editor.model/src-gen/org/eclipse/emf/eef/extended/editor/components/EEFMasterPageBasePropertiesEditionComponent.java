@@ -69,13 +69,14 @@ public class EEFMasterPageBasePropertiesEditionComponent extends SinglePartPrope
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final EEFMasterPage eEFMasterPage = (EEFMasterPage)elt;
 			final EEFMasterPagePropertiesEditionPart basePart = (EEFMasterPagePropertiesEditionPart)editingPart;
 			// init values
-			if (eEFMasterPage.getName() != null && isAccessible(EditorViewsRepository.EEFMasterPage.Naming.name))
+			if (isAccessible(EditorViewsRepository.EEFMasterPage.Naming.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFMasterPage.getName()));
 			
-			if (eEFMasterPage.getTitle() != null && isAccessible(EditorViewsRepository.EEFMasterPage.Naming.title_))
+			if (isAccessible(EditorViewsRepository.EEFMasterPage.Naming.title_))
 				basePart.setTitle_(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, eEFMasterPage.getTitle()));
 			
 			if (isAccessible(EditorViewsRepository.EEFMasterPage.Settings.orientable)) {
@@ -149,26 +150,27 @@ public class EEFMasterPageBasePropertiesEditionComponent extends SinglePartPrope
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
+		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EEFMasterPagePropertiesEditionPart basePart = (EEFMasterPagePropertiesEditionPart)editingPart;
-			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.EEFMasterPage.Naming.name)) {
+			if (ViewsPackage.eINSTANCE.getViewElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.EEFMasterPage.Naming.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (EditorPackage.eINSTANCE.getEEFPage_Title().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.EEFMasterPage.Naming.title_)) {
+			if (EditorPackage.eINSTANCE.getEEFPage_Title().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.EEFMasterPage.Naming.title_)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTitle_(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTitle_("");
 				}
 			}
-			if (EditorPackage.eINSTANCE.getEEFMasterPage_Orientable().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.EEFMasterPage.Settings.orientable))
+			if (EditorPackage.eINSTANCE.getEEFMasterPage_Orientable().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.EEFMasterPage.Settings.orientable))
 				basePart.setOrientable((Boolean)msg.getNewValue());
 			
-			if (EditorPackage.eINSTANCE.getEEFMasterPage_ShowValidatePage().equals(msg.getFeature()) && basePart != null && isAccessible(EditorViewsRepository.EEFMasterPage.Settings.showValidatePage))
+			if (EditorPackage.eINSTANCE.getEEFMasterPage_ShowValidatePage().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EditorViewsRepository.EEFMasterPage.Settings.showValidatePage))
 				basePart.setShowValidatePage((Boolean)msg.getNewValue());
 			
 			
@@ -186,7 +188,7 @@ public class EEFMasterPageBasePropertiesEditionComponent extends SinglePartPrope
 			ViewsPackage.eINSTANCE.getViewElement_Name(),
 			EditorPackage.eINSTANCE.getEEFPage_Title(),
 			EditorPackage.eINSTANCE.getEEFMasterPage_Orientable(),
-			EditorPackage.eINSTANCE.getEEFMasterPage_ShowValidatePage());
+			EditorPackage.eINSTANCE.getEEFMasterPage_ShowValidatePage()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -259,5 +261,8 @@ public class EEFMasterPageBasePropertiesEditionComponent extends SinglePartPrope
 		}
 		return ret;
 	}
+
+
+	
 
 }
