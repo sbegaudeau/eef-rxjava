@@ -79,6 +79,11 @@
 			<url>http://download.eclipse.org/modeling/emf/cdo/updates/releases/4.0/</url>
 		</repository>
 		<repository>
+			<id>swtbot</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site</url>
+		</repository>
+		<repository>
 			<id>kepler</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/kepler</url>
