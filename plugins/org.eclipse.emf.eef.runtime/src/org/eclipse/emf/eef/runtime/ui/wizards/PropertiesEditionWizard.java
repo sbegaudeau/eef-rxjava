@@ -12,16 +12,23 @@ package org.eclipse.emf.eef.runtime.ui.wizards;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
@@ -235,6 +242,7 @@ public class PropertiesEditionWizard extends Wizard {
 					if (((EReferencePropertiesEditionContext)editingContext).getSettings() != null) {
 						EEFUtils.putToReference(((EReferencePropertiesEditionContext)editingContext).getSettings(), create);
 					}
+					this.setWindowTitle(eObject.eClass().getName());
 				}
 			} else {
 				elementCreationPage = new ElementCreationWizardPage();
@@ -284,6 +292,72 @@ public class PropertiesEditionWizard extends Wizard {
 		}
 		return filteredInstanciableTypesInHierarchy;
 	}
+
+	public Collection<EClass> listOfInstanciableType(AdapterFactory adapterFactory, EObject editedObject, EReference eReference) {
+		Collection<EClass> result = new LinkedHashSet<EClass>();
+		if (adapterFactory != null) {
+			IEditingDomainItemProvider adapt = (IEditingDomainItemProvider) adapterFactory.adapt(editedObject, IEditingDomainItemProvider.class);
+			Collection<?> newChildDescriptors = adapt.getNewChildDescriptors(editedObject, null, null);
+			for (Object object : newChildDescriptors) {
+				if (object instanceof CommandParameter) {
+					CommandParameter commandParameter = (CommandParameter) object;
+					if (equals((EStructuralFeature)commandParameter.feature, eReference) && commandParameter.value instanceof EObject) {
+						result.add(((EObject) commandParameter.value).eClass());
+					}
+				}
+			}
+		} else {
+			EClass eReferenceType = eReference.getEReferenceType();
+			EObject container = eReferenceType;
+			while (container.eContainer() != null) {
+				container = container.eContainer();
+			}
+			TreeIterator<EObject> eAllContents = container.eAllContents();
+			while (eAllContents.hasNext()) {
+				EObject next = eAllContents.next();
+				if (next instanceof EClass) {
+					EClass eClass = (EClass) next;
+					if (!(eClass.isAbstract()) && eReferenceType.isSuperTypeOf(eClass)) {
+						result.add(eClass);
+					}
+				}
+			}
+		}
+		return result;
+	}
+	
+	public boolean equals(final EClass eClass1, final EClass eClass2) {
+		if (eClass1.equals(eClass2)) {
+			return true;
+		}
+		if (eClass1.eResource().getURI().isPlatform() && !eClass2.eResource().getURI().isPlatform()) {
+			EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(eClass1.getEPackage().getNsURI());
+			if (ePackage != null) {
+				EClassifier mappedEClass1 = ePackage.getEClassifier(eClass1.getName());
+				if (eClass2.equals(mappedEClass1)) {
+					return true;
+				}
+			}
+		}
+		if (!eClass1.eResource().getURI().isPlatform() && eClass2.eResource().getURI().isPlatform()) {
+			EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(eClass2.getEPackage().getNsURI());
+			if (ePackage != null) {
+				EClassifier mappedEClass2 = ePackage.getEClassifier(eClass2.getName());
+				if (eClass1.equals(mappedEClass2)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.util.EMFService#equals(org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EStructuralFeature)
+	 */
+	public boolean equals(EStructuralFeature esf1, EStructuralFeature esf2) {
+		return equals(esf1.eClass(), esf2.eClass()) && esf1.getName().equals(esf2.getName());
+	}
 	
 	protected List<EClass> getInstanciableTypesInHierarchy() {
 		List<EClass> instanciableTypesInHierarchy;
@@ -292,8 +366,8 @@ public class PropertiesEditionWizard extends Wizard {
 					((DomainPropertiesEditionContext)editingContext).getEditingDomain());
 			editingContext = null;
 		} else {
-			instanciableTypesInHierarchy = EEFUtils.instanciableTypesInHierarchy(eReference.getEType(),
-					editingContext.getResourceSet());
+			Collection<EClass> listOfInstanciableType = listOfInstanciableType(editingContext.getAdapterFactory(), editingContext.getEObject(), eReference);
+			instanciableTypesInHierarchy = new ArrayList<EClass>(listOfInstanciableType);
 		}
 		return instanciableTypesInHierarchy;
 	}
