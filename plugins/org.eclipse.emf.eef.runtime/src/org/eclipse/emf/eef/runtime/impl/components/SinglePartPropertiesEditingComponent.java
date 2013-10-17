@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.eef.runtime.impl.components;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
@@ -147,8 +149,18 @@ public abstract class SinglePartPropertiesEditingComponent extends StandardPrope
 		} else {
 			if (event instanceof PropertiesEditionEvent && (!(event.getKind() == PropertiesEditionEvent.EDIT)) && associatedFeature(event.getAffectedEditor()) != null) {
 				Object currentValue = semanticObject.eGet(associatedFeature(event.getAffectedEditor()));
-				return (currentValue == null && (event.getNewValue() != null || event.getKind() == PropertiesEditionEvent.ADD))
-						|| (currentValue != null && !currentValue.equals(event.getNewValue()));
+				if (currentValue == null) {
+					return event.getNewValue() != null || event.getKind() == PropertiesEditionEvent.ADD;
+				} else {
+					if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+						return (
+									((currentValue instanceof Collection<?>) && ((Collection<?>)currentValue).contains(event.getNewValue()))
+								 || currentValue.equals(event.getNewValue())
+								);
+					} else {
+						return (currentValue != null && !currentValue.equals(event.getNewValue())); 
+					}	
+				}
 			}
 		}
 		return super.shouldProcess(event);
