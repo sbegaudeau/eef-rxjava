@@ -157,8 +157,7 @@ public abstract class AbstractAdvancedEObjectFlatComboViewer implements
 		removeButton.setLayoutData(data);
 		removeButton
 				.setToolTipText(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_remove_tooltip);
-		EditingUtils.setEEFtype(removeButton,
-				"eef::AdvancedEObjectFlatComboViewer::removebutton");
+		EditingUtils.setEEFtype(removeButton, "eef::AdvancedEObjectFlatComboViewer::removebutton");
 
 		this.browseButton = createButton(parent, "", SWT.PUSH); //$NON-NLS-1$
 		browseButton.setImage(addImage);
