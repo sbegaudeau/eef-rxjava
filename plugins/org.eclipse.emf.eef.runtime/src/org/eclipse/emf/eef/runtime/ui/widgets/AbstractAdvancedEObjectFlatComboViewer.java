@@ -117,6 +117,9 @@ public abstract class AbstractAdvancedEObjectFlatComboViewer implements
 		this.callback = callback;
 		this.labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 		this.filters = new ArrayList<ViewerFilter>();
+		if (filter != null) {
+			this.filters.add(filter);
+		}
 		this.brFilters = new ArrayList<ViewerFilter>();
 		this.adapterFactory = adapterFactory;
 	}
