@@ -683,6 +683,8 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableRequiredProperty.setContentProvider(contentProvider);
 		referencestableRequiredProperty.setInput(settings);
+		referencestableRequiredPropertyBusinessFilters.clear();
+		referencestableRequiredPropertyFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableRequiredProperty);
 		if (eefElementEditorReadOnlyState && referencestableRequiredProperty.getTable().isEnabled()) {
 			referencestableRequiredProperty.getTable().setEnabled(false);
@@ -752,6 +754,8 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableOptionalProperty.setContentProvider(contentProvider);
 		referencestableOptionalProperty.setInput(settings);
+		referencestableOptionalPropertyBusinessFilters.clear();
+		referencestableOptionalPropertyFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.ReferencesTableSample.Properties.referencestableOptionalProperty);
 		if (eefElementEditorReadOnlyState && referencestableOptionalProperty.getTable().isEnabled()) {
 			referencestableOptionalProperty.getTable().setEnabled(false);
@@ -821,6 +825,8 @@ public class ReferencesTableSamplePropertiesEditionPartImpl extends CompositePro
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableROProperty.setContentProvider(contentProvider);
 		referencestableROProperty.setInput(settings);
+		referencestableROPropertyBusinessFilters.clear();
+		referencestableROPropertyFilters.clear();
 		referencestableROProperty.getTable().setEnabled(false);
 		referencestableROProperty.getTable().setToolTipText(EefnrMessages.ReferencesTableSample_ReadOnly);
 		addReferencestableROProperty.setEnabled(false);

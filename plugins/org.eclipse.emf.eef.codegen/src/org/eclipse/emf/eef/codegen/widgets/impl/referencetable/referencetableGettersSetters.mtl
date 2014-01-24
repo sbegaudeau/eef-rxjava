@@ -114,6 +114,8 @@
 		[include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider')/] contentProvider = new ReferencesTableContentProvider();
 		[elementEditor.elementEditorName()/].setContentProvider(contentProvider);
 		[elementEditor.elementEditorName()/].setInput(settings);
+		[elementEditor.elementEditorName()/]BusinessFilters.clear();
+		[elementEditor.elementEditorName()/]Filters.clear();
 		[elementEditor.readOnly()/]
 	}
 [/template]

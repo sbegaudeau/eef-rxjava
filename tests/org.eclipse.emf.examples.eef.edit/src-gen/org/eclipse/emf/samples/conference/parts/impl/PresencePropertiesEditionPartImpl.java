@@ -258,6 +258,8 @@ public class PresencePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		assists.setContentProvider(contentProvider);
 		assists.setInput(settings);
+		assistsBusinessFilters.clear();
+		assistsFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(ConferenceViewsRepository.Presence.Talks.assists);
 		if (eefElementEditorReadOnlyState && assists.getTable().isEnabled()) {
 			assists.setEnabled(false);

@@ -674,6 +674,8 @@ public class ConcreteReferenceOwnerSamplePropertiesEditionPartForm extends Secti
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		abstractTarget.setContentProvider(contentProvider);
 		abstractTarget.setInput(settings);
+		abstractTargetBusinessFilters.clear();
+		abstractTargetFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(FiltersViewsRepository.ConcreteReferenceOwnerSample.Properties.abstractTarget);
 		if (eefElementEditorReadOnlyState && abstractTarget.getTable().isEnabled()) {
 			abstractTarget.setEnabled(false);

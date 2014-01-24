@@ -435,6 +435,8 @@ public class DeferedReferencesTableSamplePropertiesEditionPartImpl extends Compo
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencesTableSampleEditor.setContentProvider(contentProvider);
 		referencesTableSampleEditor.setInput(settings);
+		referencesTableSampleEditorBusinessFilters.clear();
+		referencesTableSampleEditorFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.DeferedReferencesTableSample.Properties.referencesTableSampleEditor);
 		if (eefElementEditorReadOnlyState && referencesTableSampleEditor.getTable().isEnabled()) {
 			referencesTableSampleEditor.getTable().setEnabled(false);

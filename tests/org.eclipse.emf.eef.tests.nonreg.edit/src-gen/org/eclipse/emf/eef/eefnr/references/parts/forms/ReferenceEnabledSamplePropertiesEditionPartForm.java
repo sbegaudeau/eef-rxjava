@@ -289,6 +289,8 @@ public class ReferenceEnabledSamplePropertiesEditionPartForm extends SectionProp
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		reference.setContentProvider(contentProvider);
 		reference.setInput(settings);
+		referenceBusinessFilters.clear();
+		referenceFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(ReferencesViewsRepository.ReferenceEnabledSample.Properties.reference);
 		if (eefElementEditorReadOnlyState && reference.getTable().isEnabled()) {
 			reference.setEnabled(false);

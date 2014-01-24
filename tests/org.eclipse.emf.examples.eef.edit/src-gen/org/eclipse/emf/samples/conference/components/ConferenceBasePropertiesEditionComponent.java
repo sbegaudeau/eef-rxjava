@@ -237,4 +237,6 @@ public class ConferenceBasePropertiesEditionComponent extends SinglePartProperti
 
 	
 
+	
+
 }
