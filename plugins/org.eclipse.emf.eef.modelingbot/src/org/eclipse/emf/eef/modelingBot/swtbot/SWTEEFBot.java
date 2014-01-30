@@ -34,6 +34,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.eef.components.PropertiesEditionComponent;
 import org.eclipse.emf.eef.components.PropertiesEditionElement;
 import org.eclipse.emf.eef.extended.editor.ReferenceableObject;
 import org.eclipse.emf.eef.modelingBot.Action;
@@ -519,7 +520,11 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 			final ElementEditor elementEditor = propertiesEditionElement.getViews().get(0);
 			final View view = EEFModelHelper.getView(elementEditor);
 			if (view.getName() != null) {
-				SWTBotCTabItem cTabItem = cTabItem(view.getName());
+				String tabToSearch = view.getName();
+				if (view.getName().equals(((PropertiesEditionComponent)propertiesEditionElement.eContainer()).getName())) {
+					tabToSearch = "Base";
+				}
+				SWTBotCTabItem cTabItem = cTabItem(tabToSearch);
 				cTabItem.activate();
 				cTabItem.setFocus();
 			}
