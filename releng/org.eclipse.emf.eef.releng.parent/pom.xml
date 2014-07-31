@@ -256,10 +256,12 @@
 		<module>../../features/org.eclipse.emf.eef.codegen.ecore-feature</module>
 		<module>../../features/org.eclipse.emf.eef.codegen.richtext-feature</module>
 		<module>../../features/org.eclipse.emf.eef.richtext-feature</module>
+		<module>../../features/org.eclipse.emf.eef.codegen.uml.feature</module>
 		<module>../../features/org.eclipse.emf.eef.sdk-feature</module>
 		<!-- deprecated <module>../../features/org.eclipse.emf.eef.indigo-feature</module> -->
 
 		<module>../org.eclipse.emf.eef.update</module>
+		<module>../org.eclipse.emf.eef.uml.update</module>
 
 		<module>../../tests/org.eclipse.emf.examples.eef</module>
 		<module>../../tests/org.eclipse.emf.examples.eef.edit</module>
