@@ -23,11 +23,11 @@
 	-->
 
 	<property name="downloads.project.root" value="modeling/emft/eef" />
-	<property name="build.root" value="/shared/jobs/emf-eef-1.3/lastSuccessful/archive/releng/org.eclipse.emf.eef.update/target/" />
+	<property name="build.root" value="/shared/jobs/emf-eef-1.3/lastSuccessful/archive/releng/org.eclipse.emf.eef.uml.update/target/" />
 	<property name="thirdPartyJarsDir" value="/shared/modeling/emf/eef/3rdPartyJars" />
 	<property name="project.name" value="EEF" />
-	<property name="final.updatesite.name" value="emf-eef-Update" />
-	<property name="build.root.updatesite.name" value="org.eclipse.emf.eef.update.zip" />
+	<property name="final.updatesite.name" value="emf-eef-uml-Update" />
+	<property name="build.root.updatesite.name" value="org.eclipse.emf.eef.uml.update.zip" />
 	<property name="group.owner" value="modeling.emf.eef" />
 
 	<!--# To permit automatic downloads of non-EPL compatible code, override this to property to "Y" -->
