@@ -27,7 +27,6 @@ import org.eclipse.swt.widgets.Composite;
 /**
  * LinkEObjectFlatComboViewer with possibility to create the referenced element.
  * 
- * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
 public class LinkEReferenceViewer extends LinkEObjectFlatComboViewer {
 	
@@ -72,8 +71,9 @@ public class LinkEReferenceViewer extends LinkEObjectFlatComboViewer {
 	 * Add the create button
 	 */
 	protected void createButton() {
+		browseButton.setImage(createImage);
 		createButton = super.createButton(composite, "", SWT.PUSH); //$NON-NLS-1$
-		createButton.setImage(createImage);
+		createButton.setImage(addImage);
 		FormData data = new FormData();
 		data.right = new FormAttachment(browseButton, 2);
 		data.top = new FormAttachment(0, -2);

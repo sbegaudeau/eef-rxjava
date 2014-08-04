@@ -436,6 +436,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableRequiredProperty.setContentProvider(contentProvider);
 		advancedreferencestableRequiredProperty.setInput(settings);
+		advancedreferencestableRequiredPropertyBusinessFilters.clear();
+		advancedreferencestableRequiredPropertyFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableRequiredProperty);
 		if (eefElementEditorReadOnlyState && advancedreferencestableRequiredProperty.getTable().isEnabled()) {
 			advancedreferencestableRequiredProperty.setEnabled(false);
@@ -499,6 +501,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableOptionalProperty.setContentProvider(contentProvider);
 		advancedreferencestableOptionalProperty.setInput(settings);
+		advancedreferencestableOptionalPropertyBusinessFilters.clear();
+		advancedreferencestableOptionalPropertyFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.AdvancedReferencesTableSample.Properties.advancedreferencestableOptionalProperty);
 		if (eefElementEditorReadOnlyState && advancedreferencestableOptionalProperty.getTable().isEnabled()) {
 			advancedreferencestableOptionalProperty.setEnabled(false);
@@ -562,6 +566,8 @@ public class AdvancedReferencesTableSamplePropertiesEditionPartImpl extends Comp
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableROProperty.setContentProvider(contentProvider);
 		advancedreferencestableROProperty.setInput(settings);
+		advancedreferencestableROPropertyBusinessFilters.clear();
+		advancedreferencestableROPropertyFilters.clear();
 		advancedreferencestableROProperty.setEnabled(false);
 		advancedreferencestableROProperty.setToolTipText(EefnrMessages.AdvancedReferencesTableSample_ReadOnly);
 		

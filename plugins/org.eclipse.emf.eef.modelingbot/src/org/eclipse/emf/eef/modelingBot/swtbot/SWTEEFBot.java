@@ -514,6 +514,14 @@ public class SWTEEFBot extends SWTWorkbenchBot implements IModelingBot {
 						}
 					}
 				}
+			if (view.getName() != null) {
+				String tabToSearch = view.getName();
+				if (view.getName().equals(((PropertiesEditionComponent)propertiesEditionElement.eContainer()).getName())) {
+					tabToSearch = "Base";
+				}
+				SWTBotCTabItem cTabItem = cTabItem(tabToSearch);
+				cTabItem.activate();
+				cTabItem.setFocus();
 			}
 		}
 	}

@@ -117,6 +117,9 @@ public abstract class AbstractAdvancedEObjectFlatComboViewer implements
 		this.callback = callback;
 		this.labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 		this.filters = new ArrayList<ViewerFilter>();
+		if (filter != null) {
+			this.filters.add(filter);
+		}
 		this.brFilters = new ArrayList<ViewerFilter>();
 		this.adapterFactory = adapterFactory;
 	}
@@ -157,8 +160,7 @@ public abstract class AbstractAdvancedEObjectFlatComboViewer implements
 		removeButton.setLayoutData(data);
 		removeButton
 				.setToolTipText(EEFRuntimeUIMessages.AdvancedEObjectFlatComboViewer_remove_tooltip);
-		EditingUtils.setEEFtype(removeButton,
-				"eef::AdvancedEObjectFlatComboViewer::removebutton");
+		EditingUtils.setEEFtype(removeButton, "eef::AdvancedEObjectFlatComboViewer::removebutton");
 
 		this.browseButton = createButton(parent, "", SWT.PUSH); //$NON-NLS-1$
 		browseButton.setImage(addImage);

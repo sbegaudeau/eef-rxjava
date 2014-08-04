@@ -219,4 +219,6 @@ public class RoomPropertiesEditionComponent extends SinglePartPropertiesEditingC
 
 	
 
+	
+
 }

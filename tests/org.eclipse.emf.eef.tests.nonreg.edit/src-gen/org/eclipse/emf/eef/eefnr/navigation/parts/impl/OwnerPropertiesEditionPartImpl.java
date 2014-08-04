@@ -1729,6 +1729,8 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		multipleSampleForReferencesTable.setContentProvider(contentProvider);
 		multipleSampleForReferencesTable.setInput(settings);
+		multipleSampleForReferencesTableBusinessFilters.clear();
+		multipleSampleForReferencesTableFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.Owner.Properties.multipleSampleForReferencesTable);
 		if (eefElementEditorReadOnlyState && multipleSampleForReferencesTable.getTable().isEnabled()) {
 			multipleSampleForReferencesTable.getTable().setEnabled(false);
@@ -1798,6 +1800,8 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		multipleSampleForAdvancedReferencesTable.setContentProvider(contentProvider);
 		multipleSampleForAdvancedReferencesTable.setInput(settings);
+		multipleSampleForAdvancedReferencesTableBusinessFilters.clear();
+		multipleSampleForAdvancedReferencesTableFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.Owner.Properties.multipleSampleForAdvancedReferencesTable);
 		if (eefElementEditorReadOnlyState && multipleSampleForAdvancedReferencesTable.getTable().isEnabled()) {
 			multipleSampleForAdvancedReferencesTable.setEnabled(false);
@@ -2063,6 +2067,8 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		singleSampleForReferencesTable.setContentProvider(contentProvider);
 		singleSampleForReferencesTable.setInput(settings);
+		singleSampleForReferencesTableBusinessFilters.clear();
+		singleSampleForReferencesTableFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.Owner.Properties.singleSampleForReferencesTable);
 		if (eefElementEditorReadOnlyState && singleSampleForReferencesTable.getTable().isEnabled()) {
 			singleSampleForReferencesTable.getTable().setEnabled(false);
@@ -2132,6 +2138,8 @@ public class OwnerPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		singleSampleForAdvancedReferencesTable.setContentProvider(contentProvider);
 		singleSampleForAdvancedReferencesTable.setInput(settings);
+		singleSampleForAdvancedReferencesTableBusinessFilters.clear();
+		singleSampleForAdvancedReferencesTableFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(NavigationViewsRepository.Owner.Properties.singleSampleForAdvancedReferencesTable);
 		if (eefElementEditorReadOnlyState && singleSampleForAdvancedReferencesTable.getTable().isEnabled()) {
 			singleSampleForAdvancedReferencesTable.getTable().setEnabled(false);

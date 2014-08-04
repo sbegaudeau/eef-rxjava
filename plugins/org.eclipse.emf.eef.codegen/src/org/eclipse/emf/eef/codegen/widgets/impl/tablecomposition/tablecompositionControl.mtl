@@ -55,6 +55,73 @@ if (isAccessible([editionElement.views->first().editorID()/])) {
 [editionElement.genericFilterUpdater(view, pec)/]
 [/template]
 
+[comment ===== Case : model = Containment(1) - view = TableComposition or AdvancedTableComposition===== /]
+[query public validCaseForSingleContainment(editionElement : PropertiesEditionElement) : Boolean = 
+	(not editionElement.hasModelNavigation())
+	and editionElement.model.isContainmentSingle() 
+	and (editionElement.representationName('TableComposition') or editionElement.representationName('AdvancedTableComposition')) /]
+
+[template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForSingleContainment())]
+
+/**
+ * Settings for [editionElement.name/] ReferencesTable
+ */
+protected [include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
+
+[/template]
+
+[template public declareEObjectUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides declareEObjectUpdater ? (editionElement.validCaseForSingleContainment())]
+if (event.getKind() == [include('org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent')/].ADD) {
+	[if (editionElement.model.eType.oclIsTypeOf(EClass))]
+	[include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext')/] context = new EReferencePropertiesEditionContext(editingContext, this, [editionElement.name.toJavaIdentifier()/]Settings, editingContext.getAdapterFactory());
+		[if (editionElement.hasStrictTypingFilter())]
+			[for (eClassifier : EClassifier | editionElement.strictTypingFiltersTypes())]
+	context.addInstanciableTypeFilter(new [include('org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext.InstanciableTypeFilter')/]() {
+		public boolean select([include('org.eclipse.emf.ecore.EClass')/] instanciableType) {
+			return [eClassifier.metamodelStrictFilterGetter()/][addImport(eClassifier.ePackage.qualifiedMetamodelPackage())/] == instanciableType;
+		}
+	});
+			[/for]
+		[/if]
+	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+	if (provider != null) {
+		[include('org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy')/] policy = provider.getPolicy(context);
+		if (policy instanceof [include('org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy')/]) {
+			policy.execute();
+		}
+	}
+	[/if]
+} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+	[include('org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext')/] context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+	[include('org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider')/] provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+	if (provider != null) {
+		[include('org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy')/] editionPolicy = provider.getPolicy(context);
+		if (editionPolicy != null) {
+			editionPolicy.execute();
+		}
+	}
+} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+	[editionElement.name.toJavaIdentifier()/]Settings.removeFromReference((EObject) event.getNewValue());
+}
+[/template]
+
+
+[template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides liveUpdater ? (editionElement.validCaseForSingleContainment())]
+if ([editionElement.metamodelGetter()/].equals(msg.getFeature()) && isAccessible([editionElement.views->first().editorID()/]))
+	[view.viewIdentifier(pec)/].update[editionElement.views->first().viewPackageSignature()/]();
+[/template]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.validCaseForSingleContainment())]
+if (isAccessible([editionElement.views->first().editorID()/])) {
+	[editionElement.name.toJavaIdentifier()/]Settings = new ReferencesTableSettings([pec.pecModelClass().toJavaIdentifier()/], [editionElement.metamodelGetter()/]);
+	[view.viewIdentifier(pec)/].init[editionElement.views->first().viewPackageSignature()/]([editionElement.name.toJavaIdentifier()/]Settings);
+}
+[/template]
+
+[template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides filterUpdater ? (editionElement.validCaseForSingleContainment())]
+[editionElement.genericFilterUpdater(view, pec)/]
+[/template]
+
 [comment ===== Case : model = Containment(*) in Simple Navigation - view = TableComposition or AdvancedTableComposition===== /]
 [query public validCaseForMultipleModelReference(editionElement : PropertiesEditionElement) : Boolean = 
 	editionElement.hasModelNavigation() 

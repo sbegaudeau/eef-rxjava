@@ -2220,6 +2220,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableRequiredProperty.setContentProvider(contentProvider);
 		referencestableRequiredProperty.setInput(settings);
+		referencestableRequiredPropertyBusinessFilters.clear();
+		referencestableRequiredPropertyFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TotalSample.Properties.referencestableRequiredProperty);
 		if (eefElementEditorReadOnlyState && referencestableRequiredProperty.getTable().isEnabled()) {
 			referencestableRequiredProperty.setEnabled(false);
@@ -2283,6 +2285,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		referencestableOptionalProperty.setContentProvider(contentProvider);
 		referencestableOptionalProperty.setInput(settings);
+		referencestableOptionalPropertyBusinessFilters.clear();
+		referencestableOptionalPropertyFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TotalSample.Properties.referencestableOptionalProperty);
 		if (eefElementEditorReadOnlyState && referencestableOptionalProperty.getTable().isEnabled()) {
 			referencestableOptionalProperty.setEnabled(false);
@@ -2692,6 +2696,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableRequiredProperty.setContentProvider(contentProvider);
 		advancedreferencestableRequiredProperty.setInput(settings);
+		advancedreferencestableRequiredPropertyBusinessFilters.clear();
+		advancedreferencestableRequiredPropertyFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TotalSample.Properties.advancedreferencestableRequiredProperty);
 		if (eefElementEditorReadOnlyState && advancedreferencestableRequiredProperty.getTable().isEnabled()) {
 			advancedreferencestableRequiredProperty.setEnabled(false);
@@ -2755,6 +2761,8 @@ public class TotalSamplePropertiesEditionPartImpl extends CompositePropertiesEdi
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		advancedreferencestableOptionalProperty.setContentProvider(contentProvider);
 		advancedreferencestableOptionalProperty.setInput(settings);
+		advancedreferencestableOptionalPropertyBusinessFilters.clear();
+		advancedreferencestableOptionalPropertyFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(EefnrViewsRepository.TotalSample.Properties.advancedreferencestableOptionalProperty);
 		if (eefElementEditorReadOnlyState && advancedreferencestableOptionalProperty.getTable().isEnabled()) {
 			advancedreferencestableOptionalProperty.setEnabled(false);

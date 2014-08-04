@@ -53,6 +53,11 @@ public class ResourceSetAdapter extends EContentAdapter {
 		eStructuralFeatureListeners = new HashMap<EStructuralFeature, List<PropertiesEditingSemanticListener>>();
 	}
 
+	@Override
+	public boolean isAdapterForType(Object type) {
+		return type == ResourceSetAdapter.class || ResourceSetAdapter.class.getName().equals(type);
+	}
+
 	/**
 	 * Activates the resource set adapter.
 	 */
@@ -132,10 +137,21 @@ public class ResourceSetAdapter extends EContentAdapter {
 	 *            the listener to remove
 	 */
 	public void removeEditingSemanticListener(PropertiesEditingSemanticListener listener) {
+		unregisterEditingSemanticListener(listener);
+
+		// if there are no listeners left we remove the adapter
+		if (eClassifierListeners.size() + eStructuralFeatureListeners.size() == 0)
+			deactivate();
+	}
+
+	/**
+	 * Unregisters the given listener
+	 * @param listener {@link PropertiesEditingSemanticListener} to unregister.
+	 */
+	public void unregisterEditingSemanticListener(PropertiesEditingSemanticListener listener) {
 		for (NotificationFilter filter : listener.getFilters()) {
 			if (filter instanceof EStructuralFeatureNotificationFilter) {
-				for (EStructuralFeature feature : ((EStructuralFeatureNotificationFilter)filter)
-						.getFeatures()) {
+				for (EStructuralFeature feature : ((EStructuralFeatureNotificationFilter)filter).getFeatures()) {
 					removeEditingSemanticListener(feature, listener);
 				}
 			} else if (filter instanceof EClassifierNotificationFilter) {
@@ -144,10 +160,6 @@ public class ResourceSetAdapter extends EContentAdapter {
 				}
 			}
 		}
-
-		// if there are no listeners left we remove the adapter
-		if (eClassifierListeners.size() + eStructuralFeatureListeners.size() == 0)
-			deactivate();
 	}
 	/**
 	 * Removes the given listener from the registered listeners.

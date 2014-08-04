@@ -12,9 +12,11 @@
 <feature
       id="org.eclipse.emf.eef.edt-feature"
       label="%featureName"
-      version="1.3.0.qualifier"
+      version="1.4.0.qualifier"
       provider-name="%providerName"
-      plugin="org.eclipse.emf.eef.branding">
+      plugin="org.eclipse.emf.eef.branding"
+      license-feature="org.eclipse.license"
+      license-feature-version="0.0.0">
 
    <description>
       %description

@@ -434,4 +434,6 @@ public class TalkPropertiesEditionComponent extends SinglePartPropertiesEditingC
 
 	
 
+	
+
 }

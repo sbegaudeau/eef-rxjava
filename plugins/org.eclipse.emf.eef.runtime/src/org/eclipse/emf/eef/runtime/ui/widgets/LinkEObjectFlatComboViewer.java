@@ -61,8 +61,8 @@ public class LinkEObjectFlatComboViewer extends AbstractAdvancedEObjectFlatCombo
 		FormData data = new FormData();
 		data.left = new FormAttachment(0, 0);
 		data.right = new FormAttachment(browseButton, 0);
-		data.top = new FormAttachment(0, 1);
-		valueLink.setLayoutData(data);
+		data.top = new FormAttachment(0, 4);
+		valueLink.setLayoutData(data); 
 		valueLink.addSelectionListener(new SelectionAdapter() {
 			/** (non-Javadoc)
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
