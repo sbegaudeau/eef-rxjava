@@ -25,7 +25,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.eef.extended.editor.provider.ExtendedEditPlugin;
 import org.eclipse.emf.eef.extended.editor.provider.ReferenceableObjectItemProvider;
-import org.eclipse.emf.eef.extended.query.EEFUnderstandableQuery;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.eef.extended.query.EEFUnderstandableQuery} object.
@@ -74,10 +73,7 @@ public class EEFUnderstandableQueryItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EEFUnderstandableQuery)object).getReferenceName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_EEFUnderstandableQuery_type") :
-			getString("_UI_EEFUnderstandableQuery_type") + " " + label;
+		return getString("_UI_EEFUnderstandableQuery_type");
 	}
 
 	/**

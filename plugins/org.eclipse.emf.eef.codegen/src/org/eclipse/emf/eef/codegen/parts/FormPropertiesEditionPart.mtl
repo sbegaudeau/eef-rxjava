@@ -122,7 +122,9 @@ public class [view.pepFormClass()/] extends [include(view.formQualifiedSuperclas
 	 * [peContext.associatedGenModel().generationMark()/]
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		view = widgetFactory.createComposite(parent)
+		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+		Form form = scrolledForm.getForm();
+		view = form.getBody();
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
 		view.setLayout(layout);

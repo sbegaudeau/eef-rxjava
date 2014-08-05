@@ -132,7 +132,7 @@ public class OCLQueryItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((OCLQuery)object).getReferenceName();
+		String label = ((OCLQuery)object).getQuery();
 		return label == null || label.length() == 0 ?
 			getString("_UI_OCLQuery_type") :
 			getString("_UI_OCLQuery_type") + " " + label;

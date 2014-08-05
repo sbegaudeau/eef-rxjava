@@ -48,11 +48,6 @@
          EEF integration for specific cases, like UML2.
       </description>
    </category-def>
-   <category-def name="eef.tests" label="EEF Tests Utilities">
-      <description>
-         Several utilities for testing EEF forms.
-      </description>
-   </category-def>
    <category-def name="eef.extension" label="EEF Extension">
       <description>
          EEF Extensions.

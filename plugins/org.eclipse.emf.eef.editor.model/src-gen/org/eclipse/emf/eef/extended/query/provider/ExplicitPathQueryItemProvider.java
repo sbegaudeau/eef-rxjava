@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.eef.extended.query.ExplicitPathQuery;
 import org.eclipse.emf.eef.extended.query.QueryPackage;
 
 /**
@@ -107,10 +106,7 @@ public class ExplicitPathQueryItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ExplicitPathQuery)object).getReferenceName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ExplicitPathQuery_type") :
-			getString("_UI_ExplicitPathQuery_type") + " " + label;
+		return getString("_UI_ExplicitPathQuery_type");
 	}
 
 	/**

@@ -75,15 +75,6 @@ public interface QueryPackage extends EPackage {
 	int EEF_UNDERSTANDABLE_QUERY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_UNDERSTANDABLE_QUERY__REFERENCE_NAME = EditorPackage.REFERENCEABLE_OBJECT__REFERENCE_NAME;
-
-	/**
 	 * The number of structural features of the '<em>EEF Understandable Query</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,15 +92,6 @@ public interface QueryPackage extends EPackage {
 	 * @generated
 	 */
 	int OCL_QUERY = 1;
-
-	/**
-	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OCL_QUERY__REFERENCE_NAME = EEF_UNDERSTANDABLE_QUERY__REFERENCE_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Query</b></em>' attribute.
@@ -147,15 +129,6 @@ public interface QueryPackage extends EPackage {
 	 * @generated
 	 */
 	int EXPLICIT_PATH_QUERY = 2;
-
-	/**
-	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPLICIT_PATH_QUERY__REFERENCE_NAME = EEF_UNDERSTANDABLE_QUERY__REFERENCE_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Query</b></em>' reference.
