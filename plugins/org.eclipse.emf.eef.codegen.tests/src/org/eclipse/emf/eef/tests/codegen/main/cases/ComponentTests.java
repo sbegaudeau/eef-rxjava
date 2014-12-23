@@ -347,29 +347,8 @@ public class ComponentTests extends AbstractAcceleoGenerator {
 	@Override
 	public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
-        if (!isInWorkspace(org.eclipse.emf.eef.components.ComponentsPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.components.ComponentsPackage.eINSTANCE);
-        }
-        if (!isInWorkspace(org.eclipse.emf.eef.mapping.MappingPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.MappingPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.MappingPackage.eINSTANCE);
-        }
-        if (!isInWorkspace(org.eclipse.emf.eef.mapping.navigation.NavigationPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.navigation.NavigationPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.navigation.NavigationPackage.eINSTANCE);
-        }
-        if (!isInWorkspace(org.eclipse.emf.eef.mapping.filters.FiltersPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.mapping.filters.FiltersPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.mapping.filters.FiltersPackage.eINSTANCE);
-        }
         if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
             resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
-        }
-        if (!isInWorkspace(org.eclipse.emf.eef.views.ViewsPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.views.ViewsPackage.eINSTANCE);
-        }
-        if (!isInWorkspace(org.eclipse.emf.eef.toolkits.ToolkitsPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.toolkits.ToolkitsPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.toolkits.ToolkitsPackage.eINSTANCE);
-        }
-        if (!isInWorkspace(org.eclipse.emf.eef.EEFGen.EEFGenPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.eclipse.emf.eef.EEFGen.EEFGenPackage.eINSTANCE.getNsURI(), org.eclipse.emf.eef.EEFGen.EEFGenPackage.eINSTANCE);
         }
         
         /*

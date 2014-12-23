@@ -12,7 +12,7 @@
 <feature
       id="org.eclipse.emf.eef.codegen.richtext-feature"
       label="%featureName"
-      version="1.4.0.qualifier"
+      version="1.5.0.qualifier"
       provider-name="%providerName">
 
    <description>
@@ -32,7 +32,7 @@ http://www.eclipse.org/legal/epl-v10.html
    </license>
 
    <requires>
-      <import feature="org.eclipse.emf.eef.richtext-feature" version="1.4.0.qualifier"/>
+      <import feature="org.eclipse.emf.eef.richtext-feature" version="1.5.0.qualifier"/>
    </requires>
 
    <plugin
