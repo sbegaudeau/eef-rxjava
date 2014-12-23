@@ -52,14 +52,14 @@ public abstract class AbstractComposedModelingBotTestCase extends SWTBotEclipseT
 	 */
 	public void setUp() throws Exception {
 		super.setUp();
-
+		
 		// remove existants projects
 		clearWorkspaceProjects();
 		File file = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile();
 		if (file.isDirectory()) {
 			deleteFolder(file);
 		}
-
+		
 		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
 			public void run() {
@@ -105,7 +105,6 @@ public abstract class AbstractComposedModelingBotTestCase extends SWTBotEclipseT
 		}
 		folder.delete();
 	}
-
 	@Override
 	protected void tearDown() throws Exception {
 		// Close an eventual popup if the test failed and a popup remain opened
@@ -127,8 +126,7 @@ public abstract class AbstractComposedModelingBotTestCase extends SWTBotEclipseT
 	/**
 	 * Test method. call <code>bot.runModelingBot("project/path.to/model.modelingbot");</code>
 	 * 
-	 * @throws Exception
-	 *             if any exception is thrown
+	 * @throws Exception if any exception is thrown
 	 */
 	public abstract void testModelingBot() throws Exception;
 }

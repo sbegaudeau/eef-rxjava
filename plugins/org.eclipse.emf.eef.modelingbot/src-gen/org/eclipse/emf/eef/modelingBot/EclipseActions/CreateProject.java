@@ -39,7 +39,7 @@ public interface CreateProject extends EclipseAction {
 	 * @return the value of the '<em>Project Name</em>' attribute.
 	 * @see #setProjectName(String)
 	 * @see org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage#getCreateProject_ProjectName()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getProjectName();

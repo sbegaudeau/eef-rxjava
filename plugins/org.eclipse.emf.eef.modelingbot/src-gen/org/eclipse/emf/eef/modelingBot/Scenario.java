@@ -18,7 +18,7 @@ package org.eclipse.emf.eef.modelingBot;
  *
  *
  * @see org.eclipse.emf.eef.modelingBot.ModelingBotPackage#getScenario()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='JavaTestExistsForScenarioConstraint'"
+ * @model
  * @generated
  */
 public interface Scenario extends Sequence {

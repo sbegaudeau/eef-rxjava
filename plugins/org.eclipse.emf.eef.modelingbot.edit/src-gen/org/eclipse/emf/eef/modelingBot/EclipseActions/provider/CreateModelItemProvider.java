@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.emf.eef.extended.editor.EditorPackage;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.CreateModel;
 import org.eclipse.emf.eef.modelingBot.EclipseActions.EclipseActionsPackage;
 
@@ -66,35 +65,11 @@ public class CreateModelItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addReferenceNamePropertyDescriptor(object);
 			addModelNamePropertyDescriptor(object);
 			addPathPropertyDescriptor(object);
 			addRootPropertyDescriptor(object);
-			addRootURIPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Reference Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addReferenceNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ReferenceableObject_referenceName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ReferenceableObject_referenceName_feature", "_UI_ReferenceableObject_type"),
-				 EditorPackage.Literals.REFERENCEABLE_OBJECT__REFERENCE_NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -164,28 +139,6 @@ public class CreateModelItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Root URI feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRootURIPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CreateModel_rootURI_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CreateModel_rootURI_feature", "_UI_CreateModel_type"),
-				 EclipseActionsPackage.Literals.CREATE_MODEL__ROOT_URI,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns CreateModel.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,10 +175,8 @@ public class CreateModelItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CreateModel.class)) {
-			case EclipseActionsPackage.CREATE_MODEL__REFERENCE_NAME:
 			case EclipseActionsPackage.CREATE_MODEL__MODEL_NAME:
 			case EclipseActionsPackage.CREATE_MODEL__PATH:
-			case EclipseActionsPackage.CREATE_MODEL__ROOT_URI:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

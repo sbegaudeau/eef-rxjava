@@ -23,11 +23,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getTypeURI <em>Type URI</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getComputedType <em>Computed Type</em>}</li>
  *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getEContainingFeature <em>EContaining Feature</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getEContainingFeatureURI <em>EContaining Feature URI</em>}</li>
- *   <li>{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getComputedEContainingFeature <em>Computed EContaining Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,47 +60,6 @@ public interface Add extends EditAction {
 	void setType(EClass value);
 
 	/**
-	 * Returns the value of the '<em><b>Type URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type URI</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type URI</em>' attribute.
-	 * @see #setTypeURI(String)
-	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage#getAdd_TypeURI()
-	 * @model
-	 * @generated
-	 */
-	String getTypeURI();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getTypeURI <em>Type URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type URI</em>' attribute.
-	 * @see #getTypeURI()
-	 * @generated
-	 */
-	void setTypeURI(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Computed Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Computed Type</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Computed Type</em>' reference.
-	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage#getAdd_ComputedType()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 * @generated
-	 */
-	EClass getComputedType();
-
-	/**
 	 * Returns the value of the '<em><b>EContaining Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -129,45 +84,4 @@ public interface Add extends EditAction {
 	 * @generated
 	 */
 	void setEContainingFeature(EStructuralFeature value);
-
-	/**
-	 * Returns the value of the '<em><b>EContaining Feature URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>EContaining Feature URI</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>EContaining Feature URI</em>' attribute.
-	 * @see #setEContainingFeatureURI(String)
-	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage#getAdd_EContainingFeatureURI()
-	 * @model
-	 * @generated
-	 */
-	String getEContainingFeatureURI();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.eef.modelingBot.EEFActions.Add#getEContainingFeatureURI <em>EContaining Feature URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>EContaining Feature URI</em>' attribute.
-	 * @see #getEContainingFeatureURI()
-	 * @generated
-	 */
-	void setEContainingFeatureURI(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Computed EContaining Feature</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Computed EContaining Feature</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Computed EContaining Feature</em>' reference.
-	 * @see org.eclipse.emf.eef.modelingBot.EEFActions.EEFActionsPackage#getAdd_ComputedEContainingFeature()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 * @generated
-	 */
-	EStructuralFeature getComputedEContainingFeature();
 } // Add

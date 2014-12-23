@@ -10,14 +10,10 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.CommandActionDelegate;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
@@ -119,15 +115,17 @@ public class EMFHelper {
 	public static String getEditorLabel(PropertiesEditionElement propertiesEditionElement, EObject referenceableObject, EObject container, SequenceType sequenceType) {
 		AdapterFactory adapterFactory = EEFRuntimePlugin.getDefault().getAdapterFactory();
 		EObject target = null;
-		if (SequenceType.DETAILS_PAGE == sequenceType || SequenceType.PROPERTIES_VIEW == sequenceType) {
+		if (SequenceType.DETAILS_PAGE == sequenceType) {
 			target = container;
 		} else if (SequenceType.WIZARD == sequenceType) {
-			if (((EditAction)referenceableObject).getComputedPropertiesEditionElement() != null) {
-				target = (EObject)EEFModelHelper.eGet(container, ((EditAction)referenceableObject).getComputedPropertiesEditionElement().getModel());
+			if (((EditAction)referenceableObject).getPropertiesEditionElement() != null) {
+				target = (EObject)EEFModelHelper.eGet(container, ((EditAction)referenceableObject).getPropertiesEditionElement().getModel());
 			} else {
 				target = container;
 				
 			}
+		}else if (SequenceType.PROPERTIES_VIEW == sequenceType) {
+			target = container;
 		}
 		assertFalse(target == null);
 		EStructuralFeature model = EMFHelper.map(target.eClass().getEPackage(), propertiesEditionElement.getModel());
@@ -147,30 +145,4 @@ public class EMFHelper {
 	}
 	
 
-	/**
-	 * Compute the value of a {@link EReference} following two input EReferences:
-	 * 	- a direct EReference
-	 *  - a URI Attribute
-	 * @param target the source {@link EObject}.
-	 * @param directReferenceFeature the direct {@link EReference}.
-	 * @param uriReferenceFeature the URI {@link EAttribute}.
-	 * @return the resulting {@link EReference}.
-	 */
-	@SuppressWarnings("unchecked")
-	public static <T> T computeEObject(EObject target, EStructuralFeature directReferenceFeature, EStructuralFeature uriReferenceFeature) {
-		if (target.eGet(directReferenceFeature) != null) {
-			return (T) target.eGet(directReferenceFeature);
-		} else if (target.eGet(uriReferenceFeature) != null && !"".equals(target.eGet(uriReferenceFeature))) {
-			URI uri = URI.createURI((String) target.eGet(uriReferenceFeature));
-			if (target.eResource() != null && target.eResource().getResourceSet() != null) {
-				Resource resource = target.eResource().getResourceSet().getResource(uri, true);
-				return (T) resource.getEObject(uri.fragment());
-			} else {
-				//TODO
-			}
-		
-		}
-		return null;
-	}
-	
 }

@@ -60,4 +60,14 @@ public interface IModelingBotInterpreter {
 	 */
 	void postProcessing(Sequence sequence);
 
+	/**
+	 * @return the PropertiesEditionContext
+	 */
+	PropertiesEditionContext getPropertiesEditionContext();
+
+	/**
+	 * @param context propertiesEditionContext to set
+	 */
+	void setPropertiesEditionContext(PropertiesEditionContext context);
+	
 }
