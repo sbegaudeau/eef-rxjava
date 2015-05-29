@@ -41,6 +41,7 @@ import org.eclipse.emf.eef.codegen.flow.util.GenmodelHelper;
 import org.eclipse.emf.eef.codegen.flow.var.WorkflowVariable;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.ui.EEFExtendedRuntime;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPartSite;
@@ -242,7 +243,7 @@ public class EEFEditorInitializer extends AbstractPropertiesInitializer {
 						workflow.execute(monitor);
 					}
 				};
-				new ProgressMonitorDialog(new Shell()).run(true, true, runnable);
+				new ProgressMonitorDialog(EditingUtils.getShell()).run(true, true, runnable);
 			}
 		}
 
