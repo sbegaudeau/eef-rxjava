@@ -103,9 +103,11 @@ public class EditingUtils {
 	 */
 	public static Shell getShell() {
 		Shell theShell = null;
-		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null)
+		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null) {
 			theShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-		theShell = new Shell();
+		} else {
+		    theShell = new Shell();
+		}
 		return theShell;
 	}
 }
