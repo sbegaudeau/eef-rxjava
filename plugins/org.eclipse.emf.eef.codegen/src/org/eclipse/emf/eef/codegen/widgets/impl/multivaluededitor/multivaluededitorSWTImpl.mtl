@@ -36,7 +36,7 @@
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'MultiValuedEditor')]
 	protected [include('org.eclipse.swt.widgets.Text')/] [editor.elementEditorName()/];
 	protected [include('org.eclipse.swt.widgets.Button')/] edit[editor.name.toJavaClassifier().disambiguation('view')/];
-	private [include('org.eclipse.emf.common.util.EList')/] [editor.elementEditorName()/]List;
+	protected [include('org.eclipse.emf.common.util.EList')/] [editor.elementEditorName()/]List;
 [/template]
 
 [template public implementation(editor : ElementEditor) overrides implementation ? (editor.representation.name = 'MultiValuedEditor')]

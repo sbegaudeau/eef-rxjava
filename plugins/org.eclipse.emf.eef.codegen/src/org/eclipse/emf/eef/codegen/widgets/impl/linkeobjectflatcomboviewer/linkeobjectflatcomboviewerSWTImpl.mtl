@@ -29,7 +29,7 @@
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'LinkEObjectFlatComboViewer')]
-	private [include('org.eclipse.emf.eef.runtime.ui.widgets.LinkEObjectFlatComboViewer')/] [editor.elementEditorName()/];
+	protected [include('org.eclipse.emf.eef.runtime.ui.widgets.LinkEObjectFlatComboViewer')/] [editor.elementEditorName()/];
 	protected [include('org.eclipse.jface.viewers.ViewerFilter')/] [editor.elementEditorName()/]Filter;
 [/template]
 
