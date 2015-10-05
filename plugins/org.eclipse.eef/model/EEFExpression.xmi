@@ -90,7 +90,7 @@
     <expressionDescriptions
         upperBound="-1"
         variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0"
-        label="semanticCandidatesExpression">
+        label="semanticCandidateExpression">
       <expression
           xsi:type="ecore:EAttribute"
           href="eef.ecore#//EEFGroupDescription/semanticCandidatesExpression"/>
@@ -115,7 +115,7 @@
     <expressionDescriptions
         upperBound="-1"
         variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.2/@variables.0"
-        label="semanticCandidatesExpression">
+        label="semanticCandidateExpression">
       <expression
           xsi:type="ecore:EAttribute"
           href="eef.ecore#//EEFContainerDescription/semanticCandidatesExpression"/>
@@ -136,9 +136,6 @@
   </expressionClasses>
   <expressionClasses
       label="Widget">
-    <variables
-        name="featureCandidate"
-        documentation="Represents a structural feature input. Used to be able to define a Widget for a structural feature type."/>
     <expressionDescriptions
         variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="labelExpression">
@@ -161,29 +158,6 @@
       <contextableElements
           href="eef.ecore#//EEFWidgetDescription"/>
     </expressionDescriptions>
-    <expressionDescriptions
-        upperBound="-1"
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.4/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
-        label="featureCandidatesExpression">
-      <expression
-          xsi:type="ecore:EAttribute"
-          href="eef.ecore#//EEFWidgetDescription/featureCandidatesExpression"/>
-      <returnType
-          xsi:type="ecore:EClass"
-          href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-      <contextableElements
-          href="eef.ecore#//EEFViewDescription"/>
-      <contextableElements
-          href="eef.ecore#//EEFPageDescription"/>
-      <contextableElements
-          href="eef.ecore#//EEFGroupDescription"/>
-      <contextableElements
-          href="eef.ecore#//EEFContainerDescription"/>
-      <contextableElements
-          href="eef.ecore#//EEFWidgetDescription"/>
-      <contextableElements
-          href="eef.ecore#//EEFWidgetDescription"/>
-    </expressionDescriptions>
   </expressionClasses>
   <expressionClasses
       label="Checkbox">
@@ -191,7 +165,7 @@
         name="newValue"
         documentation="The variable containing the new updated value."/>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="valueExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -213,7 +187,7 @@
           href="eef.ecore#//EEFCheckboxDescription"/>
     </expressionDescriptions>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.5/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.5/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="editExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -244,7 +218,7 @@
         name="candidate"
         documentation="Represents one of the possible inputs."/>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="valueExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -266,7 +240,7 @@
           href="eef.ecore#//EEFSelectDescription"/>
     </expressionDescriptions>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.6/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.6/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="editExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -289,7 +263,7 @@
     </expressionDescriptions>
     <expressionDescriptions
         upperBound="-1"
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="candidatesExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -311,7 +285,7 @@
           href="eef.ecore#//EEFSelectDescription"/>
     </expressionDescriptions>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.6/@variables.1 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.6/@variables.1 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="candidateDisplayExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -336,7 +310,7 @@
   <expressionClasses
       label="Label">
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="valueExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -367,7 +341,7 @@
         name="candidate"
         documentation="Represents the one of the possible inputs."/>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="valueExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -389,7 +363,7 @@
           href="eef.ecore#//EEFRadioDescription"/>
     </expressionDescriptions>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.8/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.8/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="editExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -412,7 +386,7 @@
     </expressionDescriptions>
     <expressionDescriptions
         upperBound="-1"
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="candidatesExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -434,7 +408,7 @@
           href="eef.ecore#//EEFRadioDescription"/>
     </expressionDescriptions>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.8/@variables.1 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.8/@variables.1 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="candidateDisplayExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -459,7 +433,7 @@
   <expressionClasses
       label="Link">
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="onClickExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -484,7 +458,7 @@
   <expressionClasses
       label="Image">
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="valueExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -512,7 +486,7 @@
         name="newValue"
         documentation="The variable containing the new updated values."/>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.11/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.11/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="editExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -534,7 +508,7 @@
           href="eef.ecore#//EEFTreeDescription"/>
     </expressionDescriptions>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="valueExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -568,7 +542,7 @@
         name="newValue"
         documentation="The variable containing the new updated values."/>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.12/@variables.0 //@expressionClasses.12/@variables.1 //@expressionClasses.12/@variables.2 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.12/@variables.0 //@expressionClasses.12/@variables.1 //@expressionClasses.12/@variables.2 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="semanticCandidateExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -597,7 +571,7 @@
         documentation="The variable containing the new updated value."/>
     <expressionDescriptions
         upperBound="-1"
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="candidatesExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -619,7 +593,7 @@
           href="eef.ecore#//EEFImagePickerDescription"/>
     </expressionDescriptions>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.13/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.13/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="editExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -641,7 +615,7 @@
           href="eef.ecore#//EEFImagePickerDescription"/>
     </expressionDescriptions>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="valueExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -771,7 +745,7 @@
         name="newValue"
         documentation="The variable containing the new updated values."/>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="valueExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -793,7 +767,7 @@
           href="eef.ecore#//EEFTableDescription"/>
     </expressionDescriptions>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.16/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.16/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="editExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -920,7 +894,7 @@
         name="newValue"
         documentation="The variable containing the new updated value."/>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="valueExpression">
       <expression
           xsi:type="ecore:EAttribute"
@@ -942,7 +916,7 @@
           href="eef.ecore#//EEFTextDescription"/>
     </expressionDescriptions>
     <expressionDescriptions
-        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.18/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0 //@expressionClasses.4/@variables.0"
+        variables="//@expressionClasses.0/@variables.0 //@expressionClasses.18/@variables.0 //@expressionClasses.1/@variables.0 //@expressionClasses.2/@variables.0 //@expressionClasses.3/@variables.0"
         label="editExpression">
       <expression
           xsi:type="ecore:EAttribute"

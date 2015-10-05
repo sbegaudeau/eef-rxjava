@@ -102,9 +102,9 @@
                 <styles xmi:type="notation:FontStyle" xmi:id="_VrThtFFwEeWcLrz3KaVwmA" fontName="Droid Sans" fontHeight="8"/>
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_VrThtVFwEeWcLrz3KaVwmA"/>
               </children>
-              <children xmi:type="notation:Node" xmi:id="_VrUIwFFwEeWcLrz3KaVwmA" type="3010" element="_VrHUcFFwEeWcLrz3KaVwmA">
-                <styles xmi:type="notation:FontStyle" xmi:id="_VrUIwVFwEeWcLrz3KaVwmA" fontName="Droid Sans" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_VrUIwlFwEeWcLrz3KaVwmA"/>
+              <children xmi:type="notation:Node" xmi:id="_kD3VwG6HEeW0lZkEgr7DhA" type="3010" element="_kDOckG6HEeW0lZkEgr7DhA">
+                <styles xmi:type="notation:FontStyle" xmi:id="_kD3VwW6HEeW0lZkEgr7DhA" fontName="Droid Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_kD3Vwm6HEeW0lZkEgr7DhA"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_VrSTlVFwEeWcLrz3KaVwmA"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_VrSTllFwEeWcLrz3KaVwmA"/>
@@ -119,9 +119,9 @@
                 <styles xmi:type="notation:FontStyle" xmi:id="_bpSjEVFwEeWcLrz3KaVwmA" fontName="Droid Sans" fontHeight="8" bold="true"/>
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_bpSjElFwEeWcLrz3KaVwmA"/>
               </children>
-              <children xmi:type="notation:Node" xmi:id="_bpSjE1FwEeWcLrz3KaVwmA" type="3010" element="_bpDSgVFwEeWcLrz3KaVwmA">
-                <styles xmi:type="notation:FontStyle" xmi:id="_bpSjFFFwEeWcLrz3KaVwmA" fontName="Droid Sans" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_bpSjFVFwEeWcLrz3KaVwmA"/>
+              <children xmi:type="notation:Node" xmi:id="_kD6ZEG6HEeW0lZkEgr7DhA" type="3010" element="_kDQ40G6HEeW0lZkEgr7DhA">
+                <styles xmi:type="notation:FontStyle" xmi:id="_kD6ZEW6HEeW0lZkEgr7DhA" fontName="Droid Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_kD6ZEm6HEeW0lZkEgr7DhA"/>
               </children>
               <children xmi:type="notation:Node" xmi:id="_bpTKIFFwEeWcLrz3KaVwmA" type="3010" element="_bpEgoFFwEeWcLrz3KaVwmA">
                 <styles xmi:type="notation:FontStyle" xmi:id="_bpTKIVFwEeWcLrz3KaVwmA" fontName="Droid Sans" fontHeight="8"/>
@@ -147,10 +147,6 @@
               <children xmi:type="notation:Node" xmi:id="_b94TAFFwEeWcLrz3KaVwmA" type="3010" element="_b9ppgFFwEeWcLrz3KaVwmA">
                 <styles xmi:type="notation:FontStyle" xmi:id="_b94TAVFwEeWcLrz3KaVwmA" fontName="Droid Sans" fontHeight="8"/>
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_b94TAlFwEeWcLrz3KaVwmA"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_b946EFFwEeWcLrz3KaVwmA" type="3010" element="_b9qQkFFwEeWcLrz3KaVwmA">
-                <styles xmi:type="notation:FontStyle" xmi:id="_b946EVFwEeWcLrz3KaVwmA" fontName="Droid Sans" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_b946ElFwEeWcLrz3KaVwmA"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_b93E4VFwEeWcLrz3KaVwmA"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_b93E4lFwEeWcLrz3KaVwmA"/>
@@ -2411,10 +2407,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_VrHUcFFwEeWcLrz3KaVwmA" name="semanticCandidatesExpression : Expression" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="eef.ecore#//EEFGroupDescription/semanticCandidatesExpression"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="eef.ecore#//EEFGroupDescription/semanticCandidatesExpression"/>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_VrH7gFFwEeWcLrz3KaVwmA" labelAlignment="LEFT">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kDOckG6HEeW0lZkEgr7DhA" name="semanticCandidateExpression : Expression" tooltipText="">
+          <target xmi:type="ecore:EAttribute" href="eef.ecore#//EEFGroupDescription/semanticCandidateExpression"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="eef.ecore#//EEFGroupDescription/semanticCandidateExpression"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_kDPDoG6HEeW0lZkEgr7DhA" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
@@ -2457,10 +2453,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_bpDSgVFwEeWcLrz3KaVwmA" name="semanticCandidatesExpression : Expression" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="eef.ecore#//EEFContainerDescription/semanticCandidatesExpression"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="eef.ecore#//EEFContainerDescription/semanticCandidatesExpression"/>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_bpD5kFFwEeWcLrz3KaVwmA" labelAlignment="LEFT">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_kDQ40G6HEeW0lZkEgr7DhA" name="semanticCandidateExpression : Expression" tooltipText="">
+          <target xmi:type="ecore:EAttribute" href="eef.ecore#//EEFContainerDescription/semanticCandidateExpression"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="eef.ecore#//EEFContainerDescription/semanticCandidateExpression"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_kDQ40W6HEeW0lZkEgr7DhA" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
@@ -2525,14 +2521,6 @@
           <target xmi:type="ecore:EAttribute" href="eef.ecore#//EEFWidgetDescription/labelExpression"/>
           <semanticElements xmi:type="ecore:EAttribute" href="eef.ecore#//EEFWidgetDescription/labelExpression"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_b9ppgVFwEeWcLrz3KaVwmA" labelAlignment="LEFT">
-            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
-        </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_b9qQkFFwEeWcLrz3KaVwmA" name="featureCandidatesExpression : Expression" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="eef.ecore#//EEFWidgetDescription/featureCandidatesExpression"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="eef.ecore#//EEFWidgetDescription/featureCandidatesExpression"/>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_b9qQkVFwEeWcLrz3KaVwmA" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
@@ -10890,8 +10878,6 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_ylfyw2LMEeWHEOZSYzMvQg" name="View">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -10921,10 +10907,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_ylfyxWLMEeWHEOZSYzMvQg" name="Page">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -10962,10 +10948,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_ylfyx2LMEeWHEOZSYzMvQg" name="Group">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -11006,10 +10992,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_ylfyyWLMEeWHEOZSYzMvQg" name="Container">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -11036,6 +11022,8 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_LDDmcGLQEeWL_YVya3JVNw" name="EEFViewDescription">
         <target xmi:type="ecore:EClass" href="eef.ecore#//EEFViewDescription"/>
@@ -11777,8 +11765,6 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@additionalLayers[name='Variables']/@edgeMappings[name='Variables']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_BLeEAGLVEeWL_YVya3JVNw" name="Widget">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -11810,6 +11796,8 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_IQJnsGLVEeWL_YVya3JVNw" sourceNode="_EXde4GLVEeWL_YVya3JVNw" targetNode="_I5GI8GLTEeWL_YVya3JVNw">
         <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.4/@expressionDescriptions.0"/>
@@ -11828,8 +11816,6 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@edgeMappings[name='Expressions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_OEEHEGLVEeWL_YVya3JVNw" name="Checkbox">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -11870,6 +11856,8 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_RP-CYGLVEeWL_YVya3JVNw" sourceNode="_PhE3oGLVEeWL_YVya3JVNw" targetNode="_I5NdsGLTEeWL_YVya3JVNw">
         <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.5/@expressionDescriptions.0"/>
@@ -11888,8 +11876,6 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@edgeMappings[name='Expressions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Wlk1IGLVEeWL_YVya3JVNw" name="Select">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -11960,6 +11946,8 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ZLjY4GLVEeWL_YVya3JVNw" sourceNode="_Xe30oGLVEeWL_YVya3JVNw" targetNode="_I5P58GLTEeWL_YVya3JVNw">
         <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.6/@expressionDescriptions.0"/>
@@ -11994,8 +11982,6 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@edgeMappings[name='Expressions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_jcAVAGLVEeWL_YVya3JVNw" name="Label">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12011,6 +11997,8 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='ExpressionDescription']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_mUhaQGLVEeWL_YVya3JVNw" sourceNode="_lMrBYGLVEeWL_YVya3JVNw" targetNode="_I5Yc0GLTEeWL_YVya3JVNw">
         <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.7/@expressionDescriptions.0"/>
@@ -12021,8 +12009,6 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@edgeMappings[name='Expressions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_s-6OoGLVEeWL_YVya3JVNw" name="Radio">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12096,6 +12082,8 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Q9WcYGNZEeWL_YVya3JVNw" sourceNode="_kejH8GNVEeWL_YVya3JVNw" targetNode="_I5ZD4GLTEeWL_YVya3JVNw">
         <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.8/@expressionDescriptions.0"/>
@@ -12130,8 +12118,6 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@edgeMappings[name='Expressions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_7mohAGNZEeWL_YVya3JVNw" name="Link">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12147,6 +12133,8 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='ExpressionDescription']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8SVJYGNZEeWL_YVya3JVNw" sourceNode="_78KFEGNZEeWL_YVya3JVNw" targetNode="_I5iN0GLTEeWL_YVya3JVNw">
         <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.9/@expressionDescriptions.0"/>
@@ -12157,8 +12145,6 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@edgeMappings[name='Expressions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_GnrMkGNaEeWL_YVya3JVNw" name="Image">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12174,10 +12160,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='ExpressionDescription']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_HmXCYGNaEeWL_YVya3JVNw" name="Tree">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12218,10 +12204,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_HyWP8GNaEeWL_YVya3JVNw" name="TreeDialogSelect">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12273,10 +12259,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_H8GB0GNaEeWL_YVya3JVNw" name="ImagePicker">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12328,10 +12314,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_IDseoGNaEeWL_YVya3JVNw" name="Column">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12369,10 +12355,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_IK-yYGNaEeWL_YVya3JVNw" name="Line">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12413,10 +12399,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_KeefAGNaEeWL_YVya3JVNw" name="Table">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12454,6 +12440,8 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_XpJJgGNaEeWL_YVya3JVNw" sourceNode="_MthJcGNaEeWL_YVya3JVNw" targetNode="_I5i04GLTEeWL_YVya3JVNw">
         <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.10/@expressionDescriptions.0"/>
@@ -12560,8 +12548,6 @@
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@edgeMappings[name='Expressions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Uzi4kGNeEeWL_YVya3JVNw" name="InterpretedTreeDescription">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12632,10 +12618,10 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_VF8QIGNeEeWL_YVya3JVNw" name="Text">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -12676,6 +12662,8 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Design']/@defaultLayer/@containerMappings[name='ExpressionClass']/@subContainerMappings[name='Variable']"/>
         </ownedDiagramElements>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_cLMbkGNeEeWL_YVya3JVNw" sourceNode="_WBfSYGNeEeWL_YVya3JVNw" targetNode="_I5IlMGLTEeWL_YVya3JVNw">
         <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.17/@expressionDescriptions.0"/>
@@ -14166,9 +14154,7 @@
       <target xmi:type="expression:ExpressionPackage" href="EEFExpression.xmi#/"/>
     </ownedRepresentations>
     <ownedRepresentations xmi:type="table:DTable" xmi:id="_5egJQGauEeW8k5mrCNvB9w" name="ExpressionToVariables" headerColumnWidth="212">
-      <target xmi:type="expression:ExpressionPackage" href="EEFExpression.xmi#/"/>
       <lines xmi:type="table:DLine" xmi:id="_5egJQWauEeW8k5mrCNvB9w" label="View">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJQmauEeW8k5mrCNvB9w" label="labelExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.0/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.0/@expressionDescriptions.0"/>
@@ -14179,11 +14165,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJRGauEeW8k5mrCNvB9w" label="Page">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJRWauEeW8k5mrCNvB9w" label="semanticCandidateExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.1/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.1/@expressionDescriptions.0"/>
@@ -14214,11 +14200,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJSWauEeW8k5mrCNvB9w" label="Group">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJSmauEeW8k5mrCNvB9w" label="labelExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.2/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.2/@expressionDescriptions.0"/>
@@ -14259,11 +14245,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJUmauEeW8k5mrCNvB9w" label="Container">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJU2auEeW8k5mrCNvB9w" label="semanticCandidatesExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.3/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.3/@expressionDescriptions.0"/>
@@ -14289,11 +14275,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJWGauEeW8k5mrCNvB9w" label="Widget">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJWWauEeW8k5mrCNvB9w" label="labelExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.4/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.4/@expressionDescriptions.0"/>
@@ -14349,11 +14335,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJZGauEeW8k5mrCNvB9w" label="Checkbox">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJZWauEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.5/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.5/@expressionDescriptions.0"/>
@@ -14419,11 +14405,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJcGauEeW8k5mrCNvB9w" label="Select">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJcWauEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.6/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.6/@expressionDescriptions.0"/>
@@ -14554,11 +14540,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJh2auEeW8k5mrCNvB9w" label="Label">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJiGauEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.7/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.7/@expressionDescriptions.0"/>
@@ -14589,11 +14575,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJjWauEeW8k5mrCNvB9w" label="Radio">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJjmauEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.8/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.8/@expressionDescriptions.0"/>
@@ -14724,11 +14710,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJpGauEeW8k5mrCNvB9w" label="Link">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJpWauEeW8k5mrCNvB9w" label="onClickExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.9/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.9/@expressionDescriptions.0"/>
@@ -14759,11 +14745,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJqmauEeW8k5mrCNvB9w" label="Image">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJq2auEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.10/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.10/@expressionDescriptions.0"/>
@@ -14794,11 +14780,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJsGauEeW8k5mrCNvB9w" label="Tree">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJsWauEeW8k5mrCNvB9w" label="editExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.11/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.11/@expressionDescriptions.0"/>
@@ -14864,11 +14850,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJvGauEeW8k5mrCNvB9w" label="TreeDialogSelect">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJvWauEeW8k5mrCNvB9w" label="semanticCandidateExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.12/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.12/@expressionDescriptions.0"/>
@@ -14914,11 +14900,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJxWauEeW8k5mrCNvB9w" label="ImagePicker">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJxmauEeW8k5mrCNvB9w" label="candidatesExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.13/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.13/@expressionDescriptions.0"/>
@@ -15014,11 +15000,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJ1mauEeW8k5mrCNvB9w" label="Column">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJ12auEeW8k5mrCNvB9w" label="headerExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.14/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.14/@expressionDescriptions.0"/>
@@ -15074,11 +15060,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJ4mauEeW8k5mrCNvB9w" label="Line">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJ42auEeW8k5mrCNvB9w" label="headerExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.15/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.15/@expressionDescriptions.0"/>
@@ -15134,11 +15120,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJ7mauEeW8k5mrCNvB9w" label="Table">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJ72auEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.16/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.16/@expressionDescriptions.0"/>
@@ -15204,11 +15190,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egJ-mauEeW8k5mrCNvB9w" label="InterpretedTreeDescription">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
         <lines xmi:type="table:DLine" xmi:id="_5egJ-2auEeW8k5mrCNvB9w" label="rootsExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.17/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.17/@expressionDescriptions.0"/>
@@ -15319,11 +15305,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_5egKEWauEeW8k5mrCNvB9w" label="Text">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
         <lines xmi:type="table:DLine" xmi:id="_5egKEmauEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.18/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.18/@expressionDescriptions.0"/>
@@ -15389,8 +15375,9 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
       </lines>
       <columns xmi:type="table:DTargetColumn" xmi:id="_5egKHWauEeW8k5mrCNvB9w" label="View&#xA;viewSemanticCandidate" cells="_5egJQ2auEeW8k5mrCNvB9w _5egJRmauEeW8k5mrCNvB9w _5egJS2auEeW8k5mrCNvB9w _5egJT2auEeW8k5mrCNvB9w _5egJVGauEeW8k5mrCNvB9w _5egJWmauEeW8k5mrCNvB9w _5egJX2auEeW8k5mrCNvB9w _5egJZmauEeW8k5mrCNvB9w _5egJa2auEeW8k5mrCNvB9w _5egJcmauEeW8k5mrCNvB9w _5egJd2auEeW8k5mrCNvB9w _5egJfWauEeW8k5mrCNvB9w _5egJgmauEeW8k5mrCNvB9w _5egJiWauEeW8k5mrCNvB9w _5egJj2auEeW8k5mrCNvB9w _5egJlGauEeW8k5mrCNvB9w _5egJmmauEeW8k5mrCNvB9w _5egJn2auEeW8k5mrCNvB9w _5egJpmauEeW8k5mrCNvB9w _5egJrGauEeW8k5mrCNvB9w _5egJsmauEeW8k5mrCNvB9w _5egJuGauEeW8k5mrCNvB9w _5egJvmauEeW8k5mrCNvB9w _5egJx2auEeW8k5mrCNvB9w _5egJzGauEeW8k5mrCNvB9w _5egJ0mauEeW8k5mrCNvB9w _5egJ2GauEeW8k5mrCNvB9w _5egJ3WauEeW8k5mrCNvB9w _5egJ5GauEeW8k5mrCNvB9w _5egJ6WauEeW8k5mrCNvB9w _5egJ8GauEeW8k5mrCNvB9w _5egJ9WauEeW8k5mrCNvB9w _5egJ_GauEeW8k5mrCNvB9w _5egKAWauEeW8k5mrCNvB9w _5egKB2auEeW8k5mrCNvB9w _5egKDGauEeW8k5mrCNvB9w _5egKE2auEeW8k5mrCNvB9w _b6OrsGaxEeW8k5mrCNvB9w _5egKGGauEeW8k5mrCNvB9w" width="100">
         <target xmi:type="expression:Variable" href="EEFExpression.xmi#//@expressionClasses.0/@variables.0"/>
@@ -15498,11 +15485,10 @@
         <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']/@ownedColumnMappings.0"/>
       </columns>
       <description xmi:type="description_2:CrossTableDescription" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToVariables']"/>
+      <target xmi:type="expression:ExpressionPackage" href="EEFExpression.xmi#/"/>
     </ownedRepresentations>
     <ownedRepresentations xmi:type="table:DTable" xmi:id="_gruPUGayEeW8k5mrCNvB9w" name="ExpressionToContextableElements" headerColumnWidth="158">
-      <target xmi:type="expression:ExpressionPackage" href="EEFExpression.xmi#/"/>
       <lines xmi:type="table:DLine" xmi:id="_gruPUWayEeW8k5mrCNvB9w" label="View">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPUmayEeW8k5mrCNvB9w" label="labelExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.0/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.0/@expressionDescriptions.0"/>
@@ -15513,11 +15499,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.0"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPU2ayEeW8k5mrCNvB9w" label="Page">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPVGayEeW8k5mrCNvB9w" label="semanticCandidateExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.1/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.1/@expressionDescriptions.0"/>
@@ -15548,11 +15534,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.1"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPVmayEeW8k5mrCNvB9w" label="Group">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPV2ayEeW8k5mrCNvB9w" label="labelExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.2/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.2/@expressionDescriptions.0"/>
@@ -15593,11 +15579,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.2"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPWWayEeW8k5mrCNvB9w" label="Container">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPWmayEeW8k5mrCNvB9w" label="semanticCandidatesExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.3/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.3/@expressionDescriptions.0"/>
@@ -15623,11 +15609,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.3"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPW2ayEeW8k5mrCNvB9w" label="Widget">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPXGayEeW8k5mrCNvB9w" label="labelExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.4/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.4/@expressionDescriptions.0"/>
@@ -15688,11 +15674,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.4"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPXmayEeW8k5mrCNvB9w" label="Checkbox">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPX2ayEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.5/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.5/@expressionDescriptions.0"/>
@@ -15763,11 +15749,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.5"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPYWayEeW8k5mrCNvB9w" label="Select">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPYmayEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.6/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.6/@expressionDescriptions.0"/>
@@ -15908,11 +15894,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.6"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPZmayEeW8k5mrCNvB9w" label="Label">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPZ2ayEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.7/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.7/@expressionDescriptions.0"/>
@@ -15948,11 +15934,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.7"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPaGayEeW8k5mrCNvB9w" label="Radio">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPaWayEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.8/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.8/@expressionDescriptions.0"/>
@@ -16093,11 +16079,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.8"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPbWayEeW8k5mrCNvB9w" label="Link">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPbmayEeW8k5mrCNvB9w" label="onClickExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.9/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.9/@expressionDescriptions.0"/>
@@ -16133,11 +16119,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.9"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPb2ayEeW8k5mrCNvB9w" label="Image">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPcGayEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.10/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.10/@expressionDescriptions.0"/>
@@ -16173,11 +16159,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.10"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPcWayEeW8k5mrCNvB9w" label="Tree">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPcmayEeW8k5mrCNvB9w" label="editExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.11/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.11/@expressionDescriptions.0"/>
@@ -16248,11 +16234,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.11"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPdGayEeW8k5mrCNvB9w" label="TreeDialogSelect">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPdWayEeW8k5mrCNvB9w" label="semanticCandidateExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.12/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.12/@expressionDescriptions.0"/>
@@ -16288,11 +16274,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.12"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPdmayEeW8k5mrCNvB9w" label="ImagePicker">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPd2ayEeW8k5mrCNvB9w" label="candidatesExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.13/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.13/@expressionDescriptions.0"/>
@@ -16398,11 +16384,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.13"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPemayEeW8k5mrCNvB9w" label="Column">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPe2ayEeW8k5mrCNvB9w" label="headerExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.14/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.14/@expressionDescriptions.0"/>
@@ -16473,11 +16459,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.14"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPfWayEeW8k5mrCNvB9w" label="Line">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPfmayEeW8k5mrCNvB9w" label="headerExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.15/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.15/@expressionDescriptions.0"/>
@@ -16548,11 +16534,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.15"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPgGayEeW8k5mrCNvB9w" label="Table">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPgWayEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.16/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.16/@expressionDescriptions.0"/>
@@ -16623,11 +16609,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.16"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPg2ayEeW8k5mrCNvB9w" label="InterpretedTreeDescription">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPhGayEeW8k5mrCNvB9w" label="rootsExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.17/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.17/@expressionDescriptions.0"/>
@@ -16768,11 +16754,11 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.17"/>
       </lines>
       <lines xmi:type="table:DLine" xmi:id="_gruPiGayEeW8k5mrCNvB9w" label="Text">
-        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
         <lines xmi:type="table:DLine" xmi:id="_gruPiWayEeW8k5mrCNvB9w" label="valueExpression">
           <target xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.18/@expressionDescriptions.0"/>
           <semanticElements xmi:type="expression:ExpressionDescription" href="EEFExpression.xmi#//@expressionClasses.18/@expressionDescriptions.0"/>
@@ -16843,8 +16829,9 @@
             <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@intersection.0"/>
           </cells>
         </lines>
-        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
         <originMapping xmi:type="description_2:LineMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedLineMappings[name='ExpressionClass']"/>
+        <target xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
+        <semanticElements xmi:type="expression:ExpressionClass" href="EEFExpression.xmi#//@expressionClasses.18"/>
       </lines>
       <columns xmi:type="table:DTargetColumn" xmi:id="_-Is1QGazEeW8k5mrCNvB9w" label="EEFViewDescription" cells="_SvPRoGdHEeWzY_kIitvDmg _SvQfwGdHEeWzY_kIitvDmg _SvQfwWdHEeWzY_kIitvDmg _SvQfwmdHEeWzY_kIitvDmg _SvQfxGdHEeWzY_kIitvDmg _SvRG0WdHEeWzY_kIitvDmg _SvRG1GdHEeWzY_kIitvDmg _SvRt42dHEeWzY_kIitvDmg _SvSU8mdHEeWzY_kIitvDmg _SvS8AWdHEeWzY_kIitvDmg _SvS8BWdHEeWzY_kIitvDmg _SvTjE2dHEeWzY_kIitvDmg _SvUKImdHEeWzY_kIitvDmg _SvUxMWdHEeWzY_kIitvDmg _SvUxNWdHEeWzY_kIitvDmg _SvVYQ2dHEeWzY_kIitvDmg _SvV_UWdHEeWzY_kIitvDmg _SvV_VWdHEeWzY_kIitvDmg _SvWmY2dHEeWzY_kIitvDmg _SvXNcWdHEeWzY_kIitvDmg _SvXNdWdHEeWzY_kIitvDmg _SvX0g2dHEeWzY_kIitvDmg _SvYbkWdHEeWzY_kIitvDmg _SvYblWdHEeWzY_kIitvDmg _SvZComdHEeWzY_kIitvDmg _SvZpsWdHEeWzY_kIitvDmg _SvaQwWdHEeWzY_kIitvDmg _Sva30WdHEeWzY_kIitvDmg _Sva31WdHEeWzY_kIitvDmg _Svbe4mdHEeWzY_kIitvDmg _Svbe5mdHEeWzY_kIitvDmg _SvcF82dHEeWzY_kIitvDmg _SvctAGdHEeWzY_kIitvDmg _SvctBGdHEeWzY_kIitvDmg _SvdUEWdHEeWzY_kIitvDmg _SvdUFWdHEeWzY_kIitvDmg _Svd7ImdHEeWzY_kIitvDmg _Svd7JmdHEeWzY_kIitvDmg _SveiMmdHEeWzY_kIitvDmg" width="72">
         <target xmi:type="ecore:EClass" href="eef.ecore#//EEFViewDescription"/>
@@ -16982,6 +16969,7 @@
         <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']/@ownedColumnMappings.0"/>
       </columns>
       <description xmi:type="description_2:CrossTableDescription" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='ExpressionToContextableElements']"/>
+      <target xmi:type="expression:ExpressionPackage" href="EEFExpression.xmi#/"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.expression.design/description/expression.odesign#//@ownedViewpoints[name='Design']"/>
   </ownedViews>

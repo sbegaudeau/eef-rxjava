@@ -5,10 +5,10 @@
     editorDirectory="/org.eclipse.eef.editor/src-gen" modelPluginID="org.eclipse.eef"
     modelName="Eef" nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
-    containmentProxies="true" complianceLevel="7.0" copyrightFields="false" usedGenPackages="../../org.eclipse.sirius.context/model/context.genmodel#//context"
+    containmentProxies="true" complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../org.eclipse.sirius.context/model/context.genmodel#//context"
     importOrganizing="true" cleanup="true">
   <foreignModel>eef.ecore</foreignModel>
-  <genPackages prefix="Eef" basePackage="org.eclipse.eef" disposableProviderFactory="true"
+  <genPackages prefix="Eef" basePackage="org.eclipse" disposableProviderFactory="true"
       ecorePackage="eef.ecore#/">
     <genDataTypes ecoreDataType="eef.ecore#//Expression"/>
     <genDataTypes ecoreDataType="eef.ecore#//TypeName"/>
@@ -35,12 +35,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFGroupDescription/identifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFGroupDescription/labelExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFGroupDescription/domainClass"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFGroupDescription/semanticCandidatesExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFGroupDescription/semanticCandidateExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eef.ecore#//EEFGroupDescription/container"/>
     </genClasses>
     <genClasses ecoreClass="eef.ecore#//EEFContainerDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFContainerDescription/identifier"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFContainerDescription/semanticCandidatesExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFContainerDescription/semanticCandidateExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFContainerDescription/domainClass"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFContainerDescription/layoutColumnCount"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference eef.ecore#//EEFContainerDescription/containers"/>
@@ -49,7 +49,6 @@
     <genClasses ecoreClass="eef.ecore#//EEFWidgetDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFWidgetDescription/identifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFWidgetDescription/labelExpression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFWidgetDescription/featureCandidatesExpression"/>
     </genClasses>
     <genClasses ecoreClass="eef.ecore#//EEFJavaExtensionDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute eef.ecore#//EEFJavaExtensionDescription/qualifiedName"/>

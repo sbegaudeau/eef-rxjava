@@ -117,7 +117,7 @@
         <details key="documentation" value="Defines the context in which the Group is used. "/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidatesExpression"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidateExpression"
         eType="#//Expression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The elements that are represented. If not specified, the EEF runtime reuses the context of the Page for the Group."/>
@@ -140,7 +140,7 @@
         <details key="documentation" value="Used to identify a specific Container in a Group."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidatesExpression"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidateExpression"
         eType="#//Expression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The elements that are represented. "/>
@@ -184,12 +184,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="#//Expression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The label of the Widget visible by the end-users."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureCandidatesExpression"
-        eType="#//Expression">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Represents the structural feature associated to a widget."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
