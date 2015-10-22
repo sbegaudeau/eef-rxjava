@@ -26,6 +26,9 @@ package org.eclipse.eef;
  *   <li>{@link org.eclipse.eef.EEFGroupDescription#getDomainClass <em>Domain Class</em>}</li>
  *   <li>{@link org.eclipse.eef.EEFGroupDescription#getSemanticCandidateExpression <em>Semantic Candidate Expression</em>}</li>
  *   <li>{@link org.eclipse.eef.EEFGroupDescription#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.eclipse.eef.EEFGroupDescription#getCollapsibleExpression <em>Collapsible Expression</em>}</li>
+ *   <li>{@link org.eclipse.eef.EEFGroupDescription#getCollapsedByDefaultExpression <em>Collapsed By Default Expression</em>}</li>
+ *   <li>{@link org.eclipse.eef.EEFGroupDescription#getValidationExpression <em>Validation Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.eef.EefPackage#getEEFGroupDescription()
@@ -157,5 +160,80 @@ public interface EEFGroupDescription extends ContextableElement {
 	 * @generated
 	 */
 	void setContainer(EEFContainerDescription value);
+
+	/**
+	 * Returns the value of the '<em><b>Collapsible Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Defines if a group is collapsible or not.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Collapsible Expression</em>' attribute.
+	 * @see #setCollapsibleExpression(String)
+	 * @see org.eclipse.eef.EefPackage#getEEFGroupDescription_CollapsibleExpression()
+	 * @model dataType="org.eclipse.eef.Expression"
+	 * @generated
+	 */
+	String getCollapsibleExpression();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.eef.EEFGroupDescription#getCollapsibleExpression <em>Collapsible Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Collapsible Expression</em>' attribute.
+	 * @see #getCollapsibleExpression()
+	 * @generated
+	 */
+	void setCollapsibleExpression(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Collapsed By Default Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Defines if a collapsible group must be collapsed by default or not.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Collapsed By Default Expression</em>' attribute.
+	 * @see #setCollapsedByDefaultExpression(String)
+	 * @see org.eclipse.eef.EefPackage#getEEFGroupDescription_CollapsedByDefaultExpression()
+	 * @model dataType="org.eclipse.eef.Expression"
+	 * @generated
+	 */
+	String getCollapsedByDefaultExpression();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.eef.EEFGroupDescription#getCollapsedByDefaultExpression <em>Collapsed By Default Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Collapsed By Default Expression</em>' attribute.
+	 * @see #getCollapsedByDefaultExpression()
+	 * @generated
+	 */
+	void setCollapsedByDefaultExpression(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Validation Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Defines if a group value is valid or not.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Validation Expression</em>' attribute.
+	 * @see #setValidationExpression(String)
+	 * @see org.eclipse.eef.EefPackage#getEEFGroupDescription_ValidationExpression()
+	 * @model dataType="org.eclipse.eef.Expression"
+	 * @generated
+	 */
+	String getValidationExpression();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.eef.EEFGroupDescription#getValidationExpression <em>Validation Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Validation Expression</em>' attribute.
+	 * @see #getValidationExpression()
+	 * @generated
+	 */
+	void setValidationExpression(String value);
 
 } // EEFGroupDescription

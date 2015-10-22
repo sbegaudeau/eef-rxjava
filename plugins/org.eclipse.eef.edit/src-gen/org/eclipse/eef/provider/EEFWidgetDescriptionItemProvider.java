@@ -52,6 +52,10 @@ public class EEFWidgetDescriptionItemProvider extends ContextableElementItemProv
 
 			addIdentifierPropertyDescriptor(object);
 			addLabelExpressionPropertyDescriptor(object);
+			addLabelStylePropertyDescriptor(object);
+			addTooltipExpressionPropertyDescriptor(object);
+			addHelpExpressionPropertyDescriptor(object);
+			addValidationExpressionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -81,6 +85,63 @@ public class EEFWidgetDescriptionItemProvider extends ContextableElementItemProv
 				getString("_UI_PropertyDescriptor_description", "_UI_EEFWidgetDescription_labelExpression_feature", "_UI_EEFWidgetDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				EefPackage.Literals.EEF_WIDGET_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
 				null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Label Style feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLabelStylePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EEFWidgetDescription_labelStyle_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EEFWidgetDescription_labelStyle_feature", "_UI_EEFWidgetDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				EefPackage.Literals.EEF_WIDGET_DESCRIPTION__LABEL_STYLE, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Tooltip Expression feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTooltipExpressionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EEFWidgetDescription_tooltipExpression_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EEFWidgetDescription_tooltipExpression_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_EEFWidgetDescription_type"), //$NON-NLS-1$
+				EefPackage.Literals.EEF_WIDGET_DESCRIPTION__TOOLTIP_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Help Expression feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHelpExpressionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EEFWidgetDescription_helpExpression_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EEFWidgetDescription_helpExpression_feature", "_UI_EEFWidgetDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				EefPackage.Literals.EEF_WIDGET_DESCRIPTION__HELP_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Validation Expression feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValidationExpressionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EEFWidgetDescription_validationExpression_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EEFWidgetDescription_validationExpression_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_EEFWidgetDescription_type"), //$NON-NLS-1$
+				EefPackage.Literals.EEF_WIDGET_DESCRIPTION__VALIDATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -132,6 +193,9 @@ public class EEFWidgetDescriptionItemProvider extends ContextableElementItemProv
 		switch (notification.getFeatureID(EEFWidgetDescription.class)) {
 		case EefPackage.EEF_WIDGET_DESCRIPTION__IDENTIFIER:
 		case EefPackage.EEF_WIDGET_DESCRIPTION__LABEL_EXPRESSION:
+		case EefPackage.EEF_WIDGET_DESCRIPTION__TOOLTIP_EXPRESSION:
+		case EefPackage.EEF_WIDGET_DESCRIPTION__HELP_EXPRESSION:
+		case EefPackage.EEF_WIDGET_DESCRIPTION__VALIDATION_EXPRESSION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

@@ -13,6 +13,7 @@ import java.util.Collection;
 import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFJavaExtensionDescription;
 import org.eclipse.eef.EEFPageDescription;
+import org.eclipse.eef.EEFStyleCustomization;
 import org.eclipse.eef.EEFTableStructureDescription;
 import org.eclipse.eef.EEFTreeStructureDescription;
 import org.eclipse.eef.EEFViewDescription;
@@ -50,6 +51,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.eef.impl.EEFViewDescriptionImpl#getImportedViews <em>Imported Views</em>}</li>
  *   <li>{@link org.eclipse.eef.impl.EEFViewDescriptionImpl#getTreeStructures <em>Tree Structures</em>}</li>
  *   <li>{@link org.eclipse.eef.impl.EEFViewDescriptionImpl#getTableStructures <em>Table Structures</em>}</li>
+ *   <li>{@link org.eclipse.eef.impl.EEFViewDescriptionImpl#getStyleCustomizations <em>Style Customizations</em>}</li>
  * </ul>
  *
  * @generated
@@ -164,6 +166,16 @@ public class EEFViewDescriptionImpl extends ContextableElementImpl implements EE
 	 * @ordered
 	 */
 	protected EList<EEFTableStructureDescription> tableStructures;
+
+	/**
+	 * The cached value of the '{@link #getStyleCustomizations() <em>Style Customizations</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStyleCustomizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EEFStyleCustomization> styleCustomizations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -333,6 +345,20 @@ public class EEFViewDescriptionImpl extends ContextableElementImpl implements EE
 	 * @generated
 	 */
 	@Override
+	public EList<EEFStyleCustomization> getStyleCustomizations() {
+		if (styleCustomizations == null) {
+			styleCustomizations = new EObjectResolvingEList<EEFStyleCustomization>(EEFStyleCustomization.class, this,
+					EefPackage.EEF_VIEW_DESCRIPTION__STYLE_CUSTOMIZATIONS);
+		}
+		return styleCustomizations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case EefPackage.EEF_VIEW_DESCRIPTION__GROUPS:
@@ -375,6 +401,8 @@ public class EEFViewDescriptionImpl extends ContextableElementImpl implements EE
 			return getTreeStructures();
 		case EefPackage.EEF_VIEW_DESCRIPTION__TABLE_STRUCTURES:
 			return getTableStructures();
+		case EefPackage.EEF_VIEW_DESCRIPTION__STYLE_CUSTOMIZATIONS:
+			return getStyleCustomizations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -422,6 +450,10 @@ public class EEFViewDescriptionImpl extends ContextableElementImpl implements EE
 			getTableStructures().clear();
 			getTableStructures().addAll((Collection<? extends EEFTableStructureDescription>) newValue);
 			return;
+		case EefPackage.EEF_VIEW_DESCRIPTION__STYLE_CUSTOMIZATIONS:
+			getStyleCustomizations().clear();
+			getStyleCustomizations().addAll((Collection<? extends EEFStyleCustomization>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -461,6 +493,9 @@ public class EEFViewDescriptionImpl extends ContextableElementImpl implements EE
 		case EefPackage.EEF_VIEW_DESCRIPTION__TABLE_STRUCTURES:
 			getTableStructures().clear();
 			return;
+		case EefPackage.EEF_VIEW_DESCRIPTION__STYLE_CUSTOMIZATIONS:
+			getStyleCustomizations().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -491,6 +526,8 @@ public class EEFViewDescriptionImpl extends ContextableElementImpl implements EE
 			return treeStructures != null && !treeStructures.isEmpty();
 		case EefPackage.EEF_VIEW_DESCRIPTION__TABLE_STRUCTURES:
 			return tableStructures != null && !tableStructures.isEmpty();
+		case EefPackage.EEF_VIEW_DESCRIPTION__STYLE_CUSTOMIZATIONS:
+			return styleCustomizations != null && !styleCustomizations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

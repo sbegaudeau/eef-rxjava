@@ -32,6 +32,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.eef.EEFViewDescription#getImportedViews <em>Imported Views</em>}</li>
  *   <li>{@link org.eclipse.eef.EEFViewDescription#getTreeStructures <em>Tree Structures</em>}</li>
  *   <li>{@link org.eclipse.eef.EEFViewDescription#getTableStructures <em>Table Structures</em>}</li>
+ *   <li>{@link org.eclipse.eef.EEFViewDescription#getStyleCustomizations <em>Style Customizations</em>}</li>
  * </ul>
  *
  * @see org.eclipse.eef.EefPackage#getEEFViewDescription()
@@ -69,7 +70,7 @@ public interface EEFViewDescription extends ContextableElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The label of the View visible by the end-users. 
+	 * The label of the View visible by the end-users.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Label Expression</em>' attribute.
 	 * @see #setLabelExpression(String)
@@ -193,5 +194,20 @@ public interface EEFViewDescription extends ContextableElement {
 	 * @generated
 	 */
 	EList<EEFTableStructureDescription> getTableStructures();
+
+	/**
+	 * Returns the value of the '<em><b>Style Customizations</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.eef.EEFStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Contains all the style customizations defined for a view.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Style Customizations</em>' reference list.
+	 * @see org.eclipse.eef.EefPackage#getEEFViewDescription_StyleCustomizations()
+	 * @model
+	 * @generated
+	 */
+	EList<EEFStyleCustomization> getStyleCustomizations();
 
 } // EEFViewDescription

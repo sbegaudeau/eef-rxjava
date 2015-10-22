@@ -226,6 +226,303 @@ public interface EefFactory extends EFactory {
 	EEFAdapterFactoryTableStructureDescription createEEFAdapterFactoryTableStructureDescription();
 
 	/**
+	 * Returns a new object of class '<em>EEF Group Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Group Style</em>'.
+	 * @generated
+	 */
+	EEFGroupStyle createEEFGroupStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Group Conditional Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Group Conditional Style</em>'.
+	 * @generated
+	 */
+	EEFGroupConditionalStyle createEEFGroupConditionalStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Group Style Customization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Group Style Customization</em>'.
+	 * @generated
+	 */
+	EEFGroupStyleCustomization createEEFGroupStyleCustomization();
+
+	/**
+	 * Returns a new object of class '<em>EEF Text Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Text Style</em>'.
+	 * @generated
+	 */
+	EEFTextStyle createEEFTextStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Text Conditional Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Text Conditional Style</em>'.
+	 * @generated
+	 */
+	EEFTextConditionalStyle createEEFTextConditionalStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Text Style Customization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Text Style Customization</em>'.
+	 * @generated
+	 */
+	EEFTextStyleCustomization createEEFTextStyleCustomization();
+
+	/**
+	 * Returns a new object of class '<em>EEF Checkbox Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Checkbox Style</em>'.
+	 * @generated
+	 */
+	EEFCheckboxStyle createEEFCheckboxStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Checkbox Conditional Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Checkbox Conditional Style</em>'.
+	 * @generated
+	 */
+	EEFCheckboxConditionalStyle createEEFCheckboxConditionalStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Checkbox Style Customization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Checkbox Style Customization</em>'.
+	 * @generated
+	 */
+	EEFCheckboxStyleCustomization createEEFCheckboxStyleCustomization();
+
+	/**
+	 * Returns a new object of class '<em>EEF Label Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Label Style</em>'.
+	 * @generated
+	 */
+	EEFLabelStyle createEEFLabelStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Label Conditional Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Label Conditional Style</em>'.
+	 * @generated
+	 */
+	EEFLabelConditionalStyle createEEFLabelConditionalStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Label Style Customization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Label Style Customization</em>'.
+	 * @generated
+	 */
+	EEFLabelStyleCustomization createEEFLabelStyleCustomization();
+
+	/**
+	 * Returns a new object of class '<em>EEF Radio Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Radio Style</em>'.
+	 * @generated
+	 */
+	EEFRadioStyle createEEFRadioStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Radio Conditional Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Radio Conditional Style</em>'.
+	 * @generated
+	 */
+	EEFRadioConditionalStyle createEEFRadioConditionalStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Radio Style Customization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Radio Style Customization</em>'.
+	 * @generated
+	 */
+	EEFRadioStyleCustomization createEEFRadioStyleCustomization();
+
+	/**
+	 * Returns a new object of class '<em>EEF Link Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Link Style</em>'.
+	 * @generated
+	 */
+	EEFLinkStyle createEEFLinkStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Link Conditional Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Link Conditional Style</em>'.
+	 * @generated
+	 */
+	EEFLinkConditionalStyle createEEFLinkConditionalStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Link Style Customization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Link Style Customization</em>'.
+	 * @generated
+	 */
+	EEFLinkStyleCustomization createEEFLinkStyleCustomization();
+
+	/**
+	 * Returns a new object of class '<em>EEF Select Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Select Style</em>'.
+	 * @generated
+	 */
+	EEFSelectStyle createEEFSelectStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Select Conditional Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Select Conditional Style</em>'.
+	 * @generated
+	 */
+	EEFSelectConditionalStyle createEEFSelectConditionalStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Select Style Customization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Select Style Customization</em>'.
+	 * @generated
+	 */
+	EEFSelectStyleCustomization createEEFSelectStyleCustomization();
+
+	/**
+	 * Returns a new object of class '<em>EEF Tree Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Tree Style</em>'.
+	 * @generated
+	 */
+	EEFTreeStyle createEEFTreeStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Tree Conditional Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Tree Conditional Style</em>'.
+	 * @generated
+	 */
+	EEFTreeConditionalStyle createEEFTreeConditionalStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Tree Style Customization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Tree Style Customization</em>'.
+	 * @generated
+	 */
+	EEFTreeStyleCustomization createEEFTreeStyleCustomization();
+
+	/**
+	 * Returns a new object of class '<em>EEF Table Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Table Style</em>'.
+	 * @generated
+	 */
+	EEFTableStyle createEEFTableStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Table Conditional Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Table Conditional Style</em>'.
+	 * @generated
+	 */
+	EEFTableConditionalStyle createEEFTableConditionalStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Table Style Customization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Table Style Customization</em>'.
+	 * @generated
+	 */
+	EEFTableStyleCustomization createEEFTableStyleCustomization();
+
+	/**
+	 * Returns a new object of class '<em>EEF Line Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Line Style</em>'.
+	 * @generated
+	 */
+	EEFLineStyle createEEFLineStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Line Conditional Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Line Conditional Style</em>'.
+	 * @generated
+	 */
+	EEFLineConditionalStyle createEEFLineConditionalStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Line Style Customization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Line Style Customization</em>'.
+	 * @generated
+	 */
+	EEFLineStyleCustomization createEEFLineStyleCustomization();
+
+	/**
+	 * Returns a new object of class '<em>EEF Column Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Column Style</em>'.
+	 * @generated
+	 */
+	EEFColumnStyle createEEFColumnStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Column Conditional Style</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Column Conditional Style</em>'.
+	 * @generated
+	 */
+	EEFColumnConditionalStyle createEEFColumnConditionalStyle();
+
+	/**
+	 * Returns a new object of class '<em>EEF Column Style Customization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EEF Column Style Customization</em>'.
+	 * @generated
+	 */
+	EEFColumnStyleCustomization createEEFColumnStyleCustomization();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

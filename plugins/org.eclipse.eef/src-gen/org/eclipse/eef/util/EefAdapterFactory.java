@@ -208,6 +208,186 @@ public class EefAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseEEFStyle(EEFStyle object) {
+			return createEEFStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFConditionalStyle(EEFConditionalStyle object) {
+			return createEEFConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFStyleCustomization(EEFStyleCustomization object) {
+			return createEEFStyleCustomizationAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFGroupStyle(EEFGroupStyle object) {
+			return createEEFGroupStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFGroupConditionalStyle(EEFGroupConditionalStyle object) {
+			return createEEFGroupConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFGroupStyleCustomization(EEFGroupStyleCustomization object) {
+			return createEEFGroupStyleCustomizationAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFTextStyle(EEFTextStyle object) {
+			return createEEFTextStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFTextConditionalStyle(EEFTextConditionalStyle object) {
+			return createEEFTextConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFTextStyleCustomization(EEFTextStyleCustomization object) {
+			return createEEFTextStyleCustomizationAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFCheckboxStyle(EEFCheckboxStyle object) {
+			return createEEFCheckboxStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFCheckboxConditionalStyle(EEFCheckboxConditionalStyle object) {
+			return createEEFCheckboxConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFCheckboxStyleCustomization(EEFCheckboxStyleCustomization object) {
+			return createEEFCheckboxStyleCustomizationAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFLabelStyle(EEFLabelStyle object) {
+			return createEEFLabelStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFLabelConditionalStyle(EEFLabelConditionalStyle object) {
+			return createEEFLabelConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFLabelStyleCustomization(EEFLabelStyleCustomization object) {
+			return createEEFLabelStyleCustomizationAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFRadioStyle(EEFRadioStyle object) {
+			return createEEFRadioStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFRadioConditionalStyle(EEFRadioConditionalStyle object) {
+			return createEEFRadioConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFRadioStyleCustomization(EEFRadioStyleCustomization object) {
+			return createEEFRadioStyleCustomizationAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFLinkStyle(EEFLinkStyle object) {
+			return createEEFLinkStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFLinkConditionalStyle(EEFLinkConditionalStyle object) {
+			return createEEFLinkConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFLinkStyleCustomization(EEFLinkStyleCustomization object) {
+			return createEEFLinkStyleCustomizationAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFSelectStyle(EEFSelectStyle object) {
+			return createEEFSelectStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFSelectConditionalStyle(EEFSelectConditionalStyle object) {
+			return createEEFSelectConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFSelectStyleCustomization(EEFSelectStyleCustomization object) {
+			return createEEFSelectStyleCustomizationAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFTreeStyle(EEFTreeStyle object) {
+			return createEEFTreeStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFTreeConditionalStyle(EEFTreeConditionalStyle object) {
+			return createEEFTreeConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFTreeStyleCustomization(EEFTreeStyleCustomization object) {
+			return createEEFTreeStyleCustomizationAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFTableStyle(EEFTableStyle object) {
+			return createEEFTableStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFTableConditionalStyle(EEFTableConditionalStyle object) {
+			return createEEFTableConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFTableStyleCustomization(EEFTableStyleCustomization object) {
+			return createEEFTableStyleCustomizationAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFLineStyle(EEFLineStyle object) {
+			return createEEFLineStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFLineConditionalStyle(EEFLineConditionalStyle object) {
+			return createEEFLineConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFLineStyleCustomization(EEFLineStyleCustomization object) {
+			return createEEFLineStyleCustomizationAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFColumnStyle(EEFColumnStyle object) {
+			return createEEFColumnStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFColumnConditionalStyle(EEFColumnConditionalStyle object) {
+			return createEEFColumnConditionalStyleAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFColumnStyleCustomization(EEFColumnStyleCustomization object) {
+			return createEEFColumnStyleCustomizationAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -601,6 +781,510 @@ public class EefAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createContextableElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFStyle <em>EEF Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFStyle
+	 * @generated
+	 */
+	public Adapter createEEFStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFConditionalStyle <em>EEF Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFStyleCustomization <em>EEF Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFStyleCustomizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFGroupStyle <em>EEF Group Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFGroupStyle
+	 * @generated
+	 */
+	public Adapter createEEFGroupStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFGroupConditionalStyle <em>EEF Group Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFGroupConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFGroupConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFGroupStyleCustomization <em>EEF Group Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFGroupStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFGroupStyleCustomizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFTextStyle <em>EEF Text Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFTextStyle
+	 * @generated
+	 */
+	public Adapter createEEFTextStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFTextConditionalStyle <em>EEF Text Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFTextConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFTextConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFTextStyleCustomization <em>EEF Text Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFTextStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFTextStyleCustomizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFCheckboxStyle <em>EEF Checkbox Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFCheckboxStyle
+	 * @generated
+	 */
+	public Adapter createEEFCheckboxStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFCheckboxConditionalStyle <em>EEF Checkbox Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFCheckboxConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFCheckboxConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFCheckboxStyleCustomization <em>EEF Checkbox Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFCheckboxStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFCheckboxStyleCustomizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFLabelStyle <em>EEF Label Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFLabelStyle
+	 * @generated
+	 */
+	public Adapter createEEFLabelStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFLabelConditionalStyle <em>EEF Label Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFLabelConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFLabelConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFLabelStyleCustomization <em>EEF Label Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFLabelStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFLabelStyleCustomizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFRadioStyle <em>EEF Radio Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFRadioStyle
+	 * @generated
+	 */
+	public Adapter createEEFRadioStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFRadioConditionalStyle <em>EEF Radio Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFRadioConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFRadioConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFRadioStyleCustomization <em>EEF Radio Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFRadioStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFRadioStyleCustomizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFLinkStyle <em>EEF Link Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFLinkStyle
+	 * @generated
+	 */
+	public Adapter createEEFLinkStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFLinkConditionalStyle <em>EEF Link Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFLinkConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFLinkConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFLinkStyleCustomization <em>EEF Link Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFLinkStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFLinkStyleCustomizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFSelectStyle <em>EEF Select Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFSelectStyle
+	 * @generated
+	 */
+	public Adapter createEEFSelectStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFSelectConditionalStyle <em>EEF Select Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFSelectConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFSelectConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFSelectStyleCustomization <em>EEF Select Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFSelectStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFSelectStyleCustomizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFTreeStyle <em>EEF Tree Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFTreeStyle
+	 * @generated
+	 */
+	public Adapter createEEFTreeStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFTreeConditionalStyle <em>EEF Tree Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFTreeConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFTreeConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFTreeStyleCustomization <em>EEF Tree Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFTreeStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFTreeStyleCustomizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFTableStyle <em>EEF Table Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFTableStyle
+	 * @generated
+	 */
+	public Adapter createEEFTableStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFTableConditionalStyle <em>EEF Table Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFTableConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFTableConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFTableStyleCustomization <em>EEF Table Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFTableStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFTableStyleCustomizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFLineStyle <em>EEF Line Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFLineStyle
+	 * @generated
+	 */
+	public Adapter createEEFLineStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFLineConditionalStyle <em>EEF Line Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFLineConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFLineConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFLineStyleCustomization <em>EEF Line Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFLineStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFLineStyleCustomizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFColumnStyle <em>EEF Column Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFColumnStyle
+	 * @generated
+	 */
+	public Adapter createEEFColumnStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFColumnConditionalStyle <em>EEF Column Conditional Style</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFColumnConditionalStyle
+	 * @generated
+	 */
+	public Adapter createEEFColumnConditionalStyleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFColumnStyleCustomization <em>EEF Column Style Customization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFColumnStyleCustomization
+	 * @generated
+	 */
+	public Adapter createEEFColumnStyleCustomizationAdapter() {
 		return null;
 	}
 

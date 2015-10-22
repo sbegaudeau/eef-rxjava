@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link org.eclipse.eef.impl.EEFColumnDescriptionImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link org.eclipse.eef.impl.EEFColumnDescriptionImpl#getHeaderExpression <em>Header Expression</em>}</li>
  *   <li>{@link org.eclipse.eef.impl.EEFColumnDescriptionImpl#getCellWidget <em>Cell Widget</em>}</li>
- *   <li>{@link org.eclipse.eef.impl.EEFColumnDescriptionImpl#getContextCandidatesExpression <em>Context Candidates Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -86,26 +85,6 @@ public class EEFColumnDescriptionImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected EEFCellWidgetDescription cellWidget;
-
-	/**
-	 * The default value of the '{@link #getContextCandidatesExpression() <em>Context Candidates Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContextCandidatesExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String CONTEXT_CANDIDATES_EXPRESSION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getContextCandidatesExpression() <em>Context Candidates Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContextCandidatesExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected String contextCandidatesExpression = CONTEXT_CANDIDATES_EXPRESSION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -220,30 +199,6 @@ public class EEFColumnDescriptionImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 */
 	@Override
-	public String getContextCandidatesExpression() {
-		return contextCandidatesExpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setContextCandidatesExpression(String newContextCandidatesExpression) {
-		String oldContextCandidatesExpression = contextCandidatesExpression;
-		contextCandidatesExpression = newContextCandidatesExpression;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EefPackage.EEF_COLUMN_DESCRIPTION__CONTEXT_CANDIDATES_EXPRESSION,
-					oldContextCandidatesExpression, contextCandidatesExpression));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case EefPackage.EEF_COLUMN_DESCRIPTION__WIDTH:
@@ -254,8 +209,6 @@ public class EEFColumnDescriptionImpl extends MinimalEObjectImpl.Container imple
 			if (resolve)
 				return getCellWidget();
 			return basicGetCellWidget();
-		case EefPackage.EEF_COLUMN_DESCRIPTION__CONTEXT_CANDIDATES_EXPRESSION:
-			return getContextCandidatesExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -276,9 +229,6 @@ public class EEFColumnDescriptionImpl extends MinimalEObjectImpl.Container imple
 			return;
 		case EefPackage.EEF_COLUMN_DESCRIPTION__CELL_WIDGET:
 			setCellWidget((EEFCellWidgetDescription) newValue);
-			return;
-		case EefPackage.EEF_COLUMN_DESCRIPTION__CONTEXT_CANDIDATES_EXPRESSION:
-			setContextCandidatesExpression((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -301,9 +251,6 @@ public class EEFColumnDescriptionImpl extends MinimalEObjectImpl.Container imple
 		case EefPackage.EEF_COLUMN_DESCRIPTION__CELL_WIDGET:
 			setCellWidget((EEFCellWidgetDescription) null);
 			return;
-		case EefPackage.EEF_COLUMN_DESCRIPTION__CONTEXT_CANDIDATES_EXPRESSION:
-			setContextCandidatesExpression(CONTEXT_CANDIDATES_EXPRESSION_EDEFAULT);
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -322,9 +269,6 @@ public class EEFColumnDescriptionImpl extends MinimalEObjectImpl.Container imple
 			return HEADER_EXPRESSION_EDEFAULT == null ? headerExpression != null : !HEADER_EXPRESSION_EDEFAULT.equals(headerExpression);
 		case EefPackage.EEF_COLUMN_DESCRIPTION__CELL_WIDGET:
 			return cellWidget != null;
-		case EefPackage.EEF_COLUMN_DESCRIPTION__CONTEXT_CANDIDATES_EXPRESSION:
-			return CONTEXT_CANDIDATES_EXPRESSION_EDEFAULT == null ? contextCandidatesExpression != null
-					: !CONTEXT_CANDIDATES_EXPRESSION_EDEFAULT.equals(contextCandidatesExpression);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -344,8 +288,6 @@ public class EEFColumnDescriptionImpl extends MinimalEObjectImpl.Container imple
 		result.append(width);
 		result.append(", headerExpression: "); //$NON-NLS-1$
 		result.append(headerExpression);
-		result.append(", contextCandidatesExpression: "); //$NON-NLS-1$
-		result.append(contextCandidatesExpression);
 		result.append(')');
 		return result.toString();
 	}

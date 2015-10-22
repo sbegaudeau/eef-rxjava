@@ -128,14 +128,8 @@ public class EEFPageImpl extends AbstractEEFChildObject implements EEFPage {
 				if (semanticCandidatesExpression != null && semanticCandidatesExpression.trim().length() > 0) {
 					IEvaluationResult evaluationResult = this.getInterpreter().evaluateExpression(this.getVariableManager().getVariables(), null,
 							semanticCandidatesExpression);
-					if (evaluationResult.getValue() instanceof Iterable<?>) {
-						@SuppressWarnings("unchecked")
-						Iterable<Object> groupSemanticCandidates = (Iterable<Object>) evaluationResult.getValue();
-						throw new UnsupportedOperationException("OMG MY HEAD HURTS!!!!"); //$NON-NLS-1$
-					} else {
-						Object groupSemanticCandidate = evaluationResult.getValue();
-						eefGroupImpl.setInput(groupSemanticCandidate);
-					}
+					Object groupSemanticCandidate = evaluationResult.getValue();
+					eefGroupImpl.setInput(groupSemanticCandidate);
 				} else {
 					eefGroupImpl.setInput(null);
 				}

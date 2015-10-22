@@ -10,7 +10,7 @@
   <ePackageNsUris>http://www.eclipse.org/uml2/5.0.0/UML</ePackageNsUris>
   <groups identifier="UML_Group_NamedElement"
       domainClass="uml.NamedElement"
-      semanticCandidatesExpression="aql:viewSemanticCandidate">
+      semanticCandidateExpression="aql:viewSemanticCandidate">
     <container
         identifier="UML_Group_NamedElement_Container">
       <widgets

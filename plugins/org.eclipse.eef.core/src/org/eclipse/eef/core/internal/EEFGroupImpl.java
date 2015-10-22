@@ -72,9 +72,9 @@ public class EEFGroupImpl extends AbstractEEFChildObject implements EEFGroup {
 	@Override
 	public void createControl() {
 		EEFContainerDescription eefContainerDescription = this.eefGroupDescription.getContainer();
-		String semanticCandidatesExpression = eefContainerDescription.getSemanticCandidateExpression();
-		if (semanticCandidatesExpression != null) {
-			// TODO Support semantic candidates for the container
+		String semanticCandidateExpression = eefContainerDescription.getSemanticCandidateExpression();
+		if (semanticCandidateExpression != null) {
+			// TODO Support semantic candidate for the container
 		}
 		IVariableManager childVariableManager = this.getVariableManager().createChild();
 

@@ -12,27 +12,63 @@ import org.eclipse.eef.ContextableElement;
 import org.eclipse.eef.EEFAdapterFactoryTableStructureDescription;
 import org.eclipse.eef.EEFAdapterFactoryTreeStructureDescription;
 import org.eclipse.eef.EEFCellWidgetDescription;
+import org.eclipse.eef.EEFCheckboxConditionalStyle;
 import org.eclipse.eef.EEFCheckboxDescription;
+import org.eclipse.eef.EEFCheckboxStyle;
+import org.eclipse.eef.EEFCheckboxStyleCustomization;
+import org.eclipse.eef.EEFColumnConditionalStyle;
 import org.eclipse.eef.EEFColumnDescription;
+import org.eclipse.eef.EEFColumnStyle;
+import org.eclipse.eef.EEFColumnStyleCustomization;
+import org.eclipse.eef.EEFConditionalStyle;
 import org.eclipse.eef.EEFContainerDescription;
+import org.eclipse.eef.EEFGroupConditionalStyle;
 import org.eclipse.eef.EEFGroupDescription;
+import org.eclipse.eef.EEFGroupStyle;
+import org.eclipse.eef.EEFGroupStyleCustomization;
 import org.eclipse.eef.EEFImageDescription;
 import org.eclipse.eef.EEFImagePickerDescription;
 import org.eclipse.eef.EEFInterpretedTableStructureDescription;
 import org.eclipse.eef.EEFInterpretedTreeStructureDescription;
 import org.eclipse.eef.EEFJavaExtensionDescription;
+import org.eclipse.eef.EEFLabelConditionalStyle;
 import org.eclipse.eef.EEFLabelDescription;
+import org.eclipse.eef.EEFLabelStyle;
+import org.eclipse.eef.EEFLabelStyleCustomization;
+import org.eclipse.eef.EEFLineConditionalStyle;
 import org.eclipse.eef.EEFLineDescription;
+import org.eclipse.eef.EEFLineStyle;
+import org.eclipse.eef.EEFLineStyleCustomization;
+import org.eclipse.eef.EEFLinkConditionalStyle;
 import org.eclipse.eef.EEFLinkDescription;
+import org.eclipse.eef.EEFLinkStyle;
+import org.eclipse.eef.EEFLinkStyleCustomization;
 import org.eclipse.eef.EEFPageDescription;
+import org.eclipse.eef.EEFRadioConditionalStyle;
 import org.eclipse.eef.EEFRadioDescription;
+import org.eclipse.eef.EEFRadioStyle;
+import org.eclipse.eef.EEFRadioStyleCustomization;
+import org.eclipse.eef.EEFSelectConditionalStyle;
 import org.eclipse.eef.EEFSelectDescription;
+import org.eclipse.eef.EEFSelectStyle;
+import org.eclipse.eef.EEFSelectStyleCustomization;
+import org.eclipse.eef.EEFStyle;
+import org.eclipse.eef.EEFStyleCustomization;
+import org.eclipse.eef.EEFTableConditionalStyle;
 import org.eclipse.eef.EEFTableDescription;
 import org.eclipse.eef.EEFTableStructureDescription;
+import org.eclipse.eef.EEFTableStyle;
+import org.eclipse.eef.EEFTableStyleCustomization;
+import org.eclipse.eef.EEFTextConditionalStyle;
 import org.eclipse.eef.EEFTextDescription;
+import org.eclipse.eef.EEFTextStyle;
+import org.eclipse.eef.EEFTextStyleCustomization;
+import org.eclipse.eef.EEFTreeConditionalStyle;
 import org.eclipse.eef.EEFTreeDescription;
 import org.eclipse.eef.EEFTreeDialogSelectDescription;
 import org.eclipse.eef.EEFTreeStructureDescription;
+import org.eclipse.eef.EEFTreeStyle;
+import org.eclipse.eef.EEFTreeStyleCustomization;
 import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.EefFactory;
@@ -249,6 +285,258 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass eefStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefGroupStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefGroupConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefGroupStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefTextStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefTextConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefTextStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefCheckboxStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefCheckboxConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefCheckboxStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefLabelStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefLabelConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefLabelStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefRadioStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefRadioConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefRadioStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefLinkStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefLinkConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefLinkStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefSelectStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefSelectConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefSelectStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefTreeStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefTreeConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefTreeStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefTableStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefTableConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefTableStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefLineStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefLineConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefLineStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefColumnStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefColumnConditionalStyleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eefColumnStyleCustomizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType expressionEDataType = null;
 
 	/**
@@ -429,6 +717,16 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getEEFViewDescription_StyleCustomizations() {
+		return (EReference) eefViewDescriptionEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEEFPageDescription() {
 		return eefPageDescriptionEClass;
 	}
@@ -559,6 +857,36 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getEEFGroupDescription_CollapsibleExpression() {
+		return (EAttribute) eefGroupDescriptionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFGroupDescription_CollapsedByDefaultExpression() {
+		return (EAttribute) eefGroupDescriptionEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFGroupDescription_ValidationExpression() {
+		return (EAttribute) eefGroupDescriptionEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEEFContainerDescription() {
 		return eefContainerDescriptionEClass;
 	}
@@ -651,6 +979,46 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 	@Override
 	public EAttribute getEEFWidgetDescription_LabelExpression() {
 		return (EAttribute) eefWidgetDescriptionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFWidgetDescription_LabelStyle() {
+		return (EReference) eefWidgetDescriptionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFWidgetDescription_TooltipExpression() {
+		return (EAttribute) eefWidgetDescriptionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFWidgetDescription_HelpExpression() {
+		return (EAttribute) eefWidgetDescriptionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFWidgetDescription_ValidationExpression() {
+		return (EAttribute) eefWidgetDescriptionEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -849,8 +1217,58 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEEFTextDescription_LineCount() {
+	public EAttribute getEEFTextDescription_ReadOnlyExpression() {
 		return (EAttribute) eefTextDescriptionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFTextDescription_ContentAssistExpression() {
+		return (EAttribute) eefTextDescriptionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFTextDescription_PlaceholderExpression() {
+		return (EAttribute) eefTextDescriptionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFTextDescription_LineCount() {
+		return (EAttribute) eefTextDescriptionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFTextDescription_Style() {
+		return (EReference) eefTextDescriptionEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFTextDescription_ConditionalStyles() {
+		return (EReference) eefTextDescriptionEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1269,16 +1687,6 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEEFColumnDescription_ContextCandidatesExpression() {
-		return (EAttribute) eefColumnDescriptionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getEEFLineDescription() {
 		return eefLineDescriptionEClass;
 	}
@@ -1409,6 +1817,826 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getEEFStyle() {
+		return eefStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFStyle_FontExpression() {
+		return (EAttribute) eefStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFConditionalStyle() {
+		return eefConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFConditionalStyle_ConditionalExpression() {
+		return (EAttribute) eefConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFStyleCustomization() {
+		return eefStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFGroupStyle() {
+		return eefGroupStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFGroupStyle_ForegroundColorExpression() {
+		return (EAttribute) eefGroupStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFGroupConditionalStyle() {
+		return eefGroupConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFGroupConditionalStyle_Style() {
+		return (EReference) eefGroupConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFGroupStyleCustomization() {
+		return eefGroupStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFGroupStyleCustomization_Style() {
+		return (EReference) eefGroupStyleCustomizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFTextStyle() {
+		return eefTextStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFTextStyle_BackgroundColorExpression() {
+		return (EAttribute) eefTextStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFTextStyle_ForegroundColorExpression() {
+		return (EAttribute) eefTextStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFTextConditionalStyle() {
+		return eefTextConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFTextConditionalStyle_Style() {
+		return (EReference) eefTextConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFTextStyleCustomization() {
+		return eefTextStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFTextStyleCustomization_Style() {
+		return (EReference) eefTextStyleCustomizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFCheckboxStyle() {
+		return eefCheckboxStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFCheckboxStyle_BackgroundColorExpression() {
+		return (EAttribute) eefCheckboxStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFCheckboxStyle_ForegroundColorExpression() {
+		return (EAttribute) eefCheckboxStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFCheckboxConditionalStyle() {
+		return eefCheckboxConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFCheckboxConditionalStyle_Style() {
+		return (EReference) eefCheckboxConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFCheckboxStyleCustomization() {
+		return eefCheckboxStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFCheckboxStyleCustomization_Style() {
+		return (EReference) eefCheckboxStyleCustomizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFLabelStyle() {
+		return eefLabelStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFLabelStyle_BackgroundColorExpression() {
+		return (EAttribute) eefLabelStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFLabelStyle_ForegroundColorExpression() {
+		return (EAttribute) eefLabelStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFLabelConditionalStyle() {
+		return eefLabelConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFLabelConditionalStyle_Style() {
+		return (EReference) eefLabelConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFLabelStyleCustomization() {
+		return eefLabelStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFLabelStyleCustomization_Style() {
+		return (EReference) eefLabelStyleCustomizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFRadioStyle() {
+		return eefRadioStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFRadioStyle_BackgroundColorExpression() {
+		return (EAttribute) eefRadioStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFRadioStyle_ForegroundColorExpression() {
+		return (EAttribute) eefRadioStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFRadioConditionalStyle() {
+		return eefRadioConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFRadioConditionalStyle_Style() {
+		return (EReference) eefRadioConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFRadioStyleCustomization() {
+		return eefRadioStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFRadioStyleCustomization_Style() {
+		return (EReference) eefRadioStyleCustomizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFLinkStyle() {
+		return eefLinkStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFLinkStyle_BackgroundColorExpression() {
+		return (EAttribute) eefLinkStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFLinkStyle_ForegroundColorExpression() {
+		return (EAttribute) eefLinkStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFLinkStyle_BackgroundImageExpression() {
+		return (EAttribute) eefLinkStyleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFLinkConditionalStyle() {
+		return eefLinkConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFLinkConditionalStyle_Style() {
+		return (EReference) eefLinkConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFLinkStyleCustomization() {
+		return eefLinkStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFLinkStyleCustomization_Style() {
+		return (EReference) eefLinkStyleCustomizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFSelectStyle() {
+		return eefSelectStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFSelectStyle_BackgroundColorExpression() {
+		return (EAttribute) eefSelectStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFSelectStyle_ForegroundColorExpression() {
+		return (EAttribute) eefSelectStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFSelectConditionalStyle() {
+		return eefSelectConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFSelectConditionalStyle_Style() {
+		return (EReference) eefSelectConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFSelectStyleCustomization() {
+		return eefSelectStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFSelectStyleCustomization_Style() {
+		return (EReference) eefSelectStyleCustomizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFTreeStyle() {
+		return eefTreeStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFTreeConditionalStyle() {
+		return eefTreeConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFTreeConditionalStyle_Style() {
+		return (EReference) eefTreeConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFTreeStyleCustomization() {
+		return eefTreeStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFTreeStyleCustomization_Style() {
+		return (EReference) eefTreeStyleCustomizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFTableStyle() {
+		return eefTableStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFTableConditionalStyle() {
+		return eefTableConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFTableConditionalStyle_Style() {
+		return (EReference) eefTableConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFTableStyleCustomization() {
+		return eefTableStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFTableStyleCustomization_Style() {
+		return (EReference) eefTableStyleCustomizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFLineStyle() {
+		return eefLineStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFLineStyle_BackgroundColorExpression() {
+		return (EAttribute) eefLineStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFLineStyle_ForegroundColorExpression() {
+		return (EAttribute) eefLineStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFLineStyle_HeaderBackgroundColorExpression() {
+		return (EAttribute) eefLineStyleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFLineStyle_HeaderForegroundColorExpression() {
+		return (EAttribute) eefLineStyleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFLineConditionalStyle() {
+		return eefLineConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFLineConditionalStyle_Style() {
+		return (EReference) eefLineConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFLineStyleCustomization() {
+		return eefLineStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFLineStyleCustomization_Style() {
+		return (EReference) eefLineStyleCustomizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFColumnStyle() {
+		return eefColumnStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFColumnStyle_BackgroundColorExpression() {
+		return (EAttribute) eefColumnStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFColumnStyle_ForegroundColorExpression() {
+		return (EAttribute) eefColumnStyleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFColumnStyle_HeaderBackgroundColorExpression() {
+		return (EAttribute) eefColumnStyleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEEFColumnStyle_HeaderForegroundColorExpression() {
+		return (EAttribute) eefColumnStyleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFColumnConditionalStyle() {
+		return eefColumnConditionalStyleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFColumnConditionalStyle_Style() {
+		return (EReference) eefColumnConditionalStyleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEEFColumnStyleCustomization() {
+		return eefColumnStyleCustomizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEEFColumnStyleCustomization_Style() {
+		return (EReference) eefColumnStyleCustomizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EDataType getExpression() {
 		return expressionEDataType;
 	}
@@ -1463,6 +2691,7 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 		createEReference(eefViewDescriptionEClass, EEF_VIEW_DESCRIPTION__IMPORTED_VIEWS);
 		createEReference(eefViewDescriptionEClass, EEF_VIEW_DESCRIPTION__TREE_STRUCTURES);
 		createEReference(eefViewDescriptionEClass, EEF_VIEW_DESCRIPTION__TABLE_STRUCTURES);
+		createEReference(eefViewDescriptionEClass, EEF_VIEW_DESCRIPTION__STYLE_CUSTOMIZATIONS);
 
 		eefPageDescriptionEClass = createEClass(EEF_PAGE_DESCRIPTION);
 		createEAttribute(eefPageDescriptionEClass, EEF_PAGE_DESCRIPTION__IDENTIFIER);
@@ -1478,6 +2707,9 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 		createEAttribute(eefGroupDescriptionEClass, EEF_GROUP_DESCRIPTION__DOMAIN_CLASS);
 		createEAttribute(eefGroupDescriptionEClass, EEF_GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION);
 		createEReference(eefGroupDescriptionEClass, EEF_GROUP_DESCRIPTION__CONTAINER);
+		createEAttribute(eefGroupDescriptionEClass, EEF_GROUP_DESCRIPTION__COLLAPSIBLE_EXPRESSION);
+		createEAttribute(eefGroupDescriptionEClass, EEF_GROUP_DESCRIPTION__COLLAPSED_BY_DEFAULT_EXPRESSION);
+		createEAttribute(eefGroupDescriptionEClass, EEF_GROUP_DESCRIPTION__VALIDATION_EXPRESSION);
 
 		eefContainerDescriptionEClass = createEClass(EEF_CONTAINER_DESCRIPTION);
 		createEAttribute(eefContainerDescriptionEClass, EEF_CONTAINER_DESCRIPTION__IDENTIFIER);
@@ -1490,6 +2722,10 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 		eefWidgetDescriptionEClass = createEClass(EEF_WIDGET_DESCRIPTION);
 		createEAttribute(eefWidgetDescriptionEClass, EEF_WIDGET_DESCRIPTION__IDENTIFIER);
 		createEAttribute(eefWidgetDescriptionEClass, EEF_WIDGET_DESCRIPTION__LABEL_EXPRESSION);
+		createEReference(eefWidgetDescriptionEClass, EEF_WIDGET_DESCRIPTION__LABEL_STYLE);
+		createEAttribute(eefWidgetDescriptionEClass, EEF_WIDGET_DESCRIPTION__TOOLTIP_EXPRESSION);
+		createEAttribute(eefWidgetDescriptionEClass, EEF_WIDGET_DESCRIPTION__HELP_EXPRESSION);
+		createEAttribute(eefWidgetDescriptionEClass, EEF_WIDGET_DESCRIPTION__VALIDATION_EXPRESSION);
 
 		eefJavaExtensionDescriptionEClass = createEClass(EEF_JAVA_EXTENSION_DESCRIPTION);
 		createEAttribute(eefJavaExtensionDescriptionEClass, EEF_JAVA_EXTENSION_DESCRIPTION__QUALIFIED_NAME);
@@ -1516,7 +2752,12 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 		eefTextDescriptionEClass = createEClass(EEF_TEXT_DESCRIPTION);
 		createEAttribute(eefTextDescriptionEClass, EEF_TEXT_DESCRIPTION__VALUE_EXPRESSION);
 		createEAttribute(eefTextDescriptionEClass, EEF_TEXT_DESCRIPTION__EDIT_EXPRESSION);
+		createEAttribute(eefTextDescriptionEClass, EEF_TEXT_DESCRIPTION__READ_ONLY_EXPRESSION);
+		createEAttribute(eefTextDescriptionEClass, EEF_TEXT_DESCRIPTION__CONTENT_ASSIST_EXPRESSION);
+		createEAttribute(eefTextDescriptionEClass, EEF_TEXT_DESCRIPTION__PLACEHOLDER_EXPRESSION);
 		createEAttribute(eefTextDescriptionEClass, EEF_TEXT_DESCRIPTION__LINE_COUNT);
+		createEReference(eefTextDescriptionEClass, EEF_TEXT_DESCRIPTION__STYLE);
+		createEReference(eefTextDescriptionEClass, EEF_TEXT_DESCRIPTION__CONDITIONAL_STYLES);
 
 		eefCheckboxDescriptionEClass = createEClass(EEF_CHECKBOX_DESCRIPTION);
 		createEAttribute(eefCheckboxDescriptionEClass, EEF_CHECKBOX_DESCRIPTION__VALUE_EXPRESSION);
@@ -1569,7 +2810,6 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 		createEAttribute(eefColumnDescriptionEClass, EEF_COLUMN_DESCRIPTION__WIDTH);
 		createEAttribute(eefColumnDescriptionEClass, EEF_COLUMN_DESCRIPTION__HEADER_EXPRESSION);
 		createEReference(eefColumnDescriptionEClass, EEF_COLUMN_DESCRIPTION__CELL_WIDGET);
-		createEAttribute(eefColumnDescriptionEClass, EEF_COLUMN_DESCRIPTION__CONTEXT_CANDIDATES_EXPRESSION);
 
 		eefLineDescriptionEClass = createEClass(EEF_LINE_DESCRIPTION);
 		createEAttribute(eefLineDescriptionEClass, EEF_LINE_DESCRIPTION__HEADER_EXPRESSION);
@@ -1587,6 +2827,124 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 		contextableElementEClass = createEClass(CONTEXTABLE_ELEMENT);
 		createEReference(contextableElementEClass, CONTEXTABLE_ELEMENT__REQUIRED_CONTEXT_VARIABLES);
 		createEReference(contextableElementEClass, CONTEXTABLE_ELEMENT__EXCLUDED_CONTEXT_VARIABLES);
+
+		eefStyleEClass = createEClass(EEF_STYLE);
+		createEAttribute(eefStyleEClass, EEF_STYLE__FONT_EXPRESSION);
+
+		eefConditionalStyleEClass = createEClass(EEF_CONDITIONAL_STYLE);
+		createEAttribute(eefConditionalStyleEClass, EEF_CONDITIONAL_STYLE__CONDITIONAL_EXPRESSION);
+
+		eefStyleCustomizationEClass = createEClass(EEF_STYLE_CUSTOMIZATION);
+
+		eefGroupStyleEClass = createEClass(EEF_GROUP_STYLE);
+		createEAttribute(eefGroupStyleEClass, EEF_GROUP_STYLE__FOREGROUND_COLOR_EXPRESSION);
+
+		eefGroupConditionalStyleEClass = createEClass(EEF_GROUP_CONDITIONAL_STYLE);
+		createEReference(eefGroupConditionalStyleEClass, EEF_GROUP_CONDITIONAL_STYLE__STYLE);
+
+		eefGroupStyleCustomizationEClass = createEClass(EEF_GROUP_STYLE_CUSTOMIZATION);
+		createEReference(eefGroupStyleCustomizationEClass, EEF_GROUP_STYLE_CUSTOMIZATION__STYLE);
+
+		eefTextStyleEClass = createEClass(EEF_TEXT_STYLE);
+		createEAttribute(eefTextStyleEClass, EEF_TEXT_STYLE__BACKGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefTextStyleEClass, EEF_TEXT_STYLE__FOREGROUND_COLOR_EXPRESSION);
+
+		eefTextConditionalStyleEClass = createEClass(EEF_TEXT_CONDITIONAL_STYLE);
+		createEReference(eefTextConditionalStyleEClass, EEF_TEXT_CONDITIONAL_STYLE__STYLE);
+
+		eefTextStyleCustomizationEClass = createEClass(EEF_TEXT_STYLE_CUSTOMIZATION);
+		createEReference(eefTextStyleCustomizationEClass, EEF_TEXT_STYLE_CUSTOMIZATION__STYLE);
+
+		eefCheckboxStyleEClass = createEClass(EEF_CHECKBOX_STYLE);
+		createEAttribute(eefCheckboxStyleEClass, EEF_CHECKBOX_STYLE__BACKGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefCheckboxStyleEClass, EEF_CHECKBOX_STYLE__FOREGROUND_COLOR_EXPRESSION);
+
+		eefCheckboxConditionalStyleEClass = createEClass(EEF_CHECKBOX_CONDITIONAL_STYLE);
+		createEReference(eefCheckboxConditionalStyleEClass, EEF_CHECKBOX_CONDITIONAL_STYLE__STYLE);
+
+		eefCheckboxStyleCustomizationEClass = createEClass(EEF_CHECKBOX_STYLE_CUSTOMIZATION);
+		createEReference(eefCheckboxStyleCustomizationEClass, EEF_CHECKBOX_STYLE_CUSTOMIZATION__STYLE);
+
+		eefLabelStyleEClass = createEClass(EEF_LABEL_STYLE);
+		createEAttribute(eefLabelStyleEClass, EEF_LABEL_STYLE__BACKGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefLabelStyleEClass, EEF_LABEL_STYLE__FOREGROUND_COLOR_EXPRESSION);
+
+		eefLabelConditionalStyleEClass = createEClass(EEF_LABEL_CONDITIONAL_STYLE);
+		createEReference(eefLabelConditionalStyleEClass, EEF_LABEL_CONDITIONAL_STYLE__STYLE);
+
+		eefLabelStyleCustomizationEClass = createEClass(EEF_LABEL_STYLE_CUSTOMIZATION);
+		createEReference(eefLabelStyleCustomizationEClass, EEF_LABEL_STYLE_CUSTOMIZATION__STYLE);
+
+		eefRadioStyleEClass = createEClass(EEF_RADIO_STYLE);
+		createEAttribute(eefRadioStyleEClass, EEF_RADIO_STYLE__BACKGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefRadioStyleEClass, EEF_RADIO_STYLE__FOREGROUND_COLOR_EXPRESSION);
+
+		eefRadioConditionalStyleEClass = createEClass(EEF_RADIO_CONDITIONAL_STYLE);
+		createEReference(eefRadioConditionalStyleEClass, EEF_RADIO_CONDITIONAL_STYLE__STYLE);
+
+		eefRadioStyleCustomizationEClass = createEClass(EEF_RADIO_STYLE_CUSTOMIZATION);
+		createEReference(eefRadioStyleCustomizationEClass, EEF_RADIO_STYLE_CUSTOMIZATION__STYLE);
+
+		eefLinkStyleEClass = createEClass(EEF_LINK_STYLE);
+		createEAttribute(eefLinkStyleEClass, EEF_LINK_STYLE__BACKGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefLinkStyleEClass, EEF_LINK_STYLE__FOREGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefLinkStyleEClass, EEF_LINK_STYLE__BACKGROUND_IMAGE_EXPRESSION);
+
+		eefLinkConditionalStyleEClass = createEClass(EEF_LINK_CONDITIONAL_STYLE);
+		createEReference(eefLinkConditionalStyleEClass, EEF_LINK_CONDITIONAL_STYLE__STYLE);
+
+		eefLinkStyleCustomizationEClass = createEClass(EEF_LINK_STYLE_CUSTOMIZATION);
+		createEReference(eefLinkStyleCustomizationEClass, EEF_LINK_STYLE_CUSTOMIZATION__STYLE);
+
+		eefSelectStyleEClass = createEClass(EEF_SELECT_STYLE);
+		createEAttribute(eefSelectStyleEClass, EEF_SELECT_STYLE__BACKGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefSelectStyleEClass, EEF_SELECT_STYLE__FOREGROUND_COLOR_EXPRESSION);
+
+		eefSelectConditionalStyleEClass = createEClass(EEF_SELECT_CONDITIONAL_STYLE);
+		createEReference(eefSelectConditionalStyleEClass, EEF_SELECT_CONDITIONAL_STYLE__STYLE);
+
+		eefSelectStyleCustomizationEClass = createEClass(EEF_SELECT_STYLE_CUSTOMIZATION);
+		createEReference(eefSelectStyleCustomizationEClass, EEF_SELECT_STYLE_CUSTOMIZATION__STYLE);
+
+		eefTreeStyleEClass = createEClass(EEF_TREE_STYLE);
+
+		eefTreeConditionalStyleEClass = createEClass(EEF_TREE_CONDITIONAL_STYLE);
+		createEReference(eefTreeConditionalStyleEClass, EEF_TREE_CONDITIONAL_STYLE__STYLE);
+
+		eefTreeStyleCustomizationEClass = createEClass(EEF_TREE_STYLE_CUSTOMIZATION);
+		createEReference(eefTreeStyleCustomizationEClass, EEF_TREE_STYLE_CUSTOMIZATION__STYLE);
+
+		eefTableStyleEClass = createEClass(EEF_TABLE_STYLE);
+
+		eefTableConditionalStyleEClass = createEClass(EEF_TABLE_CONDITIONAL_STYLE);
+		createEReference(eefTableConditionalStyleEClass, EEF_TABLE_CONDITIONAL_STYLE__STYLE);
+
+		eefTableStyleCustomizationEClass = createEClass(EEF_TABLE_STYLE_CUSTOMIZATION);
+		createEReference(eefTableStyleCustomizationEClass, EEF_TABLE_STYLE_CUSTOMIZATION__STYLE);
+
+		eefLineStyleEClass = createEClass(EEF_LINE_STYLE);
+		createEAttribute(eefLineStyleEClass, EEF_LINE_STYLE__BACKGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefLineStyleEClass, EEF_LINE_STYLE__FOREGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefLineStyleEClass, EEF_LINE_STYLE__HEADER_BACKGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefLineStyleEClass, EEF_LINE_STYLE__HEADER_FOREGROUND_COLOR_EXPRESSION);
+
+		eefLineConditionalStyleEClass = createEClass(EEF_LINE_CONDITIONAL_STYLE);
+		createEReference(eefLineConditionalStyleEClass, EEF_LINE_CONDITIONAL_STYLE__STYLE);
+
+		eefLineStyleCustomizationEClass = createEClass(EEF_LINE_STYLE_CUSTOMIZATION);
+		createEReference(eefLineStyleCustomizationEClass, EEF_LINE_STYLE_CUSTOMIZATION__STYLE);
+
+		eefColumnStyleEClass = createEClass(EEF_COLUMN_STYLE);
+		createEAttribute(eefColumnStyleEClass, EEF_COLUMN_STYLE__BACKGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefColumnStyleEClass, EEF_COLUMN_STYLE__FOREGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefColumnStyleEClass, EEF_COLUMN_STYLE__HEADER_BACKGROUND_COLOR_EXPRESSION);
+		createEAttribute(eefColumnStyleEClass, EEF_COLUMN_STYLE__HEADER_FOREGROUND_COLOR_EXPRESSION);
+
+		eefColumnConditionalStyleEClass = createEClass(EEF_COLUMN_CONDITIONAL_STYLE);
+		createEReference(eefColumnConditionalStyleEClass, EEF_COLUMN_CONDITIONAL_STYLE__STYLE);
+
+		eefColumnStyleCustomizationEClass = createEClass(EEF_COLUMN_STYLE_CUSTOMIZATION);
+		createEReference(eefColumnStyleCustomizationEClass, EEF_COLUMN_STYLE_CUSTOMIZATION__STYLE);
 
 		// Create data types
 		expressionEDataType = createEDataType(EXPRESSION);
@@ -1646,6 +3004,38 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 		eefImagePickerDescriptionEClass.getESuperTypes().add(this.getEEFWidgetDescription());
 		eefTableDescriptionEClass.getESuperTypes().add(this.getEEFWidgetDescription());
 		eefAdapterFactoryTableStructureDescriptionEClass.getESuperTypes().add(this.getEEFTableStructureDescription());
+		eefGroupStyleEClass.getESuperTypes().add(this.getEEFStyle());
+		eefGroupConditionalStyleEClass.getESuperTypes().add(this.getEEFConditionalStyle());
+		eefGroupStyleCustomizationEClass.getESuperTypes().add(this.getEEFStyleCustomization());
+		eefTextStyleEClass.getESuperTypes().add(this.getEEFStyle());
+		eefTextConditionalStyleEClass.getESuperTypes().add(this.getEEFConditionalStyle());
+		eefTextStyleCustomizationEClass.getESuperTypes().add(this.getEEFStyleCustomization());
+		eefCheckboxStyleEClass.getESuperTypes().add(this.getEEFStyle());
+		eefCheckboxStyleCustomizationEClass.getESuperTypes().add(this.getEEFStyleCustomization());
+		eefLabelStyleEClass.getESuperTypes().add(this.getEEFStyle());
+		eefLabelConditionalStyleEClass.getESuperTypes().add(this.getEEFConditionalStyle());
+		eefLabelStyleCustomizationEClass.getESuperTypes().add(this.getEEFStyleCustomization());
+		eefRadioStyleEClass.getESuperTypes().add(this.getEEFStyle());
+		eefRadioConditionalStyleEClass.getESuperTypes().add(this.getEEFConditionalStyle());
+		eefRadioStyleCustomizationEClass.getESuperTypes().add(this.getEEFStyleCustomization());
+		eefLinkStyleEClass.getESuperTypes().add(this.getEEFStyle());
+		eefLinkConditionalStyleEClass.getESuperTypes().add(this.getEEFConditionalStyle());
+		eefLinkStyleCustomizationEClass.getESuperTypes().add(this.getEEFStyleCustomization());
+		eefSelectStyleEClass.getESuperTypes().add(this.getEEFStyle());
+		eefSelectConditionalStyleEClass.getESuperTypes().add(this.getEEFConditionalStyle());
+		eefSelectStyleCustomizationEClass.getESuperTypes().add(this.getEEFStyleCustomization());
+		eefTreeStyleEClass.getESuperTypes().add(this.getEEFStyle());
+		eefTreeConditionalStyleEClass.getESuperTypes().add(this.getEEFConditionalStyle());
+		eefTreeStyleCustomizationEClass.getESuperTypes().add(this.getEEFStyleCustomization());
+		eefTableStyleEClass.getESuperTypes().add(this.getEEFStyle());
+		eefTableConditionalStyleEClass.getESuperTypes().add(this.getEEFConditionalStyle());
+		eefTableStyleCustomizationEClass.getESuperTypes().add(this.getEEFStyleCustomization());
+		eefLineStyleEClass.getESuperTypes().add(this.getEEFStyle());
+		eefLineConditionalStyleEClass.getESuperTypes().add(this.getEEFConditionalStyle());
+		eefLineStyleCustomizationEClass.getESuperTypes().add(this.getEEFStyleCustomization());
+		eefColumnStyleEClass.getESuperTypes().add(this.getEEFStyle());
+		eefColumnConditionalStyleEClass.getESuperTypes().add(this.getEEFConditionalStyle());
+		eefColumnStyleCustomizationEClass.getESuperTypes().add(this.getEEFStyleCustomization());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eefViewDescriptionEClass, EEFViewDescription.class, "EEFViewDescription", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
@@ -1671,6 +3061,9 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 				!IS_DERIVED, IS_ORDERED);
 		initEReference(getEEFViewDescription_TableStructures(), this.getEEFTableStructureDescription(), null, "tableStructures", null, 0, -1, //$NON-NLS-1$
 				EEFViewDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getEEFViewDescription_StyleCustomizations(), this.getEEFStyleCustomization(), null, "styleCustomizations", null, 0, -1, //$NON-NLS-1$
+				EEFViewDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(eefPageDescriptionEClass, EEFPageDescription.class, "EEFPageDescription", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
@@ -1701,6 +3094,12 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 		initEReference(getEEFGroupDescription_Container(), this.getEEFContainerDescription(), null, "container", null, 1, 1, //$NON-NLS-1$
 				EEFGroupDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFGroupDescription_CollapsibleExpression(), this.getExpression(), "collapsibleExpression", null, 0, 1, //$NON-NLS-1$
+				EEFGroupDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFGroupDescription_CollapsedByDefaultExpression(), this.getExpression(), "collapsedByDefaultExpression", null, 0, 1, //$NON-NLS-1$
+				EEFGroupDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFGroupDescription_ValidationExpression(), this.getExpression(), "validationExpression", null, 0, 1, //$NON-NLS-1$
+				EEFGroupDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eefContainerDescriptionEClass, EEFContainerDescription.class, "EEFContainerDescription", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1727,6 +3126,14 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEEFWidgetDescription_LabelExpression(), this.getExpression(), "labelExpression", null, 0, 1, EEFWidgetDescription.class, //$NON-NLS-1$
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEEFWidgetDescription_LabelStyle(), this.getEEFLabelStyle(), null, "labelStyle", null, 0, 1, EEFWidgetDescription.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFWidgetDescription_TooltipExpression(), this.getExpression(), "tooltipExpression", null, 0, 1, EEFWidgetDescription.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFWidgetDescription_HelpExpression(), this.getExpression(), "helpExpression", null, 0, 1, EEFWidgetDescription.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFWidgetDescription_ValidationExpression(), this.getExpression(), "validationExpression", null, 0, 1, //$NON-NLS-1$
+				EEFWidgetDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eefJavaExtensionDescriptionEClass, EEFJavaExtensionDescription.class, "EEFJavaExtensionDescription", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1782,8 +3189,19 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEEFTextDescription_EditExpression(), this.getExpression(), "editExpression", null, 0, 1, EEFTextDescription.class, //$NON-NLS-1$
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFTextDescription_ReadOnlyExpression(), this.getExpression(), "readOnlyExpression", null, 0, 1, EEFTextDescription.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFTextDescription_ContentAssistExpression(), this.getExpression(), "contentAssistExpression", null, 0, 1, //$NON-NLS-1$
+				EEFTextDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFTextDescription_PlaceholderExpression(), this.getExpression(), "placeholderExpression", null, 0, 1, //$NON-NLS-1$
+				EEFTextDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEEFTextDescription_LineCount(), ecorePackage.getEInt(), "lineCount", "1", 0, 1, EEFTextDescription.class, !IS_TRANSIENT, //$NON-NLS-1$//$NON-NLS-2$
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEEFTextDescription_Style(), this.getEEFTextStyle(), null, "style", null, 0, 1, EEFTextDescription.class, !IS_TRANSIENT, //$NON-NLS-1$
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEEFTextDescription_ConditionalStyles(), this.getEEFTextConditionalStyle(), null, "conditionalStyles", null, 0, -1, //$NON-NLS-1$
+				EEFTextDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(eefCheckboxDescriptionEClass, EEFCheckboxDescription.class, "EEFCheckboxDescription", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1887,8 +3305,6 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 		initEReference(getEEFColumnDescription_CellWidget(), this.getEEFCellWidgetDescription(), null, "cellWidget", null, 0, 1, //$NON-NLS-1$
 				EEFColumnDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEEFColumnDescription_ContextCandidatesExpression(), this.getExpression(), "contextCandidatesExpression", null, 0, 1, //$NON-NLS-1$
-				EEFColumnDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eefLineDescriptionEClass, EEFLineDescription.class, "EEFLineDescription", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1923,6 +3339,196 @@ public class EefPackageImpl extends EPackageImpl implements EefPackage {
 		initEReference(getContextableElement_ExcludedContextVariables(), theContextPackage.getContextVariable(), null, "excludedContextVariables", //$NON-NLS-1$
 				null, 0, -1, ContextableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefStyleEClass, EEFStyle.class, "EEFStyle", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEEFStyle_FontExpression(), this.getExpression(), "fontExpression", null, 0, 1, EEFStyle.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefConditionalStyleEClass, EEFConditionalStyle.class, "EEFConditionalStyle", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEEFConditionalStyle_ConditionalExpression(), this.getExpression(), "conditionalExpression", null, 0, 1, //$NON-NLS-1$
+				EEFConditionalStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefStyleCustomizationEClass, EEFStyleCustomization.class, "EEFStyleCustomization", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(eefGroupStyleEClass, EEFGroupStyle.class, "EEFGroupStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEEFGroupStyle_ForegroundColorExpression(), this.getExpression(), "foregroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFGroupStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefGroupConditionalStyleEClass, EEFGroupConditionalStyle.class, "EEFGroupConditionalStyle", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFGroupConditionalStyle_Style(), this.getEEFGroupStyle(), null, "style", null, 0, 1, EEFGroupConditionalStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefGroupStyleCustomizationEClass, EEFGroupStyleCustomization.class, "EEFGroupStyleCustomization", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFGroupStyleCustomization_Style(), this.getEEFGroupStyle(), null, "style", null, 0, 1, EEFGroupStyleCustomization.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefTextStyleEClass, EEFTextStyle.class, "EEFTextStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEEFTextStyle_BackgroundColorExpression(), this.getExpression(), "backgroundColorExpression", null, 0, 1, EEFTextStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFTextStyle_ForegroundColorExpression(), this.getExpression(), "foregroundColorExpression", null, 0, 1, EEFTextStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefTextConditionalStyleEClass, EEFTextConditionalStyle.class, "EEFTextConditionalStyle", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFTextConditionalStyle_Style(), this.getEEFTextStyle(), null, "style", null, 0, 1, EEFTextConditionalStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefTextStyleCustomizationEClass, EEFTextStyleCustomization.class, "EEFTextStyleCustomization", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFTextStyleCustomization_Style(), this.getEEFTextStyle(), null, "style", null, 0, 1, EEFTextStyleCustomization.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefCheckboxStyleEClass, EEFCheckboxStyle.class, "EEFCheckboxStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEEFCheckboxStyle_BackgroundColorExpression(), this.getExpression(), "backgroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFCheckboxStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFCheckboxStyle_ForegroundColorExpression(), this.getExpression(), "foregroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFCheckboxStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefCheckboxConditionalStyleEClass, EEFCheckboxConditionalStyle.class, "EEFCheckboxConditionalStyle", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFCheckboxConditionalStyle_Style(), this.getEEFCheckboxStyle(), null, "style", null, 0, 1, //$NON-NLS-1$
+				EEFCheckboxConditionalStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefCheckboxStyleCustomizationEClass, EEFCheckboxStyleCustomization.class, "EEFCheckboxStyleCustomization", !IS_ABSTRACT, //$NON-NLS-1$
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFCheckboxStyleCustomization_Style(), this.getEEFCheckboxStyle(), null, "style", null, 0, 1, //$NON-NLS-1$
+				EEFCheckboxStyleCustomization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefLabelStyleEClass, EEFLabelStyle.class, "EEFLabelStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEEFLabelStyle_BackgroundColorExpression(), this.getExpression(), "backgroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFLabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFLabelStyle_ForegroundColorExpression(), this.getExpression(), "foregroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFLabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefLabelConditionalStyleEClass, EEFLabelConditionalStyle.class, "EEFLabelConditionalStyle", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFLabelConditionalStyle_Style(), this.getEEFLabelStyle(), null, "style", null, 0, 1, EEFLabelConditionalStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefLabelStyleCustomizationEClass, EEFLabelStyleCustomization.class, "EEFLabelStyleCustomization", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFLabelStyleCustomization_Style(), this.getEEFLabelStyle(), null, "style", null, 0, 1, EEFLabelStyleCustomization.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefRadioStyleEClass, EEFRadioStyle.class, "EEFRadioStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEEFRadioStyle_BackgroundColorExpression(), this.getExpression(), "backgroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFRadioStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFRadioStyle_ForegroundColorExpression(), this.getExpression(), "foregroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFRadioStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefRadioConditionalStyleEClass, EEFRadioConditionalStyle.class, "EEFRadioConditionalStyle", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFRadioConditionalStyle_Style(), this.getEEFRadioStyle(), null, "style", null, 0, 1, EEFRadioConditionalStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefRadioStyleCustomizationEClass, EEFRadioStyleCustomization.class, "EEFRadioStyleCustomization", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFRadioStyleCustomization_Style(), this.getEEFRadioStyle(), null, "style", null, 0, 1, EEFRadioStyleCustomization.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefLinkStyleEClass, EEFLinkStyle.class, "EEFLinkStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEEFLinkStyle_BackgroundColorExpression(), this.getExpression(), "backgroundColorExpression", null, 0, 1, EEFLinkStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFLinkStyle_ForegroundColorExpression(), this.getExpression(), "foregroundColorExpression", null, 0, 1, EEFLinkStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFLinkStyle_BackgroundImageExpression(), this.getExpression(), "backgroundImageExpression", null, 0, 1, EEFLinkStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefLinkConditionalStyleEClass, EEFLinkConditionalStyle.class, "EEFLinkConditionalStyle", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFLinkConditionalStyle_Style(), this.getEEFLinkStyle(), null, "style", null, 0, 1, EEFLinkConditionalStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefLinkStyleCustomizationEClass, EEFLinkStyleCustomization.class, "EEFLinkStyleCustomization", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFLinkStyleCustomization_Style(), this.getEEFLinkStyle(), null, "style", null, 0, 1, EEFLinkStyleCustomization.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefSelectStyleEClass, EEFSelectStyle.class, "EEFSelectStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEEFSelectStyle_BackgroundColorExpression(), this.getExpression(), "backgroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFSelectStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFSelectStyle_ForegroundColorExpression(), this.getExpression(), "foregroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFSelectStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefSelectConditionalStyleEClass, EEFSelectConditionalStyle.class, "EEFSelectConditionalStyle", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFSelectConditionalStyle_Style(), this.getEEFSelectStyle(), null, "style", null, 0, 1, EEFSelectConditionalStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefSelectStyleCustomizationEClass, EEFSelectStyleCustomization.class, "EEFSelectStyleCustomization", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFSelectStyleCustomization_Style(), this.getEEFSelectStyle(), null, "style", null, 0, 1, EEFSelectStyleCustomization.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefTreeStyleEClass, EEFTreeStyle.class, "EEFTreeStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+		initEClass(eefTreeConditionalStyleEClass, EEFTreeConditionalStyle.class, "EEFTreeConditionalStyle", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFTreeConditionalStyle_Style(), this.getEEFTreeStyle(), null, "style", null, 0, 1, EEFTreeConditionalStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefTreeStyleCustomizationEClass, EEFTreeStyleCustomization.class, "EEFTreeStyleCustomization", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFTreeStyleCustomization_Style(), this.getEEFTreeStyle(), null, "style", null, 0, 1, EEFTreeStyleCustomization.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefTableStyleEClass, EEFTableStyle.class, "EEFTableStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+		initEClass(eefTableConditionalStyleEClass, EEFTableConditionalStyle.class, "EEFTableConditionalStyle", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFTableConditionalStyle_Style(), this.getEEFTableStyle(), null, "style", null, 0, 1, EEFTableConditionalStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefTableStyleCustomizationEClass, EEFTableStyleCustomization.class, "EEFTableStyleCustomization", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFTableStyleCustomization_Style(), this.getEEFTableStyle(), null, "style", null, 0, 1, EEFTableStyleCustomization.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefLineStyleEClass, EEFLineStyle.class, "EEFLineStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEEFLineStyle_BackgroundColorExpression(), this.getExpression(), "backgroundColorExpression", null, 0, 1, EEFLineStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFLineStyle_ForegroundColorExpression(), this.getExpression(), "foregroundColorExpression", null, 0, 1, EEFLineStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFLineStyle_HeaderBackgroundColorExpression(), this.getExpression(), "headerBackgroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFLineStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFLineStyle_HeaderForegroundColorExpression(), this.getExpression(), "headerForegroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFLineStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefLineConditionalStyleEClass, EEFLineConditionalStyle.class, "EEFLineConditionalStyle", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFLineConditionalStyle_Style(), this.getEEFLineStyle(), null, "style", null, 0, 1, EEFLineConditionalStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefLineStyleCustomizationEClass, EEFLineStyleCustomization.class, "EEFLineStyleCustomization", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFLineStyleCustomization_Style(), this.getEEFLineStyle(), null, "style", null, 0, 1, EEFLineStyleCustomization.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefColumnStyleEClass, EEFColumnStyle.class, "EEFColumnStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEEFColumnStyle_BackgroundColorExpression(), this.getExpression(), "backgroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFColumnStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFColumnStyle_ForegroundColorExpression(), this.getExpression(), "foregroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFColumnStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFColumnStyle_HeaderBackgroundColorExpression(), this.getExpression(), "headerBackgroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFColumnStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEEFColumnStyle_HeaderForegroundColorExpression(), this.getExpression(), "headerForegroundColorExpression", null, 0, 1, //$NON-NLS-1$
+				EEFColumnStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefColumnConditionalStyleEClass, EEFColumnConditionalStyle.class, "EEFColumnConditionalStyle", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFColumnConditionalStyle_Style(), this.getEEFColumnStyle(), null, "style", null, 0, 1, EEFColumnConditionalStyle.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eefColumnStyleCustomizationEClass, EEFColumnStyleCustomization.class, "EEFColumnStyleCustomization", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEEFColumnStyleCustomization_Style(), this.getEEFColumnStyle(), null, "style", null, 0, 1, EEFColumnStyleCustomization.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(expressionEDataType, String.class, "Expression", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

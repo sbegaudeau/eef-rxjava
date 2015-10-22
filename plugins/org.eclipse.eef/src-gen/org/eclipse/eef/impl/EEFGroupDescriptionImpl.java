@@ -33,6 +33,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.eef.impl.EEFGroupDescriptionImpl#getDomainClass <em>Domain Class</em>}</li>
  *   <li>{@link org.eclipse.eef.impl.EEFGroupDescriptionImpl#getSemanticCandidateExpression <em>Semantic Candidate Expression</em>}</li>
  *   <li>{@link org.eclipse.eef.impl.EEFGroupDescriptionImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.eclipse.eef.impl.EEFGroupDescriptionImpl#getCollapsibleExpression <em>Collapsible Expression</em>}</li>
+ *   <li>{@link org.eclipse.eef.impl.EEFGroupDescriptionImpl#getCollapsedByDefaultExpression <em>Collapsed By Default Expression</em>}</li>
+ *   <li>{@link org.eclipse.eef.impl.EEFGroupDescriptionImpl#getValidationExpression <em>Validation Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -127,6 +130,66 @@ public class EEFGroupDescriptionImpl extends ContextableElementImpl implements E
 	 * @ordered
 	 */
 	protected EEFContainerDescription container;
+
+	/**
+	 * The default value of the '{@link #getCollapsibleExpression() <em>Collapsible Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCollapsibleExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String COLLAPSIBLE_EXPRESSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCollapsibleExpression() <em>Collapsible Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCollapsibleExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected String collapsibleExpression = COLLAPSIBLE_EXPRESSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCollapsedByDefaultExpression() <em>Collapsed By Default Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCollapsedByDefaultExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String COLLAPSED_BY_DEFAULT_EXPRESSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCollapsedByDefaultExpression() <em>Collapsed By Default Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCollapsedByDefaultExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected String collapsedByDefaultExpression = COLLAPSED_BY_DEFAULT_EXPRESSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getValidationExpression() <em>Validation Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValidationExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VALIDATION_EXPRESSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getValidationExpression() <em>Validation Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValidationExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected String validationExpression = VALIDATION_EXPRESSION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -323,6 +386,78 @@ public class EEFGroupDescriptionImpl extends ContextableElementImpl implements E
 	 * @generated
 	 */
 	@Override
+	public String getCollapsibleExpression() {
+		return collapsibleExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCollapsibleExpression(String newCollapsibleExpression) {
+		String oldCollapsibleExpression = collapsibleExpression;
+		collapsibleExpression = newCollapsibleExpression;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSIBLE_EXPRESSION, oldCollapsibleExpression,
+					collapsibleExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCollapsedByDefaultExpression() {
+		return collapsedByDefaultExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCollapsedByDefaultExpression(String newCollapsedByDefaultExpression) {
+		String oldCollapsedByDefaultExpression = collapsedByDefaultExpression;
+		collapsedByDefaultExpression = newCollapsedByDefaultExpression;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSED_BY_DEFAULT_EXPRESSION,
+					oldCollapsedByDefaultExpression, collapsedByDefaultExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getValidationExpression() {
+		return validationExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setValidationExpression(String newValidationExpression) {
+		String oldValidationExpression = validationExpression;
+		validationExpression = newValidationExpression;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EefPackage.EEF_GROUP_DESCRIPTION__VALIDATION_EXPRESSION, oldValidationExpression,
+					validationExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER:
@@ -351,6 +486,12 @@ public class EEFGroupDescriptionImpl extends ContextableElementImpl implements E
 			if (resolve)
 				return getContainer();
 			return basicGetContainer();
+		case EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSIBLE_EXPRESSION:
+			return getCollapsibleExpression();
+		case EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSED_BY_DEFAULT_EXPRESSION:
+			return getCollapsedByDefaultExpression();
+		case EefPackage.EEF_GROUP_DESCRIPTION__VALIDATION_EXPRESSION:
+			return getValidationExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -377,6 +518,15 @@ public class EEFGroupDescriptionImpl extends ContextableElementImpl implements E
 			return;
 		case EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER:
 			setContainer((EEFContainerDescription) newValue);
+			return;
+		case EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSIBLE_EXPRESSION:
+			setCollapsibleExpression((String) newValue);
+			return;
+		case EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSED_BY_DEFAULT_EXPRESSION:
+			setCollapsedByDefaultExpression((String) newValue);
+			return;
+		case EefPackage.EEF_GROUP_DESCRIPTION__VALIDATION_EXPRESSION:
+			setValidationExpression((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -405,6 +555,15 @@ public class EEFGroupDescriptionImpl extends ContextableElementImpl implements E
 		case EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER:
 			setContainer((EEFContainerDescription) null);
 			return;
+		case EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSIBLE_EXPRESSION:
+			setCollapsibleExpression(COLLAPSIBLE_EXPRESSION_EDEFAULT);
+			return;
+		case EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSED_BY_DEFAULT_EXPRESSION:
+			setCollapsedByDefaultExpression(COLLAPSED_BY_DEFAULT_EXPRESSION_EDEFAULT);
+			return;
+		case EefPackage.EEF_GROUP_DESCRIPTION__VALIDATION_EXPRESSION:
+			setValidationExpression(VALIDATION_EXPRESSION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -428,6 +587,15 @@ public class EEFGroupDescriptionImpl extends ContextableElementImpl implements E
 					: !SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT.equals(semanticCandidateExpression);
 		case EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER:
 			return container != null;
+		case EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSIBLE_EXPRESSION:
+			return COLLAPSIBLE_EXPRESSION_EDEFAULT == null ? collapsibleExpression != null
+					: !COLLAPSIBLE_EXPRESSION_EDEFAULT.equals(collapsibleExpression);
+		case EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSED_BY_DEFAULT_EXPRESSION:
+			return COLLAPSED_BY_DEFAULT_EXPRESSION_EDEFAULT == null ? collapsedByDefaultExpression != null
+					: !COLLAPSED_BY_DEFAULT_EXPRESSION_EDEFAULT.equals(collapsedByDefaultExpression);
+		case EefPackage.EEF_GROUP_DESCRIPTION__VALIDATION_EXPRESSION:
+			return VALIDATION_EXPRESSION_EDEFAULT == null ? validationExpression != null
+					: !VALIDATION_EXPRESSION_EDEFAULT.equals(validationExpression);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -451,6 +619,12 @@ public class EEFGroupDescriptionImpl extends ContextableElementImpl implements E
 		result.append(domainClass);
 		result.append(", semanticCandidateExpression: "); //$NON-NLS-1$
 		result.append(semanticCandidateExpression);
+		result.append(", collapsibleExpression: "); //$NON-NLS-1$
+		result.append(collapsibleExpression);
+		result.append(", collapsedByDefaultExpression: "); //$NON-NLS-1$
+		result.append(collapsedByDefaultExpression);
+		result.append(", validationExpression: "); //$NON-NLS-1$
+		result.append(validationExpression);
 		result.append(')');
 		return result.toString();
 	}

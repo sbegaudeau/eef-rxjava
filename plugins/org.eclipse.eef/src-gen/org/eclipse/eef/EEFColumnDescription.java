@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.eef.EEFColumnDescription#getWidth <em>Width</em>}</li>
  *   <li>{@link org.eclipse.eef.EEFColumnDescription#getHeaderExpression <em>Header Expression</em>}</li>
  *   <li>{@link org.eclipse.eef.EEFColumnDescription#getCellWidget <em>Cell Widget</em>}</li>
- *   <li>{@link org.eclipse.eef.EEFColumnDescription#getContextCandidatesExpression <em>Context Candidates Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.eef.EefPackage#getEEFColumnDescription()
@@ -108,31 +107,5 @@ public interface EEFColumnDescription extends EObject {
 	 * @generated
 	 */
 	void setCellWidget(EEFCellWidgetDescription value);
-
-	/**
-	 * Returns the value of the '<em><b>Context Candidates Expression</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Context Candidates Expression</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Context Candidates Expression</em>' attribute.
-	 * @see #setContextCandidatesExpression(String)
-	 * @see org.eclipse.eef.EefPackage#getEEFColumnDescription_ContextCandidatesExpression()
-	 * @model dataType="org.eclipse.eef.Expression"
-	 * @generated
-	 */
-	String getContextCandidatesExpression();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.eef.EEFColumnDescription#getContextCandidatesExpression <em>Context Candidates Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Context Candidates Expression</em>' attribute.
-	 * @see #getContextCandidatesExpression()
-	 * @generated
-	 */
-	void setContextCandidatesExpression(String value);
 
 } // EEFColumnDescription

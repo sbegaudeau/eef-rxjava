@@ -584,6 +584,765 @@ public class EefItemProviderAdapterFactory extends EefAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFGroupStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFGroupStyleItemProvider eefGroupStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFGroupStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFGroupStyleAdapter() {
+		if (eefGroupStyleItemProvider == null) {
+			eefGroupStyleItemProvider = new EEFGroupStyleItemProvider(this);
+		}
+
+		return eefGroupStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFGroupConditionalStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFGroupConditionalStyleItemProvider eefGroupConditionalStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFGroupConditionalStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFGroupConditionalStyleAdapter() {
+		if (eefGroupConditionalStyleItemProvider == null) {
+			eefGroupConditionalStyleItemProvider = new EEFGroupConditionalStyleItemProvider(this);
+		}
+
+		return eefGroupConditionalStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFGroupStyleCustomization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFGroupStyleCustomizationItemProvider eefGroupStyleCustomizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFGroupStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFGroupStyleCustomizationAdapter() {
+		if (eefGroupStyleCustomizationItemProvider == null) {
+			eefGroupStyleCustomizationItemProvider = new EEFGroupStyleCustomizationItemProvider(this);
+		}
+
+		return eefGroupStyleCustomizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFTextStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFTextStyleItemProvider eefTextStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFTextStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFTextStyleAdapter() {
+		if (eefTextStyleItemProvider == null) {
+			eefTextStyleItemProvider = new EEFTextStyleItemProvider(this);
+		}
+
+		return eefTextStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFTextConditionalStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFTextConditionalStyleItemProvider eefTextConditionalStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFTextConditionalStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFTextConditionalStyleAdapter() {
+		if (eefTextConditionalStyleItemProvider == null) {
+			eefTextConditionalStyleItemProvider = new EEFTextConditionalStyleItemProvider(this);
+		}
+
+		return eefTextConditionalStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFTextStyleCustomization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFTextStyleCustomizationItemProvider eefTextStyleCustomizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFTextStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFTextStyleCustomizationAdapter() {
+		if (eefTextStyleCustomizationItemProvider == null) {
+			eefTextStyleCustomizationItemProvider = new EEFTextStyleCustomizationItemProvider(this);
+		}
+
+		return eefTextStyleCustomizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFCheckboxStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFCheckboxStyleItemProvider eefCheckboxStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFCheckboxStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFCheckboxStyleAdapter() {
+		if (eefCheckboxStyleItemProvider == null) {
+			eefCheckboxStyleItemProvider = new EEFCheckboxStyleItemProvider(this);
+		}
+
+		return eefCheckboxStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFCheckboxConditionalStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFCheckboxConditionalStyleItemProvider eefCheckboxConditionalStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFCheckboxConditionalStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFCheckboxConditionalStyleAdapter() {
+		if (eefCheckboxConditionalStyleItemProvider == null) {
+			eefCheckboxConditionalStyleItemProvider = new EEFCheckboxConditionalStyleItemProvider(this);
+		}
+
+		return eefCheckboxConditionalStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFCheckboxStyleCustomization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFCheckboxStyleCustomizationItemProvider eefCheckboxStyleCustomizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFCheckboxStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFCheckboxStyleCustomizationAdapter() {
+		if (eefCheckboxStyleCustomizationItemProvider == null) {
+			eefCheckboxStyleCustomizationItemProvider = new EEFCheckboxStyleCustomizationItemProvider(this);
+		}
+
+		return eefCheckboxStyleCustomizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFLabelStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFLabelStyleItemProvider eefLabelStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFLabelStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFLabelStyleAdapter() {
+		if (eefLabelStyleItemProvider == null) {
+			eefLabelStyleItemProvider = new EEFLabelStyleItemProvider(this);
+		}
+
+		return eefLabelStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFLabelConditionalStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFLabelConditionalStyleItemProvider eefLabelConditionalStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFLabelConditionalStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFLabelConditionalStyleAdapter() {
+		if (eefLabelConditionalStyleItemProvider == null) {
+			eefLabelConditionalStyleItemProvider = new EEFLabelConditionalStyleItemProvider(this);
+		}
+
+		return eefLabelConditionalStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFLabelStyleCustomization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFLabelStyleCustomizationItemProvider eefLabelStyleCustomizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFLabelStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFLabelStyleCustomizationAdapter() {
+		if (eefLabelStyleCustomizationItemProvider == null) {
+			eefLabelStyleCustomizationItemProvider = new EEFLabelStyleCustomizationItemProvider(this);
+		}
+
+		return eefLabelStyleCustomizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFRadioStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFRadioStyleItemProvider eefRadioStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFRadioStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFRadioStyleAdapter() {
+		if (eefRadioStyleItemProvider == null) {
+			eefRadioStyleItemProvider = new EEFRadioStyleItemProvider(this);
+		}
+
+		return eefRadioStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFRadioConditionalStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFRadioConditionalStyleItemProvider eefRadioConditionalStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFRadioConditionalStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFRadioConditionalStyleAdapter() {
+		if (eefRadioConditionalStyleItemProvider == null) {
+			eefRadioConditionalStyleItemProvider = new EEFRadioConditionalStyleItemProvider(this);
+		}
+
+		return eefRadioConditionalStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFRadioStyleCustomization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFRadioStyleCustomizationItemProvider eefRadioStyleCustomizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFRadioStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFRadioStyleCustomizationAdapter() {
+		if (eefRadioStyleCustomizationItemProvider == null) {
+			eefRadioStyleCustomizationItemProvider = new EEFRadioStyleCustomizationItemProvider(this);
+		}
+
+		return eefRadioStyleCustomizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFLinkStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFLinkStyleItemProvider eefLinkStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFLinkStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFLinkStyleAdapter() {
+		if (eefLinkStyleItemProvider == null) {
+			eefLinkStyleItemProvider = new EEFLinkStyleItemProvider(this);
+		}
+
+		return eefLinkStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFLinkConditionalStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFLinkConditionalStyleItemProvider eefLinkConditionalStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFLinkConditionalStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFLinkConditionalStyleAdapter() {
+		if (eefLinkConditionalStyleItemProvider == null) {
+			eefLinkConditionalStyleItemProvider = new EEFLinkConditionalStyleItemProvider(this);
+		}
+
+		return eefLinkConditionalStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFLinkStyleCustomization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFLinkStyleCustomizationItemProvider eefLinkStyleCustomizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFLinkStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFLinkStyleCustomizationAdapter() {
+		if (eefLinkStyleCustomizationItemProvider == null) {
+			eefLinkStyleCustomizationItemProvider = new EEFLinkStyleCustomizationItemProvider(this);
+		}
+
+		return eefLinkStyleCustomizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFSelectStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFSelectStyleItemProvider eefSelectStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFSelectStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFSelectStyleAdapter() {
+		if (eefSelectStyleItemProvider == null) {
+			eefSelectStyleItemProvider = new EEFSelectStyleItemProvider(this);
+		}
+
+		return eefSelectStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFSelectConditionalStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFSelectConditionalStyleItemProvider eefSelectConditionalStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFSelectConditionalStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFSelectConditionalStyleAdapter() {
+		if (eefSelectConditionalStyleItemProvider == null) {
+			eefSelectConditionalStyleItemProvider = new EEFSelectConditionalStyleItemProvider(this);
+		}
+
+		return eefSelectConditionalStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFSelectStyleCustomization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFSelectStyleCustomizationItemProvider eefSelectStyleCustomizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFSelectStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFSelectStyleCustomizationAdapter() {
+		if (eefSelectStyleCustomizationItemProvider == null) {
+			eefSelectStyleCustomizationItemProvider = new EEFSelectStyleCustomizationItemProvider(this);
+		}
+
+		return eefSelectStyleCustomizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFTreeStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFTreeStyleItemProvider eefTreeStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFTreeStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFTreeStyleAdapter() {
+		if (eefTreeStyleItemProvider == null) {
+			eefTreeStyleItemProvider = new EEFTreeStyleItemProvider(this);
+		}
+
+		return eefTreeStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFTreeConditionalStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFTreeConditionalStyleItemProvider eefTreeConditionalStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFTreeConditionalStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFTreeConditionalStyleAdapter() {
+		if (eefTreeConditionalStyleItemProvider == null) {
+			eefTreeConditionalStyleItemProvider = new EEFTreeConditionalStyleItemProvider(this);
+		}
+
+		return eefTreeConditionalStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFTreeStyleCustomization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFTreeStyleCustomizationItemProvider eefTreeStyleCustomizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFTreeStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFTreeStyleCustomizationAdapter() {
+		if (eefTreeStyleCustomizationItemProvider == null) {
+			eefTreeStyleCustomizationItemProvider = new EEFTreeStyleCustomizationItemProvider(this);
+		}
+
+		return eefTreeStyleCustomizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFTableStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFTableStyleItemProvider eefTableStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFTableStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFTableStyleAdapter() {
+		if (eefTableStyleItemProvider == null) {
+			eefTableStyleItemProvider = new EEFTableStyleItemProvider(this);
+		}
+
+		return eefTableStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFTableConditionalStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFTableConditionalStyleItemProvider eefTableConditionalStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFTableConditionalStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFTableConditionalStyleAdapter() {
+		if (eefTableConditionalStyleItemProvider == null) {
+			eefTableConditionalStyleItemProvider = new EEFTableConditionalStyleItemProvider(this);
+		}
+
+		return eefTableConditionalStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFTableStyleCustomization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFTableStyleCustomizationItemProvider eefTableStyleCustomizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFTableStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFTableStyleCustomizationAdapter() {
+		if (eefTableStyleCustomizationItemProvider == null) {
+			eefTableStyleCustomizationItemProvider = new EEFTableStyleCustomizationItemProvider(this);
+		}
+
+		return eefTableStyleCustomizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFLineStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFLineStyleItemProvider eefLineStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFLineStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFLineStyleAdapter() {
+		if (eefLineStyleItemProvider == null) {
+			eefLineStyleItemProvider = new EEFLineStyleItemProvider(this);
+		}
+
+		return eefLineStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFLineConditionalStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFLineConditionalStyleItemProvider eefLineConditionalStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFLineConditionalStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFLineConditionalStyleAdapter() {
+		if (eefLineConditionalStyleItemProvider == null) {
+			eefLineConditionalStyleItemProvider = new EEFLineConditionalStyleItemProvider(this);
+		}
+
+		return eefLineConditionalStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFLineStyleCustomization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFLineStyleCustomizationItemProvider eefLineStyleCustomizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFLineStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFLineStyleCustomizationAdapter() {
+		if (eefLineStyleCustomizationItemProvider == null) {
+			eefLineStyleCustomizationItemProvider = new EEFLineStyleCustomizationItemProvider(this);
+		}
+
+		return eefLineStyleCustomizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFColumnStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFColumnStyleItemProvider eefColumnStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFColumnStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFColumnStyleAdapter() {
+		if (eefColumnStyleItemProvider == null) {
+			eefColumnStyleItemProvider = new EEFColumnStyleItemProvider(this);
+		}
+
+		return eefColumnStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFColumnConditionalStyle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFColumnConditionalStyleItemProvider eefColumnConditionalStyleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFColumnConditionalStyle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFColumnConditionalStyleAdapter() {
+		if (eefColumnConditionalStyleItemProvider == null) {
+			eefColumnConditionalStyleItemProvider = new EEFColumnConditionalStyleItemProvider(this);
+		}
+
+		return eefColumnConditionalStyleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFColumnStyleCustomization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EEFColumnStyleCustomizationItemProvider eefColumnStyleCustomizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFColumnStyleCustomization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFColumnStyleCustomizationAdapter() {
+		if (eefColumnStyleCustomizationItemProvider == null) {
+			eefColumnStyleCustomizationItemProvider = new EEFColumnStyleCustomizationItemProvider(this);
+		}
+
+		return eefColumnStyleCustomizationItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -732,6 +1491,72 @@ public class EefItemProviderAdapterFactory extends EefAdapterFactory implements 
 			eefLineDescriptionItemProvider.dispose();
 		if (eefAdapterFactoryTableStructureDescriptionItemProvider != null)
 			eefAdapterFactoryTableStructureDescriptionItemProvider.dispose();
+		if (eefGroupStyleItemProvider != null)
+			eefGroupStyleItemProvider.dispose();
+		if (eefGroupConditionalStyleItemProvider != null)
+			eefGroupConditionalStyleItemProvider.dispose();
+		if (eefGroupStyleCustomizationItemProvider != null)
+			eefGroupStyleCustomizationItemProvider.dispose();
+		if (eefTextStyleItemProvider != null)
+			eefTextStyleItemProvider.dispose();
+		if (eefTextConditionalStyleItemProvider != null)
+			eefTextConditionalStyleItemProvider.dispose();
+		if (eefTextStyleCustomizationItemProvider != null)
+			eefTextStyleCustomizationItemProvider.dispose();
+		if (eefCheckboxStyleItemProvider != null)
+			eefCheckboxStyleItemProvider.dispose();
+		if (eefCheckboxConditionalStyleItemProvider != null)
+			eefCheckboxConditionalStyleItemProvider.dispose();
+		if (eefCheckboxStyleCustomizationItemProvider != null)
+			eefCheckboxStyleCustomizationItemProvider.dispose();
+		if (eefLabelStyleItemProvider != null)
+			eefLabelStyleItemProvider.dispose();
+		if (eefLabelConditionalStyleItemProvider != null)
+			eefLabelConditionalStyleItemProvider.dispose();
+		if (eefLabelStyleCustomizationItemProvider != null)
+			eefLabelStyleCustomizationItemProvider.dispose();
+		if (eefRadioStyleItemProvider != null)
+			eefRadioStyleItemProvider.dispose();
+		if (eefRadioConditionalStyleItemProvider != null)
+			eefRadioConditionalStyleItemProvider.dispose();
+		if (eefRadioStyleCustomizationItemProvider != null)
+			eefRadioStyleCustomizationItemProvider.dispose();
+		if (eefLinkStyleItemProvider != null)
+			eefLinkStyleItemProvider.dispose();
+		if (eefLinkConditionalStyleItemProvider != null)
+			eefLinkConditionalStyleItemProvider.dispose();
+		if (eefLinkStyleCustomizationItemProvider != null)
+			eefLinkStyleCustomizationItemProvider.dispose();
+		if (eefSelectStyleItemProvider != null)
+			eefSelectStyleItemProvider.dispose();
+		if (eefSelectConditionalStyleItemProvider != null)
+			eefSelectConditionalStyleItemProvider.dispose();
+		if (eefSelectStyleCustomizationItemProvider != null)
+			eefSelectStyleCustomizationItemProvider.dispose();
+		if (eefTreeStyleItemProvider != null)
+			eefTreeStyleItemProvider.dispose();
+		if (eefTreeConditionalStyleItemProvider != null)
+			eefTreeConditionalStyleItemProvider.dispose();
+		if (eefTreeStyleCustomizationItemProvider != null)
+			eefTreeStyleCustomizationItemProvider.dispose();
+		if (eefTableStyleItemProvider != null)
+			eefTableStyleItemProvider.dispose();
+		if (eefTableConditionalStyleItemProvider != null)
+			eefTableConditionalStyleItemProvider.dispose();
+		if (eefTableStyleCustomizationItemProvider != null)
+			eefTableStyleCustomizationItemProvider.dispose();
+		if (eefLineStyleItemProvider != null)
+			eefLineStyleItemProvider.dispose();
+		if (eefLineConditionalStyleItemProvider != null)
+			eefLineConditionalStyleItemProvider.dispose();
+		if (eefLineStyleCustomizationItemProvider != null)
+			eefLineStyleCustomizationItemProvider.dispose();
+		if (eefColumnStyleItemProvider != null)
+			eefColumnStyleItemProvider.dispose();
+		if (eefColumnConditionalStyleItemProvider != null)
+			eefColumnConditionalStyleItemProvider.dispose();
+		if (eefColumnStyleCustomizationItemProvider != null)
+			eefColumnStyleCustomizationItemProvider.dispose();
 	}
 
 }

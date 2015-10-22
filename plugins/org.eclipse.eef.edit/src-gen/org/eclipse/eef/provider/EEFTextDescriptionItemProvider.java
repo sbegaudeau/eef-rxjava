@@ -12,11 +12,13 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.eef.EEFTextDescription;
+import org.eclipse.eef.EefFactory;
 import org.eclipse.eef.EefPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -52,6 +54,9 @@ public class EEFTextDescriptionItemProvider extends EEFCellWidgetDescriptionItem
 
 			addValueExpressionPropertyDescriptor(object);
 			addEditExpressionPropertyDescriptor(object);
+			addReadOnlyExpressionPropertyDescriptor(object);
+			addContentAssistExpressionPropertyDescriptor(object);
+			addPlaceholderExpressionPropertyDescriptor(object);
 			addLineCountPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -86,6 +91,50 @@ public class EEFTextDescriptionItemProvider extends EEFCellWidgetDescriptionItem
 	}
 
 	/**
+	 * This adds a property descriptor for the Read Only Expression feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReadOnlyExpressionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EEFTextDescription_readOnlyExpression_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EEFTextDescription_readOnlyExpression_feature", "_UI_EEFTextDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				EefPackage.Literals.EEF_TEXT_DESCRIPTION__READ_ONLY_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Content Assist Expression feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addContentAssistExpressionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EEFTextDescription_contentAssistExpression_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EEFTextDescription_contentAssistExpression_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_EEFTextDescription_type"), //$NON-NLS-1$
+				EefPackage.Literals.EEF_TEXT_DESCRIPTION__CONTENT_ASSIST_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Placeholder Expression feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPlaceholderExpressionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EEFTextDescription_placeholderExpression_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EEFTextDescription_placeholderExpression_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_EEFTextDescription_type"), //$NON-NLS-1$
+				EefPackage.Literals.EEF_TEXT_DESCRIPTION__PLACEHOLDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Line Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,6 +145,37 @@ public class EEFTextDescriptionItemProvider extends EEFCellWidgetDescriptionItem
 				getResourceLocator(), getString("_UI_EEFTextDescription_lineCount_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_EEFTextDescription_lineCount_feature", "_UI_EEFTextDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				EefPackage.Literals.EEF_TEXT_DESCRIPTION__LINE_COUNT, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(EefPackage.Literals.EEF_TEXT_DESCRIPTION__STYLE);
+			childrenFeatures.add(EefPackage.Literals.EEF_TEXT_DESCRIPTION__CONDITIONAL_STYLES);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -147,8 +227,15 @@ public class EEFTextDescriptionItemProvider extends EEFCellWidgetDescriptionItem
 		switch (notification.getFeatureID(EEFTextDescription.class)) {
 		case EefPackage.EEF_TEXT_DESCRIPTION__VALUE_EXPRESSION:
 		case EefPackage.EEF_TEXT_DESCRIPTION__EDIT_EXPRESSION:
+		case EefPackage.EEF_TEXT_DESCRIPTION__READ_ONLY_EXPRESSION:
+		case EefPackage.EEF_TEXT_DESCRIPTION__CONTENT_ASSIST_EXPRESSION:
+		case EefPackage.EEF_TEXT_DESCRIPTION__PLACEHOLDER_EXPRESSION:
 		case EefPackage.EEF_TEXT_DESCRIPTION__LINE_COUNT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case EefPackage.EEF_TEXT_DESCRIPTION__STYLE:
+		case EefPackage.EEF_TEXT_DESCRIPTION__CONDITIONAL_STYLES:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -164,6 +251,11 @@ public class EEFTextDescriptionItemProvider extends EEFCellWidgetDescriptionItem
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_TEXT_DESCRIPTION__STYLE, EefFactory.eINSTANCE.createEEFTextStyle()));
+
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_TEXT_DESCRIPTION__CONDITIONAL_STYLES,
+				EefFactory.eINSTANCE.createEEFTextConditionalStyle()));
 	}
 
 	/**

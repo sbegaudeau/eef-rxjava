@@ -49,12 +49,10 @@
       identifier="org.eclipse.eef.ecore.tablestructure">
     <columns
         headerExpression="aql:'Name'"
-        cellWidget="//@groups.0/@container/@widgets.1"
-        contextCandidatesExpression=""/>
+        cellWidget="//@groups.0/@container/@widgets.1"/>
     <columns
         headerExpression="aql:'EType'"
-        cellWidget="//@groups.0/@container/@widgets.2"
-        contextCandidatesExpression=""/>
+        cellWidget="//@groups.0/@container/@widgets.2"/>
     <columns
         headerExpression="aql:'Derived'"
         cellWidget="//@groups.0/@container/@widgets.3"/>

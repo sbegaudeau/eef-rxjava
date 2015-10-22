@@ -57,6 +57,9 @@ public class EEFGroupDescriptionItemProvider extends ContextableElementItemProvi
 			addLabelExpressionPropertyDescriptor(object);
 			addDomainClassPropertyDescriptor(object);
 			addSemanticCandidateExpressionPropertyDescriptor(object);
+			addCollapsibleExpressionPropertyDescriptor(object);
+			addCollapsedByDefaultExpressionPropertyDescriptor(object);
+			addValidationExpressionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -114,6 +117,51 @@ public class EEFGroupDescriptionItemProvider extends ContextableElementItemProvi
 						"_UI_EEFGroupDescription_type"), //$NON-NLS-1$
 				EefPackage.Literals.EEF_GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Collapsible Expression feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCollapsibleExpressionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EEFGroupDescription_collapsibleExpression_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EEFGroupDescription_collapsibleExpression_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_EEFGroupDescription_type"), //$NON-NLS-1$
+				EefPackage.Literals.EEF_GROUP_DESCRIPTION__COLLAPSIBLE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Collapsed By Default Expression feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCollapsedByDefaultExpressionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EEFGroupDescription_collapsedByDefaultExpression_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EEFGroupDescription_collapsedByDefaultExpression_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_EEFGroupDescription_type"), //$NON-NLS-1$
+				EefPackage.Literals.EEF_GROUP_DESCRIPTION__COLLAPSED_BY_DEFAULT_EXPRESSION, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Validation Expression feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValidationExpressionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EEFGroupDescription_validationExpression_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EEFGroupDescription_validationExpression_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_EEFGroupDescription_type"), //$NON-NLS-1$
+				EefPackage.Literals.EEF_GROUP_DESCRIPTION__VALIDATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -197,6 +245,9 @@ public class EEFGroupDescriptionItemProvider extends ContextableElementItemProvi
 		case EefPackage.EEF_GROUP_DESCRIPTION__LABEL_EXPRESSION:
 		case EefPackage.EEF_GROUP_DESCRIPTION__DOMAIN_CLASS:
 		case EefPackage.EEF_GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
+		case EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSIBLE_EXPRESSION:
+		case EefPackage.EEF_GROUP_DESCRIPTION__COLLAPSED_BY_DEFAULT_EXPRESSION:
+		case EefPackage.EEF_GROUP_DESCRIPTION__VALIDATION_EXPRESSION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER:
