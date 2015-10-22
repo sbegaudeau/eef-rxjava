@@ -1,0 +1,26 @@
+package eef {
+	
+	class eef.EEFViewDescription {
+		/**
+		 * The semantic candidate of the view
+		 */
+		var viewSemanticCandidate : ecore.EObject
+		
+		exp eef.EEFViewDescription.labelExpression (optional viewSemanticCandidate) : ecore.EString [0..1] {
+			contextableElements = [
+				eef.EEFViewDescription
+			]
+		}
+	}
+	
+	class eef.EEFPageDescription {
+		/**
+		 * The semantic candidate of the page
+		 */
+		var pageSemanticCandidate : ecore.EObject
+		
+		exp eef.EEFPageDescription.labelExpression (viewSemanticCandidate) : ecore.EString [0..1] {
+			contextableElements = []
+		}
+	}
+}
