@@ -33,6 +33,8 @@ public class EEFViewFactory {
 	 *            The variable manager
 	 * @param interpreterProviders
 	 *            The {@link IInterpreterProvider} available
+	 * @param editingDomain
+	 *            The editing domain
 	 * @return The {@link EEFView} fully initialized
 	 */
 	public EEFView createEEFView(EEFViewDescription eefViewDescription, IVariableManager variableManager,

@@ -3,7 +3,6 @@ package org.eclipse.sirius.editor.properties.api;
 import java.util.List;
 
 import org.eclipse.eef.ide.ui.api.TabDescriptorFilter;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;

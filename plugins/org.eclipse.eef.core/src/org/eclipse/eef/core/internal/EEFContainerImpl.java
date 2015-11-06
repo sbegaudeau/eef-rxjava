@@ -45,6 +45,9 @@ public class EEFContainerImpl extends AbstractEEFChildObject implements EEFConta
 	 */
 	private List<EEFWidget> eWidgets = new ArrayList<EEFWidget>();
 
+	/**
+	 * The editing domain.
+	 */
 	private TransactionalEditingDomain editingDomain;
 
 	/**
@@ -59,6 +62,7 @@ public class EEFContainerImpl extends AbstractEEFChildObject implements EEFConta
 	 * @param interpreter
 	 *            The interpreter
 	 * @param editingDomain
+	 *            The editing domain
 	 */
 	public EEFContainerImpl(EEFContainerParent eefContainerParent, EEFContainerDescription eefContainerDescription, IVariableManager variableManager,
 			IInterpreter interpreter, TransactionalEditingDomain editingDomain) {

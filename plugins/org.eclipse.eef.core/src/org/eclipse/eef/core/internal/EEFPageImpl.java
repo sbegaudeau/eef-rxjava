@@ -46,6 +46,9 @@ public class EEFPageImpl extends AbstractEEFChildObject implements EEFPage {
 	 */
 	private List<EEFGroup> eefGroups = new ArrayList<EEFGroup>();
 
+	/**
+	 * The editing domain.
+	 */
 	private TransactionalEditingDomain editingDomain;
 
 	/**
@@ -60,6 +63,7 @@ public class EEFPageImpl extends AbstractEEFChildObject implements EEFPage {
 	 * @param interpreter
 	 *            The interpreter
 	 * @param editingDomain
+	 *            The editing domain
 	 */
 	public EEFPageImpl(EEFView eefView, EEFPageDescription eefPageDescription, IVariableManager variableManager, IInterpreter interpreter,
 			TransactionalEditingDomain editingDomain) {

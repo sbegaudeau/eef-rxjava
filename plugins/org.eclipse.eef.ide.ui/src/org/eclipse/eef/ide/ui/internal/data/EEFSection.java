@@ -84,7 +84,9 @@ public class EEFSection implements ISection {
 
 					Text text = widgetFactory.createText(sectionComposite, ""); //$NON-NLS-1$
 					FormData data = new FormData();
-					data.left = new FormAttachment(0, 232);
+
+					final int textOffset = 232;
+					data.left = new FormAttachment(0, textOffset);
 					data.right = new FormAttachment(100, 0);
 					data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);
 
@@ -95,9 +97,11 @@ public class EEFSection implements ISection {
 
 					if (eefText.getDescription().getLabelExpression() != null && eefText.getDescription().getLabelExpression().trim().length() > 0) {
 						CLabel label = widgetFactory.createCLabel(sectionComposite, ""); //$NON-NLS-1$
+
+						final int labelOffset = 20;
 						data = new FormData();
 						data.left = new FormAttachment(0, 0);
-						data.right = new FormAttachment(text, -ITabbedPropertyConstants.HSPACE - 20);
+						data.right = new FormAttachment(text, -ITabbedPropertyConstants.HSPACE - labelOffset);
 						data.top = new FormAttachment(text, 0, SWT.CENTER);
 						label.setLayoutData(data);
 

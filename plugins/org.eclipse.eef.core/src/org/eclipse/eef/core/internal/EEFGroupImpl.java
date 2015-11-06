@@ -41,6 +41,9 @@ public class EEFGroupImpl extends AbstractEEFChildObject implements EEFGroup {
 	 */
 	private EEFContainer eefContainer;
 
+	/**
+	 * The editing domain.
+	 */
 	private TransactionalEditingDomain editingDomain;
 
 	/**
@@ -55,6 +58,7 @@ public class EEFGroupImpl extends AbstractEEFChildObject implements EEFGroup {
 	 * @param interpreter
 	 *            The interpreter
 	 * @param editingDomain
+	 *            The editing domain
 	 */
 	public EEFGroupImpl(EEFPage eefPage, EEFGroupDescription eefGroupDescription, IVariableManager variableManager, IInterpreter interpreter,
 			TransactionalEditingDomain editingDomain) {

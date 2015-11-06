@@ -54,6 +54,9 @@ public class EEFTextImpl extends AbstractEEFWidgetImpl implements EEFText {
 	 */
 	private IConsumer<String> labelExpressionConsumer;
 
+	/**
+	 * The editing domain.
+	 */
 	private TransactionalEditingDomain editingDomain;
 
 	/**
@@ -68,6 +71,7 @@ public class EEFTextImpl extends AbstractEEFWidgetImpl implements EEFText {
 	 * @param interpreter
 	 *            The interpreter
 	 * @param editingDomain
+	 *            The editing domain
 	 */
 	public EEFTextImpl(EEFContainer eefContainer, EEFTextDescription eefTextDescription, IVariableManager variableManager, IInterpreter interpreter,
 			TransactionalEditingDomain editingDomain) {
@@ -147,11 +151,6 @@ public class EEFTextImpl extends AbstractEEFWidgetImpl implements EEFText {
 				}
 			}
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.emf.common.command.AbstractCommand#canExecute()
-			 */
 			@Override
 			public boolean canExecute() {
 				return true;

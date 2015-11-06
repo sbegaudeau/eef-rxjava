@@ -47,6 +47,9 @@ public class EEFViewImpl extends AbstractEEFObject implements EEFView {
 	 */
 	private List<EEFPage> eefPages = new ArrayList<EEFPage>();
 
+	/**
+	 * The editing domain.
+	 */
 	private TransactionalEditingDomain editingDomain;
 
 	/**
@@ -59,6 +62,7 @@ public class EEFViewImpl extends AbstractEEFObject implements EEFView {
 	 * @param interpreter
 	 *            The interpreter
 	 * @param editingDomain
+	 *            The editing domain
 	 */
 	public EEFViewImpl(EEFViewDescription eefViewDescription, IVariableManager variableManager, IInterpreter interpreter,
 			TransactionalEditingDomain editingDomain) {
@@ -100,11 +104,6 @@ public class EEFViewImpl extends AbstractEEFObject implements EEFView {
 		};
 
 		this.editingDomain.addResourceSetListener(new ResourceSetListenerImpl(NotificationFilter.NOT_TOUCH) {
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.emf.transaction.ResourceSetListenerImpl#resourceSetChanged(org.eclipse.emf.transaction.ResourceSetChangeEvent)
-			 */
 			@Override
 			public void resourceSetChanged(ResourceSetChangeEvent event) {
 				for (EEFPage eefPage : EEFViewImpl.this.eefPages) {
@@ -116,11 +115,6 @@ public class EEFViewImpl extends AbstractEEFObject implements EEFView {
 				}
 			}
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.emf.transaction.ResourceSetListenerImpl#isPostcommitOnly()
-			 */
 			@Override
 			public boolean isPostcommitOnly() {
 				return true;

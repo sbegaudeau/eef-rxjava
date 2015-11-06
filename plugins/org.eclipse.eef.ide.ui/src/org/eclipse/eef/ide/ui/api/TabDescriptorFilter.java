@@ -41,6 +41,8 @@ public class TabDescriptorFilter {
 	 *
 	 * @param objects
 	 *            The input objects
+	 * @param editingDomain
+	 *            The editing domain
 	 * @return The {@link ITabDescriptor} to use
 	 */
 	public List<ITabDescriptor> getTabDescriptors(final Object[] objects, TransactionalEditingDomain editingDomain) {
