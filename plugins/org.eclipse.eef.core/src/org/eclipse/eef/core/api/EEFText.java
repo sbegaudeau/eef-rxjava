@@ -40,11 +40,13 @@ public interface EEFText extends EEFWidget {
 
 	/**
 	 * Updates the value of the text.
+	 * 
+	 * @param selection
 	 *
 	 * @param newValue
 	 *            The new value
 	 */
-	void updateValue(String newValue);
+	void updateValue(Object selection, String newValue);
 
 	/**
 	 * Adds a consumer which will be triggered when the label expression is evaluated.

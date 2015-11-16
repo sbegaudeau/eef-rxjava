@@ -23,7 +23,6 @@ import org.eclipse.eef.interpreter.api.IEvaluationResult;
 import org.eclipse.eef.interpreter.api.IInterpreter;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 
@@ -98,55 +97,40 @@ public class EEFTextImpl extends AbstractEEFWidgetImpl implements EEFText {
 	 */
 	@Override
 	public void setInput(Object object) {
-		Command command = new RecordingCommand(this.editingDomain) {
-			@Override
-			protected void doExecute() {
-				String valueExpression = EEFTextImpl.this.eefTextDescription.getValueExpression();
-				if (valueExpression != null) {
-					IEvaluationResult evaluationResult = EEFTextImpl.this.getInterpreter()
-							.evaluateExpression(EEFTextImpl.this.getVariableManager().getVariables(), null, valueExpression);
-					Object value = evaluationResult.getValue();
-					if (value instanceof String && EEFTextImpl.this.valueExpressionConsumer != null) {
-						EEFTextImpl.this.valueExpressionConsumer.apply((String) value);
-					}
-				}
-
-				String labelExpression = EEFTextImpl.this.eefTextDescription.getLabelExpression();
-				if (labelExpression != null) {
-					IEvaluationResult evaluationResult = EEFTextImpl.this.getInterpreter()
-							.evaluateExpression(EEFTextImpl.this.getVariableManager().getVariables(), null, labelExpression);
-					Object value = evaluationResult.getValue();
-					if (value instanceof String && EEFTextImpl.this.labelExpressionConsumer != null) {
-						EEFTextImpl.this.labelExpressionConsumer.apply((String) value);
-					}
-				}
+		String valueExpression = EEFTextImpl.this.eefTextDescription.getValueExpression();
+		if (valueExpression != null) {
+			IEvaluationResult evaluationResult = EEFTextImpl.this.getInterpreter()
+					.evaluateExpression(EEFTextImpl.this.getVariableManager().getVariables(), null, valueExpression);
+			Object value = evaluationResult.getValue();
+			if (value instanceof String && EEFTextImpl.this.valueExpressionConsumer != null) {
+				EEFTextImpl.this.valueExpressionConsumer.apply((String) value);
 			}
-		};
-		CommandStack commandStack = this.editingDomain.getCommandStack();
-		commandStack.execute(command);
+		}
+
+		String labelExpression = EEFTextImpl.this.eefTextDescription.getLabelExpression();
+		if (labelExpression != null) {
+			IEvaluationResult evaluationResult = EEFTextImpl.this.getInterpreter()
+					.evaluateExpression(EEFTextImpl.this.getVariableManager().getVariables(), null, labelExpression);
+			Object value = evaluationResult.getValue();
+			if (value instanceof String && EEFTextImpl.this.labelExpressionConsumer != null) {
+				EEFTextImpl.this.labelExpressionConsumer.apply((String) value);
+			}
+		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.eef.core.api.EEFText#updateValue(java.lang.String)
-	 */
 	@Override
-	public void updateValue(final String newValue) {
+	public void updateValue(final Object selection, final String newValue) {
 		Command command = new RecordingCommand(this.editingDomain) {
 			@Override
 			protected void doExecute() {
-				Object object = EEFTextImpl.this.getVariableManager().getVariables().get(EEFExpressionUtils.EEFView.VIEW_SEMANTIC_CANDIDATE);
-				if (object instanceof EObject) {
-					EObject eObject = (EObject) object;
-					eObject.eSet(eObject.eClass().getEStructuralFeature("name"), "YOUHOUYOUHOU"); //$NON-NLS-1$//$NON-NLS-2$
-				}
-
 				String editExpression = EEFTextImpl.this.eefTextDescription.getEditExpression();
 				if (editExpression != null) {
 					Map<String, Object> variables = new HashMap<String, Object>();
 					variables.putAll(EEFTextImpl.this.getVariableManager().getVariables());
 					variables.put(EEFExpressionUtils.EEFText.NEW_VALUE, newValue);
+
+					// FIXME REMOVE THIS HARDCODED STUFF!!!!
+					variables.put("selection", selection); //$NON-NLS-1$
 					EEFTextImpl.this.getInterpreter().evaluateExpression(variables, null, editExpression);
 				}
 			}

@@ -13,6 +13,7 @@ package org.eclipse.eef.ide.ui.internal.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.eef.core.api.EEFChildObject;
 import org.eclipse.eef.core.api.EEFContainer;
 import org.eclipse.eef.core.api.EEFGroup;
@@ -56,6 +57,8 @@ public class EEFSection implements ISection {
 	 * The widgets of this section.
 	 */
 	private List<Widget> widgets = new ArrayList<Widget>();
+
+	private Object selection;
 
 	/**
 	 * The constructor.
@@ -118,10 +121,13 @@ public class EEFSection implements ISection {
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		if (selection instanceof IStructuredSelection) {
 			IStructuredSelection iStructuredSelection = (IStructuredSelection) selection;
-			Object firstElement = iStructuredSelection.getFirstElement();
-			if (firstElement instanceof EObject) {
-				EObject eObject = (EObject) firstElement;
+			Object object = iStructuredSelection.getFirstElement();
 
+			this.selection = ((IStructuredSelection) selection).getFirstElement();
+
+			EObject eObject = Platform.getAdapterManager().getAdapter(object, EObject.class);
+
+			if (eObject != null) {
 				for (Widget widget : widgets) {
 					if (widget instanceof Text && ((Text) widget).getData() instanceof EEFText) {
 						Text text = (Text) widget;
@@ -177,9 +183,11 @@ public class EEFSection implements ISection {
 				eefText.addValueExpressionConsumer(new IConsumer<String>() {
 					@Override
 					public void apply(String value) {
-						text.setText(value);
-						if (!text.isEnabled()) {
-							text.setEnabled(true);
+						if (!text.isDisposed()) {
+							text.setText(value);
+							if (!text.isEnabled()) {
+								text.setEnabled(true);
+							}
 						}
 					}
 				});
@@ -187,7 +195,7 @@ public class EEFSection implements ISection {
 				text.addModifyListener(new ModifyListener() {
 					@Override
 					public void modifyText(ModifyEvent e) {
-						eefText.updateValue(text.getText());
+						eefText.updateValue(selection, text.getText());
 					}
 				});
 			}
