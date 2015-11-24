@@ -20,6 +20,7 @@ import java.util.Map;
 import org.eclipse.eef.interpreter.api.IEvaluationResult;
 import org.eclipse.eef.interpreter.api.IInterpreter;
 import org.eclipse.eef.interpreter.api.IInterpreterProvider;
+import org.eclipse.emf.common.util.Diagnostic;
 
 /**
  * Utility class encapsulating all the available interpreters.
@@ -75,7 +76,17 @@ public class EEFCompoundInterpreter implements IInterpreter {
 		if (interpreter != null) {
 			return interpreter.evaluateExpression(variables, expressionBody);
 		}
-		return null;
+		return new IEvaluationResult() {
+			@Override
+			public Object getValue() {
+				return null;
+			}
+
+			@Override
+			public Diagnostic getDiagnostic() {
+				return Diagnostic.CANCEL_INSTANCE;
+			}
+		};
 	}
 
 }
