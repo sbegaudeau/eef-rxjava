@@ -176,7 +176,9 @@ public class EEFSection implements ISection {
 				eefText.addLabelExpressionConsumer(new IConsumer<String>() {
 					@Override
 					public void apply(String value) {
-						label.setText(value);
+						if (!label.isDisposed()) {
+							label.setText(value);
+						}
 					}
 				});
 			} else if (widget instanceof Text && ((Text) widget).getData() instanceof EEFText) {
