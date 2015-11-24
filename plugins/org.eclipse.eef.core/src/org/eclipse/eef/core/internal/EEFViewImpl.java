@@ -109,7 +109,7 @@ public class EEFViewImpl extends AbstractEEFObject implements EEFView {
 				for (EEFPage eefPage : EEFViewImpl.this.eefPages) {
 					if (eefPage instanceof EEFPageImpl) {
 						EEFPageImpl eefPageImpl = (EEFPageImpl) eefPage;
-						System.out.println("Resource Set changed: " + event); //$NON-NLS-1$
+						//System.out.println("Resource Set changed: " + event); //$NON-NLS-1$
 						eefPageImpl.setInput(null);
 					}
 				}
