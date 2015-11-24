@@ -21,9 +21,6 @@ import org.eclipse.eef.core.api.IConsumer;
 import org.eclipse.eef.core.api.IVariableManager;
 import org.eclipse.eef.interpreter.api.IEvaluationResult;
 import org.eclipse.eef.interpreter.api.IInterpreter;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 
 /**
@@ -120,29 +117,16 @@ public class EEFTextImpl extends AbstractEEFWidgetImpl implements EEFText {
 
 	@Override
 	public void updateValue(final Object selection, final String newValue) {
-		Command command = new RecordingCommand(this.editingDomain) {
-			@Override
-			protected void doExecute() {
-				String editExpression = EEFTextImpl.this.eefTextDescription.getEditExpression();
-				if (editExpression != null) {
-					Map<String, Object> variables = new HashMap<String, Object>();
-					variables.putAll(EEFTextImpl.this.getVariableManager().getVariables());
-					variables.put(EEFExpressionUtils.EEFText.NEW_VALUE, newValue);
+		String editExpression = EEFTextImpl.this.eefTextDescription.getEditExpression();
+		if (editExpression != null) {
+			Map<String, Object> variables = new HashMap<String, Object>();
+			variables.putAll(EEFTextImpl.this.getVariableManager().getVariables());
+			variables.put(EEFExpressionUtils.EEFText.NEW_VALUE, newValue);
 
-					// FIXME REMOVE THIS HARDCODED STUFF!!!!
-					variables.put("selection", selection); //$NON-NLS-1$
-					EEFTextImpl.this.getInterpreter().evaluateExpression(variables, editExpression);
-				}
-			}
-
-			@Override
-			public boolean canExecute() {
-				return true;
-			}
-		};
-
-		CommandStack commandStack = this.editingDomain.getCommandStack();
-		commandStack.execute(command);
+			// FIXME REMOVE THIS HARDCODED STUFF!!!!
+			variables.put("selection", selection); //$NON-NLS-1$
+			EEFTextImpl.this.getInterpreter().evaluateExpression(variables, editExpression);
+		}
 	}
 
 	/**
