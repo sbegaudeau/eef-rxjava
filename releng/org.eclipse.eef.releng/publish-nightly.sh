@@ -10,19 +10,6 @@
 #    Obeo - initial API and implementation
 # ====================================================================
 
-[ -z "$WORKSPACE"  -o -z "$PLATFORM" -o -z "$GIT_BRANCH" ] && {
-     echo "Execution aborted.
-
-One or more of the required variables is not set. They are normally
-provided by the Hudson build.
-
-- WORKSPACE  : the build workspace root.
-- PLATFORM   : the name of the target Eclipse release (e.g. kepler).
-- GIT_BRANCH : the name fo the Git branch being build/published.
-"
-    exit 1
-}
-
 ######################################################################
 # Setup
 ######################################################################
@@ -32,6 +19,7 @@ set -e
 
 # The full version (should be taken as an argument)
 export VERSION="2.0.0"
+export PLATFORM="neon"
 
 # The type of build being published
 export BUILD_TYPE="nightly"
