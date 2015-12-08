@@ -50,7 +50,7 @@ export WKS="."
 # Ensure the target folder exists
 mkdir -p "$TARGET_DIR"
 # The actual publication of the p2 repo produced by the build
-cp -a "$WKS"/packaging/org.eclipse.sirius.update/target/repository/* "$TARGET_DIR"
+cp -a "$WKS"/packaging/org.eclipse.eef.update/target/repository/* "$TARGET_DIR"
 # Publish the target platform definitions used, so that downstream projects can reference them
 mkdir -p "$TARGET_DIR/targets"
 cp -a "$WKS"/releng/org.eclipse.eef.releng/targetplatforms/* "$TARGET_DIR/targets"
