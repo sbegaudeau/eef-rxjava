@@ -70,7 +70,7 @@ public class ComponentTransformer extends AbstractTransformer {
 		}
 		for (EStructuralFeature feature : genClass.getEcoreClass().getEAllStructuralFeatures()) {
 			if (isSignificant(feature) && !feature.isDerived()
-					&& !inheritedMember(feature, genClass.getEcoreClass()) && !isUnmanagedReference(feature)) {
+					&& !inheritedMember(feature, genClass.getEcoreClass())) {
 				PropertiesEditionElement structuralFeature2EditionElement = eStructuralFeature2EditionElement(
 						list, feature);
 				if (structuralFeature2EditionElement != null)
