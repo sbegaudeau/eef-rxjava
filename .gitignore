@@ -4,3 +4,6 @@ screenshots
 *~
 *.rej
 *.bak
+.DS_Store
+*._trace
+*.xtendbin
