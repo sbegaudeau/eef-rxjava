@@ -48,6 +48,8 @@ public class CDOWizardOpeningPolicy implements IWizardOpeningPolicy {
 			ChangeRecorder changeRecorder = editionContext.getChangeRecorder();
 			if (changeRecorder != null) {
 				description = changeRecorder.endRecording();
+			} else {
+				description = null;
 			}
 			if (open == Window.OK) {
 				return true;
