@@ -85,6 +85,8 @@ Contributors:
       <modules>
         <module>targetplatforms/neon</module>
 
+        <module>../../plugins/org.eclipse.eef.properties.ui</module>
+        
         <module>../../plugins/org.eclipse.eef</module>
         <module>../../plugins/org.eclipse.eef.edit</module>
 
