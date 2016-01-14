@@ -8,22 +8,21 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.eef.core.api;
 
-import org.eclipse.eef.core.internal.EEFVariableManager;
+package org.eclipse.eef.properties.ui.legacy.internal.legacy2eef;
+
+import org.eclipse.eef.properties.ui.api.IEEFTabbedPropertySheetPageContributor;
 
 /**
- * The factory used to create the {@link IVariableManager}.
- *
- * @author sbegaudeau
+ * Wraps a TabbedPropertySheetPage contributor to an {@link IEEFTabbedPropertySheetPageContributor}.
+ * 
+ * @author mbats
  */
-public class EEFVariableManagerFactory {
-	/**
-	 * Returns a new instance of the {@link IVariableManager}.
-	 *
-	 * @return A new instance of the {@link IVariableManager}
-	 */
-	public IVariableManager createVariableManager() {
-		return new EEFVariableManager();
+public class EEFLegacyTabbedPropertySheetPageContributor implements IEEFTabbedPropertySheetPageContributor {
+
+	@Override
+	public String getContributorId() {
+		return null; // no issue here... in theory :)
 	}
+
 }
