@@ -82,7 +82,7 @@ return create[editor.name.toJavaClassifier()/]FlatComboViewer(parent);
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'AdvancedEObjectFlatComboViewer')]
-	private [include('org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer')/] [editor.elementEditorName()/];
+	protected [include('org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer')/] [editor.elementEditorName()/];
 	protected [include('org.eclipse.jface.viewers.ViewerFilter')/] [editor.elementEditorName()/]Filter;
 [/template]
 

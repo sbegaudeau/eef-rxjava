@@ -29,7 +29,7 @@
 [/template]
 
 [template public widgetDeclaration(editor : ElementEditor) overrides widgetDeclaration ? (editor.representation.name = 'LinkEReferenceViewer')]
-	private [include('org.eclipse.emf.eef.runtime.ui.widgets.LinkEReferenceViewer')/] [editor.elementEditorName()/];
+	protected [include('org.eclipse.emf.eef.runtime.ui.widgets.LinkEReferenceViewer')/] [editor.elementEditorName()/];
 	protected [include('org.eclipse.jface.viewers.ViewerFilter')/] [editor.elementEditorName()/]Filter;
 [/template]
 
