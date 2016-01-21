@@ -25,14 +25,14 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  * <li>{@link org.eclipse.eef.impl.EEFPageDescriptionImpl#getIdentifier <em>Identifier</em>}</li>
  * <li>{@link org.eclipse.eef.impl.EEFPageDescriptionImpl#getLabelExpression <em>Label Expression</em>}</li>
- * <li>{@link org.eclipse.eef.impl.EEFPageDescriptionImpl#getSemanticCandidateExpression
- * <em>Semantic Candidate Expression</em>}</li>
+ * <li>{@link org.eclipse.eef.impl.EEFPageDescriptionImpl#getSemanticCandidateExpression <em>Semantic Candidate
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.eef.impl.EEFPageDescriptionImpl#getGroups <em>Groups</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -292,8 +292,8 @@ public class EEFPageDescriptionImpl extends MinimalEObjectImpl.Container impleme
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EefPackage.EEF_PAGE_DESCRIPTION__IDENTIFIER:
-			return EEFPageDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null
-					: !EEFPageDescriptionImpl.IDENTIFIER_EDEFAULT.equals(identifier);
+			return EEFPageDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null : !EEFPageDescriptionImpl.IDENTIFIER_EDEFAULT
+					.equals(identifier);
 		case EefPackage.EEF_PAGE_DESCRIPTION__LABEL_EXPRESSION:
 			return EEFPageDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null
 					: !EEFPageDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);

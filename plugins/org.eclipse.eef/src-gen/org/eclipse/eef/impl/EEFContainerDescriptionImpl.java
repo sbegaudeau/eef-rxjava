@@ -28,11 +28,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  * <li>{@link org.eclipse.eef.impl.EEFContainerDescriptionImpl#getIdentifier <em>Identifier</em>}</li>
  * <li>{@link org.eclipse.eef.impl.EEFContainerDescriptionImpl#getWidgets <em>Widgets</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -201,8 +201,8 @@ public class EEFContainerDescriptionImpl extends MinimalEObjectImpl.Container im
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EefPackage.EEF_CONTAINER_DESCRIPTION__IDENTIFIER:
-			return EEFContainerDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null
-					: !EEFContainerDescriptionImpl.IDENTIFIER_EDEFAULT.equals(identifier);
+			return EEFContainerDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null : !EEFContainerDescriptionImpl.IDENTIFIER_EDEFAULT
+					.equals(identifier);
 		case EefPackage.EEF_CONTAINER_DESCRIPTION__WIDGETS:
 			return widgets != null && !widgets.isEmpty();
 		}

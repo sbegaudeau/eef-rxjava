@@ -23,14 +23,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  * <li>{@link org.eclipse.eef.impl.EEFGroupDescriptionImpl#getIdentifier <em>Identifier</em>}</li>
  * <li>{@link org.eclipse.eef.impl.EEFGroupDescriptionImpl#getLabelExpression <em>Label Expression</em>}</li>
- * <li>{@link org.eclipse.eef.impl.EEFGroupDescriptionImpl#getSemanticCandidateExpression
- * <em>Semantic Candidate Expression</em>}</li>
+ * <li>{@link org.eclipse.eef.impl.EEFGroupDescriptionImpl#getSemanticCandidateExpression <em>Semantic Candidate
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.eef.impl.EEFGroupDescriptionImpl#getContainer <em>Container</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -210,8 +210,8 @@ public class EEFGroupDescriptionImpl extends MinimalEObjectImpl.Container implem
 			container = (EEFContainerDescription) eResolveProxy(oldContainer);
 			if (container != oldContainer) {
 				InternalEObject newContainer = (InternalEObject) container;
-				NotificationChain msgs = oldContainer.eInverseRemove(this,
-						InternalEObject.EOPPOSITE_FEATURE_BASE - EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER, null, null);
+				NotificationChain msgs = oldContainer.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+						- EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER, null, null);
 				if (newContainer.eInternalContainer() == null) {
 					msgs = newContainer.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER, null,
 							msgs);
@@ -266,12 +266,12 @@ public class EEFGroupDescriptionImpl extends MinimalEObjectImpl.Container implem
 		if (newContainer != container) {
 			NotificationChain msgs = null;
 			if (container != null) {
-				msgs = ((InternalEObject) container).eInverseRemove(this,
-						InternalEObject.EOPPOSITE_FEATURE_BASE - EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER, null, msgs);
+				msgs = ((InternalEObject) container).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+						- EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER, null, msgs);
 			}
 			if (newContainer != null) {
-				msgs = ((InternalEObject) newContainer).eInverseAdd(this,
-						InternalEObject.EOPPOSITE_FEATURE_BASE - EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER, null, msgs);
+				msgs = ((InternalEObject) newContainer).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE
+						- EefPackage.EEF_GROUP_DESCRIPTION__CONTAINER, null, msgs);
 			}
 			msgs = basicSetContainer(newContainer, msgs);
 			if (msgs != null) {
@@ -376,8 +376,8 @@ public class EEFGroupDescriptionImpl extends MinimalEObjectImpl.Container implem
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EefPackage.EEF_GROUP_DESCRIPTION__IDENTIFIER:
-			return EEFGroupDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null
-					: !EEFGroupDescriptionImpl.IDENTIFIER_EDEFAULT.equals(identifier);
+			return EEFGroupDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null : !EEFGroupDescriptionImpl.IDENTIFIER_EDEFAULT
+					.equals(identifier);
 		case EefPackage.EEF_GROUP_DESCRIPTION__LABEL_EXPRESSION:
 			return EEFGroupDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null
 					: !EEFGroupDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);

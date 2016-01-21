@@ -35,8 +35,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * 
  * @generated
  */
-public class EEFGroupDescriptionItemProvider extends ItemProviderAdapter
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class EEFGroupDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -82,7 +82,8 @@ public class EEFGroupDescriptionItemProvider extends ItemProviderAdapter
 	 */
 	protected void addLabelExpressionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_EEFGroupDescription_labelExpression_feature"), //$NON-NLS-1$
+				getResourceLocator(),
+				getString("_UI_EEFGroupDescription_labelExpression_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_EEFGroupDescription_labelExpression_feature", "_UI_EEFGroupDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				EefPackage.Literals.EEF_GROUP_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
 				null));
@@ -95,12 +96,15 @@ public class EEFGroupDescriptionItemProvider extends ItemProviderAdapter
 	 * @generated
 	 */
 	protected void addSemanticCandidateExpressionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_EEFGroupDescription_semanticCandidateExpression_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_EEFGroupDescription_semanticCandidateExpression_feature", //$NON-NLS-1$//$NON-NLS-2$
-						"_UI_EEFGroupDescription_type"), //$NON-NLS-1$
-				EefPackage.Literals.EEF_GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+		.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_EEFGroupDescription_semanticCandidateExpression_feature"), //$NON-NLS-1$
+				getString(
+						"_UI_PropertyDescriptor_description", "_UI_EEFGroupDescription_semanticCandidateExpression_feature", "_UI_EEFGroupDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+						EefPackage.Literals.EEF_GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -161,8 +165,8 @@ public class EEFGroupDescriptionItemProvider extends ItemProviderAdapter
 	@Override
 	public String getText(Object object) {
 		String label = ((EEFGroupDescription) object).getIdentifier();
-		return label == null || label.length() == 0 ? getString("_UI_EEFGroupDescription_type") //$NON-NLS-1$
-				: getString("_UI_EEFGroupDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return label == null || label.length() == 0 ? getString("_UI_EEFGroupDescription_type") : //$NON-NLS-1$
+			getString("_UI_EEFGroupDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -199,8 +203,8 @@ public class EEFGroupDescriptionItemProvider extends ItemProviderAdapter
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(
-				createChildParameter(EefPackage.Literals.EEF_GROUP_DESCRIPTION__CONTAINER, EefFactory.eINSTANCE.createEEFContainerDescription()));
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_GROUP_DESCRIPTION__CONTAINER,
+				EefFactory.eINSTANCE.createEEFContainerDescription()));
 	}
 
 	/**

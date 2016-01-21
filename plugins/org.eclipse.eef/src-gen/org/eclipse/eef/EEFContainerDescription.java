@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  * <li>{@link org.eclipse.eef.EEFContainerDescription#getIdentifier <em>Identifier</em>}</li>
  * <li>{@link org.eclipse.eef.EEFContainerDescription#getWidgets <em>Widgets</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.eclipse.eef.EefPackage#getEEFContainerDescription()
  * @model

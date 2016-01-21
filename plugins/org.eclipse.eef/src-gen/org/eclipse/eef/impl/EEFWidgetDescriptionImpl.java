@@ -20,11 +20,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  * <li>{@link org.eclipse.eef.impl.EEFWidgetDescriptionImpl#getIdentifier <em>Identifier</em>}</li>
  * <li>{@link org.eclipse.eef.impl.EEFWidgetDescriptionImpl#getLabelExpression <em>Label Expression</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -198,8 +198,8 @@ public abstract class EEFWidgetDescriptionImpl extends MinimalEObjectImpl.Contai
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case EefPackage.EEF_WIDGET_DESCRIPTION__IDENTIFIER:
-			return EEFWidgetDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null
-					: !EEFWidgetDescriptionImpl.IDENTIFIER_EDEFAULT.equals(identifier);
+			return EEFWidgetDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null : !EEFWidgetDescriptionImpl.IDENTIFIER_EDEFAULT
+					.equals(identifier);
 		case EefPackage.EEF_WIDGET_DESCRIPTION__LABEL_EXPRESSION:
 			return EEFWidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null
 					: !EEFWidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
