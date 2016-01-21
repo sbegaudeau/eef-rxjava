@@ -189,6 +189,29 @@ public class EefItemProviderAdapterFactory extends EefAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFLabelDescription} instances. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected EEFLabelDescriptionItemProvider eefLabelDescriptionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFLabelDescription}. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFLabelDescriptionAdapter() {
+		if (eefLabelDescriptionItemProvider == null) {
+			eefLabelDescriptionItemProvider = new EEFLabelDescriptionItemProvider(this);
+		}
+
+		return eefLabelDescriptionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
@@ -302,6 +325,9 @@ public class EefItemProviderAdapterFactory extends EefAdapterFactory implements 
 		}
 		if (eefTextDescriptionItemProvider != null) {
 			eefTextDescriptionItemProvider.dispose();
+		}
+		if (eefLabelDescriptionItemProvider != null) {
+			eefLabelDescriptionItemProvider.dispose();
 		}
 	}
 

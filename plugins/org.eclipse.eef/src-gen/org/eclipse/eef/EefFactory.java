@@ -66,6 +66,14 @@ public interface EefFactory extends EFactory {
 	EEFTextDescription createEEFTextDescription();
 
 	/**
+	 * Returns a new object of class '<em>EEF Label Description</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @return a new object of class '<em>EEF Label Description</em>'.
+	 * @generated
+	 */
+	EEFLabelDescription createEEFLabelDescription();
+
+	/**
 	 * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @return the package supported by this factory.

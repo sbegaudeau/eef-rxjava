@@ -10,6 +10,7 @@ package org.eclipse.eef.impl;
 
 import org.eclipse.eef.EEFContainerDescription;
 import org.eclipse.eef.EEFGroupDescription;
+import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFPageDescription;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFViewDescription;
@@ -71,6 +72,8 @@ public class EefFactoryImpl extends EFactoryImpl implements EefFactory {
 			return createEEFContainerDescription();
 		case EefPackage.EEF_TEXT_DESCRIPTION:
 			return createEEFTextDescription();
+		case EefPackage.EEF_LABEL_DESCRIPTION:
+			return createEEFLabelDescription();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -129,6 +132,17 @@ public class EefFactoryImpl extends EFactoryImpl implements EefFactory {
 	public EEFTextDescription createEEFTextDescription() {
 		EEFTextDescriptionImpl eefTextDescription = new EEFTextDescriptionImpl();
 		return eefTextDescription;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Override
+	public EEFLabelDescription createEEFLabelDescription() {
+		EEFLabelDescriptionImpl eefLabelDescription = new EEFLabelDescriptionImpl();
+		return eefLabelDescription;
 	}
 
 	/**

@@ -174,6 +174,9 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
 		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_CONTAINER_DESCRIPTION__WIDGETS,
 				EefFactory.eINSTANCE.createEEFTextDescription()));
+
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_CONTAINER_DESCRIPTION__WIDGETS,
+				EefFactory.eINSTANCE.createEEFLabelDescription()));
 	}
 
 	/**

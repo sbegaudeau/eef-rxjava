@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.eef.EEFContainerDescription;
+import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -92,6 +93,14 @@ public class EEFContainerLifecycleManager implements ILifecycleManager {
 				eefTextLifecycleManager.createControl(parent, tabbedPropertySheetPage);
 
 				this.lifecycleManagers.add(eefTextLifecycleManager);
+			} else if (eefWidgetDescription instanceof EEFLabelDescription) {
+				EEFLabelDescription eefLabelDescription = (EEFLabelDescription) eefWidgetDescription;
+
+				EEFLabelLifecycleManager eefLabelLifecycleManager = new EEFLabelLifecycleManager(eefLabelDescription, variableManager.createChild(),
+						interpreter);
+				eefLabelLifecycleManager.createControl(parent, tabbedPropertySheetPage);
+
+				this.lifecycleManagers.add(eefLabelLifecycleManager);
 			}
 		}
 	}

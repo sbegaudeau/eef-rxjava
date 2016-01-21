@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.eef.core.api.controllers;
 
+import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFTextDescription;
+import org.eclipse.eef.core.internal.controllers.EEFLabelControllerImpl;
 import org.eclipse.eef.core.internal.controllers.EEFTextControllerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
@@ -38,5 +40,20 @@ public class EEFControllersFactory {
 	public EEFTextController createTextController(EEFTextDescription description, IVariableManager variableManager, IInterpreter interpreter,
 			TransactionalEditingDomain editingDomain) {
 		return new EEFTextControllerImpl(description, variableManager, interpreter, editingDomain);
+	}
+
+	/**
+	 * Creates a new label controller.
+	 *
+	 * @param description
+	 *            The description
+	 * @param variableManager
+	 *            The variable manager
+	 * @param interpreter
+	 *            The interpreter
+	 * @return A label controller
+	 */
+	public EEFLabelController createLabelController(EEFLabelDescription description, IVariableManager variableManager, IInterpreter interpreter) {
+		return new EEFLabelControllerImpl(description, variableManager, interpreter);
 	}
 }

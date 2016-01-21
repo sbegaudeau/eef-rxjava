@@ -10,6 +10,7 @@ package org.eclipse.eef.util;
 
 import org.eclipse.eef.EEFContainerDescription;
 import org.eclipse.eef.EEFGroupDescription;
+import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFPageDescription;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFViewDescription;
@@ -99,6 +100,11 @@ public class EefAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseEEFTextDescription(EEFTextDescription object) {
 			return createEEFTextDescriptionAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFLabelDescription(EEFLabelDescription object) {
+			return createEEFLabelDescriptionAdapter();
 		}
 
 		@Override
@@ -201,6 +207,20 @@ public class EefAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEEFTextDescriptionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFLabelDescription
+	 * <em>EEF Label Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+	 * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+	 * end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFLabelDescription
+	 * @generated
+	 */
+	public Adapter createEEFLabelDescriptionAdapter() {
 		return null;
 	}
 
