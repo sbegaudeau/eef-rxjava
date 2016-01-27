@@ -181,6 +181,9 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 				EefFactory.eINSTANCE.createEEFLabelDescription()));
 
 		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_CONTAINER_DESCRIPTION__WIDGETS,
+				EefFactory.eINSTANCE.createEEFCheckboxDescription()));
+
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_CONTAINER_DESCRIPTION__WIDGETS,
 				EefFactory.eINSTANCE.createEEFSelectDescription()));
 
 		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS,

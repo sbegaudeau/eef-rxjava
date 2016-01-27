@@ -396,6 +396,59 @@ public interface EefPackage extends EPackage {
 	int EEF_LABEL_DESCRIPTION_FEATURE_COUNT = EefPackage.EEF_WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.eef.impl.EEFCheckboxDescriptionImpl
+	 * <em>EEF Checkbox Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @see org.eclipse.eef.impl.EEFCheckboxDescriptionImpl
+	 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFCheckboxDescription()
+	 * @generated
+	 */
+	int EEF_CHECKBOX_DESCRIPTION = 7;
+
+	/**
+	 * The feature id for the '<em><b>Identifier</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_CHECKBOX_DESCRIPTION__IDENTIFIER = EefPackage.EEF_WIDGET_DESCRIPTION__IDENTIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_CHECKBOX_DESCRIPTION__LABEL_EXPRESSION = EefPackage.EEF_WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_CHECKBOX_DESCRIPTION__VALUE_EXPRESSION = EefPackage.EEF_WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Edit Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_CHECKBOX_DESCRIPTION__EDIT_EXPRESSION = EefPackage.EEF_WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>EEF Checkbox Description</em>' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int EEF_CHECKBOX_DESCRIPTION_FEATURE_COUNT = EefPackage.EEF_WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.eef.impl.EEFSelectDescriptionImpl <em>EEF Select Description</em>}
 	 * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -403,7 +456,7 @@ public interface EefPackage extends EPackage {
 	 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFSelectDescription()
 	 * @generated
 	 */
-	int EEF_SELECT_DESCRIPTION = 7;
+	int EEF_SELECT_DESCRIPTION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Identifier</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -474,7 +527,7 @@ public interface EefPackage extends EPackage {
 	 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFDynamicMappingFor()
 	 * @generated
 	 */
-	int EEF_DYNAMIC_MAPPING_FOR = 8;
+	int EEF_DYNAMIC_MAPPING_FOR = 9;
 
 	/**
 	 * The feature id for the '<em><b>Iterator</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -519,7 +572,7 @@ public interface EefPackage extends EPackage {
 	 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFDynamicMappingSwitch()
 	 * @generated
 	 */
-	int EEF_DYNAMIC_MAPPING_SWITCH = 9;
+	int EEF_DYNAMIC_MAPPING_SWITCH = 10;
 
 	/**
 	 * The feature id for the '<em><b>Switch Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -556,7 +609,7 @@ public interface EefPackage extends EPackage {
 	 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFDynamicMappingCase()
 	 * @generated
 	 */
-	int EEF_DYNAMIC_MAPPING_CASE = 10;
+	int EEF_DYNAMIC_MAPPING_CASE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Case Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -877,6 +930,38 @@ public interface EefPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getEEFLabelDescription();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.eef.EEFCheckboxDescription
+	 * <em>EEF Checkbox Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @return the meta object for class '<em>EEF Checkbox Description</em>'.
+	 * @see org.eclipse.eef.EEFCheckboxDescription
+	 * @generated
+	 */
+	EClass getEEFCheckboxDescription();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.eef.EEFCheckboxDescription#getValueExpression
+	 * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @return the meta object for the attribute '<em>Value Expression</em>'.
+	 * @see org.eclipse.eef.EEFCheckboxDescription#getValueExpression()
+	 * @see #getEEFCheckboxDescription()
+	 * @generated
+	 */
+	EAttribute getEEFCheckboxDescription_ValueExpression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.eef.EEFCheckboxDescription#getEditExpression
+	 * <em>Edit Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @return the meta object for the attribute '<em>Edit Expression</em>'.
+	 * @see org.eclipse.eef.EEFCheckboxDescription#getEditExpression()
+	 * @see #getEEFCheckboxDescription()
+	 * @generated
+	 */
+	EAttribute getEEFCheckboxDescription_EditExpression();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.eef.EEFSelectDescription <em>EEF Select Description</em>}'.
@@ -1291,6 +1376,32 @@ public interface EefPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EEF_LABEL_DESCRIPTION = EefPackage.eINSTANCE.getEEFLabelDescription();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.eef.impl.EEFCheckboxDescriptionImpl
+		 * <em>EEF Checkbox Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
+		 * @see org.eclipse.eef.impl.EEFCheckboxDescriptionImpl
+		 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFCheckboxDescription()
+		 * @generated
+		 */
+		EClass EEF_CHECKBOX_DESCRIPTION = EefPackage.eINSTANCE.getEEFCheckboxDescription();
+
+		/**
+		 * The meta object literal for the '<em><b>Value Expression</b></em>' attribute feature. <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 *
+		 * @generated
+		 */
+		EAttribute EEF_CHECKBOX_DESCRIPTION__VALUE_EXPRESSION = EefPackage.eINSTANCE.getEEFCheckboxDescription_ValueExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Edit Expression</b></em>' attribute feature. <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 *
+		 * @generated
+		 */
+		EAttribute EEF_CHECKBOX_DESCRIPTION__EDIT_EXPRESSION = EefPackage.eINSTANCE.getEEFCheckboxDescription_EditExpression();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.eef.impl.EEFSelectDescriptionImpl

@@ -49,6 +49,25 @@ public final class EEFExpressionUtils {
 	}
 
 	/**
+	 * Utility class containing the constants related to the Checkbox widget.
+	 *
+	 * @author mbats
+	 */
+	public final class EEFCheckbox {
+		/**
+		 * The name of the variable newValue.
+		 */
+		public static final String NEW_VALUE = "newValue"; //$NON-NLS-1$
+
+		/**
+		 * The constructor.
+		 */
+		private EEFCheckbox() {
+			// prevent instantiation
+		}
+	}
+
+	/**
 	 * Utility class containing the constants related to the Select widget.
 	 *
 	 * @author mbats

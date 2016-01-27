@@ -8,6 +8,7 @@
  */
 package org.eclipse.eef.util;
 
+import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFContainerDescription;
 import org.eclipse.eef.EEFDynamicMappingCase;
 import org.eclipse.eef.EEFDynamicMappingFor;
@@ -109,6 +110,11 @@ public class EefAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseEEFLabelDescription(EEFLabelDescription object) {
 			return createEEFLabelDescriptionAdapter();
+		}
+
+		@Override
+		public Adapter caseEEFCheckboxDescription(EEFCheckboxDescription object) {
+			return createEEFCheckboxDescriptionAdapter();
 		}
 
 		@Override
@@ -245,6 +251,20 @@ public class EefAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEEFLabelDescriptionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFCheckboxDescription
+	 * <em>EEF Checkbox Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+	 * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+	 * end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.eef.EEFCheckboxDescription
+	 * @generated
+	 */
+	public Adapter createEEFCheckboxDescriptionAdapter() {
 		return null;
 	}
 

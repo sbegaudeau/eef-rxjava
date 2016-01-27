@@ -8,6 +8,7 @@
  */
 package org.eclipse.eef.impl;
 
+import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFContainerDescription;
 import org.eclipse.eef.EEFDynamicMappingCase;
 import org.eclipse.eef.EEFDynamicMappingFor;
@@ -78,6 +79,8 @@ public class EefFactoryImpl extends EFactoryImpl implements EefFactory {
 			return createEEFTextDescription();
 		case EefPackage.EEF_LABEL_DESCRIPTION:
 			return createEEFLabelDescription();
+		case EefPackage.EEF_CHECKBOX_DESCRIPTION:
+			return createEEFCheckboxDescription();
 		case EefPackage.EEF_SELECT_DESCRIPTION:
 			return createEEFSelectDescription();
 		case EefPackage.EEF_DYNAMIC_MAPPING_FOR:
@@ -155,6 +158,17 @@ public class EefFactoryImpl extends EFactoryImpl implements EefFactory {
 	public EEFLabelDescription createEEFLabelDescription() {
 		EEFLabelDescriptionImpl eefLabelDescription = new EEFLabelDescriptionImpl();
 		return eefLabelDescription;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Override
+	public EEFCheckboxDescription createEEFCheckboxDescription() {
+		EEFCheckboxDescriptionImpl eefCheckboxDescription = new EEFCheckboxDescriptionImpl();
+		return eefCheckboxDescription;
 	}
 
 	/**

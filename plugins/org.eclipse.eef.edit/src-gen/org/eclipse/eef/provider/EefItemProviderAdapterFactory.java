@@ -212,9 +212,55 @@ public class EefItemProviderAdapterFactory extends EefAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFCheckboxDescription} instances. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	protected EEFCheckboxDescriptionItemProvider eefCheckboxDescriptionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFCheckboxDescription}. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFCheckboxDescriptionAdapter() {
+		if (eefCheckboxDescriptionItemProvider == null) {
+			eefCheckboxDescriptionItemProvider = new EEFCheckboxDescriptionItemProvider(this);
+		}
+
+		return eefCheckboxDescriptionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFSelectDescription} instances. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	protected EEFSelectDescriptionItemProvider eefSelectDescriptionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFSelectDescription}. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Adapter createEEFSelectDescriptionAdapter() {
+		if (eefSelectDescriptionItemProvider == null) {
+			eefSelectDescriptionItemProvider = new EEFSelectDescriptionItemProvider(this);
+		}
+
+		return eefSelectDescriptionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFDynamicMappingFor} instances. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected EEFDynamicMappingForItemProvider eefDynamicMappingForItemProvider;
@@ -266,17 +312,8 @@ public class EefItemProviderAdapterFactory extends EefAdapterFactory implements 
 	protected EEFDynamicMappingCaseItemProvider eefDynamicMappingCaseItemProvider;
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFSelectDescription} instances. <!--
-	 * begin-user-doc --> <!-- ======= This keeps track of the one adapter used for all
-	 * {@link org.eclipse.eef.EEFSelectDescription} instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected EEFSelectDescriptionItemProvider eefSelectDescriptionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.eef.EEFDynamicMappingCase}. <!-- begin-user-doc --> <!-- >>>>>>>
-	 * Contribute the select widget. end-user-doc -->
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFDynamicMappingCase}. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * 
 	 * @generated
 	 */
@@ -287,15 +324,6 @@ public class EefItemProviderAdapterFactory extends EefAdapterFactory implements 
 		}
 
 		return eefDynamicMappingCaseItemProvider;
-	}
-
-	@Override
-	public Adapter createEEFSelectDescriptionAdapter() {
-		if (eefSelectDescriptionItemProvider == null) {
-			eefSelectDescriptionItemProvider = new EEFSelectDescriptionItemProvider(this);
-		}
-
-		return eefSelectDescriptionItemProvider;
 	}
 
 	/**
@@ -416,6 +444,9 @@ public class EefItemProviderAdapterFactory extends EefAdapterFactory implements 
 		if (eefLabelDescriptionItemProvider != null) {
 			eefLabelDescriptionItemProvider.dispose();
 		}
+		if (eefCheckboxDescriptionItemProvider != null) {
+			eefCheckboxDescriptionItemProvider.dispose();
+		}
 		if (eefSelectDescriptionItemProvider != null) {
 			eefSelectDescriptionItemProvider.dispose();
 		}
@@ -429,4 +460,5 @@ public class EefItemProviderAdapterFactory extends EefAdapterFactory implements 
 			eefDynamicMappingCaseItemProvider.dispose();
 		}
 	}
+
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.eef.core.api.controllers;
 
+import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFSelectDescription;
 import org.eclipse.eef.EEFTextDescription;
+import org.eclipse.eef.core.internal.controllers.EEFCheckboxControllerImpl;
 import org.eclipse.eef.core.internal.controllers.EEFLabelControllerImpl;
 import org.eclipse.eef.core.internal.controllers.EEFSelectControllerImpl;
 import org.eclipse.eef.core.internal.controllers.EEFTextControllerImpl;
@@ -75,5 +77,24 @@ public class EEFControllersFactory {
 	public EEFSelectController createSelectController(EEFSelectDescription description, IVariableManager variableManager, IInterpreter interpreter,
 			TransactionalEditingDomain editingDomain) {
 		return new EEFSelectControllerImpl(description, variableManager, interpreter, editingDomain);
+	}
+
+	/**
+	 * Creates a new checkbox controller.
+	 *
+	 * @param description
+	 *            The description
+	 * @param variableManager
+	 *            The variable manager
+	 * @param interpreter
+	 *            The interpreter
+	 * @param editingDomain
+	 *            The editing domain
+	 * @return A checkbox controller
+	 */
+	public EEFCheckboxController createCheckboxController(EEFCheckboxDescription description, IVariableManager variableManager,
+			IInterpreter interpreter, TransactionalEditingDomain editingDomain) {
+		return new EEFCheckboxControllerImpl(description, variableManager, interpreter, editingDomain);
+
 	}
 }
