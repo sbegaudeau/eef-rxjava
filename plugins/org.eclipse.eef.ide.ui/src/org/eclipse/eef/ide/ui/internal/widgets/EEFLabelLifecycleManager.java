@@ -16,6 +16,7 @@ import org.eclipse.eef.core.api.controllers.EEFLabelController;
 import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
@@ -79,7 +80,9 @@ public class EEFLabelLifecycleManager implements ILifecycleManager {
 	public void createControl(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
 		TabbedPropertySheetWidgetFactory widgetFactory = tabbedPropertySheetPage.getWidgetFactory();
 
+		widgetFactory.createLabel(parent, "", SWT.NONE); //$NON-NLS-1$
 		this.label = widgetFactory.createLabel(parent, ""); //$NON-NLS-1$
+		widgetFactory.createLabel(parent, "", SWT.NONE); //$NON-NLS-1$
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		this.label.setLayoutData(nameData);
