@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,8 @@ import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.utils.Util;
+import org.eclipse.eef.ide.ui.internal.EEFIdeUiPlugin;
+import org.eclipse.eef.ide.ui.internal.Messages;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -171,7 +173,13 @@ public class EEFContainerLifecycleManager implements ILifecycleManager {
 						this.createWidgetControl(parent, tabbedPropertySheetPage, eefWidgetDescription, childVariableManager);
 					}
 				}
+			} else {
+				EEFIdeUiPlugin.getPlugin().error(domainClassExpressionResult.getDiagnostic().toString(), null);
 			}
+		} else if (Util.isBlank(domainClassExpression)) {
+			EEFIdeUiPlugin.getPlugin().error(Messages.EEFContainerLifecycleManager_BlankDomainClassExpression, null);
+		} else if (Util.isBlank(switchExpression)) {
+			EEFIdeUiPlugin.getPlugin().error(Messages.EEFContainerLifecycleManager_BlankSwitchExpression, null);
 		}
 	}
 
@@ -192,10 +200,13 @@ public class EEFContainerLifecycleManager implements ILifecycleManager {
 			for (EEFDynamicMappingCase dynamicMappingCase : cases) {
 				IEvaluationResult caseExpressionResult = this.interpreter.evaluateExpression(this.variableManager.getVariables(),
 						dynamicMappingCase.getCaseExpression());
-				if (caseExpressionResult.success() && caseExpressionResult.getValue() != null
-						&& caseExpressionResult.getValue().equals(switchExpressionResult.getValue())) {
-					caseMatching = dynamicMappingCase;
-					break;
+				if (caseExpressionResult.success()) {
+					if (caseExpressionResult.getValue() != null && caseExpressionResult.getValue().equals(switchExpressionResult.getValue())) {
+						caseMatching = dynamicMappingCase;
+						break;
+					}
+				} else {
+					EEFIdeUiPlugin.getPlugin().error(caseExpressionResult.getDiagnostic().toString(), null);
 				}
 			}
 

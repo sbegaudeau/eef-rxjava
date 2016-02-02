@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.eef.ide.ui.internal;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.EMFPlugin;
@@ -26,6 +27,11 @@ public class EEFIdeUiPlugin extends EMFPlugin {
 	 * The identifier of the plugin.
 	 */
 	public static final String PLUGIN_ID = "org.eclipse.eef.ide.ui"; //$NON-NLS-1$
+
+	/**
+	 * The sole instance of the plugin.
+	 */
+	public static final EEFIdeUiPlugin INSTANCE = new EEFIdeUiPlugin();
 
 	/**
 	 * The OSGi related implementation of the plugin.
@@ -49,7 +55,7 @@ public class EEFIdeUiPlugin extends EMFPlugin {
 		return plugin;
 	}
 
-	public static Implementation getImplementation() {
+	public static Implementation getPlugin() {
 		return plugin;
 	}
 
@@ -69,6 +75,26 @@ public class EEFIdeUiPlugin extends EMFPlugin {
 		}
 
 		/**
+		 * Logs the status.
+		 * 
+		 * @param severity
+		 *            The severity of the status
+		 * @param message
+		 *            The message to log or <code>null</code>. If the message is <code>null</code>, the message of the
+		 *            exception will be used instead
+		 * @param exception
+		 *            The exception to log
+		 */
+		private void doLog(int severity, String message, Exception exception) {
+			String messageToLog = message;
+			if (messageToLog == null && exception != null) {
+				messageToLog = exception.getMessage();
+			}
+			IStatus status = new Status(severity, PLUGIN_ID, messageToLog, exception);
+			this.getLog().log(status);
+		}
+
+		/**
 		 * Logs an error with the exception and the given message.
 		 *
 		 * @param message
@@ -76,9 +102,12 @@ public class EEFIdeUiPlugin extends EMFPlugin {
 		 * @param exception
 		 *            The exception
 		 */
-		public void logError(String message, Exception exception) {
-			IStatus status = new Status(IStatus.ERROR, PLUGIN_ID, message, exception);
-			this.getLog().log(status);
+		public void error(String message, Exception exception) {
+			if (exception instanceof CoreException) {
+				this.getLog().log(((CoreException) exception).getStatus());
+			} else {
+				this.doLog(IStatus.ERROR, message, exception);
+			}
 		}
 
 		/**
@@ -89,9 +118,28 @@ public class EEFIdeUiPlugin extends EMFPlugin {
 		 * @param exception
 		 *            The exception
 		 */
-		public void logWarning(String message, Exception exception) {
-			IStatus status = new Status(IStatus.WARNING, PLUGIN_ID, message, exception);
-			this.getLog().log(status);
+		public void warning(String message, Exception exception) {
+			if (exception instanceof CoreException) {
+				this.getLog().log(((CoreException) exception).getStatus());
+			} else {
+				this.doLog(IStatus.WARNING, message, exception);
+			}
+		}
+
+		/**
+		 * Logs an info with the exception and the given message.
+		 *
+		 * @param message
+		 *            The message
+		 * @param exception
+		 *            The exception
+		 */
+		public void info(String message, Exception exception) {
+			if (exception instanceof CoreException) {
+				this.getLog().log(((CoreException) exception).getStatus());
+			} else {
+				this.doLog(IStatus.INFO, message, exception);
+			}
 		}
 	}
 }

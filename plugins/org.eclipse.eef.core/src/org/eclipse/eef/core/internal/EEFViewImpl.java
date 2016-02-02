@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,25 +103,21 @@ public class EEFViewImpl implements EEFView {
 	 */
 	private void doInitialize() {
 		for (EEFPageDescription eefPageDescription : this.getDescription().getPages()) {
-
-			Object candidates = Util.computeCandidate(this.interpreter, this.variableManager, eefPageDescription.getSemanticCandidateExpression());
+			String semanticCandidatesExpression = Util.firstNonBlank(eefPageDescription.getSemanticCandidateExpression(), "var:self"); //$NON-NLS-1$
+			Object candidates = Util.computeCandidate(this.interpreter, this.variableManager, semanticCandidatesExpression);
 
 			if (candidates instanceof Iterable<?>) {
 				@SuppressWarnings("unchecked")
 				Iterable<Object> candidatesIter = (Iterable<Object>) candidates;
 				for (Object candidate : candidatesIter) {
 					EEFPageImpl ePage = createPage(eefPageDescription, candidate);
-					if (ePage != null) {
-						ePage.initialize();
-						this.eefPages.add(ePage);
-					}
-				}
-			} else {
-				EEFPageImpl ePage = createPage(eefPageDescription, candidates);
-				if (ePage != null) {
 					ePage.initialize();
 					this.eefPages.add(ePage);
 				}
+			} else if (candidates != null) {
+				EEFPageImpl ePage = createPage(eefPageDescription, candidates);
+				ePage.initialize();
+				this.eefPages.add(ePage);
 			}
 		}
 	}

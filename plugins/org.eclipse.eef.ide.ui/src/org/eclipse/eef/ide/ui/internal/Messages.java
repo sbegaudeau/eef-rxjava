@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,22 +8,28 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.eef.properties.ui.internal;
+package org.eclipse.eef.ide.ui.internal;
+
+import org.eclipse.eef.ide.internal.I18N;
+import org.eclipse.eef.ide.internal.I18N.TranslatableMessage;
 
 /**
- * Utility class used to hold the messages of the bundle.
+ * Utility class used for the internationalization.
  *
- * @author mbats
+ * @author sbegaudeau
  */
 public final class Messages {
 
+	static {
+		I18N.initializeMessages(Messages.class, EEFIdeUiPlugin.INSTANCE);
+	}
+
 	// CHECKSTYLE:OFF
+	@TranslatableMessage
+	public static String EEFContainerLifecycleManager_BlankDomainClassExpression;
 
-	public static String DescriptorRegistryEventListener_missingAttribute;
-
-	public static String DescriptorRegistryEventListener_extensionAlreadyContributed;
-
-	public static String EEFTabbedPropertyRegistry_MissingSectionDescriptorId;
+	@TranslatableMessage
+	public static String EEFContainerLifecycleManager_BlankSwitchExpression;
 
 	// CHECKSTYLE:ON
 
@@ -31,6 +37,6 @@ public final class Messages {
 	 * The constructor.
 	 */
 	private Messages() {
-		// Prevents instantiation
+		// Prevents instanciation.
 	}
 }

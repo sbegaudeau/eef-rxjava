@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2001, 2015 IBM Corporation and others.
+ * Copyright (c) 2001, 2016 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.eef.properties.ui.api.IEEFSectionDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorProvider;
 import org.eclipse.eef.properties.ui.internal.EEFTabbedPropertyViewPlugin;
+import org.eclipse.eef.properties.ui.internal.Messages;
 import org.eclipse.eef.properties.ui.internal.extension.IItemDescriptor;
 import org.eclipse.eef.properties.ui.internal.extension.IItemRegistry;
 import org.eclipse.jface.viewers.ISelection;
@@ -34,8 +35,6 @@ import org.eclipse.ui.IWorkbenchPart;
  * @author Stephane Begaudeau
  */
 public class EEFTabbedPropertyRegistry {
-
-	// TODO VERY BASIC IMPLEMENTATION, TO REWRITE FROM SCRATCH
 
 	/**
 	 * The sole instance of the registry.
@@ -91,7 +90,8 @@ public class EEFTabbedPropertyRegistry {
 		if (input == null || input.isEmpty()) {
 			return new ArrayList<IEEFTabDescriptor>();
 		}
-		List<IEEFTabDescriptor> result = filterTabDescriptors(getAllTabDescriptors(part, input), part, input);
+		List<IEEFTabDescriptor> descriptors = getAllTabDescriptors(part, input);
+		List<IEEFTabDescriptor> result = filterTabDescriptors(descriptors, part, input);
 		return result;
 	}
 
@@ -135,7 +135,11 @@ public class EEFTabbedPropertyRegistry {
 		for (IEEFSectionDescriptor eefSectionDescriptor : eefSectionDescriptors) {
 			// Check if section is valid for the current part and selection
 			if (eefSectionDescriptor.appliesTo(part, selection)) {
-				filteredEefSectionDescriptors.add(eefSectionDescriptor);
+				if (eefSectionDescriptor.getId() != null) {
+					filteredEefSectionDescriptors.add(eefSectionDescriptor);
+				} else {
+					EEFTabbedPropertyViewPlugin.getInstance().logError(Messages.EEFTabbedPropertyRegistry_MissingSectionDescriptorId);
+				}
 			}
 		}
 

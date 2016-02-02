@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,7 +71,7 @@ public class EEFTabDescriptor extends AbstractEEFTabDescriptor {
 	 * @see org.eclipse.eef.properties.ui.api.AbstractEEFTabDescriptor#getSectionDescriptors()
 	 */
 	@Override
-	public List getSectionDescriptors() {
+	public List<IEEFSectionDescriptor> getSectionDescriptors() {
 		List<IEEFSectionDescriptor> sectionDescriptors = new ArrayList<IEEFSectionDescriptor>();
 
 		List<EEFGroup> eefGroups = this.eefPage.getGroups();
