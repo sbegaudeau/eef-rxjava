@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,9 @@ package org.eclipse.eef.core.internal.controllers;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.core.api.controllers.EEFLabelController;
 import org.eclipse.eef.core.api.controllers.IConsumer;
-import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
+import org.eclipse.eef.core.api.utils.Util;
+import org.eclipse.eef.core.internal.EEFCorePlugin;
+import org.eclipse.eef.core.internal.Messages;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 
@@ -22,21 +24,11 @@ import org.eclipse.sirius.common.interpreter.api.IVariableManager;
  *
  * @author mbats
  */
-public class EEFLabelControllerImpl implements EEFLabelController {
+public class EEFLabelControllerImpl extends AbstractEEFWidgetController implements EEFLabelController {
 	/**
 	 * The description.
 	 */
 	private EEFLabelDescription description;
-
-	/**
-	 * The variable manager.
-	 */
-	private IVariableManager variableManager;
-
-	/**
-	 * The interpreter.
-	 */
-	private IInterpreter interpreter;
 
 	/**
 	 * The consumer of a new value of the label.
@@ -67,12 +59,10 @@ public class EEFLabelControllerImpl implements EEFLabelController {
 	@Override
 	public void refresh() {
 		String labelExpression = this.description.getLabelExpression();
-		if (labelExpression != null) {
-			IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(this.variableManager.getVariables(), labelExpression);
-			Object value = evaluationResult.getValue();
-			if (value instanceof String && this.newLabelConsumer != null) {
-				this.newLabelConsumer.apply((String) value);
-			}
+		if (!Util.isBlank(labelExpression)) {
+			this.refreshStringBasedExpression(labelExpression, this.newLabelConsumer);
+		} else {
+			EEFCorePlugin.getPlugin().error(Messages.EEFLabelControllerImpl_BlankLabelExpression, null);
 		}
 	}
 

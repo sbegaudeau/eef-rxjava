@@ -31,6 +31,12 @@ public final class Messages {
 	@TranslatableMessage
 	public static String EEFContainerLifecycleManager_BlankSwitchExpression;
 
+	@TranslatableMessage
+	public static String EEFSelectLifecycleManager_BlankCandidateDisplayExpression;
+
+	@TranslatableMessage
+	public static String EEFSelectLifecycleManager_InvalidValueForExpression;
+
 	// CHECKSTYLE:ON
 
 	/**

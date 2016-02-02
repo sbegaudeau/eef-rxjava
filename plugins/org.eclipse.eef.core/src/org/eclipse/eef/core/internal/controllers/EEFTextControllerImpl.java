@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.eef.core.internal.controllers;
 
-import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -29,7 +28,6 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 
@@ -38,21 +36,11 @@ import org.eclipse.sirius.common.interpreter.api.IVariableManager;
  *
  * @author sbegaudeau
  */
-public class EEFTextControllerImpl implements EEFTextController {
+public class EEFTextControllerImpl extends AbstractEEFWidgetController implements EEFTextController {
 	/**
 	 * The description.
 	 */
 	private EEFTextDescription description;
-
-	/**
-	 * The variable manager.
-	 */
-	private IVariableManager variableManager;
-
-	/**
-	 * The interpreter.
-	 */
-	private IInterpreter interpreter;
 
 	/**
 	 * The editing domain.
@@ -155,30 +143,6 @@ public class EEFTextControllerImpl implements EEFTextController {
 			this.refreshStringBasedExpression(labelExpression, this.newLabelConsumer);
 		} else {
 			EEFCorePlugin.getPlugin().error(Messages.EEFTextControllerImpl_BlankLabelExpression, null);
-		}
-	}
-
-	/**
-	 * Refresh an expression returning a string.
-	 *
-	 * @param expression
-	 *            The expression
-	 * @param consumer
-	 *            The consumer of the result
-	 */
-	private void refreshStringBasedExpression(String expression, IConsumer<String> consumer) {
-		IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(this.variableManager.getVariables(), expression);
-		if (evaluationResult.success()) {
-			Object value = evaluationResult.getValue();
-			if (value instanceof String && consumer != null) {
-				consumer.apply((String) value);
-			} else if (!(value instanceof String)) {
-				String message = MessageFormat.format(Messages.EEFTextControllerImpl_InvalidValueForExpression, expression, String.class.getName(),
-						value);
-				EEFCorePlugin.getPlugin().error(message, null);
-			}
-		} else {
-			EEFCorePlugin.getPlugin().error(evaluationResult.getDiagnostic().toString(), null);
 		}
 	}
 

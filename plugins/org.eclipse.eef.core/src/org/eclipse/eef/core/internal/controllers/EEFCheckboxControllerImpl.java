@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,11 +21,13 @@ import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.controllers.EEFCheckboxController;
 import org.eclipse.eef.core.api.controllers.IConsumer;
+import org.eclipse.eef.core.api.utils.Util;
+import org.eclipse.eef.core.internal.EEFCorePlugin;
+import org.eclipse.eef.core.internal.Messages;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 
@@ -34,21 +36,11 @@ import org.eclipse.sirius.common.interpreter.api.IVariableManager;
  *
  * @author mbats
  */
-public class EEFCheckboxControllerImpl implements EEFCheckboxController {
+public class EEFCheckboxControllerImpl extends AbstractEEFWidgetController implements EEFCheckboxController {
 	/**
 	 * The description.
 	 */
 	private EEFCheckboxDescription description;
-
-	/**
-	 * The variable manager.
-	 */
-	private IVariableManager variableManager;
-
-	/**
-	 * The interpreter.
-	 */
-	private IInterpreter interpreter;
 
 	/**
 	 * The editing domain.
@@ -105,7 +97,7 @@ public class EEFCheckboxControllerImpl implements EEFCheckboxController {
 			@Override
 			protected void doExecute() {
 				String editExpression = EEFCheckboxControllerImpl.this.description.getEditExpression();
-				if (editExpression != null) {
+				if (!Util.isBlank(editExpression)) {
 					Map<String, Object> variables = new HashMap<String, Object>();
 					variables.putAll(EEFCheckboxControllerImpl.this.variableManager.getVariables());
 					variables.put(EEFExpressionUtils.EEFCheckbox.NEW_VALUE, checkbox);
@@ -138,21 +130,17 @@ public class EEFCheckboxControllerImpl implements EEFCheckboxController {
 	@Override
 	public void refresh() {
 		String valueExpression = this.description.getValueExpression();
-		if (valueExpression != null) {
-			IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(this.variableManager.getVariables(), valueExpression);
-			Object value = evaluationResult.getValue();
-			if (value instanceof Boolean && this.newValueConsumer != null) {
-				this.newValueConsumer.apply((Boolean) value);
-			}
+		if (!Util.isBlank(valueExpression)) {
+			this.refreshBooleanBasedExpression(valueExpression, this.newValueConsumer);
+		} else {
+			EEFCorePlugin.getPlugin().error(Messages.EEFCheckboxControllerImpl_BlankValueExpression, null);
 		}
 
 		String labelExpression = this.description.getLabelExpression();
-		if (labelExpression != null) {
-			IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(this.variableManager.getVariables(), labelExpression);
-			Object value = evaluationResult.getValue();
-			if (value instanceof String && this.newLabelConsumer != null) {
-				this.newLabelConsumer.apply((String) value);
-			}
+		if (!Util.isBlank(labelExpression)) {
+			this.refreshStringBasedExpression(labelExpression, this.newLabelConsumer);
+		} else {
+			EEFCorePlugin.getPlugin().error(Messages.EEFCheckboxControllerImpl_BlankLabelExpression, null);
 		}
 	}
 

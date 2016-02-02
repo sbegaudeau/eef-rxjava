@@ -26,16 +26,34 @@ public final class Messages {
 
 	// CHECKSTYLE:OFF
 	@TranslatableMessage
-	public static String EEFTextControllerImpl_BlankEditExpression;
+	public static String AbstractEEFWidgetController_InvalidValueForExpression;
 
 	@TranslatableMessage
-	public static String EEFTextControllerImpl_InvalidValueForExpression;
+	public static String EEFTextControllerImpl_BlankEditExpression;
 
 	@TranslatableMessage
 	public static String EEFTextControllerImpl_BlankValueExpression;
 
 	@TranslatableMessage
 	public static String EEFTextControllerImpl_BlankLabelExpression;
+
+	@TranslatableMessage
+	public static String EEFLabelControllerImpl_BlankLabelExpression;
+
+	@TranslatableMessage
+	public static String EEFCheckboxControllerImpl_BlankValueExpression;
+
+	@TranslatableMessage
+	public static String EEFCheckboxControllerImpl_BlankLabelExpression;
+
+	@TranslatableMessage
+	public static String EEFSelectControllerImpl_BlankValueExpression;
+
+	@TranslatableMessage
+	public static String EEFSelectControllerImpl_BlankLabelExpression;
+
+	@TranslatableMessage
+	public static String EEFSelectControllerImpl_BlankCandidatesExpression;
 
 	// CHECKSTYLE:ON
 

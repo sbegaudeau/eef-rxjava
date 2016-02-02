@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.eef.ide.ui.internal.widgets;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,9 @@ import org.eclipse.eef.core.api.EEFExpressionUtils.EEFSelect;
 import org.eclipse.eef.core.api.controllers.EEFControllersFactory;
 import org.eclipse.eef.core.api.controllers.EEFSelectController;
 import org.eclipse.eef.core.api.controllers.IConsumer;
+import org.eclipse.eef.core.api.utils.Util;
+import org.eclipse.eef.ide.ui.internal.EEFIdeUiPlugin;
+import org.eclipse.eef.ide.ui.internal.Messages;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetWidgetFactory;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -139,20 +143,7 @@ public class EEFSelectLifecycleManager implements ILifecycleManager {
 		this.comboViewer = new ComboViewer(parent, SWT.READ_ONLY);
 		this.combo = comboViewer.getCombo();
 		this.comboViewer.setContentProvider(ArrayContentProvider.getInstance());
-		this.comboViewer.setLabelProvider(new LabelProvider() {
-			@Override
-			public String getText(Object element) {
-				String candidateDisplayExpression = description.getCandidateDisplayExpression();
-				Map<String, Object> candidateDisplayExpressionVariables = new HashMap<String, Object>();
-				candidateDisplayExpressionVariables.put(EEFExpressionUtils.SELF, variableManager.getVariables().get(EEFExpressionUtils.SELF));
-				candidateDisplayExpressionVariables.put(EEFSelect.CANDIDATE, element);
-				IEvaluationResult evaluationResult = interpreter.evaluateExpression(candidateDisplayExpressionVariables, candidateDisplayExpression);
-				if (evaluationResult.success() && evaluationResult.getValue() instanceof String) {
-					return (String) evaluationResult.getValue();
-				}
-				return super.getText(element);
-			}
-		});
+		this.comboViewer.setLabelProvider(new EEFSelectLabelProvider());
 
 		this.comboViewer.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -261,5 +252,36 @@ public class EEFSelectLifecycleManager implements ILifecycleManager {
 	@Override
 	public void dispose() {
 		// do nothing
+	}
+
+	/**
+	 * Select widget label provider.
+	 *
+	 * @author mbats
+	 */
+	private final class EEFSelectLabelProvider extends LabelProvider {
+		@Override
+		public String getText(Object element) {
+			String candidateDisplayExpression = description.getCandidateDisplayExpression();
+			if (!Util.isBlank(candidateDisplayExpression)) {
+				Map<String, Object> candidateDisplayExpressionVariables = new HashMap<String, Object>();
+				candidateDisplayExpressionVariables.put(EEFExpressionUtils.SELF, variableManager.getVariables().get(EEFExpressionUtils.SELF));
+				candidateDisplayExpressionVariables.put(EEFSelect.CANDIDATE, element);
+				IEvaluationResult evaluationResult = interpreter.evaluateExpression(candidateDisplayExpressionVariables, candidateDisplayExpression);
+				Object value = evaluationResult.getValue();
+				if (evaluationResult.success() && value instanceof String) {
+					return (String) value;
+				} else if (!(value instanceof String)) {
+					String message = MessageFormat.format(Messages.EEFSelectLifecycleManager_InvalidValueForExpression, candidateDisplayExpression,
+							String.class.getName(), value);
+					EEFIdeUiPlugin.getPlugin().error(message, null);
+				} else {
+					EEFIdeUiPlugin.getPlugin().error(evaluationResult.getDiagnostic().toString(), null);
+				}
+			} else {
+				EEFIdeUiPlugin.getPlugin().error(Messages.EEFSelectLifecycleManager_BlankCandidateDisplayExpression, null);
+			}
+			return null;
+		}
 	}
 }

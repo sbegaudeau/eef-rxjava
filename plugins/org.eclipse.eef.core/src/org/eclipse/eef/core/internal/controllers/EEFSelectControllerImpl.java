@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.eef.core.internal.controllers;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,11 +22,13 @@ import org.eclipse.eef.EEFSelectDescription;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.controllers.EEFSelectController;
 import org.eclipse.eef.core.api.controllers.IConsumer;
+import org.eclipse.eef.core.api.utils.Util;
+import org.eclipse.eef.core.internal.EEFCorePlugin;
+import org.eclipse.eef.core.internal.Messages;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 
@@ -36,21 +37,11 @@ import org.eclipse.sirius.common.interpreter.api.IVariableManager;
  *
  * @author mbats
  */
-public class EEFSelectControllerImpl implements EEFSelectController {
+public class EEFSelectControllerImpl extends AbstractEEFWidgetController implements EEFSelectController {
 	/**
 	 * The description.
 	 */
 	private EEFSelectDescription description;
-
-	/**
-	 * The variable manager.
-	 */
-	private IVariableManager variableManager;
-
-	/**
-	 * The interpreter.
-	 */
-	private IInterpreter interpreter;
 
 	/**
 	 * The editing domain.
@@ -112,11 +103,13 @@ public class EEFSelectControllerImpl implements EEFSelectController {
 			@Override
 			protected void doExecute() {
 				String editExpression = EEFSelectControllerImpl.this.description.getEditExpression();
-				if (editExpression != null) {
+				if (!Util.isBlank(editExpression)) {
 					Map<String, Object> variables = new HashMap<String, Object>();
 					variables.putAll(EEFSelectControllerImpl.this.variableManager.getVariables());
 					variables.put(EEFExpressionUtils.EEFText.NEW_VALUE, text);
 					EEFSelectControllerImpl.this.interpreter.evaluateExpression(variables, editExpression);
+				} else {
+					EEFCorePlugin.getPlugin().error(Messages.EEFTextControllerImpl_BlankEditExpression, null);
 				}
 			}
 
@@ -145,34 +138,24 @@ public class EEFSelectControllerImpl implements EEFSelectController {
 	@Override
 	public void refresh() {
 		String labelExpression = this.description.getLabelExpression();
-		if (labelExpression != null) {
-			IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(this.variableManager.getVariables(), labelExpression);
-			Object value = evaluationResult.getValue();
-			if (value instanceof String && this.newLabelConsumer != null) {
-				this.newLabelConsumer.apply((String) value);
-			}
+		if (!Util.isBlank(labelExpression)) {
+			this.refreshStringBasedExpression(labelExpression, this.newLabelConsumer);
+		} else {
+			EEFCorePlugin.getPlugin().error(Messages.EEFSelectControllerImpl_BlankLabelExpression, null);
 		}
 
 		String candidatesExpression = this.description.getCandidatesExpression();
-		if (candidatesExpression != null) {
-			IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(this.variableManager.getVariables(), candidatesExpression);
-			Object value = evaluationResult.getValue();
-			if (value instanceof Iterable<?> && this.newCandidatesConsumer != null) {
-				List<Object> candidates = new ArrayList<Object>();
-				for (Object candidate : (Iterable<?>) value) {
-					candidates.add(candidate);
-				}
-				this.newCandidatesConsumer.apply(candidates);
-			}
+		if (!Util.isBlank(candidatesExpression)) {
+			this.refreshListBasedExpression(candidatesExpression, this.newCandidatesConsumer);
+		} else {
+			EEFCorePlugin.getPlugin().error(Messages.EEFSelectControllerImpl_BlankCandidatesExpression, null);
 		}
 
 		String valueExpression = this.description.getValueExpression();
-		if (valueExpression != null) {
-			IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(this.variableManager.getVariables(), valueExpression);
-			Object value = evaluationResult.getValue();
-			if (this.newValueConsumer != null && value != null) {
-				this.newValueConsumer.apply(value);
-			}
+		if (!Util.isBlank(valueExpression)) {
+			this.refreshObjectBasedExpression(valueExpression, this.newValueConsumer);
+		} else {
+			EEFCorePlugin.getPlugin().error(Messages.EEFSelectControllerImpl_BlankValueExpression, null);
 		}
 	}
 
