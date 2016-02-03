@@ -24,10 +24,10 @@ import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFSelectDescription;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFWidgetDescription;
+import org.eclipse.eef.EefPackage;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.utils.Util;
 import org.eclipse.eef.ide.ui.internal.EEFIdeUiPlugin;
-import org.eclipse.eef.ide.ui.internal.Messages;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -182,8 +182,15 @@ public class EEFContainerLifecycleManager implements ILifecycleManager {
 					Map<String, Object> switchExpressionVariables = new HashMap<String, Object>();
 					switchExpressionVariables.put(EEFExpressionUtils.SELF, this.variableManager.getVariables().get(EEFExpressionUtils.SELF));
 					switchExpressionVariables.put(iterator, eObject);
+
+					EEFWidgetDescription eefWidgetDescription = null;
+
 					IEvaluationResult switchExpressionResult = this.interpreter.evaluateExpression(switchExpressionVariables, switchExpression);
-					EEFWidgetDescription eefWidgetDescription = this.getWidgetDescription(switchExpressionResult, dynamicMappingSwitch.getCases());
+					if (switchExpressionResult.success()) {
+						eefWidgetDescription = this.getWidgetDescription(switchExpressionResult, dynamicMappingSwitch.getCases());
+					} else {
+						EEFIdeUiPlugin.getPlugin().diagnostic(switchExpression, switchExpressionResult.getDiagnostic());
+					}
 
 					if (eefWidgetDescription != null) {
 						IVariableManager childVariableManager = this.variableManager.createChild();
@@ -192,12 +199,12 @@ public class EEFContainerLifecycleManager implements ILifecycleManager {
 					}
 				}
 			} else {
-				EEFIdeUiPlugin.getPlugin().error(domainClassExpressionResult.getDiagnostic().toString(), null);
+				EEFIdeUiPlugin.getPlugin().diagnostic(domainClassExpression, domainClassExpressionResult.getDiagnostic());
 			}
 		} else if (Util.isBlank(domainClassExpression)) {
-			EEFIdeUiPlugin.getPlugin().error(Messages.EEFContainerLifecycleManager_BlankDomainClassExpression, null);
+			EEFIdeUiPlugin.getPlugin().blank(EefPackage.Literals.EEF_DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION);
 		} else if (Util.isBlank(switchExpression)) {
-			EEFIdeUiPlugin.getPlugin().error(Messages.EEFContainerLifecycleManager_BlankSwitchExpression, null);
+			EEFIdeUiPlugin.getPlugin().blank(EefPackage.Literals.EEF_DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION);
 		}
 	}
 
@@ -213,24 +220,22 @@ public class EEFContainerLifecycleManager implements ILifecycleManager {
 	 *         result is not a success or if none of the {@link EEFDynamicMappingCase} matches
 	 */
 	private EEFWidgetDescription getWidgetDescription(IEvaluationResult switchExpressionResult, List<EEFDynamicMappingCase> cases) {
-		if (switchExpressionResult.success()) {
-			EEFDynamicMappingCase caseMatching = null;
-			for (EEFDynamicMappingCase dynamicMappingCase : cases) {
-				IEvaluationResult caseExpressionResult = this.interpreter.evaluateExpression(this.variableManager.getVariables(),
-						dynamicMappingCase.getCaseExpression());
-				if (caseExpressionResult.success()) {
-					if (caseExpressionResult.getValue() != null && caseExpressionResult.getValue().equals(switchExpressionResult.getValue())) {
-						caseMatching = dynamicMappingCase;
-						break;
-					}
-				} else {
-					EEFIdeUiPlugin.getPlugin().error(caseExpressionResult.getDiagnostic().toString(), null);
+		EEFDynamicMappingCase caseMatching = null;
+		for (EEFDynamicMappingCase dynamicMappingCase : cases) {
+			IEvaluationResult caseExpressionResult = this.interpreter.evaluateExpression(this.variableManager.getVariables(),
+					dynamicMappingCase.getCaseExpression());
+			if (caseExpressionResult.success()) {
+				if (caseExpressionResult.getValue() != null && caseExpressionResult.getValue().equals(switchExpressionResult.getValue())) {
+					caseMatching = dynamicMappingCase;
+					break;
 				}
+			} else {
+				EEFIdeUiPlugin.getPlugin().diagnostic(dynamicMappingCase.getCaseExpression(), caseExpressionResult.getDiagnostic());
 			}
+		}
 
-			if (caseMatching != null) {
-				return caseMatching.getWidget();
-			}
+		if (caseMatching != null) {
+			return caseMatching.getWidget();
 		}
 		return null;
 	}
