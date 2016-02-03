@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,8 @@ import java.util.Map;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
-import org.eclipse.eef.core.api.controllers.EEFTextController;
-import org.eclipse.eef.core.internal.controllers.EEFTextControllerImpl;
+import org.eclipse.eef.core.api.controllers.IEEFTextController;
+import org.eclipse.eef.core.internal.controllers.EEFTextController;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -40,7 +40,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 /**
- * Unit tests for the {@link EEFTextController}.
+ * Unit tests for the {@link IEEFTextController}.
  *
  * @author sbegaudeau
  */
@@ -71,7 +71,7 @@ public class EEFTextControllerTests {
 		AdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		this.resourceSet = new ResourceSetImpl();
 		this.resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-		.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+				.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 		this.editingDomain = new TransactionalEditingDomainImpl(adapterFactory, this.resourceSet);
 		this.variableManager = new VariableManagerFactory().createVariableManager();
 
@@ -90,7 +90,7 @@ public class EEFTextControllerTests {
 			return EvaluationResult.of(newValue);
 		};
 
-		EEFTextController controller = new EEFTextControllerImpl(description, variableManager, interpreter, editingDomain);
+		IEEFTextController controller = new EEFTextController(description, variableManager, interpreter, editingDomain);
 		controller.onNewValue((text) -> {
 			assertThat(text, equalTo(newValue));
 		});
@@ -127,7 +127,7 @@ public class EEFTextControllerTests {
 			return EvaluationResult.of(newLabel);
 		};
 
-		EEFTextController controller = new EEFTextControllerImpl(description, variableManager, interpreter, editingDomain);
+		IEEFTextController controller = new EEFTextController(description, variableManager, interpreter, editingDomain);
 		controller.onNewLabel((label) -> {
 			assertThat(label, equalTo(newLabel));
 		});

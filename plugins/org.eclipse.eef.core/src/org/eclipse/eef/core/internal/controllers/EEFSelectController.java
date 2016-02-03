@@ -11,17 +11,19 @@
 package org.eclipse.eef.core.internal.controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.eclipse.eef.EEFCheckboxDescription;
+import org.eclipse.eef.EEFSelectDescription;
+import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.EefPackage;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
-import org.eclipse.eef.core.api.controllers.EEFCheckboxController;
 import org.eclipse.eef.core.api.controllers.IConsumer;
+import org.eclipse.eef.core.api.controllers.IEEFSelectController;
 import org.eclipse.eef.core.api.utils.Util;
 import org.eclipse.eef.core.internal.EEFCorePlugin;
 import org.eclipse.emf.common.command.Command;
@@ -32,15 +34,15 @@ import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 
 /**
- * This class will be used in order to manage the behavior of the checkbox.
+ * This class will be used in order to manage the behavior of the combo.
  *
  * @author mbats
  */
-public class EEFCheckboxControllerImpl extends AbstractEEFWidgetController implements EEFCheckboxController {
+public class EEFSelectController extends AbstractEEFWidgetController implements IEEFSelectController {
 	/**
 	 * The description.
 	 */
-	private EEFCheckboxDescription description;
+	private EEFSelectDescription description;
 
 	/**
 	 * The editing domain.
@@ -48,14 +50,14 @@ public class EEFCheckboxControllerImpl extends AbstractEEFWidgetController imple
 	private TransactionalEditingDomain editingDomain;
 
 	/**
-	 * The consumer of a new value of the checkbox.
+	 * The consumer of a new value of the combo.
 	 */
-	private IConsumer<Boolean> newValueConsumer;
+	private IConsumer<Object> newValueConsumer;
 
 	/**
-	 * The consumer of a new value of the label.
+	 * The consumer of a new candidates of the combo.
 	 */
-	private IConsumer<String> newLabelConsumer;
+	private IConsumer<List<Object>> newCandidatesConsumer;
 
 	/**
 	 * Executor service used to run the update of the text field.
@@ -79,16 +81,15 @@ public class EEFCheckboxControllerImpl extends AbstractEEFWidgetController imple
 	 * @param editingDomain
 	 *            The editing domain
 	 */
-	public EEFCheckboxControllerImpl(EEFCheckboxDescription description, IVariableManager variableManager, IInterpreter interpreter,
+	public EEFSelectController(EEFSelectDescription description, IVariableManager variableManager, IInterpreter interpreter,
 			TransactionalEditingDomain editingDomain) {
+		super(variableManager, interpreter);
 		this.description = description;
-		this.variableManager = variableManager;
-		this.interpreter = interpreter;
 		this.editingDomain = editingDomain;
 	}
 
 	@Override
-	public void updateValue(final boolean checkbox) {
+	public void updateValue(final Object text) {
 		if (this.currentUpdatedValueFuture != null && !this.currentUpdatedValueFuture.isDone()) {
 			this.currentUpdatedValueFuture.cancel(true);
 		}
@@ -96,12 +97,14 @@ public class EEFCheckboxControllerImpl extends AbstractEEFWidgetController imple
 		final Command command = new RecordingCommand(this.editingDomain) {
 			@Override
 			protected void doExecute() {
-				String editExpression = EEFCheckboxControllerImpl.this.description.getEditExpression();
+				String editExpression = EEFSelectController.this.description.getEditExpression();
 				if (!Util.isBlank(editExpression)) {
 					Map<String, Object> variables = new HashMap<String, Object>();
-					variables.putAll(EEFCheckboxControllerImpl.this.variableManager.getVariables());
-					variables.put(EEFExpressionUtils.EEFCheckbox.NEW_VALUE, checkbox);
-					EEFCheckboxControllerImpl.this.interpreter.evaluateExpression(variables, editExpression);
+					variables.putAll(EEFSelectController.this.variableManager.getVariables());
+					variables.put(EEFExpressionUtils.EEFText.NEW_VALUE, text);
+					EEFSelectController.this.interpreter.evaluateExpression(variables, editExpression);
+				} else {
+					EEFCorePlugin.getPlugin().blank(EefPackage.Literals.EEF_SELECT_DESCRIPTION__EDIT_EXPRESSION);
 				}
 			}
 
@@ -114,7 +117,7 @@ public class EEFCheckboxControllerImpl extends AbstractEEFWidgetController imple
 		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
-				CommandStack commandStack = EEFCheckboxControllerImpl.this.editingDomain.getCommandStack();
+				CommandStack commandStack = EEFSelectController.this.editingDomain.getCommandStack();
 				commandStack.execute(command);
 			}
 		};
@@ -125,49 +128,51 @@ public class EEFCheckboxControllerImpl extends AbstractEEFWidgetController imple
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.eef.core.api.controllers.EEFTextController#refresh()
+	 * @see org.eclipse.eef.core.internal.controllers.AbstractEEFWidgetController#refresh()
 	 */
 	@Override
 	public void refresh() {
-		String valueExpression = this.description.getValueExpression();
-		if (!Util.isBlank(valueExpression)) {
-			this.refreshBooleanBasedExpression(valueExpression, this.newValueConsumer);
+		super.refresh();
+
+		String candidatesExpression = this.description.getCandidatesExpression();
+		if (!Util.isBlank(candidatesExpression)) {
+			this.refreshListBasedExpression(candidatesExpression, this.newCandidatesConsumer);
 		} else {
-			EEFCorePlugin.getPlugin().blank(EefPackage.Literals.EEF_CHECKBOX_DESCRIPTION__VALUE_EXPRESSION);
+			EEFCorePlugin.getPlugin().blank(EefPackage.Literals.EEF_SELECT_DESCRIPTION__CANDIDATES_EXPRESSION);
 		}
 
-		String labelExpression = this.description.getLabelExpression();
-		if (!Util.isBlank(labelExpression)) {
-			this.refreshStringBasedExpression(labelExpression, this.newLabelConsumer);
+		String valueExpression = this.description.getValueExpression();
+		if (!Util.isBlank(valueExpression)) {
+			this.refreshObjectBasedExpression(valueExpression, this.newValueConsumer);
 		} else {
-			EEFCorePlugin.getPlugin().blank(EefPackage.Literals.EEF_WIDGET_DESCRIPTION__LABEL_EXPRESSION);
+			EEFCorePlugin.getPlugin().blank(EefPackage.Literals.EEF_SELECT_DESCRIPTION__VALUE_EXPRESSION);
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.eef.core.api.controllers.EEFTextController#onNewValue(org.eclipse.eef.core.api.controllers.IConsumer)
+	 * @see org.eclipse.eef.core.api.controllers.IEEFTextController#onNewValue(org.eclipse.eef.core.api.controllers.IConsumer)
 	 */
 	@Override
-	public void onNewValue(IConsumer<Boolean> consumer) {
+	public void onNewValue(IConsumer<Object> consumer) {
 		this.newValueConsumer = consumer;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.eef.core.api.controllers.EEFTextController#onNewLabel(org.eclipse.eef.core.api.controllers.IConsumer)
+	 * @see org.eclipse.eef.core.api.controllers.IEEFTextController#onNewValue(org.eclipse.eef.core.api.controllers.IConsumer)
 	 */
 	@Override
-	public void onNewLabel(IConsumer<String> consumer) {
-		this.newLabelConsumer = consumer;
+	public void onNewCandidates(IConsumer<List<Object>> consumer) {
+		this.newCandidatesConsumer = consumer;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.eef.core.api.controllers.EEFTextController#removeNewValueConsumer()
+	 * @see org.eclipse.eef.core.api.controllers.IEEFSelectController#removeNewValueConsumer()
 	 */
 	@Override
 	public void removeNewValueConsumer() {
@@ -177,11 +182,21 @@ public class EEFCheckboxControllerImpl extends AbstractEEFWidgetController imple
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.eef.core.api.controllers.EEFTextController#removeNewLabelConsumer()
+	 * @see org.eclipse.eef.core.api.controllers.IEEFSelectController#removeNewCandidatesConsumer()
 	 */
 	@Override
-	public void removeNewLabelConsumer() {
-		this.newLabelConsumer = null;
+	public void removeNewCandidatesConsumer() {
+		this.newCandidatesConsumer = null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.eef.core.internal.controllers.AbstractEEFWidgetController#getDescription()
+	 */
+	@Override
+	protected EEFWidgetDescription getDescription() {
+		return this.description;
 	}
 
 }
