@@ -71,7 +71,7 @@ public class EEFTextControllerTests {
 		AdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		this.resourceSet = new ResourceSetImpl();
 		this.resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+		.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 		this.editingDomain = new TransactionalEditingDomainImpl(adapterFactory, this.resourceSet);
 		this.variableManager = new VariableManagerFactory().createVariableManager();
 
@@ -93,6 +93,10 @@ public class EEFTextControllerTests {
 		IEEFTextController controller = new EEFTextController(description, variableManager, interpreter, editingDomain);
 		controller.onNewValue((text) -> {
 			assertThat(text, equalTo(newValue));
+		});
+
+		controller.onNewLabel(newLabel -> {
+			// do nothing
 		});
 
 		controller.refresh();
@@ -130,6 +134,10 @@ public class EEFTextControllerTests {
 		IEEFTextController controller = new EEFTextController(description, variableManager, interpreter, editingDomain);
 		controller.onNewLabel((label) -> {
 			assertThat(label, equalTo(newLabel));
+		});
+
+		controller.onNewValue(newValue -> {
+			// nothing
 		});
 
 		controller.refresh();
