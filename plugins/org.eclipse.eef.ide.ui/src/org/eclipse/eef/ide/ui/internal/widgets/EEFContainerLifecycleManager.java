@@ -139,7 +139,7 @@ public class EEFContainerLifecycleManager implements ILifecycleManager {
 		} else if (eefWidgetDescription instanceof EEFSelectDescription) {
 			EEFSelectDescription eefSelectDescription = (EEFSelectDescription) eefWidgetDescription;
 
-			EEFSelectLifecycleManager eefSelectLifecycleManager = new EEFSelectLifecycleManager(eefSelectDescription, variableManager.createChild(),
+			EEFSelectLifecycleManager eefSelectLifecycleManager = new EEFSelectLifecycleManager(eefSelectDescription, childVariableManager,
 					interpreter, editingDomain);
 			eefSelectLifecycleManager.createControl(parent, tabbedPropertySheetPage);
 
@@ -147,8 +147,8 @@ public class EEFContainerLifecycleManager implements ILifecycleManager {
 		} else if (eefWidgetDescription instanceof EEFCheckboxDescription) {
 			EEFCheckboxDescription eefCheckboxDescription = (EEFCheckboxDescription) eefWidgetDescription;
 
-			EEFCheckboxLifecycleManager eefCheckboxLifecycleManager = new EEFCheckboxLifecycleManager(eefCheckboxDescription,
-					variableManager.createChild(), interpreter, editingDomain);
+			EEFCheckboxLifecycleManager eefCheckboxLifecycleManager = new EEFCheckboxLifecycleManager(eefCheckboxDescription, childVariableManager,
+					interpreter, editingDomain);
 			eefCheckboxLifecycleManager.createControl(parent, tabbedPropertySheetPage);
 
 			this.lifecycleManagers.add(eefCheckboxLifecycleManager);

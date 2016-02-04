@@ -17,11 +17,13 @@ import org.eclipse.eef.core.api.controllers.IEEFCheckboxController;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetWidgetFactory;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -33,6 +35,10 @@ import org.eclipse.swt.widgets.Label;
  * @author mbats
  */
 public class EEFCheckboxLifecycleManager implements ILifecycleManager {
+	/**
+	 * The key used for the help image.
+	 */
+	private static final String DLG_IMG_HELP = "dialog_help_image"; //$NON-NLS-1$
 
 	/**
 	 * The description.
@@ -63,6 +69,11 @@ public class EEFCheckboxLifecycleManager implements ILifecycleManager {
 	 * The label.
 	 */
 	private Label label;
+
+	/**
+	 * The help label.
+	 */
+	private Label help;
 
 	/**
 	 * The controller.
@@ -110,6 +121,11 @@ public class EEFCheckboxLifecycleManager implements ILifecycleManager {
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		this.checkbox.setLayoutData(nameData);
+
+		this.help = widgetFactory.createLabel(parent, ""); //$NON-NLS-1$
+		Image image = JFaceResources.getImage(DLG_IMG_HELP);
+		help.setImage(image);
+		help.setToolTipText("There should be some help in this tooltip..."); //$NON-NLS-1$
 
 		this.controller = new EEFControllersFactory().createCheckboxController(this.description, this.variableManager, this.interpreter,
 				this.editingDomain);
