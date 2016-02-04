@@ -21,7 +21,12 @@ public final class EEFExpressionUtils {
 	 * The self variable.
 	 */
 	public static final String SELF = "self"; //$NON-NLS-1$
-
+	
+	/**
+	 * The input variable.
+	 */
+	public static final String INPUT = "input"; //$NON-NLS-1$
+	
 	/**
 	 * The expression used to retrieve self.
 	 */

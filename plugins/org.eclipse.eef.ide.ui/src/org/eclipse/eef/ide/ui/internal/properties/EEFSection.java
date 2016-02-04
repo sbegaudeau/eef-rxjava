@@ -16,11 +16,11 @@ import java.util.List;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.eef.core.api.EEFGroup;
 import org.eclipse.eef.core.api.EEFPage;
+import org.eclipse.eef.core.api.InputDescriptor;
 import org.eclipse.eef.ide.ui.internal.widgets.EEFGroupLifecycleManager;
 import org.eclipse.eef.ide.ui.internal.widgets.ILifecycleManager;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.eef.properties.ui.api.IEEFSection;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
@@ -80,10 +80,10 @@ public class EEFSection implements IEEFSection {
 			IStructuredSelection iStructuredSelection = (IStructuredSelection) selection;
 			Object object = iStructuredSelection.getFirstElement();
 
-			EObject eObject = Platform.getAdapterManager().getAdapter(object, EObject.class);
+			InputDescriptor input = Platform.getAdapterManager().getAdapter(object, InputDescriptor.class);
 
 			// TODO we should create a whole context with the current selection etc for the context
-			this.eefSectionDescriptor.getEEFPage().getView().setInput(eObject);
+			this.eefSectionDescriptor.getEEFPage().getView().setInput(input);
 		}
 	}
 
