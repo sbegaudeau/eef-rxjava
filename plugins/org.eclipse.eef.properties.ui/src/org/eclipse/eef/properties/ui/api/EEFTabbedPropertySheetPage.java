@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2001, 2015 IBM Corporation and others.
+ * Copyright (c) 2001, 2016 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,16 +20,11 @@ import java.util.Map;
 import org.eclipse.eef.properties.ui.internal.EEFTabbedPropertyViewPlugin;
 import org.eclipse.eef.properties.ui.internal.page.EEFPartListenerAdapter;
 import org.eclipse.eef.properties.ui.internal.page.EEFTabbedPropertyComposite;
-import org.eclipse.eef.properties.ui.internal.page.EEFTabbedPropertyListContentProvider;
-import org.eclipse.eef.properties.ui.internal.page.EEFTabbedPropertySheetPageLabelProvider;
 import org.eclipse.eef.properties.ui.internal.page.EEFTabbedPropertyViewer;
+import org.eclipse.eef.properties.ui.internal.page.EEFTabbedPropertyViewer.IEEFTabDescriptorChangedListener;
 import org.eclipse.eef.properties.ui.internal.registry.EEFTabbedPropertyRegistry;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
@@ -80,11 +75,6 @@ public class EEFTabbedPropertySheetPage extends Page implements IPropertySheetPa
 	 * The workbench part requesting the use of the property page.
 	 */
 	private IEEFTabbedPropertySheetPageContributor contributor;
-
-	/**
-	 * The content provider of the viewer.
-	 */
-	private EEFTabbedPropertyListContentProvider contentProvider;
 
 	/**
 	 * The currently active tab.
@@ -204,17 +194,6 @@ public class EEFTabbedPropertySheetPage extends Page implements IPropertySheetPa
 		} else {
 			this.contributor = new ContributorWrapper(contributor, contributorId);
 		}
-		this.initContributor(this.contributor.getContributorId());
-	}
-
-	/**
-	 * Initialize the contributor with the provided contributor id.
-	 *
-	 * @param contributorId
-	 *            The contributor id
-	 */
-	private void initContributor(String contributorId) {
-		this.contentProvider = new EEFTabbedPropertyListContentProvider(this.registry);
 	}
 
 	/**
@@ -246,13 +225,11 @@ public class EEFTabbedPropertySheetPage extends Page implements IPropertySheetPa
 		this.form.setLayoutData(formData);
 		this.widgetFactory.paintBordersFor(form);
 
-		this.tabbedPropertyViewer = new EEFTabbedPropertyViewer(this.tabbedPropertyComposite.getTabbedPropertyList());
-		this.tabbedPropertyViewer.setContentProvider(this.contentProvider);
-		this.tabbedPropertyViewer.setLabelProvider(new EEFTabbedPropertySheetPageLabelProvider());
-		this.tabbedPropertyViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+		this.tabbedPropertyViewer = new EEFTabbedPropertyViewer(this.tabbedPropertyComposite.getTabbedPropertyList(), this.registry);
+		this.tabbedPropertyViewer.addSelectionListener(new IEEFTabDescriptorChangedListener() {
 			@Override
-			public void selectionChanged(SelectionChangedEvent event) {
-				EEFTabbedPropertySheetPage.this.processSelectionChanged(event);
+			public void selectionChanged(IEEFTabDescriptor descriptor) {
+				EEFTabbedPropertySheetPage.this.processSelectionChanged(descriptor);
 			}
 		});
 
@@ -313,13 +290,13 @@ public class EEFTabbedPropertySheetPage extends Page implements IPropertySheetPa
 		// update tabs list
 		this.tabbedPropertyViewer.setInput(part, currentSelection);
 		int lastTabSelectionIndex = this.getLastTabSelection(part, currentSelection);
-		Object selectedTab = this.tabbedPropertyViewer.getElementAt(lastTabSelectionIndex);
+		IEEFTabDescriptor selectedTab = this.tabbedPropertyViewer.getTabDescriptionAtIndex(lastTabSelectionIndex);
 		this.selectionQueueLocked = true;
 		try {
 			if (selectedTab == null) {
-				this.tabbedPropertyViewer.setSelection(null);
+				this.tabbedPropertyViewer.setSelectedTabDescriptor(null);
 			} else {
-				this.tabbedPropertyViewer.setSelection(new StructuredSelection(selectedTab));
+				this.tabbedPropertyViewer.setSelectedTabDescriptor(selectedTab);
 			}
 		} finally {
 			this.selectionQueueLocked = false;
@@ -345,7 +322,7 @@ public class EEFTabbedPropertySheetPage extends Page implements IPropertySheetPa
 					disposingCurrentTab = false;
 				}
 			} else {
-				tab = this.createTab(descriptor);
+				tab = descriptor.createTab();
 			}
 
 			newTabs.put(descriptor, tab);
@@ -361,17 +338,6 @@ public class EEFTabbedPropertySheetPage extends Page implements IPropertySheetPa
 		}
 		this.disposeTabs(this.descriptorToTab.values());
 		this.descriptorToTab = newTabs;
-	}
-
-	/**
-	 * Create the tab contents for the provided tab descriptor.
-	 *
-	 * @param tabDescriptor
-	 *            the tab descriptor.
-	 * @return the tab contents.
-	 */
-	protected EEFTabContents createTab(IEEFTabDescriptor tabDescriptor) {
-		return tabDescriptor.createTab();
 	}
 
 	/**
@@ -480,62 +446,58 @@ public class EEFTabbedPropertySheetPage extends Page implements IPropertySheetPa
 	}
 
 	/**
-	 * Handle the selection changed event.
+	 * Handle the newly selected descriptor.
 	 *
-	 * @param event
-	 *            The selection changed event
+	 * @param descriptor
+	 *            The tab descriptor
 	 */
-	private void processSelectionChanged(SelectionChangedEvent event) {
-		if (event.getSelection() instanceof IStructuredSelection
-				&& ((IStructuredSelection) event.getSelection()).getFirstElement() instanceof IEEFTabDescriptor) {
-			IEEFTabDescriptor descriptor = (IEEFTabDescriptor) ((IStructuredSelection) event.getSelection()).getFirstElement();
-			EEFTabContents tab = null;
+	private void processSelectionChanged(IEEFTabDescriptor descriptor) {
+		EEFTabContents tab = null;
 
-			if (descriptor == null) {
-				EEFTabbedPropertyViewPlugin.getPlugin().debug("EEFTabbedPropertySheetPage -- Hide tab"); //$NON-NLS-1$
-				// pretend the tab is empty.
+		if (descriptor == null) {
+			EEFTabbedPropertyViewPlugin.getPlugin().debug("EEFTabbedPropertySheetPage -- Hide tab"); //$NON-NLS-1$
+			// pretend the tab is empty.
+			this.hideTab(this.currentTab);
+		} else {
+			// create tab if necessary
+			// can not cache based on the id - tabs may have the same id,
+			// but different section depending on the selection
+			tab = this.descriptorToTab.get(descriptor);
+
+			if (tab != this.currentTab) {
 				this.hideTab(this.currentTab);
-			} else {
-				// create tab if necessary
-				// can not cache based on the id - tabs may have the same id,
-				// but different section depending on the selection
-				tab = this.descriptorToTab.get(descriptor);
-
-				if (tab != this.currentTab) {
-					this.hideTab(this.currentTab);
-				}
-
-				Composite tabComposite = this.tabToComposite.get(tab);
-				if (tabComposite == null) {
-					tabComposite = this.createTabComposite();
-					tab.createControls(tabComposite, this);
-					// tabAreaComposite.layout(true);
-					this.tabToComposite.put(tab, tabComposite);
-				}
-				// force widgets to be resized
-				tab.setInput(tabbedPropertyViewer.getWorkbenchPart(), (ISelection) tabbedPropertyViewer.getInput());
-
-				// store tab selection
-				this.storeCurrentTabSelection(descriptor.getLabel());
-
-				if (tab != this.currentTab) {
-					this.showTab(tab);
-				}
-
-				tab.refresh();
 			}
 
-			// TODO this should be removed
-			form.getMessageManager().addMessage("key", "I am sorry Dave. I'm afraid I can't do that", "data", IMessageProvider.WARNING); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
-
-			tabbedPropertyComposite.getTabComposite().layout(true);
-
-			this.currentTab = tab;
-			this.resizeScrolledComposite();
-
-			if (descriptor != null) {
-				this.handleTabSelection(descriptor);
+			Composite tabComposite = this.tabToComposite.get(tab);
+			if (tabComposite == null) {
+				tabComposite = this.createTabComposite();
+				tab.createControls(tabComposite, this);
+				// tabAreaComposite.layout(true);
+				this.tabToComposite.put(tab, tabComposite);
 			}
+			// force widgets to be resized
+			tab.setInput(tabbedPropertyViewer.getWorkbenchPart(), tabbedPropertyViewer.getInput());
+
+			// store tab selection
+			this.storeCurrentTabSelection(descriptor.getLabel());
+
+			if (tab != this.currentTab) {
+				this.showTab(tab);
+			}
+
+			tab.refresh();
+		}
+
+		// TODO this should be removed
+		form.getMessageManager().addMessage("key", "I am sorry Dave. I'm afraid I can't do that", "data", IMessageProvider.WARNING); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
+
+		tabbedPropertyComposite.getTabComposite().layout(true);
+
+		this.currentTab = tab;
+		this.resizeScrolledComposite();
+
+		if (descriptor != null) {
+			this.handleTabSelection(descriptor);
 		}
 	}
 
@@ -686,7 +648,7 @@ public class EEFTabbedPropertySheetPage extends Page implements IPropertySheetPa
 		List<IEEFTabDescriptor> elements = this.tabbedPropertyViewer.getElements();
 		for (IEEFTabDescriptor descriptor : elements) {
 			if (descriptor.getId() != null && descriptor.getId().equals(id)) {
-				this.tabbedPropertyViewer.setSelection(new StructuredSelection(descriptor), true);
+				this.tabbedPropertyViewer.setSelectedTabDescriptor(descriptor);
 			}
 		}
 	}
@@ -758,7 +720,7 @@ public class EEFTabbedPropertySheetPage extends Page implements IPropertySheetPa
 	public IEEFTabDescriptor getSelectedTab() {
 		int selectedTab = tabbedPropertyViewer.getSelectionIndex();
 		if (selectedTab != -1) {
-			return tabbedPropertyViewer.getElementAt(selectedTab);
+			return tabbedPropertyViewer.getTabDescriptionAtIndex(selectedTab);
 		}
 		return null;
 	}
