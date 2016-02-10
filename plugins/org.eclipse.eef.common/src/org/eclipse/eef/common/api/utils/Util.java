@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.eef.core.api.utils;
+package org.eclipse.eef.common.api.utils;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;

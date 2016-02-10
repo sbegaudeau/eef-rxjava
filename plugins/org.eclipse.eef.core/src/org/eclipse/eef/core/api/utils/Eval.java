@@ -14,6 +14,7 @@ import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.eef.common.api.utils.Util;
 import org.eclipse.eef.core.internal.EEFCorePlugin;
 import org.eclipse.eef.core.internal.Messages;
 import org.eclipse.emf.ecore.EAttribute;

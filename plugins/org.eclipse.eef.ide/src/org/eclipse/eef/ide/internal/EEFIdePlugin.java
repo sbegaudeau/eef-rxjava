@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,7 @@ package org.eclipse.eef.ide.internal;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.eef.api.IEEFViewDescriptionProvider;
-import org.eclipse.eef.core.api.AbstractEEFEclipsePlugin;
+import org.eclipse.eef.common.api.AbstractEEFEclipsePlugin;
 import org.eclipse.eef.ide.internal.extensions.AbstractRegistryEventListener;
 import org.eclipse.eef.ide.internal.extensions.IItemRegistry;
 import org.eclipse.eef.ide.internal.extensions.impl.DescriptorRegistryEventListener;

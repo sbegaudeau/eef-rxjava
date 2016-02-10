@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,19 +79,19 @@ public class EEFTabDescriptorProviderRegistryEventListener<T> extends AbstractRe
 			if (!this.isValidAttribute(configurationElement, ID_DESCRIPTOR_ATTR)) {
 				String message = MessageFormat.format(Messages.DescriptorRegistryEventListener_missingAttribute,
 						configurationElement.getNamespaceIdentifier(), ID_DESCRIPTOR_ATTR);
-				EEFTabbedPropertyViewPlugin.getInstance().logError(message);
+				EEFTabbedPropertyViewPlugin.getPlugin().error(message);
 			} else if (!this.isValidAttribute(configurationElement, LABEL_DESCRIPTOR_ATTR)) {
 				String message = MessageFormat.format(Messages.DescriptorRegistryEventListener_missingAttribute,
 						configurationElement.getNamespaceIdentifier(), LABEL_DESCRIPTOR_ATTR);
-				EEFTabbedPropertyViewPlugin.getInstance().logError(message);
+				EEFTabbedPropertyViewPlugin.getPlugin().error(message);
 			} else if (!this.isValidAttribute(configurationElement, DESCRIPTION_DESCRIPTOR_ATTR)) {
 				String message = MessageFormat.format(Messages.DescriptorRegistryEventListener_missingAttribute,
 						configurationElement.getNamespaceIdentifier(), DESCRIPTION_DESCRIPTOR_ATTR);
-				EEFTabbedPropertyViewPlugin.getInstance().logError(message);
+				EEFTabbedPropertyViewPlugin.getPlugin().error(message);
 			} else if (!this.isValidAttribute(configurationElement, IMPL_CLASS_DESCRIPTOR_ATTR)) {
 				String message = MessageFormat.format(Messages.DescriptorRegistryEventListener_missingAttribute,
 						configurationElement.getNamespaceIdentifier(), IMPL_CLASS_DESCRIPTOR_ATTR);
-				EEFTabbedPropertyViewPlugin.getInstance().logError(message);
+				EEFTabbedPropertyViewPlugin.getPlugin().error(message);
 			} else {
 				isValid = true;
 			}
@@ -133,7 +133,7 @@ public class EEFTabDescriptorProviderRegistryEventListener<T> extends AbstractRe
 			if (previous != null) {
 				String message = MessageFormat.format(Messages.DescriptorRegistryEventListener_extensionAlreadyContributed,
 						configurationElement.getAttribute(ID_DESCRIPTOR_ATTR));
-				EEFTabbedPropertyViewPlugin.getInstance().logError(message);
+				EEFTabbedPropertyViewPlugin.getPlugin().error(message);
 			}
 		} catch (CoreException e) {
 			// String message =

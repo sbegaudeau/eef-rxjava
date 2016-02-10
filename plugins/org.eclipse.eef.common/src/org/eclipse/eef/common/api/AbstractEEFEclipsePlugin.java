@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.eef.core.api;
+package org.eclipse.eef.common.api;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -16,8 +16,9 @@ import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.eef.core.api.utils.Util;
-import org.eclipse.eef.core.internal.Messages;
+import org.eclipse.eef.common.api.preferences.EEFCommonPreferences;
+import org.eclipse.eef.common.api.utils.Util;
+import org.eclipse.eef.common.internal.Messages;
 import org.eclipse.emf.common.EMFPlugin.EclipsePlugin;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EAttribute;
@@ -180,6 +181,18 @@ public abstract class AbstractEEFEclipsePlugin extends EclipsePlugin {
 			this.getLog().log(((CoreException) exception).getStatus());
 		} else {
 			this.doLog(IStatus.INFO, message, exception);
+		}
+	}
+
+	/**
+	 * Logs a info message if the debug mode is enabled.
+	 *
+	 * @param message
+	 *            The message to log
+	 */
+	public void debug(String message) {
+		if (EEFCommonPreferences.isDebugEnabled()) {
+			this.info(message);
 		}
 	}
 }
