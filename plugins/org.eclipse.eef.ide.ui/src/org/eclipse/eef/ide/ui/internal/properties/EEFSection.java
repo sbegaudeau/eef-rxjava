@@ -22,11 +22,19 @@ import org.eclipse.eef.ide.ui.internal.widgets.EEFGroupLifecycleManager;
 import org.eclipse.eef.ide.ui.internal.widgets.ILifecycleManager;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.eef.properties.ui.api.IEEFSection;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListenerImpl;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * The implementation of {@link IEEFSection} using the {@link EEFSectionDescriptor}.
@@ -34,6 +42,91 @@ import org.eclipse.ui.IWorkbenchPart;
  * @author sbegaudeau
  */
 public class EEFSection implements IEEFSection {
+
+	/**
+	 * A post-commit listener which refreshes the section content when a significant change (an actual modification of a
+	 * model element) occurs in the current editing domain.
+	 */
+	private static final class SectionUpdater extends ResourceSetListenerImpl {
+		/**
+		 * Describes the changes we want to react to.
+		 */
+		private static final NotificationFilter FILTER = NotificationFilter.NOT_TOUCH.and(NotificationFilter.createEventTypeFilter(Notification.SET)
+				.or(NotificationFilter.createEventTypeFilter(Notification.UNSET)).and(NotificationFilter.createNotifierTypeFilter(EObject.class)));
+
+		/**
+		 * The section to refresh.
+		 */
+		private final EEFSection section;
+
+		/**
+		 * The editing domain to which we are attached.
+		 */
+		private TransactionalEditingDomain editingDomain;
+
+		/**
+		 * Creates a new updater.
+		 *
+		 * @param section
+		 *            the section to refresh.
+		 */
+		private SectionUpdater(EEFSection section) {
+			super(FILTER);
+			this.section = section;
+		}
+
+		@Override
+		public boolean isPostcommitOnly() {
+			return true;
+		}
+
+		@Override
+		public void resourceSetChanged(ResourceSetChangeEvent event) {
+			Display display = getCurrentDisplay();
+			if (display != null) {
+				display.asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						section.refresh();
+					}
+				});
+			}
+		}
+
+		/**
+		 * Start listening to changes from the current editing domain.
+		 */
+		public void enable() {
+			disable();
+			editingDomain = section.eefSectionDescriptor.getEEFPage().getView().getEditingDomain();
+			if (editingDomain != null) {
+				editingDomain.addResourceSetListener(this);
+			}
+		}
+
+		/**
+		 * Stop listening to changes from the editing domain.
+		 */
+		public void disable() {
+			if (editingDomain != null) {
+				editingDomain.removeResourceSetListener(this);
+			}
+		}
+
+		/**
+		 * Helper to obtain the current display, as the actual refresh must be launched in the UI thread.
+		 *
+		 * @return the current display.
+		 */
+		private Display getCurrentDisplay() {
+			if (PlatformUI.isWorkbenchRunning()) {
+				return PlatformUI.getWorkbench().getDisplay();
+			} else {
+				return Display.getDefault();
+			}
+		}
+
+	}
 
 	/**
 	 * The section descriptor.
@@ -46,6 +139,11 @@ public class EEFSection implements IEEFSection {
 	private List<ILifecycleManager> lifecycleManagers = new ArrayList<ILifecycleManager>();
 
 	/**
+	 * The updater which refreshes this section on external model changes.
+	 */
+	private SectionUpdater updater;
+
+	/**
 	 * The constructor.
 	 *
 	 * @param eefSectionDescriptor
@@ -53,6 +151,7 @@ public class EEFSection implements IEEFSection {
 	 */
 	public EEFSection(EEFSectionDescriptor eefSectionDescriptor) {
 		this.eefSectionDescriptor = eefSectionDescriptor;
+		this.updater = new SectionUpdater(this);
 	}
 
 	@Override
@@ -77,6 +176,7 @@ public class EEFSection implements IEEFSection {
 		for (ILifecycleManager lifecycleManager : lifecycleManagers) {
 			lifecycleManager.aboutToBeShown();
 		}
+		updater.enable();
 	}
 
 	@Override
@@ -107,6 +207,7 @@ public class EEFSection implements IEEFSection {
 	public void aboutToBeHidden() {
 		EEFIdeUiPlugin.getPlugin().debug("EEFSection#aboutToBeHidden(...)"); //$NON-NLS-1$
 
+		updater.disable();
 		for (ILifecycleManager lifecycleManager : lifecycleManagers) {
 			lifecycleManager.aboutToBeHidden();
 		}

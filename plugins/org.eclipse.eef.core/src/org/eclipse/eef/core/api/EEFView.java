@@ -13,6 +13,7 @@ package org.eclipse.eef.core.api;
 import java.util.List;
 
 import org.eclipse.eef.EEFViewDescription;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 
 /**
  * The view if the root concept of the EEF model.
@@ -47,4 +48,12 @@ public interface EEFView {
 	 * @return The {@link EEFPage}
 	 */
 	List<EEFPage> getPages();
+
+	/**
+	 * Returns the {@link TransactionalEditingDomain} through which the current input is being edited. May be
+	 * <code>null</code>.
+	 *
+	 * @return the {@link TransactionalEditingDomain}.
+	 */
+	TransactionalEditingDomain getEditingDomain();
 }

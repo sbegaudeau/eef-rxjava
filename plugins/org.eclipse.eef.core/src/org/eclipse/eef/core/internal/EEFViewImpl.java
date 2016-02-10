@@ -217,4 +217,14 @@ public class EEFViewImpl implements EEFView {
 		return this.eefViewDescription;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.eef.core.api.EEFView#getEditingDomain()
+	 */
+	@Override
+	public TransactionalEditingDomain getEditingDomain() {
+		return this.editingDomain;
+	}
+
 }
