@@ -327,49 +327,26 @@ public class EefItemProviderAdapterFactory extends EefAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFDynamicMappingSwitch} instances. <!--
+	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFDynamicMappingIf} instances. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 */
-	protected EEFDynamicMappingSwitchItemProvider eefDynamicMappingSwitchItemProvider;
+	protected EEFDynamicMappingIfItemProvider eefDynamicMappingIfItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.eef.EEFDynamicMappingSwitch}. <!-- begin-user-doc --> <!--
+	 * This creates an adapter for a {@link org.eclipse.eef.EEFDynamicMappingIf}. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @generated
 	 */
 	@Override
-	public Adapter createEEFDynamicMappingSwitchAdapter() {
-		if (eefDynamicMappingSwitchItemProvider == null) {
-			eefDynamicMappingSwitchItemProvider = new EEFDynamicMappingSwitchItemProvider(this);
+	public Adapter createEEFDynamicMappingIfAdapter() {
+		if (eefDynamicMappingIfItemProvider == null) {
+			eefDynamicMappingIfItemProvider = new EEFDynamicMappingIfItemProvider(this);
 		}
 
-		return eefDynamicMappingSwitchItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.eef.EEFDynamicMappingCase} instances. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 */
-	protected EEFDynamicMappingCaseItemProvider eefDynamicMappingCaseItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.eef.EEFDynamicMappingCase}. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	@Override
-	public Adapter createEEFDynamicMappingCaseAdapter() {
-		if (eefDynamicMappingCaseItemProvider == null) {
-			eefDynamicMappingCaseItemProvider = new EEFDynamicMappingCaseItemProvider(this);
-		}
-
-		return eefDynamicMappingCaseItemProvider;
+		return eefDynamicMappingIfItemProvider;
 	}
 
 	/**
@@ -505,11 +482,8 @@ public class EefItemProviderAdapterFactory extends EefAdapterFactory implements 
 		if (eefDynamicMappingForItemProvider != null) {
 			eefDynamicMappingForItemProvider.dispose();
 		}
-		if (eefDynamicMappingSwitchItemProvider != null) {
-			eefDynamicMappingSwitchItemProvider.dispose();
-		}
-		if (eefDynamicMappingCaseItemProvider != null) {
-			eefDynamicMappingCaseItemProvider.dispose();
+		if (eefDynamicMappingIfItemProvider != null) {
+			eefDynamicMappingIfItemProvider.dispose();
 		}
 	}
 

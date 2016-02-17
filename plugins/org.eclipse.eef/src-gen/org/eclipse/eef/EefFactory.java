@@ -114,21 +114,12 @@ public interface EefFactory extends EFactory {
 	EEFDynamicMappingFor createEEFDynamicMappingFor();
 
 	/**
-	 * Returns a new object of class '<em>EEF Dynamic Mapping Switch</em>'. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
+	 * Returns a new object of class '<em>EEF Dynamic Mapping If</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
-	 * @return a new object of class '<em>EEF Dynamic Mapping Switch</em>'.
+	 * @return a new object of class '<em>EEF Dynamic Mapping If</em>'.
 	 * @generated
 	 */
-	EEFDynamicMappingSwitch createEEFDynamicMappingSwitch();
-
-	/**
-	 * Returns a new object of class '<em>EEF Dynamic Mapping Case</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return a new object of class '<em>EEF Dynamic Mapping Case</em>'.
-	 * @generated
-	 */
-	EEFDynamicMappingCase createEEFDynamicMappingCase();
+	EEFDynamicMappingIf createEEFDynamicMappingIf();
 
 	/**
 	 * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -1,0 +1,82 @@
+/**
+ * Copyright (c) 2015 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.htm
+ * Contributors: Obeo - initial API and implementation
+ */
+package org.eclipse.eef;
+
+import org.eclipse.emf.ecore.EObject;
+
+/**
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>EEF Dynamic Mapping If</b></em>'. <!--
+ * end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ * <li>{@link org.eclipse.eef.EEFDynamicMappingIf#getPredicateExpression <em>Predicate Expression</em>}</li>
+ * <li>{@link org.eclipse.eef.EEFDynamicMappingIf#getWidget <em>Widget</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @see org.eclipse.eef.EefPackage#getEEFDynamicMappingIf()
+ * @model
+ * @generated
+ */
+public interface EEFDynamicMappingIf extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Predicate Expression</b></em>' attribute. <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Predicate Expression</em>' attribute isn't clear, there really should be more of a
+	 * description here...
+	 * </p>
+	 * <!-- end-user-doc --> <!-- begin-model-doc --> The expression used to determine if we will use the widget. <!--
+	 * end-model-doc -->
+	 *
+	 * @return the value of the '<em>Predicate Expression</em>' attribute.
+	 * @see #setPredicateExpression(String)
+	 * @see org.eclipse.eef.EefPackage#getEEFDynamicMappingIf_PredicateExpression()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getPredicateExpression();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.eef.EEFDynamicMappingIf#getPredicateExpression
+	 * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param value
+	 *            the new value of the '<em>Predicate Expression</em>' attribute.
+	 * @see #getPredicateExpression()
+	 * @generated
+	 */
+	void setPredicateExpression(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Widget</b></em>' containment reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc --> <!-- begin-model-doc --> The widget to create if the result of the switch expression and the
+	 * case expression are equals. <!-- end-model-doc -->
+	 *
+	 * @return the value of the '<em>Widget</em>' containment reference.
+	 * @see #setWidget(EEFWidgetDescription)
+	 * @see org.eclipse.eef.EefPackage#getEEFDynamicMappingIf_Widget()
+	 * @model containment="true" resolveProxies="true" required="true"
+	 * @generated
+	 */
+	EEFWidgetDescription getWidget();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.eef.EEFDynamicMappingIf#getWidget <em>Widget</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param value
+	 *            the new value of the '<em>Widget</em>' containment reference.
+	 * @see #getWidget()
+	 * @generated
+	 */
+	void setWidget(EEFWidgetDescription value);
+
+} // EEFDynamicMappingIf

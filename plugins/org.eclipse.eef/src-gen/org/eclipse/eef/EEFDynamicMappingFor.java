@@ -8,6 +8,7 @@
  */
 package org.eclipse.eef;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -19,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  * <li>{@link org.eclipse.eef.EEFDynamicMappingFor#getIterator <em>Iterator</em>}</li>
  * <li>{@link org.eclipse.eef.EEFDynamicMappingFor#getDomainClassExpression <em>Domain Class Expression</em>}</li>
- * <li>{@link org.eclipse.eef.EEFDynamicMappingFor#getSwitch <em>Switch</em>}</li>
+ * <li>{@link org.eclipse.eef.EEFDynamicMappingFor#getIfs <em>Ifs</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,26 +78,15 @@ public interface EEFDynamicMappingFor extends EObject {
 	void setDomainClassExpression(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Switch</b></em>' containment reference. <!-- begin-user-doc --> <!--
-	 * end-user-doc --> <!-- begin-model-doc --> Used to determine which widget to create. <!-- end-model-doc -->
+	 * Returns the value of the '<em><b>Ifs</b></em>' containment reference list. The list contents are of type
+	 * {@link org.eclipse.eef.EEFDynamicMappingIf}. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc
+	 * --> Used to determine which widget to create. <!-- end-model-doc -->
 	 *
-	 * @return the value of the '<em>Switch</em>' containment reference.
-	 * @see #setSwitch(EEFDynamicMappingSwitch)
-	 * @see org.eclipse.eef.EefPackage#getEEFDynamicMappingFor_Switch()
+	 * @return the value of the '<em>Ifs</em>' containment reference list.
+	 * @see org.eclipse.eef.EefPackage#getEEFDynamicMappingFor_Ifs()
 	 * @model containment="true" resolveProxies="true" required="true"
 	 * @generated
 	 */
-	EEFDynamicMappingSwitch getSwitch();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.eef.EEFDynamicMappingFor#getSwitch <em>Switch</em>}' containment
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Switch</em>' containment reference.
-	 * @see #getSwitch()
-	 * @generated
-	 */
-	void setSwitch(EEFDynamicMappingSwitch value);
+	EList<EEFDynamicMappingIf> getIfs();
 
 } // EEFDynamicMappingFor

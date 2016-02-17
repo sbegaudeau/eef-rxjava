@@ -11,7 +11,7 @@ package org.eclipse.eef.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.eef.EEFDynamicMappingCase;
+import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.eef.EefPackage;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -30,19 +30,19 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.eef.EEFDynamicMappingCase} object. <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.eef.EEFDynamicMappingIf} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * 
  * @generated
  */
-public class EEFDynamicMappingCaseItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+public class EEFDynamicMappingIfItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public EEFDynamicMappingCaseItemProvider(AdapterFactory adapterFactory) {
+	public EEFDynamicMappingIfItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,25 +56,26 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCaseExpressionPropertyDescriptor(object);
+			addPredicateExpressionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Case Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This adds a property descriptor for the Predicate Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 *
 	 * @generated
 	 */
-	protected void addCaseExpressionPropertyDescriptor(Object object) {
+	protected void addPredicateExpressionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 		.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_EEFDynamicMappingCase_caseExpression_feature"), //$NON-NLS-1$
+				getString("_UI_EEFDynamicMappingIf_predicateExpression_feature"), //$NON-NLS-1$
 				getString(
-						"_UI_PropertyDescriptor_description", "_UI_EEFDynamicMappingCase_caseExpression_feature", "_UI_EEFDynamicMappingCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						EefPackage.Literals.EEF_DYNAMIC_MAPPING_CASE__CASE_EXPRESSION, true, false, false,
+						"_UI_PropertyDescriptor_description", "_UI_EEFDynamicMappingIf_predicateExpression_feature", "_UI_EEFDynamicMappingIf_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+						EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -90,7 +91,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(EefPackage.Literals.EEF_DYNAMIC_MAPPING_CASE__WIDGET);
+			childrenFeatures.add(EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF__WIDGET);
 		}
 		return childrenFeatures;
 	}
@@ -109,13 +110,13 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	}
 
 	/**
-	 * This returns EEFDynamicMappingCase.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * This returns EEFDynamicMappingIf.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EEFDynamicMappingCase")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/EEFDynamicMappingIf")); //$NON-NLS-1$
 	}
 
 	/**
@@ -135,9 +136,9 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EEFDynamicMappingCase) object).getCaseExpression();
-		return label == null || label.length() == 0 ? getString("_UI_EEFDynamicMappingCase_type") : //$NON-NLS-1$
-			getString("_UI_EEFDynamicMappingCase_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		String label = ((EEFDynamicMappingIf) object).getPredicateExpression();
+		return label == null || label.length() == 0 ? getString("_UI_EEFDynamicMappingIf_type") : //$NON-NLS-1$
+			getString("_UI_EEFDynamicMappingIf_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -151,11 +152,11 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(EEFDynamicMappingCase.class)) {
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
+		switch (notification.getFeatureID(EEFDynamicMappingIf.class)) {
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET:
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -172,22 +173,22 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_CASE__WIDGET,
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF__WIDGET,
 				EefFactory.eINSTANCE.createEEFTextDescription()));
 
-		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_CASE__WIDGET,
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF__WIDGET,
 				EefFactory.eINSTANCE.createEEFLabelDescription()));
 
-		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_CASE__WIDGET,
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF__WIDGET,
 				EefFactory.eINSTANCE.createEEFButtonDescription()));
 
-		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_CASE__WIDGET,
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF__WIDGET,
 				EefFactory.eINSTANCE.createEEFCheckboxDescription()));
 
-		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_CASE__WIDGET,
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF__WIDGET,
 				EefFactory.eINSTANCE.createEEFSelectDescription()));
 
-		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_CASE__WIDGET,
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF__WIDGET,
 				EefFactory.eINSTANCE.createEEFRadioDescription()));
 	}
 

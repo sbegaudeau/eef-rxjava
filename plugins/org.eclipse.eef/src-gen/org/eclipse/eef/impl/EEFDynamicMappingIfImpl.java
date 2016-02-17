@@ -8,7 +8,7 @@
  */
 package org.eclipse.eef.impl;
 
-import org.eclipse.eef.EEFDynamicMappingCase;
+import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.EefPackage;
 import org.eclipse.emf.common.notify.Notification;
@@ -19,38 +19,38 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '<em><b>EEF Dynamic Mapping Case</b></em>'. <!--
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>EEF Dynamic Mapping If</b></em>'. <!--
  * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.eef.impl.EEFDynamicMappingCaseImpl#getCaseExpression <em>Case Expression</em>}</li>
- * <li>{@link org.eclipse.eef.impl.EEFDynamicMappingCaseImpl#getWidget <em>Widget</em>}</li>
+ * <li>{@link org.eclipse.eef.impl.EEFDynamicMappingIfImpl#getPredicateExpression <em>Predicate Expression</em>}</li>
+ * <li>{@link org.eclipse.eef.impl.EEFDynamicMappingIfImpl#getWidget <em>Widget</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container implements EEFDynamicMappingCase {
+public class EEFDynamicMappingIfImpl extends MinimalEObjectImpl.Container implements EEFDynamicMappingIf {
 	/**
-	 * The default value of the '{@link #getCaseExpression() <em>Case Expression</em>}' attribute. <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getPredicateExpression() <em>Predicate Expression</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
-	 * @see #getCaseExpression()
+	 * @see #getPredicateExpression()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String CASE_EXPRESSION_EDEFAULT = null;
+	protected static final String PREDICATE_EXPRESSION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCaseExpression() <em>Case Expression</em>}' attribute. <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPredicateExpression() <em>Predicate Expression</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
-	 * @see #getCaseExpression()
+	 * @see #getPredicateExpression()
 	 * @generated
 	 * @ordered
 	 */
-	protected String caseExpression = EEFDynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT;
+	protected String predicateExpression = EEFDynamicMappingIfImpl.PREDICATE_EXPRESSION_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getWidget() <em>Widget</em>}' containment reference. <!-- begin-user-doc -->
@@ -67,7 +67,7 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 	 *
 	 * @generated
 	 */
-	protected EEFDynamicMappingCaseImpl() {
+	protected EEFDynamicMappingIfImpl() {
 		super();
 	}
 
@@ -78,7 +78,7 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EefPackage.Literals.EEF_DYNAMIC_MAPPING_CASE;
+		return EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF;
 	}
 
 	/**
@@ -87,8 +87,8 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 	 * @generated
 	 */
 	@Override
-	public String getCaseExpression() {
-		return caseExpression;
+	public String getPredicateExpression() {
+		return predicateExpression;
 	}
 
 	/**
@@ -97,12 +97,12 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 	 * @generated
 	 */
 	@Override
-	public void setCaseExpression(String newCaseExpression) {
-		String oldCaseExpression = caseExpression;
-		caseExpression = newCaseExpression;
+	public void setPredicateExpression(String newPredicateExpression) {
+		String oldPredicateExpression = predicateExpression;
+		predicateExpression = newPredicateExpression;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, EefPackage.EEF_DYNAMIC_MAPPING_CASE__CASE_EXPRESSION, oldCaseExpression,
-					caseExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, EefPackage.EEF_DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION, oldPredicateExpression,
+					predicateExpression));
 		}
 	}
 
@@ -119,16 +119,16 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 			if (widget != oldWidget) {
 				InternalEObject newWidget = (InternalEObject) widget;
 				NotificationChain msgs = oldWidget.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
-						- EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET, null, null);
+						- EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET, null, null);
 				if (newWidget.eInternalContainer() == null) {
-					msgs = newWidget.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET, null,
-							msgs);
+					msgs = newWidget
+							.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
 				}
 				if (eNotificationRequired()) {
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET, oldWidget, widget));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET, oldWidget, widget));
 				}
 			}
 		}
@@ -153,7 +153,7 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 		EEFWidgetDescription oldWidget = widget;
 		widget = newWidget;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET, oldWidget,
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET, oldWidget,
 					newWidget);
 			if (msgs == null) {
 				msgs = notification;
@@ -175,18 +175,18 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 			NotificationChain msgs = null;
 			if (widget != null) {
 				msgs = ((InternalEObject) widget).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
-						- EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET, null, msgs);
+						- EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET, null, msgs);
 			}
 			if (newWidget != null) {
 				msgs = ((InternalEObject) newWidget).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE
-						- EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET, null, msgs);
+						- EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET, null, msgs);
 			}
 			msgs = basicSetWidget(newWidget, msgs);
 			if (msgs != null) {
 				msgs.dispatch();
 			}
 		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET, newWidget, newWidget));
+			eNotify(new ENotificationImpl(this, Notification.SET, EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET, newWidget, newWidget));
 		}
 	}
 
@@ -198,7 +198,7 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET:
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET:
 			return basicSetWidget(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -212,9 +212,9 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
-			return getCaseExpression();
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET:
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
+			return getPredicateExpression();
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET:
 			if (resolve) {
 				return getWidget();
 			}
@@ -231,10 +231,10 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
-			setCaseExpression((String) newValue);
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
+			setPredicateExpression((String) newValue);
 			return;
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET:
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET:
 			setWidget((EEFWidgetDescription) newValue);
 			return;
 		}
@@ -249,10 +249,10 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
-			setCaseExpression(EEFDynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT);
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
+			setPredicateExpression(EEFDynamicMappingIfImpl.PREDICATE_EXPRESSION_EDEFAULT);
 			return;
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET:
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET:
 			setWidget((EEFWidgetDescription) null);
 			return;
 		}
@@ -267,10 +267,10 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
-			return EEFDynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT == null ? caseExpression != null
-			: !EEFDynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT.equals(caseExpression);
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE__WIDGET:
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
+			return EEFDynamicMappingIfImpl.PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null
+			: !EEFDynamicMappingIfImpl.PREDICATE_EXPRESSION_EDEFAULT.equals(predicateExpression);
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF__WIDGET:
 			return widget != null;
 		}
 		return super.eIsSet(featureID);
@@ -288,10 +288,10 @@ public class EEFDynamicMappingCaseImpl extends MinimalEObjectImpl.Container impl
 		}
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (caseExpression: "); //$NON-NLS-1$
-		result.append(caseExpression);
+		result.append(" (predicateExpression: "); //$NON-NLS-1$
+		result.append(predicateExpression);
 		result.append(')');
 		return result.toString();
 	}
 
-} // EEFDynamicMappingCaseImpl
+} // EEFDynamicMappingIfImpl

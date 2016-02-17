@@ -18,9 +18,8 @@ import java.util.Map;
 import org.eclipse.eef.EEFButtonDescription;
 import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFContainerDescription;
-import org.eclipse.eef.EEFDynamicMappingCase;
 import org.eclipse.eef.EEFDynamicMappingFor;
-import org.eclipse.eef.EEFDynamicMappingSwitch;
+import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFRadioDescription;
 import org.eclipse.eef.EEFSelectDescription;
@@ -187,11 +186,9 @@ public class EEFContainerLifecycleManager implements ILifecycleManager {
 			EEFDynamicMappingFor dynamicMappingFor) {
 		String domainClassExpression = dynamicMappingFor.getDomainClassExpression();
 		EAttribute domainClassEAttribute = EefPackage.Literals.EEF_DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION;
-
-		EEFDynamicMappingSwitch dynamicMappingSwitch = dynamicMappingFor.getSwitch();
-		String switchExpression = dynamicMappingSwitch.getSwitchExpression();
-		EAttribute switchExpressionEAttribute = EefPackage.Literals.EEF_DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION;
 		String iterator = dynamicMappingFor.getIterator();
+
+		EAttribute ifExpressionEAttribute = EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION;
 
 		Object domainClassExpressionResult = new Eval(this.interpreter, this.variableManager).get(domainClassEAttribute, domainClassExpression,
 				Object.class);
@@ -201,12 +198,14 @@ public class EEFContainerLifecycleManager implements ILifecycleManager {
 			switchExpressionVariables.put(iterator, eObject);
 
 			EEFWidgetDescription eefWidgetDescription = null;
-
-			Object switchExpressionResult = new Eval(this.interpreter, switchExpressionVariables).get(switchExpressionEAttribute, switchExpression,
-					Object.class);
-
-			if (switchExpressionResult != null) {
-				eefWidgetDescription = this.getWidgetDescription(switchExpressionResult, dynamicMappingSwitch.getCases());
+			List<EEFDynamicMappingIf> dynamicMappingIfs = dynamicMappingFor.getIfs();
+			for (EEFDynamicMappingIf dynamicMappingIf : dynamicMappingIfs) {
+				Boolean isValid = new Eval(this.interpreter, switchExpressionVariables).get(ifExpressionEAttribute,
+						dynamicMappingIf.getPredicateExpression(), Boolean.class);
+				if (isValid != null && isValid.booleanValue()) {
+					eefWidgetDescription = dynamicMappingIf.getWidget();
+					break;
+				}
 			}
 
 			if (eefWidgetDescription != null) {
@@ -215,36 +214,6 @@ public class EEFContainerLifecycleManager implements ILifecycleManager {
 				this.createWidgetControl(parent, tabbedPropertySheetPage, eefWidgetDescription, childVariableManager);
 			}
 		}
-	}
-
-	/**
-	 * Returns the widget description of the {@link EEFDynamicMappingCase} with a caseExpression equal to the result of
-	 * the switchExpression.
-	 *
-	 * @param switchExpressionResult
-	 *            The result of the evaluation of the switchExpression
-	 * @param cases
-	 *            All the possible cases for the switch considered
-	 * @return The {@link EEFWidgetDescription} for the matching case or <code>null</code> if the switch expression
-	 *         result is not a success or if none of the {@link EEFDynamicMappingCase} matches
-	 */
-	private EEFWidgetDescription getWidgetDescription(Object switchExpressionResult, List<EEFDynamicMappingCase> cases) {
-		EEFDynamicMappingCase caseMatching = null;
-		for (EEFDynamicMappingCase dynamicMappingCase : cases) {
-			String caseExpression = dynamicMappingCase.getCaseExpression();
-			EAttribute eAttribute = EefPackage.Literals.EEF_DYNAMIC_MAPPING_CASE__CASE_EXPRESSION;
-
-			Object result = new Eval(this.interpreter, this.variableManager).get(eAttribute, caseExpression, Object.class);
-			if (result != null && result.equals(switchExpressionResult)) {
-				caseMatching = dynamicMappingCase;
-				break;
-			}
-		}
-
-		if (caseMatching != null) {
-			return caseMatching.getWidget();
-		}
-		return null;
 	}
 
 	/**

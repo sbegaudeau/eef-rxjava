@@ -8,15 +8,20 @@
  */
 package org.eclipse.eef.impl;
 
+import java.util.Collection;
+
 import org.eclipse.eef.EEFDynamicMappingFor;
-import org.eclipse.eef.EEFDynamicMappingSwitch;
+import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EefPackage;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>EEF Dynamic Mapping For</b></em>'. <!--
@@ -26,7 +31,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  * <li>{@link org.eclipse.eef.impl.EEFDynamicMappingForImpl#getIterator <em>Iterator</em>}</li>
  * <li>{@link org.eclipse.eef.impl.EEFDynamicMappingForImpl#getDomainClassExpression <em>Domain Class Expression</em>}</li>
- * <li>{@link org.eclipse.eef.impl.EEFDynamicMappingForImpl#getSwitch <em>Switch</em>}</li>
+ * <li>{@link org.eclipse.eef.impl.EEFDynamicMappingForImpl#getIfs <em>Ifs</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,14 +79,14 @@ public class EEFDynamicMappingForImpl extends MinimalEObjectImpl.Container imple
 	protected String domainClassExpression = EEFDynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSwitch() <em>Switch</em>}' containment reference. <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getIfs() <em>Ifs</em>}' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 *
-	 * @see #getSwitch()
+	 * @see #getIfs()
 	 * @generated
 	 * @ordered
 	 */
-	protected EEFDynamicMappingSwitch switch_;
+	protected EList<EEFDynamicMappingIf> ifs;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -157,82 +162,11 @@ public class EEFDynamicMappingForImpl extends MinimalEObjectImpl.Container imple
 	 * @generated
 	 */
 	@Override
-	public EEFDynamicMappingSwitch getSwitch() {
-		if (switch_ != null && switch_.eIsProxy()) {
-			InternalEObject oldSwitch = (InternalEObject) switch_;
-			switch_ = (EEFDynamicMappingSwitch) eResolveProxy(oldSwitch);
-			if (switch_ != oldSwitch) {
-				InternalEObject newSwitch = (InternalEObject) switch_;
-				NotificationChain msgs = oldSwitch.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
-						- EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH, null, null);
-				if (newSwitch.eInternalContainer() == null) {
-					msgs = newSwitch.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH, null,
-							msgs);
-				}
-				if (msgs != null) {
-					msgs.dispatch();
-				}
-				if (eNotificationRequired()) {
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH, oldSwitch, switch_));
-				}
-			}
+	public EList<EEFDynamicMappingIf> getIfs() {
+		if (ifs == null) {
+			ifs = new EObjectContainmentEList.Resolving<EEFDynamicMappingIf>(EEFDynamicMappingIf.class, this, EefPackage.EEF_DYNAMIC_MAPPING_FOR__IFS);
 		}
-		return switch_;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 */
-	public EEFDynamicMappingSwitch basicGetSwitch() {
-		return switch_;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 */
-	public NotificationChain basicSetSwitch(EEFDynamicMappingSwitch newSwitch, NotificationChain msgs) {
-		EEFDynamicMappingSwitch oldSwitch = switch_;
-		switch_ = newSwitch;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH, oldSwitch,
-					newSwitch);
-			if (msgs == null) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 */
-	@Override
-	public void setSwitch(EEFDynamicMappingSwitch newSwitch) {
-		if (newSwitch != switch_) {
-			NotificationChain msgs = null;
-			if (switch_ != null) {
-				msgs = ((InternalEObject) switch_).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE
-						- EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH, null, msgs);
-			}
-			if (newSwitch != null) {
-				msgs = ((InternalEObject) newSwitch).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE
-						- EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH, null, msgs);
-			}
-			msgs = basicSetSwitch(newSwitch, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH, newSwitch, newSwitch));
-		}
+		return ifs;
 	}
 
 	/**
@@ -243,8 +177,8 @@ public class EEFDynamicMappingForImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH:
-			return basicSetSwitch(null, msgs);
+		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__IFS:
+			return ((InternalEList<?>) getIfs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -261,11 +195,8 @@ public class EEFDynamicMappingForImpl extends MinimalEObjectImpl.Container imple
 			return getIterator();
 		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
 			return getDomainClassExpression();
-		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH:
-			if (resolve) {
-				return getSwitch();
-			}
-			return basicGetSwitch();
+		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__IFS:
+			return getIfs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -275,6 +206,7 @@ public class EEFDynamicMappingForImpl extends MinimalEObjectImpl.Container imple
 	 *
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -284,8 +216,9 @@ public class EEFDynamicMappingForImpl extends MinimalEObjectImpl.Container imple
 		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
 			setDomainClassExpression((String) newValue);
 			return;
-		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH:
-			setSwitch((EEFDynamicMappingSwitch) newValue);
+		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__IFS:
+			getIfs().clear();
+			getIfs().addAll((Collection<? extends EEFDynamicMappingIf>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -305,8 +238,8 @@ public class EEFDynamicMappingForImpl extends MinimalEObjectImpl.Container imple
 		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
 			setDomainClassExpression(EEFDynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT);
 			return;
-		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH:
-			setSwitch((EEFDynamicMappingSwitch) null);
+		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__IFS:
+			getIfs().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -326,8 +259,8 @@ public class EEFDynamicMappingForImpl extends MinimalEObjectImpl.Container imple
 		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
 			return EEFDynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT == null ? domainClassExpression != null
 			: !EEFDynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT.equals(domainClassExpression);
-		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH:
-			return switch_ != null;
+		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__IFS:
+			return ifs != null && !ifs.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

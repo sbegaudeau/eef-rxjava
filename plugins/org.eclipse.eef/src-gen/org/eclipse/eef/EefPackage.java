@@ -679,13 +679,13 @@ public interface EefPackage extends EPackage {
 	int EEF_DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Switch</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
+	 * The feature id for the '<em><b>Ifs</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int EEF_DYNAMIC_MAPPING_FOR__SWITCH = 2;
+	int EEF_DYNAMIC_MAPPING_FOR__IFS = 2;
 
 	/**
 	 * The number of structural features of the '<em>EEF Dynamic Mapping For</em>' class. <!-- begin-user-doc --> <!--
@@ -697,59 +697,23 @@ public interface EefPackage extends EPackage {
 	int EEF_DYNAMIC_MAPPING_FOR_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.eef.impl.EEFDynamicMappingSwitchImpl
-	 * <em>EEF Dynamic Mapping Switch</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.eclipse.eef.impl.EEFDynamicMappingIfImpl <em>EEF Dynamic Mapping If</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
-	 * @see org.eclipse.eef.impl.EEFDynamicMappingSwitchImpl
-	 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFDynamicMappingSwitch()
+	 * @see org.eclipse.eef.impl.EEFDynamicMappingIfImpl
+	 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFDynamicMappingIf()
 	 * @generated
 	 */
-	int EEF_DYNAMIC_MAPPING_SWITCH = 12;
+	int EEF_DYNAMIC_MAPPING_IF = 12;
 
 	/**
-	 * The feature id for the '<em><b>Switch Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION = 0;
-
-	/**
-	 * The feature id for the '<em><b>Cases</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+	 * The feature id for the '<em><b>Predicate Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int EEF_DYNAMIC_MAPPING_SWITCH__CASES = 1;
-
-	/**
-	 * The number of structural features of the '<em>EEF Dynamic Mapping Switch</em>' class. <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_DYNAMIC_MAPPING_SWITCH_FEATURE_COUNT = 2;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.eef.impl.EEFDynamicMappingCaseImpl
-	 * <em>EEF Dynamic Mapping Case</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @see org.eclipse.eef.impl.EEFDynamicMappingCaseImpl
-	 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFDynamicMappingCase()
-	 * @generated
-	 */
-	int EEF_DYNAMIC_MAPPING_CASE = 13;
-
-	/**
-	 * The feature id for the '<em><b>Case Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int EEF_DYNAMIC_MAPPING_CASE__CASE_EXPRESSION = 0;
+	int EEF_DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION = 0;
 
 	/**
 	 * The feature id for the '<em><b>Widget</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -758,16 +722,16 @@ public interface EefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EEF_DYNAMIC_MAPPING_CASE__WIDGET = 1;
+	int EEF_DYNAMIC_MAPPING_IF__WIDGET = 1;
 
 	/**
-	 * The number of structural features of the '<em>EEF Dynamic Mapping Case</em>' class. <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '<em>EEF Dynamic Mapping If</em>' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int EEF_DYNAMIC_MAPPING_CASE_FEATURE_COUNT = 2;
+	int EEF_DYNAMIC_MAPPING_IF_FEATURE_COUNT = 2;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.eef.EEFViewDescription <em>EEF View Description</em>}'.
@@ -1281,80 +1245,47 @@ public interface EefPackage extends EPackage {
 	EAttribute getEEFDynamicMappingFor_DomainClassExpression();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.eef.EEFDynamicMappingFor#getSwitch
-	 * <em>Switch</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.eef.EEFDynamicMappingFor#getIfs
+	 * <em>Ifs</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
-	 * @return the meta object for the containment reference '<em>Switch</em>'.
-	 * @see org.eclipse.eef.EEFDynamicMappingFor#getSwitch()
+	 * @return the meta object for the containment reference list '<em>Ifs</em>'.
+	 * @see org.eclipse.eef.EEFDynamicMappingFor#getIfs()
 	 * @see #getEEFDynamicMappingFor()
 	 * @generated
 	 */
-	EReference getEEFDynamicMappingFor_Switch();
+	EReference getEEFDynamicMappingFor_Ifs();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.eef.EEFDynamicMappingSwitch
-	 * <em>EEF Dynamic Mapping Switch</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.eclipse.eef.EEFDynamicMappingIf <em>EEF Dynamic Mapping If</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
-	 * @return the meta object for class '<em>EEF Dynamic Mapping Switch</em>'.
-	 * @see org.eclipse.eef.EEFDynamicMappingSwitch
+	 * @return the meta object for class '<em>EEF Dynamic Mapping If</em>'.
+	 * @see org.eclipse.eef.EEFDynamicMappingIf
 	 * @generated
 	 */
-	EClass getEEFDynamicMappingSwitch();
+	EClass getEEFDynamicMappingIf();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.eef.EEFDynamicMappingSwitch#getSwitchExpression
-	 * <em>Switch Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '{@link org.eclipse.eef.EEFDynamicMappingIf#getPredicateExpression
+	 * <em>Predicate Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
-	 * @return the meta object for the attribute '<em>Switch Expression</em>'.
-	 * @see org.eclipse.eef.EEFDynamicMappingSwitch#getSwitchExpression()
-	 * @see #getEEFDynamicMappingSwitch()
+	 * @return the meta object for the attribute '<em>Predicate Expression</em>'.
+	 * @see org.eclipse.eef.EEFDynamicMappingIf#getPredicateExpression()
+	 * @see #getEEFDynamicMappingIf()
 	 * @generated
 	 */
-	EAttribute getEEFDynamicMappingSwitch_SwitchExpression();
+	EAttribute getEEFDynamicMappingIf_PredicateExpression();
 
 	/**
-	 * Returns the meta object for the containment reference list '
-	 * {@link org.eclipse.eef.EEFDynamicMappingSwitch#getCases <em>Cases</em>}'. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 *
-	 * @return the meta object for the containment reference list '<em>Cases</em>'.
-	 * @see org.eclipse.eef.EEFDynamicMappingSwitch#getCases()
-	 * @see #getEEFDynamicMappingSwitch()
-	 * @generated
-	 */
-	EReference getEEFDynamicMappingSwitch_Cases();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.eef.EEFDynamicMappingCase
-	 * <em>EEF Dynamic Mapping Case</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for class '<em>EEF Dynamic Mapping Case</em>'.
-	 * @see org.eclipse.eef.EEFDynamicMappingCase
-	 * @generated
-	 */
-	EClass getEEFDynamicMappingCase();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.eef.EEFDynamicMappingCase#getCaseExpression
-	 * <em>Case Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return the meta object for the attribute '<em>Case Expression</em>'.
-	 * @see org.eclipse.eef.EEFDynamicMappingCase#getCaseExpression()
-	 * @see #getEEFDynamicMappingCase()
-	 * @generated
-	 */
-	EAttribute getEEFDynamicMappingCase_CaseExpression();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.eef.EEFDynamicMappingCase#getWidget
+	 * Returns the meta object for the containment reference '{@link org.eclipse.eef.EEFDynamicMappingIf#getWidget
 	 * <em>Widget</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @return the meta object for the containment reference '<em>Widget</em>'.
-	 * @see org.eclipse.eef.EEFDynamicMappingCase#getWidget()
-	 * @see #getEEFDynamicMappingCase()
+	 * @see org.eclipse.eef.EEFDynamicMappingIf#getWidget()
+	 * @see #getEEFDynamicMappingIf()
 	 * @generated
 	 */
-	EReference getEEFDynamicMappingCase_Widget();
+	EReference getEEFDynamicMappingIf_Widget();
 
 	/**
 	 * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1778,56 +1709,30 @@ public interface EefPackage extends EPackage {
 		EAttribute EEF_DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION = EefPackage.eINSTANCE.getEEFDynamicMappingFor_DomainClassExpression();
 
 		/**
-		 * The meta object literal for the '<em><b>Switch</b></em>' containment reference feature. <!-- begin-user-doc
+		 * The meta object literal for the '<em><b>Ifs</b></em>' containment reference list feature. <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
 		 *
 		 * @generated
 		 */
-		EReference EEF_DYNAMIC_MAPPING_FOR__SWITCH = EefPackage.eINSTANCE.getEEFDynamicMappingFor_Switch();
+		EReference EEF_DYNAMIC_MAPPING_FOR__IFS = EefPackage.eINSTANCE.getEEFDynamicMappingFor_Ifs();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.eef.impl.EEFDynamicMappingSwitchImpl
-		 * <em>EEF Dynamic Mapping Switch</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.eclipse.eef.impl.EEFDynamicMappingIfImpl
+		 * <em>EEF Dynamic Mapping If</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
 		 *
-		 * @see org.eclipse.eef.impl.EEFDynamicMappingSwitchImpl
-		 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFDynamicMappingSwitch()
+		 * @see org.eclipse.eef.impl.EEFDynamicMappingIfImpl
+		 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFDynamicMappingIf()
 		 * @generated
 		 */
-		EClass EEF_DYNAMIC_MAPPING_SWITCH = EefPackage.eINSTANCE.getEEFDynamicMappingSwitch();
+		EClass EEF_DYNAMIC_MAPPING_IF = EefPackage.eINSTANCE.getEEFDynamicMappingIf();
 
 		/**
-		 * The meta object literal for the '<em><b>Switch Expression</b></em>' attribute feature. <!-- begin-user-doc
+		 * The meta object literal for the '<em><b>Predicate Expression</b></em>' attribute feature. <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
 		 *
 		 * @generated
 		 */
-		EAttribute EEF_DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION = EefPackage.eINSTANCE.getEEFDynamicMappingSwitch_SwitchExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Cases</b></em>' containment reference list feature. <!--
-		 * begin-user-doc --> <!-- end-user-doc -->
-		 *
-		 * @generated
-		 */
-		EReference EEF_DYNAMIC_MAPPING_SWITCH__CASES = EefPackage.eINSTANCE.getEEFDynamicMappingSwitch_Cases();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.eef.impl.EEFDynamicMappingCaseImpl
-		 * <em>EEF Dynamic Mapping Case</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
-		 * @see org.eclipse.eef.impl.EEFDynamicMappingCaseImpl
-		 * @see org.eclipse.eef.impl.EefPackageImpl#getEEFDynamicMappingCase()
-		 * @generated
-		 */
-		EClass EEF_DYNAMIC_MAPPING_CASE = EefPackage.eINSTANCE.getEEFDynamicMappingCase();
-
-		/**
-		 * The meta object literal for the '<em><b>Case Expression</b></em>' attribute feature. <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 *
-		 * @generated
-		 */
-		EAttribute EEF_DYNAMIC_MAPPING_CASE__CASE_EXPRESSION = EefPackage.eINSTANCE.getEEFDynamicMappingCase_CaseExpression();
+		EAttribute EEF_DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION = EefPackage.eINSTANCE.getEEFDynamicMappingIf_PredicateExpression();
 
 		/**
 		 * The meta object literal for the '<em><b>Widget</b></em>' containment reference feature. <!-- begin-user-doc
@@ -1835,7 +1740,7 @@ public interface EefPackage extends EPackage {
 		 *
 		 * @generated
 		 */
-		EReference EEF_DYNAMIC_MAPPING_CASE__WIDGET = EefPackage.eINSTANCE.getEEFDynamicMappingCase_Widget();
+		EReference EEF_DYNAMIC_MAPPING_IF__WIDGET = EefPackage.eINSTANCE.getEEFDynamicMappingIf_Widget();
 
 	}
 

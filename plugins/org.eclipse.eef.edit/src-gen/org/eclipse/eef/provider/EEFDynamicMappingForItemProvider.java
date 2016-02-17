@@ -104,7 +104,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(EefPackage.Literals.EEF_DYNAMIC_MAPPING_FOR__SWITCH);
+			childrenFeatures.add(EefPackage.Literals.EEF_DYNAMIC_MAPPING_FOR__IFS);
 		}
 		return childrenFeatures;
 	}
@@ -170,7 +170,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__SWITCH:
+		case EefPackage.EEF_DYNAMIC_MAPPING_FOR__IFS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -187,8 +187,8 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_FOR__SWITCH,
-				EefFactory.eINSTANCE.createEEFDynamicMappingSwitch()));
+		newChildDescriptors.add(createChildParameter(EefPackage.Literals.EEF_DYNAMIC_MAPPING_FOR__IFS,
+				EefFactory.eINSTANCE.createEEFDynamicMappingIf()));
 	}
 
 	/**

@@ -11,9 +11,8 @@ package org.eclipse.eef.impl;
 import org.eclipse.eef.EEFButtonDescription;
 import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFContainerDescription;
-import org.eclipse.eef.EEFDynamicMappingCase;
 import org.eclipse.eef.EEFDynamicMappingFor;
-import org.eclipse.eef.EEFDynamicMappingSwitch;
+import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFPageDescription;
@@ -91,10 +90,8 @@ public class EefFactoryImpl extends EFactoryImpl implements EefFactory {
 			return createEEFRadioDescription();
 		case EefPackage.EEF_DYNAMIC_MAPPING_FOR:
 			return createEEFDynamicMappingFor();
-		case EefPackage.EEF_DYNAMIC_MAPPING_SWITCH:
-			return createEEFDynamicMappingSwitch();
-		case EefPackage.EEF_DYNAMIC_MAPPING_CASE:
-			return createEEFDynamicMappingCase();
+		case EefPackage.EEF_DYNAMIC_MAPPING_IF:
+			return createEEFDynamicMappingIf();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -227,20 +224,9 @@ public class EefFactoryImpl extends EFactoryImpl implements EefFactory {
 	 * @generated
 	 */
 	@Override
-	public EEFDynamicMappingSwitch createEEFDynamicMappingSwitch() {
-		EEFDynamicMappingSwitchImpl eefDynamicMappingSwitch = new EEFDynamicMappingSwitchImpl();
-		return eefDynamicMappingSwitch;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 */
-	@Override
-	public EEFDynamicMappingCase createEEFDynamicMappingCase() {
-		EEFDynamicMappingCaseImpl eefDynamicMappingCase = new EEFDynamicMappingCaseImpl();
-		return eefDynamicMappingCase;
+	public EEFDynamicMappingIf createEEFDynamicMappingIf() {
+		EEFDynamicMappingIfImpl eefDynamicMappingIf = new EEFDynamicMappingIfImpl();
+		return eefDynamicMappingIf;
 	}
 
 	/**

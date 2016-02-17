@@ -11,9 +11,8 @@ package org.eclipse.eef.util;
 import org.eclipse.eef.EEFButtonDescription;
 import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFContainerDescription;
-import org.eclipse.eef.EEFDynamicMappingCase;
 import org.eclipse.eef.EEFDynamicMappingFor;
-import org.eclipse.eef.EEFDynamicMappingSwitch;
+import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFPageDescription;
@@ -140,13 +139,8 @@ public class EefAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseEEFDynamicMappingSwitch(EEFDynamicMappingSwitch object) {
-			return createEEFDynamicMappingSwitchAdapter();
-		}
-
-		@Override
-		public Adapter caseEEFDynamicMappingCase(EEFDynamicMappingCase object) {
-			return createEEFDynamicMappingCaseAdapter();
+		public Adapter caseEEFDynamicMappingIf(EEFDynamicMappingIf object) {
+			return createEEFDynamicMappingIfAdapter();
 		}
 
 		@Override
@@ -337,30 +331,16 @@ public class EefAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFDynamicMappingSwitch
-	 * <em>EEF Dynamic Mapping Switch</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-	 * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-	 * end-user-doc -->
-	 *
-	 * @return the new adapter.
-	 * @see org.eclipse.eef.EEFDynamicMappingSwitch
-	 * @generated
-	 */
-	public Adapter createEEFDynamicMappingSwitchAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFDynamicMappingCase
-	 * <em>EEF Dynamic Mapping Case</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+	 * Creates a new adapter for an object of class '{@link org.eclipse.eef.EEFDynamicMappingIf
+	 * <em>EEF Dynamic Mapping If</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
 	 * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
 	 * end-user-doc -->
 	 *
 	 * @return the new adapter.
-	 * @see org.eclipse.eef.EEFDynamicMappingCase
+	 * @see org.eclipse.eef.EEFDynamicMappingIf
 	 * @generated
 	 */
-	public Adapter createEEFDynamicMappingCaseAdapter() {
+	public Adapter createEEFDynamicMappingIfAdapter() {
 		return null;
 	}
 
