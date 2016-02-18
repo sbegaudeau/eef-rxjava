@@ -21,12 +21,12 @@ import org.eclipse.eef.core.api.EEFExpressionUtils.EEFSelect;
 import org.eclipse.eef.core.api.controllers.EEFControllersFactory;
 import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.eef.core.api.controllers.IEEFRadioController;
+import org.eclipse.eef.core.api.controllers.IEEFWidgetController;
 import org.eclipse.eef.core.api.utils.Eval;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetWidgetFactory;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -36,9 +36,8 @@ import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
@@ -46,31 +45,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
  *
  * @author mbats
  */
-public class EEFRadioLifecycleManager implements ILifecycleManager {
-	/**
-	 * The key used for the help image.
-	 */
-	private static final String DLG_IMG_HELP = "dialog_help_image"; //$NON-NLS-1$
+public class EEFRadioLifecycleManager extends AbstractEEFWidgetLifecycleManager {
 
 	/**
 	 * The description.
 	 */
 	private EEFRadioDescription description;
-
-	/**
-	 * The variable manager.
-	 */
-	private IVariableManager variableManager;
-
-	/**
-	 * The interpreter.
-	 */
-	private IInterpreter interpreter;
-
-	/**
-	 * The editing domain.
-	 */
-	private TransactionalEditingDomain editingDomain;
 
 	/**
 	 * The radio group viewer.
@@ -81,16 +61,6 @@ public class EEFRadioLifecycleManager implements ILifecycleManager {
 	 * The radio group.
 	 */
 	private RadioGroup radioGroup;
-
-	/**
-	 * The label.
-	 */
-	private Label label;
-
-	/**
-	 * The help label.
-	 */
-	private Label help;
 
 	/**
 	 * The controller.
@@ -116,23 +86,19 @@ public class EEFRadioLifecycleManager implements ILifecycleManager {
 	 */
 	public EEFRadioLifecycleManager(EEFRadioDescription description, IVariableManager variableManager, IInterpreter interpreter,
 			TransactionalEditingDomain editingDomain) {
+		super(variableManager, interpreter, editingDomain);
 		this.description = description;
-		this.variableManager = variableManager;
-		this.interpreter = interpreter;
-		this.editingDomain = editingDomain;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.eef.ide.ui.internal.widgets.ILifecycleManager#createControl(org.eclipse.swt.widgets.Composite,
+	 * @see org.eclipse.eef.ide.ui.internal.widgets.AbstractEEFWidgetLifecycleManager#createMainControl(org.eclipse.swt.widgets.Composite,
 	 *      org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage)
 	 */
 	@Override
-	public void createControl(Composite parent, EEFTabbedPropertySheetPage tabbedPropertySheetPage) {
+	protected void createMainControl(Composite parent, EEFTabbedPropertySheetPage tabbedPropertySheetPage) {
 		EEFTabbedPropertySheetWidgetFactory widgetFactory = tabbedPropertySheetPage.getWidgetFactory();
-
-		this.label = widgetFactory.createLabel(parent, ""); //$NON-NLS-1$
 
 		this.radioGroupViewer = new RadioGroupViewer(parent, widgetFactory);
 		this.radioGroup = radioGroupViewer.getRadioGroup();
@@ -142,13 +108,28 @@ public class EEFRadioLifecycleManager implements ILifecycleManager {
 		this.radioGroupViewer.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 
-		this.help = widgetFactory.createLabel(parent, ""); //$NON-NLS-1$
-		Image image = JFaceResources.getImage(DLG_IMG_HELP);
-		this.help.setImage(image);
-		this.help.setToolTipText("There should be some help in this tooltip..."); //$NON-NLS-1$
-
 		this.controller = new EEFControllersFactory().createRadioController(this.description, this.variableManager, this.interpreter,
 				this.editingDomain);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.eef.ide.ui.internal.widgets.AbstractEEFWidgetLifecycleManager#getController()
+	 */
+	@Override
+	protected IEEFWidgetController getController() {
+		return this.controller;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.eef.ide.ui.internal.widgets.AbstractEEFWidgetLifecycleManager#getValidationControl()
+	 */
+	@Override
+	protected Control getValidationControl() {
+		return this.radioGroup;
 	}
 
 	/**
@@ -158,6 +139,8 @@ public class EEFRadioLifecycleManager implements ILifecycleManager {
 	 */
 	@Override
 	public void aboutToBeShown() {
+		super.aboutToBeShown();
+
 		this.selectionListener = new SelectionListener() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -187,16 +170,6 @@ public class EEFRadioLifecycleManager implements ILifecycleManager {
 			}
 		});
 
-		// Set radio group label
-		this.controller.onNewLabel(new IConsumer<String>() {
-			@Override
-			public void apply(String value) {
-				if (!label.isDisposed() && !(label.getText() != null && label.getText().equals(value))) {
-					label.setText(value);
-				}
-			}
-		});
-
 		// Set radio group items
 		this.controller.onNewCandidates(new IConsumer<List<Object>>() {
 			@Override
@@ -215,36 +188,16 @@ public class EEFRadioLifecycleManager implements ILifecycleManager {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.eef.ide.ui.internal.widgets.ILifecycleManager#refresh()
-	 */
-	@Override
-	public void refresh() {
-		this.controller.refresh();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
 	 * @see org.eclipse.eef.ide.ui.internal.widgets.ILifecycleManager#aboutToBeHidden()
 	 */
 	@Override
 	public void aboutToBeHidden() {
+		super.aboutToBeHidden();
 		if (!radioGroup.isDisposed()) {
 			this.radioGroup.removeSelectionListener(this.selectionListener);
 		}
 		this.controller.removeNewValueConsumer();
-		this.controller.removeNewLabelConsumer();
 		this.controller.removeNewCandidatesConsumer();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.eef.ide.ui.internal.widgets.ILifecycleManager#dispose()
-	 */
-	@Override
-	public void dispose() {
-		// do nothing
 	}
 
 	/**

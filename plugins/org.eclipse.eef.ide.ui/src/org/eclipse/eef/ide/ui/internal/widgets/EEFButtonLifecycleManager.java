@@ -14,67 +14,36 @@ import org.eclipse.eef.EEFButtonDescription;
 import org.eclipse.eef.core.api.controllers.EEFControllersFactory;
 import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.eef.core.api.controllers.IEEFButtonController;
+import org.eclipse.eef.core.api.controllers.IEEFWidgetController;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetWidgetFactory;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Control;
 
 /**
  * This class will be used in order to manager the lifecycle of a button.
  *
  * @author pcdavid
  */
-public class EEFButtonLifecycleManager implements ILifecycleManager {
-	/**
-	 * The key used for the help image.
-	 */
-	private static final String DLG_IMG_HELP = "dialog_help_image"; //$NON-NLS-1$
-
+public class EEFButtonLifecycleManager extends AbstractEEFWidgetLifecycleManager {
 	/**
 	 * The description.
 	 */
 	private EEFButtonDescription description;
 
 	/**
-	 * The variable manager.
-	 */
-	private IVariableManager variableManager;
-
-	/**
-	 * The interpreter.
-	 */
-	private IInterpreter interpreter;
-
-	/**
-	 * The editing domain.
-	 */
-	private TransactionalEditingDomain editingDomain;
-
-	/**
 	 * The button.
 	 */
 	private Button button;
-
-	/**
-	 * The label.
-	 */
-	private Label label;
-
-	/**
-	 * The help label.
-	 */
-	private Label help;
 
 	/**
 	 * The controller.
@@ -100,35 +69,43 @@ public class EEFButtonLifecycleManager implements ILifecycleManager {
 	 */
 	public EEFButtonLifecycleManager(EEFButtonDescription description, IVariableManager variableManager, IInterpreter interpreter,
 			TransactionalEditingDomain editingDomain) {
+		super(variableManager, interpreter, editingDomain);
 		this.description = description;
-		this.variableManager = variableManager;
-		this.interpreter = interpreter;
-		this.editingDomain = editingDomain;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.eef.ide.ui.internal.widgets.AbstractEEFWidgetLifecycleManager#createMainControl(org.eclipse.swt.widgets.Composite,
+	 *      org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage)
+	 */
 	@Override
-	public void createControl(Composite parent, EEFTabbedPropertySheetPage tabbedPropertySheetPage) {
+	protected void createMainControl(Composite parent, EEFTabbedPropertySheetPage tabbedPropertySheetPage) {
 		EEFTabbedPropertySheetWidgetFactory widgetFactory = tabbedPropertySheetPage.getWidgetFactory();
-
-		this.label = widgetFactory.createLabel(parent, ""); //$NON-NLS-1$
-
 		this.button = widgetFactory.createButton(parent, "DO IT", SWT.NONE); //$NON-NLS-1$
 		// this.button.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 		GridData nameData = new GridData(GridData.BEGINNING);
 		this.button.setLayoutData(nameData);
 
-		this.help = widgetFactory.createLabel(parent, ""); //$NON-NLS-1$
-		Image image = JFaceResources.getImage(DLG_IMG_HELP);
-		help.setImage(image);
-		help.setToolTipText("There should be some help in this tooltip..."); //$NON-NLS-1$
-
 		this.controller = new EEFControllersFactory().createButtonController(this.description, this.variableManager, this.interpreter,
 				this.editingDomain);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.eef.ide.ui.internal.widgets.AbstractEEFWidgetLifecycleManager#getController()
+	 */
+	@Override
+	protected IEEFWidgetController getController() {
+		return this.controller;
+	}
+
 	@Override
 	public void aboutToBeShown() {
+		super.aboutToBeShown();
+
 		this.selectionListener = new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -137,14 +114,6 @@ public class EEFButtonLifecycleManager implements ILifecycleManager {
 		};
 		this.button.addSelectionListener(this.selectionListener);
 
-		this.controller.onNewLabel(new IConsumer<String>() {
-			@Override
-			public void apply(String value) {
-				if (!label.isDisposed() && !(label.getText() != null && label.getText().equals(value))) {
-					label.setText(value);
-				}
-			}
-		});
 		this.controller.onNewButtonLabel(new IConsumer<String>() {
 			@Override
 			public void apply(String value) {
@@ -155,22 +124,23 @@ public class EEFButtonLifecycleManager implements ILifecycleManager {
 		});
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.eef.ide.ui.internal.widgets.AbstractEEFWidgetLifecycleManager#getValidationControl()
+	 */
 	@Override
-	public void refresh() {
-		this.controller.refresh();
+	protected Control getValidationControl() {
+		return this.button;
 	}
 
 	@Override
 	public void aboutToBeHidden() {
+		super.aboutToBeHidden();
+
 		if (!button.isDisposed()) {
 			this.button.removeSelectionListener(this.selectionListener);
 		}
-		this.controller.removeNewLabelConsumer();
 		this.controller.removeNewButtonLabelConsumer();
-	}
-
-	@Override
-	public void dispose() {
-		// do nothing
 	}
 }

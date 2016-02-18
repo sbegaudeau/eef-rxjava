@@ -23,7 +23,6 @@ import org.eclipse.eef.properties.ui.internal.page.EEFTabbedPropertyComposite;
 import org.eclipse.eef.properties.ui.internal.page.EEFTabbedPropertyViewer;
 import org.eclipse.eef.properties.ui.internal.page.EEFTabbedPropertyViewer.IEEFTabDescriptorChangedListener;
 import org.eclipse.eef.properties.ui.internal.registry.EEFTabbedPropertyRegistry;
-import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlAdapter;
@@ -488,9 +487,6 @@ public class EEFTabbedPropertySheetPage extends Page implements IPropertySheetPa
 			tab.refresh();
 		}
 
-		// TODO this should be removed
-		form.getMessageManager().addMessage("key", "I am sorry Dave. I'm afraid I can't do that", "data", IMessageProvider.WARNING); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
-
 		tabbedPropertyComposite.getTabComposite().layout(true);
 
 		this.currentTab = tab;
@@ -768,6 +764,15 @@ public class EEFTabbedPropertySheetPage extends Page implements IPropertySheetPa
 	 */
 	public IEEFTabbedPropertySheetPageContributor getContributor() {
 		return this.contributor;
+	}
+
+	/**
+	 * Return the form.
+	 *
+	 * @return the form
+	 */
+	public Form getForm() {
+		return this.form;
 	}
 
 }

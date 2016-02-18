@@ -10,12 +10,20 @@
  *******************************************************************************/
 package org.eclipse.eef.core.internal.controllers;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.EefPackage;
+import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.eef.core.api.controllers.IEEFWidgetController;
+import org.eclipse.eef.core.api.controllers.IValidationMessage;
 import org.eclipse.eef.core.api.utils.ISuccessfulResultConsumer;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 
@@ -30,6 +38,11 @@ public abstract class AbstractEEFWidgetController extends AbstractEEFController 
 	 * The consumer of a new value of the label.
 	 */
 	protected IConsumer<String> newLabelConsumer;
+
+	/**
+	 * The consumer of the validation messages.
+	 */
+	protected IConsumer<List<IValidationMessage>> validationConsumer;
 
 	/**
 	 * The constructor.
@@ -73,6 +86,26 @@ public abstract class AbstractEEFWidgetController extends AbstractEEFController 
 	/**
 	 * {@inheritDoc}
 	 *
+	 * @see org.eclipse.eef.core.api.controllers.IEEFWidgetController#onValidation(org.eclipse.eef.core.api.controllers.IConsumer)
+	 */
+	@Override
+	public void onValidation(IConsumer<List<IValidationMessage>> consumer) {
+		this.validationConsumer = consumer;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.eef.core.api.controllers.IEEFWidgetController#removeValidationConsumer()
+	 */
+	@Override
+	public void removeValidationConsumer() {
+		this.validationConsumer = null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
 	 * @see org.eclipse.eef.core.api.controllers.IEEFWidgetController#refresh()
 	 */
 	@Override
@@ -86,5 +119,14 @@ public abstract class AbstractEEFWidgetController extends AbstractEEFController 
 				AbstractEEFWidgetController.this.newLabelConsumer.apply(value);
 			}
 		});
+
+		// TODO [SBE][Validation] TO BE REMOVED FOR REAL VALIDATION RULES
+
+		Object self = this.variableManager.getVariables().get(EEFExpressionUtils.SELF);
+		if (self instanceof EObject) {
+			EObject eObject = (EObject) self;
+			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
+			this.validationConsumer.apply(Collections.singletonList(ValidationMessageBuilder.of(diagnostic)));
+		}
 	}
 }

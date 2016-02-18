@@ -184,31 +184,11 @@ public class EEFRadioController extends AbstractEEFWidgetController implements I
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.eef.core.api.controllers.EEFTextController#onNewLabel(org.eclipse.eef.core.api.controllers.IConsumer)
-	 */
-	@Override
-	public void onNewLabel(IConsumer<String> consumer) {
-		this.newLabelConsumer = consumer;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
 	 * @see org.eclipse.eef.core.api.controllers.EEFSelectController#removeNewValueConsumer()
 	 */
 	@Override
 	public void removeNewValueConsumer() {
 		this.newValueConsumer = null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.eef.core.api.controllers.EEFSelectController#removeNewLabelConsumer()
-	 */
-	@Override
-	public void removeNewLabelConsumer() {
-		this.newLabelConsumer = null;
 	}
 
 	/**
