@@ -11,20 +11,25 @@
 package org.eclipse.eef.ide.ui.internal.widgets;
 
 import java.util.List;
+import java.util.Random;
 
 import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.eef.core.api.controllers.IEEFWidgetController;
 import org.eclipse.eef.core.api.controllers.IValidationMessage;
+import org.eclipse.eef.ide.ui.internal.EEFIdeUiPlugin;
+import org.eclipse.eef.ide.ui.internal.Icons;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetWidgetFactory;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.forms.IMessageManager;
 
 /**
@@ -33,10 +38,30 @@ import org.eclipse.ui.forms.IMessageManager;
  * @author sbegaudeau
  */
 public abstract class AbstractEEFWidgetLifecycleManager implements ILifecycleManager {
+
 	/**
-	 * The key used for the help image.
+	 * Horizontal space to leave between related widgets. Each section should use these values for spacing its widgets.
+	 * For example, you can use +/- HSPACE as the offset of a left or right FlatFormAttachment.
+	 *
+	 * The tabbed property composite also inserts VSPACE pixels between section composites if more than one section is
+	 * displayed.
 	 */
-	private static final String DLG_IMG_HELP = "dialog_help_image"; //$NON-NLS-1$
+	public static final int HSPACE = 5;
+
+	/**
+	 * The label width that will be used for section names.
+	 **/
+	public static final int LABEL_WIDTH = 232;
+
+	/**
+	 * The gap between the label and the widget with the help icon.
+	 */
+	public static final int GAP_WITH_HELP = 25;
+
+	/**
+	 * The gap between the label and the widget without the help icon.
+	 */
+	public static final int GAP_WITHOUT_HELP = 20;
 
 	/**
 	 * The variable manager.
@@ -56,12 +81,12 @@ public abstract class AbstractEEFWidgetLifecycleManager implements ILifecycleMan
 	/**
 	 * The label.
 	 */
-	protected Label label;
+	protected CLabel label;
 
 	/**
 	 * The help label.
 	 */
-	protected Label help;
+	protected CLabel help;
 
 	/**
 	 * The tabbed property sheet page.
@@ -95,14 +120,37 @@ public abstract class AbstractEEFWidgetLifecycleManager implements ILifecycleMan
 		this.page = tabbedPropertySheetPage;
 		EEFTabbedPropertySheetWidgetFactory widgetFactory = tabbedPropertySheetPage.getWidgetFactory();
 
-		this.label = widgetFactory.createLabel(parent, ""); //$NON-NLS-1$
+		Composite composite = widgetFactory.createFlatFormComposite(parent);
+		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
+		composite.setLayoutData(gridData);
 
-		this.createMainControl(parent, tabbedPropertySheetPage);
+		this.createMainControl(composite, tabbedPropertySheetPage);
 
-		this.help = widgetFactory.createLabel(parent, ""); //$NON-NLS-1$
-		Image image = JFaceResources.getImage(DLG_IMG_HELP);
-		help.setImage(image);
-		help.setToolTipText("There should be some help in this tooltip..."); //$NON-NLS-1$
+		Control control = this.getValidationControl();
+
+		boolean hasHelp = new Random().nextBoolean(); // [SBE] yes, I know, to be removed :)
+
+		int gap = GAP_WITHOUT_HELP;
+		if (hasHelp) {
+			gap = GAP_WITH_HELP;
+		}
+
+		this.label = widgetFactory.createCLabel(composite, ""); //$NON-NLS-1$
+		FormData labelFormData = new FormData();
+		labelFormData.left = new FormAttachment(0, 0);
+		labelFormData.right = new FormAttachment(control, -HSPACE - gap);
+		labelFormData.top = new FormAttachment(control, 0, SWT.TOP);
+		this.label.setLayoutData(labelFormData);
+
+		if (hasHelp) {
+			this.help = widgetFactory.createCLabel(composite, ""); //$NON-NLS-1$
+			FormData helpFormData = new FormData();
+			helpFormData.top = new FormAttachment(control, 0, SWT.TOP);
+			helpFormData.left = new FormAttachment(this.label);
+			this.help.setLayoutData(helpFormData);
+			this.help.setImage(EEFIdeUiPlugin.getPlugin().getImageRegistry().get(Icons.HELP));
+			this.help.setToolTipText("There should be some help in this tooltip..."); //$NON-NLS-1$
+		}
 	}
 
 	/**

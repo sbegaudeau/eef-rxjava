@@ -103,7 +103,7 @@ public class EEFGroupLifecycleManager implements ILifecycleManager {
 		EEFTabbedPropertySheetWidgetFactory widgetFactory = tabbedPropertySheetPage.getWidgetFactory();
 
 		Composite container = widgetFactory.createComposite(parent);
-		container.setLayout(new GridLayout(3, false));
+		container.setLayout(new GridLayout(1, false));
 
 		this.section = widgetFactory.createSection(container, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
 		this.section.setText(""); //$NON-NLS-1$
@@ -117,11 +117,11 @@ public class EEFGroupLifecycleManager implements ILifecycleManager {
 		});
 
 		GridData sectionLayoutData = new GridData(GridData.FILL_HORIZONTAL);
-		sectionLayoutData.horizontalSpan = 3;
+		sectionLayoutData.horizontalSpan = 1;
 		this.section.setLayoutData(sectionLayoutData);
 		Composite group = widgetFactory.createComposite(this.section);
 		GridLayout groupLayout = new GridLayout();
-		groupLayout.numColumns = 3;
+		groupLayout.numColumns = 1;
 		group.setLayout(groupLayout);
 		this.section.setClient(group);
 

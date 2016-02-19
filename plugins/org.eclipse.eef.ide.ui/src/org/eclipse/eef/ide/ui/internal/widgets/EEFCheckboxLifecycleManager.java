@@ -23,7 +23,8 @@ import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -82,10 +83,11 @@ public class EEFCheckboxLifecycleManager extends AbstractEEFWidgetLifecycleManag
 	protected void createMainControl(Composite parent, EEFTabbedPropertySheetPage tabbedPropertySheetPage) {
 		EEFTabbedPropertySheetWidgetFactory widgetFactory = tabbedPropertySheetPage.getWidgetFactory();
 
+		FormData buttonFormData = new FormData();
+		buttonFormData.left = new FormAttachment(0, LABEL_WIDTH);
+
 		this.checkbox = widgetFactory.createButton(parent, "", SWT.CHECK); //$NON-NLS-1$
-		widgetFactory.paintBordersFor(parent);
-		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
-		this.checkbox.setLayoutData(nameData);
+		this.checkbox.setLayoutData(buttonFormData);
 
 		this.controller = new EEFControllersFactory().createCheckboxController(this.description, this.variableManager, this.interpreter,
 				this.editingDomain);

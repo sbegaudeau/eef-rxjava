@@ -38,7 +38,8 @@ import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -110,8 +111,11 @@ public class EEFSelectLifecycleManager extends AbstractEEFWidgetLifecycleManager
 
 		this.comboViewer.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
-		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
-		this.comboViewer.getCombo().setLayoutData(nameData);
+
+		FormData comboFormData = new FormData();
+		comboFormData.left = new FormAttachment(0, LABEL_WIDTH);
+		comboFormData.right = new FormAttachment(100, 0);
+		this.comboViewer.getCombo().setLayoutData(comboFormData);
 
 		this.controller = new EEFControllersFactory().createSelectController(this.description, this.variableManager, this.interpreter,
 				this.editingDomain);

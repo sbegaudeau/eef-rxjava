@@ -20,7 +20,6 @@ import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.TypedListener;
 
@@ -30,11 +29,6 @@ import org.eclipse.swt.widgets.TypedListener;
  * @author mbats
  */
 public class RadioGroup extends Composite {
-
-	/**
-	 * The group.
-	 */
-	private Group group;
 
 	/**
 	 * The radio buttons.
@@ -58,8 +52,8 @@ public class RadioGroup extends Composite {
 	public RadioGroup(Composite parent, EEFTabbedPropertySheetWidgetFactory widgetFactory) {
 		super(parent, SWT.RADIO);
 		this.widgetFactory = widgetFactory;
-		this.group = widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
-		this.group.setLayout(new RowLayout(SWT.HORIZONTAL));
+
+		this.setLayout(new RowLayout(SWT.HORIZONTAL));
 
 		addListener(SWT.Dispose, new Listener() {
 			@Override
@@ -104,7 +98,7 @@ public class RadioGroup extends Composite {
 	 */
 	public void add(String string, int index) {
 		if (buttons.get(index) == null) {
-			Button button = widgetFactory.createButton(group, string, SWT.RADIO);
+			Button button = widgetFactory.createButton(this, string, SWT.RADIO);
 			buttons.put(index, button);
 		}
 	}

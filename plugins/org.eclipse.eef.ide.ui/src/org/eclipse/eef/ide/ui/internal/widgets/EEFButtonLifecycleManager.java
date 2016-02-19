@@ -24,7 +24,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -82,11 +83,17 @@ public class EEFButtonLifecycleManager extends AbstractEEFWidgetLifecycleManager
 	@Override
 	protected void createMainControl(Composite parent, EEFTabbedPropertySheetPage tabbedPropertySheetPage) {
 		EEFTabbedPropertySheetWidgetFactory widgetFactory = tabbedPropertySheetPage.getWidgetFactory();
+
+		final int buttonWidth = 80;
+
+		FormData buttonFormData = new FormData();
+		buttonFormData.left = new FormAttachment(0, LABEL_WIDTH);
+		buttonFormData.width = buttonWidth;
+
 		this.button = widgetFactory.createButton(parent, "DO IT", SWT.NONE); //$NON-NLS-1$
-		// this.button.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		this.button.setLayoutData(buttonFormData);
+
 		widgetFactory.paintBordersFor(parent);
-		GridData nameData = new GridData(GridData.BEGINNING);
-		this.button.setLayoutData(nameData);
 
 		this.controller = new EEFControllersFactory().createButtonController(this.description, this.variableManager, this.interpreter,
 				this.editingDomain);

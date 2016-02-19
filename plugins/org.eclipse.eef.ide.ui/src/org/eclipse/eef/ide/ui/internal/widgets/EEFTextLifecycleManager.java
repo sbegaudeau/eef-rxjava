@@ -23,7 +23,8 @@ import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
@@ -84,7 +85,9 @@ public class EEFTextLifecycleManager extends AbstractEEFWidgetLifecycleManager {
 	protected void createMainControl(Composite parent, EEFTabbedPropertySheetPage tabbedPropertySheetPage) {
 		EEFTabbedPropertySheetWidgetFactory widgetFactory = tabbedPropertySheetPage.getWidgetFactory();
 
-		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
+		FormData formData = new FormData();
+		formData.left = new FormAttachment(0, LABEL_WIDTH);
+		formData.right = new FormAttachment(100, 0);
 
 		// Get text area line count
 		int lineCount = description.getLineCount();
@@ -92,14 +95,14 @@ public class EEFTextLifecycleManager extends AbstractEEFWidgetLifecycleManager {
 		// Create text or text area according to the defined line count
 		if (lineCount > 1) {
 			this.text = widgetFactory.createText(parent, "", SWT.H_SCROLL | SWT.V_SCROLL | SWT.WRAP); //$NON-NLS-1$
-			nameData.heightHint = lineCount * text.getLineHeight();
+			formData.height = lineCount * text.getLineHeight();
 		} else {
 			this.text = widgetFactory.createText(parent, "", SWT.NONE); //$NON-NLS-1$
 		}
 		this.text.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
 
-		this.text.setLayoutData(nameData);
+		this.text.setLayoutData(formData);
 
 		this.controller = new EEFControllersFactory().createTextController(this.description, this.variableManager, this.interpreter,
 				this.editingDomain);

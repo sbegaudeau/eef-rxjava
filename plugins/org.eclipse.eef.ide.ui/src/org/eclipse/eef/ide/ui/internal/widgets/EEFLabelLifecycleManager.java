@@ -20,10 +20,12 @@ import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetWidgetFactory;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
-import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Label;
 
 /**
  * This class will be used in order to manage the lifecycle of a label.
@@ -39,7 +41,7 @@ public class EEFLabelLifecycleManager extends AbstractEEFWidgetLifecycleManager 
 	/**
 	 * The body.
 	 */
-	private Label body;
+	private CLabel body;
 
 	/**
 	 * The controller.
@@ -74,9 +76,11 @@ public class EEFLabelLifecycleManager extends AbstractEEFWidgetLifecycleManager 
 	protected void createMainControl(Composite parent, EEFTabbedPropertySheetPage tabbedPropertySheetPage) {
 		EEFTabbedPropertySheetWidgetFactory widgetFactory = tabbedPropertySheetPage.getWidgetFactory();
 
-		GridData layoutData = new GridData(GridData.FILL_HORIZONTAL);
-		this.body = widgetFactory.createLabel(parent, ""); //$NON-NLS-1$
-		this.body.setLayoutData(layoutData);
+		FormData buttonFormData = new FormData();
+		buttonFormData.left = new FormAttachment(0, LABEL_WIDTH);
+
+		this.body = widgetFactory.createCLabel(parent, "", SWT.WRAP); //$NON-NLS-1$
+		this.body.setLayoutData(buttonFormData);
 
 		this.controller = new EEFControllersFactory().createLabelController(this.description, this.variableManager, this.interpreter);
 	}
