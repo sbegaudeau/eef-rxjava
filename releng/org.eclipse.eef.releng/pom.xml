@@ -74,7 +74,7 @@ Contributors:
               <target>
                 <artifact>
                   <groupId>org.eclipse.eef</groupId>
-                  <artifactId>neon</artifactId>
+                  <artifactId>rxjava</artifactId>
                   <version>1.0.0-SNAPSHOT</version>
                 </artifact>
               </target>
@@ -83,7 +83,7 @@ Contributors:
         </plugins>
       </build>
       <modules>
-        <module>targetplatforms/neon</module>
+        <module>targetplatforms/rxjava</module>
 
         <module>../../plugins/org.eclipse.eef.properties.ui</module>
         <module>../../plugins/org.eclipse.eef.properties.ui.legacy</module>

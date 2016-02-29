@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.eef.core.api.controllers;
 
+import rx.Observable;
+
 /**
  * The EEFTextController is responsible of supporting all the interactions with the widgets created for an
  * EEFTextDescription.
@@ -38,5 +40,12 @@ public interface IEEFTextController extends IEEFWidgetController {
 	 * Remove the consumer of the new value of the text.
 	 */
 	void removeNewValueConsumer();
+
+	/**
+	 * Returns the new state of the text widget.
+	 * 
+	 * @return The new state of the text widget
+	 */
+	Observable<IEEFTextState> getState();
 
 }

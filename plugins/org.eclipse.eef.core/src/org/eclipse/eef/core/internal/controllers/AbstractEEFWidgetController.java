@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 
+import rx.Observable;
+
 /**
  * This class is used to provide utilities to widget controller.
  *
@@ -162,4 +164,21 @@ public abstract class AbstractEEFWidgetController extends AbstractEEFController 
 			this.validationConsumer.apply(Collections.singletonList(ValidationMessageBuilder.of(diagnostic)));
 		}
 	}
+
+	// CHECKSTYLE:OFF
+
+	protected Eval2 newEval2() {
+		return Eval2.of(this.interpreter, this.variableManager);
+	}
+
+	protected Observable<String> label() {
+		EAttribute eAttribute = EefPackage.Literals.EEF_WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+		return this.newEval2().get(eAttribute, this.getDescription().getLabelExpression(), String.class);
+	}
+
+	protected Observable<String> help() {
+		EAttribute eAttribute = EefPackage.Literals.EEF_WIDGET_DESCRIPTION__HELP_EXPRESSION;
+		return this.newEval2().get(eAttribute, this.getDescription().getHelpExpression(), String.class);
+	}
+
 }

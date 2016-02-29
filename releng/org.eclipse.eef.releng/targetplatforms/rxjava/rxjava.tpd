@@ -1,0 +1,9 @@
+target "RxJava"
+
+include "sirius.tpd"
+
+with source
+
+location RxJava "http://sbegaudeau.github.io/rxjava-repository/" {
+	io.reactivex.rxjava.feature.feature.group lazy
+}

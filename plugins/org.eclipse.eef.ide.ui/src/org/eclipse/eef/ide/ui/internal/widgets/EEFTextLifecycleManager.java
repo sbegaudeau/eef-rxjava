@@ -15,6 +15,7 @@ import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.core.api.controllers.EEFControllersFactory;
 import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.eef.core.api.controllers.IEEFTextController;
+import org.eclipse.eef.core.api.controllers.IEEFTextState;
 import org.eclipse.eef.core.api.controllers.IEEFWidgetController;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetWidgetFactory;
@@ -30,6 +31,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
+
+import rx.functions.Action1;
 
 /**
  * This class will be used in order to manager the lifecycle of a text.
@@ -157,6 +160,36 @@ public class EEFTextLifecycleManager extends AbstractEEFWidgetLifecycleManager {
 				}
 			}
 		});
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.eef.ide.ui.internal.widgets.AbstractEEFWidgetLifecycleManager#refresh()
+	 */
+	@Override
+	public void refresh() {
+		this.controller.getState().subscribe(new Action1<IEEFTextState>() {
+			@Override
+			public void call(IEEFTextState textState) {
+				EEFTextLifecycleManager.this.doRefresh(textState);
+			}
+		});
+	}
+
+	/**
+	 * Process the text state to refresh the text widget.
+	 * 
+	 * @param textState
+	 *            The new text state
+	 */
+	private void doRefresh(IEEFTextState textState) {
+		if (!text.isDisposed() && !(text.getText() != null && text.getText().equals(textState.getText()))) {
+			text.setText(textState.getText());
+			if (!text.isEnabled()) {
+				text.setEnabled(true);
+			}
+		}
 	}
 
 	/**

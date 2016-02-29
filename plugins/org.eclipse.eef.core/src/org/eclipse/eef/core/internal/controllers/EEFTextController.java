@@ -23,6 +23,7 @@ import org.eclipse.eef.EefPackage;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.eef.core.api.controllers.IEEFTextController;
+import org.eclipse.eef.core.api.controllers.IEEFTextState;
 import org.eclipse.eef.core.api.utils.Eval;
 import org.eclipse.eef.core.api.utils.ISuccessfulResultConsumer;
 import org.eclipse.emf.common.command.Command;
@@ -32,6 +33,9 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+
+import rx.Observable;
+import rx.functions.Func3;
 
 /**
  * This class will be used in order to manage the behavior of the text.
@@ -169,4 +173,29 @@ public class EEFTextController extends AbstractEEFWidgetController implements IE
 		return this.description;
 	}
 
+	// CHECKSTYLE:OFF
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.eef.core.api.controllers.IEEFTextController#getState()
+	 */
+	@Override
+	public Observable<IEEFTextState> getState() {
+		return Observable.zip(text(), label(), help(), createTextState());
+	}
+
+	private Observable<String> text() {
+		EAttribute eAttribute = EefPackage.Literals.EEF_TEXT_DESCRIPTION__VALUE_EXPRESSION;
+		return this.newEval2().get(eAttribute, this.description.getValueExpression(), String.class);
+	}
+
+	private Func3<String, String, String, IEEFTextState> createTextState() {
+		return new Func3<String, String, String, IEEFTextState>() {
+			@Override
+			public IEEFTextState call(String text, String label, String help) {
+				return new EEFTextState(text, label, help);
+			}
+		};
+	}
 }
